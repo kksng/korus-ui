@@ -213,7 +213,7 @@ describe('Check TimmePicker event listeners test collection', () => {
       .lastCalledWith(expect.objectContaining({
         component: expect.objectContaining({
           name: validName,
-          value: '', // Ошибка в работе компоненте
+          value: validValue,
         }),
       }));
   });
