@@ -1,12 +1,16 @@
 import { Values } from '../../commonTypes';
 import { getClassNames } from '../../utils';
 import { BUTTON_TYPE, CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
+import { COMPONENT_TYPES } from '../DateTimeInput/constants';
+
 import {
   CalendarConditionProps,
   CalendarConditions,
   DateCellConditions,
   DateCellProps,
-  MonthViewProps, YearViewProps,
+  MonthViewProps,
+  YearViewProps,
+  NormalizeValueProps,
 } from './types';
 
 export const isTimeLess = (firstDate?: Date | null, secondDate?: Date | null): boolean => {
@@ -339,4 +343,34 @@ export const getCalendarFormat = (format: string): string => {
   if (startIndex === -1 || endIndex === -1) return format;
 
   return format.slice(0, startIndex) + format.slice(endIndex + 2, format.length);
+};
+
+/**
+ * В случе, если date меньше min, возвращает min
+ * В случае, если date больше max, возвращает max
+ * Во всех остальных случаях возвращает data
+ */
+export const getNormalizeValue = (props: NormalizeValueProps) => {
+  const {
+    date,
+    min,
+    max,
+    type,
+  } = props;
+
+  if (!date) return null;
+
+  const minDate = (() => {
+    if (type === COMPONENT_TYPES.TIME_ONLY) return isTimeLess(date, min) ? min : null;
+    if (type === COMPONENT_TYPES.DATE_TIME) return min && date.getTime() < min.getTime() ? min : null;
+    return isDateLess(date, min) ? min : null;
+  })();
+
+  const maxDate = (() => {
+    if (type === COMPONENT_TYPES.TIME_ONLY) return isTimeGreater(date, max) ? max : null;
+    if (type === COMPONENT_TYPES.DATE_TIME) return max && date.getTime() > max.getTime() ? max : null;
+    return isDateGreater(date, max) ? max : null;
+  })();
+
+  return minDate || maxDate || date;
 };

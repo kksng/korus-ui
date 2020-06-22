@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { isNil, isFunction } from 'lodash';
 import { VIEW_TYPES } from '../../Calendar/constants';
-import { isDateGreater, isDateLess } from '../../Calendar/helpers';
+import { isDateGreater, isDateLess, getNormalizeValue } from '../../Calendar/helpers';
 import {
   setDate, setOpen, setViewDate, setViewType,
 } from '../actions';
 import {
   COMPONENT_TYPES, DAYS_IN_WEEK, KEYS, MONTHS_IN_ROW, YEARS_IN_ROW,
 } from '../constants';
-import { formatDateTime, updateInputSelection } from '../helpers';
+import { formatDateTime, updateInputSelection, normalizeValue } from '../helpers';
 import {
   EnterKeyPressPayload,
   EscKeyPressPayload,
@@ -236,15 +236,22 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
   const {
     year, month,
   } = dateShorthand;
+
+  const normalizeDateValue = getNormalizeValue({
+    date, min, max, type,
+  });
+
   // если календарь закрыт - вызывать onEnterPress
   if (!isOpen) {
+    dispatch(setDate(normalizeDateValue));
+
     if (isFunction(onEnterPress)) {
       onEnterPress({
         ...ev,
         component: {
-          date,
+          date: normalizeDateValue,
           name,
-          value,
+          value: formatDateTime(normalizeDateValue, format),
         },
       });
     }

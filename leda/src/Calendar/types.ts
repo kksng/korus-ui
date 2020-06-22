@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CustomRender, Values } from '../../commonTypes';
 import { AllActions } from '../DateTimeInput/types';
+import { COMPONENT_TYPES } from '../DateTimeInput/constants';
 import { CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import { defaultTheme } from './theme';
 import { DivProps } from '../../components/Div';
@@ -151,4 +152,11 @@ export interface CustomElements {
   YearView: React.FC<YearViewProps>,
   CalendarHeader: React.FC<CalendarHeaderProps>,
   CalendarWrapper: React.FC<DivProps>,
+}
+
+export interface NormalizeValueProps {
+  date: Date | null,
+  min: Date | null | undefined,
+  max: Date | null | undefined,
+  type: Values<typeof COMPONENT_TYPES> | undefined,
 }
