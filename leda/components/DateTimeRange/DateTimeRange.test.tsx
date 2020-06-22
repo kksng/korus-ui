@@ -235,7 +235,7 @@ describe('Check DateTimeRange event listeners test collection', () => {
         }),
       }));
   });
-  test('is DateTimeRange onPressEnter event listener work right?', () => {    
+  test('is DateTimeRange onPressEnter event listener work right?', () => {
     const onEnterPress = jest.fn();
     const validName = 'test';
     const validValue = '10.10.2020 10:10';
