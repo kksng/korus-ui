@@ -8,29 +8,29 @@ import { Button } from './index';
 import { Input } from '../Input';
 
 
-describe('Check Button snapshots collection', () => {
-  test('is Button with basic pros render right?', () => {
+describe('Button snapshots collection', () => {
+  test('should match snapshot with basic props', () => {
     const wrapper = render((
       <Button>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('is Button with isLoading attributes render right?', () => {
+  test('should match snapshot with isLoading attributes', () => {
     const wrapper = render((
       <Button isLoading>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('is Button with isDisabled attributes render right?', () => {
+  test('should match snapshot with isDisabled attributes', () => {
     const wrapper = render((
       <Button isDisabled>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('is Button with Form and onClick props render right?', () => {
+  test('should match snapshot with Form and onClick props', () => {
     const wrapper = render((
       <div>
         <Input form="test" name="in" isRequired />
