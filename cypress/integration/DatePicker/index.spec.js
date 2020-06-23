@@ -127,7 +127,7 @@ describe('DatePicker', () => {
           expect(lastConsole).to.have.property('type', 'keydown')
           expect(lastConsole).to.have.property('key', 'Enter')
           expect(lastConsole.component).to.have.property('name', 'firstDatePicker')
-          expect(lastConsole.component).to.have.property('value', '12.11.3234')
+          expect(lastConsole.component).to.have.property('value', '12.04.2030')
         })
     })
   });
