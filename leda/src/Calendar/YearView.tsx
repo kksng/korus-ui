@@ -7,7 +7,7 @@ import { YearViewProps } from './types';
 
 export const YearView = (props: YearViewProps): React.ReactElement | null => {
   const {
-    min, max, theme, onClick, viewType, ...restProps
+    min, max, theme, onClick, viewType, viewDate, ...restProps
   } = props;
 
   if (viewType !== VIEW_TYPES.YEARS) return null;
