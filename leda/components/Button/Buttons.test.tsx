@@ -9,28 +9,28 @@ import { Input } from '../Input';
 
 
 describe('Button snapshots collection', () => {
-  test('should match snapshot with basic props', () => {
+  test('is Button with basic props render right?', () => {
     const wrapper = render((
       <Button>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('should match snapshot with isLoading attributes', () => {
+  test('is Button with with isLoading attributes render right?', () => {
     const wrapper = render((
       <Button isLoading>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('should match snapshot with isDisabled attributes', () => {
+  test('is Button with isDisabled attributes render right?', () => {
     const wrapper = render((
       <Button isDisabled>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('should match snapshot with Form and onClick props', () => {
+  test('is Button with Form and onClick props render right?', () => {
     const wrapper = render((
       <div>
         <Input form="test" name="in" isRequired />
@@ -41,9 +41,9 @@ describe('Button snapshots collection', () => {
       .toMatchSnapshot();
   });
 });
-describe('Check Button condition set collection', () => {
+describe('Button condition set collection', () => {
   test('is Button attributes set right?', () => {
-    const { container, rerender, debug } = render(<Button _primary>test</Button>);
+    const { container, rerender } = render(<Button _primary>test</Button>);
 
     expect(container.querySelectorAll('button.primary')[0])
       .toBeInTheDocument();
@@ -85,7 +85,7 @@ describe('Check Button condition set collection', () => {
   });
   test('is Button isDisabled property work right?', () => {
     const onClickHandler = jest.fn();
-    const { container, debug } = render(<Button isDisabled onClick={onClickHandler}>test</Button>);
+    const { container } = render(<Button isDisabled onClick={onClickHandler}>test</Button>);
     const button = container.querySelectorAll('button')[0];
 
     expect(container.querySelectorAll('button.disabled')[0])
@@ -112,7 +112,7 @@ describe('Check Button condition set collection', () => {
       .toHaveBeenCalled();
   });
 });
-describe('Check Button form validation test collection', () => {
+describe('Button form validation test collection', () => {
   test('is Button with form attributes submit Form with valid value right?', () => {
     const onSubmitValid = jest.fn();
     const onSubmitInvalid = jest.fn();
