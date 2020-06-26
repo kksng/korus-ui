@@ -17,6 +17,7 @@ export const CheckBox = React.forwardRef((props: CheckBoxProps, ref?: React.Ref<
     id,
     inputRender,
     isDisabled,
+    isSemi,
     labelRender,
     name,
     onChange,
@@ -53,7 +54,12 @@ export const CheckBox = React.forwardRef((props: CheckBoxProps, ref?: React.Ref<
     props,
   );
 
-  const labelClassNames = getClassNames(theme.label, className);
+  let labelClassNames = getClassNames(theme.label, className);
+
+  if (isSemi) {
+    labelClassNames = labelClassNames?.replace('semi', '');
+    labelClassNames += ' semi';
+  }
 
   const checkBoxId = id || `checkbox-${generateId()}`;
 

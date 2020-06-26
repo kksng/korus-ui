@@ -10,7 +10,7 @@ export const CheckBox = () => {
       <L.Div style={{ display: 'flex' }}>
         <L.Div>
           <L.CheckBox
-            _semi
+            isSemi
             name="CheBoxAry"
             value={value}
             onChange={ev => {
