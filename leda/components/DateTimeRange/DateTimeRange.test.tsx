@@ -7,62 +7,27 @@ import {
 import userEvent from '@testing-library/user-event';
 import { DateTimeRange } from './index';
 
-describe('Check DateTimeRange snapshots collection', () => {
+const validName = 'test';
+const validFormat = 'dd.MM.yyyy hh:mm';
+const invalidFormat = 'yyyy-MM-dd hh:mm';
+const validValue = '15.05.2020 10:10';
+const invalidValue = '2010-10-10 10:10';
+
+/**
+ * ВВ
+ * Также как и в DateRange выводять предупреждения
+ * Выводит сам компонет. На работу не влияет
+ */
+
+describe('DateTimeRange snapshots collection', () => {
   test('is DateTimeRange render right?', () => {
-    const { container } = render(<DateTimeRange name="test" />);
+    const { container } = render(<DateTimeRange name={validName} />);
 
     expect(container.firstChild)
       .toMatchSnapshot();
   });
 });
-describe('Check DateTimeRange value set test collection', () => {
-  test('is DateTimeRange render right if value set as String', () => {
-    const dateValue = ['10.10.2010 10:10', '12.12.2010 10:10'];
-    const { getAllByRole } = render(<DateTimeRange name="test" value={['10.10.2010 10:10', '12.12.2010 10:10']} />);
-
-    expect(getAllByRole('textbox'))
-      .toHaveLength(2);
-
-    getAllByRole('textbox').forEach((input, index) => {
-      expect(input)
-        .toHaveAttribute('value');
-
-      expect(input)
-        .toHaveValue(dateValue[index]);
-    });
-  });
-  test('is DateTimeRange render right if value set as Date', () => {
-    const dateValue = ['10.10.2010 10:10', '12.12.2010 10:10'];
-    const { getAllByRole } = render(<DateTimeRange name="test" value={[new Date('10.10.2010 10:10'), new Date('12.12.2010 10:10')]} />);
-
-    expect(getAllByRole('textbox'))
-      .toHaveLength(2);
-
-    getAllByRole('textbox').forEach((input, index) => {
-      expect(input)
-        .toHaveAttribute('value');
-
-      expect(input)
-        .toHaveValue(dateValue[index]);
-    });
-  });
-  test('is DateTimeRange render right if value set as Null', () => {
-    const dateValue = ['', ''];
-    const { getAllByRole } = render(<DateTimeRange name="test" value={[null, null]} />);
-
-    expect(getAllByRole('textbox'))
-      .toHaveLength(2);
-
-    getAllByRole('textbox').forEach((input, index) => {
-      expect(input)
-        .toHaveAttribute('value');
-
-      expect(input)
-        .toHaveValue(dateValue[index]);
-    });
-  });
-});
-describe('Check DateTimeRange attributes test collection', () => {
+describe('DateTimeRange attributes test collection', () => {
   test('is DateTimeRange placeholder set right?', () => {
     const placeholder = ['от', 'до'];
     const { getAllByRole } = render(<DateTimeRange placeholder={['от', 'до']} />);
@@ -150,10 +115,6 @@ describe('Check DateTimeRange attributes test collection', () => {
   });
   test('is DateTimeRange date format input work right?', () => {
     const onChange = jest.fn();
-    const validFormat = 'dd.MM.yyyy hh:mm';
-    const invalidFormat = 'yyyy-MM-dd hh:mm';
-    const validValue = '15.05.2020 10:10';
-    const invalidValue = '2010-10-10 10:10';
     const { container, rerender } = render(<DateTimeRange format={validFormat} value={['15.05.2020 10:10', '15.05.2020 10:10']} onChange={onChange} />);
     const inputA = container.querySelectorAll('input.datepicker-input')[0];
     const inputB = container.querySelectorAll('input.datepicker-input')[1];
@@ -173,13 +134,12 @@ describe('Check DateTimeRange attributes test collection', () => {
       .toHaveValue(invalidValue);
   });
 });
-describe('Check DateTimeRange event listeners test collection', () => {
+describe('DateTimeRange event listeners test collection', () => {
   test('is DateTimeRange onBlur event listener work right?', () => {
     const validDate = '05-05-2020 10:10';
-    const validName = 'test';
-    const validFormat = 'dd-MM-yyyy hh:mm';
+    const validDateFormat = 'dd-MM-yyyy hh:mm';
     const onBlur = jest.fn();
-    const { container } = render(<DateTimeRange name={validName} format={validFormat} value={['05-05-2020 10:10', '06-05-2020 10:10']} onBlur={onBlur} />);
+    const { container } = render(<DateTimeRange name={validName} format={validDateFormat} value={['05-05-2020 10:10', '06-05-2020 10:10']} onBlur={onBlur} />);
     const input = container.querySelectorAll('input.datepicker-input')[0];
 
     fireEvent.blur(input);
@@ -200,10 +160,8 @@ describe('Check DateTimeRange event listeners test collection', () => {
       }));
   });
   test('is DateTimeRange onChange event listener work right?', () => {
-    const validFormat = 'dd.MM.yyyy hh:mm';
     const validValueA = '11.10.2010 10:10';
     const validValueB = '11.11.2010 10:10';
-    const validName = 'test';
     const onChange = jest.fn();
     const { container } = render(<DateTimeRange format={validFormat} value={['10.10.2010 10:10', '10.10.2020 10:10']} name={validName} onChange={onChange} />);
     const inputA = container.querySelectorAll('input.datepicker-input')[0];
@@ -236,7 +194,6 @@ describe('Check DateTimeRange event listeners test collection', () => {
       }));
   });
   test('is DateTimeRange onPressEnter event listener work right?', () => {
-    const validName = 'test';
     const onEnterPress = jest.fn();
     const { container } = render(<DateTimeRange name={validName} value={['10.10.2010 10:10', '10.10.2020 10:10']} onEnterPress={onEnterPress} />);
     const inputA = container.querySelectorAll('input.datepicker-input')[0];
@@ -268,7 +225,6 @@ describe('Check DateTimeRange event listeners test collection', () => {
       }));
   });
   test('is DateTimeRange onFocus event listener work right?', () => {
-    const validName = 'test';
     const onFocus = jest.fn();
     const { container } = render(<DateTimeRange name={validName} value={['10.10.2010 10:10', '10.10.2020 10:10']} onFocus={onFocus} />);
     const input = container.querySelectorAll('input.datepicker-input')[0];
@@ -285,5 +241,52 @@ describe('Check DateTimeRange event listeners test collection', () => {
           value: '10.10.2010 10:10',
         }),
       }));
+  });
+});
+describe('DateTimeRange quality test collection', () => {
+  test('is DateTimeRange render right if value set as String', () => {
+    const dateValue = ['10.10.2010 10:10', '12.12.2010 10:10'];
+    const { getAllByRole } = render(<DateTimeRange name="test" value={['10.10.2010 10:10', '12.12.2010 10:10']} />);
+
+    expect(getAllByRole('textbox'))
+      .toHaveLength(2);
+
+    getAllByRole('textbox').forEach((input, index) => {
+      expect(input)
+        .toHaveAttribute('value');
+
+      expect(input)
+        .toHaveValue(dateValue[index]);
+    });
+  });
+  test('is DateTimeRange render right if value set as Date', () => {
+    const dateValue = ['10.10.2010 10:10', '12.12.2010 10:10'];
+    const { getAllByRole } = render(<DateTimeRange name="test" value={[new Date('10.10.2010 10:10'), new Date('12.12.2010 10:10')]} />);
+
+    expect(getAllByRole('textbox'))
+      .toHaveLength(2);
+
+    getAllByRole('textbox').forEach((input, index) => {
+      expect(input)
+        .toHaveAttribute('value');
+
+      expect(input)
+        .toHaveValue(dateValue[index]);
+    });
+  });
+  test('is DateTimeRange render right if value set as Null', () => {
+    const dateValue = ['', ''];
+    const { getAllByRole } = render(<DateTimeRange name="test" value={[null, null]} />);
+
+    expect(getAllByRole('textbox'))
+      .toHaveLength(2);
+
+    getAllByRole('textbox').forEach((input, index) => {
+      expect(input)
+        .toHaveAttribute('value');
+
+      expect(input)
+        .toHaveValue(dateValue[index]);
+    });
   });
 });
