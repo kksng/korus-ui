@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Check MaskedInput snapshots collection is MaskedInput render right? 1`] = `
+exports[`MaskedInput snapshots collection is MaskedInput render right? 1`] = `
 <div
   class="masked-wrapper"
 >
