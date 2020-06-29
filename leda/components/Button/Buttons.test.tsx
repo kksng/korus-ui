@@ -8,15 +8,15 @@ import { Button } from './index';
 import { Input } from '../Input';
 
 
-describe('Check Button snapshots collection', () => {
-  test('is Button with basic pros render right?', () => {
+describe('Button snapshots collection', () => {
+  test('is Button with basic props render right?', () => {
     const wrapper = render((
       <Button>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('is Button with isLoading attributes render right?', () => {
+  test('is Button with with isLoading attributes render right?', () => {
     const wrapper = render((
       <Button isLoading>test</Button>
     ));
@@ -41,9 +41,9 @@ describe('Check Button snapshots collection', () => {
       .toMatchSnapshot();
   });
 });
-describe('Check Button condition set collection', () => {
+describe('Button condition set collection', () => {
   test('is Button attributes set right?', () => {
-    const { container, rerender, debug } = render(<Button _primary>test</Button>);
+    const { container, rerender } = render(<Button _primary>test</Button>);
 
     expect(container.querySelectorAll('button.primary')[0])
       .toBeInTheDocument();
@@ -85,7 +85,7 @@ describe('Check Button condition set collection', () => {
   });
   test('is Button isDisabled property work right?', () => {
     const onClickHandler = jest.fn();
-    const { container, debug } = render(<Button isDisabled onClick={onClickHandler}>test</Button>);
+    const { container } = render(<Button isDisabled onClick={onClickHandler}>test</Button>);
     const button = container.querySelectorAll('button')[0];
 
     expect(container.querySelectorAll('button.disabled')[0])
@@ -112,7 +112,7 @@ describe('Check Button condition set collection', () => {
       .toHaveBeenCalled();
   });
 });
-describe('Check Button form validation test collection', () => {
+describe('Button form validation test collection', () => {
   test('is Button with form attributes submit Form with valid value right?', () => {
     const onSubmitValid = jest.fn();
     const onSubmitInvalid = jest.fn();

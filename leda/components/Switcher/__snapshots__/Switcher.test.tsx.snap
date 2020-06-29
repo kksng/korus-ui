@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Check Switcher spanpshot collection is Switcher render right if value set True and False? 1`] = `
+exports[`Switcher spanpshot collection is Switcher render right if value set True and False? 1`] = `
 <span>
   <div
     class="switcher-wrapper active"
@@ -17,7 +17,7 @@ exports[`Check Switcher spanpshot collection is Switcher render right if value s
 </span>
 `;
 
-exports[`Check Switcher spanpshot collection is Switcher render right if value set True and False? 2`] = `
+exports[`Switcher spanpshot collection is Switcher render right if value set True and False? 2`] = `
 <span>
   <div
     class="switcher-wrapper"
@@ -34,7 +34,7 @@ exports[`Check Switcher spanpshot collection is Switcher render right if value s
 </span>
 `;
 
-exports[`Check Switcher spanpshot collection is Switcher render right? 1`] = `
+exports[`Switcher spanpshot collection is Switcher render right? 1`] = `
 <span>
   <div
     class="switcher-wrapper"
