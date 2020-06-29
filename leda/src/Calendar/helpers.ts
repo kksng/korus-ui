@@ -350,7 +350,7 @@ export const getCalendarFormat = (format: string): string => {
  * В случае, если date больше max, возвращает max
  * Во всех остальных случаях возвращает data
  */
-export const getNormalizeValue = (props: NormalizeValueProps) => {
+export const getNormalizedValue = (props: NormalizeValueProps) => {
   const {
     date,
     min,

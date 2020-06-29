@@ -1,6 +1,6 @@
 import { isFunction } from 'lodash';
 import {
-  getNormalizeValue,
+  getNormalizedValue,
 } from '../../Calendar/helpers';
 import { setDate, setFocused, setOpen } from '../actions';
 import { COMPONENT_TYPES } from '../constants';
@@ -28,33 +28,33 @@ export const createBlurHandler = ({
 
   dispatch(setOpen(false));
 
-  const normalizeDateValue = getNormalizeValue({
+  const normalizedDateValue = getNormalizedValue({
     date, min, max, type,
   });
 
   // при блюре - нормализуем значение по min/max
-  dispatch(setDate(normalizeDateValue));
+  dispatch(setDate(normalizedDateValue));
 
   if (isFunction(onChange)) {
     onChange({
       ...ev,
       component: {
-        value: formatDateTime(normalizeDateValue, format),
+        value: formatDateTime(normalizedDateValue, format),
         name,
-        date: normalizeDateValue,
+        date: normalizedDateValue,
       },
     });
   }
 
-  const isValid = validate(normalizeDateValue);
+  const isValid = validate(normalizedDateValue);
 
   if (isFunction(onBlur)) {
     onBlur({
       ...ev,
       component: {
-        value: formatDateTime(normalizeDateValue, format),
+        value: formatDateTime(normalizedDateValue, format),
         name,
-        date: normalizeDateValue,
+        date: normalizedDateValue,
         isValid,
       },
     });
