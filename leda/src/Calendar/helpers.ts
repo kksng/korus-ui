@@ -138,16 +138,16 @@ export const getMonthName = (month: number): string => {
 export const getShortMonthName = (month: number): string => {
   const months = [
     'янв.',
-    'фев.',
-    'мар.',
+    'февр.',
+    'март',
     'апр.',
-    'май.',
-    'июн.',
-    'июл.',
+    'май',
+    'июнь',
+    'июль',
     'авг.',
-    'сен.',
+    'сент.',
     'окт.',
-    'ноя.',
+    'нояб.',
     'дек.',
   ];
 
