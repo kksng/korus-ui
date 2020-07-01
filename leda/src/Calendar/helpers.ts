@@ -12,6 +12,7 @@ import {
   YearViewProps,
   NormalizeValueProps,
 } from './types';
+import { DateTimeInputProps, DateTimeInputState } from '../DateTimeInput/types';
 
 export const isTimeLess = (firstDate?: Date | null, secondDate?: Date | null): boolean => {
   if (!firstDate || !secondDate) return false;
@@ -348,14 +349,9 @@ export const getCalendarFormat = (format: string): string => {
 /**
  * В случе, если date меньше min, возвращает min
  * В случае, если date больше max, возвращает max
- * Во всех остальных случаях возвращает data
+ * Во всех остальных случаях возвращает date
  */
-export const getNormalizedValue = ({
-  date,
-  max,
-  min,
-  type,
-}: NormalizeValueProps) => {
+export const getNormalizedValue = (date: Date | null, min: Date | undefined, max: Date | undefined, type: Values<typeof COMPONENT_TYPES> | undefined): Date | null => {
   if (!date) return null;
 
   const minDate = (() => {

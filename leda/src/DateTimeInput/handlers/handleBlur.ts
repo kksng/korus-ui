@@ -28,9 +28,7 @@ export const createBlurHandler = ({
 
   dispatch(setOpen(false));
 
-  const normalizedDateValue = getNormalizedValue({
-    date, min, max, type,
-  });
+  const normalizedDateValue = getNormalizedValue(date, min, max, type);
 
   // при блюре - нормализуем значение по min/max
   dispatch(setDate(normalizedDateValue));

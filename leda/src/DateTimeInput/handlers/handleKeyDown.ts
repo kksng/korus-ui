@@ -237,9 +237,7 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
     year, month,
   } = dateShorthand;
 
-  const normalizedDateValue = getNormalizedValue({
-    date, min, max, type,
-  });
+  const normalizedDateValue = getNormalizedValue(date, min, max, type);
 
   // если календарь закрыт - вызывать onEnterPress
   if (!isOpen) {
