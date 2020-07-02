@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - DropZone isRequired bug fixed
 
+- Button type=reset added
+
 ## [0.0.7] - 2020-03-12
 
 ### Fixed
