@@ -9,28 +9,28 @@ import { Input } from '../Input';
 
 
 describe('Button snapshots collection', () => {
-  test('is Button with basic props render right?', () => {
+  test('is Button render right with basic props?', () => {
     const wrapper = render((
       <Button>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('is Button with with isLoading attributes render right?', () => {
+  test('is Button render right with isLoading?', () => {
     const wrapper = render((
       <Button isLoading>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('is Button with isDisabled attributes render right?', () => {
+  test('is Button render right with isDisabled attributes?', () => {
     const wrapper = render((
       <Button isDisabled>test</Button>
     ));
     expect(wrapper.container)
       .toMatchSnapshot();
   });
-  test('is Button with Form and onClick props render right?', () => {
+  test('is Button render right with Form and onClick props?', () => {
     const wrapper = render((
       <div>
         <Input form="test" name="in" isRequired />
@@ -83,7 +83,7 @@ describe('Button condition set collection', () => {
     expect(container.querySelectorAll('button.block')[0])
       .toBeInTheDocument();
   });
-  test('is Button isDisabled property work right?', () => {
+  test('is Button work right with isDisabled property?', () => {
     const onClickHandler = jest.fn();
     const { container } = render(<Button isDisabled onClick={onClickHandler}>test</Button>);
     const button = container.querySelectorAll('button')[0];
@@ -97,7 +97,7 @@ describe('Button condition set collection', () => {
       .not
       .toHaveBeenCalled();
   });
-  test('is Button isLoading property work right?', () => {
+  test('is Button work right with isLoading property?', () => {
     const onClickHandler = jest.fn();
     const { container } = render(<Button isLoading onClick={onClickHandler}>test</Button>);
     const button = container.querySelectorAll('button')[0];
@@ -113,7 +113,7 @@ describe('Button condition set collection', () => {
   });
 });
 describe('Button form validation test collection', () => {
-  test('is Button with form attributes submit Form with valid value right?', () => {
+  test('is Button work right with form attributes submit Form with valid value?', () => {
     const onSubmitValid = jest.fn();
     const onSubmitInvalid = jest.fn();
     const email = 'some@email.ru';
@@ -128,7 +128,7 @@ describe('Button form validation test collection', () => {
     expect(onSubmitValid).toBeCalledTimes(1);
     expect(onSubmitInvalid).toBeCalledTimes(0);
   });
-  test('is Button with form attributes submit Form with invalid value right?', () => {
+  test('is Button work right with form attributes submit Form with invalid value?', () => {
     const onSubmitValid = jest.fn();
     const onSubmitInvalid = jest.fn();
     const email = '-----';

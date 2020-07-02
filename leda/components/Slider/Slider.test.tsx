@@ -180,7 +180,7 @@ describe('Check Slider attributes test collection', () => {
   });
 });
 describe('Check Slider event test collection', () => {
-  test('is Slider onChange event work right?', () => {
+  test('is Slider work right with onChange event listener?', () => {
     const validValue = 4;
     const validName = 'test';
     const onChange = jest.fn();
@@ -215,7 +215,7 @@ describe('Check Slider event test collection', () => {
         }),
       }));
   });
-  test('is Slider onMove event work right?', () => {
+  test('is Slider work right with onMove event listener?', () => {
     const validValue = 4;
     const validName = 'test';
     const onMove = jest.fn();

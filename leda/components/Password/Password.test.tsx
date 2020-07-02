@@ -21,7 +21,7 @@ describe('Password snapshots collection', () => {
     expect(container.firstChild)
       .toMatchSnapshot();
   });
-  test('is Password with defaultValue render right?', () => {
+  test('is Password render right with defaultValue?', () => {
     const { container } = render(<Password defaultValue={validValue} name={validName} />);
     const input = container.querySelectorAll('input.password-input')[0];
 
@@ -31,7 +31,7 @@ describe('Password snapshots collection', () => {
     expect(container.firstChild)
       .toMatchSnapshot();
   });
-  test('is Password with hasClearButton render right?', () => {
+  test('is Password render right with hasClearButton?', () => {
     const { container, rerender } = render(<Password defaultValue={validValue} hasClearButton={on} name={validName} />);
     const icon = container.querySelectorAll('.password-clear-icon')[0];
     const input = container.querySelectorAll('input.password-input')[0];
@@ -53,7 +53,7 @@ describe('Password snapshots collection', () => {
   });
 });
 describe('Password attributes test collection', () => {
-  test('is Password with isDisabled attributes work right?', () => {
+  test('is Password work right with isDisabled attributes?', () => {
     const onFocus = jest.fn();
     const { container, getByRole } = render(<Password isDisabled onFocus={onFocus} />);
     const input = container.querySelectorAll('input.password-input')[0];
@@ -69,7 +69,7 @@ describe('Password attributes test collection', () => {
     expect(onFocus)
       .toHaveBeenCalledTimes(0);
   });
-  test('is Password with letterCase attributes work right?', () => {
+  test('is Password work right with letterCase attributest?', () => {
     const onChange = jest.fn();
     const inputUpper = 'upper';
     const inputLower = 'lower';
@@ -96,7 +96,7 @@ describe('Password attributes test collection', () => {
         }),
       }));
   });
-  test('is Password with maxLength attributes work right?', () => {
+  test('is Password work right with maxLength attributes?', () => {
     const max = 2;
     const onChange = jest.fn();
     const { container } = render(<Password maxLength={max} onChange={onChange} />);
@@ -111,7 +111,7 @@ describe('Password attributes test collection', () => {
         }),
       }));
   });
-  test('is Password with allowedSymbols attributes work right?', () => {
+  test('is Password work right with allowedSymbols attributes?', () => {
     const onlyNumber = new RegExp(/^\d+$/);
     const onChange = jest.fn();
     const { container } = render(<Password allowedSymbols={onlyNumber} onChange={onChange} />);
@@ -126,7 +126,7 @@ describe('Password attributes test collection', () => {
         }),
       }));
   });
-  test('is Password with forbiddenSymbols attributes work right?', () => {
+  test('is Password work right with forbiddenSymbols attributes?', () => {
     const onlyNumber = new RegExp(/^\d+$/);
     const onChange = jest.fn();
     const { container } = render(<Password forbiddenSymbols={onlyNumber} onChange={onChange} />);
@@ -141,7 +141,7 @@ describe('Password attributes test collection', () => {
         }),
       }));
   });
-  test('is Password with minPasswordEvaluationLength attributes work right?', () => {
+  test('is Password work right with minPasswordEvaluationLength attributes?', () => {
     const emptyPasswordMessage = 'Используйте строчные и прописные латинские буквы и цифры, не менее 8 символов';
     const notEmptyPasswordMessage = 'Слабый пароль';
     const minEvalLength = 4;
@@ -164,7 +164,7 @@ describe('Password attributes test collection', () => {
     expect(getByText(notEmptyPasswordMessage))
       .toBeInTheDocument();
   });
-  test('is Password with passwordEvalutors attributes work right?', () => {
+  test('is Password work right with passwordEvalutors attributes work right?', () => {
     const passworLowTxt = 'Пароль слабоват';
     const passwordMediumTxt = 'Надёжный пароль';
     const passwordStrongTxt = 'Отличный пароль';
@@ -221,7 +221,7 @@ describe('Password attributes test collection', () => {
   });
 });
 describe('Password events test collection', () => {
-  test('is Password onBlur event work right?', () => {
+  test('is Password work right with onBlur event listner?', () => {
     const onBlur = jest.fn();
     const { container } = render(<Password defaultValue={validValue} name={validName} onBlur={onBlur} />);
     const input = container.querySelectorAll('input.password-input')[0];
@@ -242,7 +242,7 @@ describe('Password events test collection', () => {
         }),
       }));
   });
-  test('is Password onFocus event work right?', () => {
+  test('is Password work right with onFocus event listener?', () => {
     const onFocus = jest.fn();
     const { container } = render(<Password defaultValue={validValue} name={validName} onFocus={onFocus} />);
     const input = container.querySelectorAll('input.password-input')[0];
@@ -259,7 +259,7 @@ describe('Password events test collection', () => {
         }),
       }));
   });
-  test('is Password onChange event work right?', () => {
+  test('is Password work right with onChange event listener?', () => {
     const onChange = jest.fn();
     const { container } = render(<Password defaultValue={validValue} name={validName} onChange={onChange} />);
     const input = container.querySelectorAll('input.password-input')[0];

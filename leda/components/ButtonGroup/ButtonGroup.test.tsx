@@ -18,7 +18,7 @@ describe('ButtonGroup snapshots test collection', () => {
     expect(container.firstChild)
       .toMatchSnapshot();
   });
-  test('is ButtonGroup without data render right?', () => {
+  test('is ButtonGroup render right without data?', () => {
     /**
      * ВВ
      * Такой тест был в старых тестах. Можно посмотреть в файл ButtonGroup.test-old.tsx
@@ -33,7 +33,7 @@ describe('ButtonGroup snapshots test collection', () => {
   });
 });
 describe('ButtonGroup different work mode test collection', () => {
-  test('is ButtonGroup in RadioTypeMode render right?', () => {
+  test('is ButtonGroup render right in RadioTypeMode?', () => {
     const { container } = render(<ButtonGroup name={validName} data={validData} />);
 
     expect(container.querySelectorAll('.first'))
@@ -45,7 +45,7 @@ describe('ButtonGroup different work mode test collection', () => {
     expect(container.querySelectorAll('.button-group-item'))
       .toHaveLength(3);
   });
-  test('is ButtonGroup in CheckboxTypeMode render right?', () => {
+  test('is ButtonGroup render right in CheckboxTypeMode?', () => {
     const { container } = render(<ButtonGroup type="checkbox" name={validName} data={validData} />);
 
     expect(container.querySelectorAll('.first'))
@@ -60,7 +60,7 @@ describe('ButtonGroup different work mode test collection', () => {
     expect(container.querySelectorAll('div[type="checkbox"]'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup in RadioTypeMode work right?', () => {
+  test('is ButtonGroup work right in RadioTypeMode?', () => {
     const onClick = jest.fn();
     const { container } = render(<ButtonGroup name={validName} data={validData} onClick={onClick} />);
     const buttons = container.querySelectorAll('.button-group-item');
@@ -74,7 +74,7 @@ describe('ButtonGroup different work mode test collection', () => {
     expect(container.querySelectorAll('.button-group-item.active.last'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup in CheckboxTypeMode work right?', () => {
+  test('is ButtonGroup work right in CheckboxTypeMode?', () => {
     const onClick = jest.fn();
     const { container } = render(<ButtonGroup type="checkbox" name={validName} data={validData} onClick={onClick} />);
     const buttons = container.querySelectorAll('.button-group-item');
@@ -90,7 +90,7 @@ describe('ButtonGroup different work mode test collection', () => {
   });
 });
 describe('ButtonGroup value property test collection', () => {
-  test('is ButtonGroup with value as Number render right?', () => {
+  test('is ButtonGroup render right with value as Number?', () => {
     const { getAllByText } = render(<ButtonGroup name={validName} data={[1, 2, 3]} />);
 
     expect(getAllByText('1'))
@@ -102,7 +102,7 @@ describe('ButtonGroup value property test collection', () => {
     expect(getAllByText('3'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup with value as String render right?', () => {
+  test('is ButtonGroup render right with value as String?', () => {
     const { getAllByText } = render(<ButtonGroup name={validName} data={['a', 'b', 'c']} />);
 
     expect(getAllByText('a'))
@@ -114,7 +114,7 @@ describe('ButtonGroup value property test collection', () => {
     expect(getAllByText('c'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup with value as Object render right?', () => {
+  test('is ButtonGroup render right with value as Object?', () => {
     const { getAllByText } = render(<ButtonGroup name={validName} textField="key" data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
 
     expect(getAllByText('a'))

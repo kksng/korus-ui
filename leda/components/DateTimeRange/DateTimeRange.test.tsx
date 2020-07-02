@@ -43,7 +43,7 @@ describe('DateTimeRange attributes test collection', () => {
         .toHaveProperty('placeholder', placeholder[index]);
     });
   });
-  test('is DateTimeRange minMax set attributes work right?', () => {
+  test('is DateTimeRange work right with minMax attributes?', () => {
     const min = new Date('01.02.2018 10:10');
     const max = new Date('05.25.2020 10:10');// mm-dd-YYYY
     const valueForCheck = '26';
@@ -54,7 +54,7 @@ describe('DateTimeRange attributes test collection', () => {
         .toHaveClass('calendar-date-cell disabled-date');
     });
   });
-  test('is DateTimeRange isDisabled attributes work right?', () => {
+  test('is DateTimeRange work right with isDisabled attributes?', () => {
     const onChange = jest.fn();
     const { container } = render(<DateTimeRange isDisabled value={['15.05.2020 10:10', '25.05.2020 10:10']} onChange={onChange} />);
     const iconA = container.querySelectorAll('.datepicker-icons-wrapper')[0];
@@ -75,7 +75,7 @@ describe('DateTimeRange attributes test collection', () => {
     expect(onChange)
       .toHaveBeenCalledTimes(0);
   });
-  test('is DateTimeRange isOpen attribute work right?', () => {
+  test('is DateTimeRange work right with isOpen attributes?', () => {
     const onChange = jest.fn();
     const { container, rerender } = render(<DateTimeRange isOpen value={['15.05.2020', '25.05.2020']} onChange={onChange} />);
     const iconA = container.querySelectorAll('.datepicker-icons-wrapper')[0];
@@ -113,7 +113,7 @@ describe('DateTimeRange attributes test collection', () => {
       .not
       .toBeDefined();
   });
-  test('is DateTimeRange date format input work right?', () => {
+  test('is DateTimeRange work right with date format input?', () => {
     const onChange = jest.fn();
     const { container, rerender } = render(<DateTimeRange format={validFormat} value={['15.05.2020 10:10', '15.05.2020 10:10']} onChange={onChange} />);
     const inputA = container.querySelectorAll('input.datepicker-input')[0];
@@ -135,7 +135,7 @@ describe('DateTimeRange attributes test collection', () => {
   });
 });
 describe('DateTimeRange event listeners test collection', () => {
-  test('is DateTimeRange onBlur event listener work right?', () => {
+  test('is DateTimeRange work right with onBlur event listener?', () => {
     const validDate = '05-05-2020 10:10';
     const validDateFormat = 'dd-MM-yyyy hh:mm';
     const onBlur = jest.fn();
@@ -159,7 +159,7 @@ describe('DateTimeRange event listeners test collection', () => {
         }),
       }));
   });
-  test('is DateTimeRange onChange event listener work right?', () => {
+  test('is DateTimeRange work right with onChange event listener?', () => {
     const validValueA = '11.10.2010 10:10';
     const validValueB = '11.11.2010 10:10';
     const onChange = jest.fn();
@@ -193,7 +193,7 @@ describe('DateTimeRange event listeners test collection', () => {
         }),
       }));
   });
-  test('is DateTimeRange onPressEnter event listener work right?', () => {
+  test('is DateTimeRange work right with onPressEnter event listener?', () => {
     const onEnterPress = jest.fn();
     const { container } = render(<DateTimeRange name={validName} value={['10.10.2010 10:10', '10.10.2020 10:10']} onEnterPress={onEnterPress} />);
     const inputA = container.querySelectorAll('input.datepicker-input')[0];
@@ -224,7 +224,7 @@ describe('DateTimeRange event listeners test collection', () => {
         }),
       }));
   });
-  test('is DateTimeRange onFocus event listener work right?', () => {
+  test('is DateTimeRange work right with onFocus event listener?', () => {
     const onFocus = jest.fn();
     const { container } = render(<DateTimeRange name={validName} value={['10.10.2010 10:10', '10.10.2020 10:10']} onFocus={onFocus} />);
     const input = container.querySelectorAll('input.datepicker-input')[0];

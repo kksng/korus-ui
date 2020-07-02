@@ -20,7 +20,7 @@ describe('MaskedInput snapshots collection', () => {
   });
 });
 describe('MaskedInput attributes test collection', () => {
-  test('is MaskedInput with defaultValue attributes work right?', () => {
+  test('is MaskedInput work right with with defaultValue attributes?', () => {
     const { getByRole } = render(<MaskedInput mask={validMask} name={validName} defaultValue={validValue} />);
 
     expect(getByRole('textbox'))
@@ -29,7 +29,7 @@ describe('MaskedInput attributes test collection', () => {
     expect(getByRole('textbox'))
       .toHaveProperty('value', validValue);
   });
-  test('is MaskedInput with some value work right?', () => {
+  test('is MaskedInput work right with some value?', () => {
     const { getByRole } = render(<MaskedInput mask={validMask} name={validName} value={validValue} />);
 
     expect(getByRole('textbox'))
@@ -38,7 +38,7 @@ describe('MaskedInput attributes test collection', () => {
     expect(getByRole('textbox'))
       .toHaveProperty('value', validValue);
   });
-  test('is MaskedInput with isDisabled work right?', () => {
+  test('is MaskedInput with work right with isDisabled attributes?', () => {
     const onFocus = jest.fn();
     const { container } = render(<MaskedInput isDisabled mask={validMask} name={validName} onFocus={onFocus} />);
     const wrapper = container.querySelectorAll('.masked-input-wrapper')[0];
@@ -56,7 +56,7 @@ describe('MaskedInput attributes test collection', () => {
     expect(onFocus)
       .toBeCalledTimes(0);
   });
-  test('is MaskedInput with placeholder attributes work right?', () => {
+  test('is MaskedInput work right with placeholder attributes?', () => {
     const validPlaceholder = 'placeholder';
     const { getByRole } = render(<MaskedInput placeholder={validPlaceholder} mask={validMask} name={validName} />);
 
@@ -65,7 +65,7 @@ describe('MaskedInput attributes test collection', () => {
   });
 });
 describe('MaskedInput event handler test collection', () => {
-  test('is MaskedInput onChange event handler work right?', () => {
+  test('is MaskedInput work right with onChange event handler?', () => {
     const onChange = jest.fn();
     const { getByRole } = render(<MaskedInput onChange={onChange} mask={validMask} name={validName} />);
     const input = getByRole('textbox');
@@ -88,7 +88,7 @@ describe('MaskedInput event handler test collection', () => {
         }),
       }));
   });
-  test('is MaskedInput onBlur event handler work right?', () => {
+  test('is MaskedInput work right with onBlur event handler?', () => {
     const onBlur = jest.fn();
     const { getByRole } = render(<MaskedInput onBlur={onBlur} mask={validMask} name={validName} value={validValue} />);
     const input = getByRole('textbox');
@@ -107,7 +107,7 @@ describe('MaskedInput event handler test collection', () => {
         }),
       }));
   });
-  test('is MaskedInput onFocus event handler work right?', () => {
+  test('is MaskedInput work right with onFocus event handler?', () => {
     const onFocus = jest.fn();
     const { getByRole } = render(<MaskedInput onBlur={onFocus} mask={validMask} name={validName} value={validValue} />);
     const input = getByRole('textbox');
@@ -126,7 +126,7 @@ describe('MaskedInput event handler test collection', () => {
         }),
       }));
   });
-  test('is MaskedInput onEnterPress event handler work right?', () => {
+  test('is MaskedInput work right with onEnterPress event handler?', () => {
     const onEnterPress = jest.fn();
     const { getByRole } = render(<MaskedInput onEnterPress={onEnterPress} mask={validMask} name={validName} value={validValue} />);
     const input = getByRole('textbox');
