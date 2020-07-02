@@ -5,10 +5,12 @@ import {
 } from '@testing-library/react';
 import { ButtonGroup } from './index';
 
+const validName = 'buttonGroup';
+const validData = ['one', 'two', 'three'];
 
-describe('Check ButtonGroup snapshots collection', () => {
+describe('ButtonGroup snapshots test collection', () => {
   test('is ButtonGroup render right?', () => {
-    const { container, queryAllByRole } = render(<ButtonGroup name="buttonGroup" data={['Petya', 'Vasya', 'Oleg']} />);
+    const { container, queryAllByRole } = render(<ButtonGroup name={validName} data={['Petya', 'Vasya', 'Oleg']} />);
 
     expect(queryAllByRole('button'))
       .toHaveLength(3);
@@ -17,7 +19,11 @@ describe('Check ButtonGroup snapshots collection', () => {
       .toMatchSnapshot();
   });
   test('is ButtonGroup without data render right?', () => {
-    const { container, queryAllByRole } = render(<ButtonGroup name="buttonGroup" />);
+    /**
+     * ВВ
+     * Такой тест был в старых тестах. Можно посмотреть в файл ButtonGroup.test-old.tsx
+     */
+    const { container, queryAllByRole } = render(<ButtonGroup name={validName} />);
 
     expect(queryAllByRole('button'))
       .toHaveLength(0);
@@ -26,9 +32,9 @@ describe('Check ButtonGroup snapshots collection', () => {
       .toMatchSnapshot();
   });
 });
-describe('Check ButtonGroup work mode collection', () => {
-  test('is ButtonGroup with RadioTypeMode render right?', () => {
-    const { container } = render(<ButtonGroup name="buttonGroup" data={['one', 'two', 'three']} />);
+describe('ButtonGroup different work mode test collection', () => {
+  test('is ButtonGroup in RadioTypeMode render right?', () => {
+    const { container } = render(<ButtonGroup name={validName} data={validData} />);
 
     expect(container.querySelectorAll('.first'))
       .toHaveLength(1);
@@ -39,8 +45,8 @@ describe('Check ButtonGroup work mode collection', () => {
     expect(container.querySelectorAll('.button-group-item'))
       .toHaveLength(3);
   });
-  test('is ButtonGroup with CheckboxTypeMode render right?', () => {
-    const { container } = render(<ButtonGroup type="checkbox" name="buttonGroup" data={['one', 'two', 'three']} />);
+  test('is ButtonGroup in CheckboxTypeMode render right?', () => {
+    const { container } = render(<ButtonGroup type="checkbox" name={validName} data={validData} />);
 
     expect(container.querySelectorAll('.first'))
       .toHaveLength(1);
@@ -54,9 +60,9 @@ describe('Check ButtonGroup work mode collection', () => {
     expect(container.querySelectorAll('div[type="checkbox"]'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup with RadioTypeMode selected right?', () => {
+  test('is ButtonGroup in RadioTypeMode work right?', () => {
     const onClick = jest.fn();
-    const { container } = render(<ButtonGroup name="buttonGroup" data={['one', 'two', 'three']} onClick={onClick} />);
+    const { container } = render(<ButtonGroup name={validName} data={validData} onClick={onClick} />);
     const buttons = container.querySelectorAll('.button-group-item');
 
     buttons.forEach((b) => {
@@ -68,9 +74,9 @@ describe('Check ButtonGroup work mode collection', () => {
     expect(container.querySelectorAll('.button-group-item.active.last'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup with CheckboxTypeMode selected right?', () => {
+  test('is ButtonGroup in CheckboxTypeMode work right?', () => {
     const onClick = jest.fn();
-    const { container } = render(<ButtonGroup type="checkbox" name="buttonGroup" data={['one', 'two', 'three']} onClick={onClick} />);
+    const { container } = render(<ButtonGroup type="checkbox" name={validName} data={validData} onClick={onClick} />);
     const buttons = container.querySelectorAll('.button-group-item');
 
     buttons.forEach((b) => {
@@ -83,9 +89,9 @@ describe('Check ButtonGroup work mode collection', () => {
       .toHaveLength(3);
   });
 });
-describe('Check ButtonGroup value property variation set', () => {
-  test('is ButtonGroup with Number value render right?', () => {
-    const { getAllByText } = render(<ButtonGroup name="buttonGroup" data={[1, 2, 3]} />);
+describe('ButtonGroup value property test collection', () => {
+  test('is ButtonGroup with value as Number render right?', () => {
+    const { getAllByText } = render(<ButtonGroup name={validName} data={[1, 2, 3]} />);
 
     expect(getAllByText('1'))
       .toHaveLength(1);
@@ -96,8 +102,8 @@ describe('Check ButtonGroup value property variation set', () => {
     expect(getAllByText('3'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup with String value render right?', () => {
-    const { getAllByText } = render(<ButtonGroup name="buttonGroup" data={['a', 'b', 'c']} />);
+  test('is ButtonGroup with value as String render right?', () => {
+    const { getAllByText } = render(<ButtonGroup name={validName} data={['a', 'b', 'c']} />);
 
     expect(getAllByText('a'))
       .toHaveLength(1);
@@ -108,8 +114,8 @@ describe('Check ButtonGroup value property variation set', () => {
     expect(getAllByText('c'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup with Object value render right?', () => {
-    const { getAllByText } = render(<ButtonGroup name="buttonGroup" textField="key" data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
+  test('is ButtonGroup with value as Object render right?', () => {
+    const { getAllByText } = render(<ButtonGroup name={validName} textField="key" data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
 
     expect(getAllByText('a'))
       .toHaveLength(1);
@@ -121,61 +127,41 @@ describe('Check ButtonGroup value property variation set', () => {
       .toHaveLength(1);
   });
 });
-describe('Check ButtonGroup defaultValue set', () => {
-  test('is ButtonGroup in RadioTypeMode with right defaultValue render good if data is String?', () => {
-    const { container } = render(<ButtonGroup type="radio" defaultValue="1" name="buttonGroup" data={['1', '2', '3']} />);
-
-    expect(container.querySelectorAll('.active'))
-      .toHaveLength(1);
-  });
-  test('is ButtonGroup in RadioTypeMode with right defaultValue render good if data is Object?', () => {
-    const { container } = render(<ButtonGroup type="radio" defaultValue={{ key: 'a' }} name="buttonGroup" textField="key" data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
-
-    expect(container.querySelectorAll('.active'))
-      .toHaveLength(1);
-  });
-  test('is ButtonGroup in CheckboxTypeMode with right dafaultValue render good if data is String?', () => {
-    const { container } = render(<ButtonGroup type="checkbox" defaultValue={['a', 'b']} name="buttonGroup" data={['a', 'b', 'c']} />);
-
-    expect(container.querySelectorAll('.active'))
-      .toHaveLength(2);
-  });
-  test('is ButtonGroup in CheckboxTypeMode with right dafaultValue render good if data is Object?', () => {
-    const { container } = render(<ButtonGroup type="checkbox" defaultValue={[{ key: 'a' }]} textField="key" name="buttonGroup" data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
-
-    expect(container.querySelectorAll('.active'))
-      .toHaveLength(1);
-  });
-});
-describe('Check ButtonGroup attributes set collection', () => {
+describe('ButtonGroup attributes test collection', () => {
   test('is ButtonGroup render right with different atributes?', () => {
+    /**
+     * ВВ
+     * Это Артем меня просил все в один тест перенести
+     * А бы сделал много маленьких тестов
+     */
     const { container, rerender } = render(<ButtonGroup _primary data={['a', 'b', 'c']} />);
+    const moskData = ['a', 'b', 'c'];
 
     expect(container.querySelectorAll('.primary'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _secondary data={['a', 'b', 'c']} />);
+    rerender(<ButtonGroup _secondary data={moskData} />);
 
     expect(container.querySelectorAll('.secondary'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _success data={['a', 'b', 'c']} />);
+    rerender(<ButtonGroup _success data={moskData} />);
 
     expect(container.querySelectorAll('.success'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _warning data={['a', 'b', 'c']} />);
+    rerender(<ButtonGroup _warning data={moskData} />);
 
     expect(container.querySelectorAll('.warning'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _danger data={['a', 'b', 'c']} />);
+    rerender(<ButtonGroup _danger data={moskData} />);
 
     expect(container.querySelectorAll('.danger'))
       .toHaveLength(1);
   });
 });
-describe('Check ButtongGroup correnct events handling', () => {
+describe('ButtongGroup event handler test collection', () => {
   test('is ButtonGroup in RadioTypeMode onClick and onChange handling right?', () => {
     const onClick = jest.fn();
     const onChange = jest.fn();
@@ -218,5 +204,31 @@ describe('Check ButtongGroup correnct events handling', () => {
           value: ['a', 'c'],
         }),
       }));
+  });
+});
+describe('ButtonGroup quality test collection', () => {
+  test('is ButtonGroup in RadioTypeMode with right defaultValue render good if data is String?', () => {
+    const { container } = render(<ButtonGroup type="radio" defaultValue="1" name={validName} data={['1', '2', '3']} />);
+
+    expect(container.querySelectorAll('.active'))
+      .toHaveLength(1);
+  });
+  test('is ButtonGroup in RadioTypeMode with right defaultValue render good if data is Object?', () => {
+    const { container } = render(<ButtonGroup type="radio" defaultValue={{ key: 'a' }} name={validName} textField="key" data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
+
+    expect(container.querySelectorAll('.active'))
+      .toHaveLength(1);
+  });
+  test('is ButtonGroup in CheckboxTypeMode with right dafaultValue render good if data is String?', () => {
+    const { container } = render(<ButtonGroup type="checkbox" defaultValue={['a', 'b']} name={validName} data={['a', 'b', 'c']} />);
+
+    expect(container.querySelectorAll('.active'))
+      .toHaveLength(2);
+  });
+  test('is ButtonGroup in CheckboxTypeMode with right dafaultValue render good if data is Object?', () => {
+    const { container } = render(<ButtonGroup type="checkbox" defaultValue={[{ key: 'a' }]} textField="key" name={validName} data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
+
+    expect(container.querySelectorAll('.active'))
+      .toHaveLength(1);
   });
 });

@@ -9,29 +9,30 @@ import { Password } from './index';
 import { PasswordStrength } from './constants';
 import { validatePassword } from '../../validators/password';
 
-describe('Check Password snapshots collection', () => {
+const validName = 'test';
+const validValue = '123';
+const on = true;
+const off = false;
+
+describe('Password snapshots collection', () => {
   test('is Password component render right?', () => {
-    const { container } = render(<Password name="test" />);
+    const { container } = render(<Password name={validName} />);
 
     expect(container.firstChild)
       .toMatchSnapshot();
   });
   test('is Password with defaultValue render right?', () => {
-    const defaultValue = '12345';
-    const { container } = render(<Password defaultValue={defaultValue} name="test" />);
+    const { container } = render(<Password defaultValue={validValue} name={validName} />);
     const input = container.querySelectorAll('input.password-input')[0];
 
     expect(input)
-      .toHaveAttribute('value', defaultValue);
+      .toHaveAttribute('value', validValue);
 
     expect(container.firstChild)
       .toMatchSnapshot();
   });
   test('is Password with hasClearButton render right?', () => {
-    const defaultValue = '12345';
-    const displayClearBtn = true;
-    const hiddenClearBtn = false;
-    const { container, rerender, debug } = render(<Password defaultValue={defaultValue} hasClearButton={displayClearBtn} name="test" />);
+    const { container, rerender } = render(<Password defaultValue={validValue} hasClearButton={on} name={validName} />);
     const icon = container.querySelectorAll('.password-clear-icon')[0];
     const input = container.querySelectorAll('input.password-input')[0];
 
@@ -44,14 +45,14 @@ describe('Check Password snapshots collection', () => {
     expect(container.firstChild)
       .toMatchSnapshot();
 
-    rerender(<Password defaultValue={defaultValue} hasClearButton={hiddenClearBtn} name="test" />);
+    rerender(<Password defaultValue={validValue} hasClearButton={off} name={validName} />);
 
     expect(icon)
       .not
       .toBeInTheDocument();
   });
 });
-describe('Check Password attributes test collection', () => {
+describe('Password attributes test collection', () => {
   test('is Password with isDisabled attributes work right?', () => {
     const onFocus = jest.fn();
     const { container, getByRole } = render(<Password isDisabled onFocus={onFocus} />);
@@ -219,11 +220,9 @@ describe('Check Password attributes test collection', () => {
       .toBeInTheDocument();
   });
 });
-describe('Check Password events test collection', () => {
+describe('Password events test collection', () => {
   test('is Password onBlur event work right?', () => {
     const onBlur = jest.fn();
-    const validName = 'text';
-    const validValue = '123';
     const { container } = render(<Password defaultValue={validValue} name={validName} onBlur={onBlur} />);
     const input = container.querySelectorAll('input.password-input')[0];
 
@@ -245,8 +244,6 @@ describe('Check Password events test collection', () => {
   });
   test('is Password onFocus event work right?', () => {
     const onFocus = jest.fn();
-    const validName = 'text';
-    const validValue = '123';
     const { container } = render(<Password defaultValue={validValue} name={validName} onFocus={onFocus} />);
     const input = container.querySelectorAll('input.password-input')[0];
 
@@ -264,8 +261,6 @@ describe('Check Password events test collection', () => {
   });
   test('is Password onChange event work right?', () => {
     const onChange = jest.fn();
-    const validName = 'text';
-    const validValue = '123';
     const { container } = render(<Password defaultValue={validValue} name={validName} onChange={onChange} />);
     const input = container.querySelectorAll('input.password-input')[0];
 

@@ -183,6 +183,8 @@ export interface TabKeyPressPayload {
   ev: React.KeyboardEvent<HTMLDivElement>,
   isOpen: DateTimeInputProps['isOpen'],
   viewType: DateTimeInputState['viewType'],
+  isOneMonthInRange: boolean,
+  isOneYearInRange: boolean,
 }
 
 export interface Handlers {

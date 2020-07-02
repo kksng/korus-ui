@@ -3,11 +3,12 @@ import { isFunction, intersection } from 'lodash';
 import { getForms, validate } from '../Validation';
 import { ButtonProps } from './types';
 import { fromFormArraytoFormObject } from './helpers';
+import { form as LedaForm } from '../../form';
 
 export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<HTMLButtonElement>): void => {
   const {
     onClick, onValidationFail, isDisabled, isLoading, scrollDelay,
-    scrollOffset, form: formProp, shouldScrollToInvalidFields,
+    scrollOffset, form: formProp, shouldScrollToInvalidFields, type,
   } = props;
 
   if (isDisabled || isLoading) return; // если кнопка отключена или в состояниии загрузки, прервать выполнение функции
@@ -17,6 +18,11 @@ export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<
     const buttonFormNames = Array.isArray(formProp) ? formProp : [formProp];
     const formNames = getForms().map((form) => form.name);
     const validButtonFormNames = intersection(formNames, buttonFormNames);
+
+    if (type === 'reset') {
+      validButtonFormNames.map((formName) => LedaForm(formName).reset());
+      return;
+    }
 
     const isEachFormValid = validButtonFormNames
       .map((currentForm) => validate(currentForm)) // validate all forms

@@ -13,7 +13,8 @@ import {
   EnterKeyPressPayload,
   EscKeyPressPayload,
   HandlersData,
-  LeftRightKeyPressPayload, TabKeyPressPayload,
+  LeftRightKeyPressPayload,
+  TabKeyPressPayload,
   UpDownKeyPressPayload,
 } from '../types';
 
@@ -21,7 +22,6 @@ const handleLeftKeyPress = (payload: LeftRightKeyPressPayload): void => {
   const {
     isOpen, ev, viewType, min, max, dateShorthand, dispatch,
   } = payload;
-
   const {
     year, month, dateVal, hours, minutes,
   } = dateShorthand;
@@ -353,8 +353,9 @@ const handleEscKeyPress = (payload: EscKeyPressPayload): void => {
 
 const handleTabKeyPress = (payload: TabKeyPressPayload): void => {
   const {
-    isOpen, ev, dispatch, viewType,
+    isOpen, ev, dispatch, viewType, isOneMonthInRange, isOneYearInRange,
   } = payload;
+
   // не переключаться на следующий компонент, если календарь закрыт
   if (!isOpen) {
     ev.preventDefault();
@@ -366,14 +367,14 @@ const handleTabKeyPress = (payload: TabKeyPressPayload): void => {
     return;
   }
 
-  if (viewType === VIEW_TYPES.DATES) {
+  if (viewType === VIEW_TYPES.DATES && !isOneMonthInRange) {
     // не переключаться на следующий компонент, если открыт вид дат
     ev.preventDefault();
     // открыть вид месяцев
     dispatch(setViewType(VIEW_TYPES.MONTHS));
   }
 
-  if (viewType === VIEW_TYPES.MONTHS) {
+  if (viewType === VIEW_TYPES.MONTHS && !isOneYearInRange) {
     // не переключаться на следующий компонент, если открыт вид месяцев
     ev.preventDefault();
     // открыть вид годов
@@ -386,6 +387,7 @@ export const createKeyDownHandler = ({
   maskedInputRef,
   props,
   state,
+  conditions,
 }: HandlersData) => (ev: React.KeyboardEvent<HTMLDivElement>): void => {
   const {
     isOpen, viewDate, viewType, date, value,
@@ -394,6 +396,11 @@ export const createKeyDownHandler = ({
   const {
     min, max, onEnterPress, type, name, format, onChange,
   } = props;
+
+  const {
+    isOneMonthInRange,
+    isOneYearInRange,
+  } = conditions;
 
   const dateShorthand = {
     year: viewDate.getFullYear(),
@@ -449,7 +456,7 @@ export const createKeyDownHandler = ({
     }
     case KEYS.TAB: {
       handleTabKeyPress({
-        ev, isOpen, viewType, dispatch,
+        ev, isOpen, viewType, dispatch, isOneMonthInRange, isOneYearInRange,
       });
       break;
     }

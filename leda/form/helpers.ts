@@ -19,7 +19,7 @@ export const checkIsFilled = (value: any): boolean => {
 
   // DropZone
   if (value.acceptedFiles) {
-    return value.acceptedFiles.length === 0;
+    return value.acceptedFiles.length !== 0;
   }
 
   return true;
