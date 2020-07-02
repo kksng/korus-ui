@@ -56,14 +56,14 @@ describe('Switcher spanpshot collection', () => {
   });
 });
 describe('Switcher attributes test collection', () => {
-  test('is Switcher with isDisabled work right?', () => {
+  test('is Switcher render right with isDisabled attibutes?', () => {
     const { container } = render(<Switcher isDisabled>Switch</Switcher>);
     const wrapper = container.querySelectorAll('.switcher-wrapper')[0];
 
     expect(wrapper)
       .toHaveClass('disabled');
   });
-  test('is Switcher with children elements render right?', () => {
+  test('is Switcher render right with children elements?', () => {
     const { container } = render(<Switcher><div className="lvl1"><span className="lvl2">Switch</span></div></Switcher>);
     const childrenA = container.querySelectorAll('div.lvl1');
     const childrenB = container.querySelectorAll('span.lvl2');
@@ -76,7 +76,7 @@ describe('Switcher attributes test collection', () => {
   });
 });
 describe('Switcher event handler collection', () => {
-  test('is Switcher onChange event handler work right?', () => {
+  test('is Switcher worj right with onChange event handler?', () => {
     const onChange = jest.fn();
     const { container } = render(<Switcher name={validName} value={on} onChange={onChange}>Switcher</Switcher>);
     const wrapper = container.querySelectorAll('.switcher-wrapper')[0];

@@ -33,7 +33,7 @@ describe('TimePicker attributes test collection', () => {
     expect(getByRole('textbox'))
       .toHaveProperty('placeholder', validPlaceholder);
   });
-  test('is TimePicker with isDisabled attributes work right?', () => {
+  test('is TimePicker work right with isDisabled attributes?', () => {
     const onFocus = jest.fn();
     const { container, getByRole } = render(<TimePicker isDisabled value="10:10" onFocus={onFocus} />);
     const input = getByRole('textbox');
@@ -49,7 +49,7 @@ describe('TimePicker attributes test collection', () => {
     expect(onFocus)
       .toHaveBeenCalledTimes(0);
   });
-  test('is TimePicker with different date format input work right?', () => {
+  test('is TimePicker work right with different date format input?', () => {
     const { rerender, getByRole } = render(<TimePicker format={validFormat} value={validValue} />);
     const input = getByRole('textbox');
 
@@ -61,7 +61,7 @@ describe('TimePicker attributes test collection', () => {
     expect(input)
       .toHaveValue(invalidValue);
   });
-  test('is TimePicker with timeMax and timeMin attriutes work right?', () => {
+  test('is TimePicker work right with timeMax and timeMin attriutes?', () => {
     const timeMin = [22, 5];
     const timeMax = [23, 5];
     const { rerender, getByRole, debug } = render(<TimePicker timemin={timeMin} timemax={timeMax} />);
@@ -78,7 +78,7 @@ describe('TimePicker attributes test collection', () => {
   });
 });
 describe('TimePicker event listeners test collection', () => {
-  test('is TimePicker onBlur event listener work right?', () => {
+  test('is TimePicker work right with onBlur event listener?', () => {
     const onBlur = jest.fn();
     const { container } = render(<TimePicker value={validValue} name={validName} onBlur={onBlur} />);
     const input = container.querySelectorAll('input.datepicker-input')[0];
@@ -100,7 +100,7 @@ describe('TimePicker event listeners test collection', () => {
         }),
       }));
   });
-  test('is TimePicker onFocus event listener work right?', () => {
+  test('is TimePicker work right with onFocus event listener?', () => {
     const onFocus = jest.fn();
     const { container } = render(<TimePicker name={validName} value={validValue} onFocus={onFocus} />);
     const input = container.querySelectorAll('input.datepicker-input')[0];
@@ -118,7 +118,7 @@ describe('TimePicker event listeners test collection', () => {
         }),
       }));
   });
-  test('is TimePicker onChange event listener work right?', () => {
+  test('is TimePicker work right with onChange event listener?', () => {
     const onChange = jest.fn();
     const { container } = render(<TimePicker format={validFormat} name={validName} onChange={onChange} />);
     const input = container.querySelectorAll('input.datepicker-input')[0];
@@ -136,7 +136,7 @@ describe('TimePicker event listeners test collection', () => {
         }),
       }));
   });
-  test('is TimePicker onPressEnter event listener work right?', () => {
+  test('is TimePicker work right with onPressEnter event listener?', () => {
     const onEnterPress = jest.fn();
     const { container } = render(<TimePicker name={validName} value={validValue} onEnterPress={onEnterPress} />);
     const input = container.querySelectorAll('input.datepicker-input')[0];

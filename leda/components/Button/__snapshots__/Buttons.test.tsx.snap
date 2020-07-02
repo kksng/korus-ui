@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button snapshots collection is Button with Form and onClick props render right? 1`] = `
+exports[`Button snapshots collection is Button render right with Form and onClick props? 1`] = `
 <div>
   <div>
     <div
@@ -29,7 +29,7 @@ exports[`Button snapshots collection is Button with Form and onClick props rende
 </div>
 `;
 
-exports[`Button snapshots collection is Button with basic props render right? 1`] = `
+exports[`Button snapshots collection is Button render right with basic props? 1`] = `
 <div>
   <button
     class="button-wrapper"
@@ -40,7 +40,7 @@ exports[`Button snapshots collection is Button with basic props render right? 1`
 </div>
 `;
 
-exports[`Button snapshots collection is Button with isDisabled attributes render right? 1`] = `
+exports[`Button snapshots collection is Button render right with isDisabled attributes? 1`] = `
 <div>
   <button
     class="button-wrapper disabled"
@@ -51,7 +51,7 @@ exports[`Button snapshots collection is Button with isDisabled attributes render
 </div>
 `;
 
-exports[`Button snapshots collection is Button with with isLoading attributes render right? 1`] = `
+exports[`Button snapshots collection is Button render right with isLoading? 1`] = `
 <div>
   <button
     class="button-wrapper loading"
