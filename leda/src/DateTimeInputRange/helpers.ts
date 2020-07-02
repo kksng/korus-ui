@@ -2,7 +2,7 @@ import {
   isString, isNil, isBoolean, isDate,
 } from 'lodash';
 import { stringToDate } from '../DateTimeInput/helpers';
-import { DateTimeInputRangeProps } from './types';
+import { DateTimeInputRangeProps, DateTimeInputValueType } from './types';
 
 const booleanParamsReplacer = (item: boolean | undefined | null): undefined | boolean => (isBoolean(item) ? item : undefined);
 
@@ -20,10 +20,10 @@ export const getDateRangeFromValue = (props: DateTimeInputRangeProps): [Date | n
 
   if (isDateValue(valueProp)) return valueProp;
 
-  return [stringToDate(valueProp[0], format), stringToDate(valueProp[1], format)];
+  return [stringToDate(valueProp[0] as string, format), stringToDate(valueProp[1] as string, format)];
 };
 
-export const getReplacedValue = (value: [string | undefined | null, string | undefined | null ] | [Date | null | undefined, Date | null | undefined]): (string | Date | undefined)[] => {
+export const getReplacedValue = (value: [DateTimeInputValueType, DateTimeInputValueType ]): (string | Date | undefined)[] => {
   const result: (string | Date | undefined)[] = [];
 
   if (value && Array.isArray(value)) {

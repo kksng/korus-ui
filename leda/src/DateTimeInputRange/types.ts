@@ -18,6 +18,8 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENT_TYPES } from '../DateTimeInput/constants';
 
+export type DateTimeInputValueType = string | Date | null | undefined;
+
 export interface DateTimeInputRangeProps {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
   className?: string,
@@ -33,7 +35,7 @@ export interface DateTimeInputRangeProps {
   form?: string,
   requiredMessage?: string | [string, string],
   type?: Values<typeof COMPONENT_TYPES>,
-  value?: [string, string] | [Date | null, Date | null ],
+  value?: [DateTimeInputValueType, DateTimeInputValueType],
   placeholder?: string | [string | undefined, string | undefined],
   name?: string | [string | undefined, string | undefined],
   isOpen?: boolean | [boolean, boolean],

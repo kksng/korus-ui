@@ -76,7 +76,7 @@ export const createChangeHandler = (
     setDate, date,
   } = state;
 
-  const prevValue = valueProp && !isDateValue(valueProp) ? [stringToDate(valueProp[0], format), stringToDate(valueProp[1], format)] : date;
+  const prevValue = valueProp && !isDateValue(valueProp) ? [stringToDate(valueProp[0] as string, format), stringToDate(valueProp[1] as string, format)] : date;
 
   const newDate: [Date | null, Date | null] = caller === 'from' ? [ev.component.date, prevValue[1]] : [prevValue[0], ev.component.date];
 
