@@ -37,7 +37,7 @@ export const CheckBox = (): React.ReactElement => {
         name="checkBoxSemi"
         value={value}
         onChange={handleChange}
-        _semi
+        isSemi
       >
         isSemi
       </L.CheckBox>
