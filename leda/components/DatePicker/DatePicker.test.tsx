@@ -125,7 +125,7 @@ describe('Datepicker event listeners test collection', () => {
       }));
   });
   test('is Datepicker onChange event listener work right?', () => {
-    const validValueWithotComma = '10101010';
+    const validValueWithoutComma = '10101010';
     const onChange = jest.fn();
     const { container } = render(<DatePicker value={invalidValue} format={validFormat} name={validName} onChange={onChange} />);
     const input = container.querySelectorAll('input.datepicker-input')[0];
@@ -139,7 +139,7 @@ describe('Datepicker event listeners test collection', () => {
       .lastCalledWith(expect.objectContaining({
         component: expect.objectContaining({
           name: validName,
-          value: validValueWithotComma,
+          value: validValueWithoutComma,
         }),
       }));
   });

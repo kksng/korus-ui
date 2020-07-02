@@ -1,27 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MultiSelect snapshots test collection is Multiselect component render right? 1`] = `
-<div>
-  <div
-    class="multiselect-wrapper"
-  >
-    <div
-      class="multiselect-input-wrapper"
-    >
-      <input
-        aria-invalid="false"
-        autocomplete="off"
-        class="multiselect-input"
-        name="test"
-        placeholder="placeholder"
-        value=""
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`MultiSelect snapshots test collection is Multiselect component with hard data render right? 1`] = `
+exports[`MultiSelect snapshots test collection is Multiselect component render right with complex data? 1`] = `
 <div>
   <div
     class="multiselect-wrapper"
@@ -68,7 +47,7 @@ exports[`MultiSelect snapshots test collection is Multiselect component with har
 </div>
 `;
 
-exports[`MultiSelect snapshots test collection is Multiselect component with some data and some selected items render right? 1`] = `
+exports[`MultiSelect snapshots test collection is Multiselect component render right with some data and some selected items? 1`] = `
 <div>
   <div
     class="multiselect-wrapper"
@@ -126,7 +105,7 @@ exports[`MultiSelect snapshots test collection is Multiselect component with som
 </div>
 `;
 
-exports[`MultiSelect snapshots test collection is Multiselect component with some data render right? 1`] = `
+exports[`MultiSelect snapshots test collection is Multiselect component render right with some data? 1`] = `
 <div>
   <div
     class="multiselect-wrapper"
@@ -169,6 +148,27 @@ exports[`MultiSelect snapshots test collection is Multiselect component with som
           Saint-Petersburg
         </li>
       </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MultiSelect snapshots test collection is Multiselect component render right? 1`] = `
+<div>
+  <div
+    class="multiselect-wrapper"
+  >
+    <div
+      class="multiselect-input-wrapper"
+    >
+      <input
+        aria-invalid="false"
+        autocomplete="off"
+        class="multiselect-input"
+        name="test"
+        placeholder="placeholder"
+        value=""
+      />
     </div>
   </div>
 </div>

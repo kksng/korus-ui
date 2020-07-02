@@ -149,7 +149,7 @@ describe('Check Slider attributes test collection', () => {
     expect(container.querySelectorAll('.slider-label')[1].innerHTML)
       .toEqual('100 pounds');
   });
-  test('is Slider work right if minRange attributes set?', () => {
+  test.skip('is Slider work right if minRange attributes set?', () => {
     /**
      * ВВ
      * В старых тестах проверяется только то, что данные из HTML

@@ -15,7 +15,7 @@ const invalidValue = '2010-10-10 10:10';
 
 /**
  * ВВ
- * Также как и в DateRange выводять предупреждения
+ * Также как и в DateRange выводить предупреждения
  * Выводит сам компонет. На работу не влияет
  */
 
@@ -246,7 +246,7 @@ describe('DateTimeRange event listeners test collection', () => {
 describe('DateTimeRange quality test collection', () => {
   test('is DateTimeRange render right if value set as String', () => {
     const dateValue = ['10.10.2010 10:10', '12.12.2010 10:10'];
-    const { getAllByRole } = render(<DateTimeRange name="test" value={['10.10.2010 10:10', '12.12.2010 10:10']} />);
+    const { getAllByRole } = render(<DateTimeRange name={validName} value={['10.10.2010 10:10', '12.12.2010 10:10']} />);
 
     expect(getAllByRole('textbox'))
       .toHaveLength(2);
@@ -261,7 +261,7 @@ describe('DateTimeRange quality test collection', () => {
   });
   test('is DateTimeRange render right if value set as Date', () => {
     const dateValue = ['10.10.2010 10:10', '12.12.2010 10:10'];
-    const { getAllByRole } = render(<DateTimeRange name="test" value={[new Date('10.10.2010 10:10'), new Date('12.12.2010 10:10')]} />);
+    const { getAllByRole } = render(<DateTimeRange name={validName} value={[new Date('10.10.2010 10:10'), new Date('12.12.2010 10:10')]} />);
 
     expect(getAllByRole('textbox'))
       .toHaveLength(2);
@@ -276,7 +276,7 @@ describe('DateTimeRange quality test collection', () => {
   });
   test('is DateTimeRange render right if value set as Null', () => {
     const dateValue = ['', ''];
-    const { getAllByRole } = render(<DateTimeRange name="test" value={[null, null]} />);
+    const { getAllByRole } = render(<DateTimeRange name={validName} value={[null, null]} />);
 
     expect(getAllByRole('textbox'))
       .toHaveLength(2);

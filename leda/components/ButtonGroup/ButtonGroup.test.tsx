@@ -135,27 +135,27 @@ describe('ButtonGroup attributes test collection', () => {
      * А бы сделал много маленьких тестов
      */
     const { container, rerender } = render(<ButtonGroup _primary data={['a', 'b', 'c']} />);
-    const moskData = ['a', 'b', 'c'];
+    const moskedData = ['a', 'b', 'c'];
 
     expect(container.querySelectorAll('.primary'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _secondary data={moskData} />);
+    rerender(<ButtonGroup _secondary data={moskedData} />);
 
     expect(container.querySelectorAll('.secondary'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _success data={moskData} />);
+    rerender(<ButtonGroup _success data={moskedData} />);
 
     expect(container.querySelectorAll('.success'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _warning data={moskData} />);
+    rerender(<ButtonGroup _warning data={moskedData} />);
 
     expect(container.querySelectorAll('.warning'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _danger data={moskData} />);
+    rerender(<ButtonGroup _danger data={moskedData} />);
 
     expect(container.querySelectorAll('.danger'))
       .toHaveLength(1);
@@ -207,25 +207,25 @@ describe('ButtongGroup event handler test collection', () => {
   });
 });
 describe('ButtonGroup quality test collection', () => {
-  test('is ButtonGroup in RadioTypeMode with right defaultValue render good if data is String?', () => {
+  test('is ButtonGroup rendered right in RadioTypeMode with right defaultValue if data is String?', () => {
     const { container } = render(<ButtonGroup type="radio" defaultValue="1" name={validName} data={['1', '2', '3']} />);
 
     expect(container.querySelectorAll('.active'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup in RadioTypeMode with right defaultValue render good if data is Object?', () => {
+  test('is ButtonGroup rendered right in RadioTypeMode with right defaultValue if data is Object?', () => {
     const { container } = render(<ButtonGroup type="radio" defaultValue={{ key: 'a' }} name={validName} textField="key" data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
 
     expect(container.querySelectorAll('.active'))
       .toHaveLength(1);
   });
-  test('is ButtonGroup in CheckboxTypeMode with right dafaultValue render good if data is String?', () => {
+  test('is ButtonGroup rendered right in CheckboxTypeMode with right dafaultValue if data is String?', () => {
     const { container } = render(<ButtonGroup type="checkbox" defaultValue={['a', 'b']} name={validName} data={['a', 'b', 'c']} />);
 
     expect(container.querySelectorAll('.active'))
       .toHaveLength(2);
   });
-  test('is ButtonGroup in CheckboxTypeMode with right dafaultValue render good if data is Object?', () => {
+  test('is ButtonGroup rendered right in CheckboxTypeMode with right dafaultValue if data is Object?', () => {
     const { container } = render(<ButtonGroup type="checkbox" defaultValue={[{ key: 'a' }]} textField="key" name={validName} data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }]} />);
 
     expect(container.querySelectorAll('.active'))
