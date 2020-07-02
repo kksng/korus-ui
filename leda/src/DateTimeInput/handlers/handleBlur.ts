@@ -3,8 +3,7 @@ import {
   getNormalizedValue,
 } from '../../Calendar/helpers';
 import { setDate, setFocused, setOpen } from '../actions';
-import { COMPONENT_TYPES } from '../constants';
-import { formatDateTime, normalizeValue } from '../helpers';
+import { formatDateTime } from '../helpers';
 import {
   HandlersData,
 } from '../types';

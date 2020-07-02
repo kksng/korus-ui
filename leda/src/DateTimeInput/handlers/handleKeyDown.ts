@@ -8,7 +8,7 @@ import {
 import {
   COMPONENT_TYPES, DAYS_IN_WEEK, KEYS, MONTHS_IN_ROW, YEARS_IN_ROW,
 } from '../constants';
-import { formatDateTime, updateInputSelection, normalizeValue } from '../helpers';
+import { formatDateTime, updateInputSelection } from '../helpers';
 import {
   EnterKeyPressPayload,
   EscKeyPressPayload,
