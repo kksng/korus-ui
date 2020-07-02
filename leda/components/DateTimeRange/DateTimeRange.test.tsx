@@ -195,8 +195,6 @@ describe('DateTimeRange event listeners test collection', () => {
   });
   test('is DateTimeRange onPressEnter event listener work right?', () => {
     const onEnterPress = jest.fn();
-    const validName = 'test';
-    const validValue = '10.10.2020 10:10';
     const { container } = render(<DateTimeRange name={validName} value={['10.10.2010 10:10', '10.10.2020 10:10']} onEnterPress={onEnterPress} />);
     const inputA = container.querySelectorAll('input.datepicker-input')[0];
     const inputB = container.querySelectorAll('input.datepicker-input')[1];
