@@ -220,7 +220,7 @@ describe('DateTimeRange event listeners test collection', () => {
       .lastCalledWith(expect.objectContaining({
         component: expect.objectContaining({
           name: `${validName}-to`, // Для первого инпута - from, для второго - to
-          value: validValue,
+          value: '10.10.2020 10:10',
         }),
       }));
   });

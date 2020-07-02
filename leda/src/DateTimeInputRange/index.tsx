@@ -61,7 +61,7 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
     value: valueState, date, setDate,
   } = state;
 
-  const value = isNil(valueProp) ? date : getReplacedValue(valueProp); 
+  const value = isNil(valueProp) ? date : getReplacedValue(valueProp);
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.dateTimeInputRange);
 
