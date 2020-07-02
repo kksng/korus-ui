@@ -2,7 +2,9 @@
 
 exports[`CheckBox SNAPSHOTS should render 1`] = `
 <div>
-  <span>
+  <div
+    class="checkbox-wrapper"
+  >
     <input
       class="checkbox-input"
       id="test"
@@ -12,13 +14,15 @@ exports[`CheckBox SNAPSHOTS should render 1`] = `
       class="checkbox-label"
       for="test"
     />
-  </span>
+  </div>
 </div>
 `;
 
 exports[`CheckBox SNAPSHOTS should render controllable mode 1`] = `
 <div>
-  <span>
+  <div
+    class="checkbox-wrapper"
+  >
     <input
       checked=""
       class="checkbox-input"
@@ -30,13 +34,15 @@ exports[`CheckBox SNAPSHOTS should render controllable mode 1`] = `
       class="checkbox-label"
       for="test"
     />
-  </span>
+  </div>
 </div>
 `;
 
 exports[`CheckBox SNAPSHOTS should render controllable mode 2`] = `
 <div>
-  <span>
+  <div
+    class="checkbox-wrapper"
+  >
     <input
       checked=""
       class="checkbox-input"
@@ -48,6 +54,6 @@ exports[`CheckBox SNAPSHOTS should render controllable mode 2`] = `
       class="checkbox-label"
       for="test"
     />
-  </span>
+  </div>
 </div>
 `;
