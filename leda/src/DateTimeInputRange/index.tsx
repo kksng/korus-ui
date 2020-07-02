@@ -7,7 +7,7 @@ import {
 } from '../../utils';
 import { DateTimeInputRefCurrent } from '../DateTimeInput/types';
 import {
-  getDisabled, getName, getOpen, getPlaceholder, getRequired, getRequiredMessage, isDateValue,
+  getDisabled, getName, getOpen, getPlaceholder, getRequired, getRequiredMessage, isDateValue, getReplacedValue,
 } from './helpers';
 import { useCustomElements, useDateRange } from './hooks';
 import {
@@ -61,7 +61,7 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
     value: valueState, date, setDate,
   } = state;
 
-  const value = isNil(valueProp) ? date : valueProp;
+  const value = isNil(valueProp) ? date : getReplacedValue(valueProp); 
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.dateTimeInputRange);
 
