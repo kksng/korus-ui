@@ -1,5 +1,5 @@
 import {
-  isString, isNil, isBoolean, isDate, values, isArray,
+  isString, isNil, isBoolean, isDate,
 } from 'lodash';
 import { stringToDate } from '../DateTimeInput/helpers';
 import { DateTimeInputRangeProps } from './types';
