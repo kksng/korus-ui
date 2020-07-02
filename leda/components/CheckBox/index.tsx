@@ -3,7 +3,7 @@ import {
   bindFunctionalRef, getClassNames, useTheme, useElement, generateId, useValue, useProps,
 } from '../../utils';
 import { COMPONENTS_NAMESPACES } from '../../constants';
-import { Span } from '../Span';
+import { Div } from '../Div';
 import { createChangeHandler } from './handlers';
 import { CheckBoxProps, CheckBoxRefCurrent } from './types';
 import { LedaContext } from '../LedaProvider';
@@ -17,6 +17,7 @@ export const CheckBox = React.forwardRef((props: CheckBoxProps, ref?: React.Ref<
     id,
     inputRender,
     isDisabled,
+    isSemi,
     labelRender,
     name,
     onChange,
@@ -34,7 +35,7 @@ export const CheckBox = React.forwardRef((props: CheckBoxProps, ref?: React.Ref<
 
   const Wrapper = useElement(
     'Wrapper',
-    Span,
+    Div,
     wrapperRender || checkBoxRenders.wrapperRender,
     props,
   );
@@ -53,7 +54,9 @@ export const CheckBox = React.forwardRef((props: CheckBoxProps, ref?: React.Ref<
     props,
   );
 
-  const labelClassNames = getClassNames(theme.label, className);
+  const wrapperClassNames = getClassNames('checkbox-wrapper', className);
+
+  const labelClassNames = getClassNames(theme.label, isSemi && 'semi');
 
   const checkBoxId = id || `checkbox-${generateId()}`;
 
@@ -61,6 +64,7 @@ export const CheckBox = React.forwardRef((props: CheckBoxProps, ref?: React.Ref<
 
   return (
     <Wrapper
+      className={wrapperClassNames}
       ref={ref && ((component) => {
         const wrapper = component ? (component.wrapper || component as unknown as HTMLElement) : null;
 
