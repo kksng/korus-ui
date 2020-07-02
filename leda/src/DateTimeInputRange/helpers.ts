@@ -23,7 +23,7 @@ export const getDateRangeFromValue = (props: DateTimeInputRangeProps): [Date | n
   return [stringToDate(valueProp[0], format), stringToDate(valueProp[1], format)];
 };
 
-export const getReplacedValue = (value: [string, string] | [Date | null | undefined, Date | null | undefined]): (string | Date | undefined)[] => {
+export const getReplacedValue = (value: [string | undefined | null, string | undefined | null ] | [Date | null | undefined, Date | null | undefined]): (string | Date | undefined)[] => {
   const result: (string | Date | undefined)[] = [];
 
   if (value && Array.isArray(value)) {
