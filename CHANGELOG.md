@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Modify interface for dateTimePicker. TabKeyPressPayload add two constant: isOneMonthInRange, isOneYearInRange
 
+- DropZone isRequired bug fixed
+
+- ChekBox:
+  - isSemi props added, now to set checkbox semi style use it instead of passing _semi class directly
+  - changed Wrapper element from span to div
+  - classNames that appended to CheckBox component now passes to Wrapper instead of checkbox label
+
 ## [0.0.7] - 2020-03-12
 
 ### Fixed

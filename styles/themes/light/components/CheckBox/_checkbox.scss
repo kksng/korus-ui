@@ -1,4 +1,9 @@
 .checkbox {
+
+  &-wrapper {
+    display: inline-block;
+  }
+
   &-input {
     opacity: 0;
     height: 0;
