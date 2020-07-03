@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Check DatePicker snapshots collection is DatePicker render right? 1`] = `
+exports[`DatePicker snapshots collection is DatePicker render right? 1`] = `
 <div
   class="datepicker-wrapper"
 >

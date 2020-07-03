@@ -1,246 +1,152 @@
-// @ts-nocheck
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import {
+  render,
+  fireEvent,
+} from '@testing-library/react';
+
+import userEvent from '@testing-library/user-event';
 import { MaskedInput } from './index';
 
-describe('MaskedInput SNAPSHOTS', () => {
-  it.skip('should render basic usage', () => {
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" />);
+const validMask = '###-###';
+const validName = 'test';
+const validValue = '123-123';
 
-    expect(wrapper.find('input').getDOMNode().value).toEqual('+7 (952) 180-67-63');
+describe('MaskedInput snapshots collection', () => {
+  test('is MaskedInput render right?', () => {
+    const { container } = render(<MaskedInput mask={validMask} name={validName} defaultValue={validValue} />);
 
-    expect(toJson(wrapper)).toMatchSnapshot();
-
-    wrapper.unmount();
-  });
-
-  it.skip('should render value in controllable mode', () => {
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" onChange={jest.fn()} />);
-
-    expect(wrapper.find('input').getDOMNode().value).toEqual('+7 (952) 180-67-63');
-
-    const getWrapperJSON = (Wrapper) => toJson(Wrapper);
-
-    expect(getWrapperJSON(wrapper)).toMatchSnapshot();
-
-    wrapper.setProps({ value: '32085556478' });
-
-    wrapper.update();
-    // todo: починить тест
-    // expect(wrapper.find('input').getDOMNode().value).toEqual('+3 (208) 555-64-78');
-
-    expect(getWrapperJSON(wrapper)).toMatchSnapshot();
-
-    wrapper.unmount();
-  });
-
-  describe('should render different component states', () => {
-    it('should render disabled', () => {
-      const wrapper = mount(<MaskedInput disabled mask="+# (###) ###-##-##" onChange={jest.fn()} />);
-
-      const getWrapperJSON = (Wrapper) => toJson(Wrapper);
-
-      expect(wrapper.find('input').getDOMNode().disabled).toBeTruthy();
-
-      expect(getWrapperJSON(wrapper)).toMatchSnapshot();
-
-      wrapper.unmount();
-    });
-
-    it('should render placeholder', () => {
-      const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" onChange={jest.fn()} />);
-
-      const getWrapperJSON = (Wrapper) => toJson(Wrapper);
-
-      expect(getWrapperJSON(wrapper)).toMatchSnapshot();
-
-      wrapper.unmount();
-    });
+    expect(container.firstChild)
+      .toMatchSnapshot();
   });
 });
+describe('MaskedInput attributes test collection', () => {
+  test('is MaskedInput with defaultValue attributes work right?', () => {
+    const { getByRole } = render(<MaskedInput mask={validMask} name={validName} defaultValue={validValue} />);
 
-describe('MaskedInput HANDLERS', () => {
-  it('should test onFocus', () => {
-    const onFocusHandler = jest.fn();
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" onFocus={onFocusHandler} />);
+    expect(getByRole('textbox'))
+      .toBeInTheDocument();
 
-    wrapper.find('input').props().onFocus({});
-
-    expect(onFocusHandler).toHaveBeenCalled();
-
-    wrapper.unmount();
+    expect(getByRole('textbox'))
+      .toHaveProperty('value', validValue);
   });
+  test('is MaskedInput with some value work right?', () => {
+    const { getByRole } = render(<MaskedInput mask={validMask} name={validName} value={validValue} />);
 
-  it('should test onEnterPress', () => {
-    const onEnterPressHandler = jest.fn();
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" onEnterPress={onEnterPressHandler} />);
+    expect(getByRole('textbox'))
+      .toBeInTheDocument();
 
-    wrapper.find('input').props().onKeyDown({ key: 'Enter', currentTarget: { value: '79521806763' } });
-
-    expect(onEnterPressHandler).toHaveBeenCalled();
-
-    wrapper.unmount();
+    expect(getByRole('textbox'))
+      .toHaveProperty('value', validValue);
   });
+  test('is MaskedInput with isDisabled work right?', () => {
+    const onFocus = jest.fn();
+    const { container } = render(<MaskedInput isDisabled mask={validMask} name={validName} onFocus={onFocus} />);
+    const wrapper = container.querySelectorAll('.masked-input-wrapper')[0];
+    const input = container.querySelectorAll('input.masked-input-element')[0];
 
-  it('should test onBlur', () => {
-    const onBlurHandler = jest.fn();
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" onBlur={onBlurHandler} />);
+    expect(wrapper)
+      .toHaveClass('disabled');
 
-    wrapper.find('input').props().onBlur({ target: { value: '' } });
-
-    expect(onBlurHandler).toHaveBeenCalled();
-
-    wrapper.unmount();
-  });
-
-  it('should test onChange', () => {
-    const onChangeHandler = jest.fn();
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" onChange={onChangeHandler} />);
-
-    wrapper.find('MaskedInput').last().props().onChange({ currentTarget: { value: '78536458877' } });
-
-    expect(onChangeHandler).toHaveBeenCalled();
-
-    wrapper.unmount();
-  });
-
-  it.skip('should have correct event format', () => {
-    const onChangeHandler = jest.fn();
-    const onBlurHandler = jest.fn();
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" name="MINput" value="79521806763" onBlur={onBlurHandler} onChange={onChangeHandler} />);
-
-    wrapper.find('MaskedInput').last().props().onChange({ currentTarget: { value: '78536458877', name: 'MINput' } });
-
-    expect(onChangeHandler).toHaveBeenCalled();
-
-    const [[changeEvent]] = onChangeHandler.mock.calls;
-
-    expect(changeEvent.currentTarget).toBeDefined();
-
-    expect(changeEvent.currentTarget.value).toEqual('78536458877');
-
-    expect(changeEvent.currentTarget.name).toEqual('MINput');
-
-    wrapper.find('input').props().onBlur({ target: { value: '+7 (952) 180-67-63' } });
-
-    expect(onBlurHandler).toHaveBeenCalled();
-
-    const [[blurEvent]] = onBlurHandler.mock.calls;
-
-    expect(blurEvent.target).toBeDefined();
-
-    expect(blurEvent.target.value).toEqual('79521806763');
-
-    expect(blurEvent.target.name).toEqual('MINput');
-
-    wrapper.unmount();
-  });
-});
-
-describe('MaskedInput ATTRIBUTES', () => {
-  it.skip('should mask value', () => {
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" />);
-
-    expect(wrapper.find('input').getDOMNode().value).toEqual('+7 (952) 180-67-63');
-
-    wrapper.setProps({ mask: '#### #### #### ####' }).setProps({ value: '1234 5678 9012 3456' });
-    // todo: починить тест
-    // expect(wrapper.find('input').getDOMNode().value).toEqual('1234 5678 9012 3456');
-
-    wrapper.setProps({ mask: 'LL#########LL' }).setProps({ value: 'CA123456789UA' });
-
-    // expect(wrapper.find('input').getDOMNode().value).toEqual('CA123456789UA');
-
-    wrapper.setProps({ mask: 'Ccccc' }).setProps({ value: 'Корус' });
-
-    // expect(wrapper.find('input').getDOMNode().value).toEqual('Корус');
-
-    wrapper.unmount();
-  });
-
-  it.skip('should change mask placeholderChar', () => {
-    const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="7" placeholderChar="*" />);
-
-    expect(wrapper.find('input').getDOMNode().value).toEqual('+7 (***) ***-**-**');
-
-    wrapper.unmount();
-  });
-
-  describe('new maskRules for mask', () => {
-    const custommaskRules = {
-      n: {
-        validate: (char) => /\d/.test(char),
+    fireEvent.change(input, {
+      target: {
+        value: validValue,
       },
-    };
-    it.skip('should accept input', () => {
-      const wrapper = mount(<MaskedInput maskRules={custommaskRules} mask="+n (nnn) nnn-nn-nn" value="79521806763" placeholderChar="*" />);
-
-      expect(wrapper.find('input').getDOMNode().value).toEqual('+7 (952) 180-67-63');
-
-      wrapper.unmount();
     });
 
-    it.skip('should not accept input', () => {
-      const wrapper = mount(<MaskedInput maskRules={custommaskRules} mask="+n (nnn) nnn-nn-nn" value="795218067nn" placeholderChar="*" />);
+    expect(onFocus)
+      .toBeCalledTimes(0);
+  });
+  test('is MaskedInput with placeholder attributes work right?', () => {
+    const validPlaceholder = 'placeholder';
+    const { getByRole } = render(<MaskedInput placeholder={validPlaceholder} mask={validMask} name={validName} />);
 
-      expect(wrapper.find('input').getDOMNode().value).toEqual('+7 (952) 180-67-**');
-
-      wrapper.unmount();
-    });
-
-    it.skip('should insert value before first invalid char', () => {
-      const wrapper = mount(<MaskedInput maskRules={custommaskRules} mask="+n (nnn) nnn-nn-nn" value="795218067nn63" placeholderChar="*" />);
-
-      expect(wrapper.find('input').getDOMNode().value).toEqual('+7 (952) 180-67-**');
-
-      wrapper.unmount();
-    });
+    expect(getByRole('textbox'))
+      .toHaveAttribute('placeholder', validPlaceholder);
   });
 });
+describe('MaskedInput event handler test collection', () => {
+  test('is MaskedInput onChange event handler work right?', () => {
+    const onChange = jest.fn();
+    const { getByRole } = render(<MaskedInput onChange={onChange} mask={validMask} name={validName} />);
+    const input = getByRole('textbox');
 
-describe('MaskedInput VALIDATION', () => {
-  it.skip('should be invalid if component is isRequired, value is empty and onBlur was called', async () => {
-    const onBlurHandler = jest.fn();
-    const wrapper = mount(<MaskedInput onBlur={onBlurHandler} form="test" isRequired name="Mamasked" mask="+# (###) ###-##-##" />);
+    userEvent.type(input, validValue);
 
-    const getEvent = (index) => {
-      const [event] = onBlurHandler.mock.calls[index];
-      return event;
-    };
+    expect(onChange)
+      .toBeCalledTimes(validValue.length);
 
-    wrapper.find('input').props().onBlur({ target: { value: '' } });
-    // валидация ассинхронна, нужно подождать
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    /**
+     * ВВ
+     * Так как у нас маска, не нативная
+     * Данные не приходят. Тоже самое в DatePicker
+     */
+    expect(onChange)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: '',
+        }),
+      }));
+  });
+  test('is MaskedInput onBlur event handler work right?', () => {
+    const onBlur = jest.fn();
+    const { getByRole } = render(<MaskedInput onBlur={onBlur} mask={validMask} name={validName} value={validValue} />);
+    const input = getByRole('textbox');
 
-    expect(onBlurHandler).toHaveBeenCalled();
+    fireEvent.focus(input);
+    fireEvent.blur(input);
 
-    const firstEvent = getEvent(0);
+    expect(onBlur)
+      .toBeCalledTimes(1);
 
-    expect(firstEvent.target.name).toEqual('Mamasked');
+    expect(onBlur)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validValue,
+        }),
+      }));
+  });
+  test('is MaskedInput onFocus event handler work right?', () => {
+    const onFocus = jest.fn();
+    const { getByRole } = render(<MaskedInput onBlur={onFocus} mask={validMask} name={validName} value={validValue} />);
+    const input = getByRole('textbox');
 
-    expect(firstEvent.target.value).toEqual('');
+    fireEvent.focus(input);
+    fireEvent.blur(input);
 
-    expect(firstEvent.target.isValid).toBeFalsy();
+    expect(onFocus)
+      .toBeCalledTimes(1);
 
-    expect(wrapper.find('div.masked-input-wrapper').getDOMNode().classList.contains('danger')).toBeTruthy();
+    expect(onFocus)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validValue,
+        }),
+      }));
+  });
+  test('is MaskedInput onEnterPress event handler work right?', () => {
+    const onEnterPress = jest.fn();
+    const { getByRole } = render(<MaskedInput onEnterPress={onEnterPress} mask={validMask} name={validName} value={validValue} />);
+    const input = getByRole('textbox');
 
-    wrapper.setProps({ value: '79521806763' });
+    fireEvent.keyDown(input, {
+      charCode: 13,
+      code: 13,
+      key: 'Enter',
+      keyCode: 13,
+    });
 
-    wrapper.find('input').props().onBlur({ target: { value: '+7 (952) 180-67-63' } });
+    expect(onEnterPress)
+      .toHaveBeenCalled();
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
-
-    const secondEvent = getEvent(1);
-
-    expect(secondEvent.target.name).toEqual('Mamasked');
-    // todo: починить тест
-    // expect(secondEvent.target.value).toEqual('+7 (952) 180-67-63');
-
-    expect(secondEvent.target.isValid).toBeTruthy();
-
-    expect(wrapper.find('div.masked-input-wrapper').getDOMNode().classList.contains('danger')).toBeFalsy();
-
-    wrapper.unmount();
+    expect(onEnterPress)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validValue,
+        }),
+      }));
   });
 });

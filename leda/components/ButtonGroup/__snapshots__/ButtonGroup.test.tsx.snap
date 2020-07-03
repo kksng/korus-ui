@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Check ButtonGroup snapshots collection is ButtonGroup render right? 1`] = `
+exports[`ButtonGroup snapshots test collection is ButtonGroup render right? 1`] = `
 <div
   class="button-group-wrapper"
 >
@@ -31,4 +31,4 @@ exports[`Check ButtonGroup snapshots collection is ButtonGroup render right? 1`]
 </div>
 `;
 
-exports[`Check ButtonGroup snapshots collection is ButtonGroup without data render right? 1`] = `null`;
+exports[`ButtonGroup snapshots test collection is ButtonGroup without data render right? 1`] = `null`;
