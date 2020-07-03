@@ -1,9 +1,8 @@
 import { isFunction } from 'lodash';
 import {
-  isDateGreater, isDateLess, isTimeGreater, isTimeLess,
+  getNormalizedValue,
 } from '../../Calendar/helpers';
 import { setDate, setFocused, setOpen } from '../actions';
-import { COMPONENT_TYPES } from '../constants';
 import { formatDateTime } from '../helpers';
 import {
   HandlersData,
@@ -28,47 +27,31 @@ export const createBlurHandler = ({
 
   dispatch(setOpen(false));
 
-  const newDate = (() => {
-    if (!date) return null;
-
-    const minDate = (() => {
-      if (type === COMPONENT_TYPES.TIME_ONLY) return isTimeLess(date, min) ? min : null;
-      if (type === COMPONENT_TYPES.DATE_TIME) return min && date.getTime() < min.getTime() ? min : null;
-      return isDateLess(date, min) ? min : null;
-    })();
-
-    const maxDate = (() => {
-      if (type === COMPONENT_TYPES.TIME_ONLY) return isTimeGreater(date, max) ? max : null;
-      if (type === COMPONENT_TYPES.DATE_TIME) return max && date.getTime() > max.getTime() ? max : null;
-      return isDateGreater(date, max) ? max : null;
-    })();
-
-    return minDate || maxDate || date;
-  })();
+  const normalizedDateValue = getNormalizedValue(date, min, max, type);
 
   // при блюре - нормализуем значение по min/max
-  dispatch(setDate(newDate));
+  dispatch(setDate(normalizedDateValue));
 
   if (isFunction(onChange)) {
     onChange({
       ...ev,
       component: {
-        value: formatDateTime(newDate, format),
+        value: formatDateTime(normalizedDateValue, format),
         name,
-        date: newDate,
+        date: normalizedDateValue,
       },
     });
   }
 
-  const isValid = validate(newDate);
+  const isValid = validate(normalizedDateValue);
 
   if (isFunction(onBlur)) {
     onBlur({
       ...ev,
       component: {
-        value: formatDateTime(newDate, format),
+        value: formatDateTime(normalizedDateValue, format),
         name,
-        date: newDate,
+        date: normalizedDateValue,
         isValid,
       },
     });

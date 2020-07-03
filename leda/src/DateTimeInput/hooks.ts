@@ -82,6 +82,8 @@ export const useDateTimeInputState = (props: DateTimeInputProps): [DateTimeInput
     || stringToDate(stringValue, format)
     || today,
     viewType: VIEW_TYPES.DATES,
+    todayIsMin,
+    todayIsMax,
   };
   const [state, dispatch] = React.useReducer(stateReducer, initialState);
 

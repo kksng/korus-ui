@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CustomRender, Values } from '../../commonTypes';
 import { AllActions } from '../DateTimeInput/types';
+import { COMPONENT_TYPES } from '../DateTimeInput/constants';
 import { CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import { defaultTheme } from './theme';
 import { DivProps } from '../../components/Div';

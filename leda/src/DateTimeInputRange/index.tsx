@@ -58,7 +58,7 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
   const toDateTimeInputRef = React.useRef<DateTimeInputRefCurrent | null>(null);
 
   const {
-    value: date, setDate,
+    value: valueState, date, setDate,
   } = state;
 
   const value = isNil(valueProp) ? date : getReplacedValue(valueProp);
