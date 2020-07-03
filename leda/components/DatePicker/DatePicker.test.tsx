@@ -162,7 +162,7 @@ describe('Datepicker event listeners test collection', () => {
       .lastCalledWith(expect.objectContaining({
         component: expect.objectContaining({
           name: validName,
-          value: '10.10.2010', 
+          value: '10.10.2010',
         }),
       }));
   });
