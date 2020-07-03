@@ -263,7 +263,7 @@ describe('Check DateTimeRange event listeners test collection', () => {
       .lastCalledWith(expect.objectContaining({
         component: expect.objectContaining({
           name: 'test-to',
-          value: '', // Ошибка компоненты!
+          value: '10.10.2020 10:10',
         }),
       }));
   });

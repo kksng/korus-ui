@@ -211,7 +211,7 @@ describe('Check DateTimePicker event listeners test collection', () => {
       .lastCalledWith(expect.objectContaining({
         component: expect.objectContaining({
           name: validName,
-          value: '', // Ошибка! Как исправится, нужно будет добаивть
+          value: validValue,
         }),
       }));
   });
