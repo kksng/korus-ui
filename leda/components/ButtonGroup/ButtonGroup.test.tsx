@@ -135,27 +135,27 @@ describe('ButtonGroup attributes test collection', () => {
      * А бы сделал много маленьких тестов
      */
     const { container, rerender } = render(<ButtonGroup _primary data={['a', 'b', 'c']} />);
-    const moskedData = ['a', 'b', 'c'];
+    const mockedData = ['a', 'b', 'c'];
 
     expect(container.querySelectorAll('.primary'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _secondary data={moskedData} />);
+    rerender(<ButtonGroup _secondary data={mockedData} />);
 
     expect(container.querySelectorAll('.secondary'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _success data={moskedData} />);
+    rerender(<ButtonGroup _success data={mockedData} />);
 
     expect(container.querySelectorAll('.success'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _warning data={moskedData} />);
+    rerender(<ButtonGroup _warning data={mockedData} />);
 
     expect(container.querySelectorAll('.warning'))
       .toHaveLength(1);
 
-    rerender(<ButtonGroup _danger data={moskedData} />);
+    rerender(<ButtonGroup _danger data={mockedData} />);
 
     expect(container.querySelectorAll('.danger'))
       .toHaveLength(1);
