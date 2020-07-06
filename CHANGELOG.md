@@ -5,19 +5,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- Add some test on react-test-library
 
+## [0.25.0] - 2020-07-02
 - Datepicker: month names changed
-
 - Modify interface for dateTimePicker. TabKeyPressPayload add two constant: isOneMonthInRange, isOneYearInRange
-
 - DropZone isRequired bug fixed
-
 - ChekBox:
   - isSemi props added, now to set checkbox semi style use it instead of passing _semi class directly
   - changed Wrapper element from span to div
   - classNames that appended to CheckBox component now passes to Wrapper instead of checkbox label
-  
 - Button type=reset added
 
 ## [0.0.7] - 2020-03-12
