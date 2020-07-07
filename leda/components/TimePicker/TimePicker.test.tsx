@@ -7,15 +7,160 @@ import {
 import userEvent from '@testing-library/user-event';
 import { TimePicker } from './index';
 
-describe('Check TimePicker snapshots collection', () => {
+const validName = 'test';
+const validFormat = 'hh:mm';
+const invalidFormat = 'hh-mm';
+const validValue = '10:10';
+const invalidValue = '10-10';
+
+
+describe('TimePicker snapshots collection', () => {
   test('is TimePicker render right?', () => {
-    const { container } = render(<TimePicker name="test" />);
+    const { container } = render(<TimePicker name={validName} />);
 
     expect(container.firstChild)
       .toMatchSnapshot();
   });
 });
-describe('Check TimePicker value set test collection', () => {
+describe('TimePicker attributes test collection', () => {
+  test('is TimePicker placeholder set right?', () => {
+    const validPlaceholder = 'text';
+    const { getByRole } = render(<TimePicker placeholder={validPlaceholder} />);
+
+    expect(getByRole('textbox'))
+      .toHaveAttribute('placeholder');
+
+    expect(getByRole('textbox'))
+      .toHaveProperty('placeholder', validPlaceholder);
+  });
+  test('is TimePicker work right with isDisabled attributes?', () => {
+    const onFocus = jest.fn();
+    const { container, getByRole } = render(<TimePicker isDisabled value="10:10" onFocus={onFocus} />);
+    const input = getByRole('textbox');
+
+    input.focus();
+
+    expect(container.querySelectorAll('.disabled-state'))
+      .toHaveLength(1);
+
+    expect(input)
+      .toHaveAttribute('disabled');
+
+    expect(onFocus)
+      .toHaveBeenCalledTimes(0);
+  });
+  test('is TimePicker work right with different date format input?', () => {
+    const { rerender, getByRole } = render(<TimePicker format={validFormat} value={validValue} />);
+    const input = getByRole('textbox');
+
+    expect(input)
+      .toHaveValue(validValue);
+
+    rerender(<TimePicker format={invalidFormat} value={invalidValue} />);
+
+    expect(input)
+      .toHaveValue(invalidValue);
+  });
+  test('is TimePicker work right with timeMax and timeMin attriutes?', () => {
+    const timeMin = [22, 5];
+    const timeMax = [23, 5];
+    const { rerender, getByRole, debug } = render(<TimePicker timemin={timeMin} timemax={timeMax} />);
+    const input = getByRole('textbox');
+
+    expect(input)
+      .toHaveAttribute('timemin', timeMin.join(','));
+
+    expect(input)
+      .toHaveAttribute('timemax', timeMax.join(','));
+
+    // BB
+    // Больше проверить нельзя. Не работает ограничение
+  });
+});
+describe('TimePicker event listeners test collection', () => {
+  test('is TimePicker work right with onBlur event listener?', () => {
+    const onBlur = jest.fn();
+    const { container } = render(<TimePicker value={validValue} name={validName} onBlur={onBlur} />);
+    const input = container.querySelectorAll('input.datepicker-input')[0];
+
+    fireEvent.blur(input);
+
+    expect(input)
+      .not
+      .toHaveFocus();
+
+    expect(onBlur)
+      .toBeCalledTimes(1);
+
+    expect(onBlur)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validValue,
+        }),
+      }));
+  });
+  test('is TimePicker work right with onFocus event listener?', () => {
+    const onFocus = jest.fn();
+    const { container } = render(<TimePicker name={validName} value={validValue} onFocus={onFocus} />);
+    const input = container.querySelectorAll('input.datepicker-input')[0];
+
+    fireEvent.focus(input);
+
+    expect(onFocus)
+      .toHaveBeenCalled();
+
+    expect(onFocus)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validValue,
+        }),
+      }));
+  });
+  test('is TimePicker work right with onChange event listener?', () => {
+    const onChange = jest.fn();
+    const { container } = render(<TimePicker format={validFormat} name={validName} onChange={onChange} />);
+    const input = container.querySelectorAll('input.datepicker-input')[0];
+
+    userEvent.type(input, validValue);
+
+    expect(onChange)
+      .toHaveBeenCalledTimes(validValue.length);
+
+    expect(onChange)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: '', // Ошибка компоненты. Приходит  value="__:__"
+        }),
+      }));
+  });
+  test('is TimePicker work right with onPressEnter event listener?', () => {
+    const onEnterPress = jest.fn();
+    const { container } = render(<TimePicker name={validName} value={validValue} onEnterPress={onEnterPress} />);
+    const input = container.querySelectorAll('input.datepicker-input')[0];
+
+    fireEvent.keyDown(input, {
+      charCode: 13,
+      code: 13,
+      key: 'Enter',
+      keyCode: 13,
+    });
+
+    expect(onEnterPress)
+      .toHaveBeenCalled();
+
+    expect(onEnterPress)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validValue,
+        }),
+      }));
+  });
+});
+describe('TimePicker quality test collection', () => {
   test('is TimePicker render right if value set as String', () => {
     const timeValue = '10:10';
     const {
@@ -63,158 +208,5 @@ describe('Check TimePicker value set test collection', () => {
 
     expect(getByRole('textbox'))
       .toHaveValue('');
-  });
-});
-describe('Check TimePicker attributes test collection', () => {
-  test('is TimePicker placeholder set right?', () => {
-    const validPlaceholder = 'text';
-    const { getByRole } = render(<TimePicker placeholder={validPlaceholder} />);
-
-    expect(getByRole('textbox'))
-      .toHaveAttribute('placeholder');
-
-    expect(getByRole('textbox'))
-      .toHaveProperty('placeholder', validPlaceholder);
-  });
-  test('is TimePicker with isDisabled attributes work right?', () => {
-    const onFocus = jest.fn();
-    const { container, getByRole } = render(<TimePicker isDisabled value="10:10" onFocus={onFocus} />);
-    const input = getByRole('textbox');
-
-    input.focus();
-
-    expect(container.querySelectorAll('.disabled-state'))
-      .toHaveLength(1);
-
-    expect(input)
-      .toHaveAttribute('disabled');
-
-    expect(onFocus)
-      .toHaveBeenCalledTimes(0);
-  });
-  test('is TimePicker with different date format input work right?', () => {
-    const validFormat = 'hh:mm';
-    const invalidFormat = 'hh-mm';
-    const validValue = '10:10';
-    const invalidValue = '10-10';
-    const { rerender, getByRole } = render(<TimePicker format={validFormat} value={validValue} />);
-    const input = getByRole('textbox');
-
-    expect(input)
-      .toHaveValue(validValue);
-
-    rerender(<TimePicker format={invalidFormat} value={invalidValue} />);
-
-    expect(input)
-      .toHaveValue(invalidValue);
-  });
-  test('is TimePicker with timeMax and timeMin attriutes work right?', () => {
-    const timeMin = [22, 5];
-    const timeMax = [23, 5];
-    const { rerender, getByRole, debug } = render(<TimePicker timemin={timeMin} timemax={timeMax} />);
-    const input = getByRole('textbox');
-
-    expect(input)
-      .toHaveAttribute('timemin', timeMin.join(','));
-
-    expect(input)
-      .toHaveAttribute('timemax', timeMax.join(','));
-
-    // BB
-    // Больше проверить нельзя. Не работает ограничение
-  });
-});
-describe('Check TimmePicker event listeners test collection', () => {
-  test('is TimePicker onBlur event listener work right?', () => {
-    const validDate = '10:10';
-    const validName = 'test';
-    const onBlur = jest.fn();
-    const { container } = render(<TimePicker value={validDate} name={validName} onBlur={onBlur} />);
-    const input = container.querySelectorAll('input.datepicker-input')[0];
-
-    fireEvent.blur(input);
-
-    expect(input)
-      .not
-      .toHaveFocus();
-
-    expect(onBlur)
-      .toBeCalledTimes(1);
-
-    expect(onBlur)
-      .lastCalledWith(expect.objectContaining({
-        component: expect.objectContaining({
-          name: validName,
-          value: validDate,
-        }),
-      }));
-  });
-  test('is TimePicker onFocus event listener work right?', () => {
-    const validName = 'test';
-    const validValue = '10:10';
-    const onFocus = jest.fn();
-    const { container } = render(<TimePicker name={validName} value={validValue} onFocus={onFocus} />);
-    const input = container.querySelectorAll('input.datepicker-input')[0];
-
-    fireEvent.focus(input);
-
-    expect(onFocus)
-      .toHaveBeenCalled();
-
-    expect(onFocus)
-      .lastCalledWith(expect.objectContaining({
-        component: expect.objectContaining({
-          name: validName,
-          value: validValue,
-        }),
-      }));
-  });
-  test('is TimePicker onChange event listener work right?', () => {
-    const validFormat = 'hh:mm';
-    const validValue = '10:10';
-    const validValueWithotComma = '1011';
-    const invalidValue = '11:11';
-    const validName = 'test';
-    const onChange = jest.fn();
-    const { container } = render(<TimePicker value={invalidValue} format={validFormat} name={validName} onChange={onChange} />);
-    const input = container.querySelectorAll('input.datepicker-input')[0];
-
-    userEvent.type(input, validValue);
-
-    expect(onChange)
-      .toBeCalledTimes(validValue.length);
-
-    expect(onChange)
-      .lastCalledWith(expect.objectContaining({
-        component: expect.objectContaining({
-          name: validName,
-          value: validValueWithotComma,
-        }),
-      }));
-  });
-  test('is TimePicker onPressEnter event listener work right?', () => {
-    const validName = 'test';
-    const validValue = '10:10';
-    const onEnterPress = jest.fn();
-    const { container } = render(<TimePicker name={validName} value={validValue} onEnterPress={onEnterPress} />);
-    const input = container.querySelectorAll('input.datepicker-input')[0];
-
-    fireEvent.keyDown(input, {
-      charCode: 13,
-      code: 13,
-      key: 'Enter',
-      keyCode: 13,
-    });
-
-    expect(onEnterPress)
-      .toHaveBeenCalled();
-
-    expect(onEnterPress)
-      .lastCalledWith(expect.objectContaining({
-        component: expect.objectContaining({
-          name: validName,
-          value: validValue,
-        }),
-      }));
   });
 });

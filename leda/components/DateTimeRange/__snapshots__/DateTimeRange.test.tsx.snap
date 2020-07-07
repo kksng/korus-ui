@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Check DateTimeRange snapshots collection is DateTimeRange render right? 1`] = `
+exports[`DateTimeRange snapshots collection is DateTimeRange render right? 1`] = `
 <div
   class="daterange-wrapper"
 >
