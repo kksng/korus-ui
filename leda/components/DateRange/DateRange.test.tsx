@@ -2,6 +2,7 @@ import React from 'react';
 import {
   render,
   fireEvent,
+  wait,
 } from '@testing-library/react';
 
 /**
@@ -19,7 +20,8 @@ const validFormat = 'dd.MM.yyyy';
 const invalidFormat = 'yyyy-MM-dd';
 const validValue = '15.05.2020';
 const invalidValue = '2010-10-10';
-
+const min = new Date('01.02.2020');
+const max = new Date('05.25.2020');// mm-dd-YYYY
 
 describe('DateRange snapshots collection', () => {
   test('is DateRange render right?', () => {
@@ -46,8 +48,6 @@ describe('DateRange attributes test collection', () => {
     });
   });
   test('is DateRange work right with minMax attributes?', () => {
-    const min = new Date('01.02.2018');
-    const max = new Date('05.25.2020');// mm-dd-YYYY
     const valueForCheck = '26';
     const { getAllByText } = render(<DateRange value={['25.05.2020', '25.05.2020']} isOpen min={min} max={max} />);
 
@@ -168,8 +168,6 @@ describe('DateRange event listeners test collection', () => {
     const inputA = container.querySelectorAll('input.datepicker-input')[0];
     const inputB = container.querySelectorAll('input.datepicker-input')[1];
 
-    fireEvent.change(inputA, validValueA);
-
     userEvent.type(inputA, validValueA);
 
     expect(onChange)
@@ -273,5 +271,46 @@ describe('DateRange quality test collection', () => {
       expect(input)
         .toHaveValue(dateValue[index]);
     });
+  });
+  test.skip('is DateRange work right if user set invalid date, enter a value less than the minMax value?', async () => {
+    /**
+     * ВВ
+     * В этом и в тесте на onChange value приходит равное = '', или пустой массив ['', '']
+     * В реальности же в комопоненту приходит все хорошо. Возможно это ограничения react-testing-library
+     */
+    const onEnter = jest.fn();
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+
+    const prevMin = '01.01.2020';
+
+    const { container } = render(<DateRange isOpen name={validName} min={min} max={max} onEnterPress={onEnter} onBlur={onBlur} onChange={onChange} />);
+    const inputA = container.querySelectorAll('input.datepicker-input')[0];
+
+    fireEvent.change(inputA, {
+      target: {
+        value: prevMin,
+      },
+    });
+
+    fireEvent.blur(inputA);
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(onChange)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: expect.arrayContaining(['', '']),
+        }),
+      }));
+
+    expect(onBlur)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: '',
+        }),
+      }));
   });
 });
