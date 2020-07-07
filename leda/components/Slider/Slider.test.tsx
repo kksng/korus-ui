@@ -6,15 +6,20 @@ import {
 
 import { Slider } from './index';
 
+const validName = 'test';
+const validValue = 50;
+const on = true;
+const off = false;
+
 describe('Check Slider snapshots collection', () => {
   test('is Slider render right?', () => {
-    const { container, debug } = render(<Slider name="test" />);
+    const { container } = render(<Slider name={validName} />);
 
     expect(container.firstChild)
       .toMatchSnapshot();
   });
   test('is Slider render right if isDisabled set true?', () => {
-    const { container } = render(<Slider isDisabled name="test" />);
+    const { container } = render(<Slider isDisabled name={validName} />);
     const elem = container.querySelectorAll('.slider-container.disabled')[0];
 
     expect(elem)
@@ -24,7 +29,7 @@ describe('Check Slider snapshots collection', () => {
       .toMatchSnapshot();
   });
   test('is Slider render right if set value?', () => {
-    const { container } = render(<Slider value={50} name="test" />);
+    const { container } = render(<Slider value={50} name={validName} />);
     const slider = container.querySelectorAll('.slider-handle')[0];
 
     expect(slider)
@@ -43,7 +48,7 @@ describe('Check Slider snapshots collection', () => {
 describe('Check Slider attributes test collection', () => {
   test('is Slider work right if isDisabled attrubites set?', () => {
     const onFocus = jest.fn();
-    const { container } = render(<Slider isDisabled onFocus={onFocus} name="test" />);
+    const { container } = render(<Slider isDisabled onFocus={onFocus} name={validName} />);
     const wrapper = container.querySelectorAll('.slider-container')[0];
 
     expect(wrapper)
@@ -56,8 +61,6 @@ describe('Check Slider attributes test collection', () => {
       .toHaveFocus();
   });
   test('is Slider work right if defaultValue set?', () => {
-    const validValue = 50;
-    const validName = 'test';
     const { container } = render(<Slider defaultValue={validValue} name={validName} />);
     const slider = container.querySelectorAll('.slider-handle')[0];
 
@@ -65,11 +68,7 @@ describe('Check Slider attributes test collection', () => {
       .toHaveAttribute('aria-valuenow', String(validValue));
   });
   test('is Slider work right if hasTooltip set?', () => {
-    const validValue = 50;
-    const validName = 'test';
-    const showTooltip = true;
-    const hideTooltip = false;
-    const { container, rerender, getByText } = render(<Slider hasTooltip={showTooltip} value={validValue} name={validName} />);
+    const { container, rerender, getByText } = render(<Slider hasTooltip={on} value={validValue} name={validName} />);
     const tooltip = container.querySelectorAll('.tooltip-inner')[0];
 
     expect(tooltip)
@@ -78,15 +77,13 @@ describe('Check Slider attributes test collection', () => {
     expect(getByText(String(validValue)))
       .toBeInTheDocument();
 
-    rerender(<Slider hasTooltip={hideTooltip} value={validValue} name={validName} />);
+    rerender(<Slider hasTooltip={off} value={validValue} name={validName} />);
 
     expect(tooltip)
       .not
       .toBeInTheDocument();
   });
   test('is Slider work right with different labelType value?', () => {
-    const validValue = 50;
-    const validName = 'test';
     const currentLabelType = 'current';
     const minmaxLabelType = 'minmax';
     const { container, rerender, getByText } = render(<Slider labelType={currentLabelType} value={validValue} name={validName} />);
@@ -110,8 +107,6 @@ describe('Check Slider attributes test collection', () => {
       .toBeInTheDocument();
   });
   test('is Slider work right if max attributes set?', () => {
-    const validValue = 50;
-    const validName = 'test';
     const max = 60;
     const { container, getByText } = render(<Slider max={max} value={validValue} name={validName} />);
     const slider = container.querySelectorAll('.slider-handle')[0];
@@ -123,10 +118,8 @@ describe('Check Slider attributes test collection', () => {
       .toHaveAttribute('aria-valuemax', String(max));
   });
   test('is Slider work right if min attributes set?', () => {
-    const validValue = 50;
-    const validName = 'test';
     const min = 20;
-    const { container, getByText, debug } = render(<Slider min={min} value={validValue} name={validName} />);
+    const { container, getByText } = render(<Slider min={min} value={validValue} name={validName} />);
     const slider = container.querySelectorAll('.slider-handle')[0];
 
     expect(getByText(String(min)))
@@ -136,12 +129,10 @@ describe('Check Slider attributes test collection', () => {
       .toHaveAttribute('aria-valuemin', String(min));
   });
   test('is Slider work right if units attributes set?', () => {
-    const validValue = 4;
-    const validName = 'test';
     const { container } = render(<Slider hasTooltip unitsRender={() => 'pounds'} labelType="minmax" value={validValue} name={validName} />);
 
     expect(container.querySelectorAll('.tooltip-inner')[0].innerHTML)
-      .toEqual(String(4));
+      .toEqual(String(validValue));
 
     expect(container.querySelectorAll('.slider-label')[0].innerHTML)
       .toEqual('0 pounds');
@@ -163,11 +154,9 @@ describe('Check Slider attributes test collection', () => {
      * мне не удалось
      */
   });
-  test('is Slider work right if step attributes set?', () => {
+  test.skip('is Slider work right if step attributes set?', () => {
   });
   test('is Slider work right with different attributes _with50, _with30 etc set?', () => {
-    const validValue = 4;
-    const validName = 'test';
     const { container, rerender } = render(<Slider _width-50 value={validValue} name={validName} />);
 
     expect(container.querySelectorAll('.slider-wrapper')[0])
@@ -181,8 +170,6 @@ describe('Check Slider attributes test collection', () => {
 });
 describe('Check Slider event test collection', () => {
   test('is Slider work right with onChange event listener?', () => {
-    const validValue = 4;
-    const validName = 'test';
     const onChange = jest.fn();
     const { container } = render(<Slider value={validValue} name={validName} onChange={onChange} />);
     const slider = container.querySelectorAll('.slider-handle')[0];
@@ -216,8 +203,6 @@ describe('Check Slider event test collection', () => {
       }));
   });
   test('is Slider work right with onMove event listener?', () => {
-    const validValue = 4;
-    const validName = 'test';
     const onMove = jest.fn();
     const { container } = render(<Slider value={validValue} name={validName} onMove={onMove} />);
     const slider = container.querySelectorAll('.slider-handle')[0];
