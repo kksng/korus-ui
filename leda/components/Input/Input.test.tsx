@@ -144,42 +144,6 @@ describe('Input ATTRIBUTES', () => {
 
     expect(handleChange).lastCalledWith(eventMatcher);
   });
-
-  it.skip('should throw error if no predefined allowedSymbols found', () => {
-    const error = new Error('L.Input: no such predefined allowedSymbols - "lala-land"!');
-
-    const wrapper = render((
-      <Input allowedSymbols={/[abc]/} />
-    ));
-
-    expect(() => {
-      screen.getByRole('textbox').focus();
-
-      userEvent.type(screen.getByRole('textbox'), 'anything');
-
-      screen.getByRole('textbox').blur();
-
-      wrapper.debug();
-    }).toThrow(error);
-  });
-
-  it.skip('should throw error allowedSymbols is not string or RegExp', () => {
-    const error = new Error('L.Input: allowedSymbols prop accepts only predefined string or RegExp!');
-
-    const wrapper = render((
-      <Input allowedSymbols="numbers" />
-    ));
-
-    expect(() => {
-      screen.getByRole('textbox').focus();
-
-      userEvent.type(screen.getByRole('textbox'), 'anything');
-
-      screen.getByRole('textbox').blur();
-
-      wrapper.debug();
-    }).toThrow(error);
-  });
 });
 
 describe('Input VALIDATION', () => {

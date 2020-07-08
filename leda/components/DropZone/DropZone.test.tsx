@@ -93,91 +93,10 @@ describe('DropZone ATTRIBUTES', () => {
     expect(wrapper.find('div.dropzone-description').text()).toEqual('LETS DESCRIBE! Размер: до 100 Мб.');
   });
 
-  it.skip('should not upload if maxFiles is reached', () => {
-    // TODO: не работает из-за эвента дропзоны, починить
-    const wrapper = mount(<DropZone maxFilesNumber={1} onDrop={jest.fn()} onRemove={jest.fn()} />);
-
-    act(() => {
-      (wrapper.find('div.dropzone-content').props()).onDrop({ dataTransfer: { files: [firstFile] }, preventDefault: () => { } });
-    });
-
-    act(() => {
-      (wrapper.find('div.dropzone-content').props()).onDrop({ dataTransfer: { files: [secondFile] }, preventDefault: () => { } });
-    });
-  });
-
-  it.skip('should reject file if its size is bigger than maxSize', () => {
-    const wrapper = mount(<DropZone maxFileSize={20971520} fileSizeUnit="byte" onChange={jest.fn()} />);
-
-    (wrapper.find('div.dropzone-content').props()).onChange();
-
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it.skip('should reject file if its size is smaller than minSize', () => {
-    const wrapper = mount(<DropZone minFileSize={20000000} onDrop={jest.fn()} onRemove={jest.fn()} />);
-
-    (wrapper.find('div.dropzone-content').props()).onChange();
-  });
-
-  it.skip('should render dropped files', () => {
-    const wrapper = mount(<DropZone files={files} acceptedFilesRender={({ elementProps: { files: accepted } }) => accepted.map((item) => <Li>{item.name}</Li>)} onDrop={jest.fn()} onRemove={jest.fn()} />);
-
-    expect(wrapper.find('Li')).toHaveLength(2);
-
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
   it('should render width', () => {
     const wrapper = mount(<DropZone _width-20 onDrop={jest.fn()} onRemove={jest.fn()} />);
 
     expect(wrapper.find('div').first().getDOMNode().classList).toContain('width-20');
-  });
-
-  it.skip('should display error messages', () => {
-    const wrapper = mount(<DropZone onDrop={jest.fn()} showDroppedFiles={false} onRemove={jest.fn()} />);
-
-    wrapper.setProps({ minFileSize: 20000000 });
-
-    (wrapper.find('div.dropzone-content').props()).onDrop({ dataTransfer: { files: [firstFile] }, preventDefault: () => { } });
-
-    wrapper.update();
-
-    expect(wrapper.find('.txt-danger').last().text()).toEqual("'file1.pdf': - файл меньше допустимого размера");
-
-    wrapper.setProps({ minFileSize: undefined, maxFileSize: 20000000 });
-
-    (wrapper.find('div.dropzone-content').props()).onDrop({ dataTransfer: { files: [secondFile] }, preventDefault: () => { } });
-
-    wrapper.update();
-
-    expect(wrapper.find('.txt-danger').last().text()).toEqual("'cats.gif': - превышен максимальный размер файла");
-
-    wrapper.setProps({ maxFileSize: undefined, allowedFiles: 'image/*' });
-
-    (wrapper.find('div.dropzone-content').props()).onDrop({ dataTransfer: { files: [firstFile] }, preventDefault: () => { } });
-
-    wrapper.update();
-
-    expect(wrapper.find('.txt-danger').last().text()).toEqual("'file1.pdf': - недопустимый формат файла");
-
-    wrapper.setProps({ allowedFiles: undefined });
-
-    wrapper.setProps({ files: [firstFile] });
-
-    (wrapper.find('div.dropzone-content').props()).onDrop({ dataTransfer: { files: [firstFile] }, preventDefault: () => { } });
-
-    wrapper.update();
-
-    expect(wrapper.find('.txt-danger').last().text()).toEqual("'file1.pdf': - файл уже загружен");
-
-    wrapper.setProps({ maxFilesNumber: 1 });
-
-    (wrapper.find('div.dropzone-content').props()).onDrop({ dataTransfer: { files: [secondFile] }, preventDefault: () => { } });
-
-    wrapper.update();
-
-    expect(wrapper.find('.txt-danger').last().text()).toEqual('Превышено максимальное количество файлов. Максимум - 1. ');
   });
 
   it('should customize upload button', () => {

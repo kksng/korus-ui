@@ -329,16 +329,5 @@ describe('getIsSentenceIncludingWords', () => {
         ' lon    brit   capital',
       )).toBeTruthy();
     });
-    // todo: handle this case in the main function
-    it.skip('should return false for repeated words', () => {
-      expect(getIsSentenceIncludingWords(
-        'London is the capital of Great Britain',
-        'great great',
-      )).toBeFalsy();
-      expect(getIsSentenceIncludingWords(
-        'London is the capital of Great Britain',
-        'london is is',
-      )).toBeFalsy();
-    });
   });
 });

@@ -272,45 +272,4 @@ describe('DateRange quality test collection', () => {
         .toHaveValue(dateValue[index]);
     });
   });
-  test.skip('is DateRange work right if user set invalid date, enter a value less than the minMax value?', async () => {
-    /**
-     * ВВ
-     * В этом и в тесте на onChange value приходит равное = '', или пустой массив ['', '']
-     * В реальности же в комопоненту приходит все хорошо. Возможно это ограничения react-testing-library
-     */
-    const onEnter = jest.fn();
-    const onChange = jest.fn();
-    const onBlur = jest.fn();
-
-    const prevMin = '01.01.2020';
-
-    const { container } = render(<DateRange isOpen name={validName} min={min} max={max} onEnterPress={onEnter} onBlur={onBlur} onChange={onChange} />);
-    const inputA = container.querySelectorAll('input.datepicker-input')[0];
-
-    fireEvent.change(inputA, {
-      target: {
-        value: prevMin,
-      },
-    });
-
-    fireEvent.blur(inputA);
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-
-    expect(onChange)
-      .lastCalledWith(expect.objectContaining({
-        component: expect.objectContaining({
-          name: validName,
-          value: expect.arrayContaining(['', '']),
-        }),
-      }));
-
-    expect(onBlur)
-      .lastCalledWith(expect.objectContaining({
-        component: expect.objectContaining({
-          name: validName,
-          value: '',
-        }),
-      }));
-  });
 });

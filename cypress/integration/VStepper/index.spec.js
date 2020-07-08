@@ -21,28 +21,6 @@ describe('VStepper tests', () => {
       .eq(4)
       .should('have.text', 'Дополнительная информация'));
 
-    it.skip('Status texts should render', () => cy
-      .get('.v-stepper-status')
-      .first()
-      .should('have.text', 'Заполнено')
-      .should('have.css', 'color', 'rgb(23, 187, 79)')
-      .get('.v-stepper-status')
-      .eq(1)
-      .should('have.text', 'Заполнено')
-      .should('have.css', 'color', 'rgb(23, 187, 79)')
-      .get('.v-stepper-status')
-      .eq(2)
-      .should('have.text', 'В процессе')
-      .should('have.css', 'color', 'rgb(255, 137, 12)')
-      .get('.v-stepper-status')
-      .eq(3)
-      .should('have.text', 'Не заполнено')
-      .should('have.css', 'color', 'rgb(247, 20, 47)')
-      .get('.v-stepper-status')
-      .eq(4)
-      .should('have.text', 'Не заполнено')
-      .should('have.css', 'color', 'rgb(148, 148, 148)'));
-
     it('Current step should highlight', () => cy
       .get('.v-stepper-wrapper .v-stepper-step')
       .eq(2)

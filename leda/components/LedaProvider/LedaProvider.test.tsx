@@ -37,22 +37,6 @@ describe('LEDA THEME PROVIDER', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it.skip('should call onRemove handler', () => {
-    const wrapper = mount(
-      <Leda theme={theme}>
-        <Slider value={50} hasTooltip />
-      </Leda>,
-    );
-
-    expect(wrapper.find('div.custom-wrapper-slider')).toHaveLength(1);
-
-    expect(wrapper.find('div.custom-container-slider')).toHaveLength(1);
-
-    // expect(wrapper.find('div.custom-handle-slider')).toHaveLength(1);
-
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
   it('should be isOpen', () => {
     const data = [
       { txt: 'text1', val: 'value1' },

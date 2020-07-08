@@ -274,12 +274,6 @@ describe('MultiSelect attributes test collection', () => {
       .toHaveLength(1);
   });
   // eslint-disable-next-line jest/expect-expect
-  test.skip('is Multiselect with maxSelected work right?', () => {
-    /**
-     * ВВ
-     * не работает
-     */
-  });
   test('is Multiselect work right with maxTags attributes?', () => {
     const maxTags = 2;
     const selectText = `Выбрано ${validValue.length}`;
@@ -306,13 +300,6 @@ describe('MultiSelect attributes test collection', () => {
       .toHaveAttribute('name', validName);
   });
   // eslint-disable-next-line jest/expect-expect
-  test.skip('is Multiselect work right with noSuggestionsRender attributes?', () => {
-    /**
-     * ВВ
-     * На момент написания тестов, не было понятно как это свойства работает.
-     * Артем был недоступен. Проконсультировтаься было не у кого.
-     */
-  });
   test('is Multiselect work right with placeholder?', () => {
     const { getByRole } = render(
       <MultiSelect
@@ -323,13 +310,6 @@ describe('MultiSelect attributes test collection', () => {
       .toHaveAttribute('placeholder', validPlaceholder);
   });
   // eslint-disable-next-line jest/expect-expect
-  test.skip('is Multiselect work right with shouldHideInput?', () => {
-    /**
-     * ВВ
-     * На момент написания тестов, не было понятно как это свойства работает.
-     * Артем был недоступен. Проконсультировтаься было не у кого.
-     */
-  });
   test('is Multiselect work right with shouldKeepSuggestions?', () => {
     const { container } = render(
       <MultiSelect
