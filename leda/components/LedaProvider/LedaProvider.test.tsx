@@ -4,7 +4,6 @@ import toJson from 'enzyme-to-json';
 
 import { Leda } from './index';
 import { ButtonGroup } from '../ButtonGroup';
-import { Slider } from '../Slider';
 import { DropDownSelect } from '../DropDownSelect';
 
 const theme = {
