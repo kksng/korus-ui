@@ -52,7 +52,26 @@ export const clearButtonClickHandlerCreator = ({
   if (!isValueControlled) setStateValue('');
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const suggestionClickHandlerCreator = ({
+  props,
+  lastCorrectValue,
+  setLastCorrectValue,
   data,
   isValueControlled,
   name,
@@ -62,6 +81,9 @@ export const suggestionClickHandlerCreator = ({
   setHighlightedSuggestion,
   textField,
 }: {
+  props: AutoCompleteProps,
+  lastCorrectValue: string,
+  setLastCorrectValue: SetState<string>,
   data: Suggestion[],
   textField?: string,
   name?: string,
@@ -71,6 +93,8 @@ export const suggestionClickHandlerCreator = ({
   setIsFocused: SetState<boolean>,
   setHighlightedSuggestion: SetState<Suggestion>,
 }): CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget> => (event) => {
+  const { shouldCorrectValue } = props;
+
   if (isObject(event.target.value) && textField === undefined) {
     // todo handle error
     return;
@@ -84,6 +108,20 @@ export const suggestionClickHandlerCreator = ({
     ? event.target.value as DataObject
     : getSuggestionFromValue({ data, value, textField });
 
+  setHighlightedSuggestion(suggestion);
+
+  if (shouldCorrectValue) {
+    correctValue({
+      event,
+      isValueControlled,
+      lastCorrectValue,
+      props,
+      setLastCorrectValue,
+      setStateValue,
+      value,
+    });
+  }
+
   const customEvent: ChangeEvent = {
     ...event,
     component: {
@@ -94,12 +132,13 @@ export const suggestionClickHandlerCreator = ({
     },
   };
 
-  setHighlightedSuggestion(suggestion);
-
   if (isFunction(onChange)) onChange(customEvent);
+
   if (!isValueControlled) setStateValue(value);
+
   setIsFocused(false);
 };
+
 
 export const inputChangeHandlerCreator = ({
   data,
@@ -173,10 +212,15 @@ export const inputBlurHandlerCreator = ({
     });
   }
 
+  // ВВ
+  // И в onBlur отправить отправить customEvent.
+  // в случае, если shouldCorrectValue, отправляем lastCorrectValue
+  // если оставить старое, то в onBlur будет приходить то, что человек изменил
+  // а не автоматически скорректирвоанное значение
   const customEvent: BlurEvent = {
     ...event,
     component: {
-      value: event.target.value,
+      value: shouldCorrectValue ? lastCorrectValue : event.target.value,
       name,
       isValid,
     },
@@ -206,6 +250,8 @@ export const inputFocusHandlerCreator = ({
 };
 
 export const inputKeyDownHandlerCreator = ({
+  lastCorrectValue,
+  setLastCorrectValue,
   highlightedSuggestion,
   isSuggestionsListOpen,
   isValueControlled,
@@ -216,6 +262,8 @@ export const inputKeyDownHandlerCreator = ({
   setStateValue,
   suggestions,
 }: {
+  lastCorrectValue: string,
+  setLastCorrectValue: SetState<string>,
   highlightedSuggestion: Suggestion,
   isSuggestionsListOpen: boolean,
   isValueControlled: boolean,
@@ -227,6 +275,7 @@ export const inputKeyDownHandlerCreator = ({
   suggestions: Suggestion[],
 }): React.KeyboardEventHandler<HTMLInputElement> => (event) => {
   const {
+    shouldCorrectValue,
     onChange,
     onKeyDown,
     onEnterPress,
@@ -290,6 +339,17 @@ export const inputKeyDownHandlerCreator = ({
       // the dropdown list is open, enter press should choose a value
       if (isSuggestionsListOpen) setIsFocused(false);
 
+      if (shouldCorrectValue) {
+        correctValue({
+          event,
+          isValueControlled,
+          lastCorrectValue,
+          props,
+          setLastCorrectValue,
+          setStateValue,
+          value,
+        });
+      }
       const customEvent: ChangeEvent = {
         ...event,
         component: {

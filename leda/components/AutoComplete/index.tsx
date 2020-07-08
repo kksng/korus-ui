@@ -97,7 +97,6 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     stateValue,
   }), [highlightedSuggestion, isFocused, lastCorrectValue, selectedSuggestion, stateValue]);
 
-
   const {
     isValid, validateCurrent, InvalidMessage,
   } = useValidation(props, {
@@ -137,16 +136,38 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const inputChangeHandler = inputChangeHandlerCreator({
-    data, textField, name, onChange, isValueControlled, setSelectedSuggestion, setStateValue,
+    data,
+    textField,
+    name,
+    onChange,
+    isValueControlled,
+    setSelectedSuggestion,
+    setStateValue,
   });
   const suggestionClickHandler = suggestionClickHandlerCreator({
-    data, textField, name, onChange, isValueControlled, setHighlightedSuggestion, setStateValue, setIsFocused,
+    props,
+    lastCorrectValue,
+    setLastCorrectValue,
+    data,
+    textField,
+    name,
+    onChange,
+    isValueControlled,
+    setHighlightedSuggestion,
+    setStateValue,
+    setIsFocused,
   });
   const clearButtonClickHandler = clearButtonClickHandlerCreator({
-    inputRef, name, onChange, isValueControlled, setStateValue, isDisabled,
+    inputRef,
+    name,
+    onChange,
+    isValueControlled,
+    setStateValue,
+    isDisabled,
   });
   const inputFocusHandler = inputFocusHandlerCreator({
-    onFocus, setIsFocused,
+    onFocus,
+    setIsFocused,
   });
   const inputBlurHandler = inputBlurHandlerCreator({
     isValueControlled,
@@ -159,6 +180,8 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     value,
   });
   const inputKeyDownHandler = inputKeyDownHandlerCreator({
+    lastCorrectValue,
+    setLastCorrectValue,
     highlightedSuggestion,
     isSuggestionsListOpen,
     isValueControlled,
