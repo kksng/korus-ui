@@ -1,270 +1,529 @@
 // @ts-nocheck
 import React from 'react';
-import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
+import {
+  render,
+  fireEvent,
+} from '@testing-library/react';
 import { MultiSelect } from './index';
 
-describe('MultiSelect SNAPSHOTS', () => {
-  it('should render basic usage', () => {
-    const wrapper = mount(
-      <MultiSelect data={['1', '2', '3']} onChange={jest.fn()} value={['1']} />,
-    );
+const validData = [
+  'Amsterdam',
+  'Berlin',
+  'Prague',
+  'Saint-Petersburg',
+];
+const validValue = [
+  'Berlin',
+  'Saint-Petersburg',
+];
+const validName = 'test';
+const validPlaceholder = 'placeholder';
+const on = true;
+const off = false;
 
-    expect(wrapper).toMatchSnapshot();
+describe('MultiSelect snapshots test collection', () => {
+  test('is Multiselect component render right?', () => {
+    const { container } = render(<MultiSelect placeholder={validPlaceholder} name={validName} />);
+
+    expect(container)
+      .toMatchSnapshot();
   });
+  test('is Multiselect component render right with some data?', () => {
+    const { container } = render(<MultiSelect data={validData} name={validName} isOpen />);
 
-  it('should render value in controllable mode', () => {
-    const wrapper = mount(
-      <MultiSelect data={['1', '2', '3']} value={['1']} onChange={jest.fn()} />,
-    );
-
-    expect(wrapper.props().value).toEqual(['1']);
-
-    expect(wrapper).toMatchSnapshot();
-
-    wrapper.setProps({ value: ['2'] });
-
-    expect(wrapper.props().value).toEqual(['2']);
-
-    expect(wrapper).toMatchSnapshot();
+    expect(container)
+      .toMatchSnapshot();
   });
+  test('is Multiselect component render right with some data and some selected items?', () => {
+    const { container } = render(<MultiSelect value={validValue} data={validData} name={validName} isOpen />);
 
-  it('should render data in controllable mode', () => {
-    const dataString = ['value1', 'value2', 'value3'];
-    const dataObject = [
-      { text: 'text1', value: 'value1' },
-      { text: 'text2', value: 'value2' },
-      { text: 'text3', value: 'value3' },
+    expect(container)
+      .toMatchSnapshot();
+  });
+  test('is Multiselect component render right with complex data?', () => {
+    const textField = 'text';
+    const complexData = [
+      {
+        id: 1,
+        text: 'Amsterdam',
+      },
+      {
+        id: 2,
+        text: 'Berlin',
+      },
+      {
+        id: 3,
+        text: 'Prague',
+      },
+      {
+        id: 4,
+        text: 'Saint-Petersburg',
+      },
     ];
-
-    const wrapper = mount(
-      <MultiSelect data={dataString} onChange={jest.fn()} value={['value1']} />,
+    const { container } = render(
+      <MultiSelect
+        isOpen
+        data={complexData}
+        textField={textField}
+      />,
     );
-
-    expect(wrapper.props().data).toHaveLength(3);
-
-    wrapper.props().data.forEach((el, index) => {
-      expect(el).toEqual(dataString[index]);
-    });
-
-    expect(wrapper).toMatchSnapshot();
-
-    wrapper.setProps({ data: dataObject });
-
-    wrapper.props().data.forEach((el, index) => {
-      expect(el.text).toEqual(dataObject[index].text);
-
-      expect(el.value).toEqual(dataObject[index].value);
-    });
-
-    expect(wrapper).toMatchSnapshot();
+    expect(container)
+      .toMatchSnapshot();
   });
 });
-
-describe('MultiSelect ATTRIBUTES', () => {
-  it('should list isOpen', () => {
-    const wrapper = mount(
-      <MultiSelect data={['1', '2', '3']} isOpen onChange={jest.fn()} value={['1']} />,
-    );
-
-    expect(wrapper.find('SuggestionItem')).toHaveLength(2);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should list loading', () => {
-    const wrapper = mount(
-      <MultiSelect data={['1', '2', '3']} isLoading isOpen onChange={jest.fn()} value={['1']} />,
-    );
-
-    expect(wrapper.find('SuggestionList Loader')).toHaveLength(1);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it.skip('should render templates', () => {
-    const wrapper = mount(
+describe('MultiSelect attributes test collection', () => {
+  test('is Multiselect work right with autoComplete?', () => {
+    const autoCompleteOn = 'on';
+    const autoCompleteOff = 'off';
+    const { getByRole, rerender } = render(
       <MultiSelect
-        data={['1', '2', '3']}
         isOpen
-        onChange={jest.fn()}
-        value={['1']}
-        suggestionsFooterRender={() => <span className="footer">Footer</span>}
-        suggestionsHeaderRender={() => <span className="header">Header</span>}
+        autoComplete={autoCompleteOn}
+        name={validName}
+        data={validData}
       />,
     );
 
-    expect(wrapper.find('.footer')).toHaveLength(1);
+    expect(getByRole('textbox'))
+      .toHaveAttribute('autocomplete', autoCompleteOn);
 
-    expect(wrapper.find('.header')).toHaveLength(1);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should render noData template', () => {
-    const wrapper = mount(
+    rerender(
       <MultiSelect
-        data={['1', '2', '3']}
         isOpen
-        onChange={jest.fn()}
-        value={['1']}
+        autoComplete={autoCompleteOff}
+        name={validName}
+        data={validData}
       />,
     );
 
-    expect(wrapper).toMatchSnapshot();
-
-    act(() => {
-      wrapper.find('Input').props().onChange({ target: { value: 'test' } });
-    });
-
-    wrapper.update();
-
-    expect(wrapper.find('NoSuggestions div.nodata').text()).toEqual('Ничего не найдено');
-
-    expect(wrapper).toMatchSnapshot();
+    expect(getByRole('textbox'))
+      .toHaveAttribute('autocomplete', autoCompleteOff);
   });
-});
-
-describe('MultiSelect HANDLERS', () => {
-  it('should test onFocus', () => {
-    const onFocusHandler = jest.fn();
-
-    const wrapper = mount(
+  test('is Multiselect work right with canSelectAll?', () => {
+    const validSelectAllBtn = '[object Object]'; // сейчас в компоненте ошибка!
+    const { container, getByText } = render(
       <MultiSelect
-        data={['1', '2', '3']}
         isOpen
-        onChange={jest.fn()}
-        value={['1']}
-        name="auto"
-        onFocus={onFocusHandler}
+        shouldKeepSuggestions
+        canSelectAll
+        name={validName}
+        data={validData}
       />,
     );
 
-    act(() => {
-      wrapper.find('Input').props().onFocus();
-    });
+    expect(getByText(validSelectAllBtn))
+      .toBeInTheDocument();
 
-    const [[event]] = onFocusHandler.mock.calls;
+    fireEvent.click(getByText(validSelectAllBtn));
 
-    expect(onFocusHandler).toHaveBeenCalled();
-
-    expect(event.component.name).toEqual('auto');
-
-    expect(wrapper.find('TagsContainer')).toHaveLength(1);
-
-    expect(wrapper).toMatchSnapshot();
+    expect(container.querySelectorAll('.tags-item'))
+      .toHaveLength(validData.length);
   });
-
-  it('should test onBlur', () => {
-    const onBlurHandler = jest.fn();
-
-    const wrapper = mount(
-      <MultiSelect data={['1', '2', '3']} value={['1']} onChange={jest.fn()} name="auto" onBlur={onBlurHandler} />,
-    );
-
-    expect(wrapper).toMatchSnapshot();
-
-    wrapper.find('Input').props().onBlur();
-
-    const [[event]] = onBlurHandler.mock.calls;
-
-    expect(onBlurHandler).toHaveBeenCalled();
-
-    expect(event.component.name).toEqual('auto');
-
-    expect(wrapper.find('TagsContainer')).toHaveLength(1);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should test onChange', () => {
-    let val = ['2'];
-
-    const onChangeHandler = (ev) => {
-      const { target } = ev;
-      val = [...val, target.value];
-      return val;
-    };
-
-    const wrapper = mount(
+  test('is Multiselect work right with hasCheckBoxes?', () => {
+    const checkboxOn = true;
+    const checkboxOff = false;
+    const shouldKeepSuggestions = true;
+    const { container, rerender } = render(
       <MultiSelect
-        isOpen
-        data={['1', '2', '3']}
-        value={val}
-        name="auto"
-        onChange={(ev) => wrapper.setProps({ value: onChangeHandler(ev) })}
+        hasCheckBoxes={checkboxOff}
+        isOpen={on}
+        name={validName}
+        data={validData}
       />,
     );
 
-    wrapper.find('Suggestion').first().simulate('click');
+    expect(container.querySelectorAll('input.checkbox-input'))
+      .toHaveLength(0);
 
-    expect(wrapper.find('Tag')).toHaveLength(2);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should test onDeselect', () => {
-    let val = ['1', '2'];
-
-    const onChangeHandler = (ev) => {
-      val = ev.component.value;
-      return val;
-    };
-
-    const wrapper = mount(
+    rerender(
       <MultiSelect
-        isOpen
-        data={['1', '2', '3']}
-        value={val}
-        name="auto"
-        onChange={(ev) => wrapper.setProps({
-          value: onChangeHandler(ev),
-        })}
+        shouldKeepSuggestions={shouldKeepSuggestions}
+        hasCheckBoxes={checkboxOn}
+        isOpen={on}
+        name={validName}
+        data={validData}
       />,
     );
 
-    wrapper.find('Suggestion').last().simulate('click');
-
-    expect(wrapper.find('Tag')).toHaveLength(3);
-
-    expect(wrapper).toMatchSnapshot();
-
-    wrapper.find('Tag Icon').first().simulate('click');
-
-    wrapper.find('Tag Icon').last().simulate('click');
-
-    expect(wrapper.find('Tag')).toHaveLength(1);
-
-    expect(wrapper).toMatchSnapshot();
+    expect(container.querySelectorAll('input.checkbox-input'))
+      .toHaveLength(validData.length);
   });
-
-  it('should test onDeselect by clear button', () => {
-    let val = ['1', '2', '3'];
-
-    const onChangeHandler = (ev) => {
-      val = ev.component.value;
-      return val;
-    };
-
-    const wrapper = mount(
+  test('is Multiselect work right with hasClearButton?', () => {
+    const { container } = render(
       <MultiSelect
-        isOpen
-        data={['1', '2', '3']}
-        value={val}
-        name="auto"
         hasClearButton
-        onChange={(ev) => wrapper.setProps({
-          value: onChangeHandler(ev),
-        })}
+        value={validValue}
+        isOpen
+        name={validName}
+        data={validData}
       />,
     );
 
-    expect(wrapper.find('Icon')).toHaveLength(3);
+    expect(container.querySelectorAll('.multiselect-clear-icon'))
+      .toHaveLength(1);
+  });
+  test('is Multiselect work right with isDisabled attributes?', () => {
+    const { container, getByRole } = render(
+      <MultiSelect
+        hasClearButton
+        isDisabled
+        value={validValue}
+        name={validName}
+        data={validData}
+      />,
+    );
+    const clearAllBtn = container.querySelectorAll('.multiselect-clear-icon')[0];
 
-    wrapper.find('Tag Icon span').last().simulate('click');
+    expect(getByRole('textbox'))
+      .toHaveAttribute('disabled', '');
 
-    expect(wrapper.find('Tag')).toHaveLength(2);
+    expect(container.querySelectorAll('.multiselect-input-wrapper.disabled')[0])
+      .toBeInTheDocument();
 
-    expect(wrapper).toMatchSnapshot();
+    fireEvent.click(clearAllBtn);
+
+    expect(container.querySelectorAll('.tags-item'))
+      .toHaveLength(validValue.length);
+  });
+  test('is Miltiselect work right with isLoading attributes?', () => {
+    const { container, rerender } = render(
+      <MultiSelect
+        isOpen
+        isLoading={on}
+        value={validValue}
+        name={validName}
+        data={validData}
+      />,
+    );
+    expect(container.querySelectorAll('span.loader-element')[0])
+      .toBeInTheDocument();
+
+    rerender(
+      <MultiSelect
+        isOpen
+        isLoading={off}
+        value={validValue}
+        name={validName}
+        data={validData}
+      />,
+    );
+
+    expect(container.querySelectorAll('span.loader-element')[0])
+      .toBe(undefined);
+  });
+  test('is Multiselect work right with isOpen attributes?', () => {
+    const { container, rerender } = render(
+      <MultiSelect
+        isOpen={on}
+        value={validValue}
+        name={validName}
+        data={validData}
+      />,
+    );
+
+    expect(container.querySelectorAll('.suggestion-wrapper.visible')[0])
+      .toBeInTheDocument();
+
+    rerender(
+      <MultiSelect
+        isOpen={off}
+        value={validValue}
+        name={validName}
+        data={validData}
+      />,
+    );
+
+    expect(container.querySelectorAll('.suggestion-wrapper.visible')[0])
+      .toBe(undefined);
+  });
+  test('is Multiselect work right with itemRenderer attributes?', () => {
+    const validItemClass = 'multiselect-item-class';
+    const validItemText = 'multiselect-item-text';
+
+    const { container, getAllByText } = render(
+      <MultiSelect
+        isOpen
+        name={validName}
+        data={validData}
+        itemRender={() => <span className={validItemClass}>{validItemText}</span>}
+      />,
+    );
+
+    expect(container.querySelectorAll(`.${validItemClass}`))
+      .toHaveLength(validData.length);
+
+    expect(getAllByText(validItemText))
+      .toHaveLength(validData.length);
+  });
+  test('is Multiselect with listRender work right?', () => {
+    const validListClass = 'multiselect-list-class';
+    const validListText = 'multiselect-list-text';
+
+    const { container, getAllByText } = render(
+      <MultiSelect
+        isOpen
+        name={validName}
+        data={validData}
+        listRender={() => <span className={validListClass}>{validListText}</span>}
+      />,
+    );
+    expect(container.querySelectorAll(`.${validListClass}`))
+      .toHaveLength(1);
+
+    expect(getAllByText(validListText))
+      .toHaveLength(1);
+  });
+  // eslint-disable-next-line jest/expect-expect
+  test.skip('is Multiselect with maxSelected work right?', () => {
+    /**
+     * ВВ
+     * не работает
+     */
+  });
+  test('is Multiselect work right with maxTags attributes?', () => {
+    const maxTags = 2;
+    const selectText = `Выбрано ${validValue.length}`;
+
+    const { getByText } = render(
+      <MultiSelect
+        maxTags={maxTags}
+        isOpen
+        name={validName}
+        data={validData}
+        value={validValue}
+      />,
+    );
+    expect(getByText(selectText))
+      .toBeInTheDocument();
+  });
+  test('is Multiselect work right with name attributes?', () => {
+    const { getByRole } = render(
+      <MultiSelect
+        name={validName}
+      />,
+    );
+    expect(getByRole('textbox'))
+      .toHaveAttribute('name', validName);
+  });
+  // eslint-disable-next-line jest/expect-expect
+  test.skip('is Multiselect work right with noSuggestionsRender attributes?', () => {
+    /**
+     * ВВ
+     * На момент написания тестов, не было понятно как это свойства работает.
+     * Артем был недоступен. Проконсультировтаься было не у кого.
+     */
+  });
+  test('is Multiselect work right with placeholder?', () => {
+    const { getByRole } = render(
+      <MultiSelect
+        placeholder={validPlaceholder}
+      />,
+    );
+    expect(getByRole('textbox'))
+      .toHaveAttribute('placeholder', validPlaceholder);
+  });
+  // eslint-disable-next-line jest/expect-expect
+  test.skip('is Multiselect work right with shouldHideInput?', () => {
+    /**
+     * ВВ
+     * На момент написания тестов, не было понятно как это свойства работает.
+     * Артем был недоступен. Проконсультировтаься было не у кого.
+     */
+  });
+  test('is Multiselect work right with shouldKeepSuggestions?', () => {
+    const { container } = render(
+      <MultiSelect
+        isOpen
+        value={validValue}
+        data={validData}
+        shouldKeepSuggestions
+      />,
+    );
+    expect(container.querySelectorAll('.suggestion-item.selected'))
+      .toHaveLength(validValue.length);
+  });
+  test('is Multiselect work right with shouldSelectedGoFirst?', () => {
+    const { container } = render(
+      <MultiSelect
+        isOpen
+        value={validValue}
+        data={validData}
+        shouldSelectedGoFirst
+        shouldKeepSuggestions
+      />,
+    );
+    const firstElement = container.querySelectorAll('.suggestion-item.selected')[0];
+    const nextElement = firstElement.nextSibling;
+
+    expect(firstElement)
+      .toHaveClass('selected');
+
+    expect(nextElement)
+      .toHaveClass('selected');
+  });
+  test('is Multiselect work right with textField and complex data?', () => {
+    const invalidTextRender = '[object Object]';
+    const textField = 'text';
+    const complexData = [
+      {
+        id: 1,
+        text: 'Amsterdam',
+      },
+      {
+        id: 2,
+        text: 'Berlin',
+      },
+      {
+        id: 3,
+        text: 'Prague',
+      },
+      {
+        id: 4,
+        text: 'Saint-Petersburg',
+      },
+    ];
+    const { queryAllByText, rerender } = render(
+      <MultiSelect
+        isOpen
+        data={complexData}
+      />,
+    );
+    expect(queryAllByText(invalidTextRender))
+      .toHaveLength(complexData.length);
+
+    rerender(
+      <MultiSelect
+        isOpen
+        data={complexData}
+        textField={textField}
+      />,
+    );
+
+    expect(queryAllByText(invalidTextRender))
+      .toHaveLength(0);
+  });
+  test('is Multiselect work right with tagRender?', () => {
+    const validTagClass = 'multiselect-tag-class';
+    const validTagText = 'multiselect-tag-text';
+    const { container, getAllByText } = render(
+      <MultiSelect
+        isOpen
+        value={validValue}
+        tagRender={() => <span className={validTagClass}>{validTagText}</span>}
+        data={validData}
+      />,
+    );
+    expect(container.querySelectorAll(`.${validTagClass}`))
+      .toHaveLength(validValue.length);
+
+    expect(getAllByText(validTagText))
+      .toHaveLength(validValue.length);
+  });
+  test('is Multiselect work right with tagsUnionRender?', () => {
+    const validTagClass = 'multiselect-tag-class';
+    const validTagText = 'multiselect-tag-text';
+    const maxTags = 1;
+    const { container, getAllByText } = render(
+      <MultiSelect
+        isOpen
+        value={validValue}
+        maxTags={maxTags}
+        tagsUnionRender={() => <span className={validTagClass}>{validTagText}</span>}
+        data={validData}
+      />,
+    );
+    expect(container.querySelectorAll(`.${validTagClass}`))
+      .toHaveLength(1);
+
+    expect(getAllByText(validTagText))
+      .toHaveLength(1);
+  });
+  test('is Multiselect work right with wrapperRender?', () => {
+    const validWrapperClass = 'multiselect-wrapper-class';
+    const validWrapperText = 'multiselect-wrapper-text';
+    const { container, getAllByText } = render(
+      <MultiSelect
+        isOpen
+        value={validValue}
+        wrapperRender={() => <span className={validWrapperClass}>{validWrapperText}</span>}
+        data={validData}
+      />,
+    );
+    expect(container.querySelectorAll(`.${validWrapperClass}`))
+      .toHaveLength(1);
+
+    expect(getAllByText(validWrapperText))
+      .toHaveLength(1);
+  });
+});
+describe('Multiselect events test collection', () => {
+  test('is Multiselect work right with onBlur?', () => {
+    const onBlur = jest.fn();
+    const { getByRole } = render(
+      <MultiSelect
+        onBlur={onBlur}
+        name={validName}
+        value={validValue}
+        data={validData}
+      />,
+    );
+    const input = getByRole('textbox');
+
+    fireEvent.focus(input);
+    fireEvent.blur(input);
+
+    expect(onBlur)
+      .toBeCalledTimes(1);
+
+    expect(onBlur)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: expect.arrayContaining(validValue),
+        }),
+      }));
+  });
+  test('is Multiselect work right with onChange?', () => {
+    const onChange = jest.fn();
+    const { container, getByText } = render(
+      <MultiSelect
+        isOpen
+        onChange={onChange}
+        name={validName}
+        data={validData}
+      />,
+    );
+    const firstValueEl = container.querySelectorAll('.suggestion-item')[0];
+
+    fireEvent.click(firstValueEl);
+
+    expect(getByText(validData[0]))
+      .toBeInTheDocument();
+  });
+  test('is Multiselect work right with onFocus?', () => {
+    const onFocus = jest.fn();
+    const { getByRole } = render(
+      <MultiSelect
+        onFocus={onFocus}
+        name={validName}
+        value={validValue}
+        data={validData}
+      />,
+    );
+    const input = getByRole('textbox');
+
+    fireEvent.focus(input);
+    fireEvent.blur(input);
+
+    expect(onFocus)
+      .toBeCalledTimes(1);
+
+    expect(onFocus)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: expect.arrayContaining(validValue),
+        }),
+      }));
   });
 });

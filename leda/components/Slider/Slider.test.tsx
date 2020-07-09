@@ -1,130 +1,228 @@
-// @ts-nocheck
 import React from 'react';
-import toJson from 'enzyme-to-json';
-import { mount } from 'enzyme';
+import {
+  render,
+  fireEvent,
+} from '@testing-library/react';
+
 import { Slider } from './index';
 
-describe('Slider SNAPSHOTS', () => {
-  it('should render', () => {
-    const wrapper = mount(<Slider />);
+const validName = 'test';
+const validValue = 50;
+const on = true;
+const off = false;
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+describe('Check Slider snapshots collection', () => {
+  test('is Slider render right?', () => {
+    const { container } = render(<Slider name={validName} />);
+
+    expect(container.firstChild)
+      .toMatchSnapshot();
   });
+  test('is Slider render right if isDisabled set true?', () => {
+    const { container } = render(<Slider isDisabled name={validName} />);
+    const elem = container.querySelectorAll('.slider-container.disabled')[0];
 
-  it.skip('should render controllable mode', () => {
-    const wrapper = mount(<Slider value={50} hasTooltip />);
+    expect(elem)
+      .toBeInTheDocument();
 
-    expect(wrapper.find('.tooltip-inner').text()).toEqual('50');
-
-    expect(toJson(wrapper)).toMatchSnapshot();
-
-    wrapper.setProps({ value: 65 });
-
-    expect(wrapper.find('.tooltip-inner').text()).toEqual('65');
-
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container.firstChild)
+      .toMatchSnapshot();
   });
+  test('is Slider render right if set value?', () => {
+    const { container } = render(<Slider value={50} name={validName} />);
+    const slider = container.querySelectorAll('.slider-handle')[0];
 
-  it('should render disabled state', () => {
-    const wrapper = mount(<Slider value={50} isDisabled />);
+    expect(slider)
+      .toHaveAttribute('aria-valuemax', '100');
 
-    expect(wrapper.find('ReactSlider').props().disabled).toBeTruthy();
+    expect(slider)
+      .toHaveAttribute('aria-valuemin', '0');
 
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-});
+    expect(slider)
+      .toHaveAttribute('aria-valuenow', '50');
 
-describe('Slider HANDLERS', () => {
-  it('should trigger onChange handler', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(<Slider onChange={onChange} />);
-
-    wrapper.find('ReactSlider').props().onAfterChange(50);
-
-    expect(onChange).toHaveBeenCalled();
-  });
-
-  it('should have correct event format', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(<Slider name="sliiiiizeren" onChange={onChange} />);
-
-    wrapper.find('ReactSlider').props().onAfterChange(50);
-
-    expect(onChange).toHaveBeenCalled();
-
-    const [[event]] = onChange.mock.calls;
-
-    expect(event.component.value).toEqual(50);
-
-    expect(event.component.name).toEqual('sliiiiizeren');
+    expect(container.firstChild)
+      .toMatchSnapshot();
   });
 });
+describe('Check Slider attributes test collection', () => {
+  test('is Slider work right if isDisabled attrubites set?', () => {
+    const onFocus = jest.fn();
+    const { container } = render(<Slider isDisabled onFocus={onFocus} name={validName} />);
+    const wrapper = container.querySelectorAll('.slider-container')[0];
 
-describe.skip('Slider ATTRIBUTES', () => {
-  it('should accept defaultValue', () => {
-    const wrapper = mount(<Slider defaultValue={20} hasTooltip />);
+    expect(wrapper)
+      .toHaveClass('disabled');
 
-    expect(wrapper.find('.tooltip-inner').text()).toEqual('20');
+    fireEvent.focus(wrapper);
+
+    expect(wrapper)
+      .not
+      .toHaveFocus();
   });
+  test('is Slider work right if defaultValue set?', () => {
+    const { container } = render(<Slider defaultValue={validValue} name={validName} />);
+    const slider = container.querySelectorAll('.slider-handle')[0];
 
-  it.skip('should have units', () => {
-    const wrapper = mount(<Slider
-      labelType="minmax"
-      unitsRender={() => 'pounds'}
-      value={4}
-      hasTooltip
-    />);
-
-    expect(wrapper.find('.tooltip-inner').text()).toEqual('4');
-
-    expect(wrapper.find('.slider-label').first().text()).toEqual('0 pounds');
-
-    expect(wrapper.find('.slider-label').last().text()).toEqual('100 pounds');
+    expect(slider)
+      .toHaveAttribute('aria-valuenow', String(validValue));
   });
+  test('is Slider work right if hasTooltip set?', () => {
+    const { container, rerender, getByText } = render(<Slider hasTooltip={on} value={validValue} name={validName} />);
+    const tooltip = container.querySelectorAll('.tooltip-inner')[0];
 
-  it('should have max limit', () => {
-    const wrapper = mount(<Slider value={4} labelType="minmax" />);
+    expect(tooltip)
+      .toBeInTheDocument();
 
-    expect(wrapper.find('.slider-label').last().text()).toEqual('100 ');
+    expect(getByText(String(validValue)))
+      .toBeInTheDocument();
 
-    wrapper.setProps({ max: 10 });
+    rerender(<Slider hasTooltip={off} value={validValue} name={validName} />);
 
-    expect(wrapper.find('.slider-label').last().text()).toEqual('10 ');
-
-    expect(wrapper.find('ReactSlider').props().max).toEqual(10);
+    expect(tooltip)
+      .not
+      .toBeInTheDocument();
   });
+  test('is Slider work right with different labelType value?', () => {
+    const currentLabelType = 'current';
+    const minmaxLabelType = 'minmax';
+    const { container, rerender, getByText } = render(<Slider labelType={currentLabelType} value={validValue} name={validName} />);
+    const label = container.querySelectorAll('.slider-label')[0];
 
-  it('should have min limit', () => {
-    const wrapper = mount(<Slider value={4} labelType="minmax" />);
+    expect(label)
+      .toBeInTheDocument();
 
-    expect(wrapper.find('.slider-label').first().text()).toEqual('0 ');
+    expect(getByText(String(validValue)))
+      .toBeInTheDocument();
 
-    wrapper.setProps({ min: 10 });
+    rerender(<Slider labelType={minmaxLabelType} value={validValue} name={validName} />);
 
-    expect(wrapper.find('.slider-label').first().text()).toEqual('10 ');
+    expect(container.querySelectorAll('.slider-label'))
+      .toHaveLength(2);
 
-    expect(wrapper.find('ReactSlider').props().min).toEqual(10);
+    expect(getByText('0'))
+      .toBeInTheDocument();
+
+    expect(getByText('100'))
+      .toBeInTheDocument();
   });
+  test('is Slider work right if max attributes set?', () => {
+    const max = 60;
+    const { container, getByText } = render(<Slider max={max} value={validValue} name={validName} />);
+    const slider = container.querySelectorAll('.slider-handle')[0];
 
-  it('should accept minDistance', () => {
-    const wrapper = mount(<Slider value={[4, 15]} minRange={5} />);
+    expect(getByText(String(max)))
+      .toBeInTheDocument();
 
-    expect(wrapper.find('ReactSlider').props().minDistance).toEqual(5);
+    expect(slider)
+      .toHaveAttribute('aria-valuemax', String(max));
   });
+  test('is Slider work right if min attributes set?', () => {
+    const min = 20;
+    const { container, getByText } = render(<Slider min={min} value={validValue} name={validName} />);
+    const slider = container.querySelectorAll('.slider-handle')[0];
 
-  it('should accept step', () => {
-    const wrapper = mount(<Slider value={10} step={10} />);
+    expect(getByText(String(min)))
+      .toBeInTheDocument();
 
-    expect(wrapper.find('ReactSlider').props().step).toEqual(10);
+    expect(slider)
+      .toHaveAttribute('aria-valuemin', String(min));
   });
+  test('is Slider work right if units attributes set?', () => {
+    const { container } = render(<Slider hasTooltip unitsRender={() => 'pounds'} labelType="minmax" value={validValue} name={validName} />);
 
-  it('should accept width', () => {
-    const wrapper = mount(<Slider value={10} _width-50 />);
+    expect(container.querySelectorAll('.tooltip-inner')[0].innerHTML)
+      .toEqual(String(validValue));
 
-    expect(wrapper.find('Div.width-50')).toHaveLength(1);
+    expect(container.querySelectorAll('.slider-label')[0].innerHTML)
+      .toEqual('0 pounds');
 
-    wrapper.setProps({ '_width-30': true, '_width-50': false });
+    expect(container.querySelectorAll('.slider-label')[1].innerHTML)
+      .toEqual('100 pounds');
+  });
+  test.skip('is Slider work right if minRange attributes set?', () => {
+    /**
+     * ВВ
+     * В старых тестах проверяется только то, что данные из HTML
+     * атрибута в компонент были переданы. Сравнивается мессиав props
+     * компонента, с тем что было написано в HTML.
+     * Саму работу проверить нельзя
+     * @reat-test-library не дает возможности сделать проверку
+     * полученных значений porps
+     * Реализовать
+     * https://stackoverflow.com/questions/58623666/test-if-a-component-is-rendered-with-the-right-props-with-react-testing-library
+     * мне не удалось
+     */
+  });
+  test.skip('is Slider work right if step attributes set?', () => {
+  });
+  test('is Slider work right with different attributes _with50, _with30 etc set?', () => {
+    const { container, rerender } = render(<Slider _width-50 value={validValue} name={validName} />);
 
-    expect(wrapper.find('Div.width-30')).toHaveLength(1);
+    expect(container.querySelectorAll('.slider-wrapper')[0])
+      .toHaveClass('width-50');
+
+    rerender(<Slider _width-30 value={validValue} name={validName} />);
+
+    expect(container.querySelectorAll('.slider-wrapper')[0])
+      .toHaveClass('width-30');
+  });
+});
+describe('Check Slider event test collection', () => {
+  test('is Slider work right with onChange event listener?', () => {
+    const onChange = jest.fn();
+    const { container } = render(<Slider value={validValue} name={validName} onChange={onChange} />);
+    const slider = container.querySelectorAll('.slider-handle')[0];
+    const startPosition = { clientX: 5, clientY: 5 };
+    const finishPosition = { clientX: 150, clientY: 5 };
+
+    /**
+     * ВВ
+     * К сожалению, ни как не получается добиться реального "таскания"
+     * ползунка. В этих двух тестах можно проверить наличие события
+     * и его формат. Но значение - нет
+     * Нужно вносить изменение в сам компонент, так чтобы внутри него был <input />
+     * Тогда можно будет вызывать
+     *
+     * fireEvent.input()
+     */
+    fireEvent.mouseEnter(slider, startPosition);
+    fireEvent.mouseDown(slider, startPosition);
+    fireEvent.mouseMove(slider, finishPosition);
+    fireEvent.mouseUp(slider);
+
+    expect(onChange)
+      .toHaveBeenCalled();
+
+    expect(onChange)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validValue,
+        }),
+      }));
+  });
+  test('is Slider work right with onMove event listener?', () => {
+    const onMove = jest.fn();
+    const { container } = render(<Slider value={validValue} name={validName} onMove={onMove} />);
+    const slider = container.querySelectorAll('.slider-handle')[0];
+    const startPosition = { clientX: 5, clientY: 5 };
+    const finishPosition = { clientX: 150, clientY: 5 };
+
+    fireEvent.mouseEnter(slider, startPosition);
+    fireEvent.mouseDown(slider, startPosition);
+    fireEvent.mouseMove(slider, finishPosition);
+    fireEvent.mouseUp(slider);
+
+    expect(onMove)
+      .toHaveBeenCalled();
+
+    expect(onMove)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: NaN,
+        }),
+      }));
   });
 });

@@ -1,151 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MaskedInput SNAPSHOTS should render different component states should render disabled 1`] = `
-<MaskedInput
-  disabled={true}
-  mask="+# (###) ###-##-##"
-  onChange={[MockFunction]}
+exports[`MaskedInput snapshots collection is MaskedInput render right? 1`] = `
+<div
+  class="masked-wrapper"
 >
-  <Wrapper
-    className="masked-wrapper"
+  <div
+    class="masked-input-wrapper"
   >
-    <Div
-      className="masked-wrapper"
-    >
-      <div
-        className="masked-wrapper"
-      >
-        <Div
-          className="masked-input-wrapper"
-        >
-          <div
-            className="masked-input-wrapper"
-          >
-            <Input
-              aria-invalid={false}
-              className="masked-input-element"
-              disabled={true}
-              mask="+# (###) ###-##-##"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              value=""
-            >
-              <MaskedInputBase
-                aria-invalid={false}
-                className="masked-input-element"
-                disabled={true}
-                mask="+# (###) ###-##-##"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                value=""
-              >
-                <input
-                  aria-invalid={false}
-                  className="masked-input-element"
-                  disabled={true}
-                  maxLength={19}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onPaste={[Function]}
-                  value=""
-                />
-              </MaskedInputBase>
-            </Input>
-          </div>
-        </Div>
-        <InvalidMessageWrapper>
-          <InvalidMessage
-            isValid={true}
-            messages={Array []}
-          >
-            <Component
-              isValid={true}
-              messages={Array []}
-            />
-          </InvalidMessage>
-        </InvalidMessageWrapper>
-      </div>
-    </Div>
-  </Wrapper>
-</MaskedInput>
-`;
-
-exports[`MaskedInput SNAPSHOTS should render different component states should render placeholder 1`] = `
-<MaskedInput
-  mask="+# (###) ###-##-##"
-  onChange={[MockFunction]}
-  value="79521806763"
->
-  <Wrapper
-    className="masked-wrapper"
-  >
-    <Div
-      className="masked-wrapper"
-    >
-      <div
-        className="masked-wrapper"
-      >
-        <Div
-          className="masked-input-wrapper"
-        >
-          <div
-            className="masked-input-wrapper"
-          >
-            <Input
-              aria-invalid={false}
-              className="masked-input-element"
-              mask="+# (###) ###-##-##"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              value="79521806763"
-            >
-              <MaskedInputBase
-                aria-invalid={false}
-                className="masked-input-element"
-                mask="+# (###) ###-##-##"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                value="79521806763"
-              >
-                <input
-                  aria-invalid={false}
-                  className="masked-input-element"
-                  disabled={false}
-                  maxLength={19}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onPaste={[Function]}
-                  value="+7 (952) 180-67-63"
-                />
-              </MaskedInputBase>
-            </Input>
-          </div>
-        </Div>
-        <InvalidMessageWrapper>
-          <InvalidMessage
-            isValid={true}
-            messages={Array []}
-          >
-            <Component
-              isValid={true}
-              messages={Array []}
-            />
-          </InvalidMessage>
-        </InvalidMessageWrapper>
-      </div>
-    </Div>
-  </Wrapper>
-</MaskedInput>
+    <input
+      aria-invalid="false"
+      class="masked-input-element"
+      maxlength="8"
+      name="test"
+      value="123-123"
+    />
+  </div>
+</div>
 `;
