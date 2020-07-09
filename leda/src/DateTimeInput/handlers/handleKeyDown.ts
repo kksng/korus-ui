@@ -253,13 +253,23 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
         },
       });
     }
-
+    if (isFunction(onChange)) {
+      onChange({
+        ...ev,
+        component: {
+          value: formatDateTime(normalizedDateValue, format),
+          name,
+          date: normalizedDateValue,
+        },
+      });
+    }
     return;
   }
 
   const updateDate = (newDate: Date): void => {
     // неконтролируемый режим
     dispatch(setDate(newDate));
+
     // контролируемый режим
     if (isFunction(onChange)) {
       onChange({

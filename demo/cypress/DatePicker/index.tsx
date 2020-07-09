@@ -13,7 +13,6 @@ export const DatePicker = (): React.ReactElement => {
   const handleChange1 = (event) => {
     const { date, value } = event.component;
     setValue1(value);
-    console.log(value, date);
   };
   const handleChange2 = (event) => {
     const { date, value } = event.component;
