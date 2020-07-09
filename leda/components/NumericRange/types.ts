@@ -62,7 +62,7 @@ export interface NumericRangeProps {
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.numericRange],
   /** Значение для нумериков ОТ и ДО */
-  value?: [number | null, number | null] | null,
+  value?: [number | null | undefined, number | null | undefined] | null,
   /** Кастомный рендер для враппера */
   wrapperRender?: CustomRender<NumericRangeProps, NumericRangeState, DivProps>,
   /** Классы переданные через _ */
