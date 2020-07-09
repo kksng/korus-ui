@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - TourItem: overlayBackgroundColor prop is removed. "tour-overlay" class with "fill" attribute used to change background color
 
+- TourItem overlayBackgroundColor prop is removed. "tour-overlay" class with "fill" attribute used to change background color
 
 ## [0.25.0] - 2020-07-02
 - Datepicker: month names changed
