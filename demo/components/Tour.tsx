@@ -149,7 +149,6 @@ export const Tour = (): React.ReactElement => {
           data={data}
           activeStepKey={activeStep}
           onChange={(ev) => setActiveStep(ev.component.value)}
-          overlayBackgroundColor={'rgba(33, 33, 33, 0.7)'}
         />
       </L.Div>
     </L.Div>

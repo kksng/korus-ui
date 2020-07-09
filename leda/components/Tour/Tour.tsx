@@ -8,7 +8,6 @@ import { TourProps, TourStepItem } from './types';
 export const Tour = (props: TourProps): React.ReactElement | null => {
   const {
     data, activeStepKey, onChange,
-    overlayBackgroundColor = 'rgba(33, 33, 33, 0.7)',
   } = props;
 
   const activeItem = data.find((item) => item.stepKey === activeStepKey);
@@ -127,7 +126,6 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     <>
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="tour-overlay">
         <path
-          fill={overlayBackgroundColor}
           d={svgPath}
         />
       </svg>
