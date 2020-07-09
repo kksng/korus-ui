@@ -65,7 +65,6 @@ export interface NumericRangeProps {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.numericRange],
   /** Значение для нумериков ОТ и ДО */
   value?: [number | null | undefined, number | null | undefined] | undefined| null,
-  //value?: [ NumericRangeInputType, NumericRangeInputType] | null | undefined;
   /** Кастомный рендер для враппера */
   wrapperRender?: CustomRender<NumericRangeProps, NumericRangeState, DivProps>,
   /** Классы переданные через _ */
