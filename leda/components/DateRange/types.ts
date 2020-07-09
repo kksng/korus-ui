@@ -3,8 +3,10 @@ import {
   BlurEvent, ChangeEvent, FocusEvent,
 } from '../../src/DateTimeInput/types';
 import {
-  CustomRangeEvent, DateTimeInputRangeProps,
+  CustomRangeEvent,
+  DateTimeInputRangeProps,
   DateTimeInputRangeRefCurrent,
+  DateTimeInputValueType,
 } from '../../src/DateTimeInputRange/types';
 
 export interface DateRangeProps extends DateTimeInputRangeProps {
@@ -35,7 +37,7 @@ export interface DateRangeProps extends DateTimeInputRangeProps {
   /** Реф */
   ref?: React.Ref<DateTimeInputRangeRefCurrent>,
   /** Значения полей "от" и "до" */
-  value?: [string, string] | [Date | null, Date | null],
+  value?: [DateTimeInputValueType, DateTimeInputValueType] | null | undefined,
   /** Классы переданные через _ */
   [x: string]: unknown,
 }

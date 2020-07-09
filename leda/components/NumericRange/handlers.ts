@@ -20,7 +20,7 @@ export const createNumericChangeHandler = ({
   thousandsSeparator?: string,
 }) => (type: 'from' | 'to') => (ev: ChangeEvent) => {
   const newValue = (() => {
-    if (type === 'from') return [ev.component.value, value[1]] as [number | null, number | null];
+    if (type === 'from') return [ev.component.value, value[1]] as [number | null | undefined, number | null | undefined];
     if (type === 'to') return [value[0], ev.component.value] as [number | null, number | null];
     return [null, null] as [number | null, number | null];
   })();
