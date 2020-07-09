@@ -38,4 +38,5 @@ export interface TourProps {
   data: TourStepItem[],
   /** Обработчик изменения */
   onChange: (ev: ChangeEvent) => void,
+  overlayBackgroundColor?: string,
 }
