@@ -16,8 +16,6 @@ export interface TourStepItem {
   element: HTMLElement | null,
   /** Отступ при скролле в px, по умолчанию 200px */
   offsetTop?: number,
-  /** Цвет фона оверлея, по-умолчанию rgba(33, 33, 33, 0.7) */
-  overlayBackgroundColor?: string,
   /** Положение модалки */
   position: 'top' | 'right' | 'bottom' | 'left',
   /** Идентификатор шага */
@@ -38,5 +36,4 @@ export interface TourProps {
   data: TourStepItem[],
   /** Обработчик изменения */
   onChange: (ev: ChangeEvent) => void,
-  overlayBackgroundColor?: string,
 }
