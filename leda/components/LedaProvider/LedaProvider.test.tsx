@@ -4,7 +4,6 @@ import toJson from 'enzyme-to-json';
 
 import { Leda } from './index';
 import { ButtonGroup } from '../ButtonGroup';
-import { Slider } from '../Slider';
 import { DropDownSelect } from '../DropDownSelect';
 
 const theme = {
@@ -33,22 +32,6 @@ describe('LEDA THEME PROVIDER', () => {
     expect(wrapper.find('div.custom-buttonGroup-wrapper')).toHaveLength(1);
 
     expect(wrapper.find('button.custom-buttonGroup-button')).toHaveLength(4);
-
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it.skip('should call onRemove handler', () => {
-    const wrapper = mount(
-      <Leda theme={theme}>
-        <Slider value={50} hasTooltip />
-      </Leda>,
-    );
-
-    expect(wrapper.find('div.custom-wrapper-slider')).toHaveLength(1);
-
-    expect(wrapper.find('div.custom-container-slider')).toHaveLength(1);
-
-    // expect(wrapper.find('div.custom-handle-slider')).toHaveLength(1);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });

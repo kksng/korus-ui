@@ -140,22 +140,6 @@ describe('Check Slider attributes test collection', () => {
     expect(container.querySelectorAll('.slider-label')[1].innerHTML)
       .toEqual('100 pounds');
   });
-  test.skip('is Slider work right if minRange attributes set?', () => {
-    /**
-     * ВВ
-     * В старых тестах проверяется только то, что данные из HTML
-     * атрибута в компонент были переданы. Сравнивается мессиав props
-     * компонента, с тем что было написано в HTML.
-     * Саму работу проверить нельзя
-     * @reat-test-library не дает возможности сделать проверку
-     * полученных значений porps
-     * Реализовать
-     * https://stackoverflow.com/questions/58623666/test-if-a-component-is-rendered-with-the-right-props-with-react-testing-library
-     * мне не удалось
-     */
-  });
-  test.skip('is Slider work right if step attributes set?', () => {
-  });
   test('is Slider work right with different attributes _with50, _with30 etc set?', () => {
     const { container, rerender } = render(<Slider _width-50 value={validValue} name={validName} />);
 

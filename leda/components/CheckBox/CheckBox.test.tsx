@@ -128,22 +128,6 @@ describe('CheckBox ATTRIBUTES', () => {
 
       expect(container.querySelector('label.checkbox-label')).toHaveClass('semi');
     });
-
-    it.skip(', should convert props to classes', () => {
-      const { container } = render(<CheckBox _active />);
-
-      expect(container.querySelector('.checkbox-label.box')).toBeNull();
-
-      expect(container.querySelector('.checkbox-label.active')).toBeInTheDocument();
-    });
-
-    it.skip('classes passed through className should not override prop-classes', () => {
-      const { container } = render(<CheckBox className="test" _active />);
-
-      expect(container.querySelector('.checkbox-label.test')).toBeInTheDocument();
-
-      expect(container.querySelector('.checkbox-label.active')).toBeInTheDocument();
-    });
   });
 
   describe('children prop', () => {

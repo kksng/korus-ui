@@ -52,28 +52,6 @@ describe('Pagination SNAPSHOTS', () => {
 
       expect(toJson(wrapper)).toMatchSnapshot();
     });
-
-    it.skip('should render totalItems', () => {
-      const wrapper = mount(pagination);
-      // Кнопка на позиции 6 (всего 5 страниц)
-      const nextLink = wrapper.find('PaginationControl').get(6);
-
-      expect(wrapper.find('Li')).toHaveLength(5);
-
-      expect(nextLink.props.title).toEqual('Следующая');
-
-      expect(toJson(wrapper)).toMatchSnapshot();
-
-      wrapper.setProps({ totalItems: 20 });
-      // Теперь на той же позиции появится другая кнопка, тк количество страниц поменялось
-      const nextPages = wrapper.find('PaginationControl').get(6);
-
-      expect(nextPages.props.title).toEqual('Следующие страницы');
-
-      expect(wrapper.find('Li')).toHaveLength(5);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
   });
 
 
@@ -103,23 +81,6 @@ describe('Pagination SNAPSHOTS', () => {
 });
 
 describe('Pagination HANDLERS', () => {
-  it.skip('should trigger onChange', () => {
-    const onChange = jest.fn();
-    const pagination = (
-      <Pagination pageSize={2} onChange={onChange} totalItems={10} />
-    );
-
-    const wrapper = mount(pagination);
-
-    const pageLink = wrapper.find('PaginationControl').at(3);
-
-    pageLink.props().onClick(3);
-
-    wrapper.update();
-
-    expect(onChange).toHaveBeenCalled();
-  });
-
   it('should trigger onPageSizeChange', () => {
     const onPageSizeChange = jest.fn();
     const pagination = (

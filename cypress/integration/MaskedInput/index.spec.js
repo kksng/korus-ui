@@ -7,50 +7,6 @@ describe('MaskedInput', () => {
     cy.visit('http://localhost:9000/cypress/masked-input');
   });
 
-  describe('Display', () => {
-    describe('Placeholder', () => {
-      it.skip('should render masked input with placeholder', () => {
-        cy.get(`.${theme.wrapper} input`)
-          .eq(0)
-          .focusMasked()
-          .clear()
-          .should('have.attr', 'placeholder', '+7 (___)-___-__-__')
-          .should('have.value', '+7 (___)-___-__-__')
-          .type('9818862798')
-          .should('have.value', '+7 (981)-886-27-98')
-          .clear()
-          .should('have.value', '+7 (___)-___-__-__')
-          .get(`.${theme.inputWrapper}`)
-          .eq(0)
-          .should('have.class', theme.inputWrapperFocused)
-          .get(`.${theme.input}`)
-          .eq(0)
-          .blur()
-          .should('have.value', '')
-          .should('have.attr', 'placeholder', '+7 (___)-___-__-__')
-          .get(`.${theme.inputWrapper}`)
-          .eq(0)
-          .should('not.have.class', theme.inputWrapperFocused);
-      });
-    });
-
-    describe('isDisabled', () => {
-      it.skip('should be disabled', () => {
-        cy.contains('Toggle isDisabled')
-          .click()
-          .closest('.demo-story')
-          .find('input')
-          .eq(0)
-          .should('be.disabled')
-          .closest('.masked-input-wrapper')
-          .should('have.class', 'disabled')
-          .closest('.demo-story')
-          .contains('Toggle isDisabled')
-          .click();
-      });
-    });
-  });
-
   describe('Interaction', () => {
     describe('Input', () => {
       it('should clear one char per backspace press', () => {
@@ -122,17 +78,6 @@ describe('MaskedInput', () => {
           .should('have.value', '+7 (___)-___-__-__')
           .type('ABC!@#$%^&*)_=+?/.<>,БЛА')
           .should('have.value', '+7 (___)-___-__-__');
-      });
-
-      it.skip('should allow only completed values', () => {
-        cy.get(`.${theme.wrapper} input`)
-          .eq(0)
-          .focusMasked()
-          .should('have.value', '+7 (___)-___-__-__')
-          .type('7777')
-          .should('have.value', '+7 (777)-7__-__-__')
-          .blur()
-          .should('have.value', '');
       });
     });
 

@@ -82,25 +82,6 @@ describe('MultiSelect ATTRIBUTES', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('should render templates', () => {
-    const wrapper = mount(
-      <MultiSelect
-        data={['1', '2', '3']}
-        isOpen
-        onChange={jest.fn()}
-        value={['1']}
-        suggestionsFooterRender={() => <span className="footer">Footer</span>}
-        suggestionsHeaderRender={() => <span className="header">Header</span>}
-      />,
-    );
-
-    expect(wrapper.find('.footer')).toHaveLength(1);
-
-    expect(wrapper.find('.header')).toHaveLength(1);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('should render noData template', () => {
     const wrapper = mount(
       <MultiSelect

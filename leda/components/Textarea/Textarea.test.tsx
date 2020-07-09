@@ -85,20 +85,6 @@ describe('Textarea ATTRIBUTES', () => {
 
     expect(wrapper.find('.textarea-wrapper').first().hasClass('testClass')).toBeTruthy();
   });
-
-  it.skip('should have maxLength limit', () => {
-    // todo test does not work correctly
-    const onChange = jest.fn();
-    const wrapper = mount(<Textarea maxLength={5} onChange={onChange} value="test" />);
-
-    wrapper.find('textarea').props().onChange({ target: { value: 'is longer than should be' } });
-
-    expect(onChange).not.toHaveBeenCalled();
-
-    expect(wrapper.find('textarea').props().value).not.toEqual('is longer than should be');
-    // nothing's changed
-    expect(wrapper.find('textarea').props().value).toEqual('test');
-  });
 });
 
 describe('Textarea VALIDATION', () => {

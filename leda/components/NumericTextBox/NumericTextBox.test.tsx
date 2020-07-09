@@ -167,29 +167,6 @@ describe('NumericTextBox SNAPSHOTS', () => {
   });
 
   describe('different component states', () => {
-    // todo fix isDisabled
-    it.skip('should render disabled', () => {
-      const wrapper = render((
-        <NumericTextBox defaultValue={0} isDisabled />
-      ));
-
-      expect(screen.getByRole('textbox')).toHaveValue('0');
-
-      screen.getByRole('textbox').focus();
-
-      fireEvent.keyDown(screen.getByRole('textbox'), {
-        key: 'ArrowUp',
-      });
-
-      screen.getByRole('textbox').blur();
-
-      expect(screen.getByRole('textbox')).toHaveValue('0');
-
-      expect(wrapper.container).toMatchSnapshot();
-
-      wrapper.unmount();
-    });
-
     it('should render placeholder', () => {
       const placeholder = 'placeholder';
 
@@ -390,30 +367,12 @@ describe('NumericTextBox ATTRIBUTES', () => {
       expect(screen.getByRole('textbox')).toHaveValue('0,24 %');
     });
 
-    it.skip('should have exponential format', () => {
-      render((
-        <NumericTextBox format="e2" value={0.235813} />
-      ));
-
-      expect(screen.getByRole('textbox')).toHaveValue('2,36e-1');
-    });
-
     it('should have custom format', () => {
       render((
         <NumericTextBox format="#,####### tests" value={1080.235813} />
       ));
 
       expect(screen.getByRole('textbox')).toHaveValue('1 080,2358130 tests');
-    });
-  });
-
-  it.skip('should accept width', () => {
-    render((
-      <NumericTextBox width={16} />
-    ));
-
-    expect(document.querySelector('div.numeric-text-box-input-wrapper')).toHaveStyle({
-      width: '16%',
     });
   });
 });

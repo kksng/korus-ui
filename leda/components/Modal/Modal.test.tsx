@@ -65,16 +65,6 @@ describe('Modal SNAPSHOTS', () => {
 });
 
 describe('Modal HANDLERS', () => {
-  it.skip('should trigger onOverlayClick outside of modal', () => {
-    // TODO: Обработчик вызывается при ev.target === ev.currentTarget, а enzyme этого не может
-    const onClickHandler = jest.fn();
-    const wrapper = mount(<Modal isOpen onOverlayClick={onClickHandler} />);
-
-    wrapper.find('.modal-wrapper').props().onClick();
-
-    expect(onClickHandler).toHaveBeenCalled();
-  });
-
   it('should trigger onCloseIconClick', () => {
     const onClickHandler = jest.fn();
     const modal = (
