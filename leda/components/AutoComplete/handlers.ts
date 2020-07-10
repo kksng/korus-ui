@@ -52,22 +52,6 @@ export const clearButtonClickHandlerCreator = ({
   if (!isValueControlled) setStateValue('');
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const suggestionClickHandlerCreator = ({
   props,
   lastCorrectValue,
@@ -212,11 +196,6 @@ export const inputBlurHandlerCreator = ({
     });
   }
 
-  // ВВ
-  // И в onBlur отправить отправить customEvent.
-  // в случае, если shouldCorrectValue, отправляем lastCorrectValue
-  // если оставить старое, то в onBlur будет приходить то, что человек изменил
-  // а не автоматически скорректирвоанное значение
   const customEvent: BlurEvent = {
     ...event,
     component: {
