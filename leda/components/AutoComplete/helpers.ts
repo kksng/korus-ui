@@ -129,11 +129,6 @@ export const getSuggestionValue = (suggestion: Suggestion, textField?: string): 
   return suggestion.toString();
 };
 
-type anyEventType = React.KeyboardEvent<HTMLInputElement>
-| React.MouseEvent<HTMLElement>
-| React.ChangeEvent<HTMLInputElement>
-| React.FocusEvent<HTMLInputElement>;
-
 export const correctValue = ({
   event,
   isValueControlled,
@@ -143,7 +138,7 @@ export const correctValue = ({
   setStateValue,
   value,
 }: {
-  event: anyEventType,
+  event: any,
   isValueControlled: boolean,
   lastCorrectValue: string,
   props: AutoCompleteProps,
@@ -174,7 +169,6 @@ export const correctValue = ({
 
     if (isFunction(onChange)) {
       const suggestion = getSuggestionFromValue({ data, value: newValue, textField });
-
       const customEvent: ChangeEvent = {
         ...event,
         component: {
@@ -184,7 +178,6 @@ export const correctValue = ({
           value: newValue,
         },
       };
-
       onChange(customEvent);
     }
     if (!isValueControlled) setStateValue(lastCorrectValue);
