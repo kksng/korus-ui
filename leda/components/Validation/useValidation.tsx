@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isString, isNil } from 'lodash';
-import { useElement } from '../../utils';
+import { useElement, checkFormProps } from '../../utils';
 import {
   addField, getValidators, removeField, updateField, validate,
 } from './helpers';
@@ -23,6 +23,8 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
     requiredMessage,
     invalidMessageRender,
   } = props;
+
+  checkFormProps(props);
 
   // значение берется из props или из state
   const value = props.value === undefined && state
