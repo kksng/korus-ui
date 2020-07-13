@@ -37,7 +37,7 @@ export interface DateRangeProps extends DateTimeInputRangeProps {
   /** Реф */
   ref?: React.Ref<DateTimeInputRangeRefCurrent>,
   /** Значения полей "от" и "до" */
-  value?: [DateTimeInputValueType, DateTimeInputValueType] | null | undefined,
+  value?: [DateTimeInputValueType, DateTimeInputValueType] | null,
   /** Классы переданные через _ */
   [x: string]: unknown,
 }

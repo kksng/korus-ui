@@ -4,7 +4,7 @@ import {
   isFunction, isNil, isDate, isString,
 } from 'lodash';
 import { ChangeEvent, DateTimeInputRefCurrent } from '../DateTimeInput/types';
-import { DateTimeInputRangeProps, DateTimeInputRangeState } from './types';
+import { DateTimeInputRangeProps, DateTimeInputRangeState, DateTimeInputValueType } from './types';
 import { isDateValue } from './helpers';
 import { formatDateTime, stringToDate } from '../DateTimeInput/helpers';
 import { COMPONENT_TYPES } from '../DateTimeInput/constants';
@@ -77,7 +77,17 @@ export const createChangeHandler = (
     setDate, date,
   } = state;
 
-  const prevValue = valueProp && !isDateValue(valueProp) ? [stringToDate(valueProp[0] as string, format), stringToDate(valueProp[1] as string, format)] : date;
+  const mainStringToDate = (mainString: DateTimeInputValueType, mainFormat: string | undefined): Date | null => {
+    if (isDate(mainString)) {
+      return mainString;
+    }
+    if (isString(mainString)) {
+      return stringToDate(mainString, mainFormat);
+    }
+    return null;
+  };
+
+  const prevValue = valueProp && !isDateValue(valueProp) ? [mainStringToDate(valueProp[0], format), mainStringToDate(valueProp[1], format)] : date;
 
   const newDate: [Date | null, Date | null] = caller === 'from' ? [ev.component.date, prevValue[1]] : [prevValue[0], ev.component.date];
 

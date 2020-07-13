@@ -36,7 +36,7 @@ export const getControlledValue = (value: NumericRangeProps['value']): (number |
     value.forEach((item: number | null | undefined) => {
       result.push(isNumber(item) ? item : undefined);
     });
-    return result;
+    return [value[0] || undefined, value[1] || undefined];
   }
   if (value === undefined) return [undefined, undefined];
 

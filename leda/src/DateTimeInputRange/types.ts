@@ -35,7 +35,7 @@ export interface DateTimeInputRangeProps {
   form?: string,
   requiredMessage?: string | [string, string],
   type?: Values<typeof COMPONENT_TYPES>,
-  value?: [DateTimeInputValueType, DateTimeInputValueType] | null | undefined,
+  value?: [DateTimeInputValueType, DateTimeInputValueType] | null,
   placeholder?: string | [string | undefined, string | undefined],
   name?: string | [string | undefined, string | undefined],
   isOpen?: boolean | [boolean, boolean],
