@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  getNodeText, render, screen,
+  getNodeText, render, screen, fireEvent,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AutoComplete } from './index';
@@ -158,6 +158,25 @@ describe('AutoComplete SNAPSHOTS', () => {
 });
 
 describe('AutoComplete HANDLERS', () => {
+  test('should test onEnterPress', () => {
+    const handleEnterPress = jest.fn();
+
+    render((
+      <AutoComplete
+        onChange={jest.fn()}
+        onEnterPress={handleEnterPress}
+        data={['value0', 'value1']}
+        value="value"
+        name="name"
+      />
+    ));
+
+    fireEvent.keyDown(screen.getByRole('textbox'), {
+      key: 'Enter',
+    });
+
+    expect(handleEnterPress).toBeCalledTimes(1);
+  });
   test('focus and blur', () => {
     const onFocusHandler = jest.fn();
     const onBlurHandler = jest.fn();

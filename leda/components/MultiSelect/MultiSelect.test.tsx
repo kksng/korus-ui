@@ -3,6 +3,7 @@ import React from 'react';
 import {
   render,
   fireEvent,
+  screen,
 } from '@testing-library/react';
 import { MultiSelect } from './index';
 
@@ -437,6 +438,25 @@ describe('MultiSelect attributes test collection', () => {
   });
 });
 describe('Multiselect events test collection', () => {
+  test('should test onEnterPress', () => {
+    const handleEnterPress = jest.fn();
+
+    render(
+      <MultiSelect
+        onEnterPress={handleEnterPress}
+        name={validName}
+        value={validValue}
+        data={validData}
+      />,
+    );
+
+    fireEvent.keyDown(screen.getByRole('textbox'), {
+      key: 'Enter',
+    });
+
+    expect(handleEnterPress).toBeCalledTimes(1);
+  });
+
   test('is Multiselect work right with onBlur?', () => {
     const onBlur = jest.fn();
     const { getByRole } = render(

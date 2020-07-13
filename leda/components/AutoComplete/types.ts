@@ -157,6 +157,7 @@ export interface AutoCompleteProps<T extends Suggestion = Suggestion> extends Va
   /** Значение компонента */
   value?: string | null,
   /** Классы переданные через _ */
+  onEnterPress?: (ev: ChangeEvent) => void,
   [x: string]: unknown,
 }
 

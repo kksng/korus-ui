@@ -153,6 +153,7 @@ export interface MultiSelectProps<T extends MultiSelectValue | null | undefined 
   /** Кастомный рендер враппера */
   wrapperRender?: CustomRender<MultiSelectProps, MultiSelectState, DivProps>,
   /** Классы переданные через _ */
+  onEnterPress?: (ev: ChangeEvent) => void,
   [x: string]: unknown,
 }
 

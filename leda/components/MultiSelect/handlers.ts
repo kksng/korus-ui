@@ -14,6 +14,7 @@ import { CustomEventHandler, SetState, SomeObject } from '../../commonTypes';
 import { SuggestionTarget } from '../../src/SuggestionList/types';
 import { filterData, getShouldUniteTags } from './helpers';
 import { selectAllSuggestion } from './constants';
+import { CHANGE_METHOD } from '../AutoComplete/types';
 
 export const createFocusHandler = (
   props: MultiSelectProps, extraData: FocusData,
@@ -170,7 +171,7 @@ export const createKeyDownHandler = (
   props: MultiSelectProps, extraData: KeyDownData,
 ): React.KeyboardEventHandler<HTMLInputElement> => (ev) => {
   const {
-    data, textField, filterRule, compareObjectsBy, maxTags,
+    data, textField, filterRule, compareObjectsBy, maxTags, onEnterPress,
   } = props;
 
   const {
@@ -223,6 +224,20 @@ export const createKeyDownHandler = (
   }
 
   if (ev.key === 'Enter') {
+    // const v: Value[] = [];
+    // const d = data!;
+    if (isFunction(onEnterPress)) {
+      onEnterPress({
+        ...ev,
+        component: {
+          deselectedValues: data,
+          selectedValue: ev.currentTarget.value,
+          // method: CHANGE_METHOD.enter,
+          value: data,
+          name: props.name,
+        },
+      });
+    }
     if (!highlightedSuggestion) return;
 
     setHighlightedSuggestion(null);
