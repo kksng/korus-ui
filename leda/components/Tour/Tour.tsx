@@ -126,7 +126,6 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     <>
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="tour-overlay">
         <path
-          fill={activeItem.overlayBackgroundColor ?? 'rgba(33, 33, 33, 0.7)'}
           d={svgPath}
         />
       </svg>
