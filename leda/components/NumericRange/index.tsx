@@ -29,6 +29,7 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
     name: nameProp,
     onBlur,
     onChange,
+    onEnterPress,
     onFocus,
     placeholder: placeholderProp,
     shouldTrimTrailingZeros,
@@ -51,6 +52,8 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
   const disabled = getDisabled(isDisabled);
 
   const name = getName(nameProp);
+
+  // const onKeyDownHandler = createKeyDownHandler(props);
 
   const commonProps = {
     form,
@@ -106,6 +109,7 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
         max={isNil(value[1]) ? max : value[1]}
         min={min}
         name={name[0]}
+        onEnterPress={onEnterPress}
         onChange={handleChange('from')}
         placeholder={placeholder[0]}
         theme={theme.to}
@@ -120,6 +124,7 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
         max={max}
         min={isNil(value[0]) ? min : value[0]}
         name={name[1]}
+        onEnterPress={onEnterPress}
         onChange={handleChange('to')}
         placeholder={placeholder[1]}
         theme={theme.from}

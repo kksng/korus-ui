@@ -275,7 +275,6 @@ export const inputKeyDownHandlerCreator = ({
       onEnterPress({
         ...event,
         component: {
-          method: CHANGE_METHOD.enter,
           value: event.currentTarget.value,
           name: props.name,
         },

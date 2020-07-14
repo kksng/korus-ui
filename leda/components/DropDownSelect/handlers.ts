@@ -223,6 +223,16 @@ export const createKeyDownHandler = ({
   }
 
   if (ev.key === 'Enter') {
+    if (isFunction(props.onEnterPress)) {
+      props.onEnterPress({
+        ...ev,
+        component: {
+          value: ev.currentTarget.value,
+          name: props.name,
+        },
+      });
+    }
+
     if (isOpen) mergeState({ isOpen: false });
 
     const value = getText(highlightedSuggestion, textField);

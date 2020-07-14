@@ -8,6 +8,7 @@ import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTh
 import { DivProps } from '../Div';
 import { SpanProps } from '../Span';
 import { ValidationProps } from '../Validation/types';
+import { EnterPressEvent } from '../Input/types';
 
 export type Value = SomeObject | string | number | null;
 
@@ -78,6 +79,7 @@ export interface DropDownSelectProps<T extends Value = Value> extends Validation
   onChange?: CustomEventHandler<ChangeEvent<T>>,
   onFilterChange?: CustomEventHandler<ChangeEvent<string>>,
   onFocus?: CustomEventHandler<FocusEvent<T>>,
+  onEnterPress?: (ev: EnterPressEvent) => void,
   placeholder?: string,
   ref?: React.Ref<DropDownSelectRefCurrent>,
   /** Поля, в которых содержатся данные для поиска */

@@ -9,6 +9,7 @@ import { FilterRules } from '../DropDownSelect/types';
 import { SuggestionItemComputedProps, SuggestionListProps, SuggestionTarget } from '../../src/SuggestionList/types';
 import { DivProps } from '../Div';
 import { TagProps } from '../Tags/types';
+import { EnterPressEvent } from '../Input/types';
 
 export type Value = SomeObject | string | number | null;
 
@@ -63,12 +64,12 @@ export interface BlurEvent<T = Value> extends React.FocusEvent<HTMLInputElement>
   },
 }
 
-export interface EnterPressEvent<T = Value> extends React.KeyboardEvent<HTMLInputElement> {
-  component: {
-    name?: string,
-    value: T[],
-  },
-}
+// export interface EnterPressEvent<T = Value> extends React.KeyboardEvent<HTMLInputElement> {
+//   component: {
+//     name?: string,
+//     value: T[],
+//   },
+// }
 
 export interface FocusEvent<T = Value> extends React.FocusEvent<HTMLInputElement> {
   component: {
@@ -153,7 +154,7 @@ export interface MultiSelectProps<T extends MultiSelectValue | null | undefined 
   /** Кастомный рендер враппера */
   wrapperRender?: CustomRender<MultiSelectProps, MultiSelectState, DivProps>,
   /** Классы переданные через _ */
-  onEnterPress?: (ev: ChangeEvent) => void,
+  onEnterPress?: (ev: EnterPressEvent) => void,
   [x: string]: unknown,
 }
 

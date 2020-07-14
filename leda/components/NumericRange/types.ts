@@ -22,6 +22,13 @@ export interface RangeChangeEvent {
   },
 }
 
+export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
+  component: {
+    name?: string,
+    value: number | null,
+  },
+}
+
 export interface NumericRangeProps {
   /** Классы для компонента */
   className?: string,
@@ -65,6 +72,8 @@ export interface NumericRangeProps {
   value?: [number | null, number | null] | null,
   /** Кастомный рендер для враппера */
   wrapperRender?: CustomRender<NumericRangeProps, NumericRangeState, DivProps>,
+  /**  Функция обратного вызова при нажатии Enter */
+  onEnterPress?: (event: EnterPressEvent) => void,
   /** Классы переданные через _ */
   [x: string]: unknown,
 }

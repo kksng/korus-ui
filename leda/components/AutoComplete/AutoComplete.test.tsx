@@ -158,7 +158,7 @@ describe('AutoComplete SNAPSHOTS', () => {
 });
 
 describe('AutoComplete HANDLERS', () => {
-  test('should test onEnterPress', () => {
+  test('should handle onEnterPress', () => {
     const handleEnterPress = jest.fn();
 
     render((

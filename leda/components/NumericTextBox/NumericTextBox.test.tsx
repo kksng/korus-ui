@@ -182,6 +182,20 @@ describe('NumericTextBox SNAPSHOTS', () => {
 });
 
 describe('NumericTextBox HANDLERS', () => {
+  it('should handle onEnterPress', () => {
+    const handleEnterPress = jest.fn();
+
+    render((
+      <NumericTextBox onEnterPress={handleEnterPress} />
+    ));
+
+    fireEvent.keyDown(screen.getByRole('textbox'), {
+      key: 'Enter',
+    });
+
+    expect(handleEnterPress).toBeCalledTimes(1);
+  });
+
   it('should trigger onBlur', () => {
     const handleBlur = jest.fn();
 

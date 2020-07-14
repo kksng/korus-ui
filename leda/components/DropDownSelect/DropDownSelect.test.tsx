@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  getNodeText, render, screen,
+  getNodeText, render, screen, fireEvent,
 } from '@testing-library/react';
 import last from 'lodash/last';
 import userEvent from '@testing-library/user-event';
@@ -138,6 +138,25 @@ describe('DropDownSelect SNAPSHOTS', () => {
 });
 
 describe('DropDownSelect HANDLERS', () => {
+  test('should handle keydown enter', () => {
+    const handleEnterPress = jest.fn();
+
+    const data = [
+      { id: 0, value: 'value0' },
+      { id: 1, value: 'value1' },
+    ];
+
+    render((
+      <DropDownSelect data={data} onEnterPress={handleEnterPress} />
+    ));
+
+    fireEvent.keyDown(screen.getByRole('textbox'), {
+      key: 'Enter',
+    });
+
+    expect(handleEnterPress).toBeCalledTimes(1);
+  });
+
   test('should trigger onChange and have correct event format', () => {
     const onChangeHandler = jest.fn();
     const name = 'name';
