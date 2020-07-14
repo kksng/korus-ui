@@ -14,6 +14,8 @@ export interface DropDownProps extends React.HTMLAttributes<HTMLElement> {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropDown],
   /** Тег-обертка, при наведении на который, будет отображаться данный dropdown, по умолчанию <span> */
   wrapperRender?: (props: RenderEvent<DropDownProps>) => React.ReactNode,
+  /** Открытие по клику, по умолчанию открытие по наведению */
+  interactionMode?: 'click',
   /** Классы переданные через _ */
   [x: string]: unknown,
 }

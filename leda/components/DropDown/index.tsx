@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useAdaptivePosition, useProps,
 } from '../../utils';
@@ -16,6 +17,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
     className,
     isOpen: isOpenProp,
     theme: themeProp,
+    interactionMode,
     wrapperRender,
     ...restProps
   } = useProps(props);
@@ -54,11 +56,20 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
     isOpen,
   });
 
+  const interaction = interactionMode === 'click'
+    ? {
+      onClick: () => setIsOpen(true),
+      onBlur: () => setIsOpen(false),
+    }
+    : {
+      onMouseOver: () => setIsOpen(true),
+      onMouseLeave: () => setIsOpen(false),
+    };
+
   return (
     <Wrapper
+      {...interaction}
       className={combinedClassNames}
-      onMouseOver={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
       {...restProps}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
         wrapper: component.wrapper || component,
