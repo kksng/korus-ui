@@ -6,10 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - Added new tests based on React testing library
-- TourItem overlayBackgroundColor prop is removed. "tour-overlay" class with "fill" attribute used to change background color
+- TourItem: overlayBackgroundColor prop is removed. "tour-overlay" class with "fill" attribute used to change background color
 - Added "form" and "name" props checker for input components
 (Input, DateTimeInput, DateTimeInputRange, TextArea, AutoComplete, ButtonGroup, DropZone, FileDrop, MaskedInput, MultiSelect, NumericRange, CheckBox, Password, Switcher, NumericTextBox)
-- DropDown. Added prop interactionMode='click' to opening dropdown by click
+- DropDown: Added prop interactionMode='click' to opening dropdown by click
 - Added onEnterPress prop for handling keydown enter to AutoComplete, DropDownSelect, MultiSelect, DateRange, NumericRange, NumericTextBox components
 
 ## [0.25.0] - 2020-07-02
