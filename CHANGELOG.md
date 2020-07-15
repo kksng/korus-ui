@@ -5,12 +5,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+
+## [0.26.0] - 2020-07-15
+
+### Added
 - Added new tests based on React testing library
-- TourItem: overlayBackgroundColor prop is removed. "tour-overlay" class with "fill" attribute used to change background color
-- Added "form" and "name" props checker for input components
 (Input, DateTimeInput, DateTimeInputRange, TextArea, AutoComplete, ButtonGroup, DropZone, FileDrop, MaskedInput, MultiSelect, NumericRange, CheckBox, Password, Switcher, NumericTextBox)
-- DropDown: Added prop interactionMode='click' to opening dropdown by click
+- Added "form" and "name" props checker for input components
+- DropDown: Added interactionMode='click' prop to opening dropdown by click
 - Added onEnterPress prop for handling keydown enter to AutoComplete, DropDownSelect, MultiSelect, DateRange, NumericRange, NumericTextBox components
+
+### Fixed
+- TourItem: overlayBackgroundColor prop is removed. "tour-overlay" class with "fill" attribute used to change background color
+
 
 ## [0.25.0] - 2020-07-02
 - Datepicker: month names changed
