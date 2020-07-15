@@ -53,8 +53,6 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
 
   const name = getName(nameProp);
 
-  // const onKeyDownHandler = createKeyDownHandler(props);
-
   const commonProps = {
     form,
     format,
