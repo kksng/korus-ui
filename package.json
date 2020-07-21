@@ -39,7 +39,7 @@
     "classnames": "2.2.6",
     "element-closest": "3.0.2",
     "element-scroll-polyfill": "1.0.1",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "react-dropzone": "10.2.2",
     "react-slider": "1.0.1",
     "svgxuse": "1.2.6"
