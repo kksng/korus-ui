@@ -59,7 +59,7 @@ export const useDateTimeInputEffects = ({
 
 export const useDateTimeInputState = (props: DateTimeInputProps): [DateTimeInputState, React.Dispatch<AllActions>] => {
   const {
-    value: valueProp, format, min, max,
+    value: valueProp, format, min, max, isOpen,
   } = props;
 
   // если сегодняшняя дата за пределами min/max - открываем календарь с датой min или max
@@ -85,7 +85,7 @@ export const useDateTimeInputState = (props: DateTimeInputProps): [DateTimeInput
   };
   const [state, dispatch] = React.useReducer(stateReducer, initialState);
 
-  return [state, dispatch];
+  return [{ ...state, isOpen: isOpen ?? state.isOpen }, dispatch];
 };
 
 export const useCustomElements = (props: DateTimeInputProps, state: DateTimeInputState): CustomElements => {
