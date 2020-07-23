@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   every, isArray, isFunction, isObject, isString,
 } from 'lodash';
@@ -145,7 +144,7 @@ export const correctValue = ({
   setLastCorrectValue: (val: string) => void,
   setStateValue: (val: string) => void,
   value?: string | null,
-}): void => {
+}): string => {
   // если value нет в data
   // использовать последнее корректное (есть в списке data, или пустое) value
   const {
@@ -165,21 +164,21 @@ export const correctValue = ({
   if (value === '' || dataIncludesValue) {
     setLastCorrectValue(value || '');
   } else {
-    const newValue = lastCorrectValue;
-
     if (isFunction(onChange)) {
-      const suggestion = getSuggestionFromValue({ data, value: newValue, textField });
+      const suggestion = getSuggestionFromValue({ data, value: lastCorrectValue, textField });
       const customEvent: ChangeEvent = {
         ...event,
         component: {
           method: CHANGE_METHOD.trigger,
           name,
           suggestion,
-          value: newValue,
+          value: lastCorrectValue,
         },
       };
       onChange(customEvent);
     }
     if (!isValueControlled) setStateValue(lastCorrectValue);
+    return lastCorrectValue;
   }
+  return value || '';
 };
