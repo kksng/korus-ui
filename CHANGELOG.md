@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - DateTimeInput. Bug fixed with selecting a date by keydown "enter" in component with prop "isOpen"
+- DropDownSelect. Fixed bug with uncorrectly behavior on press "enter"
 
 
 ## [0.26.0] - 2020-07-15

@@ -235,6 +235,8 @@ export const createKeyDownHandler = ({
 
     if (isOpen) mergeState({ isOpen: false });
 
+    if (fullData.length === 0) return;
+
     const value = getText(highlightedSuggestion, textField);
 
     if (isFunction(onFilterChange)) {
@@ -260,12 +262,6 @@ export const createKeyDownHandler = ({
       };
 
       onChange(changeEvent);
-    }
-
-    if (isOpen) {
-      mergeState({
-        isOpen: false,
-      });
     }
 
     mergeState({
