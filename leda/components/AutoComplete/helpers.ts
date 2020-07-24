@@ -137,7 +137,7 @@ export const correctValue = ({
   setStateValue,
   value,
 }: {
-  event: any,
+  event: React.SyntheticEvent,
   isValueControlled: boolean,
   lastCorrectValue: string,
   props: AutoCompleteProps,
@@ -166,7 +166,7 @@ export const correctValue = ({
   } else {
     if (isFunction(onChange)) {
       const suggestion = getSuggestionFromValue({ data, value: lastCorrectValue, textField });
-      const customEvent: ChangeEvent = {
+      const customEvent = {
         ...event,
         component: {
           method: CHANGE_METHOD.trigger,
@@ -174,7 +174,7 @@ export const correctValue = ({
           suggestion,
           value: lastCorrectValue,
         },
-      };
+      } as ChangeEvent;
 
       onChange(customEvent);
     }
