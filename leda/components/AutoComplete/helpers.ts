@@ -175,9 +175,11 @@ export const correctValue = ({
           value: lastCorrectValue,
         },
       };
+
       onChange(customEvent);
     }
     if (!isValueControlled) setStateValue(lastCorrectValue);
+
     return lastCorrectValue;
   }
   return value || '';

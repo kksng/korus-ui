@@ -182,25 +182,22 @@ export const inputBlurHandlerCreator = ({
 }): React.FocusEventHandler<HTMLInputElement> => (event) => {
   const { shouldCorrectValue, onBlur, name } = props;
   const isValid = validateCurrent();
-  let newValue = event.target.value || '';
   setIsFocused(false);
 
-  if (shouldCorrectValue) {
-    newValue = correctValue({
-      event,
-      isValueControlled,
-      lastCorrectValue,
-      props,
-      setLastCorrectValue,
-      setStateValue,
-      value,
-    });
-  }
+  const newValue = shouldCorrectValue ? correctValue({
+    event,
+    isValueControlled,
+    lastCorrectValue,
+    props,
+    setLastCorrectValue,
+    setStateValue,
+    value,
+  }) : event.target.value;
 
   const customEvent: BlurEvent = {
     ...event,
     component: {
-      value: shouldCorrectValue ? newValue : event.target.value,
+      value: newValue,
       name,
       isValid,
     },
