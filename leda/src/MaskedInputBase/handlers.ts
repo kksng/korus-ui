@@ -51,6 +51,8 @@ export const createChangeHandler = (
 
   const selection = getSelection(input);
 
+  const position = selection[0] <= 0 ? Number(compareResult[0]) : Number([selection[0] - 1]);
+
   const newValue = (() => {
     if (inputMethod === INPUT_METHODS.replace) {
       const hurtValue = removeChar({
@@ -67,7 +69,7 @@ export const createChangeHandler = (
         value: hurtValue,
         mask,
         placeholderChar,
-        selection: [selection[0] - 1, selection[0] - 1],
+        selection: [position, position],
         char,
         input,
       });
@@ -78,7 +80,7 @@ export const createChangeHandler = (
         value: inputValue,
         mask,
         placeholderChar,
-        selection: [selection[0] - 1, selection[0] - 1],
+        selection: [position, position],
         char,
         input,
       });

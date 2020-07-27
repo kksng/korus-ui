@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - FileDrop. isRequired bug fixed
 - MaskedInput. Fixed bug with incorrectly cursor position when typing same chars
 
-
 ## [0.26.0] - 2020-07-15
 
 ### Added
