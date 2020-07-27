@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DropDownSelect. Fixed bug with uncorrectly behavior on press "enter"
 - FileDrop. isRequired bug fixed
 - MaskedInput. Fixed bug with incorrectly cursor position when typing same chars
+- Password. Added showValidation prop to hide validation messages
+
 
 ## [0.26.0] - 2020-07-15
 
