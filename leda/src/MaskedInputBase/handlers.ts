@@ -67,7 +67,7 @@ export const createChangeHandler = (
         value: hurtValue,
         mask,
         placeholderChar,
-        selection: [compareResult[0], compareResult[0]],
+        selection: [selection[0] - 1, selection[0] - 1],
         char,
         input,
       });
@@ -78,7 +78,7 @@ export const createChangeHandler = (
         value: inputValue,
         mask,
         placeholderChar,
-        selection: [compareResult[0], compareResult[0]],
+        selection: [selection[0] - 1, selection[0] - 1],
         char,
         input,
       });
