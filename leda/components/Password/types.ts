@@ -99,6 +99,8 @@ export interface PasswordProps extends ValidationProps {
   passwordVisibilityRender?: CustomRender<PasswordProps, PasswordState, PasswordVisibilityIconProps>,
   /** Реф */
   ref?: React.Ref<PasswordRefCurrent>,
+  /** Show or hide Evaluation message */
+  showEvaluationMessage?: boolean,
   /** Тема компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.password],
   /** Значение для инпута */
