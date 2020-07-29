@@ -337,10 +337,12 @@ export const inputKeyDownHandlerCreator = ({
         },
       };
 
-      setSelectedSuggestion(highlightedSuggestion);
-
-      if (isFunction(onChange)) onChange(customEvent);
-      if (!isValueControlled) setStateValue(value);
+      // Change value only if suggestions list is open
+      if (isSuggestionsListOpen) {
+        setSelectedSuggestion(highlightedSuggestion);
+        if (isFunction(onChange)) onChange(customEvent);
+        if (!isValueControlled) setStateValue(value);
+      }
     }
   }
 
