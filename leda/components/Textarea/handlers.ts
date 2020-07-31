@@ -8,10 +8,19 @@ export const createChangeHandler = (
   props: TextareaProps, setValue: SetState<string>,
 ): React.ChangeEventHandler<HTMLTextAreaElement> => (ev) => {
   const {
-    onChange, maxLength, value: valueProp, name,
+    autoSize,
+    maxLength,
+    name,
+    onChange,
+    value: valueProp,
   } = props;
-
   const { value: eventValue } = ev.target;
+
+  // Auto resize height
+  if (autoSize) {
+    ev.target.setAttribute('style', 'height:auto; overflow-y:hidden;');
+    ev.target.setAttribute('style', `height:${ev.target.scrollHeight}px; overflow-y:hidden;`);
+  }
 
   const maxLengthAdjustedValue = stringToMaxLength(eventValue, maxLength);
 

@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - MaskedInput. Fixed bug with incorrectly cursor position when typing same chars
 - Password. Added showEvaluationMessage prop to hide evaluation messages
 - Autocomplete. Change value on Enter press only if suggestions list is open
+- Textarea. autoSize prop - automatically adjust vertical height when required.
 
 
 ## [0.26.0] - 2020-07-15

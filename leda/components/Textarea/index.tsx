@@ -15,6 +15,7 @@ import { getValue } from './helpers';
 
 export const Textarea = React.forwardRef((props: TextareaProps, ref: React.Ref<TextareaRefCurrent>): React.ReactElement => {
   const {
+    autoSize = false,
     children,
     className,
     defaultValue,
@@ -32,6 +33,7 @@ export const Textarea = React.forwardRef((props: TextareaProps, ref: React.Ref<T
     placeholder,
     requiredMessage,
     shouldValidateUnmounted,
+    style,
     theme: themeProp,
     validator,
     value: valueProp,
@@ -101,6 +103,7 @@ export const Textarea = React.forwardRef((props: TextareaProps, ref: React.Ref<T
           wrapper: component.closest(`.${theme.wrapper}`),
           input: component,
         }))}
+        style={autoSize ? { height: 'auto', overflowY: 'hidden' } : style}
         value={getValue(valueProp, value)}
       />
       {!isFocused && !isDisabled && <InvalidMessage />}

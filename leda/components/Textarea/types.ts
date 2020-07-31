@@ -49,6 +49,8 @@ export interface FocusEvent extends React.FocusEvent<HTMLTextAreaElement> {
 }
 
 export interface TextareaProps extends ValidationProps {
+  /** Auto adjusting component height on text input to avoid scroll */
+  autoSize?: boolean,
   /** Значение по умолчанию */
   defaultValue?: string,
   /** Переданные дети в качестве value */
@@ -69,6 +71,8 @@ export interface TextareaProps extends ValidationProps {
   onFocus?: (ev: FocusEvent) => void,
   /** Плейсхолдер в инпуте */
   placeholder?: string,
+  /** Inline styles */
+  style?: React.CSSProperties,
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.textarea],
   /** Значение в textarea */
