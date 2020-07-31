@@ -8,7 +8,7 @@ export const createChangeHandler = (
   props: TextareaProps, setValue: SetState<string>,
 ): React.ChangeEventHandler<HTMLTextAreaElement> => (ev) => {
   const {
-    autoSize,
+    shouldAutoResize,
     maxLength,
     name,
     onChange,
@@ -17,7 +17,7 @@ export const createChangeHandler = (
   const { value: eventValue } = ev.target;
 
   // Auto resize height
-  if (autoSize) {
+  if (shouldAutoResize) {
     ev.target.setAttribute('style', 'height:auto; overflow-y:hidden;');
     ev.target.setAttribute('style', `height:${ev.target.scrollHeight}px; overflow-y:hidden;`);
   }

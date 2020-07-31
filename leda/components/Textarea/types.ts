@@ -50,7 +50,7 @@ export interface FocusEvent extends React.FocusEvent<HTMLTextAreaElement> {
 
 export interface TextareaProps extends ValidationProps {
   /** Auto adjusting component height on text input to avoid scroll */
-  autoSize?: boolean,
+  shouldAutoResize?: boolean,
   /** Значение по умолчанию */
   defaultValue?: string,
   /** Переданные дети в качестве value */
