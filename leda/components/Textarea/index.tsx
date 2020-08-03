@@ -103,7 +103,7 @@ export const Textarea = React.forwardRef((props: TextareaProps, ref: React.Ref<T
           wrapper: component.closest(`.${theme.wrapper}`),
           input: component,
         }))}
-        style={shouldAutoResize ? { height: 'auto', overflowY: 'hidden' } : style}
+        style={shouldAutoResize ? { ...style, height: 'auto', overflowY: 'hidden' } : style}
         value={getValue(valueProp, value)}
       />
       {!isFocused && !isDisabled && <InvalidMessage />}
