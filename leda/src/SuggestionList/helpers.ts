@@ -6,7 +6,7 @@ import { checkIsTheSameObject } from '../../utils';
 import { selectAllSuggestion, SelectedState } from '../../components/MultiSelect/constants';
 
 export const getText = (suggestion?: string | number | SomeObject | null, textField?: string): string => {
-  if (!suggestion) return '';
+  if (suggestion == null) return ''; // null or undefined
 
   if (!textField) return suggestion.toString();
 
