@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - DropDownSelect: Fix. Unable to choose 0 as a value from SuggestionList
+- DropDownSelect: Fix. Incorrect component behavior on Enter press. Should clear value, show placeholder and hide clear button.
 
 
 ## [0.27.0] - 2020-08-03

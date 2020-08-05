@@ -235,16 +235,15 @@ export const createKeyDownHandler = ({
 
     if (isOpen) mergeState({ isOpen: false });
 
-    if (fullData.length === 0) return;
-
-    const value = getText(highlightedSuggestion, textField);
+    const valueText = getText(highlightedSuggestion, textField);
+    const value = valueText === '' ? null : valueText;
 
     if (isFunction(onFilterChange)) {
       const customEvent = {
         ...ev,
         component: {
           name,
-          value,
+          value: valueText,
           suggestion: highlightedSuggestion,
         },
       };
