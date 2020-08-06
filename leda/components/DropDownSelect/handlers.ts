@@ -235,15 +235,15 @@ export const createKeyDownHandler = ({
 
     if (isOpen) mergeState({ isOpen: false });
 
-    const valueText = getText(highlightedSuggestion, textField);
-    const value = valueText === '' ? null : valueText;
+    const textValue = getText(highlightedSuggestion, textField); // onFilterChange require empty string as value. null value can't be used there
+    const value = textValue || null; // Convert empty string to to null. '' -> null
 
     if (isFunction(onFilterChange)) {
       const customEvent = {
         ...ev,
         component: {
           name,
-          value: valueText,
+          value: textValue,
           suggestion: highlightedSuggestion,
         },
       };
