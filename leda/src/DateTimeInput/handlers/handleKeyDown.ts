@@ -230,14 +230,14 @@ const handleDownKeyPress = (payload: UpDownKeyPressPayload): void => {
 const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
   const {
     isOpen, onEnterPress, ev, name, date, value, viewType,
-    viewDate, type, dateShorthand, min, max, format = 'dd.MM.yyyy', dispatch, onChange, maskedInputRef,
+    viewDate, type, dateShorthand, min, max, format = 'dd.MM.yyyy', dispatch, onChange, maskedInputRef, timeMin, timeMax,
   } = payload;
 
   const {
     year, month,
   } = dateShorthand;
 
-  const normalizedDateValue = getNormalizedValue(date, min, max, type);
+  const normalizedDateValue = getNormalizedValue(date, min, max, type, timeMin, timeMax);
 
   // если календарь закрыт - вызывать onEnterPress
   if (!isOpen) {
@@ -404,7 +404,7 @@ export const createKeyDownHandler = ({
   } = state;
 
   const {
-    min, max, onEnterPress, type, name, format, onChange,
+    min, max, onEnterPress, type, name, format, onChange, timeMin, timeMax,
   } = props;
 
   const {
@@ -453,7 +453,7 @@ export const createKeyDownHandler = ({
     case KEYS.ENTER: {
       handleEnterKeyPress({
         dateShorthand, ev, isOpen, max, min, viewType, onEnterPress, name, date, type, value, viewDate,
-        dispatch, format, onChange, maskedInputRef,
+        dispatch, format, onChange, maskedInputRef, timeMin, timeMax,
       });
       break;
     }

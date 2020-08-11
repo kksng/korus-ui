@@ -23,7 +23,7 @@ import {
 import {
   convertToDate,
   createMask,
-  getInputWrapperClassNames, getValue, stringToDate,
+  getInputWrapperClassNames, getValue, stringToDate, validateTimeLimits,
 } from './helpers';
 import { useCustomElements, useDateTimeInputEffects, useDateTimeInputState } from './hooks';
 import { Span } from '../../components/Span';
@@ -49,6 +49,8 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
     isValid: isValidProp,
     max: maxProp,
     min: minProp,
+    timeMin: timeMinProp,
+    timeMax: timeMaxProp,
     monthViewRender,
     name,
     onEnterPress,
@@ -72,7 +74,13 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
 
   const max = React.useMemo(() => convertToDate(maxProp), [maxProp]);
 
-  const newProps = { ...props, min, max };
+  const timeMin = React.useMemo(() => validateTimeLimits(timeMinProp), [timeMinProp]);
+
+  const timeMax = React.useMemo(() => validateTimeLimits(timeMaxProp), [timeMaxProp]);
+
+  const newProps = {
+    ...props, min, max, timeMin, timeMax,
+  };
 
   const [state, dispatch] = useDateTimeInputState(newProps);
 

@@ -349,7 +349,8 @@ export const getCalendarFormat = (format: string): string => {
  * В случае, если date больше max, возвращает max
  * Во всех остальных случаях возвращает date
  */
-export const getNormalizedValue = (date: Date | null, min: Date | undefined, max: Date | undefined, type: Values<typeof COMPONENT_TYPES> | undefined): Date | null => {
+// eslint-disable-next-line max-len
+export const getNormalizedValue = (date: Date | null, min: Date | undefined, max: Date | undefined, type: Values<typeof COMPONENT_TYPES> | undefined, timeMinProp: [number, number] | undefined, timeMaxProp: [number, number] | undefined): Date | null => {
   if (!date) return null;
 
   const minDate = (() => {
@@ -364,5 +365,25 @@ export const getNormalizedValue = (date: Date | null, min: Date | undefined, max
     return isDateGreater(date, max) ? max : null;
   })();
 
-  return minDate || maxDate || date;
+  const normalizedDate = minDate || maxDate || date;
+
+  const minDateTime = (() => {
+    if (!timeMinProp) return null;
+    const compareDate = new Date(normalizedDate);
+    compareDate.setHours(timeMinProp[0]);
+    compareDate.setMinutes(timeMinProp[1]);
+    return normalizedDate < compareDate ? compareDate : null;
+  })();
+
+  const maxDateTime = (() => {
+    if (!timeMaxProp) return null;
+    const compareDate = new Date(normalizedDate);
+    compareDate.setHours(timeMaxProp[0]);
+    compareDate.setMinutes(timeMaxProp[1]);
+    return normalizedDate > compareDate ? compareDate : null;
+  })();
+
+  const normalizedDateTime = minDateTime || maxDateTime || normalizedDate;
+
+  return normalizedDateTime;
 };

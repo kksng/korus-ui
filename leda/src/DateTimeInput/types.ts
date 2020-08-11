@@ -68,6 +68,10 @@ export interface DateTimeInputProps extends ValidationProps {
   max?: Date,
   /** Минимальная дата */
   min?: Date,
+  /** Минимальное время */
+  timeMin?: [number, number],
+  /** Максимальное время */
+  timeMax?: [number, number],
   /** Имя компонента */
   name?: string,
   /** Обработчик блюра */
@@ -164,6 +168,8 @@ export interface EnterKeyPressPayload {
   isOpen: DateTimeInputProps['isOpen'],
   max: DateTimeInputProps['max'],
   min: DateTimeInputProps['min'],
+  timeMax: DateTimeInputProps['timeMax'],
+  timeMin: DateTimeInputProps['timeMin'],
   name: DateTimeInputProps['name'],
   onChange: DateTimeInputProps['onChange'],
   onEnterPress: DateTimeInputProps['onEnterPress'],

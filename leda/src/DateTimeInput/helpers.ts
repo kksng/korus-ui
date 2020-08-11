@@ -5,7 +5,7 @@ import {
 import { Values } from '../../commonTypes';
 import { getClassNames, getIsEmptyAndRequired } from '../../utils';
 import { GlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENT_TYPES } from './constants';
+import { COMPONENT_TYPES, HOURS_LIMITS, MINUTES_LIMITS } from './constants';
 import {
   DateWithToDateMethod, DateTimeInputProps, DateTimeInputState, NormalizeValueArgs,
 } from './types';
@@ -163,6 +163,19 @@ export const getInputWrapperClassNames = (theme: GlobalDefaultTheme['dateTimeInp
     { [theme.inputWrapperRequired]: getIsEmptyAndRequired(value, props.isRequired) },
     { [theme.wrapperDisabled]: props.isDisabled },
   );
+};
+
+const normilizeNumber = (value: number, rules: [number, number]): number => {
+  const [min, max] = rules;
+  if (value < min) return min;
+  if (value > max) return max;
+  return value;
+};
+
+export const validateTimeLimits = (timeLimit: DateTimeInputProps['timeMax']): DateTimeInputProps['timeMax'] => {
+  if (!timeLimit) return undefined;
+  const [hours, minutes] = timeLimit;
+  return [normilizeNumber(hours, HOURS_LIMITS), normilizeNumber(minutes, MINUTES_LIMITS)];
 };
 
 export const convertToDate = (dateValue?: DateWithToDateMethod): DateWithToDateMethod | undefined => {

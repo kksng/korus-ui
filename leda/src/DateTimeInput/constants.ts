@@ -4,6 +4,10 @@ export const COMPONENT_TYPES = {
   DATE_TIME: 'date-time',
 } as const;
 
+export const HOURS_LIMITS: [number, number] = [0, 23];
+
+export const MINUTES_LIMITS: [number, number] = [0, 59];
+
 export const MONTHS_IN_ROW = 4;
 
 export const YEARS_IN_ROW = 4;

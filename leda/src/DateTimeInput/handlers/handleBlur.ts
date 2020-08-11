@@ -20,14 +20,14 @@ export const createBlurHandler = ({
   } = state;
 
   const {
-    min, max, onChange, format = 'dd.MM.yyyy', name, type, onBlur,
+    min, max, onChange, format = 'dd.MM.yyyy', name, type, onBlur, timeMin, timeMax,
   } = props;
 
   dispatch(setFocused(false));
 
   dispatch(setOpen(false));
 
-  const normalizedDateValue = getNormalizedValue(date, min, max, type);
+  const normalizedDateValue = getNormalizedValue(date, min, max, type, timeMin, timeMax);
 
   // при блюре - нормализуем значение по min/max
   dispatch(setDate(normalizedDateValue));
