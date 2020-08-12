@@ -55,3 +55,5 @@ export { getIsEmptyAndRequired } from './getIsEmptyAndRequired';
 export { useElementRef } from './useElementRef';
 
 export { checkFormProps } from './formPropsChecker';
+
+export { useRunAfterUpdate } from './useRunAfterUpdate';

@@ -6,6 +6,7 @@ import { useEventSpy } from '../../useEventSpy';
 export const Basic = (componentProps: any) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<string | null>(null);
+  const [value2, setValue2] = React.useState<string | null>(null);
 
   const { update, EventInfo } = useEventSpy();
 
@@ -35,7 +36,7 @@ export const Basic = (componentProps: any) => {
         }}
         isRequired
         validator={[
-          { 
+          {
             validator: 'email',
           },
           {
@@ -49,6 +50,32 @@ export const Basic = (componentProps: any) => {
         ]}
         _width30
         {...props}
+      />
+
+      <br />
+
+      <L.Input
+        name="Input-maxLength"
+        form="AwesomeInput"
+        data-test="input-maxlength"
+        value={value2}
+        onChange={(ev) => {
+          setValue2(ev.component.value);
+          update('Change', ev);
+        }}
+        maxLength={5}
+        placeholder="With maxLength"
+        hasClearButton
+        onFocus={(ev) => {
+          update('Focus', ev);
+        }}
+        onEnterPress={({ component }) => {
+          console.log(component.name, component.value);
+        }}
+        onBlur={(ev) => {
+          update('Blur', ev);
+        }}
+        _width30
       />
 
       <br />

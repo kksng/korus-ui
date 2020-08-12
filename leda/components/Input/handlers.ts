@@ -1,12 +1,15 @@
 import * as React from 'react';
+import { isFunction } from 'lodash';
 import { CustomEventHandler, SetState } from '../../commonTypes';
 import { InputProps } from './types';
 import { isSymbolAllowed, isSymbolForbidden, transformToCase } from './helpers';
 import { stringToMaxLength } from '../../utils';
+import { ExtendedEvent } from '../../src/MaskedInputBase/types';
 
 export const createChangeHandler = (
   props: InputProps,
   setValue: SetState<string>,
+  runAfterUpdate: (callback: () => void) => void,
 ): CustomEventHandler<React.ChangeEvent<HTMLInputElement>> => (event) => {
   const { value } = event.target;
   const {
@@ -16,6 +19,23 @@ export const createChangeHandler = (
   if (isSymbolForbidden(value, forbiddenSymbols)) return;
 
   if (!isSymbolAllowed(value, allowedSymbols)) return;
+
+  const inputElement = event.target;
+  const prevSelection = {
+    start: inputElement.selectionStart,
+    end: inputElement.selectionEnd,
+  };
+
+  if (maxLength != null && value.length > maxLength) {
+    const newSelectionPosition = prevSelection.start ? prevSelection.start - 1 : 0;
+    // возвращаем курсор на предыдущую позицию в блокирующем режиме
+    runAfterUpdate(() => {
+      inputElement.selectionStart = newSelectionPosition;
+      inputElement.selectionEnd = newSelectionPosition;
+    });
+
+    return;
+  }
 
   const maxLengthAdjustedValue = stringToMaxLength(value, maxLength);
 
@@ -117,4 +137,34 @@ export const createResetHandler = (
       value: newValue,
     },
   });
+};
+
+export const createPasteHandler = (props: InputProps, setValue: SetState<string>) => (event: React.ClipboardEvent) => {
+  const {
+    onChange, name, isDisabled, maxLength,
+  } = props;
+
+  event.preventDefault();
+  // по неизвестным причинам onPaste работает даже на отключенных инпутах
+  if (isDisabled) return;
+
+  const text = event.clipboardData.getData('Text');
+  const maxLengthAdjustedValue = stringToMaxLength(text, maxLength);
+  const newValue = maxLength != null ? maxLengthAdjustedValue : text;
+
+  if (props.value === undefined) {
+    setValue(newValue);
+  }
+
+  if (isFunction(onChange)) {
+    const customEvent = {
+      ...event,
+      component: {
+        name,
+        value: newValue,
+      },
+    };
+
+    onChange(customEvent as unknown as ExtendedEvent<React.ChangeEvent<HTMLInputElement>>);
+  }
 };

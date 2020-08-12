@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  fireEvent, render, screen,
+  fireEvent, render, screen, createEvent,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Input } from './index';
@@ -138,9 +138,7 @@ describe('Input ATTRIBUTES', () => {
       <Input onChange={handleChange} maxLength={5} onBlur={jest.fn()} />
     ));
 
-    userEvent.type(screen.getByRole('textbox'), 'new value', {
-      allAtOnce: true,
-    });
+    userEvent.type(screen.getByRole('textbox'), 'new value');
 
     expect(handleChange).lastCalledWith(eventMatcher);
   });

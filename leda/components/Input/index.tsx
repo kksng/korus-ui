@@ -1,7 +1,7 @@
 import React from 'react';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
-  getClassNames, bindFunctionalRef, useTheme, useElement, useProps, getIsEmptyAndRequired,
+  getClassNames, bindFunctionalRef, useTheme, useElement, useProps, getIsEmptyAndRequired, useRunAfterUpdate,
 } from '../../utils';
 import { useValidation } from '../Validation';
 import { InputProps, InputRefCurrent } from './types';
@@ -13,6 +13,7 @@ import {
   createFocusHandler,
   createKeyDownHandler,
   createResetHandler,
+  createPasteHandler,
 } from './handlers';
 import { getValue } from './helpers';
 
@@ -53,6 +54,8 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
 
   const value = getValue(valueProp, valueState);
 
+  const runAfterUpdate = useRunAfterUpdate();
+
   const {
     isValid, validateCurrent, InvalidMessage,
   } = useValidation(props, {
@@ -65,13 +68,15 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
 
   const handleBlur = createBlurHandler(props, setFocused, validateCurrent);
 
-  const handleChange = createChangeHandler(props, setValue);
+  const handleChange = createChangeHandler(props, setValue, runAfterUpdate);
 
   const handleFocus = createFocusHandler(props, isValid, setFocused);
 
   const handleClearValue = createClearHandler(props, setValue);
 
   const handleKeyDown = createKeyDownHandler(props);
+
+  const handlePaste = createPasteHandler(props, setValue);
 
   const wrapperClassNames = getClassNames(
     className,
@@ -131,6 +136,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
           name={name}
           onBlur={handleBlur}
           onChange={handleChange}
+          onPaste={handlePaste}
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           value={value}

@@ -55,8 +55,8 @@ describe('Password snapshots collection', () => {
 describe('Password attributes test collection', () => {
   test('is Password work right with isDisabled attributes?', () => {
     const onFocus = jest.fn();
-    const { container, getByRole } = render(<Password isDisabled onFocus={onFocus} />);
-    const input = container.querySelectorAll('input.password-input')[0];
+    const { container } = render(<Password isDisabled onFocus={onFocus} />);
+    const input = container.querySelectorAll('input.password-input')[0] as HTMLInputElement | undefined;
 
     expect(container.querySelectorAll('.password-element-wrapper.disabled'))
       .toHaveLength(1);
@@ -64,7 +64,7 @@ describe('Password attributes test collection', () => {
     expect(input)
       .toHaveAttribute('disabled');
 
-    getByRole('textbox').focus();
+    input?.focus();
 
     expect(onFocus)
       .toHaveBeenCalledTimes(0);
