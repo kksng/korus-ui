@@ -345,6 +345,7 @@ export const getCalendarFormat = (format: string): string => {
   return format.slice(0, startIndex) + format.slice(endIndex + 2, format.length);
 };
 
+/* Функция устанавливает часы и минуты  заданной дате  */
 export const applyTimeLimits = (inputDate: Date, timeLimits: TimeLimits): Date => {
   const [hours, minutes] = timeLimits;
   const outputDate = new Date(inputDate);
