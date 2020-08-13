@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { getText } from '../../src/SuggestionList/helpers';
 import { useElement } from '../../utils';
 import { Div } from '../Div';
 import { Span } from '../Span';
@@ -13,21 +12,33 @@ export const useSyncedHighlightedValue = ({
   shouldFilterValues,
   mergeState,
   data,
+  textField,
 }: {
   filterValue: string | null,
   shouldFilterValues: boolean,
   mergeState: React.Dispatch<Partial<DropDownSelectState>>,
   data: DropDownSelectProps['data'],
+  textField?: string,
 }): void => {
   React.useEffect((): void => {
     if (shouldFilterValues && data && filterValue) {
-      const filteredData = filterData({ data, filterValue }) || [];
-      // обновляем highlighted value
+      const filteredData = filterData({
+        data,
+        filterValue,
+        textField,
+      }) || [];
+      // updating highlighted value
       mergeState({
-        highlightedSuggestion: getText(filteredData[0]) || null,
+        highlightedSuggestion: filteredData[0] || null,
       });
     }
-  }, [data, shouldFilterValues, filterValue, mergeState]);
+  }, [
+    data,
+    filterValue,
+    mergeState,
+    shouldFilterValues,
+    textField,
+  ]);
 };
 
 export const useCustomElements = (
