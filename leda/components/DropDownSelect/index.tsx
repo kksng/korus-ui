@@ -123,7 +123,11 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
   const handleClearIconClick = createClearIconClickHandler(handlerData);
 
   useSyncedHighlightedValue({
-    filterValue, shouldFilterValues, mergeState, data,
+    data,
+    filterValue,
+    mergeState,
+    shouldFilterValues,
+    textField,
   });
 
   useCorrectSuggestionsInControlledMode({

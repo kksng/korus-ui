@@ -1,11 +1,17 @@
 import * as React from 'react';
 import { isArray, isObject } from 'lodash';
-import { SomeObject } from '../../commonTypes';
-import { GetSuggestionItemProps, SuggestionItemComputedProps } from './types';
+import {
+  GetSuggestionItemProps,
+  SuggestionItemComputedProps,
+  Value,
+} from './types';
 import { checkIsTheSameObject } from '../../utils';
 import { selectAllSuggestion, SelectedState } from '../../components/MultiSelect/constants';
 
-export const getText = (suggestion?: string | number | SomeObject | null, textField?: string): string => {
+export const getText = (
+  suggestion?: Value,
+  textField?: string,
+): string => {
   if (suggestion == null) return ''; // null or undefined
 
   if (!textField) return suggestion.toString();
