@@ -172,7 +172,7 @@ const normilizeNumber = (value: number, rules: TimeLimits): number => {
   return value;
 };
 
-export const validateTimeLimits = (timeLimits: TimeLimits): TimeLimits | undefined => {
+export const validateTimeLimits = (timeLimits: TimeLimits | undefined): TimeLimits | undefined => {
   if (!timeLimits) return undefined;
   const [hours, minutes] = timeLimits;
   return [normilizeNumber(hours, HOURS_LIMITS as TimeLimits), normilizeNumber(minutes, MINUTES_LIMITS as TimeLimits)];
