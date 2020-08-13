@@ -2,6 +2,7 @@ import { Values } from '../../commonTypes';
 import { getClassNames } from '../../utils';
 import { BUTTON_TYPE, CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import { COMPONENT_TYPES } from '../DateTimeInput/constants';
+import { TimeLimits } from '../DateTimeInput/types';
 
 import {
   CalendarConditionProps,
@@ -344,15 +345,25 @@ export const getCalendarFormat = (format: string): string => {
   return format.slice(0, startIndex) + format.slice(endIndex + 2, format.length);
 };
 
+export const applyTimeLimits = (inputDate: Date, timeLimits: TimeLimits): Date => {
+  const [hours, minutes] = timeLimits;
+  const outputDate = new Date(inputDate);
+  outputDate.setHours(hours);
+  outputDate.setMinutes(minutes);
+  return outputDate;
+};
+
 /**
+ *
  * В случе, если date меньше min, возвращает min
  * В случае, если date больше max, возвращает max
  * Во всех остальных случаях возвращает date
  */
 // eslint-disable-next-line max-len
-export const getNormalizedValue = (date: Date | null, min: Date | undefined, max: Date | undefined, type: Values<typeof COMPONENT_TYPES> | undefined, timeMinProp: [number, number] | undefined, timeMaxProp: [number, number] | undefined): Date | null => {
+export const getNormalizedValue = (date: Date | null, min: Date | undefined, max: Date | undefined, type: Values<typeof COMPONENT_TYPES> | undefined, timeMinProp: TimeLimits | undefined, timeMaxProp: TimeLimits | undefined): Date | null => {
   if (!date) return null;
 
+  /* Здесь нормализуется дата */
   const minDate = (() => {
     if (type === COMPONENT_TYPES.TIME_ONLY) return isTimeLess(date, min) ? min : null;
     if (type === COMPONENT_TYPES.DATE_TIME) return min && date.getTime() < min.getTime() ? min : null;
@@ -367,19 +378,16 @@ export const getNormalizedValue = (date: Date | null, min: Date | undefined, max
 
   const normalizedDate = minDate || maxDate || date;
 
+  /* После того как дата нормализована, аналогично нормализуем время */
   const minDateTime = (() => {
     if (!timeMinProp) return null;
-    const compareDate = new Date(normalizedDate);
-    compareDate.setHours(timeMinProp[0]);
-    compareDate.setMinutes(timeMinProp[1]);
+    const compareDate = applyTimeLimits(normalizedDate, timeMinProp);
     return normalizedDate < compareDate ? compareDate : null;
   })();
 
   const maxDateTime = (() => {
     if (!timeMaxProp) return null;
-    const compareDate = new Date(normalizedDate);
-    compareDate.setHours(timeMaxProp[0]);
-    compareDate.setMinutes(timeMaxProp[1]);
+    const compareDate = applyTimeLimits(normalizedDate, timeMaxProp);
     return normalizedDate > compareDate ? compareDate : null;
   })();
 

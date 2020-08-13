@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   BlurEvent, ChangeEvent, FocusEvent, DateTimeInputProps,
-  DateTimeInputRefCurrent,
+  DateTimeInputRefCurrent, TimeLimits,
 } from '../../src/DateTimeInput/types';
 
 export interface DateTimePickerProps extends DateTimeInputProps {
@@ -28,9 +28,9 @@ export interface DateTimePickerProps extends DateTimeInputProps {
   /** Плейсхолдер для поля ввода */
   placeholder?: string,
   /** Минимальное время */
-  timeMin?: [number, number],
+  timeMin?: TimeLimits,
   /** Максимальное время */
-  timeMax?: [number, number],
+  timeMax?: TimeLimits,
   /** Реф */
   ref?: React.Ref<DateTimeInputRefCurrent>,
   /** Значение поля ввода */

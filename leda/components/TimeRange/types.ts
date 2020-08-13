@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  BlurEvent, ChangeEvent, FocusEvent,
+  BlurEvent, ChangeEvent, FocusEvent, TimeLimits,
 } from '../../src/DateTimeInput/types';
 import {
   CustomRangeEvent, DateTimeInputRangeProps,
@@ -29,9 +29,9 @@ export interface TimeRangeProps extends DateTimeInputRangeProps {
   /** Плейсхолдер полей "от" и "до" */
   placeholder?: string | [string | undefined, string | undefined],
   /** Минимальное время, применяется к обоим полям */
-  timeMin?: [number, number],
+  timeMin?: TimeLimits,
   /** Минимальное время, применяется к обоим полям */
-  timeMax?: [number, number],
+  timeMax?: TimeLimits,
   /** Реф */
   ref?: React.Ref<DateTimeInputRangeRefCurrent>,
   /** Значение полей "от" и "до" */

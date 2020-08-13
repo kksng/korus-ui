@@ -7,7 +7,7 @@ import { getClassNames, getIsEmptyAndRequired } from '../../utils';
 import { GlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENT_TYPES, HOURS_LIMITS, MINUTES_LIMITS } from './constants';
 import {
-  DateWithToDateMethod, DateTimeInputProps, DateTimeInputState, NormalizeValueArgs,
+  DateWithToDateMethod, DateTimeInputProps, DateTimeInputState, NormalizeValueArgs, TimeLimits,
 } from './types';
 
 // извлекает число по паттерну и формату. Пример: ("dd.MM.yy", "dd", "18.05.19") => 18
@@ -165,17 +165,17 @@ export const getInputWrapperClassNames = (theme: GlobalDefaultTheme['dateTimeInp
   );
 };
 
-const normilizeNumber = (value: number, rules: [number, number]): number => {
+const normilizeNumber = (value: number, rules: TimeLimits): number => {
   const [min, max] = rules;
   if (value < min) return min;
   if (value > max) return max;
   return value;
 };
 
-export const validateTimeLimits = (timeLimit: DateTimeInputProps['timeMax']): DateTimeInputProps['timeMax'] => {
-  if (!timeLimit) return undefined;
-  const [hours, minutes] = timeLimit;
-  return [normilizeNumber(hours, HOURS_LIMITS), normilizeNumber(minutes, MINUTES_LIMITS)];
+export const validateTimeLimits = (timeLimits: TimeLimits): TimeLimits | undefined => {
+  if (!timeLimits) return undefined;
+  const [hours, minutes] = timeLimits;
+  return [normilizeNumber(hours, HOURS_LIMITS as TimeLimits), normilizeNumber(minutes, MINUTES_LIMITS as TimeLimits)];
 };
 
 export const convertToDate = (dateValue?: DateWithToDateMethod): DateWithToDateMethod | undefined => {
