@@ -133,6 +133,7 @@ import * as VStepperTypes from './components/VStepper/types';
 import * as commonTypes from './commonTypes';
 
 import { form } from './form';
+import { maskValue } from './src/MaskedInputBase/helpers';
 
 const utils = {
   bindFunctionalRef,
@@ -151,6 +152,7 @@ const utils = {
   useProps,
   useValue,
   useRunAfterUpdate,
+  maskValue,
 };
 
 export {

@@ -4,7 +4,6 @@ import { CustomEventHandler, SetState } from '../../commonTypes';
 import { InputProps } from './types';
 import { isSymbolAllowed, isSymbolForbidden, transformToCase } from './helpers';
 import { stringToMaxLength } from '../../utils';
-import { ExtendedEvent } from '../../src/MaskedInputBase/types';
 
 export const createChangeHandler = (
   props: InputProps,
@@ -139,7 +138,7 @@ export const createResetHandler = (
   });
 };
 
-export const createPasteHandler = (props: InputProps, setValue: SetState<string>) => (event: React.ClipboardEvent) => {
+export const createPasteHandler = (props: InputProps, setValue: SetState<string>) => (event: React.ClipboardEvent<HTMLInputElement>) => {
   const {
     onChange, name, isDisabled, maxLength,
   } = props;
@@ -159,12 +158,13 @@ export const createPasteHandler = (props: InputProps, setValue: SetState<string>
   if (isFunction(onChange)) {
     const customEvent = {
       ...event,
+      target: event.target as HTMLInputElement,
       component: {
         name,
         value: newValue,
       },
     };
 
-    onChange(customEvent as unknown as ExtendedEvent<React.ChangeEvent<HTMLInputElement>>);
+    onChange(customEvent);
   }
 };
