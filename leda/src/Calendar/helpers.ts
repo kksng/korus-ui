@@ -351,6 +351,7 @@ export const applyTimeLimits = (inputDate: Date, timeLimits: TimeLimits): Date =
   const outputDate = new Date(inputDate);
   outputDate.setHours(hours);
   outputDate.setMinutes(minutes);
+  outputDate.setSeconds(0);
   return outputDate;
 };
 
