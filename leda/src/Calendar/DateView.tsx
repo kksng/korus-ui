@@ -11,7 +11,17 @@ import { DateViewProps } from './types';
 
 export const DateView = (props: DateViewProps): React.ReactElement | null => {
   const {
-    viewDate, theme, viewType, onClick, min, max, value, dateCellRender, weeksRowRender, ...restProps
+    dateCellRender,
+    disabledDates,
+    max,
+    min,
+    onClick,
+    theme,
+    value,
+    viewDate,
+    viewType,
+    weeksRowRender,
+    ...restProps
   } = props;
 
   const { renders: { dateTimeInput: dateTimeInputRenders } } = React.useContext(LedaContext);
@@ -47,19 +57,20 @@ export const DateView = (props: DateViewProps): React.ReactElement | null => {
             <Div key={`week-${index.toString()}`} className={theme.dateRow}>
               {week.map((date, weekIndex) => (
                 <DateCell
-                  key={`date-${index.toString()}-${date}`}
-                  min={min}
-                  max={max}
                   date={date}
-                  dateCellRender={dateCellRender}
-                  index={index}
-                  weekIndex={weekIndex}
                   dates={dates}
+                  dateCellRender={dateCellRender}
+                  disabledDates={disabledDates}
+                  index={index}
+                  key={`date-${index.toString()}-${date}`}
+                  max={max}
+                  min={min}
                   onClick={onClick}
                   theme={theme}
                   value={value}
-                  viewType={viewType}
                   viewDate={viewDate}
+                  viewType={viewType}
+                  weekIndex={weekIndex}
                 />
               ))}
             </Div>

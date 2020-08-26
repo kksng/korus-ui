@@ -13,20 +13,26 @@ export const DateTimePicker = () => {
       <br />
       <br />
       <L.DateTimePicker
-        min={new Date(2016, 4, 3)}
-        max={new Date(2019, 5, 20)}
-        isRequired
+        disabledDates={[
+          new Date(2018, 9, 10),
+          new Date(2018, 9, 13),
+          [new Date(2018, 9, 16), new Date(2018, 9, 19)],
+          [new Date(2018, 9, 27), new Date(2018, 9, 30)],
+        ]}
         form="date-form"
         format="dd.MM.yy hh:mm:ss"
+        hasTodayButton
+        isRequired
+        max={new Date(2019, 5, 20)}
+        min={new Date(2016, 4, 3)}
         name="datetimepipicker"
-        onEnterPress={ev => console.log('enter', ev)}
-        onFocus={ev => console.log('focus', ev)}
         onBlur={ev => console.log('blur', ev)}
         onChange={ev => {
           console.log('change', ev);
           setValue(ev.component.value);
         }}
-        hasTodayButton
+        onEnterPress={ev => console.log('enter', ev)}
+        onFocus={ev => console.log('focus', ev)}
         value={value}
         _width30
         {...props}

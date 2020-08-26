@@ -23,6 +23,7 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
     dateCellRender,
     dateViewRender,
     delimiterRender,
+    disabledDates,
     format = 'dd.MM.yyyy',
     form,
     iconRender,
@@ -58,7 +59,9 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
   const toDateTimeInputRef = React.useRef<DateTimeInputRefCurrent | null>(null);
 
   const {
-    value: valueState, date, setDate,
+    date,
+    setDate,
+    value: valueState,
   } = state;
 
   const value = isNil(valueProp) ? date : getReplacedValue(valueProp);
@@ -115,6 +118,7 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
         calendarHeaderRender={calendarHeaderRender}
         dateCellRender={dateCellRender}
         dateViewRender={dateViewRender}
+        disabledDates={disabledDates}
         format={format}
         form={form}
         iconRender={iconRender}
@@ -146,6 +150,7 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
         calendarHeaderRender={calendarHeaderRender}
         dateCellRender={dateCellRender}
         dateViewRender={dateViewRender}
+        disabledDates={disabledDates}
         format={format}
         form={form}
         iconRender={iconRender}

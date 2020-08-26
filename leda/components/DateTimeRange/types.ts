@@ -8,6 +8,8 @@ import {
 } from '../../src/DateTimeInputRange/types';
 
 export interface DateTimeRangeProps extends DateTimeInputRangeProps {
+  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  disabledDates?: (Date | [Date, Date])[],
   /** Формат отображаемой и вводимой даты. По-умолчанию "dd.MM.yyyy hh:mm" */
   format?: string,
   /** Признак отключения инпута */

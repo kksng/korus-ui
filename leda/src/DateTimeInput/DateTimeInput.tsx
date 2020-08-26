@@ -37,6 +37,7 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
     className,
     dateCellRender,
     dateViewRender,
+    disabledDates,
     format = 'dd.MM.yyyy',
     hasTodayButton,
     iconRender,
@@ -192,8 +193,10 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
         <Calendar
           boundingContainerRef={boundingContainerRef}
           calendarHeaderRender={calendarHeaderRender}
+          calendarWrapperRender={calendarWrapperRender}
           dateCellRender={dateCellRender}
           dateViewRender={dateViewRender}
+          disabledDates={disabledDates}
           dispatch={dispatch}
           format={format}
           hasTodayButton={hasTodayButton}
@@ -210,7 +213,6 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
           viewType={state.viewType}
           weeksRowRender={weeksRowRender}
           yearViewRender={yearViewRender}
-          calendarWrapperRender={calendarWrapperRender}
         />
       )}
     </Wrapper>

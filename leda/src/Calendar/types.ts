@@ -11,6 +11,8 @@ export interface CalendarClickHandler {
 
 export interface CalendarProps {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
+  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  disabledDates?: (Date | [Date, Date])[],
   dispatch: React.Dispatch<AllActions>,
   format: string,
   hasTodayButton?: boolean,
@@ -34,19 +36,21 @@ export interface CalendarProps {
 }
 
 export interface DateCellProps {
+  children?: React.ReactNode,
   date: number,
-  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
   dates: number[][],
-  min?: Date,
+  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
+  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  disabledDates?: (Date | [Date, Date])[],
   max?: Date,
+  min?: Date,
   index: number,
   onClick: CalendarClickHandler,
-  viewDate: Date,
-  value: Date | null,
-  viewType: Values<typeof VIEW_TYPES>,
   theme: typeof defaultTheme,
+  value: Date | null,
+  viewDate: Date,
+  viewType: Values<typeof VIEW_TYPES>,
   weekIndex: number,
-  children?: React.ReactNode,
 }
 
 export interface CalendarHeaderProps {
@@ -59,16 +63,18 @@ export interface CalendarHeaderProps {
 }
 
 export interface DateViewProps {
-  viewDate: Date,
+  children?: React.ReactNode,
   dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
-  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  min?: Date,
+  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  disabledDates?: (Date | [Date, Date])[],
   max?: Date,
-  value: Date | null,
-  viewType: Values<typeof VIEW_TYPES>,
+  min?: Date,
   onClick: CalendarClickHandler,
   theme: typeof defaultTheme,
-  children?: React.ReactNode,
+  value: Date | null,
+  viewDate: Date,
+  viewType: Values<typeof VIEW_TYPES>,
+  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
 }
 
 export interface MonthViewProps {
@@ -135,6 +141,8 @@ export interface TodayButtonProps {
 
 export interface DateCellConditions {
   firstDayOfMonth: number,
+  /* Is date disabled to be selected. */
+  isDateDisabled: boolean,
   isDateOfNextMonth: boolean,
   isDateOfPrevMonth: boolean,
   isDateOutOfMaxMonthRange: boolean,

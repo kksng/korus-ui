@@ -10,6 +10,8 @@ import {
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 
 export interface DatePickerProps extends DateTimeInputProps {
+  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  disabledDates?: (Date | [Date, Date])[],
   /** Формат отображаемой и вводимой даты. По-умолчанию dd.MM.yyyy */
   format?: string,
   /** Признак принудительного открытия календаря */

@@ -23,6 +23,8 @@ export type DateTimeInputValueType = undefined | null | string | Date;
 export interface DateTimeInputRangeProps {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
   className?: string,
+  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  disabledDates?: (Date | [Date, Date])[],
   max?: Date,
   min?: Date,
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInputRange],
