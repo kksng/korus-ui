@@ -1,3 +1,4 @@
+import isDate from 'lodash/isDate';
 import { Values } from '../../commonTypes';
 import { getClassNames } from '../../utils';
 import { BUTTON_TYPE, CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
@@ -51,6 +52,20 @@ export const isDateGreater = (firstDate?: Date | null, secondDate?: Date | null)
   const secondWithoutTime = new Date(secondDate.getFullYear(), secondDate.getMonth(), secondDate.getDate());
 
   return firstWithoutTime.getTime() > secondWithoutTime.getTime();
+};
+
+export const getIsDateDisabled = (date: Date, disabledDates?: (Date | [Date, Date])[]) => {
+  const dateTime = date.getTime();
+
+  if (!Array.isArray(disabledDates)) return false;
+
+  return disabledDates.some((dates: Date | [Date, Date]) => {
+    if (isDate(dates)) return dates.getTime() === dateTime;
+    if (Array.isArray(dates)) {
+      return dates[0].getTime() <= dateTime && dates[1].getTime() >= dateTime;
+    }
+    return false;
+  });
 };
 
 export const getFirstDecadeYear = (viewDate: Date): number => Math.floor(viewDate.getFullYear() / 10) * 10;
@@ -272,7 +287,14 @@ export const getCalendarConditions = (props: CalendarConditionProps): CalendarCo
 
 export const getDateCellConditions = (props: DateCellProps): DateCellConditions => {
   const {
-    dates, date, index, weekIndex = 0, viewDate, min, max,
+    date,
+    dates,
+    disabledDates,
+    index,
+    max,
+    min,
+    viewDate,
+    weekIndex = 0,
   } = props;
 
   const firstDayOfMonth = dates[0].indexOf(1);
@@ -297,8 +319,11 @@ export const getDateCellConditions = (props: DateCellProps): DateCellConditions 
   const isDateOutOfMinMonthRange = !!min && renderedDate < new Date(min.getFullYear(), min.getMonth(), min.getDate());
   const isDateOutOfMaxMonthRange = !!max && renderedDate > new Date(max.getFullYear(), max.getMonth(), max.getDate());
 
+  const isDateDisabled = getIsDateDisabled(renderedDate, disabledDates);
+
   return {
     firstDayOfMonth,
+    isDateDisabled,
     isDateOfNextMonth,
     isDateOfPrevMonth,
     isDateOutOfMaxMonthRange,

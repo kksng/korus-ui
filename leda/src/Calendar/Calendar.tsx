@@ -12,6 +12,7 @@ import { useAdaptivePosition } from '../../utils';
 export const Calendar = (props: CalendarProps): React.ReactElement | null => {
   const {
     boundingContainerRef,
+    disabledDates,
     hasTodayButton,
     isOpen = false,
     isDisabled,
@@ -72,15 +73,16 @@ export const Calendar = (props: CalendarProps): React.ReactElement | null => {
         theme={theme}
       />
       <DateView
-        onClick={onClick}
-        viewDate={viewDate}
         dateCellRender={dateCellRender}
-        weeksRowRender={weeksRowRender}
-        min={min}
+        disabledDates={disabledDates}
         max={max}
-        value={value}
+        min={min}
+        onClick={onClick}
         theme={theme}
+        value={value}
+        viewDate={viewDate}
         viewType={viewType}
+        weeksRowRender={weeksRowRender}
       />
       <MonthView
         onClick={onClick}

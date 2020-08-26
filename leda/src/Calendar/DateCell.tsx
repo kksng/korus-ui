@@ -11,7 +11,12 @@ import { DateCellProps } from './types';
 
 export const DateCell = (props: DateCellProps): React.ReactElement => {
   const {
-    date, index, theme, onClick, viewDate, dateCellRender,
+    date,
+    dateCellRender,
+    index,
+    onClick,
+    theme,
+    viewDate,
   } = props;
 
   const { renders: { dateTimeInput: dateTimeInputRenders } } = React.useContext(LedaContext);
@@ -25,13 +30,14 @@ export const DateCell = (props: DateCellProps): React.ReactElement => {
 
   const {
     renderedDate,
+    isDateDisabled,
     isDateOfPrevMonth,
     isDateOfNextMonth,
     isDateOutOfMinMonthRange,
     isDateOutOfMaxMonthRange,
   } = getDateCellConditions(props);
 
-  if (isDateOutOfMinMonthRange || isDateOutOfMaxMonthRange) {
+  if (isDateDisabled || isDateOutOfMinMonthRange || isDateOutOfMaxMonthRange) {
     return (
       <DateCellItem
         key={`${index.toString()}-${date}`}

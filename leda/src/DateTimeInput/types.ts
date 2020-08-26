@@ -56,6 +56,8 @@ export interface DateTimeInputProps extends ValidationProps {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
   /** Классы для компонента */
   className?: string,
+  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  disabledDates?: (Date | [Date, Date])[],
   /** Формат даты, по-умолчанию dd.MM.yyyy */
   format?: string,
   /** Кнопка "Сегодня" под календарем */
@@ -70,10 +72,6 @@ export interface DateTimeInputProps extends ValidationProps {
   max?: Date,
   /** Минимальная дата */
   min?: Date,
-  /** Минимальное время */
-  timeMin?: TimeLimits,
-  /** Максимальное время */
-  timeMax?: TimeLimits,
   /** Имя компонента */
   name?: string,
   /** Обработчик блюра */
@@ -88,6 +86,10 @@ export interface DateTimeInputProps extends ValidationProps {
   placeholder?: string,
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInput],
+  /** Максимальное время */
+  timeMax?: TimeLimits,
+  /** Минимальное время */
+  timeMin?: TimeLimits,
   /** Тип компонента */
   type?: Values<typeof COMPONENT_TYPES>,
   /** Значение в инпуте */
@@ -217,7 +219,7 @@ export interface StateActionPayloads {
 
 export type StateActionTypes = typeof stateActionTypes;
 
-export type AllActions = Values<{ [K in keyof typeof stateActionTypes]: Action<typeof stateActionTypes[K], StateActionPayloads[K]>}>;
+export type AllActions = Values<{ [K in keyof typeof stateActionTypes]: Action<typeof stateActionTypes[K], StateActionPayloads[K]> }>;
 
 export interface DatesPrevClickPayload {
   isPrevButtonDisabled: boolean,
