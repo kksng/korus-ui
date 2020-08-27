@@ -6,9 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.29.0] - 2020-08-31
 
+### Added
+- DateTimePicker: Added disabledDates prop. Array of dates and dates ranges that are disabled to be selected as a value.
+
 ### Fixed
 - NumericRange: Incorrect 0 value handler.
-
 
 ## [0.28.0] - 2020-08-17
 
