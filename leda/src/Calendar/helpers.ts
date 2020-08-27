@@ -54,15 +54,26 @@ export const isDateGreater = (firstDate?: Date | null, secondDate?: Date | null)
   return firstWithoutTime.getTime() > secondWithoutTime.getTime();
 };
 
-export const getIsDateDisabled = (date: Date, disabledDates?: (Date | [Date, Date])[]) => {
-  const dateTime = date.getTime();
+/* Round date to day start */
+export const getRoundDate = (date: Date): Date => {
+  const dayStart: Date = new Date(date.getTime());
+  dayStart.setHours(0);
+  dayStart.setMinutes(0);
+  dayStart.setSeconds(0);
+  dayStart.setMilliseconds(0);
+  return dayStart;
+};
+
+/* Check if date is one of disabledDates */
+export const getIsDateDisabled = (date: Date, disabledDates?: (Date | [Date, Date])[]): boolean => {
+  const dateTime = getRoundDate(date).getTime();
 
   if (!Array.isArray(disabledDates)) return false;
 
   return disabledDates.some((dates: Date | [Date, Date]) => {
-    if (isDate(dates)) return dates.getTime() === dateTime;
+    if (isDate(dates)) return getRoundDate(dates).getTime() === dateTime;
     if (Array.isArray(dates)) {
-      return dates[0].getTime() <= dateTime && dates[1].getTime() >= dateTime;
+      return getRoundDate(dates[0]).getTime() <= dateTime && getRoundDate(dates[1]).getTime() >= dateTime;
     }
     return false;
   });

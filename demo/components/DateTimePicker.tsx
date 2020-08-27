@@ -13,12 +13,6 @@ export const DateTimePicker = () => {
       <br />
       <br />
       <L.DateTimePicker
-        disabledDates={[
-          new Date(2018, 9, 10),
-          new Date(2018, 9, 13),
-          [new Date(2018, 9, 16), new Date(2018, 9, 19)],
-          [new Date(2018, 9, 27), new Date(2018, 9, 30)],
-        ]}
         form="date-form"
         format="dd.MM.yy hh:mm:ss"
         hasTodayButton
