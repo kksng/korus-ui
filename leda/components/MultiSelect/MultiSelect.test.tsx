@@ -153,15 +153,19 @@ describe('MultiSelect attributes test collection', () => {
     const { container } = render(
       <MultiSelect
         hasClearButton
-        value={validValue}
+        defaultValue={validValue}
         isOpen
         name={validName}
         data={validData}
       />,
     );
 
-    expect(container.querySelectorAll('.multiselect-clear-icon'))
-      .toHaveLength(1);
+    const clearAllButtons = container.querySelectorAll('.multiselect-clear-icon');
+
+    expect(clearAllButtons).toHaveLength(1);
+    expect(clearAllButtons[0]).toBeInTheDocument();
+    fireEvent.click(clearAllButtons[0]);
+    expect(container.querySelectorAll('.tags-item')).toHaveLength(0);
   });
   test('is Multiselect work right with isDisabled attributes?', () => {
     const { container, getByRole } = render(
@@ -173,18 +177,15 @@ describe('MultiSelect attributes test collection', () => {
         data={validData}
       />,
     );
-    const clearAllBtn = container.querySelectorAll('.multiselect-clear-icon')[0];
+
+    expect(container.querySelectorAll('.multiselect-clear-icon'))
+      .toHaveLength(0);
 
     expect(getByRole('textbox'))
       .toHaveAttribute('disabled', '');
 
     expect(container.querySelectorAll('.multiselect-input-wrapper.disabled')[0])
       .toBeInTheDocument();
-
-    fireEvent.click(clearAllBtn);
-
-    expect(container.querySelectorAll('.tags-item'))
-      .toHaveLength(validValue.length);
   });
   test('is Miltiselect work right with isLoading attributes?', () => {
     const { container, rerender } = render(
