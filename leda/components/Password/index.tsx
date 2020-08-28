@@ -103,7 +103,7 @@ export const Password = React.forwardRef((props: PasswordProps, ref: React.Ref<P
     },
   );
 
-  const shouldRenderClearButton = hasClearButton && value.length > 0;
+  const shouldRenderClearButton = hasClearButton && !isDisabled && value.length > 0;
 
   const state = {
     value, isFocused, isPasswordVisible, isValid,

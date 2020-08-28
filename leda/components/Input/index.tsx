@@ -93,7 +93,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
     },
   );
 
-  const shouldRenderClearButton = hasClearButton && value.length > 0;
+  const shouldRenderClearButton = hasClearButton && !isDisabled && value.length > 0;
 
   const state = {
     value, isFocused, isValid,

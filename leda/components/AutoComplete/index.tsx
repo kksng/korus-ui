@@ -193,7 +193,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     suggestions,
   });
 
-  const shouldShowClearButton = hasClearButton && value && value.length > 0;
+  const shouldShowClearButton = hasClearButton && !isDisabled && value && value.length > 0;
 
   const wrapperClassNames = getClassNames(
     theme.wrapper,

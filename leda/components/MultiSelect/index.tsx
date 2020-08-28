@@ -209,6 +209,8 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
 
   const selectedSuggestions = shouldKeepSuggestions ? value : undefined;
 
+  const shouldRenderClearButton = hasClearButton && !isDisabled;
+
   const shouldUniteTags = getShouldUniteTags({ maxTags, value });
 
   const checkBoxesRender = createCheckBoxesRender({ itemRender, theme });
@@ -253,7 +255,7 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
             <TagsUnionElement className={theme.tagsUnion}>
               Выбрано {value.length}
             </TagsUnionElement>
-            {hasClearButton && (
+            {shouldRenderClearButton && (
               <Span
                 className={theme.clearIcon}
                 onClick={handleClear}
@@ -263,7 +265,7 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
         )}
         {!shouldUniteTags && (
           <TagsContainer
-            hasClearButton={hasClearButton}
+            hasClearButton={shouldRenderClearButton}
             onClearIconClick={handleClear}
             onMouseDown={handleMouseDown}
             onTagClick={handleSelect}
