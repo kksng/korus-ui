@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - NumericRange: Incorrect 0 value handler.
+- Autocomplete, Input, MultiSelect, Password: hide clear button when disabled.
 
 
 ## [0.28.0] - 2020-08-17
