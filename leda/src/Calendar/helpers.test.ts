@@ -72,3 +72,26 @@ describe('Calendar getRoundDate', () => {
     expect(helpers.getRoundDate(dateWithTime).getTime()).toEqual(expected);
   });
 });
+
+describe('Calendar isDatesEqual', () => {
+  it('equal dates', () => {
+    const firstDate = new Date(2018, 9, 10);
+    const secondDate = new Date(2018, 9, 10);
+    const expected = true;
+    expect(helpers.isDatesEqual(firstDate, secondDate)).toBe(expected);
+  });
+
+  it('different dates', () => {
+    const firstDate = new Date(2018, 9, 10);
+    const secondDate = new Date(2011, 9, 10);
+    const expected = false;
+    expect(helpers.isDatesEqual(firstDate, secondDate)).toBe(expected);
+  });
+
+  it('equal dates but with different time', () => {
+    const firstDate = new Date(2018, 9, 10, 12, 12, 12);
+    const secondDate = new Date(2018, 9, 10, 7, 7, 7);
+    const expected = true;
+    expect(helpers.isDatesEqual(firstDate, secondDate)).toBe(expected);
+  });
+});

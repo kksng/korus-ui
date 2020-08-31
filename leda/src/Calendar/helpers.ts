@@ -55,14 +55,10 @@ export const isDateGreater = (firstDate?: Date | null, secondDate?: Date | null)
 };
 
 /* Round date to day start */
-export const getRoundDate = (date: Date): Date => {
-  const dayStart: Date = new Date(date.getTime());
-  dayStart.setHours(0);
-  dayStart.setMinutes(0);
-  dayStart.setSeconds(0);
-  dayStart.setMilliseconds(0);
-  return dayStart;
-};
+export const getRoundDate = (date: Date): Date => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+/* Compare two dates without time */
+export const isDatesEqual = (firstDate: Date, secondDate: Date): boolean => getRoundDate(firstDate).getTime() === getRoundDate(secondDate).getTime();
 
 /* Check if date is one of disabledDates */
 export const getIsDateDisabled = (date: Date, disabledDates?: (Date | [Date, Date])[]): boolean => {
@@ -70,24 +66,16 @@ export const getIsDateDisabled = (date: Date, disabledDates?: (Date | [Date, Dat
 
   if (!Array.isArray(disabledDates)) return false;
 
-  return disabledDates.some((dates: Date | [Date, Date]) => {
-    if (isDate(dates)) return getRoundDate(dates).getTime() === dateTime;
-    if (Array.isArray(dates)) {
-      return getRoundDate(dates[0]).getTime() <= dateTime && getRoundDate(dates[1]).getTime() >= dateTime;
+  return disabledDates.some((disabledDate) => {
+    if (isDate(disabledDate)) return getRoundDate(disabledDate).getTime() === dateTime;
+    if (Array.isArray(disabledDate)) {
+      return getRoundDate(disabledDate[0]).getTime() <= dateTime && getRoundDate(disabledDate[1]).getTime() >= dateTime;
     }
     return false;
   });
 };
 
 export const getFirstDecadeYear = (viewDate: Date): number => Math.floor(viewDate.getFullYear() / 10) * 10;
-
-export const isDatesEqual = (firstDate: Date, secondDate: Date): boolean => {
-  const firstWithoutTime = new Date(firstDate.getFullYear(), firstDate.getMonth(), firstDate.getDate());
-
-  const secondWithoutTime = new Date(secondDate.getFullYear(), secondDate.getMonth(), secondDate.getDate());
-
-  return firstWithoutTime.getTime() === secondWithoutTime.getTime();
-};
 
 export const getMonthYearArray = (props?: MonthViewProps | YearViewProps): number[][] => {
   const array = [];
