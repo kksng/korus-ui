@@ -66,10 +66,10 @@ export const getIsDateDisabled = (date: Date, disabledDates?: (Date | [Date, Dat
 
   if (!Array.isArray(disabledDates)) return false;
 
-  return disabledDates.some((disabledDate) => {
-    if (isDate(disabledDate)) return getRoundDate(disabledDate).getTime() === dateTime;
-    if (Array.isArray(disabledDate)) {
-      return getRoundDate(disabledDate[0]).getTime() <= dateTime && getRoundDate(disabledDate[1]).getTime() >= dateTime;
+  return disabledDates.some((dates) => {
+    if (isDate(dates)) return getRoundDate(dates).getTime() === dateTime;
+    if (Array.isArray(dates)) {
+      return getRoundDate(dates[0]).getTime() <= dateTime && getRoundDate(dates[1]).getTime() >= dateTime;
     }
     return false;
   });
