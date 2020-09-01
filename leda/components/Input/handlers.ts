@@ -56,8 +56,11 @@ export const createChangeHandler = (
 export const createClearHandler = (
   props: InputProps,
   setValue: SetState<string>,
+  inputRef: React.MutableRefObject<HTMLInputElement | null>,
 ): CustomEventHandler<React.MouseEvent<HTMLInputElement>> => (event) => {
   event.preventDefault();
+
+  if (inputRef.current) inputRef.current.focus();
 
   if (props.value === undefined) {
     setValue('');

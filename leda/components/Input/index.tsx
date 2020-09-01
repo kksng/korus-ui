@@ -66,13 +66,15 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.input);
 
+  const inputRef = React.useRef<HTMLInputElement | null>(null);
+
   const handleBlur = createBlurHandler(props, setFocused, validateCurrent);
 
   const handleChange = createChangeHandler(props, setValue, runAfterUpdate);
 
   const handleFocus = createFocusHandler(props, isValid, setFocused);
 
-  const handleClearValue = createClearHandler(props, setValue);
+  const handleClearValue = createClearHandler(props, setValue, inputRef);
 
   const handleKeyDown = createKeyDownHandler(props);
 
@@ -120,12 +122,10 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
       className={wrapperClassNames}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && component.wrapper && {
         wrapper: component.wrapper,
-        input: component.wrapper.querySelector('input'),
+        input: inputRef.current,
       }))}
     >
-      <Div
-        className={inputClassNames}
-      >
+      <Div className={inputClassNames}>
         <InputElement
           {...restProps}
           aria-invalid={!isValid}
@@ -139,16 +139,15 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
           onPaste={handlePaste}
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
+          ref={inputRef} // TODO: Type error here
           value={value}
         />
-        {
-          shouldRenderClearButton && (
-            <i
-              className={theme.closeIcon}
-              onMouseDown={handleClearValue}
-            />
-          )
-        }
+        {shouldRenderClearButton && (
+          <i
+            className={theme.closeIcon}
+            onMouseDown={handleClearValue}
+          />
+        )}
       </Div>
       {!isFocused && !isDisabled && (
         <InvalidMessage />
