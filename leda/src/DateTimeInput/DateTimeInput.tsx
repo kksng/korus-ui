@@ -65,6 +65,10 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
     weeksRowRender,
     wrapperRender,
     yearViewRender,
+    monthNames,
+    shortMonthNames,
+    weekDayNames,
+    shortWeekDayNames,
     ...restProps
   } = useProps(props);
 
@@ -213,6 +217,10 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
           viewType={state.viewType}
           weeksRowRender={weeksRowRender}
           yearViewRender={yearViewRender}
+          monthNames={monthNames}
+          shortMonthNames={shortMonthNames}
+          weekDayNames={weekDayNames}
+          shortWeekDayNames={shortWeekDayNames}
         />
       )}
     </Wrapper>

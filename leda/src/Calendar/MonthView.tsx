@@ -10,7 +10,7 @@ import { MonthViewProps } from './types';
 
 export const MonthView = (props: MonthViewProps): React.ReactElement | null => {
   const {
-    min, max, viewDate, theme, onClick, viewType, ...restProps
+    min, max, viewDate, theme, onClick, viewType, monthNames, shortMonthNames, ...restProps
   } = props;
 
   if (viewType !== VIEW_TYPES.MONTHS) return null;
@@ -41,7 +41,7 @@ export const MonthView = (props: MonthViewProps): React.ReactElement | null => {
                       theme.monthCellDisabled,
                     )}
                   >
-                    {getShortMonthName(monthCell)}
+                    {getShortMonthName(monthCell, shortMonthNames)}
                   </Div>
                 );
               }
@@ -54,9 +54,9 @@ export const MonthView = (props: MonthViewProps): React.ReactElement | null => {
                     { [theme.monthCellActive]: viewDate.getMonth() === monthCell },
                   )}
                   onClick={(ev) => onClick(CALENDAR_CLICK_ACTION.MONTHS_SELECT, ev, { monthCell })}
-                  title={getMonthName(monthCell)}
+                  title={getMonthName(monthCell, monthNames)}
                 >
-                  {getShortMonthName(monthCell)}
+                  {getShortMonthName(monthCell, shortMonthNames)}
                 </Div>
               );
             })}

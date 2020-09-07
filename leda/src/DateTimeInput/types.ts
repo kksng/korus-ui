@@ -114,6 +114,14 @@ export interface DateTimeInputProps extends ValidationProps {
   calendarHeaderRender?: CustomRender<DateViewProps, {}, CalendarHeaderProps>,
   /** Кастомный рендер враппера календаря */
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
+  /** Массив кастомных названий месяцев */
+  monthNames?: string[],
+  /** Массив сокращенных кастомных названий месяцев */
+  shortMonthNames?: string[],
+  /** Массив кастомных названий дней недели */
+  weekDayNames?: string[],
+  /** Массив сокращенных кастомных названий дней недели */
+  shortWeekDayNames?: string[],
 }
 
 export interface DateTimeInputState {

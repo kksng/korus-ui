@@ -49,6 +49,10 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
     wrapperRender,
     yearViewRender,
     calendarWrapperRender,
+    monthNames,
+    shortMonthNames,
+    weekDayNames,
+    shortWeekDayNames,
     ...restProps
   } = useProps(props);
 
@@ -143,6 +147,10 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
         yearViewRender={yearViewRender}
         calendarWrapperRender={calendarWrapperRender}
         requiredMessage={requiredMessages[0]}
+        monthNames={monthNames}
+        shortMonthNames={shortMonthNames}
+        weekDayNames={weekDayNames}
+        shortWeekDayNames={shortWeekDayNames}
       />
       <Delimiter className={theme.delimiter}>&mdash;</Delimiter>
       <DateTimeInput
@@ -176,6 +184,10 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
         yearViewRender={yearViewRender}
         calendarWrapperRender={calendarWrapperRender}
         requiredMessage={requiredMessages[1]}
+        monthNames={monthNames}
+        shortMonthNames={shortMonthNames}
+        weekDayNames={weekDayNames}
+        shortWeekDayNames={shortWeekDayNames}
       />
     </WrapperRange>
   );

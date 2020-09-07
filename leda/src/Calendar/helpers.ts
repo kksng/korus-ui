@@ -134,7 +134,7 @@ export const getMonthDays = (month: number, year: number): number[][] => {
 };
 
 
-export const getMonthName = (month: number): string => {
+export const getMonthName = (month: number, monthNames?: string[]): string => {
   const months = [
     'Январь',
     'Февраль',
@@ -150,10 +150,14 @@ export const getMonthName = (month: number): string => {
     'Декабрь',
   ];
 
+  if (monthNames && monthNames.length === 12) {
+    return monthNames[month];
+  }
+
   return months[month];
 };
 
-export const getShortMonthName = (month: number): string => {
+export const getShortMonthName = (month: number, shortMonthNames?: string[]): string => {
   const months = [
     'янв.',
     'февр.',
@@ -169,10 +173,14 @@ export const getShortMonthName = (month: number): string => {
     'дек.',
   ];
 
+  if (shortMonthNames && shortMonthNames.length === 12) {
+    return shortMonthNames[month];
+  }
+
   return months[month];
 };
 
-export const getShortWeekDayName = (number: number): string => {
+export const getShortWeekDayName = (number: number, shortWeekDayNames?: string[]): string => {
   const weekDays = [
     'Пн',
     'Вт',
@@ -183,10 +191,14 @@ export const getShortWeekDayName = (number: number): string => {
     'Вс',
   ];
 
+  if (shortWeekDayNames && shortWeekDayNames.length === 7) {
+    return shortWeekDayNames[number];
+  }
+
   return weekDays[number];
 };
 
-export const getWeekDayName = (number: number): string => {
+export const getWeekDayName = (number: number, weekDayNames?: string[]): string => {
   const weekDays = [
     'Понедельник',
     'Вторник',
@@ -197,12 +209,16 @@ export const getWeekDayName = (number: number): string => {
     'Воскресенье',
   ];
 
+  if (weekDayNames && weekDayNames.length === 7) {
+    return weekDayNames[number];
+  }
+
   return weekDays[number];
 };
 
-export const getCalendarTitle = (viewDate: Date, viewType: Values<typeof VIEW_TYPES>): string => {
+export const getCalendarTitle = (viewDate: Date, viewType: Values<typeof VIEW_TYPES>, monthNames?: string[]): string => {
   if (viewType === VIEW_TYPES.DATES) {
-    return `${getMonthName(viewDate.getMonth())} ${viewDate.getFullYear()}`;
+    return `${getMonthName(viewDate.getMonth(), monthNames)} ${viewDate.getFullYear()}`;
   }
 
   if (viewType === VIEW_TYPES.MONTHS) {

@@ -26,6 +26,10 @@ export const Calendar = (props: CalendarProps): React.ReactElement | null => {
     max,
     dateCellRender,
     weeksRowRender,
+    monthNames,
+    shortMonthNames,
+    weekDayNames,
+    shortWeekDayNames,
   } = props;
 
   // следующие флаги используется для отключения кнопок в header в случае min-max
@@ -71,6 +75,7 @@ export const Calendar = (props: CalendarProps): React.ReactElement | null => {
         viewDate={viewDate}
         onClick={onClick}
         theme={theme}
+        monthNames={monthNames}
       />
       <DateView
         dateCellRender={dateCellRender}
@@ -83,6 +88,8 @@ export const Calendar = (props: CalendarProps): React.ReactElement | null => {
         viewDate={viewDate}
         viewType={viewType}
         weeksRowRender={weeksRowRender}
+        weekDayNames={weekDayNames}
+        shortWeekDayNames={shortWeekDayNames}
       />
       <MonthView
         onClick={onClick}
@@ -91,6 +98,7 @@ export const Calendar = (props: CalendarProps): React.ReactElement | null => {
         viewType={viewType}
         min={min}
         max={max}
+        shortMonthNames={shortMonthNames}
       />
       <YearView
         format={format}

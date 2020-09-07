@@ -21,6 +21,8 @@ export const DateView = (props: DateViewProps): React.ReactElement | null => {
     viewDate,
     viewType,
     weeksRowRender,
+    weekDayNames,
+    shortWeekDayNames,
     ...restProps
   } = props;
 
@@ -39,11 +41,11 @@ export const DateView = (props: DateViewProps): React.ReactElement | null => {
     <>
       <WeekRow className={theme.weekDaysRow}>
         {Array.from(new Array(7)).map((item, index) => {
-          const weekDay = getShortWeekDayName(index);
+          const weekDay = getShortWeekDayName(index, shortWeekDayNames);
           return (
             <Div
               key={weekDay}
-              title={getWeekDayName(index)}
+              title={getWeekDayName(index, weekDayNames)}
               className={theme.dateCell}
             >
               {weekDay}
