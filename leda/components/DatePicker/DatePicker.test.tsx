@@ -33,7 +33,7 @@ describe('DatePicker attributes test collection', () => {
     expect(getByRole('textbox'))
       .toHaveProperty('placeholder', validPlaceholder);
   });
-  test('is Datepicker work right witn minMax set attributes?', () => {
+  test('is Datepicker work right with minMax set attributes?', () => {
     const min = new Date('01.02.2018');
     const max = new Date('05.25.2020');// mm-dd-YYYY
     const validDate = '25.05.2020';
@@ -42,6 +42,58 @@ describe('DatePicker attributes test collection', () => {
 
     expect(getByText(valueForCheck))
       .toHaveClass('calendar-date-cell disabled-date');
+  });
+  test('is Datepicker work right with max set attribute and onPressEnter event listener?', () => {
+    const max = new Date('05.25.2020');// mm-dd-YYYY
+    const invalidDate = '26.05.2020';
+    const validDate = '25.05.2020';
+    const onChange = jest.fn();
+    const { container } = render(<DatePicker name={validName} value={invalidDate} max={max} onChange={onChange} />);
+    const input = container.querySelectorAll('input.datepicker-input')[0];
+
+    fireEvent.keyDown(input, {
+      charCode: 13,
+      code: 13,
+      key: 'Enter',
+      keyCode: 13,
+    });
+
+    expect(onChange)
+      .toHaveBeenCalledTimes(1);
+
+    expect(onChange)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validDate,
+        }),
+      }));
+  });
+  test('is Datepicker work right with min set attribute and onPressEnter event listener?', () => {
+    const min = new Date('01.02.2018');// mm-dd-YYYY
+    const invalidDate = '01.01.2018';
+    const validDate = '02.01.2018';
+    const onChange = jest.fn();
+    const { container } = render(<DatePicker name={validName} value={invalidDate} min={min} onChange={onChange} />);
+    const input = container.querySelectorAll('input.datepicker-input')[0];
+
+    fireEvent.keyDown(input, {
+      charCode: 13,
+      code: 13,
+      key: 'Enter',
+      keyCode: 13,
+    });
+
+    expect(onChange)
+      .toHaveBeenCalledTimes(1);
+
+    expect(onChange)
+      .lastCalledWith(expect.objectContaining({
+        component: expect.objectContaining({
+          name: validName,
+          value: validDate,
+        }),
+      }));
   });
   test('is Datepicker work right with isDisabled attributes?', () => {
     const onChange = jest.fn();
