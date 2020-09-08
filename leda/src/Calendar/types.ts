@@ -5,6 +5,10 @@ import { CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import { defaultTheme } from './theme';
 import { DivProps } from '../../components/Div';
 
+export type Months = [string, string, string, string, string, string, string, string, string, string, string, string];
+
+export type Weeks = [string, string, string, string, string, string, string];
+
 export interface CalendarClickHandler {
   (type: Values<typeof CALENDAR_CLICK_ACTION>, ev: React.MouseEvent<HTMLElement>, payload?: { dateCell?: number, monthCell?: number, yearCell?: number }): void,
 }
@@ -33,10 +37,10 @@ export interface CalendarProps {
   yearViewRender?: CustomRender<CalendarProps, {}, YearViewProps>,
   calendarHeaderRender?: CustomRender<CalendarProps, {}, CalendarHeaderProps>,
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
-  monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
-  shortMonthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
-  weekDayNames?: [string, string, string, string, string, string, string],
-  shortWeekDayNames?: [string, string, string, string, string, string, string],
+  monthNames?: Months,
+  shortMonthNames?: Months,
+  weekDayNames?: Weeks,
+  shortWeekDayNames?: Weeks,
 }
 
 export interface DateCellProps {
@@ -64,7 +68,7 @@ export interface CalendarHeaderProps {
   viewDate: CalendarProps['viewDate'],
   onClick: CalendarClickHandler,
   children?: React.ReactNode,
-  monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
+  monthNames?: Months,
 }
 
 export interface DateViewProps {
@@ -80,8 +84,8 @@ export interface DateViewProps {
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
   weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  weekDayNames?: [string, string, string, string, string, string, string],
-  shortWeekDayNames?: [string, string, string, string, string, string, string],
+  weekDayNames?: Weeks,
+  shortWeekDayNames?: Weeks,
 }
 
 export interface MonthViewProps {
@@ -92,8 +96,8 @@ export interface MonthViewProps {
   children?: React.ReactNode,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
-  monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
-  shortMonthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
+  monthNames?: Months,
+  shortMonthNames?: Months,
 }
 
 export interface YearViewProps {

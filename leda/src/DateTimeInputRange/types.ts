@@ -9,6 +9,8 @@ import {
   MonthViewProps,
   WeekRowProps,
   YearViewProps,
+  Months,
+  Weeks,
 } from '../Calendar/types';
 import {
   BlurEvent, ChangeEvent, FocusEvent, DateTimeInputProps, DateTimeInputState, IconProps, WrapperProps,
@@ -67,13 +69,13 @@ export interface DateTimeInputRangeProps {
   /** Кастомный рендер враппера календаря */
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
   /** Массив кастомных названий месяцев */
-  monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
+  monthNames?: Months,
   /** Массив сокращенных кастомных названий месяцев */
-  shortMonthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
+  shortMonthNames?: Months,
   /** Массив кастомных названий дней недели */
-  weekDayNames?: [string, string, string, string, string, string, string],
+  weekDayNames?: Weeks,
   /** Массив сокращенных кастомных названий дней недели */
-  shortWeekDayNames?: [string, string, string, string, string, string, string],
+  shortWeekDayNames?: Weeks,
 }
 
 export interface DateTimeInputRangeState {
