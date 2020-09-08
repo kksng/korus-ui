@@ -10,7 +10,7 @@ import {
   WeekRowProps,
   YearViewProps,
   Months,
-  Weeks,
+  WeekDays,
 } from '../Calendar/types';
 import {
   BlurEvent, ChangeEvent, FocusEvent, DateTimeInputProps, DateTimeInputState, IconProps, WrapperProps,
@@ -73,9 +73,9 @@ export interface DateTimeInputRangeProps {
   /** Массив сокращенных кастомных названий месяцев */
   shortMonthNames?: Months,
   /** Массив кастомных названий дней недели */
-  weekDayNames?: Weeks,
+  weekDayNames?: WeekDays,
   /** Массив сокращенных кастомных названий дней недели */
-  shortWeekDayNames?: Weeks,
+  shortWeekDayNames?: WeekDays,
 }
 
 export interface DateTimeInputRangeState {

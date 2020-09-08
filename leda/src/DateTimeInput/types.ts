@@ -18,7 +18,7 @@ import {
   WeekRowProps,
   YearViewProps,
   Months,
-  Weeks,
+  WeekDays,
 } from '../Calendar/types';
 import { MaskedInputBaseProps } from '../MaskedInputBase/types';
 import { stateActionTypes } from './actions';
@@ -121,9 +121,9 @@ export interface DateTimeInputProps extends ValidationProps {
   /** Массив сокращенных кастомных названий месяцев */
   shortMonthNames?: Months,
   /** Массив кастомных названий дней недели */
-  weekDayNames?: Weeks,
+  weekDayNames?: WeekDays,
   /** Массив сокращенных кастомных названий дней недели */
-  shortWeekDayNames?: Weeks,
+  shortWeekDayNames?: WeekDays,
 }
 
 export interface DateTimeInputState {

@@ -7,7 +7,7 @@ import { DivProps } from '../../components/Div';
 
 export type Months = [string, string, string, string, string, string, string, string, string, string, string, string];
 
-export type Weeks = [string, string, string, string, string, string, string];
+export type WeekDays = [string, string, string, string, string, string, string];
 
 export interface CalendarClickHandler {
   (type: Values<typeof CALENDAR_CLICK_ACTION>, ev: React.MouseEvent<HTMLElement>, payload?: { dateCell?: number, monthCell?: number, yearCell?: number }): void,
@@ -39,8 +39,8 @@ export interface CalendarProps {
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
   monthNames?: Months,
   shortMonthNames?: Months,
-  weekDayNames?: Weeks,
-  shortWeekDayNames?: Weeks,
+  weekDayNames?: WeekDays,
+  shortWeekDayNames?: WeekDays,
 }
 
 export interface DateCellProps {
@@ -84,8 +84,8 @@ export interface DateViewProps {
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
   weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  weekDayNames?: Weeks,
-  shortWeekDayNames?: Weeks,
+  weekDayNames?: WeekDays,
+  shortWeekDayNames?: WeekDays,
 }
 
 export interface MonthViewProps {

@@ -13,7 +13,7 @@ import {
   MonthViewProps,
   YearViewProps,
   Months,
-  Weeks,
+  WeekDays,
 } from './types';
 
 export const isTimeLess = (firstDate?: Date | null, secondDate?: Date | null): boolean => {
@@ -182,7 +182,7 @@ export const getShortMonthName = (month: number, shortMonthNames?: Months): stri
   return months[month];
 };
 
-export const getShortWeekDayName = (number: number, shortWeekDayNames?: Weeks): string => {
+export const getShortWeekDayName = (number: number, shortWeekDayNames?: WeekDays): string => {
   const weekDays = [
     'Пн',
     'Вт',
@@ -200,7 +200,7 @@ export const getShortWeekDayName = (number: number, shortWeekDayNames?: Weeks): 
   return weekDays[number];
 };
 
-export const getWeekDayName = (number: number, weekDayNames?: Weeks): string => {
+export const getWeekDayName = (number: number, weekDayNames?: WeekDays): string => {
   const weekDays = [
     'Понедельник',
     'Вторник',
