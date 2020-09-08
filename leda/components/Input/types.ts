@@ -69,7 +69,7 @@ export interface InputProps extends ValidationProps {
   /** Отключенное состояние инпута */
   isDisabled?: boolean,
   /** Рендер инпута */
-  inputRender?: CustomRender<InputProps, InputState, React.InputHTMLAttributes<HTMLInputElement>>,
+  inputRender?: CustomRender<InputProps, InputState, React.InputHTMLAttributes<HTMLInputElement> & { ref?: React.Ref<HTMLInputElement | null>}>,
   /** Переводит все вводимые буквы в верхний или нижний регистр */
   letterCase?: 'lower' | 'upper',
   /** Максимальная длина введенного значения */
