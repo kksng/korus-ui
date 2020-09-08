@@ -118,8 +118,8 @@ describe('CheckBox HANDLERS', () => {
 });
 
 describe('CheckBox ATTRIBUTES', () => {
-  describe(', should add classname "semi" to wrapper', () => {
-    it('should have className', () => {
+  describe('should add classes', () => {
+    it('attribute isSemi should add class "semi" to label', () => {
       const { container } = render(<CheckBox isSemi />);
 
       expect(container.querySelector('input')).toHaveClass('checkbox-input');
@@ -127,6 +127,14 @@ describe('CheckBox ATTRIBUTES', () => {
       expect(container.querySelector('label')).toHaveClass('checkbox-label');
 
       expect(container.querySelector('label.checkbox-label')).toHaveClass('semi');
+    });
+
+    it('className attributes should add classes to wrapper', () => {
+      const { container } = render(<CheckBox className="test" />);
+
+      expect(container.querySelector('.checkbox-wrapper')).toHaveClass('test');
+
+      expect(container.querySelector('label')).not.toHaveClass('test');
     });
   });
 
