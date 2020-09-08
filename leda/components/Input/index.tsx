@@ -139,7 +139,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
           onPaste={handlePaste}
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
-          ref={inputRef} // TODO: Type error here
+          ref={inputRef}
           value={value}
         />
         {shouldRenderClearButton && (
