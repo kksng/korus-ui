@@ -33,10 +33,10 @@ export interface CalendarProps {
   yearViewRender?: CustomRender<CalendarProps, {}, YearViewProps>,
   calendarHeaderRender?: CustomRender<CalendarProps, {}, CalendarHeaderProps>,
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
-  monthNames?: string[],
-  shortMonthNames?: string[],
-  weekDayNames?: string[],
-  shortWeekDayNames?: string[],
+  monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
+  shortMonthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
+  weekDayNames?: [string, string, string, string, string, string, string],
+  shortWeekDayNames?: [string, string, string, string, string, string, string],
 }
 
 export interface DateCellProps {
@@ -64,7 +64,7 @@ export interface CalendarHeaderProps {
   viewDate: CalendarProps['viewDate'],
   onClick: CalendarClickHandler,
   children?: React.ReactNode,
-  monthNames?: string[],
+  monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
 }
 
 export interface DateViewProps {
@@ -80,8 +80,8 @@ export interface DateViewProps {
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
   weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  weekDayNames?: string[],
-  shortWeekDayNames?: string[],
+  weekDayNames?: [string, string, string, string, string, string, string],
+  shortWeekDayNames?: [string, string, string, string, string, string, string],
 }
 
 export interface MonthViewProps {
@@ -92,8 +92,8 @@ export interface MonthViewProps {
   children?: React.ReactNode,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
-  monthNames?: string[],
-  shortMonthNames?: string[],
+  monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
+  shortMonthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
 }
 
 export interface YearViewProps {

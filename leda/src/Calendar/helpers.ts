@@ -134,7 +134,7 @@ export const getMonthDays = (month: number, year: number): number[][] => {
 };
 
 
-export const getMonthName = (month: number, monthNames?: string[]): string => {
+export const getMonthName = (month: number, monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string]): string => {
   const months = [
     'Январь',
     'Февраль',
@@ -150,14 +150,14 @@ export const getMonthName = (month: number, monthNames?: string[]): string => {
     'Декабрь',
   ];
 
-  if (monthNames && monthNames.length === 12) {
+  if (monthNames) {
     return monthNames[month];
   }
 
   return months[month];
 };
 
-export const getShortMonthName = (month: number, shortMonthNames?: string[]): string => {
+export const getShortMonthName = (month: number, shortMonthNames?: [string, string, string, string, string, string, string, string, string, string, string, string]): string => {
   const months = [
     'янв.',
     'февр.',
@@ -173,14 +173,14 @@ export const getShortMonthName = (month: number, shortMonthNames?: string[]): st
     'дек.',
   ];
 
-  if (shortMonthNames && shortMonthNames.length === 12) {
+  if (shortMonthNames) {
     return shortMonthNames[month];
   }
 
   return months[month];
 };
 
-export const getShortWeekDayName = (number: number, shortWeekDayNames?: string[]): string => {
+export const getShortWeekDayName = (number: number, shortWeekDayNames?: [string, string, string, string, string, string, string]): string => {
   const weekDays = [
     'Пн',
     'Вт',
@@ -191,14 +191,14 @@ export const getShortWeekDayName = (number: number, shortWeekDayNames?: string[]
     'Вс',
   ];
 
-  if (shortWeekDayNames && shortWeekDayNames.length === 7) {
+  if (shortWeekDayNames) {
     return shortWeekDayNames[number];
   }
 
   return weekDays[number];
 };
 
-export const getWeekDayName = (number: number, weekDayNames?: string[]): string => {
+export const getWeekDayName = (number: number, weekDayNames?: [string, string, string, string, string, string, string]): string => {
   const weekDays = [
     'Понедельник',
     'Вторник',
@@ -209,14 +209,14 @@ export const getWeekDayName = (number: number, weekDayNames?: string[]): string 
     'Воскресенье',
   ];
 
-  if (weekDayNames && weekDayNames.length === 7) {
+  if (weekDayNames) {
     return weekDayNames[number];
   }
 
   return weekDays[number];
 };
 
-export const getCalendarTitle = (viewDate: Date, viewType: Values<typeof VIEW_TYPES>, monthNames?: string[]): string => {
+export const getCalendarTitle = (viewDate: Date, viewType: Values<typeof VIEW_TYPES>, monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string]): string => {
   if (viewType === VIEW_TYPES.DATES) {
     return `${getMonthName(viewDate.getMonth(), monthNames)} ${viewDate.getFullYear()}`;
   }

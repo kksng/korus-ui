@@ -67,13 +67,13 @@ export interface DateTimeInputRangeProps {
   /** Кастомный рендер враппера календаря */
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
   /** Массив кастомных названий месяцев */
-  monthNames?: string[],
+  monthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
   /** Массив сокращенных кастомных названий месяцев */
-  shortMonthNames?: string[],
+  shortMonthNames?: [string, string, string, string, string, string, string, string, string, string, string, string],
   /** Массив кастомных названий дней недели */
-  weekDayNames?: string[],
+  weekDayNames?: [string, string, string, string, string, string, string],
   /** Массив сокращенных кастомных названий дней недели */
-  shortWeekDayNames?: string[],
+  shortWeekDayNames?: [string, string, string, string, string, string, string],
 }
 
 export interface DateTimeInputRangeState {
