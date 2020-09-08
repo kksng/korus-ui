@@ -12,8 +12,8 @@ import {
   DateCellProps,
   MonthViewProps,
   YearViewProps,
-  Months,
-  WeekDays,
+  MonthsNames,
+  WeekDayNames,
 } from './types';
 
 export const isTimeLess = (firstDate?: Date | null, secondDate?: Date | null): boolean => {
@@ -136,7 +136,7 @@ export const getMonthDays = (month: number, year: number): number[][] => {
 };
 
 
-export const getMonthName = (month: number, monthNames?: Months): string => {
+export const getMonthName = (month: number, monthNames?: MonthsNames): string => {
   const months = [
     'Январь',
     'Февраль',
@@ -159,7 +159,7 @@ export const getMonthName = (month: number, monthNames?: Months): string => {
   return months[month];
 };
 
-export const getShortMonthName = (month: number, shortMonthNames?: Months): string => {
+export const getShortMonthName = (month: number, shortMonthNames?: MonthsNames): string => {
   const months = [
     'янв.',
     'февр.',
@@ -182,7 +182,7 @@ export const getShortMonthName = (month: number, shortMonthNames?: Months): stri
   return months[month];
 };
 
-export const getShortWeekDayName = (number: number, shortWeekDayNames?: WeekDays): string => {
+export const getShortWeekDayName = (number: number, shortWeekDayNames?: WeekDayNames): string => {
   const weekDays = [
     'Пн',
     'Вт',
@@ -200,7 +200,7 @@ export const getShortWeekDayName = (number: number, shortWeekDayNames?: WeekDays
   return weekDays[number];
 };
 
-export const getWeekDayName = (number: number, weekDayNames?: WeekDays): string => {
+export const getWeekDayName = (number: number, weekDayNames?: WeekDayNames): string => {
   const weekDays = [
     'Понедельник',
     'Вторник',
@@ -218,7 +218,7 @@ export const getWeekDayName = (number: number, weekDayNames?: WeekDays): string 
   return weekDays[number];
 };
 
-export const getCalendarTitle = (viewDate: Date, viewType: Values<typeof VIEW_TYPES>, monthNames?: Months): string => {
+export const getCalendarTitle = (viewDate: Date, viewType: Values<typeof VIEW_TYPES>, monthNames?: MonthsNames): string => {
   if (viewType === VIEW_TYPES.DATES) {
     return `${getMonthName(viewDate.getMonth(), monthNames)} ${viewDate.getFullYear()}`;
   }

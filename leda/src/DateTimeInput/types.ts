@@ -17,8 +17,8 @@ import {
   MonthViewProps,
   WeekRowProps,
   YearViewProps,
-  Months,
-  WeekDays,
+  MonthsNames,
+  WeekDayNames,
 } from '../Calendar/types';
 import { MaskedInputBaseProps } from '../MaskedInputBase/types';
 import { stateActionTypes } from './actions';
@@ -117,13 +117,13 @@ export interface DateTimeInputProps extends ValidationProps {
   /** Кастомный рендер враппера календаря */
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
   /** Массив кастомных названий месяцев */
-  monthNames?: Months,
+  monthNames?: MonthsNames,
   /** Массив сокращенных кастомных названий месяцев */
-  shortMonthNames?: Months,
+  shortMonthNames?: MonthsNames,
   /** Массив кастомных названий дней недели */
-  weekDayNames?: WeekDays,
+  weekDayNames?: WeekDayNames,
   /** Массив сокращенных кастомных названий дней недели */
-  shortWeekDayNames?: WeekDays,
+  shortWeekDayNames?: WeekDayNames,
 }
 
 export interface DateTimeInputState {

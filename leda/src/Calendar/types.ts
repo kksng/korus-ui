@@ -5,9 +5,9 @@ import { CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import { defaultTheme } from './theme';
 import { DivProps } from '../../components/Div';
 
-export type Months = [string, string, string, string, string, string, string, string, string, string, string, string];
+export type MonthsNames = [string, string, string, string, string, string, string, string, string, string, string, string];
 
-export type WeekDays = [string, string, string, string, string, string, string];
+export type WeekDayNames = [string, string, string, string, string, string, string];
 
 export interface CalendarClickHandler {
   (type: Values<typeof CALENDAR_CLICK_ACTION>, ev: React.MouseEvent<HTMLElement>, payload?: { dateCell?: number, monthCell?: number, yearCell?: number }): void,
@@ -37,10 +37,10 @@ export interface CalendarProps {
   yearViewRender?: CustomRender<CalendarProps, {}, YearViewProps>,
   calendarHeaderRender?: CustomRender<CalendarProps, {}, CalendarHeaderProps>,
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
-  monthNames?: Months,
-  shortMonthNames?: Months,
-  weekDayNames?: WeekDays,
-  shortWeekDayNames?: WeekDays,
+  monthNames?: MonthsNames,
+  shortMonthNames?: MonthsNames,
+  weekDayNames?: WeekDayNames,
+  shortWeekDayNames?: WeekDayNames,
 }
 
 export interface DateCellProps {
@@ -68,7 +68,7 @@ export interface CalendarHeaderProps {
   viewDate: CalendarProps['viewDate'],
   onClick: CalendarClickHandler,
   children?: React.ReactNode,
-  monthNames?: Months,
+  monthNames?: MonthsNames,
 }
 
 export interface DateViewProps {
@@ -84,8 +84,8 @@ export interface DateViewProps {
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
   weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  weekDayNames?: WeekDays,
-  shortWeekDayNames?: WeekDays,
+  weekDayNames?: WeekDayNames,
+  shortWeekDayNames?: WeekDayNames,
 }
 
 export interface MonthViewProps {
@@ -96,8 +96,8 @@ export interface MonthViewProps {
   children?: React.ReactNode,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
-  monthNames?: Months,
-  shortMonthNames?: Months,
+  monthNames?: MonthsNames,
+  shortMonthNames?: MonthsNames,
 }
 
 export interface YearViewProps {
