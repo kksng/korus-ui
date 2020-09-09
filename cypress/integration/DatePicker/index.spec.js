@@ -388,6 +388,37 @@ describe('DatePicker', () => {
         .should('have.length', 12)
     })
 
+    it('Custom month names', () => {
+      cy.name('CustomMonthsDatePicker')
+        .focus()
+        .wait(200)
+        .type('04052012')
+        .parent()
+        .find('span.datepicker-calendar-icon')
+        .click()
+        .parents('.datepicker-wrapper')
+        .find('.calendar-title')
+        .contains('May 2012')
+        .click()
+        .parents('.calendar-wrapper')
+        .children('.calendar-month-year-view')
+        .first()
+        .contains('Jan')
+    })
+
+    it('Custom week day names', () => {
+      cy.name('CustomMonthsDatePicker')
+        .parent()
+        .find('span.datepicker-calendar-icon')
+        .click()
+        .parents('.datepicker-wrapper')
+        .find('.calendar-wrapper')
+        .children('.calendar-week-days')
+        .first()
+        .contains('Mon')
+        .should('have.attr', 'title', 'Monday')
+    })
+
     describe('ArrowsInput', () => {
       it('UpDownArrows', () => {
         cy.name('MinMaxDatePicker')

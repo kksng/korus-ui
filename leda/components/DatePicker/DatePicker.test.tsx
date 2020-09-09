@@ -7,12 +7,18 @@ import {
 import userEvent from '@testing-library/user-event';
 import { DatePicker } from './index';
 
+type MonthNames = [string, string, string, string, string, string, string, string, string, string, string, string];
+type weekDayNames = [string, string, string, string, string, string, string];
+
 const validName = 'test';
 const validFormat = 'dd.MM.yyyy';
 const invalidFormat = 'yyyy-MM-dd';
 const validValue = '10.10.2010';
 const invalidValue = '2010-10-10';
-
+const customMonthNames: MonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const customShortMonthNames: MonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const customWeekDayNames: weekDayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const customShortWeekDayNames: weekDayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 describe('DatePicker snapshots collection', () => {
   test('is DatePicker rendering right?', () => {
@@ -151,6 +157,69 @@ describe('DatePicker attributes test collection', () => {
 
     expect(input)
       .toHaveValue(invalidValue);
+  });
+  test('is Datepicker working right with monthNames attribute?', () => {
+    const date = new Date();
+    const currentMonth = date.getMonth();
+    const { container } = render(<DatePicker monthNames={customMonthNames} isOpen />);
+    const calendar = container.querySelectorAll('.calendar-wrapper.visible')[0];
+    const title = container.querySelector('.calendar-title');
+    const titleMonth = title?.textContent?.split(' ')[0];
+
+    expect(calendar)
+      .toBeInTheDocument();
+
+    expect(title)
+      .toBeInTheDocument();
+
+    expect(customMonthNames).toContain(titleMonth);
+
+    expect(titleMonth).toBe(customMonthNames[currentMonth]);
+  });
+  test('is Datepicker working right with shortMonthNames attribute?', () => {
+    const { container } = render(<DatePicker shortMonthNames={customShortMonthNames} isOpen />);
+    const calendar = container.querySelectorAll('.calendar-wrapper.visible')[0];
+    const title = calendar.querySelector('.calendar-title');
+
+    fireEvent.click(title as Element);
+
+    const monthCells = container.querySelectorAll('.calendar-month-year-cell');
+
+    customShortMonthNames.forEach((monthName, index) => {
+      expect(monthCells[index])
+        .toBeInTheDocument();
+
+      expect(monthCells[index].textContent)
+        .toBe(monthName);
+    });
+  });
+  test('is Datepicker working right with weekDayNames attribute?', () => {
+    const { container } = render(<DatePicker weekDayNames={customWeekDayNames} isOpen />);
+    const calendar = container.querySelectorAll('.calendar-wrapper.visible')[0];
+    const weekDaysRow = calendar.querySelector('.calendar-week-days');
+    const weekDaysCells = weekDaysRow?.querySelectorAll('.calendar-date-cell') as NodeListOf<Element>;
+
+    customWeekDayNames.forEach((weekDayName, index) => {
+      expect(weekDaysCells[index])
+        .toBeInTheDocument();
+
+      expect(weekDaysCells[index].getAttribute('title'))
+        .toBe(weekDayName);
+    });
+  });
+  test('is Datepicker working right with shortWeekDayNames attribute?', () => {
+    const { container } = render(<DatePicker shortWeekDayNames={customShortWeekDayNames} isOpen />);
+    const calendar = container.querySelectorAll('.calendar-wrapper.visible')[0];
+    const weekDaysRow = calendar.querySelector('.calendar-week-days');
+    const weekDaysCells = weekDaysRow?.querySelectorAll('.calendar-date-cell') as NodeListOf<Element>;
+
+    customShortWeekDayNames.forEach((weekDayName, index) => {
+      expect(weekDaysCells[index])
+        .toBeInTheDocument();
+
+      expect(weekDaysCells[index].textContent)
+        .toBe(weekDayName);
+    });
   });
 });
 describe('Datepicker event listeners test collection', () => {
