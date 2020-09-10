@@ -14,9 +14,7 @@ import {
 
 import userEvent from '@testing-library/user-event';
 import { DateRange } from './index';
-
-type MonthNames = [string, string, string, string, string, string, string, string, string, string, string, string];
-type weekDayNames = [string, string, string, string, string, string, string];
+import { MonthsNames, WeekDayNames } from '../../src/Calendar/types';
 
 const validName = 'test';
 const validFormat = 'dd.MM.yyyy';
@@ -25,10 +23,10 @@ const validValue = '15.05.2020';
 const invalidValue = '2010-10-10';
 const min = new Date('01.02.2020');
 const max = new Date('05.25.2020');// mm-dd-YYYY
-const customMonthNames: MonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const customShortMonthNames: MonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const customWeekDayNames: weekDayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-const customShortWeekDayNames: weekDayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const customMonthNames: MonthsNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const customShortMonthNames: MonthsNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const customWeekDayNames: WeekDayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const customShortWeekDayNames: WeekDayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 describe('DateRange snapshots collection', () => {
   test('is DateRange render right?', () => {
