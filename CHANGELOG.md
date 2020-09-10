@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.30.0] - 2020-09-14
 
 ### Added
+- MaskedInput: Fixed onPaste event handler, added tests
 - DatePicker: Added tests for max, min attributes and onEnterPress event
 - Checkbox: Added tests checking that className attribute is passed to Wrapper, not LabelElement
 - DateTimePicker: Added possibility to pass custom month and week day name through props. New props: monthNames, shortMonthNames, weekDayNames, shortWeekDayNames.

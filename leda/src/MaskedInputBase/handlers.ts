@@ -178,7 +178,8 @@ export const createPasteHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: newValue.includes(placeholderChar) ? '' : newValue,
+        value: newValue.includes(placeholderChar) ? '' : getRawValue(newValue, mask),
+        inputValue: newValue,
       },
     };
 
