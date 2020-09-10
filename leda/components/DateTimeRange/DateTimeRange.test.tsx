@@ -6,12 +6,17 @@ import {
 
 import userEvent from '@testing-library/user-event';
 import { DateTimeRange } from './index';
+import { MonthsNames, WeekDayNames } from '../../src/Calendar/types';
 
 const validName = 'test';
 const validFormat = 'dd.MM.yyyy hh:mm';
 const invalidFormat = 'yyyy-MM-dd hh:mm';
 const validValue = '15.05.2020 10:10';
 const invalidValue = '2010-10-10 10:10';
+const customMonthNames: MonthsNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const customShortMonthNames: MonthsNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const customWeekDayNames: WeekDayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const customShortWeekDayNames: WeekDayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 /**
  * ВВ
@@ -132,6 +137,69 @@ describe('DateTimeRange attributes test collection', () => {
 
     expect(inputB)
       .toHaveValue(invalidValue);
+  });
+  test('is DateTimeRange working right with monthNames attribute?', () => {
+    const date = new Date();
+    const currentMonth = date.getMonth();
+    const { container } = render(<DateTimeRange monthNames={customMonthNames} isOpen />);
+    const calendar = container.querySelectorAll('.calendar-wrapper.visible')[0];
+    const title = container.querySelector('.calendar-title');
+    const titleMonth = title?.textContent?.split(' ')[0];
+
+    expect(calendar)
+      .toBeInTheDocument();
+
+    expect(title)
+      .toBeInTheDocument();
+
+    expect(customMonthNames).toContain(titleMonth);
+
+    expect(titleMonth).toBe(customMonthNames[currentMonth]);
+  });
+  test('is DateTimeRange working right with shortMonthNames attribute?', () => {
+    const { container } = render(<DateTimeRange shortMonthNames={customShortMonthNames} isOpen />);
+    const calendar = container.querySelectorAll('.calendar-wrapper.visible')[0];
+    const title = calendar.querySelector('.calendar-title');
+
+    fireEvent.click(title as Element);
+
+    const monthCells = container.querySelectorAll('.calendar-month-year-cell');
+
+    customShortMonthNames.forEach((monthName, index) => {
+      expect(monthCells[index])
+        .toBeInTheDocument();
+
+      expect(monthCells[index].textContent)
+        .toBe(monthName);
+    });
+  });
+  test('is DateTimeRange working right with weekDayNames attribute?', () => {
+    const { container } = render(<DateTimeRange weekDayNames={customWeekDayNames} isOpen />);
+    const calendar = container.querySelectorAll('.calendar-wrapper.visible')[0];
+    const weekDaysRow = calendar.querySelector('.calendar-week-days');
+    const weekDaysCells = weekDaysRow?.querySelectorAll('.calendar-date-cell') as NodeListOf<Element>;
+
+    customWeekDayNames.forEach((weekDayName, index) => {
+      expect(weekDaysCells[index])
+        .toBeInTheDocument();
+
+      expect(weekDaysCells[index].getAttribute('title'))
+        .toBe(weekDayName);
+    });
+  });
+  test('is DateTimeRange working right with shortWeekDayNames attribute?', () => {
+    const { container } = render(<DateTimeRange shortWeekDayNames={customShortWeekDayNames} isOpen />);
+    const calendar = container.querySelectorAll('.calendar-wrapper.visible')[0];
+    const weekDaysRow = calendar.querySelector('.calendar-week-days');
+    const weekDaysCells = weekDaysRow?.querySelectorAll('.calendar-date-cell') as NodeListOf<Element>;
+
+    customShortWeekDayNames.forEach((weekDayName, index) => {
+      expect(weekDaysCells[index])
+        .toBeInTheDocument();
+
+      expect(weekDaysCells[index].textContent)
+        .toBe(weekDayName);
+    });
   });
 });
 describe('DateTimeRange event listeners test collection', () => {

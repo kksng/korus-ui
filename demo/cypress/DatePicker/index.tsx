@@ -9,6 +9,7 @@ export const DatePicker = (): React.ReactElement => {
   const [value4, setValue4] = React.useState('');
   const [value5, setValue5] = React.useState('');
   const [value6, setValue6] = React.useState('');
+  const [value7, setValue7] = React.useState('');
   
   const handleChange1 = (event) => {
     const { date, value } = event.component;
@@ -37,6 +38,11 @@ export const DatePicker = (): React.ReactElement => {
   const handleChange6 = (event) => {
     const { date, value } = event.component;
     setValue6(value);
+    console.log(value, date);
+  };
+  const handleChange7 = (event) => {
+    const { date, value } = event.component;
+    setValue7(value);
     console.log(value, date);
   };
 
@@ -103,6 +109,18 @@ export const DatePicker = (): React.ReactElement => {
           name='MinMaxDatePickerOpened'
           placeholder="Type your date..."
           isOpen
+        />
+
+        <L.DatePicker
+          monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
+          shortMonthNames={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+          weekDayNames={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}
+          shortWeekDayNames={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+          onChange={handleChange7}
+          onEnterPress={(ev) => testFunction(ev)}
+          value={value7}
+          name='CustomMonthsDatePicker'
+          placeholder="Type your date..."
         />
          <L.Button _success>success!</L.Button>
       </L.Div>
