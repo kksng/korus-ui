@@ -141,7 +141,11 @@ export const createResetHandler = (
   });
 };
 
-export const createPasteHandler = (props: InputProps, setValue: SetState<string>) => (event: React.ClipboardEvent<HTMLInputElement>) => {
+export const createPasteHandler = (
+  props: InputProps,
+  value: string,
+  setValue: SetState<string>,
+) => (event: React.ClipboardEvent<HTMLInputElement>) => {
   const {
     onChange, name, isDisabled, maxLength,
   } = props;
@@ -150,7 +154,7 @@ export const createPasteHandler = (props: InputProps, setValue: SetState<string>
   // по неизвестным причинам onPaste работает даже на отключенных инпутах
   if (isDisabled) return;
 
-  const text = event.clipboardData.getData('Text');
+  const text = value + event.clipboardData.getData('Text');
   const maxLengthAdjustedValue = stringToMaxLength(text, maxLength);
   const newValue = maxLength != null ? maxLengthAdjustedValue : text;
 

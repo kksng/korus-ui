@@ -78,7 +78,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
 
   const handleKeyDown = createKeyDownHandler(props);
 
-  const handlePaste = createPasteHandler(props, setValue);
+  const handlePaste = createPasteHandler(props, value, setValue);
 
   const wrapperClassNames = getClassNames(
     className,

@@ -55,3 +55,24 @@ Cypress.Commands.add('isInViewport', { prevSubject: 'element' }, (element) => {
     expect(rect.bottom).not.to.be.greaterThan(bottom);
   });
 });
+
+/**
+ * Simulates a paste event.
+ *
+ * @param subject A jQuery context representing a DOM element.
+ * @param pastePayload Simulated data that is on the clipboard.
+ *
+ * @returns The subject parameter.
+ *
+ * @example
+ * cy.get('some-selector').paste('text');
+ */
+Cypress.Commands.add('paste', {prevSubject: true}, (subject, pastePayload) => {
+  const pasteEvent = Object.assign(new Event('paste', { bubbles: true, cancelable: true }), {
+      clipboardData: {
+          getData: () => pastePayload,
+      },
+  });
+  subject[0].dispatchEvent(pasteEvent);
+  return subject
+});

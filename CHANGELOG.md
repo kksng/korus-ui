@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.30.0] - 2020-09-14
 
 ### Added
-- MaskedInput: Fixed onPaste event handler, added tests
+- Input: Added possibility to paste multiple times without replacing previous value
 - DatePicker: Added tests for monthNames, shortMonthNames, weekDayNames, shortWeekDayNames
 - DatePicker: Added tests for max, min attributes and onEnterPress event
 - Checkbox: Added tests checking that className attribute is passed to Wrapper, not LabelElement
@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Input: Focus input on clear button click.
+- MaskedInput: Fixed onPaste event handler, added tests
 
 
 ## [0.29.0] - 2020-08-31
