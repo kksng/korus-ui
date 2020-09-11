@@ -32,6 +32,8 @@ export const FormControlled = (props: StoryProps) => {
   const [valueOfNumericRange, setValueOfNumericRange] = React.useState<[number | null, number | null] | null>(null);
   const [valueOfNumericTextBox, setValueOfNumericTextBox] = React.useState<number | null>(null);
   const [valueOfTextarea, setValueOfTextarea] = React.useState<string>('');
+  const [valueOfRadioGroup, setValueOfRadioGroup] = React.useState<string | number>(0);
+
   return (
     <L.Div _box _inner>
       <L.Div id="ValidationRequiredBlur">
@@ -243,6 +245,32 @@ export const FormControlled = (props: StoryProps) => {
             validator={(value) => value.length}
             invalidMessage="must not be empty"
           />
+        </L.Div>
+        <L.Div _inner _flexRow _alignItemsCenter>
+          <Label>
+            RadioGroup
+          </Label>
+          <L.RadioGroup
+            form={formName}
+            name="radio"
+            value={valueOfRadioGroup}
+            wrapperRender={({ elementProps }) => <L.Div {...elementProps} />}
+            onChange={ev => {
+              console.log('ev.component.value', ev.component.value);
+              console.log('ev.component.name', ev.component.name);
+              setValueOfRadioGroup(ev.component.value);
+            }}
+          >
+            <L.RadioButton 
+              value={0} 
+              wrapperRender={({ elementProps }) => 
+                <L.Span {...elementProps} style={{ color: 'green' }} 
+            />}>
+               One
+              </L.RadioButton>
+            <L.RadioButton value={1}>Two</L.RadioButton>
+            <L.RadioButton value={2}>Three</L.RadioButton>
+          </L.RadioGroup>
         </L.Div>
         <L.Div _inner _flexRow _alignItemsCenter>
           <Label>
