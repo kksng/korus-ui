@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DatePicker: Added tests for max, min attributes and onEnterPress event
 - Checkbox: Added tests checking that className attribute is passed to Wrapper, not LabelElement
 - DatePicker: Added possibility to pass custom month and week day name through props. New props: monthNames, shortMonthNames, weekDayNames, shortWeekDayNames.
+- Notifications: Pass removed notification as component.currentItem to onChange handler.
 
 ### Fixed
 - Input: Focus input on clear button click.

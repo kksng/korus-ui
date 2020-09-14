@@ -39,8 +39,9 @@ export const Notifications = React.forwardRef((
 
     onChange({
       component: {
-        value: currentValue.filter((val) => (item.id !== val.id)),
+        currentItem: currentValue.find((val) => (item.id === val.id)), // removed item
         method,
+        value: currentValue.filter((val) => (item.id !== val.id)),
       },
     });
   };

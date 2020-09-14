@@ -333,6 +333,67 @@ describe('Notifications handlers', () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it('should pass deleted item to onChange handler as component.currentItem', () => {
+    const item1 = {
+      text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
+      icon: 'success',
+      color: 'success',
+      delay: 0,
+      id: 1,
+    };
+    const item2 = {
+      text: 'Прочь сомнения!',
+      icon: 'danger',
+      color: 'danger',
+      delay: 0,
+      id: 2,
+    };
+    const items = [
+      item1,
+      item2,
+    ];
+
+    const eventMatcher = expect.objectContaining({
+      component: expect.objectContaining({
+        value: expect.any(Array),
+        method: 'close-icon-click',
+        currentItem: expect.objectContaining(item2), // should receive removed item
+      }),
+    });
+
+    const Wrapper = () => {
+      const [value, setValue] = React.useState<Item[]>(items);
+
+      const handleChange = (ev: ChangeEvent) => {
+        expect(ev).toMatchObject(eventMatcher);
+
+        setValue(ev.component.value);
+      };
+
+      return (
+        <Notifications
+          value={value}
+          onChange={handleChange}
+          maxItems={3}
+        />
+      );
+    };
+
+    const { container } = render(<Wrapper />);
+
+    expect(container.querySelectorAll('.notifications-item')).toHaveLength(2);
+
+    act(() => {
+      const item2CloseIcon = container.querySelectorAll('.notifications-icon-close')[1]; // get item2 close icon
+
+      expect(item2CloseIcon).toBeDefined();
+
+      userEvent.click(item2CloseIcon as HTMLElement);
+    });
+
+    expect(container.querySelectorAll('.notifications-item')).toHaveLength(1);
+  });
 });
 
 describe('Notifications add item', () => {

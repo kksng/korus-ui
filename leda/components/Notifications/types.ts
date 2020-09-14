@@ -20,9 +20,11 @@ export interface Item {
 // todo: extend ChangeEvent
 export interface ChangeEvent {
   component: {
-    value: Item[],
-    name?: string,
+    /** Pass removed item on delete */
+    currentItem?: Item,
     method: ChangeMethods,
+    name?: string,
+    value: Item[],
   },
 }
 
