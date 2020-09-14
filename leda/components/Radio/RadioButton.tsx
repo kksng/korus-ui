@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  bindFunctionalRef, getClassNames, useElement, useProps, useTheme,
+  bindFunctionalRef, getClassNames, useElement, useProps,
 } from '../../utils';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { generateId } from '../../utils/generateId';
@@ -16,7 +16,7 @@ export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: Reac
     isChecked,
     id = generateId(),
     isDisabled,
-    // theme = globalDefaultTheme.radio,
+    theme = globalDefaultTheme.radio,
     wrapperRender,
     inputRender,
     onChange,
@@ -25,8 +25,6 @@ export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: Reac
     name,
     ...restProps
   } = useProps(props as RadioButtonProps & PropsFromParent);
-
-  const theme = useTheme(props.theme, COMPONENTS_NAMESPACES.radio);
 
   const { renders: { [COMPONENTS_NAMESPACES.radio]: radioRenders } } = React.useContext(LedaContext);
 

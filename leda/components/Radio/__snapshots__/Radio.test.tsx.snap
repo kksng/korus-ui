@@ -40,14 +40,23 @@ exports[`Radio SNAPSHOTS different component states should render checked 1`] = 
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={true}
                   className="radio-button-input"
                   id="radio-1"
                   onChange={[Function]}
                   type="radio"
                   value="radio-1"
-                />
+                >
+                  <input
+                    checked={true}
+                    className="radio-button-input"
+                    id="radio-1"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-1"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-1"
@@ -105,7 +114,7 @@ exports[`Radio SNAPSHOTS different component states should render disabled 1`] =
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={true}
                   className="radio-button-input"
                   disabled={true}
@@ -113,7 +122,17 @@ exports[`Radio SNAPSHOTS different component states should render disabled 1`] =
                   onChange={[Function]}
                   type="radio"
                   value="radio-1"
-                />
+                >
+                  <input
+                    checked={true}
+                    className="radio-button-input"
+                    disabled={true}
+                    id="radio-1"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-1"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-1"
@@ -149,14 +168,23 @@ exports[`Radio SNAPSHOTS different component states should render disabled 1`] =
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={false}
                   className="radio-button-input"
                   id="radio-2"
                   onChange={[Function]}
                   type="radio"
                   value="radio-2"
-                />
+                >
+                  <input
+                    checked={false}
+                    className="radio-button-input"
+                    id="radio-2"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-2"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-2"
@@ -192,14 +220,23 @@ exports[`Radio SNAPSHOTS different component states should render disabled 1`] =
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={false}
                   className="radio-button-input"
                   id="radio-3"
                   onChange={[Function]}
                   type="radio"
                   value="radio-3"
-                />
+                >
+                  <input
+                    checked={false}
+                    className="radio-button-input"
+                    id="radio-3"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-3"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-3"
@@ -256,14 +293,23 @@ exports[`Radio SNAPSHOTS should render 1`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={true}
                   className="radio-button-input"
                   id="radio-1"
                   onChange={[Function]}
                   type="radio"
                   value="radio-1"
-                />
+                >
+                  <input
+                    checked={true}
+                    className="radio-button-input"
+                    id="radio-1"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-1"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-1"
@@ -299,14 +345,23 @@ exports[`Radio SNAPSHOTS should render 1`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={false}
                   className="radio-button-input"
                   id="radio-2"
                   onChange={[Function]}
                   type="radio"
                   value="radio-2"
-                />
+                >
+                  <input
+                    checked={false}
+                    className="radio-button-input"
+                    id="radio-2"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-2"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-2"
@@ -342,14 +397,23 @@ exports[`Radio SNAPSHOTS should render 1`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={false}
                   className="radio-button-input"
                   id="radio-3"
                   onChange={[Function]}
                   type="radio"
                   value="radio-3"
-                />
+                >
+                  <input
+                    checked={false}
+                    className="radio-button-input"
+                    id="radio-3"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-3"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-3"
@@ -406,14 +470,23 @@ exports[`Radio SNAPSHOTS should render controllable mode 1`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={true}
                   className="radio-button-input"
                   id="radio-1"
                   onChange={[Function]}
                   type="radio"
                   value="radio-1"
-                />
+                >
+                  <input
+                    checked={true}
+                    className="radio-button-input"
+                    id="radio-1"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-1"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-1"
@@ -449,14 +522,23 @@ exports[`Radio SNAPSHOTS should render controllable mode 1`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={false}
                   className="radio-button-input"
                   id="radio-2"
                   onChange={[Function]}
                   type="radio"
                   value="radio-2"
-                />
+                >
+                  <input
+                    checked={false}
+                    className="radio-button-input"
+                    id="radio-2"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-2"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-2"
@@ -492,14 +574,23 @@ exports[`Radio SNAPSHOTS should render controllable mode 1`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={false}
                   className="radio-button-input"
                   id="radio-3"
                   onChange={[Function]}
                   type="radio"
                   value="radio-3"
-                />
+                >
+                  <input
+                    checked={false}
+                    className="radio-button-input"
+                    id="radio-3"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-3"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-3"
@@ -556,14 +647,23 @@ exports[`Radio SNAPSHOTS should render controllable mode 2`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={false}
                   className="radio-button-input"
                   id="radio-1"
                   onChange={[Function]}
                   type="radio"
                   value="radio-1"
-                />
+                >
+                  <input
+                    checked={false}
+                    className="radio-button-input"
+                    id="radio-1"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-1"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-1"
@@ -599,14 +699,23 @@ exports[`Radio SNAPSHOTS should render controllable mode 2`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={false}
                   className="radio-button-input"
                   id="radio-2"
                   onChange={[Function]}
                   type="radio"
                   value="radio-2"
-                />
+                >
+                  <input
+                    checked={false}
+                    className="radio-button-input"
+                    id="radio-2"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-2"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-2"
@@ -642,14 +751,23 @@ exports[`Radio SNAPSHOTS should render controllable mode 2`] = `
               <div
                 className="radio-button"
               >
-                <input
+                <Input
                   checked={true}
                   className="radio-button-input"
                   id="radio-3"
                   onChange={[Function]}
                   type="radio"
                   value="radio-3"
-                />
+                >
+                  <input
+                    checked={true}
+                    className="radio-button-input"
+                    id="radio-3"
+                    onChange={[Function]}
+                    type="radio"
+                    value="radio-3"
+                  />
+                </Input>
                 <label
                   className="radio-button-label"
                   htmlFor="radio-3"

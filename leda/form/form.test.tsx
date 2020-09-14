@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { form } from './form';
 import { AutoComplete } from '../components/AutoComplete';
 import { Textarea } from '../components/Textarea';
+import { RadioGroup, RadioButton } from '../components/Radio';
 
 describe('get controlled form', () => {
   const formName = 'form-name-get';
@@ -12,14 +13,25 @@ describe('get controlled form', () => {
   const fieldName = 'auto-complete';
   const handleChange = jest.fn();
   const component = (
-    <AutoComplete
-      form={formName}
-      value={fieldValue}
-      data={data}
-      isRequired
-      name={fieldName}
-      onChange={handleChange}
-    />
+    <>
+      <AutoComplete
+        form={formName}
+        value={fieldValue}
+        data={data}
+        isRequired
+        name={fieldName}
+        onChange={handleChange}
+      />
+      <RadioGroup
+        form={formName}
+        name="radio"
+        value={1}
+        onChange={handleChange}
+      >
+        <RadioButton value={1}>One</RadioButton>
+        <RadioButton value={2}>Two</RadioButton>
+      </RadioGroup>
+    </>
   );
   test('get one', () => {
     render(component);
@@ -35,6 +47,9 @@ describe('get controlled form', () => {
     expect(field).toMatchObject([{
       name: fieldName,
       value: fieldValue,
+    }, {
+      name: 'radio',
+      value: 1,
     }]);
   });
 });
