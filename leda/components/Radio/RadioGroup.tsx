@@ -4,7 +4,7 @@ import { RadioButton } from './RadioButton';
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useProps,
 } from '../../utils';
-import { Div, DivProps } from '../Div';
+import { Div } from '../Div';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   ChangeEvent, RadioGroupProps, RadioGroupRefCurrent, WrapperProps, RadioValue,
