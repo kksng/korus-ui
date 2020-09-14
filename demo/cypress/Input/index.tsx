@@ -85,5 +85,11 @@ export const Input = (): React.ReactElement => (
         placeholder="Пользовательское сообщение"
       />
     </L.P>
+
+    <L.Span>Clear button</L.Span>
+    <L.Input
+      id="hasClearButton"
+      hasClearButton
+    />
   </L.Div>
 );

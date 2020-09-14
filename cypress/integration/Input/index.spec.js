@@ -126,5 +126,24 @@ describe('Input', () => {
         .next()
         .should('have.text', 'Поле обязательно!');
     });
+    it('should clear input on clear button click', () => {
+      cy.get('input#hasClearButton')
+        .type('Clear me')
+        .blur()
+        .parent()
+        .get('.input-clear-icon')
+        .click()
+      cy.get('input#hasClearButton')
+        .should('have.value', '')
+    });
+    it('should focus input on clear button click', () => {
+      cy.get('input#hasClearButton')
+        .type('Clear me')
+        .blur()
+        .parent()
+        .get('.input-clear-icon')
+        .click()
+      cy.focused().should('have.attr', 'id', 'hasClearButton')
+    });
   });
 });
