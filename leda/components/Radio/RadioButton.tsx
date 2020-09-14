@@ -2,10 +2,11 @@ import React from 'react';
 import {
   bindFunctionalRef, getClassNames, useElement, useProps,
 } from '../../utils';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { generateId } from '../../utils/generateId';
 import { Div } from '../Div';
 import { PropsFromParent, RadioButtonProps, RadioGroupRefCurrent } from './types';
-import { globalDefaultTheme } from '../LedaProvider';
+import { globalDefaultTheme, LedaContext } from '../LedaProvider';
 import { getWrapperRef } from '../../utils/getWrapperRef';
 
 export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: React.Ref<RadioGroupRefCurrent>): React.ReactElement => {
@@ -17,16 +18,27 @@ export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: Reac
     isDisabled,
     theme = globalDefaultTheme.radio,
     wrapperRender,
+    inputRender,
     onChange,
     value,
+    form,
     name,
     ...restProps
   } = useProps(props as RadioButtonProps & PropsFromParent);
 
+  const { renders: { [COMPONENTS_NAMESPACES.radio]: radioRenders } } = React.useContext(LedaContext);
+
   const Wrapper = useElement(
     'Wrapper',
     Div,
-    wrapperRender,
+    wrapperRender || radioRenders.wrapperRender,
+    props,
+  );
+
+  const Input = useElement(
+    'Input',
+    'input' as unknown as React.FC<React.InputHTMLAttributes<HTMLInputElement>>,
+    inputRender || radioRenders.inputRender,
     props,
   );
 
@@ -65,7 +77,7 @@ export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: Reac
         });
       })}
     >
-      <input
+      <Input
         checked={isChecked}
         className={theme.input}
         disabled={isDisabled}
@@ -73,6 +85,7 @@ export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: Reac
         value={value}
         type="radio"
         onChange={handleChange}
+        form={form}
       />
       <label
         className={labelClassNames}
