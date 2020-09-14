@@ -3,7 +3,7 @@ import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTh
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { CustomRender } from '../../commonTypes';
 
-export type ChangeEvent = TypeEvent | ResetEvent;
+export type ChangeEvent = SelectEvent | ResetEvent;
 
 export interface PropsFromParent {
   onChange: (event: ChangeEvent) => void,
@@ -69,7 +69,7 @@ export interface ResetEvent {
   },
 }
 
-export interface TypeEvent extends React.ChangeEvent<HTMLInputElement> {
+export interface SelectEvent extends React.ChangeEvent<HTMLInputElement> {
   component: {
     value: string | number,
     name?: string,
