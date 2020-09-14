@@ -4,16 +4,20 @@ import { RadioButton } from './RadioButton';
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useProps,
 } from '../../utils';
-import { Div, DivProps } from '../Div';
+import { Div } from '../Div';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
-  ChangeEvent, RadioGroupProps, RadioGroupRefCurrent, WrapperProps,
+  ChangeEvent, RadioGroupProps, RadioGroupRefCurrent, WrapperProps, RadioValue,
 } from './types';
+import { getValue } from './helpers';
+import { useValidation } from '../Validation';
+import { createResetHandler } from './handlers';
 
 export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.Ref<RadioGroupRefCurrent>): React.ReactElement => {
   const {
     children,
     className,
+    form,
     name,
     onChange,
     value: valueProp,
@@ -23,9 +27,15 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
 
   const theme = useTheme(props.theme, COMPONENTS_NAMESPACES.radio);
 
-  const [valueState, setValueState] = React.useState<string | number | undefined>();
+  const [valueState, setValueState] = React.useState<RadioValue>(valueProp);
 
-  const value = valueProp === undefined ? valueState : valueProp;
+  const value = getValue(valueProp, valueState);
+
+  useValidation(props, {
+    value,
+  }, {
+    reset: createResetHandler(props, setValueState),
+  });
 
   const combinedClassNames = getClassNames(
     theme.wrapper,
@@ -60,6 +70,7 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
         ) {
           return React.cloneElement(child, {
             name,
+            form,
             onChange: handleChange,
             isDisabled: isBoolean(isDisabled) ? isDisabled : child.props.isDisabled,
             isChecked: child.props.value === value,

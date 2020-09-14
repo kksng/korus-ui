@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.30.0] - 2020-09-14
 
 ### Added
+- RadioGroup: Added component to ev.form/ ev.forms
 - MaskedInput: Fixed onPaste event handler, added tests
 - DatePicker: Added tests for monthNames, shortMonthNames, weekDayNames, shortWeekDayNames
 - DatePicker: Added tests for max, min attributes and onEnterPress event
