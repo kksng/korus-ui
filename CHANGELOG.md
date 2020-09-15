@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Notifications: Pass removed notification as component.currentItem to onChange handler.
 
 ### Fixed
+- RadioGroup: Fixed value prop type
 - Input: Focus input on clear button click.
 - MaskedInput: Fixed onPaste event handler, added tests
 
