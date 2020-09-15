@@ -48,7 +48,7 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
     return setValueState(ev.component.value);
   }, [onChange]);
 
-  const Wrapper = useElement<RadioGroupProps, { value?: string | number }, WrapperProps>(
+  const Wrapper = useElement<RadioGroupProps, { value: RadioValue }, WrapperProps>(
     'Wrapper',
     Div,
     wrapperRender,
