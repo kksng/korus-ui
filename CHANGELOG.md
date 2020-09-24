@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DropZone: Fixed downloading external and attached files
 
 
+### Added
+- Modal: Added Alert with overlay.
+
 ## [0.30.0] - 2020-09-14
 
 ### Added

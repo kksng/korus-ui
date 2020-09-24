@@ -13,8 +13,12 @@ export interface ModalProps {
   className?: string,
   /** Кастомный рендер для иконки закрытия */
   iconRender?: CustomRender<ModalWindowProps, {}, IconProps>,
+  /** Is Alert open */
+  isAlertOpen?: boolean,
   /** Признак состояния. Обязательное, т.к. всегда нужен стейт для отслеживания состояния */
   isOpen: boolean,
+  /** Alert close handler */
+  onAlertClose?: (ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void,
   /** Обработчик закрытия модалки по клику на оверлей, нажатию на крестик или нажатию Escape */
   onClose?: (ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void,
   /** Наличие кнопки закрытия окна и обработчик */
@@ -25,6 +29,8 @@ export interface ModalProps {
   onOverlayClick?: CustomEventHandler<React.MouseEvent<HTMLElement>>,
   /** Реф */
   ref?: React.Ref<ModalRefCurrent>,
+  /** Render alert content */
+  renderAlert?: React.ReactNode,
   /** Размер окна.
    * Имеет три стандартных значения sm=480, md=608, lg=868.
    * Принимает строку вида "50%", "50px", "50rem"
@@ -44,6 +50,16 @@ export interface ModalElementsProps {
   children?: React.ReactNode,
   className?: string,
   wrapperRender?: CustomRender<ModalElementsProps, {}, React.HTMLAttributes<HTMLDivElement>>,
+  [x: string]: unknown,
+}
+
+export interface ModalAlertProps {
+  children?: React.ReactNode,
+  className?: string,
+  /** Is Alert open */
+  isOpen?: boolean,
+  /** Alert close */
+  onClose?: (ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void,
   [x: string]: unknown,
 }
 
