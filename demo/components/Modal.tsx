@@ -4,16 +4,36 @@ import * as L from '../../leda';
 
 export const Modal = () => {
   const [isOpen, setOpen] = React.useState(false);
+  const [isAlertOpen, setAlertOpen] = React.useState(false);
+
+  const AlertContent = (
+    <>
+      <L.H2>Внимание!</L.H2>
+      <L.P>Несохраненные данные будут утеряны!</L.P>
+      <L.Div>
+        <L.Button onClick={() => setAlertOpen(false)}>
+          Отмена
+        </L.Button>
+        &nbsp;&nbsp;&nbsp;
+        <L.Button _warning onClick={() => setAlertOpen(false)}>
+          Ok
+        </L.Button>
+      </L.Div>
+    </>
+  );
 
   return (
     <L.Div _demoStory>
       <L.H4 _title>Modal</L.H4>
       <br />
       <L.Modal
+        isAlertOpen={isAlertOpen}
         isOpen={isOpen}
+        onAlertClose={() => { setAlertOpen(false) }}
         onClose={() => {
           setOpen(false);
         }}
+        renderAlert={AlertContent}
         // onCloseButtonClick={() => {
         //   console.log('click on close icon');
         //   setOpen(false);
@@ -61,6 +81,15 @@ export const Modal = () => {
             <L.Div _demoModalLine _row _noGutters>
               <L.Span _colMd2>Выдан</L.Span>
               <L.Textarea _colMd10 form="modal-form" name="passport-given" isRequired />
+            </L.Div>
+            <L.Div
+              _demoModalLine
+              _noGutters
+              _row
+            >
+              <L.Button onClick={() => setAlertOpen(true)}>
+                Show Alert
+              </L.Button>
             </L.Div>
           </L.Div>
         </L.ModalBody>

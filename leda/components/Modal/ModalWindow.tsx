@@ -7,6 +7,7 @@ import { useCustomElements } from './hooks';
 import { ModalWindowProps } from './types';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { getModalWidth } from './helpers';
+import { ModalAlert } from './ModalAlert';
 import { ModalContext } from './ModalContext';
 
 export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
@@ -14,10 +15,13 @@ export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
     children,
     className,
     innerRef,
+    isAlertOpen,
+    onAlertClose,
     onClose,
     onCloseButtonClick,
     onEscapePress,
     onOverlayClick,
+    renderAlert,
     size,
     theme: themeProp,
     isOpen,
@@ -82,8 +86,14 @@ export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
           className={theme.window}
           style={windowStyles}
         >
-          <Icon onClick={handleCloseButtonClick} className={theme.cross} />
+          {!isAlertOpen && <Icon onClick={handleCloseButtonClick} className={theme.cross} />}
           {children}
+          <ModalAlert
+            isOpen={isAlertOpen}
+            onClose={onAlertClose}
+          >
+            {renderAlert}
+          </ModalAlert>
         </div>
       </Wrapper>
     </ModalContext.Provider>
