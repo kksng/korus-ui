@@ -116,6 +116,7 @@ exports[`Modal SNAPSHOTS different component states should have header 1`] = `
                   </Div>
                 </Wrapper>
               </ModalBody>
+              <ModalAlert />
             </div>
           </div>
         </Div>
@@ -237,6 +238,7 @@ exports[`Modal SNAPSHOTS different component states should render closing icon i
                   </Div>
                 </Wrapper>
               </ModalBody>
+              <ModalAlert />
             </div>
           </div>
         </Div>
@@ -308,6 +310,7 @@ exports[`Modal SNAPSHOTS should render 1`] = `
                   />
                 </A>
               </Icon>
+              <ModalAlert />
             </div>
           </div>
         </Div>
