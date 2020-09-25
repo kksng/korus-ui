@@ -65,6 +65,7 @@ export const COMPONENTS_NAMESPACES = {
   textarea: 'textarea',
   tooltip: 'tooltip',
   vstepper: 'vstepper',
+  wizard: 'wizard',
 } as const;
 
 /** Error codes for DropZone, FileDrop и FileUpload */

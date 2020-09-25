@@ -96,6 +96,7 @@ import { Ul } from './components/Ul';
 import { Leda, LedaContext, UnderscoreClasses } from './components/LedaProvider';
 import { validate } from './validators';
 import { VStepper } from './components/VStepper';
+import { Wizard } from './components/Wizard';
 
 import * as Validation from './components/Validation';
 import * as AutoCompleteTypes from './components/AutoComplete/types';
@@ -265,6 +266,7 @@ export {
   Leda, LedaContext, UnderscoreClasses,
   validate,
   VStepper,
+  Wizard,
   form,
   utils,
   Validation,
