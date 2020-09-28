@@ -10,10 +10,13 @@ export const createResetHandler = (
 
   setValue(newValue);
 
+  // TODO: Must be fixed! value cannot be undefined because onChange require value as a string or a number type
+  if (newValue != null) {
     props.onChange?.({
       component: {
         name: props.name,
         value: newValue,
       },
     });
+  }
 };
