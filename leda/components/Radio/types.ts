@@ -64,7 +64,7 @@ export type RadioValue = string | number | undefined;
 export interface ResetEvent {
   currentTarget?: undefined,
   component: {
-    value: RadioValue,
+    value: string | number, // TODO: Must be fixed. Value may become undefined after form reset.
     name?: string,
   },
 }
