@@ -82,4 +82,43 @@
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
   }
+
+  &-alert {
+    background-color: #ffe5e8;
+    border-bottom: 1px solid;
+    border-bottom-color: #c11030;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-height: 64px;
+    padding: 24px 32px;
+
+    &-overlay {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 4px;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    &-cross {
+      cursor: pointer;
+      display: block;
+      height: 35px;
+      position: absolute;
+      right: 0;
+      top: 10px;
+      width: 35px;
+
+      &::before {
+        content: "\00D7";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 32px;
+      }
+    }
+  }
 }

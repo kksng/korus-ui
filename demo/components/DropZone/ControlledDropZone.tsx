@@ -29,8 +29,20 @@ interface ControlledDropZoneProps {
   title?: string,
 }
 
+interface ExternalFile {
+  name: string,
+  link?: string,
+  path?: string,
+  type?: string,
+}
+
 export const ControlledDropZone = (props: ControlledDropZoneProps) => {
-  const [files, setFiles] = React.useState<{ acceptedFiles: any, rejectedFiles: any}>({ acceptedFiles: [], rejectedFiles: [] });
+  const [state1, setState1] = React.useState<L.DropZoneTypes.DropZoneFiles>({ acceptedFiles: [], rejectedFiles: [] });
+
+  const [state2, setState2] = React.useState<{
+    acceptedFiles: ExternalFile[],
+    rejectedFiles: ExternalFile[],
+  }>({ acceptedFiles: [], rejectedFiles: [] });
 
   return (
     <L.Div _box _inner>
@@ -41,7 +53,7 @@ export const ControlledDropZone = (props: ControlledDropZoneProps) => {
         name="file"
         isRequired
         requiredMessage="Загрузите пожалуйста файл"
-        value={files}
+        value={state1}
         infoRender={({
           Element,
           elementProps,
@@ -51,7 +63,7 @@ export const ControlledDropZone = (props: ControlledDropZoneProps) => {
         maxFileNameLength={25}
         onChange={(ev) => {
           console.log('droped', ev);
-          setFiles(ev.component.value);
+          setState1(ev.component.value);
         }}
         uploadButtonRender={({ elementProps }: any) => <L.Button {...elementProps} _warning>Загрузить!</L.Button>}
         // acceptedFilesRender={({ elementProps, componentProps: { value } }: any) => <Accepted {...elementProps} value={value} />}
@@ -72,6 +84,12 @@ export const ControlledDropZone = (props: ControlledDropZoneProps) => {
       <L.Button onClick={() => L.form('dd-zone').reset()}>
         Reset
       </L.Button>
+      <br />
+      <br />
+      <L.DropZone
+        value={state2}
+        onChange={(ev) => setState2(ev.component.value)}
+      />
     </L.Div>
   );
 };

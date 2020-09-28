@@ -2,14 +2,44 @@
 import * as React from 'react';
 import * as L from '../../leda';
 
+const Alerts = ({ setActiveAlertKey }: any) => (
+  <>
+    <L.ModalAlert
+      alertKey="leave"
+      onClose={() => setActiveAlertKey(null)}
+    >
+      <L.H2>Внимание!</L.H2>
+      <L.P>Несохраненные данные будут утеряны!</L.P>
+      <L.Div>
+        <L.Button onClick={() => setActiveAlertKey(null)}>
+          Отмена
+        </L.Button>
+        &nbsp;&nbsp;&nbsp;
+        <L.Button _warning onClick={() => setActiveAlertKey(null)}>
+          Ok
+        </L.Button>
+      </L.Div>
+    </L.ModalAlert>
+    <L.ModalAlert
+      alertKey="simple"
+      onClose={() => setActiveAlertKey(null)}
+    >
+      <L.H2>Simple alert</L.H2>
+      <L.P>Lorem ipsum dolor sit amet</L.P>
+    </L.ModalAlert>
+  </>
+);
+
 export const Modal = () => {
   const [isOpen, setOpen] = React.useState(false);
+  const [activeAlertKey, setActiveAlertKey] = React.useState<string | null>(null);
 
   return (
     <L.Div _demoStory>
       <L.H4 _title>Modal</L.H4>
       <br />
       <L.Modal
+        activeAlertKey={activeAlertKey}
         isOpen={isOpen}
         onClose={() => {
           setOpen(false);
@@ -62,6 +92,18 @@ export const Modal = () => {
               <L.Span _colMd2>Выдан</L.Span>
               <L.Textarea _colMd10 form="modal-form" name="passport-given" isRequired />
             </L.Div>
+            <L.Div
+              _demoModalLine
+              _noGutters
+              _row
+            >
+              <L.Button onClick={() => setActiveAlertKey('leave')}>
+                Show Alert 'leave'
+              </L.Button>
+              <L.Button onClick={() => setActiveAlertKey('simple')}>
+                Show Alert 'simple'
+              </L.Button>
+            </L.Div>
           </L.Div>
         </L.ModalBody>
         <L.ModalFooter>
@@ -69,6 +111,7 @@ export const Modal = () => {
           {' '}
           <L.Button _warning form="modal-form" onClick={() => setOpen(false)} onValidationFail={() => alert('Заполните все поля, пожалуйста!')}>Добавить</L.Button>
         </L.ModalFooter>
+        <Alerts setActiveAlertKey={setActiveAlertKey} />
       </L.Modal>
       <br />
       <L.Button _warning onClick={() => setOpen(true)}>Открыть модальное окно</L.Button>

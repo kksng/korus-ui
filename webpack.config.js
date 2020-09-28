@@ -20,9 +20,7 @@ module.exports = {
       'react-dom': '@hot-loader/react-dom',
     },
     extensions: ['.ts', '.tsx', '.js'],
-    modules: [
-      path.resolve('node_modules'),
-    ],
+    modules: ['node_modules'],
   },
   module: {
     rules: [

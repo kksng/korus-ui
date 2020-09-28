@@ -1,0 +1,137 @@
+%display-table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+@mixin line-step($step-height) {
+  display: table-cell;
+  position: relative;
+  height: $step-height;
+}
+
+@mixin line-position($position-top, $position-left, $position-right) {
+  position: absolute;
+  top: $position-top;
+  left: $position-left;
+  right: $position-right;
+  height: 0.2rem;
+  background-color: $black-05;
+}
+
+.wizard {
+  @extend %display-table;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  a {
+    color: inherit;
+  }
+
+  .step {
+    color: $black-01;
+    @include line-step(6rem);
+    &.active {
+      color: $black-01;
+    }
+
+    &:first-child,
+    &.first {
+      label {
+        left: -1rem;
+        text-align: left;
+        border-radius: 0;
+        width: auto;
+      }
+    }
+
+    &:last-child,
+    &.last {
+      width: 0;
+      label {
+        right: -1rem;
+        left: inherit;
+        text-align: right;
+        border-radius: 0;
+        width: auto;
+      }
+    }
+
+    &:before {
+      content: "";
+      font-family: "novicon" !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1.5;
+      font-size: 1.4rem;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: 2rem;
+      left: -1rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      z-index: 1;
+      text-align: center;
+      background-color: $white;
+      box-sizing: border-box;
+      border: .1rem solid $black-05;
+    }
+
+    label {
+      display: block;
+      position: absolute;
+      left: -32%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: center;
+      width: 64%;
+      font-size: 1.2rem;
+      color: $black-03;
+    }
+
+    .bottom {
+      top: 4.6rem;
+    }
+
+    .top {
+      bottom: 4.5rem;
+    }
+  }
+
+  .active {
+    label {
+      font-size: 1.4rem;
+      color: $black-01;
+    }
+  }
+  
+  .line {
+    @include line-position(2.9rem, 1rem, 0);
+    width: calc(100% - 2rem);
+    height: .4rem;
+  }
+
+  .success {
+    &:before {
+      content: "\e96c";
+      background-color: $brand-primary;
+      color: $white;
+      border: none;
+    }
+
+    .line {
+      background-color: $brand-primary;
+    }
+  }
+
+  .progress:before {
+    background-color: $brand-primary;
+    border: none;
+  }
+}

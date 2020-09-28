@@ -48,7 +48,7 @@ export interface RadioGroupProps {
   /** Тема копмонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.radio],
   /** Текущий выбранный элемент */
-  value: string | number,
+  value?: string | number,
   /** Компонент-обертка для группы radio-элементов. */
   wrapperRender?: CustomRender<RadioGroupProps, { value?: string | number }, WrapperProps>,
   /** Классы переданные через _ */
@@ -59,12 +59,12 @@ export interface RadioGroupRefCurrent {
   wrapper: HTMLElement | null,
 }
 
-export type RadioValue = string | number;
+export type RadioValue = string | number | undefined;
 
 export interface ResetEvent {
   currentTarget?: undefined,
   component: {
-    value: string | number,
+    value: RadioValue,
     name?: string,
   },
 }

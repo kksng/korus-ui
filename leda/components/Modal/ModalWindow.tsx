@@ -11,6 +11,7 @@ import { ModalContext } from './ModalContext';
 
 export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
   const {
+    activeAlertKey,
     children,
     className,
     innerRef,
@@ -63,6 +64,7 @@ export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
   } = useCustomElements(props);
 
   const modalContext = {
+    activeAlertKey,
     headerClassName: theme.header,
     bodyClassName: theme.body,
     footerClassName: theme.footer,
@@ -82,7 +84,7 @@ export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
           className={theme.window}
           style={windowStyles}
         >
-          <Icon onClick={handleCloseButtonClick} className={theme.cross} />
+          {activeAlertKey == null && <Icon onClick={handleCloseButtonClick} className={theme.cross} />}
           {children}
         </div>
       </Wrapper>

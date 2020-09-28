@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.31.0] - 2020-09-28
+
+### Added
+- Modal: Added Alert with an overlay. Should disable Modal interactions(closing) while Alert is displayed.
+- Wizard: Added new Wizard component
+
+### Fixed
+- DropZone: Fixed downloading external and attached files
+
 ## [0.30.0] - 2020-09-14
 
 ### Added
@@ -16,6 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Notifications: Pass removed notification as component.currentItem to onChange handler.
 
 ### Fixed
+- RadioGroup: Fixed value prop type
 - Input: Focus input on clear button click.
 - MaskedInput: Fixed onPaste event handler, added tests
 

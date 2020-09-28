@@ -6,8 +6,9 @@ import {
 } from '../../constants';
 import { Div } from '../Div';
 import {
-  DropZoneError, DropZoneFileType, DropZoneProps, DropZoneState, FileType, ExternalFile,
+  DropZoneError, DropZoneFileType, DropZoneProps, DropZoneState, FileType, ExternalFile, DropZoneFiles,
 } from './types';
+import { EMPTY_DROP_ZONE_FILES } from './constants';
 
 export const compareFiles = (firstFile: DropZoneFileType, secondFile: DropZoneFileType): boolean => {
   if (firstFile.size !== secondFile.size) return false;
@@ -133,3 +134,17 @@ const getError = (file: DropZoneFileType | ExternalFile): DropZoneError => (ERRO
 )) as DropZoneError;
 
 export const getErrorDescription = (file: DropZoneFileType | ExternalFile): string => getError(file)?.message ?? 'Неизвестная ошибка';
+
+// getting actual value of component state
+export const getValue = (
+  propValue: DropZoneFiles | undefined | null,
+  stateValue: DropZoneState,
+): DropZoneFiles => {
+  if (propValue === undefined) return stateValue;
+
+  if (propValue === null) {
+    return EMPTY_DROP_ZONE_FILES;
+  }
+
+  return propValue;
+};

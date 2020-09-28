@@ -27,7 +27,7 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
 
   const theme = useTheme(props.theme, COMPONENTS_NAMESPACES.radio);
 
-  const [valueState, setValueState] = React.useState<RadioValue>(valueProp);
+  const [valueState, setValueState] = React.useState<RadioValue>();
 
   const value = getValue(valueProp, valueState);
 

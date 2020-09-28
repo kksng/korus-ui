@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Li } from '../Li';
 import { Span } from '../Span';
 import {
-  DropZoneFileType, ExternalFile, RejectedFilesListProps,
+  DropZoneFileType, ExternalFile, FileErrorCodes, RejectedFilesListProps,
 } from './types';
 import { getErrorDescription } from './helpers';
 
@@ -11,7 +11,7 @@ export const RejectedFilesList = (props: RejectedFilesListProps): React.ReactEle
 
   const alreadyAccepted = value.acceptedFiles.length ? `Уже загружено - ${value.acceptedFiles.length}.` : '';
 
-  const tooManyFiles = value.rejectedFiles.length > 0 && (value.rejectedFiles[0] as DropZoneFileType).errorCode === 5;
+  const tooManyFiles = value.rejectedFiles.length > 0 && (value.rejectedFiles[0] as DropZoneFileType).errorCode === FileErrorCodes.TooManyFiles;
 
   return (tooManyFiles ? (
     <Li>
