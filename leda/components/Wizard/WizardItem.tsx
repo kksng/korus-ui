@@ -50,7 +50,7 @@ export const WizardItem: React.FC<WizardItemProps> = (props: WizardItemProps): R
    *
    * @returns {number} - progress percentage
    */
-  const getProgress = () => {
+  const getProgress = (): number => {
     if (isSuccess) {
       return 100;
     }

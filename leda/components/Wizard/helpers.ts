@@ -7,7 +7,7 @@ import { WizardStepItem } from './types';
  *
  * @returns {boolean}
  */
-export const isActive = (currIndex: number, index: number) => currIndex === index;
+export const isActive = (currIndex: number, index: number): boolean => currIndex === index;
 
 /**
  * Helper checks if item should have success class
@@ -16,7 +16,7 @@ export const isActive = (currIndex: number, index: number) => currIndex === inde
  *
  * @returns {boolean}
  */
-export const isSuccess = (currIndex: number, index: number) => !!(currIndex && currIndex > index);
+export const isSuccess = (currIndex: number, index: number): boolean => !!(currIndex && currIndex > index);
 
 /**
  * Helper gets index of current value
@@ -25,7 +25,7 @@ export const isSuccess = (currIndex: number, index: number) => !!(currIndex && c
  *
  * @returns {number} - index of current value
  */
-export const getCurrentIndex = (value: string | WizardStepItem | undefined, data: WizardStepItem[] | string[]) => {
+export const getCurrentIndex = (value: string | WizardStepItem | undefined, data: WizardStepItem[] | string[]): number => {
   const currentIndex = value && (data as (string | WizardStepItem)[]).indexOf(value);
   return Number(currentIndex);
 };
