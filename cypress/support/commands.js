@@ -27,6 +27,8 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+import 'cypress-file-upload';
+
 Cypress.Commands.add('focusMasked', { prevSubject: 'element' }, (subject) => cy
   .wrap(subject)
   .focus()

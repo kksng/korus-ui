@@ -5,7 +5,7 @@ import {
 } from '../../utils';
 import { MAX_FILE_SIZE, MIN_FILE_SIZE } from '../../constants';
 import { Div } from '../Div';
-import { DescriptionMessage } from './helpers';
+import { DescriptionMessage, getValue } from './helpers';
 import { createChangeHandler, createClickHandler } from './handlers';
 import { DropZoneFiles } from './DropZoneFiles';
 import { RejectedFilesList } from './RejectedFilesList';
@@ -15,6 +15,7 @@ import {
 } from './types';
 import { useCustomElements, useDropZoneRestProps } from './hooks';
 import { useValidation } from '../Validation';
+import { EMPTY_DROP_ZONE_FILES } from './constants';
 
 export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<DropZoneRefCurrent>): React.ReactElement => {
   const {
@@ -27,7 +28,7 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
     maxFileSize = MAX_FILE_SIZE,
     maxFilesNumber,
     minFileSize = MIN_FILE_SIZE,
-    value: valueProps,
+    value: propValue,
   } = useProps(props);
 
 
@@ -35,20 +36,17 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
 
   const theme = useTheme(props.theme, 'dropZone');
 
-  const [stateValue, setStateValue] = React.useState<DropZoneState>({
-    rejectedFiles: [],
-    acceptedFiles: [],
-  });
+  const [stateValue, setStateValue] = React.useState<DropZoneState>(EMPTY_DROP_ZONE_FILES);
 
-  const value = valueProps || stateValue;
+  const value = getValue(propValue, stateValue);
 
   const handleChange = createChangeHandler(props, stateValue, setStateValue);
 
-  const state = React.useMemo(() => ({ value: stateValue }), [stateValue]);
-
-  const extra = React.useMemo(() => ({ reset: () => handleChange([], []) }), [handleChange]);
-
-  const { isValid, InvalidMessage, validateCurrent } = useValidation(props, state, extra);
+  const { isValid, InvalidMessage, validateCurrent } = useValidation(
+    props,
+    { value },
+    { reset: () => handleChange([], []) },
+  );
 
   const handleClick = createClickHandler(props, stateValue, dropZoneRef);
 

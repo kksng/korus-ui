@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { CustomRender, CustomEventHandler } from '../../commonTypes';
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { COMPONENTS_NAMESPACES, FileErrorCodes } from '../../constants';
 import { globalDefaultTheme } from '../LedaProvider';
 import { ValidationProps } from '../Validation/types';
-import { FileErrorCodes } from '../../constants';
 
 export { FileErrorCodes } from '../../constants';
 
@@ -28,16 +27,20 @@ export interface DropZoneFileType extends File {
 
 export type FileType = ExternalFile | DropZoneFileType;
 
+export interface DropZoneFiles {
+  /** List of accepted files */
+  acceptedFiles: FileType[],
+  /** List of rejected files by type or size */
+  rejectedFiles: FileType[],
+}
+
 export interface ChangeEvent {
   component: {
-    dropped: {
-      acceptedFiles: FileType[],
-      rejectedFiles: FileType[],
-    },
-    value: {
-      acceptedFiles: FileType[],
-      rejectedFiles: FileType[],
-    },
+    /** Files that were added */
+    dropped: DropZoneFiles,
+    /** Actual state */
+    value: DropZoneFiles,
+    /** File that was removed */
     removedFile?: FileType,
   },
 }
@@ -57,7 +60,7 @@ export interface DropZoneProps extends ValidationProps {
   infoRender?: CustomRender<DropZoneProps, DropZoneState, InfoProps>,
   /** Признак отключения дропзоны */
   isDisabled?: boolean,
-  /* Максимальная длина имени файла, по-умолчанию 255 символов */
+  /** Максимальная длина имени файла, по-умолчанию 255 символов */
   maxFileNameLength?: number,
   /** Максимальное количество файлов */
   maxFilesNumber?: number,
@@ -67,31 +70,25 @@ export interface DropZoneProps extends ValidationProps {
   minFileSize?: number,
   /** Функция обратного вызова для метода onChange */
   onChange?: (event: ChangeEvent) => void,
+  /** Функция обратного вызова для метода onClick */
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void,
   /** Отображение отклоненных файлов */
   rejectedFilesRender?: CustomRender<DropZoneProps, DropZoneState, RejectedFilesProps>,
   /** Реф */
   ref?: React.Ref<DropZoneRefCurrent>,
-  /* Тема для компонента */
+  /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone],
   /** Текст кнопки загрузки файла, может принимать JSX */
   uploadButtonRender?: CustomRender<DropZoneProps, DropZoneState, UploadButtonProps>,
-  /** Список загруженных файлов */
-  value?: {
-    acceptedFiles: ExternalFile[],
-    rejectedFiles: ExternalFile[],
-  },
+  /** Добавленные файлы */
+  value?: DropZoneFiles | null,
   /** Кастомизация враппера */
   wrapperRender?: CustomRender<DropZoneProps, DropZoneState, WrapperProps>,
   /** Классы переданные через _ */
   [x: string]: unknown,
 }
 
-export interface DropZoneState {
-  /* список принятых файлов */
-  acceptedFiles: DropZoneFileType[],
-  /* список файлов, не прошедших валидацию по типу или размеру */
-  rejectedFiles: DropZoneFileType[],
-}
+export type DropZoneState = DropZoneFiles;
 
 export interface AcceptedFilesProps {
   children?: React.ReactNode,
@@ -132,13 +129,13 @@ export interface CustomElements {
 
 export interface DropZoneFilesProps {
   /** Массив файлов, который будет отображен в виде списка */
-  files: ExternalFile[],
+  files: FileType[],
   /** Обработчик удаления файла */
   onChange: (
-    acceptedFiles: ExternalFile[] | DropZoneFileType[],
-    rejectedFiles: ExternalFile[] | DropZoneFileType[],
+    acceptedFiles: FileType[],
+    rejectedFiles: FileType[],
     ev: React.DragEvent<HTMLDivElement> | React.MouseEvent<HTMLAnchorElement>,
-    removedFile: ExternalFile | DropZoneFileType
+    removedFile: FileType,
   ) => void,
   /** Флаг обозначающий нужно ли отображать файлы */
   shouldRender: boolean,
@@ -159,14 +156,12 @@ export interface RejectedFilesListProps {
   maxFilesNumber?: number,
 }
 
-export interface ChangeEventHandler {
-  (
-    accepted: FileType[],
-    rejected: FileType[],
-    ev?: React.DragEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
-    removedFile?: FileType
-  ): void,
-}
+export type ChangeEventHandler = (
+  accepted: FileType[],
+  rejected: FileType[],
+  ev?: React.DragEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
+  removedFile?: FileType
+) => void;
 
 export interface DropZoneRefCurrent {
   wrapper: HTMLElement | null,

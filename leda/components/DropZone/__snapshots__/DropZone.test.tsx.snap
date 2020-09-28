@@ -563,3 +563,131 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
   </AcceptedFiles>
 </DropZone>
 `;
+
+exports[`DropZone SNAPSHOTS should render file list 1`] = `
+<div>
+  <div
+    class="dropzone-wrapper"
+  >
+    <div
+      class="dropzone-content"
+      tabindex="0"
+    >
+      <input
+        autocomplete="off"
+        multiple=""
+        style="display: none;"
+        tabindex="-1"
+        type="file"
+      />
+      <button
+        class="button-wrapper dropzone-button"
+        type="button"
+      >
+        Выбрать...
+      </button>
+       
+      <span
+        class="dropzone-description"
+      >
+        <div
+          class="block-inline"
+        >
+          Перетащите сюда файлы для загрузки.
+        </div>
+         
+        <div
+          class="block-inline"
+        >
+          Размер: до 104857600 байт.
+        </div>
+         
+        
+         
+        
+         
+        
+      </span>
+    </div>
+  </div>
+  <ul
+    class="rejected-list margin-none"
+  >
+    <li>
+      <span
+        class="dropzone-rejected-message txt-danger"
+      >
+        'rejected_file.txt': - Превышен максимальный размер файла
+      </span>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <div
+        style="display: none;"
+      />
+      <a
+        class="pointer"
+      >
+        <i
+          class="dropzone-delete-icon"
+        />
+      </a>
+      <div
+        style="display: none;"
+      />
+      <a
+        download="file_1.txt"
+        href="blob://mockObjectURL"
+        theme="dropzone-file-download internal"
+      >
+        file_1.txt
+      </a>
+    </li>
+    <li>
+      <div
+        style="display: none;"
+      />
+      <a
+        class="pointer"
+      >
+        <i
+          class="dropzone-delete-icon"
+        />
+      </a>
+      <div
+        style="display: none;"
+      />
+      <a
+        download="file_2.pdf"
+        href="blob://mockObjectURL"
+        theme="dropzone-file-download internal"
+      >
+        file_2.pdf
+      </a>
+    </li>
+    <li>
+      <div
+        style="display: none;"
+      />
+      <a
+        class="pointer"
+      >
+        <i
+          class="dropzone-delete-icon"
+        />
+      </a>
+      <div
+        style="display: none;"
+      />
+      <a
+        download="file_3.txt"
+        href="http://example.com/file.txt"
+        theme="dropzone-file-download internal"
+      >
+        file_3.txt
+      </a>
+    </li>
+  </ul>
+</div>
+`;
