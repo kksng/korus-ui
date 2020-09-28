@@ -1,4 +1,4 @@
-import { WizardStepItem } from './types';
+import { WizardValue, WizardData } from './types';
 
 /**
  * Helper checks if item is active
@@ -20,12 +20,9 @@ export const isSuccess = (currIndex: number, index: number): boolean => !!(currI
 
 /**
  * Helper gets index of current value
- * @param {string | WizardStepItem | undefined} value - value of current item
- * @param {WizardStepItem[] | string[]} data - array of values
+ * @param {WizardValue} value - value of current item
+ * @param {WizardData} data - array of values
  *
  * @returns {number} - index of current value
  */
-export const getCurrentIndex = (value: string | WizardStepItem | undefined, data: WizardStepItem[] | string[]): number => {
-  const currentIndex = value && (data as (string | WizardStepItem)[]).indexOf(value);
-  return Number(currentIndex);
-};
+export const getCurrentIndex = (value: WizardValue, data: WizardData): number => (data as WizardValue[]).indexOf(value);

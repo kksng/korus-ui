@@ -6,15 +6,16 @@ import { CustomRender } from '../../commonTypes';
  *  Custom properties of component's item
  */
 export interface ItemProps {
-  /**
-   *  Item's custom class name
-   */
+  /** Item's custom class name */
   className?: string,
-  /**
-   *  Item's child nodes
-   */
+  /** Item's child nodes */
   children?: React.ReactNode,
 }
+
+/**
+ *  Data passed to component
+ */
+export type WizardData = WizardStepItem[] | string[];
 
 /**
  *  Properties of component's item
@@ -44,13 +45,13 @@ export interface WizardProps {
   /** Поле из которого извлекается текст для лейбла, работает только если в data объекты */
   textField?: string,
   /** Массив объектов или строк, которые представляют собой шаги */
-  data: WizardStepItem[] | string[],
+  data: WizardData,
   /** Кастомизация Wizard целиком */
   itemRender?: CustomRender<WizardItemProps, {}, ItemProps>,
   /** Процент завершенности текущего шага */
   currentStepProgress?: number,
   /** Текущий шаг */
-  value?: WizardStepItem | string,
+  value: WizardValue,
 }
 
 /**
@@ -66,3 +67,8 @@ export interface WizardStepItem {
 export interface WizardRefCurrent {
   wrapper: HTMLDivElement | null,
 }
+
+/**
+ *  Value of component's item
+ */
+export type WizardValue = string | WizardStepItem;

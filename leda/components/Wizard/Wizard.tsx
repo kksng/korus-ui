@@ -7,7 +7,9 @@ import {
 import {
   getClassNames, useTheme, bindFunctionalRef, useProps,
 } from '../../utils';
-import { WizardProps, WizardStepItem, WizardRefCurrent } from './types';
+import {
+  WizardProps, WizardValue, WizardRefCurrent,
+} from './types';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { Div } from '../Div';
 import { WizardItem } from './WizardItem';
@@ -46,7 +48,7 @@ export const Wizard: React.FC<WizardProps> = React.forwardRef((props: WizardProp
       }))}
       {...restProps}
     >
-      {(data as (string | WizardStepItem)[]).map((item, index) => {
+      {(data as WizardValue[]).map((item, index) => {
         const labelText = getLabelText(dataType, item, textField);
 
         return (
