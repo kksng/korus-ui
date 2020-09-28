@@ -33,6 +33,7 @@ import { defaultTextAreaTheme } from '../Textarea/theme';
 import { defaultNotificationsTheme } from '../Notifications/theme';
 import { defaultMultiSelectTheme } from '../MultiSelect/theme';
 import { defaultFileDropTheme } from '../FileDrop/theme';
+import { defaultWizardTheme } from '../Wizard/theme';
 
 export const globalDefaultTheme = {
   autoComplete: defaultAutoCompleteTheme,
@@ -70,4 +71,5 @@ export const globalDefaultTheme = {
   tooltip: defaultTooltipTheme,
   textarea: defaultTextAreaTheme,
   vstepper: defaultVStepperTheme,
+  wizard: defaultWizardTheme,
 };

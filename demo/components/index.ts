@@ -49,3 +49,4 @@ export { TimeRange } from './TimeRange';
 export { Tooltip } from './Tooltip';
 export { Validation } from './Validation';
 export { VStepper } from './VStepper';
+export { Wizard } from './Wizard';
