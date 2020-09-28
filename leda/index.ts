@@ -60,7 +60,11 @@ import { Main } from './components/Main';
 import { Mark } from './components/Mark';
 import { MaskedInput } from './components/MaskedInput';
 import {
-  Modal, ModalHeader, ModalBody, ModalFooter,
+  Modal,
+  ModalAlert,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
 } from './components/Modal';
 import { MultiSelect } from './components/MultiSelect';
 import { Nav } from './components/Nav';
@@ -233,7 +237,11 @@ export {
   Main,
   Mark,
   MaskedInput,
-  Modal, ModalHeader, ModalBody, ModalFooter,
+  Modal,
+  ModalAlert,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
   MultiSelect,
   Nav,
   Notifications,
