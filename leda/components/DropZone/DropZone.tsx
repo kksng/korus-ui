@@ -42,11 +42,11 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
 
   const handleChange = createChangeHandler(props, stateValue, setStateValue);
 
-  const state = React.useMemo(() => ({ value: stateValue }), [stateValue]);
-
-  const extra = React.useMemo(() => ({ reset: () => handleChange([], []) }), [handleChange]);
-
-  const { isValid, InvalidMessage, validateCurrent } = useValidation(props, state, extra);
+  const { isValid, InvalidMessage, validateCurrent } = useValidation(
+    props,
+    { value },
+    { reset: () => handleChange([], []) },
+  );
 
   const handleClick = createClickHandler(props, stateValue, dropZoneRef);
 

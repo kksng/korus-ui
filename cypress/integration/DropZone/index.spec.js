@@ -21,7 +21,7 @@ describe('DropZone', () => {
   describe('Display', () => {
     it('DropZone should be displayed', () => {
       cy.get(wrapperClassName)
-        .should('have.length', 3)
+        .should('have.length', 4)
         .each((wrapper) => {
           cy.wrap(wrapper).should('be.visible');
         });
@@ -114,6 +114,19 @@ describe('DropZone', () => {
         .contains('Files are required!')
         .should('not.exist');
     });
+
+    it('Should be invalid when isRequired and prop value is null', () => {
+      cy.get('button')
+        .contains('Submit null value')
+        .click()
+        .get(wrapperClassName)
+        .eq(3)
+        .should('have.class', theme.invalid)
+        .get(wrapperClassName)
+        .eq(3)
+        .next()
+        .contains('Files are required!');
+    });
   });
 
   describe('Rest', () => {
@@ -135,6 +148,19 @@ describe('DropZone', () => {
           .click()
           .get(fileDeleteIconClassName)
           .last()
+          .click()
+          .get(rejectedFilesWrapperClassNames)
+          .eq(2)
+          .next('ul')
+          .should('not.exist');
+      });
+
+      it('Should clear component state when prop value is null', () => {
+        cy.get(contentClassName)
+          .eq(2)
+          .attachFile('example.json', { subjectType: 'drag-n-drop' })
+          .get('button')
+          .contains('Set state as null')
           .click()
           .get(rejectedFilesWrapperClassNames)
           .eq(2)
