@@ -135,6 +135,7 @@ const getError = (file: DropZoneFileType | ExternalFile): DropZoneError => (ERRO
 
 export const getErrorDescription = (file: DropZoneFileType | ExternalFile): string => getError(file)?.message ?? 'Неизвестная ошибка';
 
+// getting actual value of component state
 export const getValue = (
   propValue: DropZoneFiles | undefined | null,
   stateValue: DropZoneState,
