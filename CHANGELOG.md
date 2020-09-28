@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.31.0] - 2020-09-28
 
 ### Added
-- Modal: Added Alert with overlay.
+- Modal: Added Alert with an overlay. Should disable Modal interactions(closing) while Alert is displayed.
 
 ## [0.30.0] - 2020-09-14
 

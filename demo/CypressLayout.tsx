@@ -3,7 +3,17 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import * as L from '../leda';
 import {
-  AutoComplete, Button, CheckBox, MaskedInput, VStepper, ButtonGroup, Input, DatePicker, DateRange, DropDownSelect, 
+  AutoComplete,
+  Button,
+  ButtonGroup,
+  CheckBox,
+  DatePicker,
+  DateRange,
+  DropDownSelect,
+  Input,
+  MaskedInput,
+  Modal,
+  VStepper,
 } from './cypress';
 import { Styles } from './components/Styles';
 
@@ -25,6 +35,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/input">
           <Input />
+        </Route>
+        <Route path="/cypress/modal">
+          <Modal />
         </Route>
         <Route path="/cypress/datepicker">
           <DatePicker />

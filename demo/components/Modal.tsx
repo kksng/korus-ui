@@ -31,7 +31,7 @@ const Alerts = ({ setActiveAlertKey }: any) => (
 );
 
 export const Modal = () => {
-  const [isOpen, setOpen] = React.useState(true);
+  const [isOpen, setOpen] = React.useState(false);
   const [activeAlertKey, setActiveAlertKey] = React.useState<string | null>(null);
 
   return (
