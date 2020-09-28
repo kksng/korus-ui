@@ -1,24 +1,27 @@
 import React from 'react';
 import * as L from '../../index';
-import { useProps } from '../../utils';
+import { ModalContext } from './ModalContext';
 import { ModalAlertProps } from './types';
 
 export const ModalAlert: React.FC<ModalAlertProps> = (props: ModalAlertProps): React.ReactElement | null => {
   const {
+    alertKey,
     children,
     className,
-    isOpen,
     onClose,
     ...restProps
-  } = useProps(props);
+  } = L.utils.useProps(props);
 
-  if (!isOpen) return null;
+  const modalContext = React.useContext(ModalContext);
+
+  if (alertKey !== modalContext.activeAlertKey) return null;
 
   return (
     <L.Div _modalAlertOverlay>
       <L.Div
         _modalAlert
         className={className}
+        data-alert-key={alertKey}
         {...restProps}
       >
         {children}
