@@ -10,4 +10,4 @@ export { DatePicker } from './DatePicker';
 export { DateRange } from './DateRange';
 export { DropDownSelect } from './DropDownSelect';
 export { DropZone } from './DropZone';
-
+export { Wizard } from './Wizard';

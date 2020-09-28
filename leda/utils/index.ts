@@ -28,7 +28,7 @@ export { useTheme } from './useTheme';
 
 export { useElement } from './useElement';
 
-export { useProps } from './usePops';
+export { useProps } from './useProps';
 
 export { useValue } from './useValue';
 
