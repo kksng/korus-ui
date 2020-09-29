@@ -2,6 +2,7 @@ import React from 'react';
 import {
   render, screen, fireEvent,
 } from '@testing-library/react';
+
 import { DropDown } from './index';
 // eslint-disable-next-line import/no-useless-path-segments
 import * as L from '../../../leda';
@@ -114,7 +115,7 @@ describe('DropDown ATTRIBUTES', () => {
       fireEvent.click(screen.getByRole('button'));
       expect(screen.getByRole('button')).toHaveClass('opened');
 
-      fireEvent.blur(screen.getByRole('button'));
+      fireEvent.click(document);
       expect(screen.getByRole('button')).not.toHaveClass('opened');
     });
   });

@@ -2,7 +2,7 @@
 
 exports[`DropDown SNAPSHOTS should render 1`] = `
 <div>
-  <span
+  <div
     class="dropdown-wrapper"
   />
 </div>

@@ -3,6 +3,13 @@ import { RenderEvent } from '../../commonTypes';
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 
+/**
+ * Custom elements
+ */
+export interface CustomElements {
+  Wrapper: React.FC<WrapperProps>,
+}
+
 export interface DropDownProps extends React.HTMLAttributes<HTMLElement> {
   /** Ссылка на контейнер, относительно которого нужно позиционировать элемент */
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement | null }>,
@@ -12,7 +19,7 @@ export interface DropDownProps extends React.HTMLAttributes<HTMLElement> {
   ref?: React.Ref<DropDownRefCurrent>,
   /** Тема компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropDown],
-  /** Тег-обертка, при наведении на который, будет отображаться данный dropdown, по умолчанию <span> */
+  /** Тег-обертка, при наведении на который, будет отображаться данный dropdown, по умолчанию <div> */
   wrapperRender?: (props: RenderEvent<DropDownProps>) => React.ReactNode,
   /** Открытие по клику, по умолчанию открытие по наведению */
   interactionMode?: 'click',
@@ -20,17 +27,24 @@ export interface DropDownProps extends React.HTMLAttributes<HTMLElement> {
   [x: string]: unknown,
 }
 
-export interface WrapperProps {
-  className?: string,
-  children?: React.ReactNode,
-  ref?: React.Ref<DropDownRefCurrent>,
-  [x: string]: unknown,
-}
-
-export interface CustomElements {
-  Wrapper: React.FC<WrapperProps>,
-}
-
+/**
+ * Component's current ref
+ */
 export interface DropDownRefCurrent {
+  /** Wrapper element */
   wrapper: HTMLElement | null,
+}
+
+/**
+ * Props of Wrapper component
+ */
+export interface WrapperProps {
+  /** Custom class */
+  className?: string,
+  /** Child elements */
+  children?: React.ReactNode,
+  /** Component's current ref */
+  ref?: React.Ref<DropDownRefCurrent>,
+  /** Classes passed through _ */
+  [x: string]: unknown,
 }
