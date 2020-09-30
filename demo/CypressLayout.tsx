@@ -17,6 +17,7 @@ import {
   VStepper,
   Wizard,
   DropDown,
+  RadioGroup
 } from './cypress';
 import { Styles } from './components/Styles';
 
@@ -65,6 +66,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/dropdown">
           <DropDown />
+        </Route>
+        <Route path="/cypress/radio-group">
+          <RadioGroup />
         </Route>
       </Switch>
     </L.Div>

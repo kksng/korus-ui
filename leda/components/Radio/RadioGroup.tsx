@@ -1,6 +1,6 @@
 import React from 'react';
 import { isFunction, isBoolean } from 'lodash';
-import { RadioButton } from './RadioButton';
+
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useProps,
 } from '../../utils';
@@ -9,10 +9,17 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   ChangeEvent, RadioGroupProps, RadioGroupRefCurrent, WrapperProps, RadioValue,
 } from './types';
-import { getValue } from './helpers';
+import { getValue, getFirstChildValue, isValidRadioButton } from './helpers';
 import { useValidation } from '../Validation';
 import { createResetHandler } from './handlers';
 
+/**
+ * RadioGroup component creates group of radio buttons.
+ * Provides controlled mode only
+ * @param {RadioGroupProps} props
+ *
+ * @returns {React.ReactElement}
+ */
 export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.Ref<RadioGroupRefCurrent>): React.ReactElement => {
   const {
     children,
@@ -27,14 +34,16 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
 
   const theme = useTheme(props.theme, COMPONENTS_NAMESPACES.radio);
 
-  const [valueState, setValueState] = React.useState<RadioValue>();
+  const defaultValue = getFirstChildValue(children);
+
+  const [valueState, setValueState] = React.useState<RadioValue>(defaultValue);
 
   const value = getValue(valueProp, valueState);
 
   useValidation(props, {
     value,
   }, {
-    reset: createResetHandler(props, setValueState),
+    reset: createResetHandler(props, defaultValue, setValueState),
   });
 
   const combinedClassNames = getClassNames(
@@ -42,13 +51,18 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
     className,
   );
 
+  /**
+   * Function uses onChange callback from props in controlled mode
+   * and uses state in uncontrolled mode
+   * @param {ChangeEvent} ev - change event
+   */
   const handleChange = React.useCallback((ev: ChangeEvent) => {
     if (isFunction(onChange)) return onChange(ev);
 
     return setValueState(ev.component.value);
   }, [onChange]);
 
-  const Wrapper = useElement<RadioGroupProps, { value?: string | number }, WrapperProps>(
+  const Wrapper = useElement<RadioGroupProps, { value?: RadioValue }, WrapperProps>(
     'Wrapper',
     Div,
     wrapperRender,
@@ -64,17 +78,15 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
       }))}
     >
       {React.Children.toArray(children).map((child) => {
-        if (child
-          && React.isValidElement(child)
-          && (child.type === RadioButton || (child.type as { name?: string }).name === 'RadioButton')
-        ) {
-          return React.cloneElement(child, {
+        const validRadioButton = isValidRadioButton(child) && child as React.ReactElement;
+        if (validRadioButton) {
+          return React.cloneElement(validRadioButton, {
             name,
             form,
             onChange: handleChange,
-            isDisabled: isBoolean(isDisabled) ? isDisabled : child.props.isDisabled,
-            isChecked: child.props.value === value,
-            theme: { ...theme, ...child.props.theme },
+            isDisabled: isBoolean(isDisabled) ? isDisabled : validRadioButton.props.isDisabled,
+            isChecked: validRadioButton.props.value === value,
+            theme: { ...theme, ...validRadioButton.props.theme },
           });
         }
         return child;

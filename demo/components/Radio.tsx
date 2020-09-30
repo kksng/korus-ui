@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as L from '../../leda';
 
 export const Radio = (): React.ReactElement => {
-  const [value, setValue] = React.useState<string | number>(0);
+ const [value, setValue] = React.useState<string | number>(0);
 
   return (
     <L.Div _demoStory>
