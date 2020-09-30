@@ -11,39 +11,39 @@ export const DropDown = (): React.ReactElement => {
         id='DDButtonHover'
       >
         <L.Span>Hover over me</L.Span>
-          <L.Ul _txtLeft>
-            <L.Li _level2>
-              <L.A>Мармелад</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Суфле</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Шоколад</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Кексики</L.A>
-            </L.Li>
-          </L.Ul>
+        <L.Ul _txtLeft>
+          <L.Li _level2>
+            <L.A>Мармелад</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Суфле</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Шоколад</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Кексики</L.A>
+          </L.Li>
+        </L.Ul>
       </L.DropDown>
       <L.DropDown
         id='DDDivHover'
       >
         <L.Span>Hover over me</L.Span>
-          <L.Ul _txtLeft>
-            <L.Li _level2>
-              <L.A>Мармелад</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Суфле</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Шоколад</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Кексики</L.A>
-            </L.Li>
-          </L.Ul>
+        <L.Ul _txtLeft>
+          <L.Li _level2>
+            <L.A>Мармелад</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Суфле</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Шоколад</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Кексики</L.A>
+          </L.Li>
+        </L.Ul>
       </L.DropDown>
 
       <L.DropDown
@@ -52,20 +52,20 @@ export const DropDown = (): React.ReactElement => {
         id='DDButtonClick'
       >
         <L.Span>Click me</L.Span>
-          <L.Ul _txtLeft>
-            <L.Li _level2>
-              <L.A>Мармелад</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Суфле</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Шоколад</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Кексики</L.A>
-            </L.Li>
-          </L.Ul>
+        <L.Ul _txtLeft>
+          <L.Li _level2>
+            <L.A>Мармелад</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Суфле</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Шоколад</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Кексики</L.A>
+          </L.Li>
+        </L.Ul>
       </L.DropDown>
 
        <L.DropDown
@@ -73,20 +73,20 @@ export const DropDown = (): React.ReactElement => {
         id='DDDivClick'
       >
         <L.Span>Click me</L.Span>
-          <L.Ul _txtLeft>
-            <L.Li _level2>
-              <L.A>Мармелад</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Суфле</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Шоколад</L.A>
-            </L.Li>
-            <L.Li _level2>
-              <L.A>Кексики</L.A>
-            </L.Li>
-          </L.Ul>
+        <L.Ul _txtLeft>
+          <L.Li _level2>
+            <L.A>Мармелад</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Суфле</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Шоколад</L.A>
+          </L.Li>
+          <L.Li _level2>
+            <L.A>Кексики</L.A>
+          </L.Li>
+        </L.Ul>
       </L.DropDown>
     </L.Div>
   )
