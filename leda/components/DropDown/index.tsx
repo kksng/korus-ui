@@ -1,15 +1,22 @@
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
+
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useAdaptivePosition, useProps,
 } from '../../utils';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { DropDownProps, DropDownRefCurrent, WrapperProps } from './types';
-import { Span } from '../Span';
+import { Div, DivRefCurrent } from '../Div';
 import { LedaContext } from '../LedaProvider';
-import { DivRefCurrent } from '../Div';
 import { Ul } from '../Ul';
+import { InteractionModes } from './constants';
 
+/**
+ * DropDown component
+ * renders child list as dropdown list
+ * @param {DropDownProps} props
+ *
+ * @returns {React.ReactElement}
+ */
 export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<DropDownRefCurrent>): React.ReactElement => {
   const {
     boundingContainerRef,
@@ -34,11 +41,39 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
 
   const containerRef = React.useRef<DivRefCurrent | null>(null);
 
+  const defaultWrapperRef = React.useRef<DropDownRefCurrent | null>(null);
+
+  const wrapperRef = ref || defaultWrapperRef;
+
   const context = React.useContext(LedaContext);
+
+  /**
+   * Function sets dropdown list state to open if click was made on wrapper
+   * and sets dropdown list state to close if click was made outside wrapper
+   * @param {MouseEvent} e - click event
+   */
+  const handleClick = (event: MouseEvent) => {
+    const target = event.target as Node;
+    const isWrapperClicked = wrapperRef && (wrapperRef as React.MutableRefObject<DropDownRefCurrent | null>).current?.wrapper?.contains(target);
+    if (isWrapperClicked) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener('click', handleClick);
+
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const Wrapper = useElement<DropDownProps, {}, WrapperProps>(
     'Wrapper',
-    Span,
+    Div,
     wrapperRender || context.renders[COMPONENTS_NAMESPACES.dropDown].wrapperRender,
     props,
   );
@@ -56,10 +91,9 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
     isOpen,
   });
 
-  const interaction = interactionMode === 'click'
+  const interaction = interactionMode === InteractionModes.Click
     ? {
-      onClick: () => setIsOpen(true),
-      onBlur: () => setIsOpen(false),
+      onClick: (event: MouseEvent) => handleClick(event),
     }
     : {
       onMouseOver: () => setIsOpen(true),
@@ -71,7 +105,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
       {...interaction}
       className={combinedClassNames}
       {...restProps}
-      ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
+      ref={wrapperRef && ((component) => bindFunctionalRef(component, wrapperRef, component && {
         wrapper: component.wrapper || component,
       }))}
     >

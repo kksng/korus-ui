@@ -16,6 +16,7 @@ import {
   Modal,
   VStepper,
   Wizard,
+  DropDown,
 } from './cypress';
 import { Styles } from './components/Styles';
 
@@ -61,6 +62,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/wizard">
           <Wizard />
+        </Route>
+        <Route path="/cypress/dropdown">
+          <DropDown />
         </Route>
       </Switch>
     </L.Div>
