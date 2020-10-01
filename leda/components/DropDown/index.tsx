@@ -52,8 +52,8 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
    * and sets dropdown list state to close if click was made outside wrapper
    * @param {MouseEvent} e - click event
    */
-  const handleClick = (e: MouseEvent) => {
-    const target = e.target as Node;
+  const handleClick = (event: MouseEvent) => {
+    const target = event.target as Node;
     const isWrapperClicked = wrapperRef && (wrapperRef as React.MutableRefObject<DropDownRefCurrent | null>).current?.wrapper?.contains(target);
     if (isWrapperClicked) {
       setIsOpen(true);
@@ -93,7 +93,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
 
   const interaction = interactionMode === InteractionModes.Click
     ? {
-      onClick: (e: MouseEvent) => handleClick(e),
+      onClick: (event: MouseEvent) => handleClick(event),
     }
     : {
       onMouseOver: () => setIsOpen(true),
