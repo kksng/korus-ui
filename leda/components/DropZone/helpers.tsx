@@ -215,7 +215,7 @@ export const getValue = (
  *
  * @return {{ newDropped: DropZoneFiles, newValue: DropZoneFiles }}
  */
-export const handleRemoveFile = (
+export const removeFromFileList = (
   removedFile: FileType,
   rejectedFiles: FileType[],
   acceptedFilesFromState: FileType[],
@@ -243,7 +243,7 @@ export const handleRemoveFile = (
  *
  * @return {{ newDropped: DropZoneFiles, newValue: DropZoneFiles }}
  */
-export const handleAddFile = (
+export const addToFileList = (
   acceptedFiles: FileType[],
   rejectedFiles: FileType[],
   acceptedFilesFromState: FileType[],
