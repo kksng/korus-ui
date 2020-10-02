@@ -78,7 +78,7 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
       }))}
     >
       {React.Children.toArray(children).map((child) => {
-        const validRadioButton = isValidRadioButton(child) && child as React.ReactElement;
+        const validRadioButton = isValidRadioButton(child) ? child as React.ReactElement : null;
         if (validRadioButton) {
           return React.cloneElement(validRadioButton, {
             name,
