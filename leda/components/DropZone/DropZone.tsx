@@ -48,7 +48,7 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
     { reset: () => handleChange([], []) },
   );
 
-  const handleClick = createClickHandler(props, stateValue, dropZoneRef);
+  const handleClick = createClickHandler(props, dropZoneRef);
 
   const combinedClassNames = getClassNames(
     className,
