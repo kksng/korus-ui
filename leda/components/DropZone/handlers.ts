@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DropzoneRef } from 'react-dropzone';
 import { isFunction } from 'lodash';
 
-import { checkFiles, handleRemoveFile, handleAddFile } from './helpers';
+import { checkFiles, removeFromFileList, addToFileList } from './helpers';
 import {
   ChangeEventHandler, DropZoneProps, DropZoneState,
 } from './types';
@@ -48,8 +48,8 @@ export const createChangeHandler = (
   const [acceptedFiles, rejectedFiles] = checkFiles(props, state, accepted, rejected);
 
   const { newDropped, newValue } = removedFile
-    ? handleRemoveFile(removedFile, rejected, value.acceptedFiles)
-    : handleAddFile(acceptedFiles, rejectedFiles, value.acceptedFiles);
+    ? removeFromFileList(removedFile, rejected, value.acceptedFiles)
+    : addToFileList(acceptedFiles, rejectedFiles, value.acceptedFiles);
 
   const customEvent = {
     ...ev,
