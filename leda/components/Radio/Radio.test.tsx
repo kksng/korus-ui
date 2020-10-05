@@ -43,6 +43,19 @@ describe('Radio SNAPSHOTS', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('should default to value of the first radio', () => {
+    const radio = (
+      <RadioGroup name="radio-group">
+        <RadioButton value="radio-1" id="radio-1">1</RadioButton>
+        <RadioButton value="radio-2" id="radio-2">2</RadioButton>
+        <RadioButton value="radio-3" id="radio-3">3</RadioButton>
+      </RadioGroup>
+    );
+    const wrapper = mount(radio);
+
+    expect(wrapper.find('input').first().props().checked).toBeTruthy();
+  });
+
   describe('different component states', () => {
     it('should render checked', () => {
       const radio = (
@@ -117,7 +130,7 @@ describe('Radio HANDLERS', () => {
 });
 
 describe('Radio ATTRIBUTES', () => {
-  it('should be wrapper with given wrapper', () => {
+  it('should be wrapped with given wrapper', () => {
     const radio = (
       <RadioGroup wrapperRender={({ elementProps }) => <Ul {...elementProps} />} value="radio-1" onChange={jest.fn()} name="radio-group">
         <RadioButton wrapperRender={() => <Li />} value="radio-1" id="radio-1">1</RadioButton>

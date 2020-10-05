@@ -13,3 +13,4 @@ export { Modal } from './Modal';
 export { VStepper } from './VStepper';
 export { Wizard } from './Wizard';
 export { DropDown } from './DropDown';
+export { RadioGroup } from './RadioGroup';

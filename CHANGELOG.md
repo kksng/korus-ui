@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.32.0] - 2020-10-05
 
 ### Fixed
-- Switcher: Changed wrapper span tag to div
+- RadioGroup: Restricted possibility to work with value=undefined. Component defaults to first RadioButton's value
 - DropDown: Fixed closing dropdown list on click outside an element in interactionMode="click"
+- Switcher: Changed wrapper span tag to div
 
 ## [0.31.1] - 2020-09-28
 
