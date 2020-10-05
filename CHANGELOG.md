@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - RadioGroup: Restricted possibility to work with value=undefined. Component defaults to first RadioButton's value
+- DropZone: Fixed change event handler for removed files
 - DropDown: Fixed closing dropdown list on click outside an element in interactionMode="click"
 - Switcher: Changed wrapper span tag to div
 
