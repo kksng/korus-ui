@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { isArray, isObject } from 'lodash';
+
 import {
   GetSuggestionItemProps,
   SuggestionItemComputedProps,
@@ -8,6 +9,13 @@ import {
 import { checkIsTheSameObject } from '../../utils';
 import { selectAllSuggestion, SelectedState } from '../../components/MultiSelect/constants';
 
+/**
+ * Helper gets name of the list item
+ * @param {Value} suggestion - item of the list
+ * @param {string} textField - required if suggestion is an object
+ *
+ * @returns {string} - name of the list item
+ */
 export const getText = (
   suggestion?: Value,
   textField?: string,
@@ -19,6 +27,11 @@ export const getText = (
   return isObject(suggestion) ? (suggestion[textField] as string | number | undefined || '').toString() : suggestion.toString();
 };
 
+/**
+ * Helper scrolls to selected item
+ * @param {React.MutableRefObject<HTMLElement | null>} containerRef - ref of the container
+ * @param {React.MutableRefObject<HTMLElement | null>} suggestionRef - ref of the item
+ */
 export const scrollToSuggestion = (
   containerRef: React.MutableRefObject<HTMLElement | null>,
   suggestionRef: React.MutableRefObject<HTMLElement | null>,
@@ -44,6 +57,12 @@ export const scrollToSuggestion = (
   if (offset) containerRef.current.scrollBy?.(0, offset);
 };
 
+/**
+ * Helper computes additional properties of SuggestionItem component
+ * @param {SuggestionItemComputedProps} - additional properties of SuggestionItem component
+ *
+ * @returns {SuggestionItemComputedProps} - additional properties
+ */
 export const getSuggestionItemProps = ({
   compareObjectsBy,
   suggestion,
@@ -65,7 +84,7 @@ export const getSuggestionItemProps = ({
   });
   const isSelected = (() => {
     if (isSelectAllItem) {
-      return selectAllState === SelectedState.All || selectAllState === SelectedState.Some;
+      return selectAllState === SelectedState.All;
     }
 
     // MultiSelect mode
@@ -84,7 +103,7 @@ export const getSuggestionItemProps = ({
     });
   })();
 
-  // является ли текущий элемент целью scrollToSuggestion
+  // is the current element a scrollToSuggestion target
   const isScrollTarget = (() => {
     if (highlightedSuggestion) return isHighlighted;
     if (isArray(selectedSuggestion)) return false; // do not scroll to selected items in MultiSelect mode
