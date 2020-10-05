@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MultiSelect snapshots test collection is Multiselect component render right with complex data? 1`] = `
+exports[`MultiSelect snapshots test collection is Multiselect component rendering right with complex data? 1`] = `
 <div>
   <div
     class="multiselect-wrapper"
@@ -47,7 +47,7 @@ exports[`MultiSelect snapshots test collection is Multiselect component render r
 </div>
 `;
 
-exports[`MultiSelect snapshots test collection is Multiselect component render right with some data and some selected items? 1`] = `
+exports[`MultiSelect snapshots test collection is Multiselect component rendering right with some data and some selected items? 1`] = `
 <div>
   <div
     class="multiselect-wrapper"
@@ -105,7 +105,7 @@ exports[`MultiSelect snapshots test collection is Multiselect component render r
 </div>
 `;
 
-exports[`MultiSelect snapshots test collection is Multiselect component render right with some data? 1`] = `
+exports[`MultiSelect snapshots test collection is Multiselect component rendering right with some data? 1`] = `
 <div>
   <div
     class="multiselect-wrapper"
@@ -153,7 +153,7 @@ exports[`MultiSelect snapshots test collection is Multiselect component render r
 </div>
 `;
 
-exports[`MultiSelect snapshots test collection is Multiselect component render right? 1`] = `
+exports[`MultiSelect snapshots test collection is Multiselect component rendering right? 1`] = `
 <div>
   <div
     class="multiselect-wrapper"

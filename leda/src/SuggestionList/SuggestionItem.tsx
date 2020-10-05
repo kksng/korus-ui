@@ -1,6 +1,9 @@
 import * as React from 'react';
+import { isObject } from 'lodash';
+
 import { LedaContext } from '../../components/LedaProvider';
 import { Li } from '../../components/Li';
+import { Span } from '../../components/Span';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { getClassNames, useElement } from '../../utils';
 import { createClickHandler } from './handlers';
@@ -8,9 +11,18 @@ import { SuggestionItemProps } from './types';
 import { getWrapperRef } from '../../utils/getWrapperRef';
 import { CommonRefCurrent } from '../../commonTypes';
 
+/**
+ * SuggestionItem component renders item of SuggestionList
+ * @param {SuggestionItemProps} props - properties of SuggestionItem component
+ *
+ * @returns {React.ReactElement}
+ */
 export const SuggestionItem = (props: SuggestionItemProps): React.ReactElement => {
   const {
     itemRender,
+    selectAllItemRender,
+    isSelectAllItem,
+    item,
     isScrollTarget,
     isPlaceholder,
     isHighlighted,
@@ -24,10 +36,19 @@ export const SuggestionItem = (props: SuggestionItemProps): React.ReactElement =
     renders: { [COMPONENTS_NAMESPACES.suggestionList]: suggestionRenders },
   } = React.useContext(LedaContext);
 
+  const selectAllItemText: string = isObject(item) ? item.text : String(item);
+
   const Suggestion = useElement(
     'Suggestion',
     Li,
     itemRender || suggestionRenders.itemRender,
+    props,
+  );
+
+  const SelectAllItem = useElement(
+    'SelectAllItem',
+    Span,
+    selectAllItemRender || suggestionRenders.itemRender,
     props,
   );
 
@@ -52,7 +73,12 @@ export const SuggestionItem = (props: SuggestionItemProps): React.ReactElement =
         }
       }}
     >
-      {text}
+      {isSelectAllItem
+        ? (
+          <SelectAllItem>
+            {selectAllItemText}
+          </SelectAllItem>
+        ) : text}
     </Suggestion>
   );
 };
