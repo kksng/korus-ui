@@ -1,0 +1,23 @@
+.rating {
+  &-wrapper {
+    display: inline-flex;
+  }
+
+  &-item {
+    cursor: pointer;
+
+    &::after {
+      display: block;
+      content: '\f005';
+      font-family: fontAwesome;
+      color: $black-03;
+      width: 40px;
+      font-size: 40px;
+      height: 40px;
+    }
+
+    &.filled::after {
+      color: $accent-02;
+    }
+  }
+}

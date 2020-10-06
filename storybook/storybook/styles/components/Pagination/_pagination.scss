@@ -1,0 +1,207 @@
+.pagination {
+  &-wrapper {
+    overflow: visible;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+
+    .dropdownselect {
+      &-wrapper {
+        margin: 0;
+        width: 60px;
+      }
+
+      &-input-wrapper {
+        border-width: 0;
+        background-color: inherit;
+        border-radius: 0;
+        justify-content: flex-start;
+        align-items: center;
+
+        &:hover {
+          background-color: inherit;
+        }
+
+        &.focused {
+          border-width: 0
+        }
+      }
+
+      &-suggestion {
+        color: $black-01;
+
+        &.selected {
+          color: $black-01;
+        }
+      }
+    }
+  }
+
+  &-numbers {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    order: 2;
+
+    .pagination-button {
+      color: $black-01;
+      margin: 0 8px;
+      min-width: auto;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: $black-01;
+      }
+
+      &.selected {
+        background-color: transparent;
+        color: $black-01;
+        cursor: default;
+        font-weight: 700;
+      }
+
+      &.disabled {
+        cursor: default !important;
+        color: $black-03;
+        font-weight: normal;
+      }
+    }
+  }
+
+  &-button {
+    margin: 1px;
+    padding: 0;
+    min-width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    border-radius: 50%;
+    color: $black-01;
+    cursor: pointer;
+
+    &:hover {
+      color: $black-01;
+      text-decoration: none;
+      background-color: transparent;
+    }
+  }
+
+  &-controls {
+    background-color: $black-05;
+
+    &:hover {
+      background-color: $black-04;
+    }
+
+    &.disabled {
+      background-color: $black-06 !important;
+      cursor: default !important;
+
+      & > i {
+        color: inherit !important;
+        cursor: default !important;
+      }
+
+      &:hover {
+        background-color: $black-06 !important;
+
+        & > i {
+          color: inherit !important;
+        }
+      }
+    }
+
+    %common-control-icons {
+      @extend %common-dropdown-icon;
+
+      &:before {
+        background: no-repeat center;
+        display: block;
+        width: 20px;
+        height: 20px;
+        transform: rotate(0);
+      }
+    }
+
+    &.first {
+      .icon-first {
+        @extend %common-control-icons;
+
+        &:before {
+          content: "\f100";
+          color: $white;
+          text-align: center;
+        }
+      }
+    }
+
+    &.prev {
+      .icon-prev {
+        @extend %common-control-icons;
+
+        &:before {
+          content: "\f104";
+          color: $white;
+          text-align: center;
+        }
+      }
+    }
+
+    &.next {
+      .icon-next {
+        @extend %common-control-icons;
+
+        &:before {
+          content: "\f105";
+          color: $white;
+          text-align: center;
+        }
+      }
+    }
+
+    &.last {
+      .icon-last {
+        @extend %common-control-icons;
+
+        &:before {
+          content: "\f101";
+          color: $white;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &-label {
+    &-options {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+      align-items: baseline;
+      color: $black-03;
+      font-size: 12px;
+      order: 1;
+
+      .dropdownselect-input-wrapper input[class*="input"] {
+        font-size: 12px;
+        padding: 0 0 0 4px;
+        width: 30px;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex: 1;
+      order: 3;
+      justify-content: flex-end;
+      color: $black-03;
+      font-size: 12px;
+    }
+  }
+}

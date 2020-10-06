@@ -1,0 +1,53 @@
+.slider {
+  &-container {
+    height: 16px;
+  }
+
+  &-track {
+    height: 4px;
+    background: #e6e6e6;
+    border-radius: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &.active {
+      background: $brand-primary;
+      cursor: pointer;
+    }
+  }
+
+  &-handle {
+    background: $brand-primary;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid $brand-primary;
+    cursor: pointer;
+    position: relative;
+
+    .tooltip {
+      display: none;
+      left: 50%;
+      text-align: center;
+    }
+
+    &:hover, &:active {
+      background: $white;
+
+      .tooltip {
+        display: block;
+      }
+    }
+  }
+
+  &-label {
+    color: $black-03;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+  }
+}

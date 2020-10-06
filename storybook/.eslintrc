@@ -1,0 +1,93 @@
+{
+  "parser": "babel-eslint",
+
+  "rules": {
+    // Максимальная длина строки с учетом пробелов, в стандарте 100
+    "max-len": ["error", 250],
+
+    // Дефолтные пропсы нам не нужны
+    "react/require-default-props": 0,
+
+    // Для большого количества HTML с кодом не актуально
+    "react/no-unescaped-entities": 0,
+
+    // Отключаем соответствие defaulProps и propTypes (propTypes не используются)
+    "react/default-props-match-prop-types": 0,
+
+    // В js файлах мы используем jsx синтаксис
+    "react/jsx-filename-extension": 0,
+
+    // Отредактируем организацию для порядка методов при создании React компонента
+    // Добавим в начало определение типов (type-annotations)
+    "react/sort-comp": [2, {
+      "order": [
+        "type-annotations",
+        "static-methods",
+        "lifecycle",
+        "everything-else",
+        "render"
+      ]
+    }],
+
+    // Не используем дефолтный экспорт
+    "import/prefer-default-export": "off",
+
+    // По умолчанию рекомендуется проверять как вложенность, так и идентификатор на сопоставление лейбла с элементом управления
+    // Сделаем так, чтобы одной проверки было достаточно
+    "jsx-a11y/label-has-for": [ 2, {
+      "components": [ "CheckBox" ],
+      "required": {
+        "some": [ "nesting", "id" ]
+      },
+      "allowChildren": true
+    }],
+
+    // Правила для accessibility:
+
+    // Элемент с обработчиком кликов должен иметь обработчик клавиатуры
+    "jsx-a11y/click-events-have-key-events": "off",
+
+    // Принудительное срабатывание onfocus/onblur при onmouseover/onmouseout
+    "jsx-a11y/mouse-events-have-key-events": "off",
+
+    // HTML элемент с обработчиком должен иметь роль
+    "jsx-a11y/no-static-element-interactions": "off",
+
+    "jsx-a11y/anchor-is-valid": "off",
+
+     "import/no-webpack-loader-syntax": "off",
+
+     "import/no-unresolved": "off",
+
+     "no-console": "off",
+
+     "react/prefer-stateless-function": "off",
+
+     "no-alert": "off",
+
+     "babel/semi": ["error", "always"],
+     // соблюдение Rules of Hooks
+     "react-hooks/rules-of-hooks": "error",
+      // правильные зависимости в хуках
+      "react-hooks/exhaustive-deps": "warn",
+      // деструктуризация не нужна для полей класса
+      "react/destructuring-assignment": ["warn", "always", { "ignoreClassFields":  true }],
+      // можно писать span внутри текста
+      "react/jsx-one-expression-per-line": "off"
+  },
+
+  "plugins": [
+    "flowtype",
+    "babel",
+    "react-hooks"
+  ],
+
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
+
+  "env": {
+    "browser": true
+  }
+}

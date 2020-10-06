@@ -1,0 +1,218 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+
+  &.flex-reverse {
+    flex-direction: row-reverse;
+  }
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  &.flex-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-left {
+  justify-content: left;
+}
+
+.justify-content-right {
+  justify-content: right;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-items-stretch {
+  align-items: stretch;
+}
+
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-self-start {
+  align-self: flex-start;
+}
+
+.align-self-end {
+  align-self: flex-end;
+}
+
+.align-self-stretch {
+  align-self: stretch;
+}
+
+.align-self-baseline {
+  align-self: baseline;
+}
+
+@for $i from 0 through 5 {
+  .grow-#{$i} {
+    flex-grow: $i;
+  }
+  .shrink-#{$i} {
+    flex-shrink: $i;
+  }
+}
+
+@for $i from 0 through 20 {
+  .max-width-#{$i*5} {
+    max-width: $i*5%;
+  }
+  .min-width-#{$i*5} {
+    min-width: $i*5%;
+  }
+  .width-#{$i*5} {
+    width: $i*5%;
+  }
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.margin {
+  &-left {
+    margin-left: 1rem;
+  }
+  &-right {
+    margin-right: 1rem;
+  }
+  &-top {
+    margin-top: 1rem;
+  }
+  &-bottom {
+    margin-bottom: 1rem;
+  }
+  &-x {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  &-y {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  &-none {
+    margin: 0;
+  }
+}
+
+.padding {
+  &-left {
+    margin-left: 1rem;
+  }
+  &-right {
+    margin-right: 1rem;
+  }
+  &-top {
+    margin-top: 1rem;
+  }
+  &-bottom {
+    margin-bottom: 1rem;
+  }
+  &-x {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  &-y {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  &-none {
+    margin: 0;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.transition-transform {
+  transition: transform 0.3s;
+}
+
+.r {
+  &-30 {
+    transform: rotate(30deg);
+  }
+  &-45 {
+    transform: rotate(45deg);
+  }
+  &-60 {
+    transform: rotate(60deg);
+  }
+  &-90 {
+    transform: rotate(90deg);
+  }
+  &-180 {
+    transform: rotate(180deg);
+  }
+}
+
+.txt {
+  &-bold {
+    font-weight: bold;
+  }
+  &-bolder {
+    font-weight: bolder;
+  }
+  &-warning {
+    color: $brand-warning;
+  }
+  &-success {
+    color: $brand-primary;
+  }
+  &-danger {
+    color: $brand-danger;
+  }
+  &-gray {
+    color: $black-04;
+  }
+  &-black {
+    color: $black-01;
+  }
+  &-white {
+    color: white;
+  }
+}

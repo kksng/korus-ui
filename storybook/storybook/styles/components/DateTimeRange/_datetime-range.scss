@@ -1,0 +1,28 @@
+.daterange {
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > .datepicker-wrapper {
+      flex-grow: 1;
+      width: 50%;
+
+      &:first-child {
+        order: 1;
+      }
+
+      &:last-child {
+        order: 3;
+      }
+    }
+  }
+
+  &-delimiter {
+    display: block;
+    text-align: center;
+    line-height: 3.2rem;
+    width: 10%;
+    order: 2;
+  }
+}
