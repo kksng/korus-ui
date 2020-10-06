@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/AutoComplete/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/AutoComplete/';
 
 export { componentSrc };
 export { Customization } from './Customization';

@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/DropDownSelect/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/DropDownSelect/';
 
 export { componentSrc };
 export { Api } from './Api';

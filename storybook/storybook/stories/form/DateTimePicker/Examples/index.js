@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/DateTimePicker/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/DateTimePicker/';
 
 export { componentSrc };
 export { Api } from './Api';

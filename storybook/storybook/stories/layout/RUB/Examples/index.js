@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/Currency';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/Currency';
 
 export { componentSrc };
 export { Api } from './Api';

@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/CheckBox/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/CheckBox/';
 
 export { componentSrc };
 export { Customization } from './Customization';

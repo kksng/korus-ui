@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/Slider/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/Slider/';
 
 export { componentSrc };
 // export { BasicUsage } from './BasicUsage';

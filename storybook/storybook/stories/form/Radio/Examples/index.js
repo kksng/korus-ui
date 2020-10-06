@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/Radio/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/Radio/';
 
 export { componentSrc };
 export { Customization } from './Customization';

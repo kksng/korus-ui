@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/Input/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/Input/';
 
 export { componentSrc };
 export { AllowedSymbols } from './AllowedSymbols';

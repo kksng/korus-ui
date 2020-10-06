@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/Tour/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/Tour/';
 
 export { componentSrc };
 export { Api } from './Api';

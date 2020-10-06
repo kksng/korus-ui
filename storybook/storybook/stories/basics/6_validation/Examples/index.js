@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/Validation/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/Validation/';
 
 export { componentSrc };
 export { Api } from './Api';

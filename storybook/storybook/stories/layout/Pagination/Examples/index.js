@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/Div/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/Div/';
 
 export { componentSrc };
 export { Api } from './Api';

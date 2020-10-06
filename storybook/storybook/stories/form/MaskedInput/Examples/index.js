@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/MaskedInput/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/MaskedInput/';
 
 export { componentSrc };
 export { Mask } from './Mask';

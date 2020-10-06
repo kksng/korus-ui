@@ -1,4 +1,4 @@
-import componentSrc from '!raw-loader!leda/dist/components/TimePicker/';
+import componentSrc from '!raw-loader!@korus/leda/dist/components/TimePicker/';
 
 export { componentSrc };
 export { Api } from './Api';

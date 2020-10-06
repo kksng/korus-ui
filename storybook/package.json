@@ -18,7 +18,7 @@
   "author": "Esphere Team",
   "license": "ISC",
   "dependencies": {
-    "@korus/leda": "3.18.0",
+    "@korus/leda": "file:../",
     "@storybook/addon-actions": "^5.1.10",
     "@storybook/addon-links": "^5.1.10",
     "@storybook/addons": "^5.1.10",

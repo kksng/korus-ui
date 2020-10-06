@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as L from '@korus/leda';
 import { parse as parseDocGen } from 'react-docgen';
-import ValidationProps from '!raw-loader!leda/dist/components/Validation/index';
+import ValidationProps from '!raw-loader!@korus/leda/dist/components/Validation/index';
 import type { ContextType } from './Story';
 
 type TableProps = {
