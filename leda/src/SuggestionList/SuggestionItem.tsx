@@ -36,12 +36,9 @@ export const SuggestionItem = (props: SuggestionItemProps): React.ReactElement =
     renders: { [COMPONENTS_NAMESPACES.suggestionList]: suggestionRenders },
   } = React.useContext(LedaContext);
 
-  const selectAllItemText: string = (() => {
-    if (isObject(item)) {
-      return item.text ? item.text : '';
-    }
-    return String(item);
-  })();
+  const selectAllItemText: string = isObject(item)
+    ? item?.text || ''
+    : String(item);
 
   const Suggestion = useElement(
     'Suggestion',
