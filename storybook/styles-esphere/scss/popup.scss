@@ -1,0 +1,99 @@
+/* Overlay
+----------------------------------------------------------------------------- Overlay */
+.overlay-show {
+  overflow: hidden;
+  height: 100%;
+  .overlay-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(../images/overlay.png) 0 0 repeat;
+    background-size: 0.3rem 0.3rem;
+    &.loading, &.ui-popup {
+      z-index: 9999;
+    }
+    .loading > .preloader {
+      display: block;
+    }
+  }
+}
+
+.overlay-bg > .preloader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -1.5rem 0 0 -1.5rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid lightgray;
+}
+
+/* custom popup */
+
+.ui-popup {
+  &-box {
+    position: fixed;
+    top: 5rem;
+    left: 50%;
+    margin-left: -35rem;
+    width: 70rem;
+    background: white;
+    border: 1px solid lightgray;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    overflow: hidden;
+  }
+  &-header, &-panel {
+    padding: 0.5rem 1.5rem;
+  }
+  &-header {
+    background: whitesmoke;
+    border-bottom: 1px solid lightgray;
+    text-align: center;
+  }
+  &-panel {
+    background: white;
+    border-top: 1px dotted lightgray;
+    text-align: right;
+  }
+  &-content {
+    overflow: auto;
+    > div {
+      padding: 1rem 1.5rem;
+    }
+  }
+}
+
+//Шапка без отступов
+.header-padding-none {
+  background: 50% 50%;
+  background-size: cover;
+  border-radius: 2.4rem 2.4rem 0 0;
+}
+
+//Футер модалки
+body:not(.alpha), body:not(.black) {
+  .k-window-content .ending {
+    border-top: 1px solid #D0D7DD;
+    padding: 1.6rem 3.2rem;
+  }
+}
+
+body.nova {
+  .k-window-content .ending {
+    border-top: 0;
+    padding: 2.4rem 3.2rem;
+    background: #F2F4F7;
+    border-radius: 0 0 1.6rem 1.6rem;
+  }
+}
+
+//Тело модалки
+.window-content {
+  padding: 2.4rem 3.2rem;
+}
+

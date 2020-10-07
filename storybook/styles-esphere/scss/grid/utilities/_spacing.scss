@@ -1,0 +1,103 @@
+// mixins
+@mixin margin-x-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin margin-y-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@mixin margin-x($x) {
+  margin-right: $x;
+  margin-left: $x;
+}
+
+@mixin margin-y($y) {
+  margin-top: $y;
+  margin-bottom: $y;
+}
+
+@mixin padding-x($x) {
+  padding-right: $x;
+  padding-left: $x;
+}
+
+@mixin padding-y($y) {
+  padding-top: $y;
+  padding-bottom: $y;
+}
+
+.margin-x-auto {
+  @include margin-x-auto;
+}
+
+.margin-y-auto {
+  @include margin-y-auto;
+}
+
+.margin-left-auto {
+  margin-left: auto;
+}
+
+.margin-right-auto {
+  margin-right: auto;
+}
+
+.margin-top-auto {
+  margin-top: auto;
+}
+
+.margin-bottom-auto {
+  margin-bottom: auto;
+}
+
+// margins and paddings
+
+@each $prop, $value in $grid-basics {
+
+  @each $dir in $directions {
+
+    @if $dir == 'all' {
+
+      .margin#{$prop} {
+        margin: #{$value};
+      }
+    }
+
+    @else if $dir == 'y' {
+      .padding-#{$dir}#{$prop} {
+        @include padding-y(#{$value})
+      }
+
+      .margin-#{$dir}#{$prop} {
+        @include margin-y(#{$value});
+      }
+    }
+
+    @else if $dir == 'x' {
+      .padding-#{$dir}#{$prop} {
+        @include padding-x(#{$value});
+      }
+
+      .margin-#{$dir}#{$prop} {
+        @include margin-x(#{$value});
+      }
+    }
+
+    @else {
+      .padding-#{$dir}#{$prop} {
+        padding-#{$dir}: #{$value};
+      }
+
+      .margin-#{$dir}#{$prop} {
+        margin-#{$dir}: #{$value};
+      }
+    }
+  }
+
+  .inner#{$prop} {
+    padding: $value;
+  }
+}

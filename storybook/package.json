@@ -39,8 +39,7 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.1",
     "react-with-styles": "^3.2.3",
-    "showdown": "^1.9.0",
-    "styles-esphere": "^2.2.42"
+    "showdown": "^1.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",

@@ -1,0 +1,207 @@
+::selection {
+  color: white;
+  background: dimgray;
+  background: rgba(0, 0, 0, 0.6); }
+
+section, article, details, figure, figcaption,
+nav, aside, bside, header, main, footer {
+  display: block; }
+
+audio, canvas, video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+audio:not([controls]) {
+  display: none !important; }
+
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym,
+address, cite, code, del, dfn, em, img, q, s,
+samp, small, strike, strong, sub, sup,
+tt, var, dd, dl, dt, li, ol, ul,
+fieldset, form, label, legend, button,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit; }
+
+body,
+input {
+  font-family: sans-serif; }
+
+body,
+input,
+button {
+  font-weight: normal; }
+
+h1, h2, h3,
+h4, h5, h6 {
+  font-weight: 500; }
+
+body {
+  color: black;
+  background: white;
+  font-size: 1.4rem;
+  line-height: 2rem; }
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: .2rem .4rem .4rem; }
+
+h1 {
+  font-size: 3rem;
+  line-height: 4rem; }
+
+h2 {
+  font-size: 2.1rem;
+  line-height: 3.2rem; }
+
+h3, h4, h5 {
+  font-size: 1.8rem;
+  line-height: 2.8rem; }
+
+h6, .txt-large,
+blockquote p {
+  font-size: 1.6rem;
+  line-height: 2.4rem; }
+
+small {
+  font-size: 1.2rem;
+  line-height: 1.6rem; }
+
+.txt-micro {
+  font-size: 1rem;
+  line-height: 1.2rem; }
+
+sub,
+sup {
+  position: relative;
+  font-size: 1rem;
+  line-height: 0;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+hr {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  border: solid;
+  border-width: 0 0 1px 0;
+  border-color: #e4e8eb; }
+
+a,
+a:hover,
+a:active,
+:focus {
+  outline: 0; }
+
+a {
+  color: #369;
+  text-decoration: none; }
+
+/*a:visited {color: darkmagenta;}*/
+dfn[title],
+abbr[title] {
+  cursor: help; }
+
+del {
+  cursor: default; }
+
+*[href] {
+  cursor: pointer; }
+
+ol, ul {
+  list-style: none; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+ins {
+  background-color: palegreen; }
+
+mark {
+  background-color: lemonchiffon; }
+
+mark {
+  color: black; }
+
+img {
+  border: none; }
+
+input,
+button {
+  vertical-align: middle; }
+
+p {
+  padding-bottom: 1rem; }
+
+q,
+blockquote {
+  font-style: italic; }
+
+blockquote {
+  padding-left: 1.8rem;
+  border-left: .2rem solid;
+  margin-bottom: 2rem;
+  quotes: none; }
+
+blockquote p {
+  padding: 0; }
+
+blockquote p + small {
+  display: block;
+  padding-top: 1rem; }
+
+table {
+  border-spacing: 0; }
+
+table td {
+  vertical-align: top; }
+
+pre {
+  tab-size: 2;
+  font-size: 1.2rem;
+  background: whitesmoke; }
+
+code {
+  white-space: pre-wrap; }
+
+pre, code {
+  font-family: Consolas, monospace; }
+
+blockquote p + small {
+  color: #949494; }
+
+nav:after,
+nav > ul:after {
+  content: " ";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0; }
+
+strong {
+  font-weight: 500; }
+
+/*# sourceMappingURL=reset.css.map */

@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Rubl Sign";
+  src: url("../fonts/rub/rubl-sign-regular.eot");
+  src: url("../fonts/rub/rubl-sign-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/rub/rubl-sign-regular.woff") format("woff"), url("../fonts/rub/rubl-sign-regular.ttf") format("truetype"), url("../fonts/rub/rubl-sign-regular.svg#ALSRublRegular") format("svg");
+  font-style: normal;
+}
+
+/* Rub fix */
+.rub {
+  font-family: "Rubl Sign", Verdana, sans-serif;
+  font-size: inherit;
+}
+
