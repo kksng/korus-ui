@@ -48,6 +48,26 @@ describe('MultiSelect', () => {
         .find('.checkbox-label')
         .should('have.class', 'semi')
     });
+    it('should render text for selectAll item by default', () => {
+      cy.get('#MSDefaultWithDataArray')
+        .click()
+        .parent()
+        .parent()
+        .find('.suggestion-list')
+        .find('.suggestion-item')
+        .first()
+        .should('have.text', 'Выбрать все')
+    });
+    it('should render custom text for selectAll item', () => {
+      cy.get('#MSDefaultWithDataObject')
+        .click()
+        .parent()
+        .parent()
+        .find('.suggestion-list')
+        .find('.suggestion-item')
+        .first()
+        .should('have.text', 'Select all')
+    });
   });
   describe('Interaction', () => {
     it('should clear input on clear button click', () => {

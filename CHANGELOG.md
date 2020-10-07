@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.32.0] - 2020-10-05
+## [0.32.0] - 2020-10-12
 
 ### Fixed
+- MultiSelect: Fixed selectAll text
 - RadioGroup: Restricted possibility to work with value=undefined. Component defaults to first RadioButton's value
 - DropZone: Fixed change event handler for removed files
 - MultiSelect: Fixed logic of select all checkbox
