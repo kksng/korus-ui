@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Modal: Increased the sm width of the component from 420px to 480px
+- DateRange: Added possibility to set array of empty strings as state 
 - MultiSelect: Fixed selectAll text
 - RadioGroup: Restricted possibility to work with value=undefined. Component defaults to first RadioButton's value
 - DropZone: Fixed change event handler for removed files
