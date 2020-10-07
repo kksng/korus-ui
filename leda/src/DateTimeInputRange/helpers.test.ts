@@ -15,7 +15,8 @@ describe('getReplacedValue', () => {
     expect(helpers.getReplacedValue([1, {}])).toEqual(expected);
   });
   it('returns string or Date values', () => {
-    const expected = ['12.03.2012', '2012-03-11T20:00:00.000Z'];
-    expect(helpers.getReplacedValue(['12.03.2012', '2012-03-11T20:00:00.000Z'])).toEqual(expected);
+    const date = new Date('05.04.2012');
+    const expected = ['12.03.2012', date];
+    expect(helpers.getReplacedValue(['12.03.2012', date])).toEqual(expected);
   });
 });
