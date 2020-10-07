@@ -1,5 +1,5 @@
 export const WINDOW_SIZES = {
-  sm: 420,
+  sm: 480,
   md: 600,
   lg: 800,
 } as const;
