@@ -125,6 +125,7 @@ exports[`LEDA THEME PROVIDER should be isOpen 1`] = `
             isOpen={true}
             onClick={[Function]}
             selectedSuggestion={null}
+            setOpenForIE={[Function]}
             shouldAllowEmpty={false}
             textField="txt"
             theme={

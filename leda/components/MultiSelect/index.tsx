@@ -6,7 +6,7 @@ import {
 import {
   bindFunctionalRef, getClassNames, getIsEmptyAndRequired, useElement, useProps, useTheme,
 } from '../../utils';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { COMPONENTS_NAMESPACES, BROWSERS } from '../../constants';
 import { useValidation } from '../Validation';
 import { SuggestionList } from '../../src/SuggestionList';
 import {
@@ -29,6 +29,7 @@ import { createCheckBoxesRender } from './renders';
 import { Span } from '../Span';
 import { selectAllSuggestion, SelectedState } from './constants';
 
+
 export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React.Ref<MultiSelectRefCurrent>): React.ReactElement => {
   const {
     autoComplete = 'off',
@@ -47,7 +48,7 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
     invalidMessageRender,
     isDisabled,
     isLoading,
-    isOpen,
+    isOpen: isOpenProp,
     isRequired,
     isValid: isValidProp,
     itemRender,
@@ -105,6 +106,14 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
   });
 
   const [isFocused, setFocused] = React.useState<boolean>(false);
+  const [isOpenForIE, setOpenForIE] = React.useState<boolean>(false);
+
+  const isOpen = () => {
+    if (BROWSERS.IE) {
+      return isNil(isOpenProp) ? isOpenForIE : isOpenProp;
+    }
+    return isNil(isOpenProp) ? isFocused : isOpenProp;
+  };
 
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
@@ -314,7 +323,8 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
           groupBy={groupBy}
           highlightedSuggestion={highlightedSuggestion}
           isLoading={isLoading}
-          isOpen={isNil(isOpen) ? isFocused : isOpen}
+          isOpen={isOpen()}
+          setOpenForIE={setOpenForIE}
           itemRender={hasCheckBoxes ? checkBoxesRender : itemRender}
           listRender={listRender}
           noSuggestionsRender={noSuggestionsRender}

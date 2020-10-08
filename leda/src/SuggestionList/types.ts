@@ -39,6 +39,7 @@ export interface SuggestionListProps {
   textField?: string,
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.suggestionList],
   value: string | number | SomeObject | null | (string[] | number[] | SomeObject[]),
+  setOpenForIE?: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export interface SuggestionElementProps {

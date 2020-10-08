@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { COMPONENTS_NAMESPACES, BROWSERS } from '../../constants';
 import { SuggestionList } from '../../src/SuggestionList';
 import {
   bindFunctionalRef, useProps, useTheme,
@@ -83,7 +83,15 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
   });
 
   const { isFocused, highlightedSuggestion, selectedSuggestion } = state;
-  const isOpen = isNil(isOpenProp) ? state.isOpen : isOpenProp;
+  const [isOpenForIE, setOpenForIE] = React.useState<boolean>(false);
+
+  const isOpen = (() => {
+    if (BROWSERS.IE) {
+      return isNil(isOpenProp) ? isOpenForIE : isOpenProp;
+    }
+    return isNil(isOpenProp) ? state.isOpen : isOpenProp;
+  })();
+  // const isOpen = isNil(isOpenProp) ? state.isOpen : isOpenProp;
   const value = valueProp === undefined ? state.value : valueProp;
   const filterValue = isNil(filterValueProp) ? state.filterValue : filterValueProp;
 
@@ -210,6 +218,7 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
         highlightedSuggestion={highlightedSuggestion}
         isLoading={isLoading}
         isOpen={isDisabled ? false : isOpen}
+        setOpenForIE={setOpenForIE}
         itemRender={itemRender}
         listRender={listRender}
         noSuggestionsRender={noSuggestionsRender}

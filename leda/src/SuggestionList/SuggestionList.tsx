@@ -4,12 +4,13 @@ import { Loader } from '../../components/Loader';
 import { Div, DivRefCurrent } from '../../components/Div';
 import { Li } from '../../components/Li';
 import { Ul } from '../../components/Ul';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { COMPONENTS_NAMESPACES, BROWSERS } from '../../constants';
 import { useAdaptivePosition, useElement, useTheme } from '../../utils';
 import { getSuggestionItemProps, scrollToSuggestion } from './helpers';
 import { SuggestionItem } from './SuggestionItem';
 import { SuggestionListProps, GroupedSomeObject, Value } from './types';
 import { NoSuggestions } from './NoSuggestions';
+
 
 export const SuggestionList = (props: SuggestionListProps): React.ReactElement | null => {
   const {
@@ -34,6 +35,7 @@ export const SuggestionList = (props: SuggestionListProps): React.ReactElement |
     textField,
     theme: themeProp,
     value,
+    setOpenForIE,
   } = props;
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.suggestionList);
@@ -85,6 +87,24 @@ export const SuggestionList = (props: SuggestionListProps): React.ReactElement |
     classNames: classMap,
     boundingContainerRef,
   });
+
+  const handleMouseDown = (event: MouseEvent) => {
+    if (!BROWSERS.IE || !setOpenForIE) return;
+    if (event.target as HTMLElement === containerRef.current) {
+      setOpenForIE(true);
+    } else {
+      setOpenForIE(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener('mousedown', handleMouseDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handleMouseDown);
+    };
+  }, []);
+
 
   React.useEffect((): void => {
     // скроллим эффективно

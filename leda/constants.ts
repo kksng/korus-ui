@@ -96,3 +96,7 @@ export const predefinedAllowedSymbols = {
 export const predefinedForbiddenSymbols = {
   numbers: /\d/,
 };
+
+export const BROWSERS = {
+  IE: !!(document as any).documentMode || /Edge/.test(navigator.userAgent),
+};
