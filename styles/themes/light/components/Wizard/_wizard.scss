@@ -115,6 +115,13 @@
     @include line-position(2.9rem, 1rem, 0);
     width: calc(100% - 2rem);
     height: .4rem;
+    .progress-line{
+      position: absolute;
+      background-color: $brand-primary;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
   }
 
   .success {
