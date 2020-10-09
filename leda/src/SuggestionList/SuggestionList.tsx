@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { LedaContext } from '../../components/LedaProvider';
 import { Loader } from '../../components/Loader';
 import { Div, DivRefCurrent } from '../../components/Div';
@@ -11,7 +12,12 @@ import { SuggestionItem } from './SuggestionItem';
 import { SuggestionListProps, GroupedSomeObject, Value } from './types';
 import { NoSuggestions } from './NoSuggestions';
 
-
+/**
+ * SuggestionList component displays list with options
+ * @param {SuggestionListProps} props - properties of SuggestionList component
+ *
+ * @returns {React.ReactElement | null}
+ */
 export const SuggestionList = (props: SuggestionListProps): React.ReactElement | null => {
   const {
     boundingContainerRef,
@@ -88,6 +94,10 @@ export const SuggestionList = (props: SuggestionListProps): React.ReactElement |
     boundingContainerRef,
   });
 
+  /**
+   * Handler for mousedown event. Required for IE to prevent focus loss on scrollbar click
+   * @param {MouseEvent} event - mousedown event
+   */
   const handleMouseDown = (event: MouseEvent) => {
     if (!BROWSERS.IE || !setOpenForIE) return;
     if (event.target as HTMLElement === containerRef.current) {
@@ -103,11 +113,12 @@ export const SuggestionList = (props: SuggestionListProps): React.ReactElement |
     return () => {
       document.removeEventListener('mousedown', handleMouseDown);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
   React.useEffect((): void => {
-    // скроллим эффективно
+    // optimization for scroll
     scrollToSuggestion(containerRef, suggestionRef);
   }, [isOpen, value, selectedSuggestion, highlightedSuggestion]);
 
@@ -204,7 +215,7 @@ export const SuggestionList = (props: SuggestionListProps): React.ReactElement |
         }}
       >
         {groupBy && suggestions?.map((suggestion, index) => {
-          // todo: переделать группировку списков
+          // todo: redo the grouping of lists
           if ((suggestion as GroupedSomeObject)?.key) {
             const groupedSomeObject = suggestion as GroupedSomeObject;
             return (

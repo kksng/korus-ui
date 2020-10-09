@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   isString, isBoolean,
 } from 'lodash';
+
 import { SuggestionList } from '../../src/SuggestionList';
 import {
   bindFunctionalRef,
@@ -33,6 +34,12 @@ import {
 import { useValidation } from '../Validation';
 import { LedaContext } from '../LedaProvider';
 
+/**
+ * AutoComplete component renders input with dropdown list, autocompletes typed choice
+ * @param {AutoCompleteProps} props - properties of AutoComplete component
+ *
+ * @returns {React.ReactElement}
+ */
 export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: React.Ref<AutoCompleteRefCurrent>): React.ReactElement | null => {
   const {
     autoComplete = 'off',
@@ -88,6 +95,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
   const [selectedSuggestion, setSelectedSuggestion] = React.useState<Suggestion>(null);
   const [highlightedSuggestion, setHighlightedSuggestion] = React.useState<Suggestion>(null);
   const [lastCorrectValue, setLastCorrectValue] = React.useState('');
+  // Prevents focus loss on scrollbar click in IE
   const [isOpenForIE, setOpenForIE] = React.useState<boolean>(false);
 
   const autoCompleteState = React.useMemo(() => ({

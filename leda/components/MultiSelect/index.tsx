@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
+
 import {
   MultiSelectComponent, MultiSelectProps, MultiSelectRefCurrent, Value,
 } from './types';
@@ -29,7 +30,12 @@ import { createCheckBoxesRender } from './renders';
 import { Span } from '../Span';
 import { selectAllSuggestion, SelectedState } from './constants';
 
-
+/**
+ * MultiSelect component renders input with dropdown list that allows multiple choice
+ * @param {MultiSelectProps} props - properties of MultiSelect component
+ *
+ * @returns {React.ReactElement}
+ */
 export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React.Ref<MultiSelectRefCurrent>): React.ReactElement => {
   const {
     autoComplete = 'off',
@@ -106,10 +112,11 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
   });
 
   const [isFocused, setFocused] = React.useState<boolean>(false);
+  // Prevents focus loss on scrollbar click in IE
   const [isOpenForIE, setOpenForIE] = React.useState<boolean>(false);
 
   const isOpen = (() => {
-    if(!isNil(isOpenProp)) return isOpenProp;
+    if (!isNil(isOpenProp)) return isOpenProp;
 
     if (isOpenForIE) return isOpenForIE;
 

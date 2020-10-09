@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
-import { COMPONENTS_NAMESPACES, BROWSERS } from '../../constants';
+
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { SuggestionList } from '../../src/SuggestionList';
 import {
   bindFunctionalRef, useProps, useTheme,
@@ -25,6 +26,12 @@ import {
 import { Span } from '../Span';
 import { getText } from '../../src/SuggestionList/helpers';
 
+/**
+ * DropDownSelect component renders input with dropdown list that allows single choice
+ * @param {DropDownSelectProps} props - properties of DropDownSelect component
+ *
+ * @returns {React.ReactElement}
+ */
 export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref: React.Ref<DropDownSelectRefCurrent>): React.ReactElement | null => {
   const {
     autoComplete = 'off',
@@ -83,10 +90,11 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
   });
 
   const { isFocused, highlightedSuggestion, selectedSuggestion } = state;
+  // Prevents focus loss on scrollbar click in IE
   const [isOpenForIE, setOpenForIE] = React.useState<boolean>(false);
 
   const isOpen = (() => {
-    if(!isNil(isOpenProp)) return isOpenProp;
+    if (!isNil(isOpenProp)) return isOpenProp;
 
     if (isOpenForIE) return isOpenForIE;
 

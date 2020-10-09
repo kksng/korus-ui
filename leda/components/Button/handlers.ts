@@ -4,7 +4,7 @@ import { getForms, validate } from '../Validation';
 import { ButtonProps } from './types';
 import { fromFormArraytoFormObject } from './helpers';
 import { form as LedaForm } from '../../form';
-import {BROWSERS} from '../../constants';
+import { BROWSERS } from '../../constants';
 
 export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<HTMLButtonElement>): void => {
   const {
