@@ -10,7 +10,7 @@ export const CustomPropsTable = (props: Props): React.Node => {
   const { customProps } = props;
   return (
     <React.Fragment>
-      <L.Div _k-grid _k-widget>
+      <L.Div _table>
         <L.Table>
           <colgroup>
             <col style={{ width: '20rem' }} />
