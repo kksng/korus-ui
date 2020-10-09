@@ -13,7 +13,7 @@ module.exports = ({ config }) => {
   newConfig.plugins.push(
     new CopyWebpackPlugin([
       {
-        from: 'styles-esphere',
+        from: 'styles',
         to: 'assets',
       },
       {
