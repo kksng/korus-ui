@@ -108,9 +108,13 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
   const [isFocused, setFocused] = React.useState<boolean>(false);
   const [isOpenForIE, setOpenForIE] = React.useState<boolean>(false);
 
-  const isOpen = !isNil(isOpenProp) ? 
-    isOpenProp : isOpenForIE ? 
-    isOpenForIE : isFocused;
+  const isOpen = (() => {
+    if(!isNil(isOpenProp)) return isOpenProp;
+
+    if (isOpenForIE) return isOpenForIE;
+
+    return isFocused;
+  })();
 
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 

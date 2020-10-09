@@ -85,9 +85,13 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
   const { isFocused, highlightedSuggestion, selectedSuggestion } = state;
   const [isOpenForIE, setOpenForIE] = React.useState<boolean>(false);
 
-  const isOpen = !isNil(isOpenProp) ? 
-    isOpenProp : isOpenForIE ? 
-    isOpenForIE : state.isOpen;
+  const isOpen = (() => {
+    if(!isNil(isOpenProp)) return isOpenProp;
+
+    if (isOpenForIE) return isOpenForIE;
+
+    return state.isOpen;
+  })();
 
   const value = valueProp === undefined ? state.value : valueProp;
   const filterValue = isNil(filterValueProp) ? state.filterValue : filterValueProp;
