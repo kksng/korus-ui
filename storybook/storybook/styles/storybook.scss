@@ -1,0 +1,121 @@
+body::-webkit-scrollbar {
+  width: 6px;
+  background-color: #d8d8d8;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #434343;
+}
+
+.live-style, code {
+  .tag {
+    padding: 0;
+    margin: 0;
+    position: static;
+    min-width: 0;
+    line-height: inherit;
+    background-color: inherit;
+  }
+
+  .editor {
+    line-height: inherit;
+    background-color: #2b2b2b;
+    caret-color: rgb(241, 250, 140);
+    border-radius: 10px;
+  }
+}
+
+.colored {
+  color: rgb(87,194,224);
+}
+
+.refs-wrapper {
+  padding: 20px 50px;
+}
+
+.remark {
+  padding-left: 10px;
+  border-left: 5px solid #f4e842;
+  background-color: #fff2f7;
+}
+
+.customWindowClass {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) !important;
+  -ms-transform: translate(-50%, -50%) !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.Pane .horizontal .Pane1 {
+  overflow: hidden !important;
+}
+
+.Pane1 > div > div {
+  padding-right: 5px;
+}
+
+nav.container {
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #d8d8d8;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #434343;
+  }
+}
+
+.tooltip {
+  max-width: initial;
+  pre {
+    background: transparent;
+  }
+}
+
+
+
+// ==== Articles ==== //
+
+.article {
+  padding: 0 30px;
+  margin: 30px 0;
+}
+
+.header {
+  margin-bottom: 20px;
+  border: solid;
+  border-width: 0 0 1px 0;
+  margin-bottom: 1rem;
+  border-color: #e5e5e5;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  text-transform: none;
+}
+
+.block-header {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.sub-block-header {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.block {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.txt-list li {
+  list-style: circle;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+
+// ==== Articles End ==== //

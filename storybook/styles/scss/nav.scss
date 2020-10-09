@@ -1,0 +1,465 @@
+@import "variables/themes/_nova.scss";
+
+/* Panel */
+.panel {
+  margin-bottom: 1.2rem;
+
+  .title {
+    border-radius: .4rem .4rem 0 0;
+    border: solid $gray;
+    border-width: .1rem;
+    margin: 0;
+    cursor: default;
+
+    h5 {
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .content {
+    border-radius: 0 0 .4rem .4rem;
+    border: solid $gray;
+    border-width: 0 .1rem .1rem;
+  }
+
+  .k-grid {
+    margin: -.1rem 0;
+  }
+
+  &:not(.active) {
+    .title {
+      border-radius: .4rem;
+
+      &:hover {
+        border-color: #f49530;
+      }
+    }
+  }
+
+  > .title i[class*="expand"] {
+    transition: transform .3s;
+    color: $gray-base !important;
+  }
+}
+
+/* Accordion
+----------------------------------------------------------------------------- Accordion */
+
+.accordion > li {
+	border: solid #e5e5e5;
+	border-width: 1px 0 0;
+  /*padding: .5rem 0;*/
+}
+
+.accordion > li:first-child {border-width: 0;}
+
+.accordion > li > ul {padding-bottom: 1.5rem;}
+
+.accordion > li > span,
+.accordion > li > a {
+  display: block;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.accordion > li > *  > h5 {font-size: 1.4rem;}
+
+/* Navigation
+----------------------------------------------------------------------------- Navigation */
+
+nav li,
+[class*="level-"] > a,
+[class*="level-"] > span {
+  position:      relative;
+  white-space:   nowrap;
+}
+
+nav li > a {
+  display: block;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+nav ul,
+nav .button,
+[class*="level-"],
+[class*="level-"] > a,
+[class*="level-"] > span {display: block;}
+
+nav .count {vertical-align: top;}
+
+.active > *,
+[class*="level-"] > span {cursor: default;}
+
+[class*="level-"]:hover  .alt,
+[class*="level-"].hover  .alt,
+[class*="level-"].active .alt,
+[class*="level-"]:hover  .link,
+[class*="level-"].hover  .link,
+[class*="level-"].active .link {border-color: transparent;}
+
+/* Dropdown
+----------------------------------------------------------------------------- Dropdown */
+
+.dropdown > ul         ,
+.dropdown:before       ,
+.dropdown:after        {display: none;}
+
+.dropdown:hover > ul   ,
+.dropdown.hover > ul   ,
+.dropdown:hover:before ,
+.dropdown.hover:before ,
+.dropdown:hover:after  ,
+.dropdown.hover:after  {display: block;}
+
+.dropdown {
+  > ul {
+    background: white;
+    box-shadow: $shadow;
+    border-radius: $input-border-radius;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+    position:absolute;
+    top: 100%;
+    text-align: left;
+  }
+  .dropdown:not(.nova-notice) {
+    li:first-child {
+      > a, > span, > div {
+        border-radius: $input-border-radius $input-border-radius 0 0;
+      }
+    }
+    li:last-child {
+      > a, > span, > div {
+        border-radius: 0 0 $input-border-radius $input-border-radius;
+      }
+    }
+  }
+}
+
+.actionbar .dropdown > ul {
+  top: auto;
+  bottom: 100%;
+}
+
+.dropdown > ul:not(.pos-right) {left:  0;}
+.dropdown > ul.pos-right       {right: 0;}
+
+.dropdown:hover,
+.dropdown.hover {z-index: 9999;}
+
+.dropdown [class*="level-"]:hover   > a,
+.dropdown [class*="level-"].active  > a,
+.dropdown [class*="level-"]:hover   > span,
+.dropdown [class*="level-"].active  > span,
+.dropdown ul :hover  [class*="level-"] > a,
+.dropdown ul .active [class*="level-"] > a,
+.dropdown ul :hover  [class*="level-"] > span,
+.dropdown ul .active [class*="level-"] > span {background-color: $hover;}
+.dropdown ul [class*="level-"].active  > a    {background-color: $hover;}
+
+.dropdown [class*="level-"] > a:not(.button),
+.dropdown [class*="level-"] > div,
+.dropdown [class*="level-"] > span {
+  min-width: 16rem;
+  padding: .7rem 1.2rem .9rem;
+  color: #000;
+}
+
+.dropdown .level-2 {
+  border-top: 1px solid $hover;
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+.dropdown .level-3 > a,
+.dropdown .level-3 > div,
+.dropdown .level-3 > span {
+  padding-left: 1.5rem !important;
+  font-size: 1.2rem !important;
+}
+
+.dropdown:before        {border-bottom-color: lightgray; bottom:  0;}
+.dropdown:after         {border-bottom-color: white;     bottom: -.2rem;}
+
+.actionbar .dropdown:before,
+.actionbar .dropdown:after {
+  display: none;
+}
+
+div.dropdown,
+div.dropdown > li,
+span.dropdown,
+span.dropdown > li {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-arrow {
+  margin-left: -.5rem;
+  font-size: 18px;
+  vertical-align: middle;
+  color: #949494;
+}
+
+/* Menu
+-----------------------------------------------------------------------------  */
+
+.menu-v .li {display: list-item;}
+
+.level-1 > a,
+.level-1 > a:hover {color: inherit;}
+
+li.level-2 > a,
+li.level-3 > a {color: black;}
+
+.menu-v .button,
+.menu-h .button {margin: .4rem .2rem;}
+
+/* Horizontal menu
+----------------------------------------------------------------------------- Vertical menu */
+
+.menu-h > li {float: left;}
+
+.menu-h .level-1 > a,
+.menu-h .level-1 > div,
+.menu-h .level-1 > span {padding: 1rem;}
+
+/* Vertical menu
+----------------------------------------------------------------------------- Vertical menu */
+
+.menu-v [class*="level-"] > a,
+.menu-v [class*="level-"] > span {border-left: .5rem solid transparent;}
+
+.menu-v .level-1 > a,
+.menu-v .level-1 > div,
+.menu-v .level-1 > span {padding: .7rem 1rem .7rem 1.5rem;}
+
+.menu-v .level-2 > a,
+.menu-v .level-2 > div,
+.menu-v .level-2 > span {padding: .3rem 1rem .3rem 2.5rem;}
+
+.menu-v ul {
+  list-style: disc outside;
+  margin-bottom: .3rem;
+  margin-top: -.4rem;
+}
+
+.menu-v .level-2 > a,
+.menu-v .level-2 > span {
+  font-size: 1.3rem;
+  display: list-item;
+}
+
+.menu-v         .separator {margin-top: 2rem;}
+.menu-h .level-2.separator {margin-top: 1rem;}
+
+.menu-v [class*="level-"]:hover,
+.menu-v [class*="level-"].hover,
+.menu-v [class*="level-"].active {background: rgba(0,0,0,.05)}
+
+.menu-v [class*="level-"] > a:hover,
+.menu-v [class*="level-"] > a:hover {background: white;}
+
+/*
+.menu-v [class*="level-"]:hover   > a,
+.menu-v [class*="level-"].active  > a,
+.menu-v [class*="level-"]:hover   > span,
+.menu-v [class*="level-"].active  > span,
+.menu-v :hover  [class*="level-"] > a,
+.menu-v .active [class*="level-"] > a,
+.menu-v :hover  [class*="level-"] > span,
+.menu-v .active [class*="level-"] > span {
+  border-color: lightgrey;
+  background: white;
+}
+*/
+
+.menu-v [class*="level-"].active  > a {border-color: dimgray;}
+
+/* Sub menu
+----------------------------------------------------------------------------- Sub menu */
+
+.menu-box nav .level-2 a span:not(.count),
+.sub-box  nav .level-2 a span:not(.count),
+.menu-box nav .level-2 span span:not(.count),
+.sub-box  nav .level-2 span span:not(.count) {margin-right: 30px;}
+
+/* Menu-tabs
+----------------------------------------------------------------------------- Menu-tabs */
+
+.menu-tabs {
+  .level-1 {
+    &.active, &:hover {
+      border-bottom: .3rem solid #ff890c;
+    }
+  }
+}
+
+/* nav-tabs
+----------------------------------------------------------------------*/
+.nav-tabs > {
+  ul {
+    background: $black-06;
+    border-radius: $btn-big-radius;
+    padding: 2px;
+    &.bg-reverse {
+      background-color: white;
+    }
+
+    li.level-1 {
+      margin-bottom: 0;
+      margin-right: .8rem;
+      border-radius: $btn-big-radius;
+      min-width: 12rem;
+      > a, > span, > div {
+        padding: .4rem 1.6rem;
+        text-align: center;
+      }
+      &.active {
+        background: $black-03 !important;
+        color: $text-reverse !important;
+      }
+      &:last-child {
+        margin-right: 0;
+        a.i-count {
+          padding-right: .6rem;
+        }
+      }
+      &:hover:not(.active) {
+        background: $black-05;
+      }
+    }
+    .i-sup {
+      overflow: visible;
+      .count.sup {
+        top: -1rem;
+      }
+    }
+  }
+}
+
+/* hamburger
+----------------------------------------------------------------------------- hamburger */
+
+.hamburger {
+  float: right !important;
+  margin: 1.2rem 0;
+  width: 2rem !important;
+  height: 1.6rem;
+  position: relative;
+  z-index: 10003;
+  cursor: pointer;
+
+  .bar {
+    padding: 0;
+    width: 2rem;
+    height: .2rem;
+    background-color: $body-bg;
+    display: block;
+    border-radius: .4rem;
+    transition: all .4s ease-in-out;
+    position: absolute;
+    left: 0;
+  }
+}
+
+.hamburger-black .bar {
+  background-color: $black-01;
+}
+
+.hamburger-brand .bar {
+  background-color: $brand-primary;
+}
+
+.bar2, .bar-2,
+.bar3, .bar-3 {
+  top: .7rem;
+}
+
+.hamburger4 {
+  height: 2rem;
+  .bar2 {
+    top: 1.2rem;
+  }
+  .bar3 {
+    top: .55rem;
+  }
+}
+
+.hamburger-4 {
+  height: 2rem;
+  .bar-2 {
+    top: 1.2rem;
+  }
+  .bar-3 {
+    top: .55rem;
+  }
+}
+
+.bar1, .bar-1 {
+  top: 0;
+}
+
+.bar4, .bar-4 {
+  bottom: 0;
+}
+
+.hamburger3 {
+  .bar1,
+  .bar4 {
+    transform-origin: 5%;
+  }
+}
+
+.hamburger-3 {
+  .bar-1,
+  .bar-4 {
+    transform-origin: 5%;
+  }
+}
+
+.top-menu.open + .nav-box .hamburger3,
+.top-menu.open + .nav-box .hamburger-3 > {
+  .bar1, .bar-1 {
+    transform: rotate(45deg);
+    height: .2rem;
+    width: 2.2rem;
+  }
+
+  .bar3, .bar-3 {
+    transform: rotate(45deg);
+    height: .2rem;
+    background-color: transparent;
+  }
+
+  .bar2, .bar-2 {
+    transform: rotate(-45deg);
+    height: .2rem;
+    background-color: transparent;
+  }
+
+  .bar4, .bar-4 {
+    transform: rotate(-45deg);
+    height: .2rem;
+    width: 2.2rem;
+  }
+}
+
+.hamburger3 .bar3, .hamburger-3 .bar-3 {
+  top: .55rem;
+}
+
+//Служебное меню
+.service-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
+  z-index: 999; //чтобы перекрыть сайдбар
+}

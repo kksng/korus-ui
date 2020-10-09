@@ -1,0 +1,30 @@
+.textarea {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-input {
+    @extend %input;
+    width: 100%;
+    resize: none;
+    height: 120px;
+    font-family: inherit;
+
+    &:not(.disabled):not(.danger):hover {
+      @extend %input-hovered;
+    }
+
+    &:not(.focused):not(.disabled).danger {
+      border-color: $brand-danger;
+    }
+
+    &.focused {
+      @extend %input-focused;
+    }
+
+    &.disabled {
+      @extend %input-disabled;
+    }
+  }
+}

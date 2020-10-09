@@ -1,0 +1,151 @@
+
+.dropdownselect {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &-input-wrapper {
+    @extend %input-wrapper;
+    padding: 0;
+    align-items: center;
+
+    &:not(.focused):not(.danger):not(.disabled):hover {
+      @extend %input-hovered;
+    }
+
+    &:not(.focused):not(.disabled).danger {
+      border-color: $brand-danger;
+    }
+
+    &.focused {
+      @extend %input-focused;
+    }
+
+    &.disabled {
+      @extend %input-disabled;
+
+      & .dropdownselect-select-icon {
+        cursor: default;
+      }
+    }
+  }
+
+  &-input {
+    border: none;
+    width: 100%;
+    padding: 5px 4px 7px 12px;
+    text-overflow: ellipsis;
+    background-color: rgba(0, 0, 0, 0);
+
+    &::placeholder {
+      color: $black-03;
+    }
+  }
+
+  &-clear-icon {
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+      content: "\00D7";
+      color: $black-03;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+  }
+
+  &-select-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s linear;
+
+    &.opened {
+      transform: rotate(180deg);
+    }
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      content: "\f107";
+      font-family: fontAwesome;
+    }
+  }
+
+  &-filter {
+    &-wrapper {
+      @extend %input;
+      @extend %input-focused;
+      display: flex;
+      justify-content: space-between;
+      padding: 3px 4px 3px 12px;
+      margin: 5px 2px;
+    }
+
+    &-input {
+      border: none;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    &-icon {
+      @extend %common-dropdown-icon;
+      @extend %input-icon-search;
+      padding: 2px 5px 0 0;
+      color: $black-03;
+    }
+  }
+
+  &-suggestions {
+    &-container {
+      @extend %suggestions-container;
+
+      &.opened {
+        @extend %suggestions-container-opened;
+      }
+    }
+
+    &-list {
+      @extend %suggestions-container-list;
+    }
+  }
+
+  &-suggestion {
+    @extend %suggestion;
+
+    &.placeholder {
+      @extend %suggestion-placeholder;
+    }
+
+    &.selected {
+      @extend %suggestion-selected;
+    }
+  }
+}
+
+// условие для дропа внутри списочной формы
+ul[class*=list] {
+  .dropdownselect {
+    &-wrapper {
+      ul {
+        padding: 0;
+        list-style-type: none;
+      }
+    }
+  }
+}
