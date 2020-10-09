@@ -4,6 +4,7 @@ import { getForms, validate } from '../Validation';
 import { ButtonProps } from './types';
 import { fromFormArraytoFormObject } from './helpers';
 import { form as LedaForm } from '../../form';
+import {BROWSERS} from '../../constants';
 
 export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<HTMLButtonElement>): void => {
   const {
@@ -47,9 +48,8 @@ export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<
 
           if (invalidElement) {
             const invalidElementRect = invalidElement.getBoundingClientRect();
-            const isIE = !!(document as any).documentMode || /Edge/.test(navigator.userAgent);
             const offset = invalidElementRect.top - (scrollOffset ?? 0);
-            if (isIE) {
+            if (BROWSERS.IE) {
               window.scrollBy(0, offset);
             } else {
               window.scrollBy({

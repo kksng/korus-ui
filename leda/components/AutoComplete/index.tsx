@@ -88,6 +88,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
   const [selectedSuggestion, setSelectedSuggestion] = React.useState<Suggestion>(null);
   const [highlightedSuggestion, setHighlightedSuggestion] = React.useState<Suggestion>(null);
   const [lastCorrectValue, setLastCorrectValue] = React.useState('');
+  const [isOpenForIE, setOpenForIE] = React.useState<boolean>(false);
 
   const autoCompleteState = React.useMemo(() => ({
     highlightedSuggestion,
@@ -121,6 +122,8 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     if (suggestions.length === 0 && safeTrim(value).length === 0) return false;
 
     if (isBoolean(isOpen)) return isOpen;
+
+    if (isOpenForIE) return isOpenForIE;
 
     // do not show dropdown list until minimal input length is reached
     if (
@@ -262,6 +265,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
         highlightedSuggestion={highlightedSuggestion}
         isLoading={isLoading}
         isOpen={isSuggestionsListOpen}
+        setOpenForIE={setOpenForIE}
         itemRender={itemRender}
         listRender={listRender}
         noSuggestionsRender={noSuggestionsRender}
