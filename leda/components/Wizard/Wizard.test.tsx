@@ -38,6 +38,19 @@ describe('Wizard ATTRIBUTES', () => {
     expect(document.querySelector('.first.step')).toHaveClass('active', 'progress');
   });
 
+  it('should add progress line for active item', () => {
+    render((
+      <Wizard
+        data={data}
+        textField="labelText"
+        value={data[0]}
+      />
+    ));
+
+    const activeStep = document.querySelector('.first.step');
+    expect(activeStep?.querySelector('.progress-line')).toBeInTheDocument();
+  });
+
   it('should give first an last item suitable className', () => {
     render((
       <Wizard

@@ -1,0 +1,301 @@
+@import './variables/_base.scss';
+@import './variables/themes/nova';
+
+@mixin ribbon-y-x($x, $y, $angle) {
+  transform: rotate($angle);
+  #{$y}: 1rem;
+  #{$x}: -2rem;
+}
+
+/* Box, Message */
+.box {
+  padding: 0.9rem;
+  border: 1px solid $gray;
+}
+
+.box-group {
+  box-shadow: 0 0 0 1px $gray;
+  margin-bottom: 1rem;
+}
+
+.box,
+.message {
+  background-color: $white;
+}
+
+.box,
+.message,
+.items .item {
+  margin-bottom: 2rem;
+}
+
+.inner,
+.ending {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.box,
+.inner,
+.ending,
+.message {
+  position: relative;
+}
+
+.inner {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.message {
+  padding: 1.6rem;
+}
+
+.first {
+  &.inner,
+  &.message {
+    padding-left: 4rem;
+  }
+}
+
+.message {
+  .button {
+    background: $body-bg;
+    border-color: inherit;
+  }
+  .inner {
+    border-color: inherit;
+  }
+}
+
+.info-box .message {
+  margin: 0;
+}
+
+.inner + h1,
+.inner + h2,
+.inner + h3,
+.inner + .inner > h1:first-child,
+.inner + .inner > h2:first-child,
+.inner + .inner > h3:first-child,
+.inner + .title,
+.k-grid + h1,
+.k-grid + h2,
+.k-grid + h3,
+.k-grid + .title {
+  margin-top: 2rem;
+}
+
+/* Tiles */
+.tiles {
+  margin: 0 0.5rem 2rem;
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  .tile {
+    float: left;
+    width: 20%;
+    box-sizing: border-box;
+    text-align: left;
+  }
+  &.pointer .tile {
+    cursor: pointer;
+  }
+}
+
+.tile {
+  > * {
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    position: relative;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+    overflow: hidden;
+    &:hover {
+      border-color: $gray;
+      box-shadow: 0 0 1rem #ccc;
+      z-index: 2;
+      .button {
+        visibility: visible;
+      }
+    }
+  }
+  .title {
+    margin: 0;
+  }
+  .txt-large {
+    font-size: 2.4rem;
+    line-height: 4rem;
+  }
+  .list-item {
+    margin-left: -1rem;
+  }
+  &:hover .tile-warning {
+    color: #f49530;
+  }
+  .button {
+    visibility: hidden;
+    display: block;
+    padding: 1rem;
+  }
+  &.active > * {
+    border-color: #4ea31e;
+    &:hover {
+      border-color: $gray;
+      box-shadow: 0 0 1rem #ccc;
+      z-index: 2;
+    }
+  }
+  &.disable > * {
+    color: $gray-dark;
+    background: $gray-lighter;
+    box-shadow: none;
+    border-style: dashed;
+    cursor: not-allowed;
+    filter: grayscale(1);
+  }
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6rem;
+  height: 6rem;
+  z-index: 100;
+}
+
+[class*="ribbon-"] {
+  position: absolute;
+  z-index: 100;
+  color: $gray-dark;
+  font-size: 1rem;
+  text-align: center;
+  width: 8rem;
+  line-height: 2rem;
+  background-color: #e5e5e6;
+  &.success {
+    background-color: #01a500;
+    color: $white;
+  }
+  &.warning {
+    background-color: #ff961f;
+    color: $white;
+  }
+}
+
+.ribbon-top-right {
+  @include ribbon-y-x('right', 'top', 45deg);
+}
+
+.ribbon-top-left {
+  @include ribbon-y-x('left', 'top', -45deg);
+}
+
+.ribbon-bottom-right {
+  @include ribbon-y-x('right', 'bottom', -45deg);
+}
+
+/* co-browsing
+----------------------------------------------------------------------------- */
+.co-browsing {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+/* snackbar
+----------------------------------------------------------------------------- */
+
+.snackbar {
+  max-width: 60rem;
+  min-height: 4rem;
+  position: relative;
+  background: $white;
+  display: flex;
+}
+
+.snackbar-icon,
+.snackbar-close {
+  display: flex;
+  align-items: center;
+}
+
+.snackbar-icon {
+  border-right-style: solid;
+  border-right-color: $gray;
+  margin-left: .3rem;
+  i {
+    font-size: 2.3rem;
+  }
+}
+
+.snackbar-content {
+  flex-grow: 1;
+  padding: 1rem 1.6rem;
+}
+
+.snackbar-content,
+.snackbar-content a {
+  color: $text-color;
+  text-align: left;
+}
+
+.snackbar-close i {
+  font-size: 3rem;
+}
+
+.snackbar-container {
+  &.notifications-top {
+    position: absolute;
+    right: 0rem;
+    top: 7rem;
+    z-index: 111;
+
+    .snackbar {
+      background-color: $black-02;
+      margin-bottom: .8rem;
+    }
+
+    .snackbar-content {
+      padding-top: .4rem;
+      padding-bottom: .4rem;
+      padding-right: 0;
+      color: $text-reverse;
+      a {
+        color: $secondary-04;
+        &:hover {
+          color: $secondary-03;
+        }
+      }
+    }
+
+    .inner.first {
+      padding-left: 2rem;
+
+      .i-label {
+        left: 0;
+      }
+    }
+  }
+}
+
+/* q-tip
+----------------------------------------------------------------------------- */
+
+.k-tooltip {
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  background-color: #505050;
+  border-color: #303030;
+  color: #f3f3f3;
+}
+
+.k-tooltip-content {
+  font-size: 1.05rem;
+  text-align: left;
+  word-wrap: break-word;
+}

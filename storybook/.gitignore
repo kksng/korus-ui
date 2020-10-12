@@ -1,0 +1,6 @@
+node_modules
+dist
+build
+.idea
+yarn-error.log
+.stylelintrc

@@ -1,0 +1,18 @@
+.invalid-message {
+  &-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+    white-space: normal;
+  }
+
+  &-item {
+    color: $error-02;
+    font-size: small;
+
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+}

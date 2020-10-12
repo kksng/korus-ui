@@ -1,0 +1,63 @@
+.switcher {
+  &-handle {
+    cursor: pointer;
+    border-radius: $border-radius;
+    display: block;
+    transition: all 0.1s linear;
+    height: 17px;
+    width: 17px;
+    border: 1px solid $black-06;
+    background: $black-08;
+  }
+
+  &-label:not(:empty) {
+    margin-left: 12px;
+    cursor: pointer;
+  }
+
+  &-wrapper {
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+    background: $black-06;
+    padding: 0;
+    border-radius: $border-radius;
+    width: 34px;
+
+    &:hover .switcher-handle {
+        background: $white;
+    }
+
+    &.active {
+      background: $brand-primary;
+
+      .switcher-handle {
+        transform: translateX(100%);
+        background: $white;
+        box-shadow: -3px 0 8px rgba(88, 87, 87, 0.29);
+      }
+
+      &:hover .switcher-handle {
+          background: $black-06;
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      background: $black-07 !important;
+
+      .switcher-handle {
+        box-shadow: 0 2px 7px rgba($black-01, 0.09);
+      }
+    }
+
+    &.active.disabled {
+      background: $primary-04 !important;
+
+      .switcher-handle {
+        background: $black-07;
+        box-shadow: 0 2px 7px rgba($black-01, 0.09);
+      }
+    }
+  }
+}

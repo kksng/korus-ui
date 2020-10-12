@@ -33,7 +33,8 @@ describe('Wizard tests', () => {
     it('Current step should have progress line', () => cy
       .get('.wizard .line')
       .eq(2)
-      .should('have.attr', 'style', 'background: linear-gradient(to right, rgb(16, 127, 140) 50%, rgb(208, 215, 221) 50%);'));
+      .find('.progress-line')
+      .should('have.attr', 'style', 'width: 50%;'));
 
     it('First step should have class "first"', () => cy
       .get('.wizard .step')

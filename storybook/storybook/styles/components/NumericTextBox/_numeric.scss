@@ -1,0 +1,92 @@
+.numeric-text-box {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+  }
+
+  &-input-wrapper {
+    @extend %input-wrapper;
+    width: 100%;
+
+    &.danger {
+      border-color: $brand-danger;
+    }
+
+    &:hover {
+      @extend %input-hovered;
+    }
+
+    &.focused {
+      @extend %input-focused;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      @extend %input-disabled;
+
+      &.numeric-text-box-arrow-up, &.numeric-text-box-arrow-down {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &-prefix {
+    @extend %input-prefix;
+  }
+
+  &-input-wrapper > &-prefix + &-input {
+    padding-left: 4px;
+    line-height: 1.5;
+  }
+
+  &-suffix {
+    @extend %input-suffix;
+  }
+
+  &-input {
+    width: 100%;
+    outline: none !important;
+
+    &::placeholder {
+      @extend %input-placeholder;
+    }
+  }
+
+  &-arrow-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    user-select: none;
+  }
+
+  &-arrow-up {
+    cursor: pointer;
+
+    &::before {
+      transform: rotate(180deg);
+      content: "\f107";
+      font-family: fontAwesome;
+      color: $black-03;
+      display: block;
+      position: absolute;
+      top: -2px;
+      right: 6px;
+    }
+  }
+
+  &-arrow-down {
+    cursor: pointer;
+
+    &::before {
+      content: "\f107";
+      font-family: fontAwesome;
+      display: block;
+      position: absolute;
+      top: 14px;
+      right: 6px;
+    }
+  }
+}
+

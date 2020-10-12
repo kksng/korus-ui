@@ -1,0 +1,247 @@
+/* Import css
+----------------------------------------------------------------------------- Import css */
+
+*[ui-view]:empty {
+  display: none;
+}
+
+.name {
+  text-transform: capitalize;
+}
+
+.kit-test {
+  background: rgba(255, 255, 255, .5);
+  border: 1px dotted #ec483b;
+  padding: .5rem;
+}
+
+/* UIKIT colors
+----------------------------------------------------------------------------- UIKIT colors */
+
+ul.kit-colors:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+ul.kit-colors li {
+  display: block;
+  float: left;
+  width: 25%;
+  margin-bottom: 2rem;
+}
+
+ul.kit-colors div {
+  background: white;
+  margin: 0 0 0 25%;
+  padding: .5rem;
+}
+
+ul.kit-colors label {
+  display: block;
+  font-family: consolas, "courier new", monospace;
+  text-transform: uppercase;
+  &.value {
+    margin-top: -1.1rem;
+  }
+}
+
+ul.kit-colors small {
+  color: darkgray;
+}
+
+ul.kit-colors.value {
+  div {
+    margin-left: 15%;
+    padding: 0 0 0 1.5rem;
+  }
+  label {
+     text-transform: lowercase;
+     font-weight: 500;
+  }
+  li {
+    &.spacer {
+      width: 100%;
+      margin: 1rem;
+    }
+  }
+}
+
+/* UIKIT layout
+----------------------------------------------------------------------------- UIKIT layout */
+
+.uikit-layout,
+.uikit-layout [class*="item-"] {
+  border: dashed lightgrey;
+}
+
+.uikit-layout {
+  border-width: 1px;
+}
+
+.uikit-layout [class*="item-"] {
+  border-width: 1px 0 0 1px;
+}
+
+.uikit-layout > div:first-child > [class*="item-"] {
+  border-left-width: 0;
+}
+
+.uikit-layout > div > [class*="item-"]:first-child {
+  border-top-width: 0;
+}
+
+.uikit-layout .item-header,
+.uikit-layout .item-toolbar,
+.uikit-layout .item-content,
+.uikit-layout .item-footer {
+  background: white;
+}
+
+.uikit-layout .item-content {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Promo
+----------------------------------------------------------------------------- Promo */
+
+.promo {
+  position: relative;
+}
+
+.promo > div > [class*="width-"],
+.promo > div > [class*="block"] {
+  background: whitesmoke;
+  margin-bottom: .5rem;
+  text-align: right;
+}
+
+.promo > div > [class*="width-"]:first-child,
+.promo > div > [class*="block"]:first-child {
+  background: aliceblue;
+  box-shadow: inset -.5rem 0 0 white;
+  text-align: left;
+}
+
+.promo {
+  .row {
+    margin-top: 12px;
+    background-color: whitesmoke;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    [class*="col"] {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      background-color: aliceblue;
+      border: 1px solid rgba(86, 61, 124, .2);
+    }
+  }
+
+  &.alignments {
+    .row {
+      min-height: 160px;
+    }
+  }
+
+  &-inner,
+  &-padding {
+    [class*="inner-"],
+    [class*="padding-"] {
+      background-color: whitesmoke;
+
+      > div {
+        background-color: aliceblue;
+        border: 1px solid rgba(86, 61, 124, 0.2);
+      }
+    }
+  }
+
+  &-margin {
+    .flex-row {
+      padding: 4px;
+      margin-bottom: 8px;
+      background-color: whitesmoke;
+
+      [class*="margin-"] {
+        background-color: aliceblue;
+      }
+
+      li {
+        border: 1px solid rgba(86, 61, 124, 0.2);
+        padding: 4px;
+      }
+    }
+  }
+}
+
+.promo-info {
+  position: absolute;
+  text-align: center;
+  top: 42%;
+  left: 20%;
+  right: 20%;
+}
+
+
+/* Footer
+----------------------------------------------------------------------------- Footer */
+
+/* Horizontal menu
+----------------------------------------------------------------------------- Horizontal menu */
+
+
+footer .menu-h [class*="level-"] > a,
+footer .menu-h [class*="level-"] > span {
+  padding-top: .3rem;
+  padding-bottom: .3rem;
+  border-radius: .3rem;
+}
+
+/* Vertical menu
+----------------------------------------------------------------------------- Vertical menu */
+
+footer .menu-v [class*="level-"] > a,
+footer .menu-v [class*="level-"] > span {
+  border: none;
+}
+
+footer .menu-v .level-1 > a,
+footer .menu-v .level-1 > span {
+  border-radius: .3rem;
+  padding: .7rem 1rem;
+  display: inline-block;
+}
+
+footer nav [class*="level-"]:hover > a {
+  background: rgba(0, 0, 0, .05);
+}
+
+footer nav [class*="level-"].active > a {
+  background: #949494;
+  color: white;
+}
+
+footer .menu-v {
+  padding: 1rem
+}
+
+/* Notices
+----------------------------------------------------------------------------- */
+
+.snackbar {
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+
+.snackbar-icon,
+.snackbar-close {
+  padding: 0 1.4rem 0 0.7rem;
+}
+
+.snackbar-icon {
+  border-right-width: 2px;
+}

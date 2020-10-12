@@ -114,13 +114,7 @@ describe('DropZone HANDLERS', () => {
     expect(handleChange).toHaveBeenLastCalledWith(eventMatcher);
   });
 
-  /*
-   TODO fix the bug with incorrect "dropped" value in the change event triggered by removing file
-   Now: "dropped" equals "value" before remove
-   Expected: "dropped" empty
-   */
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should call onChange handler on remove file', () => {
+  it('should call onChange handler on remove file', () => {
     const handleChange = jest.fn();
 
     const eventMatcher = expect.objectContaining({
@@ -133,7 +127,7 @@ describe('DropZone HANDLERS', () => {
           acceptedFiles: [],
           rejectedFiles: [],
         },
-        removedFile: [externalFile],
+        removedFile: externalFile,
       }),
     });
 

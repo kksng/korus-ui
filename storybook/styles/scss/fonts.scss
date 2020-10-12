@@ -1,0 +1,232 @@
+html, body {
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "SBSans", "Roboto", "Arial", "PT_sans", sans-serif;
+}
+
+/** Fonts */
+
+@font-face {
+  font-family: "Pancetta";
+  src: url(../fonts/pancetta/PancettaSerifPro-RegularWeb.woff),
+       url(../fonts/pancetta/PancettaSerifPro-RegularWeb.eot);
+}
+
+@font-face {
+  font-family: "PT_sans";
+  src: url(https://cdn.esphere.ru/fonts/pt_sans/pt_sans-regular.woff2?v=3c47eb8bb64176b16d9cf91ccbd899a9) format("woff2"),
+       url(https://cdn.esphere.ru/fonts/pt_sans/pt_sans-regular.woff?v=a1eb7320cb8de8fd574dec04a0411029) format("woff"),
+       url(https://cdn.esphere.ru/fonts/pt_sans/pt_sans-regular.ttf?v=351bd72777684c08dcc96865921fcee1) format("truetype"),
+       url(https://cdn.esphere.ru/fonts/pt_sans/pt_sans-regular.eot?v=2c5a2df2faafe802ddbc3a2790c59e99);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PT_sans";
+  src: url(https://cdn.esphere.ru/fonts/pt_sans/pt_sans-bold.woff2?v=dce2f500aa83277b0b087772dc407fed) format("woff2"),
+       url(https://cdn.esphere.ru/fonts/pt_sans/pt_sans-bold.woff?v=45aa1e7ccfeb03d6aa86934c9b27cf92) format("woff"),
+       url(https://cdn.esphere.ru/fonts/pt_sans/pt_sans-bold.ttf?v=6fbb5753a34599c3793bc2615872487c) format("truetype"),
+       url(https://cdn.esphere.ru/fonts/pt_sans/pt_sans-bold.eot?v=040e905c0c5842ffda5d12f9133ee3f6);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(https://cdn.esphere.ru/fonts/roboto/roboto-regular.woff2?v=5803c6d1e52439ac267e43aba439309b) format("woff2"),
+       url(https://cdn.esphere.ru/fonts/roboto/roboto-regular.woff?v=50db6b87e46f8525ba51fe0acca16d1d) format("woff"),
+       url(https://cdn.esphere.ru/fonts/roboto/roboto-regular.ttf?v=2fd3cf4611f7e93978b5906591fdad0b) format("truetype"),
+       url(https://cdn.esphere.ru/fonts/roboto/roboto-regular.eot?v=f473efff4313ffd77607d73f71074501);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(https://cdn.esphere.ru/fonts/roboto/roboto-medium.woff2?v=973eebba2fd2f74959d8485e6dd98d25) format("woff2"),
+       url(https://cdn.esphere.ru/fonts/roboto/roboto-medium.woff?v=62e445cc17d70a0bc83353b17a17f0ff) format("woff"),
+       url(https://cdn.esphere.ru/fonts/roboto/roboto-medium.ttf?v=f978469275c990ba3bfd970f9c9f9797) format("truetype"),
+       url(https://cdn.esphere.ru/fonts/roboto/roboto-medium.eot?v=be06c589d4f10d9176a7e467b1f89d14);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(https://cdn.esphere.ru/fonts/roboto/Roboto-Light-webfont.woff?v=9ba9494f703dd09cf1da7b83daee41f7) format("woff"),
+       url(https://cdn.esphere.ru/fonts/roboto/Roboto-Light-webfont.ttf?v=2e3eb14d02decc9540da4730d19bbc19) format("truetype"),
+       url(https://cdn.esphere.ru/fonts/roboto/Roboto-Light-webfont.eot?v=a3e97e4716f6d677e7588dad34dc9524);
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Fedra Sans pro */
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-Light.otf);
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-LightItalic.otf);
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-Book.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-BookItalic.otf);
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-Demi.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-DemiItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-Medium.otf);
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-MediumItalic.otf);
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-Bold.otf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fedra Sans Pro";
+  src: url(https://cdn.esphere.ru/fonts/fedra/FedraSansPro-BoldItalic.otf);
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(https://cdn.esphere.ru/fonts/black/OpenSans-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(https://cdn.esphere.ru/fonts/black/OpenSans-Light.ttf);
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(https://cdn.esphere.ru/fonts/black/OpenSans-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(https://cdn.esphere.ru/fonts/black/OpenSans-Italic.ttf);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* SB Sans for Nova */
+
+@font-face {
+  font-family: 'SBSans';
+  src: url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Semibold/SBSansUI-Semibold.eot');
+  src:
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Regular/SBSansUI-Regular.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Regular/SBSansUI-Regular.woff2') format("woff2"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Regular/SBSansUI-Regular.woff') format("woff"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Regular/SBSansUI-Regular.ttf') format("truetype"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Regular/SBSansUI-Regular.svg#SBSansInterface-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SBSans';
+  src: url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Semibold/SBSansUI-Semibold.eot');
+  src:
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Semibold/SBSansUI-Semibold.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Semibold/SBSansUI-Semibold.woff2') format("woff2"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Semibold/SBSansUI-Semibold.woff') format("woff"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Semibold/SBSansUI-Semibold.ttf') format("truetype"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Semibold/SBSansUI-Semibold.svg#SBSansInterface-Semibold') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SBSans';
+  src: url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Light/SBSansUI-Light.eot');
+  src:
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Light/SBSansUI-Light.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Light/SBSansUI-Light.woff2') format("woff2"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Light/SBSansUI-Light.woff') format("woff"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Light/SBSansUI-Light.ttf') format("truetype"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Light/SBSansUI-Light.svg#SBSansInterface-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SBSans';
+  src: url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Bold/SBSansUI-Bold.eot');
+  src:
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Bold/SBSansUI-Bold.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Bold/SBSansUI-Bold.woff2') format("woff2"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Bold/SBSansUI-Bold.woff') format("woff"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Bold/SBSansUI-Bold.ttf') format("truetype"),
+    url('https://cdn.esphere.ru/fonts/sbsans/SBSansUI-Bold/SBSansUI-Bold.svg#SBSansInterface-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Syncopate for "REAKIT" */
+
+@font-face {
+  font-family: 'Syncopate';
+  src: url(https://cdn.esphere.ru/fonts/syncopate/Syncopate-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Syncopate';
+  src: url(https://cdn.esphere.ru/fonts/syncopate/Syncopate-Bold.ttf);
+  font-weight: 500;
+  font-style: normal;
+}

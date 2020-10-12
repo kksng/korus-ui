@@ -1,0 +1,40 @@
+.collapse {
+  &-heading {
+    &-wrapper {
+      border-radius: $border-radius;
+      border: 1px solid $black-05;
+      padding: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+
+      &:hover {
+        border-color: $brand-warning;
+      }
+    }
+
+    &-icon {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s linear;
+      transform: rotate(0);
+
+      &.icon-expanded {
+        transform: rotate(180deg);
+      }
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        content: "\f107";
+        font-family: fontAwesome;
+      }
+    }
+  }
+}

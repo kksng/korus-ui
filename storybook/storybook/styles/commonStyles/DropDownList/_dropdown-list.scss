@@ -1,0 +1,70 @@
+// общие стили для всех сотояний suggestion
+%suggestion {
+  padding: 3px 10px 5px 10px;
+  margin: 2px;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $black-07;
+  }
+}
+
+%suggestions-container {
+  width: 0;
+}
+
+%suggestions-container-opened {
+  background: $white;
+  box-shadow: 0 .6rem 1rem .2rem rgba($black-01, 0.09);
+  position: absolute;
+  margin-top: 1px;
+  top: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+%suggestions-container-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+%suggestion-placeholder {
+  color: $black-03;
+}
+
+%suggestion-selected {
+  background-color: $black-06;
+  color: $black-01;
+
+  &:hover {
+    background-color: $black-05;
+  }
+}
+
+%suggestion-highlighted {
+  background-color: $black-06;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+// общие стили для иконок
+%common-dropdown-icon {
+  display: inline-block;
+  font-family: fontAwesome;
+  speak: none;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: top;
+  color: $black-01;
+}
+

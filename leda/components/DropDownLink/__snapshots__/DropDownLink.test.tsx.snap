@@ -30,13 +30,13 @@ exports[`DropDownLink ATTRIBUTES should customize render items 1`] = `
       onMouseLeave={[Function]}
       onMouseOver={[Function]}
     >
-      <Span
+      <Div
         className="dropdown-wrapper blank button-wrapper"
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <span
+        <div
           className="dropdown-wrapper blank button-wrapper"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -151,8 +151,8 @@ exports[`DropDownLink ATTRIBUTES should customize render items 1`] = `
               </Component>
             </ul>
           </Ul>
-        </span>
-      </Span>
+        </div>
+      </Div>
     </Wrapper>
   </DropDown>
 </DropDownLink>
@@ -188,13 +188,13 @@ exports[`DropDownLink ATTRIBUTES should customize title 1`] = `
       onMouseLeave={[Function]}
       onMouseOver={[Function]}
     >
-      <Span
+      <Div
         className="dropdown-wrapper blank button-wrapper"
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <span
+        <div
           className="dropdown-wrapper blank button-wrapper"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -382,8 +382,8 @@ exports[`DropDownLink ATTRIBUTES should customize title 1`] = `
               </Component>
             </ul>
           </Ul>
-        </span>
-      </Span>
+        </div>
+      </Div>
     </Wrapper>
   </DropDown>
 </DropDownLink>
@@ -418,13 +418,13 @@ exports[`DropDownLink SNAPSHOTS should render with array string 1`] = `
       onMouseLeave={[Function]}
       onMouseOver={[Function]}
     >
-      <Span
+      <Div
         className="dropdown-wrapper blank button-wrapper"
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <span
+        <div
           className="dropdown-wrapper blank button-wrapper"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -619,8 +619,8 @@ exports[`DropDownLink SNAPSHOTS should render with array string 1`] = `
               </Component>
             </ul>
           </Ul>
-        </span>
-      </Span>
+        </div>
+      </Div>
     </Wrapper>
   </DropDown>
 </DropDownLink>
@@ -694,13 +694,13 @@ exports[`DropDownLink SNAPSHOTS should render with data objects 1`] = `
       onMouseLeave={[Function]}
       onMouseOver={[Function]}
     >
-      <Span
+      <Div
         className="dropdown-wrapper blank button-wrapper"
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <span
+        <div
           className="dropdown-wrapper blank button-wrapper"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -935,8 +935,8 @@ exports[`DropDownLink SNAPSHOTS should render with data objects 1`] = `
               </Component>
             </ul>
           </Ul>
-        </span>
-      </Span>
+        </div>
+      </Div>
     </Wrapper>
   </DropDown>
 </DropDownLink>

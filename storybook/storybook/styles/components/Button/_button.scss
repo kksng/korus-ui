@@ -1,0 +1,144 @@
+@mixin button-default($type) {
+  background-color: $type;
+  color: $white;
+  border-color: transparent;
+}
+
+@mixin button-disabled($type) {
+  background-color: $type !important;
+  background-image: none;
+  border-color: $type;
+  color: $white !important;
+}
+
+@keyframes cog {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+.button-wrapper {
+  border-radius: $border-radius;
+  background-color: $white;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 19px;
+  min-width: 120px;
+  color: inherit;
+  border: 1px solid $black-05;
+  outline: none !important;
+
+  &.small {
+    padding: 3px 15px;
+    min-width: 100px;
+  }
+
+  &.large {
+    padding: 9px 23px;
+    min-width: 150px;
+  }
+
+  &.block {
+    display: block;
+    width: 100%;
+  }
+
+  &.blank {
+    color: #369 !important;
+    background: transparent !important;
+    border-color: transparent !important;
+  }
+
+  &.active {
+    background-color: $black-06;
+    border-color: $black-04;
+  }
+
+  &.success, &.primary {
+    @include button-default($primary-02);
+  }
+
+  &.secondary {
+    @include button-default($secondary-03);
+  }
+
+  &.danger {
+    @include button-default($error-02);
+  }
+
+  &.warning {
+    @include button-default($accent-02);
+  }
+
+  &:not(.success):not(.warning):not(.danger):not(.primary):not(.secondary):not(.blank):not(.border):not(.disabled):not(.button-group-item) {
+    &:hover, &:focus {
+      border-color: $black-03;
+    }
+
+    &.active:hover {
+      background-color: $black-05;
+      border-color: $black-03;
+    }
+  }
+
+  &.disabled {
+    color: $black-03;
+    background-color: rgba($black-06, 0.3);
+    cursor: not-allowed;
+    border-color: $black-05;
+
+    &.success, &.primary, &.success:hover, &.primary:hover {
+      @include button-disabled($primary-04);
+    }
+
+    &.warning, &.warning:hover {
+      @include button-disabled($accent-04);
+    }
+
+    &.danger, &.danger:hover {
+      @include button-disabled($error-04);
+    }
+
+    &:hover {
+      background-color: rgba($black-06, 0.3);
+      border-color: $black-05;
+    }
+  }
+
+  &.border {
+    color: $black-01;
+    background-color: transparent;
+    border-color: $black-01 !important;
+
+    &:hover, &:focus {
+      background-color: $black-05;
+      border-color: $black-03 !important;
+    }
+  }
+
+  &.loading {
+    position: relative;
+    color: transparent !important;
+    opacity: 1;
+
+    &::before {
+      content: '\f110';
+      position: absolute;
+      left: 50%;
+      margin-left: -1rem;
+      width: 2rem;
+      height: 2rem;
+      font-family: fontAwesome;
+      color: $black-05;
+      display: block;
+      animation: cog 3s linear infinite;
+    }
+
+    &.success::before, &.danger::before, &.warning::before, &.primary::before, &.secondary::before {
+      color: $white;
+    }
+  }
+}

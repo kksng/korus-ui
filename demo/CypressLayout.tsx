@@ -16,6 +16,9 @@ import {
   Modal,
   VStepper,
   Wizard,
+  DropDown,
+  RadioGroup,
+  MultiSelect
 } from './cypress';
 import { Styles } from './components/Styles';
 
@@ -61,6 +64,15 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/wizard">
           <Wizard />
+        </Route>
+        <Route path="/cypress/dropdown">
+          <DropDown />
+        </Route>
+        <Route path="/cypress/radio-group">
+          <RadioGroup />
+        </Route>
+        <Route path="/cypress/multi-select">
+          <MultiSelect />
         </Route>
       </Switch>
     </L.Div>

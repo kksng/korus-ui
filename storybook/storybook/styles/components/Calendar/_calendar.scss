@@ -1,0 +1,290 @@
+.calendar {
+  &-wrapper {
+    width: 290px;
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+    background-color: $white;
+    box-shadow: 0 1.6rem 2.4rem 0 rgba($black-01, 0.09);
+    border-radius: $border-radius;
+  }
+
+  &-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+
+    %common-icon {
+      width: 1em;
+      height: 1em;
+      -webkit-font-smoothing: antialiased;
+      font-family: fontAwesome;
+      display: inline-block;
+      font-style: normal;
+      line-height: 1;
+      vertical-align: middle;
+      font-size: 18px;
+      color: $black-03;
+    }
+
+    %common-button {
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $white;
+      }
+
+      &.disabled-button {
+        cursor: default;
+
+        &:hover {
+          background-color: $white;
+        }
+
+        .calendar-prev-icon {
+          color: $black-07;
+        }
+
+        .calendar-next-icon {
+          color: $black-07;
+        }
+      }
+    }
+
+    .calendar {
+      &-prev-button {
+        @extend %common-button;
+      }
+
+      &-next-button {
+        @extend %common-button;
+      }
+
+      &-prev-icon {
+        @extend %common-icon;
+
+        &:before {
+          content: "\f104";
+
+        }
+      }
+
+      &-next-icon {
+        @extend %common-icon;
+
+        &:before {
+          content: "\f105";
+        }
+      }
+
+      &-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        flex-grow: 1;
+
+        &:hover {
+          background-color: $white;
+        }
+
+        &.disabled-title {
+          cursor: default;
+
+          &:hover {
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &-week-days {
+    display: flex;
+    justify-content: space-around;
+    background-color: $white;
+    height: 32px;
+    align-items: center;
+    margin-bottom: 5px;
+
+    .calendar-date-cell {
+      padding: 5px;
+      color: $black-04;
+      cursor: default;
+      height: 32px;
+      width: 32px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  &-month-dates {
+    display: flex;
+    flex-direction: column;
+
+    .calendar {
+      &-dates-row {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      &-date-cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+        height: 32px;
+        width: 32px;
+        font-size: 12px;
+        border-radius: 50%;
+
+        &.different-month-date {
+          &:hover {
+            background-color: $primary-05;
+            color: $black-01;
+          }
+        }
+
+        &.day-off {
+
+        }
+
+        &.today {
+          color: $black-01;
+          border: none;
+          font-weight: bolder;
+
+          &.selected {
+            color: $black-01;
+            border: none;
+          }
+        }
+
+        &.active {
+          border: none;
+          background-color: $primary-05;
+
+          &:hover {
+            background-color: saturate($primary-05, 30%);
+          }
+        }
+
+        &.selected {
+          color: $black-01;
+          background-color: $primary-04;
+          border: none;
+
+          &:hover {
+            background-color: saturate($primary-04, 30%);
+          }
+        }
+
+        &:hover {
+          background-color: $primary-05;
+        }
+
+        &.disabled-date {
+          cursor: not-allowed;
+          color: $black-04;
+
+          &:hover {
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    color: $black-05;
+    margin-top: 10px;
+  }
+
+  &-month-year {
+    &-row {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    &-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: 70px;
+      padding: 5px;
+      cursor: pointer;
+      border-radius: $border-radius;
+      margin: 2px;
+
+      &:hover {
+        background-color: $primary-05;
+      }
+
+      &.active {
+        border: none;
+        background-color: $primary-05;
+
+        &:hover {
+          background-color: saturate($primary-05, 30%);
+        }
+      }
+
+      &.disabled-month-year {
+        cursor: not-allowed;
+        color: $black-04;
+
+        &:hover {
+          background-color: $white;
+        }
+      }
+
+      &.different-year {
+        &:hover {
+          background-color: $primary-05;
+          color: $black-01;
+        }
+      }
+    }
+  }
+
+  &-prev-button {
+    .calendar-prev-icon {
+      width: 1em;
+      height: 1em;
+      font-family: fontAwesome;
+      font-size: 18px;
+      color: $black-03;
+
+      &:before {
+        content: "\f104";
+      }
+    }
+  }
+
+  &-next-button {
+    .calendar-next-icon {
+      width: 1em;
+      height: 1em;
+      font-family: fontAwesome;
+      font-size: 18px;
+      color: $black-03;
+
+      &:before {
+        content: "\f105";
+      }
+    }
+  }
+}

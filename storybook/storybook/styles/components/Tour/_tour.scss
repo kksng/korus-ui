@@ -1,0 +1,85 @@
+@mixin position($position) {
+  @if $position == 'top' {
+    &::after {
+      top: 100%;
+      left: 20px;
+      transform: translateX(-50%);
+      border-width: 7px 4px 0;
+      border-top-color: $white;
+    }
+  }
+
+  @if $position == 'bottom' {
+    &::after {
+      bottom: 100%;
+      left: 20px;
+      transform: translateX(-50%);
+      border-width: 0 4px 7px;
+      border-bottom-color: $white;
+    }
+  }
+
+  @if $position == 'left' {
+    &::after {
+      top: 20px;
+      left: 100%;
+      transform: translateY(-50%);
+      border-width: 4px 0 4px 7px;
+      border-left-color: $white;
+    }
+  }
+  @if $position == 'right' {
+    &::after {
+      top: 20px;
+      right: 100%;
+      transform: translateY(-50%);
+      border-width: 4px 7px 4px 0;
+      border-right-color: $white;
+    }
+  }
+}
+
+.tour {
+  &-overlay {
+    z-index: 10001;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &-modal {
+    z-index: 10002;
+    position: fixed;
+    box-shadow: 0 2px 10px 1px rgba(#000, 0.2);
+    border-radius: 10px;
+    width: 420px;
+    background-color: $white;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
+
+    &.top {
+      @include position('top');
+    }
+
+    &.right {
+      @include position('right');
+    }
+
+    &.bottom {
+      @include position('bottom');
+    }
+
+    &.left {
+      @include position('left');
+    }
+  }
+}
