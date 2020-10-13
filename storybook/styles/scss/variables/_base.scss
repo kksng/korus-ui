@@ -1,0 +1,123 @@
+// new UI colors
+$black-01: #1f1f22;
+$black-02: #565b62;
+$black-03: #7d838a;
+$black-04: #b2b8bf;
+$black-05: #d0d7dd;
+$black-06: #e4e8eb;
+$black-07: #f2f4f7;
+$black-08: #fbfbfd;
+$white: #fff;
+
+$shadow-level-1: 0 .1rem .3rem 0 rgba($black-01, 0.09);
+$shadow-level-2: 0 .2rem .7rem 0 rgba($black-01, 0.09);
+$shadow-level-2-top: 0 -.2rem .7rem 0 rgba($black-01, 0.09);
+$shadow-level-3: 0 .6rem 1rem .2rem rgba($black-01, 0.09);
+$shadow-level-4: 0 1.6rem 2.4rem 0 rgba($black-01, 0.09);
+$shadow-menu-top-bar: 0 .1rem .6rem 0 rgba(48, 53, 97, 0.15), 0 .2rem 3rem 0 rgba($black-01, 0.06);
+
+//shadow for all
+$shadow: 0 0 1.6rem rgba($black-01, 0.1);
+
+$gray-lighter: #fafafa;
+$gray-light: #f5f5f5;
+$gray: #e5e5e5;
+$gray-dark: #949494;
+$gray-darker: #333;
+$gray-base: #000;
+
+// for rgba
+$base-9: rgba($black-01, 0.9);
+$base-7: rgba($black-01, 0.7);
+$base-5: rgba($black-01, 0.5);
+$base-56: rgba($black-01, 0.56);
+$base-3: rgba($black-01, 0.3);
+$base-025: rgba($black-01, 0.025);
+$base-21: rgba($black-01, 0.21);
+$base-02: rgba($black-01, 0.02);
+$base-2: rgba($black-01, 0.2);
+$base-15: rgba($black-01, 0.15);
+$base-13: rgba($black-01, 0.13);
+$base-1: rgba($black-01, 0.1);
+$base-09: rgba($black-01, 0.09);
+$base-08: rgba($black-01, 0.08);
+$base-06: rgba($black-01, 0.06);
+$base-04: rgba($black-01, 0.04);
+$base-03: rgba($black-01, 0.03);
+
+$base-action-focus: rgba(245, 245, 245, 0.3);
+$base-focus: rgba(78, 163, 30, 0.4);
+$base-gantt: rgba(130, 130, 130, 0.25);
+
+$reverse: $white;
+$reverse-85: rgba($reverse, 0.85);
+$reverse-8: rgba($reverse, 0.8);
+$reverse-45: rgba($reverse, 0.45);
+$reverse-3: rgba($reverse, 0.3);
+$reverse-0: rgba($reverse, 0);
+
+// цвета текста
+$text-color: $black-01;
+$text-secondary: $gray-darker;
+$text-reverse: $white;
+
+// цвет фона
+$body-bg: $white;
+$body-reverse: $black-01;
+
+// наследование и переменные для модалок
+$overlay-color: $gray-darker;
+$overlay-bg: $black-01;
+
+$window-border-radius: 2.6rem 2.6rem 2.4rem 2.4rem;
+$container-padding: 0;
+$top-border-radius: 2.4rem 2.4rem 0 0;
+$bottom-border-radius: 0 0 2.4rem 2.4rem;
+$titlebar-padding: 1.6rem 3.2rem 1.5rem 3.2rem;
+
+%overlay {
+  background: $overlay-bg;
+  opacity: 0.56 !important;
+}
+
+%window-title {
+  font-size: 2.1rem;
+  line-height: 3.2rem;
+  font-weight: 500;
+}
+
+%window-actions {
+  position: absolute;
+  right: -5.4rem;
+  top: 2.5rem;
+}
+
+%window-position {
+  margin-bottom: 6.4rem;
+}
+
+//disabled для грида
+%tr-disabled {
+  opacity: .65;
+  color: inherit !important;
+  background-color: inherit !important;
+  border-color: inherit !important;
+}
+
+// миксин для иконок
+@mixin icon-size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// миксин для квадратных штук
+@mixin square-size($i) {
+  height: $i;
+  width: $i;
+}
+
+$disabled-color: $black-03;
+$disabled-bg: rgba(228, 232, 235, 0.3);
+$disabled-border: $black-05;
+
+$btn-border-hover: $black-01;

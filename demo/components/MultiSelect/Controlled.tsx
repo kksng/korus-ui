@@ -25,6 +25,8 @@ export const Controlled = (args: SomeObject): React.ReactElement => {
         ]}
         defaultValue={['London']}
         _width40
+        canSelectAll
+        selectAllItemRender={() => 'Select all'}
         isOpen={isOpen}
         isLoading={isLoading}
         onChange={ev => {

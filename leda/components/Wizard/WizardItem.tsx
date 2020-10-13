@@ -60,11 +60,15 @@ export const WizardItem: React.FC<WizardItemProps> = (props: WizardItemProps): R
     return 0;
   };
 
-  const lineStyle = `linear-gradient(to right, #107f8c ${getProgress()}%, #D0D7DD ${getProgress()}%)`;
-
   return (
     <Item className={itemClassName}>
-      <Div className={theme.wizardLine} style={{ background: lineStyle }} />
+      <Div className={theme.wizardLine}>
+        <Div
+          shouldRender={isActive}
+          className={theme.wizardLineProgress}
+          style={{ width: `${getProgress()}%` }}
+        />
+      </Div>
       <Label className={theme.label}>
         {labelText}
       </Label>

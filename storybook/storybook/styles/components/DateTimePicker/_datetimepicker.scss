@@ -1,0 +1,81 @@
+.datepicker {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &-input-wrapper {
+    @extend %input-wrapper;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover:not(.disabled-state) {
+      @extend %input-hovered;
+    }
+
+    &.focused {
+      @extend %input-focused;
+    }
+
+    &.danger:not(.disabled-state):not(.focused) {
+      border-color: $brand-danger;
+
+      &:hover {
+        border-color: $brand-danger;
+      }
+    }
+
+    &.disabled-state {
+      @extend %input-disabled;
+
+      & > .datepicker-input {
+        background-color: inherit;
+      }
+
+      .datepicker-calendar-icon {
+        cursor: default;
+      }
+    }
+  }
+
+  &-icons-wrapper {
+    display: inline-flex;
+    height: 30px;
+    align-items: center;
+
+    & > .datepicker-calendar-icon {
+      width: 30px;
+      height: 29px;
+      padding: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        content: "\f073";
+        font-family: FontAwesome;
+        color: $black-03;
+        display: block;
+        width: 14px;
+        height: 20px;
+      }
+    }
+
+    & > span {
+      &:last-child {
+        border-top-right-radius:  6px;
+        border-bottom-right-radius: 6px;
+      }
+
+      &:first-child {
+        border-top-left-radius:  6px;
+        border-bottom-left-radius: 6px;
+      }
+    }
+  }
+}

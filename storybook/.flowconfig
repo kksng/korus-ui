@@ -1,0 +1,14 @@
+[ignore]
+.*/node_modules/.*
+[include]
+
+[libs]
+flow-typed
+
+[lints]
+
+[options]
+module.name_mapper='^!raw-loader!\(.*\)$' -> 'raw-loader'
+module.system=haste
+
+[strict]

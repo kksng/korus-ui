@@ -1,0 +1,23 @@
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.external {
+    color: $primary-01;
+
+    &:hover {
+      color: $primary-03;
+    }
+  }
+
+  &.internal {
+    color: $secondary-01;
+
+    &:hover {
+      color: $secondary-03;
+    }
+  }
+}

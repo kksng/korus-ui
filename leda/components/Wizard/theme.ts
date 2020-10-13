@@ -8,6 +8,7 @@ export const defaultWizardTheme = {
   wizardItemProgress:       'progress',
   wizardItemSuccess:        'success',
   wizardLine:               'line',
+  wizardLineProgress:        'progress-line',
   wrapper:                  'wizard',
 };
   /* eslint-enable key-spacing */

@@ -8,6 +8,8 @@ export const DateRange = (): React.ReactElement => {
   const [value4, setValue4] = React.useState<[string, string]>(['', '']);
   const [value5, setValue5] = React.useState<[string, string]>(['', '']);
   const [value6, setValue6] = React.useState<[string, string]>(['', '']);
+  const [value7, setValue7] = React.useState<[string, string]>(['11.12.2012', '12.12.2012']);
+
 
   const handleChange1 = (ev) => {
     const { value, date } = ev.component;
@@ -44,6 +46,12 @@ export const DateRange = (): React.ReactElement => {
     console.log(value);
     console.log(date);
     setValue6(value);
+  };
+  const handleChange7 = (ev) => {
+    const { value, date } = ev.component;
+    console.log(value);
+    console.log(date);
+    setValue7(value);
   };
 
   const DateRangeStyles = () => (
@@ -137,9 +145,27 @@ export const DateRange = (): React.ReactElement => {
           placeholder="Type your date..."
           isDisabled={[false, true]}
         />
-        <L.Button _success
+        <L.DateRange
+          _grow1
+          onChange={handleChange7}
+          onEnterPress={console.log}
+          value={value7}
+          name='DatePickerReset'
+          placeholder="Type your date..."
+        />
+        <L.Button 
+          _warning
+          name="resetButton"
+          onClick={() => setValue7(['', ''])}
+        >
+          Reset
+        </L.Button>
+        <L.Button 
+          _success
           form="111"
-        >success!</L.Button>
+        >
+          success!
+        </L.Button>
       </L.Div>
       <div style={{
         height: '190px',

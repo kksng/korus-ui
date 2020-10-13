@@ -18,7 +18,7 @@ export const useCustomElements = (props: SwitcherProps, state: SwitcherState): C
 
   const Wrapper = useElement(
     'Wrapper',
-    Span,
+    Div,
     wrapperRender || switcherRenders.wrapperRender,
     props,
     state,
