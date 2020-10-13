@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   bindFunctionalRef, getClassNames, getIsEmptyAndRequired, useProps, useTheme, useValue,
@@ -18,10 +19,16 @@ import {
 import {
   formatInputValue, formatValue, getRestProps, getValue, normalizeValue,
 } from './helpers';
-import { useCustomElements, useSyncedValue } from './hooks';
+import { useCustomElements, useSyncedValue, useDynamicMinMaxValidation } from './hooks';
 import { NumericRefCurrent, NumericTextBoxProps, NormalizeParameters } from './types';
 import { DEFAULT_VALUES } from './constants';
 
+/**
+ * NumericTextBox component
+ * @param {NumericTextBoxProps} props - properties of NumericTextBox component
+ *
+ * @returns {React.ReactElement}
+ */
 export const NumericTextBox = React.forwardRef((props: NumericTextBoxProps, ref: React.Ref<NumericRefCurrent>): React.ReactElement => {
   const {
     className,
@@ -58,6 +65,15 @@ export const NumericTextBox = React.forwardRef((props: NumericTextBoxProps, ref:
   const [value, setUncontrolledValue] = useValue<number | null>(valueProp, normalizeValue(normalizeValueParams));
 
   const [inputValue, setInputValue] = React.useState<string>(formatInputValue(formatValue({ value, format, thousandsSeparator }), format));
+
+  useDynamicMinMaxValidation(
+    props,
+    setUncontrolledValue,
+    setInputValue,
+    format,
+    thousandsSeparator,
+    value,
+  );
 
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 

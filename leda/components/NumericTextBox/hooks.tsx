@@ -1,10 +1,13 @@
 import * as React from 'react';
+
 import { SetState } from '../../commonTypes';
 import { useElement } from '../../utils';
 import { Div } from '../Div';
 import { LedaContext } from '../LedaProvider';
-import { formatInputValue, formatValue } from './helpers';
-import { CustomElements, NumericTextBoxProps, NumericTextBoxState } from './types';
+import { formatInputValue, formatValue, normalizeValue } from './helpers';
+import {
+  CustomElements, NumericTextBoxProps, NumericTextBoxState, NormalizeParameters,
+} from './types';
 
 const defaultInput = React.forwardRef((props, ref: React.Ref<HTMLInputElement>) => (
   <input {...props} ref={ref} />
@@ -56,4 +59,58 @@ export const useSyncedValue = (value: NumericTextBoxProps['value'], isFocused: b
       setInputValue(newInputValue);
     }
   }, [format, isFocused, setInputValue, thousandsSeparator, value]);
+};
+
+/**
+ * Hook dynamically validates component's value by min/max
+ * @param {NumericTextBoxProps} props - properties of NumericTextBox component
+ * @param {SetState<number | null>} setUncontrolledValue - set value without formatting
+ * @param {SetState<string>} setInputValue - set formatted value
+ * @param {string} format - value format
+ * @param {string} thousandsSeparator - the bit separator. A space by default
+ * @param {number | null} value - value of component
+ */
+export const useDynamicMinMaxValidation = (
+  props: NumericTextBoxProps,
+  setUncontrolledValue: SetState<number | null>,
+  setInputValue: SetState<string>,
+  format: string,
+  thousandsSeparator: string,
+  value: number | null,
+): void => {
+  const {
+    min, max, onChange, name,
+  } = props;
+  const [isFirstRender, setIsFirstRender] = React.useState(true);
+
+  React.useEffect((): void => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    const normalizeValueParams: NormalizeParameters = {
+      value,
+      min,
+      max,
+      format,
+    };
+
+    const newValue = normalizeValue(normalizeValueParams);
+
+    const formattedValue = formatValue({ value: newValue, format, thousandsSeparator });
+
+    const newInputValue = formatInputValue(formattedValue, format);
+
+    onChange?.({
+      component: {
+        formattedValue,
+        name,
+        value: newValue,
+      },
+    });
+
+    setUncontrolledValue(newValue);
+
+    setInputValue(newInputValue);
+  }, [min, max]);
 };

@@ -18,7 +18,8 @@ import {
   Wizard,
   DropDown,
   RadioGroup,
-  MultiSelect
+  MultiSelect,
+  NumericTextBox
 } from './cypress';
 import { Styles } from './components/Styles';
 
@@ -73,6 +74,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/multi-select">
           <MultiSelect />
+        </Route>
+        <Route path="/cypress/numeric-text-box">
+          <NumericTextBox />
         </Route>
       </Switch>
     </L.Div>
