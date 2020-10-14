@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.33.0] - 2020-10-26
 
-
+### Fixed
+- ToolTip: Fixed calculation of position for selecting the opening side
 
 ## [0.32.0] - 2020-10-12
 
