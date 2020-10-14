@@ -10,7 +10,7 @@ export const BlockElements = () => (
 );
 `;
 
-export const Images = () => (
+export const Images = ({ ...restProps }) => (
   <L.Div _box _inner>
     <L.Img _box alt="Кот" style={{ backgroundColor: '#332c22' }} height={300} width={350} src="http://memesmix.net/media/created/rpi0j5.jpg" />
     <br />

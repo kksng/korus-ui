@@ -3,7 +3,7 @@ import * as L from '../../../leda';
 import { SomeObject } from '../../../leda/commonTypes';
 
 export const NoInput = (args: SomeObject): React.ReactElement => {
-  const [value, setValue] = React.useState<string[]>(['London', 'Paris']);
+  const [value, setValue] = React.useState<string[] | null>(['London', 'Paris']);
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
 
   return (
@@ -24,7 +24,7 @@ export const NoInput = (args: SomeObject): React.ReactElement => {
           'Ottawa',
           'Moscow',
         ]}
-        onChange={ev => {
+        onChange={(ev) => {
           console.log('ev.component.selectedValue', ev.component.selectedValue);
           console.log('ev.component.value', ev.component.value);
           setValue(ev.component.value);
@@ -32,8 +32,7 @@ export const NoInput = (args: SomeObject): React.ReactElement => {
         value={value}
         isOpen={isOpen}
         _width-40
-      >
-      </L.MultiSelect>
+      />
       <br />
       <br />
       <L.Button _warning={isOpen} onClick={() => setIsOpen(isOpen ? undefined : true)}>Toggle isOpen</L.Button>

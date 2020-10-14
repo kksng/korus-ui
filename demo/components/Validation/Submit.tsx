@@ -5,10 +5,9 @@ import * as L from '../../../leda';
 import { Form } from '../../../leda/components/Validation/types';
 import { StoryProps } from '../../types';
 
-
 export const Submit = (props: StoryProps) => {
   const [failed, setFailed] = React.useState<Form[]>([]);
-  const [submitted, setSubmitted] = React.useState<Form[]>([]);
+  const [submitted, setSubmitted] = React.useState<string[]>([]);
 
   return (
     <L.Div _box _inner>
@@ -48,7 +47,7 @@ export const Submit = (props: StoryProps) => {
         <L.Div _inner>
           <L.Button
             form="submitForm1"
-            onClick={ev => {
+            onClick={(ev) => {
               setSubmitted(['submitForm1']);
               setFailed([]);
               console.log('submitForm1 ev', ev.form);
@@ -64,7 +63,7 @@ export const Submit = (props: StoryProps) => {
           {' '}
           <L.Button
             form="submitForm2"
-            onClick={ev => {
+            onClick={(ev) => {
               setSubmitted(['submitForm2']);
               setFailed([]);
               console.log('submitForm2 ev', ev.form?.submitForm2.Input1.value);
@@ -80,7 +79,7 @@ export const Submit = (props: StoryProps) => {
           {' '}
           <L.Button
             form={['submitForm1', 'submitForm2']}
-            onClick={ev => {
+            onClick={(ev) => {
               setSubmitted(['submitForm1', 'submitForm2']);
               setFailed([]);
               console.log('submitForm1 submitForm2 ev', ev.form);
@@ -98,7 +97,7 @@ export const Submit = (props: StoryProps) => {
           Forms submitted: <L.Span>{ submitted.join(' ') }</L.Span>
         </L.Div>
         <L.Div _inner>
-          Validation failed: <L.Span>{ failed.map(form => form.name).join(' ') }</L.Span>
+          Validation failed: <L.Span>{ failed.map((form) => form.name).join(' ') }</L.Span>
         </L.Div>
       </L.Div>
     </L.Div>
