@@ -128,7 +128,7 @@ describe('DatePicker', () => {
       .should('be.visible')
       .type('{enter}')
       .name('firstDatePicker')
-      .should('have.attr', 'value', '05.08.2021')
+      .should('have.attr', 'value', '05.08.2021')//случайный выбор
       .name('firstDatePicker')
       .parents('div.datepicker-wrapper')
       .find('div.calendar-wrapper')
