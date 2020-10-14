@@ -1,6 +1,7 @@
 import * as React from 'react';
 import debounce from 'lodash/debounce';
 import isMatch from 'lodash/isMatch';
+
 import { getTooltipPosition, getTooltipOffsets } from './helpers';
 import { TooltipPosition, TooltipStyle, UseTooltip } from './types';
 
@@ -50,8 +51,10 @@ export const useTooltip: UseTooltip = ({
     const newOffsets = getTooltipOffsets({
       position: newPosition, elementRect,
     });
+    // is needed to prevent uncontrolled change of dimensions after tooltip becomes visible
+    const fixedDimensions = { width: tooltipRect.width, height: tooltipRect.height };
 
-    mergeStyle(newOffsets);
+    mergeStyle({ ...newOffsets, ...fixedDimensions });
   }, [elementRef, tooltipRef, initialPosition, arrowSize, mergeStyle]);
 
   const closeTooltip = React.useCallback(() => {
