@@ -26,6 +26,6 @@
   ],
   "include": [
     "./leda/",
-    "demo"
+    "demo/components/"
   ],
 }
