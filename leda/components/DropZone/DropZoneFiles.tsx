@@ -7,6 +7,7 @@ import { Tooltip } from '../Tooltip';
 import { globalDefaultTheme } from '../LedaProvider';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { DropZoneFilesProps, FileType } from './types';
+import { getClassNames } from '../../utils';
 
 const createDownloadLink = (file: FileType, theme: typeof globalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone]): React.ReactElement | null => {
   if (file instanceof File) {
@@ -38,13 +39,17 @@ const renderFiles = ({
   files, theme, onChange, value, isDisabled,
 }: DropZoneFilesProps): React.ReactElement[] => files.map((file, index): React.ReactElement => {
   const downloadLink = createDownloadLink(file, theme);
-  const disabledStyles: React.CSSProperties = isDisabled ? { pointerEvents: 'none' } : {};
+
+  const deleteIconClassNames = getClassNames(
+    theme.fileDeleteIconWrapper,
+    { [theme.disabled]: isDisabled },
+  );
 
   return (
     <Li key={`${file.name}-${index.toString()}`}>
       <Tooltip title="Удалить" position="top">
         <A
-          style={disabledStyles}
+          className={deleteIconClassNames}
           _pointer
           onClick={(ev: React.MouseEvent<HTMLAnchorElement>): void => onChange(value.acceptedFiles, value.rejectedFiles, ev, file)}
         >

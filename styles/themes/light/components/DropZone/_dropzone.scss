@@ -47,6 +47,12 @@
     }
   }
 
+  &-delete-icon-wrapper {
+    &.disabled{
+      pointer-events: none;
+    }
+  }
+
   &-delete-icon {
     font-size: 13px;
     cursor: pointer;
@@ -54,6 +60,9 @@
       content: "\00D7";
       color: $black-03;
       font-style: normal;
+    }
+    &.disabled{
+      pointer-events: none;
     }
   }
 }
