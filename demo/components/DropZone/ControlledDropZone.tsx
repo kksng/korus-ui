@@ -38,6 +38,7 @@ interface ExternalFile {
 
 export const ControlledDropZone = (props: ControlledDropZoneProps) => {
   const [state1, setState1] = React.useState<L.DropZoneTypes.DropZoneFiles>({ acceptedFiles: [], rejectedFiles: [] });
+  const [isDisabled, setIsDisabled] = React.useState<boolean>(false)
 
   const [state2, setState2] = React.useState<{
     acceptedFiles: ExternalFile[],
@@ -52,6 +53,7 @@ export const ControlledDropZone = (props: ControlledDropZoneProps) => {
         form="dd-zone"
         name="file"
         isRequired
+        isDisabled={isDisabled}
         requiredMessage="Загрузите пожалуйста файл"
         value={state1}
         infoRender={({
@@ -78,6 +80,17 @@ export const ControlledDropZone = (props: ControlledDropZoneProps) => {
         }}
       >
         Validate
+      </L.Button>
+      <br />
+      <br />
+      <L.Button
+        _warning
+        _marginTop
+        onClick={() => {
+          setIsDisabled(!isDisabled);
+        }}
+      >
+        Disable/Enable
       </L.Button>
       <br />
       <br />

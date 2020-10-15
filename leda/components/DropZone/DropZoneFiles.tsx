@@ -35,14 +35,16 @@ const createDownloadLink = (file: FileType, theme: typeof globalDefaultTheme[typ
 };
 
 const renderFiles = ({
-  files, theme, onChange, value,
+  files, theme, onChange, value, isDisabled,
 }: DropZoneFilesProps): React.ReactElement[] => files.map((file, index): React.ReactElement => {
   const downloadLink = createDownloadLink(file, theme);
+  const disabledStyles: React.CSSProperties = isDisabled ? { pointerEvents: 'none' } : {};
 
   return (
     <Li key={`${file.name}-${index.toString()}`}>
       <Tooltip title="Удалить" position="top">
         <A
+          style={disabledStyles}
           _pointer
           onClick={(ev: React.MouseEvent<HTMLAnchorElement>): void => onChange(value.acceptedFiles, value.rejectedFiles, ev, file)}
         >
