@@ -156,6 +156,7 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
           shouldRender={value.acceptedFiles.length > 0}
           theme={theme}
           value={value}
+          isDisabled={isDisabled}
         />
       </AcceptedFiles>
     </>

@@ -114,6 +114,8 @@ export interface DropZoneFilesProps {
   value: DropZoneState | NonNullable<DropZoneProps['value']>,
   /** Тема компонента */
   theme: typeof globalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone],
+  /** Признак отключения дропзоны */
+  isDisabled?: boolean,
 }
 
 export interface DropZoneProps extends ValidationProps {

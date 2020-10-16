@@ -82,6 +82,19 @@ describe('DropZone', () => {
         .contains('example.json')
         .should('not.exist');
     });
+    it('Should not remove attached files if is disabled', () => {
+      cy.name('disable')
+        .click()
+        .get(fileDeleteIconClassName)
+        .first()
+        .click({force: true})
+        .get(rejectedFilesWrapperClassNames)
+        .eq(2)
+        .next()
+        .contains('external file')
+        .name('disable')
+        .click()
+    });
   });
 
   describe('Validation', () => {
