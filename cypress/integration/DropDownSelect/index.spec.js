@@ -272,6 +272,19 @@ describe('DropDownSelect', () => {
         });
     });
 
+    it('onFocus should not handle Window focus event', () => {
+      cy.name('DDSFocusCheck')
+        .focus()
+        .type('{downarrow}', { force: true })
+        .type('{enter}', { force: true })
+        .windowBlur()
+        .windowFocus()
+        .parent()
+        .parent()
+        .find('.suggestion-list')
+        .should('not.be.visible')
+    });
+
     it('OnChange', () => {
       cy.name('DDSCompareObjectsByObjects')
         .focus()

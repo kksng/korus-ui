@@ -18,13 +18,21 @@ import {
   createResetHandler,
 } from './handlers';
 import { filterData, getComponentClassNames, getInputValue } from './helpers';
-import { useCorrectSuggestionsInControlledMode, useCustomElements, useSyncedHighlightedValue } from './hooks';
+import {
+  useCorrectSuggestionsInControlledMode, useCustomElements, useSyncedHighlightedValue, useWindowFocus,
+} from './hooks';
 import {
   DropDownSelectProps, DropDownSelectRefCurrent, DropDownSelectState, Value,
 } from './types';
 import { Span } from '../Span';
 import { getText } from '../../src/SuggestionList/helpers';
 
+/**
+ * DropDownSelect component. Renders input with dropdown list with possibility to select one item
+ * @param {DropDownSelectProps} props
+ *
+ * @returns {React.ReactElement}
+ */
 export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref: React.Ref<DropDownSelectRefCurrent>): React.ReactElement | null => {
   const {
     autoComplete = 'off',
@@ -122,6 +130,7 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
   const handleFilterChange = createFilterChangeHandler(handlerData);
   const handleClearIconClick = createClearIconClickHandler(handlerData);
 
+
   useSyncedHighlightedValue({
     data,
     filterValue,
@@ -166,6 +175,8 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
     event.preventDefault();
   };
 
+  const isWindowFocus = useWindowFocus();
+
   return (
     <Wrapper
       className={wrapperClassNames}
@@ -187,7 +198,7 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
           onBlur={handleBlur}
           onChange={handleFilterChange}
           onClick={handleInputClick}
-          onFocus={handleFocus}
+          onFocus={!isWindowFocus ? handleFocus : undefined}
           onKeyDown={handleKeyDown}
           placeholder={isNil(value) ? placeholder : ''}
           readOnly={!shouldFilterValues}

@@ -823,7 +823,7 @@ Object {
         class="dropdownselect-wrapper"
       >
         <div
-          class="dropdownselect-input-wrapper focused"
+          class="dropdownselect-input-wrapper"
         >
           <input
             aria-invalid="false"
@@ -863,7 +863,7 @@ Object {
       class="dropdownselect-wrapper"
     >
       <div
-        class="dropdownselect-input-wrapper focused"
+        class="dropdownselect-input-wrapper"
       >
         <input
           aria-invalid="false"
