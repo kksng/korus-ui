@@ -19,7 +19,7 @@ import {
 } from './handlers';
 import { filterData, getComponentClassNames, getInputValue } from './helpers';
 import {
-  useCorrectSuggestionsInControlledMode, useCustomElements, useSyncedHighlightedValue, useWindowFocus,
+  useCorrectSuggestionsInControlledMode, useCustomElements, useSyncedHighlightedValue,
 } from './hooks';
 import {
   DropDownSelectProps, DropDownSelectRefCurrent, DropDownSelectState, Value,
@@ -175,8 +175,6 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
     event.preventDefault();
   };
 
-  const isWindowFocus = useWindowFocus();
-
   return (
     <Wrapper
       className={wrapperClassNames}
@@ -198,7 +196,7 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
           onBlur={handleBlur}
           onChange={handleFilterChange}
           onClick={handleInputClick}
-          onFocus={!isWindowFocus ? handleFocus : undefined}
+          onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           placeholder={isNil(value) ? placeholder : ''}
           readOnly={!shouldFilterValues}

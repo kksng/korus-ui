@@ -101,26 +101,3 @@ export const useCorrectSuggestionsInControlledMode = ({
     }
   }, [mergeState, valueProp]);
 };
-
-/**
- * Hook checks if focus event was fired on window.
- * Needed to prevent input from receiving focus on window focus
- *
- * @returns {boolean} true, if focus event was fired on window
- */
-export const useWindowFocus = () => {
-  const [isWindowFocus, setWindowFocus] = React.useState<boolean>(false);
-
-  const handleWindowFocus = () => setWindowFocus(true);
-
-  React.useEffect(() => {
-    window.addEventListener('focus', handleWindowFocus);
-
-    return () => {
-      window.removeEventListener('focus', handleWindowFocus);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return isWindowFocus;
-};

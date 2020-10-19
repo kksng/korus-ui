@@ -272,7 +272,7 @@ describe('DropDownSelect', () => {
         });
     });
 
-    it('onFocus should not handle Window focus event', () => {
+    it('Should not open on Window focus event', () => {
       cy.name('DDSFocusCheck')
         .focus()
         .type('{downarrow}', { force: true })
@@ -284,6 +284,24 @@ describe('DropDownSelect', () => {
         .find('.suggestion-list')
         .should('not.be.visible')
     });
+
+    it('onFocus: should not open on focus event', () => {
+      cy.name('DDSFocusCheck')
+        .focus()
+        .parent()
+        .parent()
+        .children('.suggestion-wrapper.visible')
+        .should('not.exist')
+    })
+
+    it('onClick: should open on click event', () => {
+      cy.name('DDSFocusCheck')
+        .click()
+        .parent()
+        .parent()
+        .children('.suggestion-wrapper.visible')
+        .should('exist')
+    })
 
     it('OnChange', () => {
       cy.name('DDSCompareObjectsByObjects')
