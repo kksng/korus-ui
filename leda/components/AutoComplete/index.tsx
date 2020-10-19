@@ -28,7 +28,10 @@ import {
   createResetHandler,
 } from './handlers';
 import {
-  AutoCompleteProps, AutoCompleteRefCurrent, Suggestion,
+  AutoCompleteProps,
+  AutoCompleteRefCurrent,
+  Suggestion,
+  AutoCompleteState,
 } from './types';
 import { useValidation } from '../Validation';
 import { LedaContext } from '../LedaProvider';
@@ -81,41 +84,39 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     textField,
     theme: themeProp,
     validator,
-    value: propValue,
+    value: valueProp,
     ...restProps
   } = useProps(props);
 
   // todo handle props format errors
 
-  const isValueControlled = propValue === null || isString(propValue);
-
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.autoComplete);
 
-  const [stateValue, setStateValue] = React.useState('');
-  const [isFocused, setIsFocused] = React.useState(false);
-  const [selectedSuggestion, setSelectedSuggestion] = React.useState<Suggestion>(null);
-  const [highlightedSuggestion, setHighlightedSuggestion] = React.useState<Suggestion>(null);
-  const [lastCorrectValue, setLastCorrectValue] = React.useState('');
+  const autoCompleteState: AutoCompleteState = {
+    highlightedSuggestion: null,
+    selectedSuggestion: null,
+    isFocused: false,
+    lastCorrectValue: '',
+    value: '',
+  };
 
-  const autoCompleteState = React.useMemo(() => ({
-    highlightedSuggestion,
-    isFocused,
-    lastCorrectValue,
-    selectedSuggestion,
-    stateValue,
-  }), [highlightedSuggestion, isFocused, lastCorrectValue, selectedSuggestion, stateValue]);
+  const [state, mergeState] = React.useReducer((oldState: AutoCompleteState, newState: Partial<AutoCompleteState>) => ({
+    ...oldState, ...newState,
+  }), autoCompleteState);
 
   const {
     isValid, validateCurrent, InvalidMessage,
-  } = useValidation(props, {
-    value: stateValue,
-  }, {
+  } = useValidation(props, state, {
     reset: createResetHandler({
-      props, setStateValue, value: '',
+      props, mergeState, value: '',
     }),
   });
 
-  const value = isValueControlled ? propValue : stateValue;
+  const {
+    value: stateValue, highlightedSuggestion, isFocused, selectedSuggestion,
+  } = state;
+  const isValueControlled = valueProp === null || isString(valueProp);
+  const value = valueProp === undefined ? stateValue : valueProp;
   const inputValue = value === null ? '' : value;
   const suggestionListValue = value === undefined ? null : value;
 
@@ -143,64 +144,16 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
 
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
-  const inputChangeHandler = inputChangeHandlerCreator({
-    data,
-    textField,
-    name,
-    onChange,
-    isValueControlled,
-    setSelectedSuggestion,
-    setHighlightedSuggestion,
-    setStateValue,
-  });
-  const suggestionClickHandler = suggestionClickHandlerCreator({
-    props,
-    lastCorrectValue,
-    setLastCorrectValue,
-    data,
-    textField,
-    name,
-    onChange,
-    isValueControlled,
-    setHighlightedSuggestion,
-    setStateValue,
-    setIsFocused,
-  });
-  const clearButtonClickHandler = clearButtonClickHandlerCreator({
-    inputRef,
-    name,
-    onChange,
-    isValueControlled,
-    setStateValue,
-    isDisabled,
-  });
-  const inputFocusHandler = inputFocusHandlerCreator({
-    onFocus,
-    setIsFocused,
-  });
-  const inputBlurHandler = inputBlurHandlerCreator({
-    isValueControlled,
-    lastCorrectValue,
-    props,
-    setIsFocused,
-    setLastCorrectValue,
-    setStateValue,
-    validateCurrent,
-    value,
-  });
-  const inputKeyDownHandler = inputKeyDownHandlerCreator({
-    lastCorrectValue,
-    setLastCorrectValue,
-    highlightedSuggestion,
-    isSuggestionsListOpen,
-    isValueControlled,
-    props,
-    setHighlightedSuggestion,
-    setSelectedSuggestion,
-    setIsFocused,
-    setStateValue,
-    suggestions,
-  });
+  const handlerData = {
+    props, state, mergeState, isValueControlled, inputRef, validate: validateCurrent, value,
+  };
+
+  const inputChangeHandler = inputChangeHandlerCreator(handlerData);
+  const suggestionClickHandler = suggestionClickHandlerCreator(handlerData);
+  const clearButtonClickHandler = clearButtonClickHandlerCreator(handlerData);
+  const inputFocusHandler = inputFocusHandlerCreator(handlerData);
+  const inputBlurHandler = inputBlurHandlerCreator(handlerData);
+  const inputKeyDownHandler = inputKeyDownHandlerCreator({ ...handlerData, suggestions, isSuggestionsListOpen });
 
   const shouldShowClearButton = hasClearButton && !isDisabled && value && value.length > 0;
 
