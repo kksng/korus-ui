@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   isFunction, isObject,
 } from 'lodash';
+
 import {
   correctValue, getSuggestionFromValue,
 } from './helpers';
@@ -18,6 +19,17 @@ import { getText } from '../../src/SuggestionList/helpers';
 import { CustomEventHandler, SetState } from '../../commonTypes';
 import { SuggestionTarget } from '../../src/SuggestionList/types';
 
+/**
+ * Function creates clear button click handler
+ * @param {React.MutableRefObject<HTMLInputElement | null>} props.inputRef - input ref
+ * @param {boolean} props.isDisabled - flag defines if input is disabled
+ * @param {boolean} props.isValueControlled - flag defines if input is in controlled mode
+ * @param {string} props.name - name attribute of input
+ * @param {(event: ChangeEvent) => void} props.onChange - change event handler
+ * @param {SetState<string>} props.setStateValue - set state action to set value state
+ *
+ * @return {React.MouseEventHandler<HTMLElement>} - clear button click event handler
+ */
 export const clearButtonClickHandlerCreator = ({
   inputRef,
   isDisabled,
@@ -35,8 +47,6 @@ export const clearButtonClickHandlerCreator = ({
 }): React.MouseEventHandler<HTMLElement> => (event) => {
   if (isDisabled) return;
   if (inputRef.current) inputRef.current.focus();
-  // todo check it is needed
-  // setIsFocused(true);
 
   const customEvent: ChangeEvent = {
     ...event,
@@ -52,6 +62,22 @@ export const clearButtonClickHandlerCreator = ({
   if (!isValueControlled) setStateValue('');
 };
 
+/**
+ * Function creates suggestion list click handler
+ * @param {AutoCompleteProps} props.props - properties of component
+ * @param {string} props.lastCorrectValue - last correct value
+ * @param {SetState<string>} props.setLastCorrectValue - set state action to set last correct value
+ * @param {Suggestion[]} props.data - data for suggestion list
+ * @param {boolean} props.isValueControlled - flag defines if input is in controlled mode
+ * @param {string} props.name - name attribute of input
+ * @param {(event: ChangeEvent) => void} props.onChange - change event handler
+ * @param {SetState<boolean>} props.setIsFocused - set state action to set focused state
+ * @param {SetState<string>} props.setStateValue - set state action to set value state
+ * @param {SetState<Suggestion>} props.setHighlightedSuggestion - set state action to set highlighted suggestion
+ * @param {string} props.textField - sets the field from data that will be used for displaying if an object is passed
+ *
+ * @returns {CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget>} suggestion list click handler
+ */
 export const suggestionClickHandlerCreator = ({
   props,
   lastCorrectValue,
@@ -123,7 +149,19 @@ export const suggestionClickHandlerCreator = ({
   setIsFocused(false);
 };
 
-
+/**
+ * Function creates input change event handler
+ * @param {Suggestion[]} props.data - data for suggestion list
+ * @param {boolean} props.isValueControlled - flag defines if input is in controlled mode
+ * @param {string} props.name - name attribute of input
+ * @param {(event: ChangeEvent) => void} props.onChange - change event handler
+ * @param {SetState<string>} props.setStateValue - set state action to set value state
+ * @param {SetState<Suggestion>} props.setSelectedSuggestion - set state action to set selected suggestion state
+ * @param {SetState<Suggestion>} props.setHighlightedSuggestion - set state action to set highlighted suggestion
+ * @param {string} props.textField - sets the field from data that will be used for displaying if an object is passed
+ *
+ * @returns {React.ChangeEventHandler<HTMLInputElement>} input change event handler
+ */
 export const inputChangeHandlerCreator = ({
   data,
   isValueControlled,
@@ -131,6 +169,7 @@ export const inputChangeHandlerCreator = ({
   onChange,
   setStateValue,
   setSelectedSuggestion,
+  setHighlightedSuggestion,
   textField,
 }: {
   data: Suggestion[],
@@ -139,6 +178,7 @@ export const inputChangeHandlerCreator = ({
   onChange: (event: ChangeEvent) => void,
   setStateValue: SetState<string>,
   setSelectedSuggestion: SetState<Suggestion>,
+  setHighlightedSuggestion: SetState<Suggestion>,
   textField?: string,
 }): React.ChangeEventHandler<HTMLInputElement> => (event) => {
   const { value } = event.currentTarget;
@@ -146,6 +186,7 @@ export const inputChangeHandlerCreator = ({
   const suggestion = getSuggestionFromValue({ data, value, textField });
 
   setSelectedSuggestion(suggestion);
+  setHighlightedSuggestion(suggestion);
 
   const customEvent: ChangeEvent = {
     ...event,
@@ -161,6 +202,19 @@ export const inputChangeHandlerCreator = ({
   if (!isValueControlled) setStateValue(value);
 };
 
+/**
+ * Function creates input blur event handler
+ * @param {boolean} props.isValueControlled - flag defines if input is in controlled mode
+ * @param {string} props.lastCorrectValue - last correct value
+ * @param {AutoCompleteProps} props.props - properties of component
+ * @param {SetState<boolean>} props.setIsFocused - set state action to set focused state
+ * @param {SetState<string>} props.setLastCorrectValue - set state action to set last correct value state
+ * @param {SetState<string>} props.setStateValue - set state action to set value state
+ * @param {() => boolean} props.validateCurrent - validator of current value
+ * @param {string | null} props.value - current value
+ *
+ * @returns {React.FocusEventHandler<HTMLInputElement>} input blur event handler
+ */
 export const inputBlurHandlerCreator = ({
   isValueControlled,
   lastCorrectValue,
@@ -206,6 +260,13 @@ export const inputBlurHandlerCreator = ({
   if (isFunction(onBlur)) onBlur(customEvent);
 };
 
+/**
+ * Function creates input focus event handler
+ * @param {(event: FocusEvent) => void} props.onFocus - custom focus handler
+ * @param {SetState<boolean>} props.setIsFocused - set state action to set focused state
+ *
+ * @returns {React.FocusEventHandler<HTMLInputElement>} input focus event handler
+ */
 export const inputFocusHandlerCreator = ({
   onFocus,
   setIsFocused,
@@ -226,6 +287,22 @@ export const inputFocusHandlerCreator = ({
   if (isFunction(onFocus)) onFocus(customEvent);
 };
 
+/**
+ * Function creates input key down event handler
+ * @param {string} props.lastCorrectValue - last correct value
+ * @param {SetState<string>} props.setLastCorrectValue - set state action to set last correct value state
+ * @param {Suggestion} props.highlightedSuggestion - highlighted suggestion
+ * @param {boolean} props.isSuggestionsListOpen - flag defines if suggestions list is open
+ * @param {boolean} props.isValueControlled - flag defines if input is in controlled mode
+ * @param {AutoCompleteProps} props.props - properties of component
+ * @param {SetState<Suggestion>} props.setHighlightedSuggestion - set state action to set highlighted suggestion state
+ * @param {SetState<Suggestion>} props.setSelectedSuggestion - set state action to set selected suggestion state
+ * @param {SetState<boolean>} props.setIsFocused - set state action to set focused state
+ * @param {SetState<string>} props.setStateValue - set state action to set value state
+ * @param {Suggestion[]} props.suggestions - data for suggestion list
+ *
+ * @returns {React.KeyboardEventHandler<HTMLInputElement>} input key down event handler
+ */
 export const inputKeyDownHandlerCreator = ({
   lastCorrectValue,
   setLastCorrectValue,
@@ -269,10 +346,10 @@ export const inputKeyDownHandlerCreator = ({
     : suggestions.indexOf(placeholder || '');
 
   if (event.key === 'ArrowDown' || event.key === 'Down') {
-    // предотвращаем скроллинг страницы
+    // prevent page scrolling
     event.preventDefault();
 
-    // новый индекс, механизм работает как барабан
+    // new index, the mechanism works like a roller
     const nextIndex = (suggestionIndex + 1) % suggestions.length;
 
     const newHighlightedSuggestion = suggestions[nextIndex];
@@ -281,10 +358,10 @@ export const inputKeyDownHandlerCreator = ({
   }
 
   if (event.key === 'ArrowUp' || event.key === 'Up') {
-    // предотвращаем скроллинг страницы
+    // prevent page scrolling
     event.preventDefault();
 
-    // новый индекс, механизм работает как барабан
+    // new index, the mechanism works like a roller
     const nextIndex = (() => {
       if (suggestionIndex <= 0) return suggestions.length - 1;
 
@@ -361,6 +438,14 @@ export const inputKeyDownHandlerCreator = ({
   // }
 };
 
+/**
+ * Function creates reset handler
+ * @param {} props.props - properties of component
+ * @param {} props.setStateValue - set state action to set value state
+ * @param {} props.value - current value
+ *
+ * @returns {() => void} reset handler
+ */
 export const createResetHandler = ({
   props,
   setStateValue,

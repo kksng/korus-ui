@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   isString, isBoolean,
 } from 'lodash';
+
 import { SuggestionList } from '../../src/SuggestionList';
 import {
   bindFunctionalRef,
@@ -26,13 +27,20 @@ import {
   clearButtonClickHandlerCreator,
   createResetHandler,
 } from './handlers';
-
 import {
   AutoCompleteProps, AutoCompleteRefCurrent, Suggestion,
 } from './types';
 import { useValidation } from '../Validation';
 import { LedaContext } from '../LedaProvider';
 
+/**
+ * AutoComplete component renders input with dropdown list
+ * autocompletes typed suggestions
+ *
+ * @param {AutoCompleteProps} properties of component
+ *
+ * @return {React.ReactElement}
+ */
 export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: React.Ref<AutoCompleteRefCurrent>): React.ReactElement | null => {
   const {
     autoComplete = 'off',
@@ -142,6 +150,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     onChange,
     isValueControlled,
     setSelectedSuggestion,
+    setHighlightedSuggestion,
     setStateValue,
   });
   const suggestionClickHandler = suggestionClickHandlerCreator({
