@@ -43,8 +43,11 @@ describe('MultiSelect', () => {
         .parent()
         .find('.suggestion-list')
         .find('.suggestion-item')
-        .first()
+        .eq(1)
         .click()
+        .parent()
+        .find('.suggestion-item')
+        .first()
         .find('.checkbox-label')
         .should('have.class', 'semi')
     });
