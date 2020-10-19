@@ -1,4 +1,5 @@
 import { isFunction, isNil } from 'lodash';
+
 import { getText } from '../../src/SuggestionList/helpers';
 import { filterData } from './helpers';
 import {
@@ -122,9 +123,6 @@ export const createFocusHandler = ({
     onFocus(customEvent);
   }
 
-  // открываем список
-  mergeState({ isOpen: true });
-  // добавляем фокус
   mergeState({ isFocused: true });
 };
 
@@ -137,10 +135,8 @@ export const createIconClickHandler = ({
 
   if (isDisabled) return;
 
-  // фокусим инпут
   if (inputRef.current) inputRef.current.focus();
 
-  // переключаем состояние списка (открыт/закрыт)
   mergeState({
     isOpen: !state.isOpen,
   });
@@ -181,16 +177,16 @@ export const createKeyDownHandler = ({
 
   const fullData = placeholder && shouldAllowEmpty ? [placeholder, ...filteredData] : filteredData;
 
-  // текущий индекс
+  // current index
   const suggestionIndex = highlightedSuggestion !== null
     ? fullData.indexOf(highlightedSuggestion || '')
     : fullData.indexOf(placeholder || '');
 
   if (ev.key === 'ArrowDown' || ev.key === 'Down') {
-    // предотвращение прокрутки страницы
+    // prevent page scrolling
     ev.preventDefault();
 
-    // механизм работает как барабан
+    // the mechanism works like a roller
     const nextIndex = (suggestionIndex + 1) % fullData.length;
 
     const nextSuggestion = fullData[nextIndex];
@@ -203,10 +199,10 @@ export const createKeyDownHandler = ({
   }
 
   if (ev.key === 'ArrowUp' || ev.key === 'Up') {
-    // предотвращение прокрутки страницы
+    // prevent page scrolling
     ev.preventDefault();
 
-    // механизм работает как барабан
+    // the mechanism works like a roller
     const nextIndex = (() => {
       if (suggestionIndex <= 0) return fullData.length - 1;
 
@@ -235,8 +231,10 @@ export const createKeyDownHandler = ({
 
     if (isOpen) mergeState({ isOpen: false });
 
-    const textValue = getText(highlightedSuggestion, textField); // onFilterChange require empty string as value. null value can't be used there
-    const value = textValue || null; // Convert empty string to null. '' -> null
+    // onFilterChange require empty string as value. null value can't be used there
+    const textValue = getText(highlightedSuggestion, textField);
+    // Convert empty string to null. '' -> null
+    const value = textValue || null;
 
     if (isFunction(onFilterChange)) {
       const customEvent = {

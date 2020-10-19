@@ -43,6 +43,8 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
   };
   const handleChange1 = ev => setValue6(ev.component.value);
 
+  const [value7, setValue7] = React.useState(null);
+
   const itemRender = ({ Element, elementProps, componentProps }) => {
     const { isPlaceholder, item, textField } = componentProps;
 
@@ -318,6 +320,15 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           ]}
         />
 
+        <L.DropDownSelect
+          name='DDSFocusCheck'
+          data={data}
+          value={value7}
+          textField="city"
+          onFocus={testFunction}
+          onChange={ev => setValue7(ev.component.value)}
+          _width40
+        />  
       </L.Div>
 
     </>
