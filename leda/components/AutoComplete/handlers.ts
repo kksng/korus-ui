@@ -108,6 +108,7 @@ export const suggestionClickHandlerCreator = ({
 
   mergeState({
     isFocused: false,
+    isOpen: false,
   });
 };
 
@@ -162,6 +163,7 @@ export const inputBlurHandlerCreator = ({
 
   mergeState({
     isFocused: false,
+    isOpen: false,
   });
 
   const newValue = shouldCorrectValue ? correctValue({
@@ -233,7 +235,12 @@ export const inputKeyDownHandlerCreator = ({
   const { lastCorrectValue, highlightedSuggestion } = state;
 
   // in some cases isFocused is set false, revert it back
-  if (!isSuggestionsListOpen) mergeState({ isFocused: true });
+  if (!isSuggestionsListOpen) {
+    mergeState({
+      isFocused: true,
+      isOpen: true,
+    });
+  }
 
   const suggestionIndex = highlightedSuggestion !== null
     ? suggestions.indexOf(highlightedSuggestion || '')
@@ -289,7 +296,12 @@ export const inputKeyDownHandlerCreator = ({
       const value = getText(highlightedSuggestion, textField);
 
       // the dropdown list is open, enter press should choose a value
-      if (isSuggestionsListOpen) mergeState({ isFocused: false });
+      if (isSuggestionsListOpen) {
+        mergeState({
+          isFocused: false,
+          isOpen: false,
+        });
+      }
 
       if (shouldCorrectValue) {
         correctValue({
@@ -323,6 +335,7 @@ export const inputKeyDownHandlerCreator = ({
   if (event.key === 'Escape' || event.key === 'Esc') {
     mergeState({
       isFocused: false,
+      isOpen: false,
     });
   }
 

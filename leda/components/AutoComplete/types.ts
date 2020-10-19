@@ -83,6 +83,7 @@ export interface AutoCompleteRefCurrent {
 export interface AutoCompleteState {
   highlightedSuggestion: Suggestion,
   isFocused: boolean,
+  isOpen: boolean,
   lastCorrectValue: string,
   selectedSuggestion: Suggestion,
   value: string | null,
