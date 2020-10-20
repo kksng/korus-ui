@@ -25,7 +25,6 @@
     "dist"
   ],
   "include": [
-    "./leda/",
-    "demo/components/"
-  ],
+    "./leda/"
+  ]
 }
