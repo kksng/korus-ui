@@ -85,7 +85,7 @@ describe('DatePicker', () => {
     cy.name('firstDatePicker')
       .parents('div.datepicker-wrapper')
       .find('.calendar-month-year-cell[title="2020"]')
-      .should('be.visible') //from the last test the calendar is open and the current view - year
+      .should('be.visible') //с прошлого теста календарь открыт и текущий view - года
       .name('firstDatePicker')
       .parents('div.datepicker-wrapper')
       .type('{enter}')
@@ -93,7 +93,7 @@ describe('DatePicker', () => {
       .should('be.visible')
   });
   it('Pressing "Backspace" will delete characters in "Input"', () => {
-    cy.name('firstDatePicker') //from the last test in Input date 02.08.2020
+    cy.name('firstDatePicker') //с прошлого теста в Input дата 02.08.2020
       .type('{backspace}')
       .name('firstDatePicker')
       .should('have.attr', 'value', '02.08.202_')
@@ -128,11 +128,10 @@ describe('DatePicker', () => {
       .type('{enter}')
       .name('firstDatePicker')
       .should('have.attr', 'value', '05.08.2021')
-      .should('have.attr', 'value', '05.08.2021')//random selection
+      .should('have.attr', 'value', '05.08.2021')//случайный выбор
       .name('firstDatePicker')
       .parents('div.datepicker-wrapper')
       .find('div.calendar-wrapper')
       .should('not.be.visible');
   });
 });
-
