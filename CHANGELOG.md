@@ -4,16 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.33.0] - 2020-10-26
-
-
-
 ## [0.32.0] - 2020-10-12
 
 ### Fixed
 - Wizard: Added new div element with class .progress-line to set styles for progress bar
 - Modal: Increased the sm width of the component from 420px to 480px
-- DateRange: Added possibility to set array of empty strings as state
+- DateRange: Added possibility to set array of empty strings as state 
 - MultiSelect: Fixed selectAll text
 - RadioGroup: Restricted possibility to work with value=undefined. Component defaults to first RadioButton's value
 - DropZone: Fixed change event handler for removed files
