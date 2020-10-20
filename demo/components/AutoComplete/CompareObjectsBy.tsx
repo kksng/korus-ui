@@ -33,6 +33,7 @@ export const CompareObjectsBy = (anyProps: any): React.ReactElement => {
             console.log('event.component.value', event.component.value, event.component.suggestion)
             setValue(event.component.value);
           }}
+          hasClearButton
         />
       </div>
       <br />
