@@ -74,7 +74,7 @@ export const Tooltip = () => {
             position="bottom"
             title="Tooltip at bottom bottom bottom bottom bottom bottom bottom bottom"
           >
-            <L.Button onClick={() => setDisplay(!display)} _tipBottom>
+            <L.Button _tipBottom>
               Bottom
             </L.Button>
           </L.Tooltip>
