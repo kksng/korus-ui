@@ -33,7 +33,7 @@ export const GroupedObjectsData = (args: SomeObject): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [value, setValue] = React.useState<string | number | SomeObject | null>(null);
+  const [value, setValue] = React.useState<SomeObject | null>(null);
 
   return (
     <L.Div _box _inner _demoBg>
@@ -58,8 +58,7 @@ export const GroupedObjectsData = (args: SomeObject): React.ReactElement => {
           // eslint-disable-next-line no-console
           console.log('ev.component.value', ev.component.value);
         }}
-      >
-      </L.DropDownSelect>
+      />
       <br />
       <br />
       <L.Button _warning={isDisabled} onClick={() => setIsDisabled(!isDisabled)}>Toggle isDisabled</L.Button>

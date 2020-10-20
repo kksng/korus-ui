@@ -19,7 +19,7 @@ export const BlockElements = () => (
 );
 `;
 
-export const StringElements = () => (
+export const StringElements = ({ ...restProps }) => (
   <L.Div _box _inner>
     <br />
     <L.Span style={{ backgroundColor: '#e0ebb3' }} _padding>Элемент Span</L.Span>

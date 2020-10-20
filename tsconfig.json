@@ -22,8 +22,7 @@
   },
   "exclude": [
     "node_modules",
-    "dist",
-    "demo"
+    "dist"
   ],
   "include": [
     "./leda/"
