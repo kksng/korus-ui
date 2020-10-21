@@ -13,6 +13,7 @@ export { Modal } from './Modal';
 export { VStepper } from './VStepper';
 export { Wizard } from './Wizard';
 export { DropDown } from './DropDown';
+export { DropDownLink } from './DropDownLink';
 export { RadioGroup } from './RadioGroup';
 export { MultiSelect } from './MultiSelect';
 export { ToolTip } from './ToolTip';

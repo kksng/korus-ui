@@ -17,6 +17,7 @@ import {
   VStepper,
   Wizard,
   DropDown,
+  DropDownLink,
   RadioGroup,
   MultiSelect,
   ToolTip
@@ -68,6 +69,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/dropdown">
           <DropDown />
+        </Route>
+        <Route path="/cypress/dropdownlink">
+          <DropDownLink />
         </Route>
         <Route path="/cypress/radio-group">
           <RadioGroup />
