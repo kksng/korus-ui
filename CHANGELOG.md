@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.33.0] - 2020-10-26
 
 ### Fixed
+- Input: Fixed paste event handler, paste is handled by default
 - DropDownSelect: Removed dropdown opening logic from focus handler to click handler 
 - MultiSelect: Fixed checkbox classes 
 - AutoComplete: Fixed component's behavior on enter press by synchronizing selected and highlighted values
