@@ -49,6 +49,19 @@ export const PartialCustomized = () => {
 };
 `;
 
+const infoRender = ({
+  Element,
+  elementProps,
+  componentProps: { isLoading },
+}: RenderEvent<{isLoading?: boolean}>) => (
+  <Element
+    {...elementProps}
+    props={elementProps}
+  >
+    {isLoading ? 'Я загружаю!' : 'Я частично изменен!'}
+  </Element>
+);
+
 export const PartialCustomized = (componentProps: any) => {
   const [props, setProps] = React.useState({});
 
@@ -64,11 +77,7 @@ export const PartialCustomized = (componentProps: any) => {
             {React.Children.toArray(elementProps.children)[1]}
           </>
         )}
-        infoRender={({
-          Element,
-          elementProps,
-          componentProps: { isLoading },
-        }: RenderEvent<{isLoading: boolean}>) => <Element {...elementProps} props={elementProps}>{isLoading ? 'Я загружаю!' : 'Я частично изменен!'}</Element>}
+        infoRender={infoRender}
         maxFileSize={1500}
         onFileLoad={(ev: FileLoadEvent) => {
           console.log('Вы загрузили файл!', ev.component.value.acceptedFiles, ev.component.value.rejectedFiles);

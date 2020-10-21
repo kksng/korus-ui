@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as L from '../../leda';
+import * as L from '../../../leda';
 
-export const Tooltip = () => {
+export const ToolTip = (): React.ReactElement => {
   const [display, setDisplay] = React.useState(true);
   const [open, setOpen] = React.useState<boolean>();
 
@@ -74,7 +74,7 @@ export const Tooltip = () => {
             position="bottom"
             title="Tooltip at bottom bottom bottom bottom bottom bottom bottom bottom"
           >
-            <L.Button _tipBottom>
+            <L.Button onClick={() => setDisplay(!display)} _tipBottom>
               Bottom
             </L.Button>
           </L.Tooltip>
@@ -82,7 +82,10 @@ export const Tooltip = () => {
             isOpen={open}
             title="Tooltip without positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning"
           >
-            <L.Button style={{ position: "absolute", left: 0, bottom: "50px" }}>
+            <L.Button
+              name="rightSide"
+              style={{ position: 'absolute', left: 0, bottom: '50px' }}
+            >
               defines the right side
             </L.Button>
           </L.Tooltip>
@@ -91,6 +94,7 @@ export const Tooltip = () => {
             title="Tooltip without positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning"
           >
             <L.Button
+              name="leftSide"
               style={{ position: 'absolute', right: 0, bottom: '50px' }}
             >
               defines the left side
@@ -101,6 +105,7 @@ export const Tooltip = () => {
             title="Tooltip without positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning"
           >
             <L.Button
+              name="topSidePressedToLeft"
               style={{ position: 'absolute', left: '140px', bottom: '10px' }}
             >
               no positioning
@@ -111,6 +116,7 @@ export const Tooltip = () => {
             title="Tooltip without positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning"
           >
             <L.Button
+              name="topSidePressedToRight"
               style={{ position: 'absolute', right: '140px', bottom: '10px' }}
             >
               no positioning

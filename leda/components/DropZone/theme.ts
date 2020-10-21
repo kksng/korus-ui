@@ -3,6 +3,7 @@ export const defaultDropZoneTheme = {
   button:               'dropzone-button',
   content:              'dropzone-content',
   description:          'dropzone-description',
+  fileDeleteIconWrapper:'dropzone-delete-icon-wrapper',
   fileDeleteIcon:       'dropzone-delete-icon',
   fileDeleteLink:       'dropzone-file-delete internal',
   fileDownloadLink:     'dropzone-file-download internal',

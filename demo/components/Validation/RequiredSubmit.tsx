@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
-const Label = ({ children }) => (
+const Label: React.FC<{}> = ({ children }) => (
   <L.Span
     _width15
     style={{ display: 'inline-block', marginRight: '10px' }}
@@ -25,7 +25,7 @@ export const RequiredSubmit = (props: StoryProps) => {
           </Label>
           <L.AutoComplete
             data={['Berlin', 'Paris']}
-            onChange={ev => setTextValue(ev.component.value)}
+            onChange={(ev) => setTextValue(ev.component.value)}
             value={textValue}
             isRequired
             requiredMessage="Required field"

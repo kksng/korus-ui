@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - MultiSelect: Fixed checkbox classes 
 - AutoComplete: Fixed component's behavior on enter press by synchronizing selected and highlighted values
 - ToolTip: Fixed calculation of position for selecting the opening side
-- DropZone: Prohibited deleting files in disabled mode
+- DropZone: Prohibited deleting files in disabled mode 
 
 ## [0.32.0] - 2020-10-12
 

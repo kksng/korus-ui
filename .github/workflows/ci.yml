@@ -42,7 +42,7 @@ jobs:
         with:
           path: node_modules
           key: package-lock=${{ hashFiles('package-lock.json') }}
-      - run: npm run tsc
+      - run: npm run tsc:withDemo
   cypress:
     runs-on: ubuntu-16.04
     needs: install

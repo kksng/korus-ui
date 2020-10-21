@@ -13,10 +13,10 @@ export const BlockElements = () => (
 );
 `;
 
-export const BlockElements = () => (
+export const BlockElements = ({ ...restProps }) => (
   <L.Div _box _inner>
     <L.Div style={{ backgroundColor: '#9fcdeb' }} _inner>
-        Элемент Div
+      Элемент Div
       <L.P style={{ backgroundColor: '#ebe9ae' }} _inner _box>Элемент P</L.P>
     </L.Div>
   </L.Div>

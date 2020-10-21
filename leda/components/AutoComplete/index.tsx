@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   isString, isBoolean,
 } from 'lodash';
+
 import { SuggestionList } from '../../src/SuggestionList';
 import {
   bindFunctionalRef,
@@ -26,13 +27,23 @@ import {
   clearButtonClickHandlerCreator,
   createResetHandler,
 } from './handlers';
-
 import {
-  AutoCompleteProps, AutoCompleteRefCurrent, Suggestion,
+  AutoCompleteProps,
+  AutoCompleteRefCurrent,
+  Suggestion,
+  AutoCompleteState,
 } from './types';
 import { useValidation } from '../Validation';
 import { LedaContext } from '../LedaProvider';
 
+/**
+ * AutoComplete component renders input with dropdown list
+ * autocompletes typed suggestions
+ *
+ * @param {AutoCompleteProps} properties of component
+ *
+ * @return {React.ReactElement}
+ */
 export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: React.Ref<AutoCompleteRefCurrent>): React.ReactElement | null => {
   const {
     autoComplete = 'off',
@@ -50,7 +61,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     invalidMessageRender,
     isDisabled,
     isLoading,
-    isOpen,
+    isOpen: isOpenProp,
     isRequired,
     isValid: isValidProp,
     itemRender,
@@ -73,46 +84,45 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     textField,
     theme: themeProp,
     validator,
-    value: propValue,
+    value: valueProp,
     ...restProps
   } = useProps(props);
 
   // todo handle props format errors
 
-  const isValueControlled = propValue === null || isString(propValue);
-
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.autoComplete);
 
-  const [stateValue, setStateValue] = React.useState('');
-  const [isFocused, setIsFocused] = React.useState(false);
-  const [selectedSuggestion, setSelectedSuggestion] = React.useState<Suggestion>(null);
-  const [highlightedSuggestion, setHighlightedSuggestion] = React.useState<Suggestion>(null);
-  const [lastCorrectValue, setLastCorrectValue] = React.useState('');
+  const autoCompleteState: AutoCompleteState = {
+    highlightedSuggestion: null,
+    selectedSuggestion: null,
+    isFocused: false,
+    isOpen: false,
+    lastCorrectValue: '',
+    value: '',
+  };
 
-  const autoCompleteState = React.useMemo(() => ({
-    highlightedSuggestion,
-    isFocused,
-    lastCorrectValue,
-    selectedSuggestion,
-    stateValue,
-  }), [highlightedSuggestion, isFocused, lastCorrectValue, selectedSuggestion, stateValue]);
+  const [state, mergeState] = React.useReducer((oldState: AutoCompleteState, newState: Partial<AutoCompleteState>) => ({
+    ...oldState, ...newState,
+  }), autoCompleteState);
 
   const {
     isValid, validateCurrent, InvalidMessage,
-  } = useValidation(props, {
-    value: stateValue,
-  }, {
+  } = useValidation(props, state, {
     reset: createResetHandler({
-      props, setStateValue, value: '',
+      props, mergeState, value: '',
     }),
   });
 
-  const value = isValueControlled ? propValue : stateValue;
+  const {
+    value: stateValue, highlightedSuggestion, isFocused, selectedSuggestion,
+  } = state;
+  const isValueControlled = valueProp === null || isString(valueProp);
+  const value = valueProp === undefined ? stateValue : valueProp;
   const inputValue = value === null ? '' : value;
   const suggestionListValue = value === undefined ? null : value;
 
   const suggestions = getSuggestions({
-    data, textField, value, filterRule, isOpen, minSearchLength, shouldShowAllSuggestions, searchFields,
+    data, textField, value, filterRule, isOpen: isOpenProp, minSearchLength, shouldShowAllSuggestions, searchFields,
   });
 
   const isSuggestionsListOpen = (() => {
@@ -120,7 +130,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
 
     if (suggestions.length === 0 && safeTrim(value).length === 0) return false;
 
-    if (isBoolean(isOpen)) return isOpen;
+    if (isBoolean(isOpenProp)) return isOpenProp;
 
     // do not show dropdown list until minimal input length is reached
     if (
@@ -130,68 +140,26 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
       return false;
     }
 
-    return isFocused;
+    return state.isOpen;
   })();
 
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
-  const inputChangeHandler = inputChangeHandlerCreator({
-    data,
-    textField,
-    name,
-    onChange,
-    isValueControlled,
-    setSelectedSuggestion,
-    setStateValue,
-  });
-  const suggestionClickHandler = suggestionClickHandlerCreator({
-    props,
-    lastCorrectValue,
-    setLastCorrectValue,
-    data,
-    textField,
-    name,
-    onChange,
-    isValueControlled,
-    setHighlightedSuggestion,
-    setStateValue,
-    setIsFocused,
-  });
-  const clearButtonClickHandler = clearButtonClickHandlerCreator({
-    inputRef,
-    name,
-    onChange,
-    isValueControlled,
-    setStateValue,
-    isDisabled,
-  });
-  const inputFocusHandler = inputFocusHandlerCreator({
-    onFocus,
-    setIsFocused,
-  });
-  const inputBlurHandler = inputBlurHandlerCreator({
-    isValueControlled,
-    lastCorrectValue,
-    props,
-    setIsFocused,
-    setLastCorrectValue,
-    setStateValue,
-    validateCurrent,
-    value,
-  });
-  const inputKeyDownHandler = inputKeyDownHandlerCreator({
-    lastCorrectValue,
-    setLastCorrectValue,
-    highlightedSuggestion,
-    isSuggestionsListOpen,
-    isValueControlled,
-    props,
-    setHighlightedSuggestion,
-    setSelectedSuggestion,
-    setIsFocused,
-    setStateValue,
-    suggestions,
-  });
+  const handlerData = {
+    props, state, mergeState, isValueControlled, inputRef, validate: validateCurrent, value,
+  };
+
+  const inputChangeHandler = inputChangeHandlerCreator(handlerData);
+  const suggestionClickHandler = suggestionClickHandlerCreator(handlerData);
+  const clearButtonClickHandler = clearButtonClickHandlerCreator(handlerData);
+  const inputFocusHandler = inputFocusHandlerCreator(handlerData);
+  const inputBlurHandler = inputBlurHandlerCreator(handlerData);
+  const inputKeyDownHandler = inputKeyDownHandlerCreator({ ...handlerData, suggestions, isSuggestionsListOpen });
+  const inputClickHandler = () => {
+    mergeState({
+      isOpen: true,
+    });
+  };
 
   const shouldShowClearButton = hasClearButton && !isDisabled && value && value.length > 0;
 
@@ -240,6 +208,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
           disabled={isDisabled}
           form={form}
           name={name}
+          onClick={inputClickHandler}
           onBlur={inputBlurHandler}
           onChange={inputChangeHandler}
           onFocus={inputFocusHandler}

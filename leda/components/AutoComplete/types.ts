@@ -1,106 +1,12 @@
 import * as React from 'react';
+
 import { FILTER_RULES } from '../../utils';
 import { ValidationProps } from '../Validation/types';
-import { CustomRender, Values } from '../../commonTypes';
+import { CustomRender, Values, SomeObject } from '../../commonTypes';
 import { SuggestionListProps } from '../../src/SuggestionList/types';
 import { UlProps } from '../Ul';
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENTS_NAMESPACES } from '../../constants';
-
-/** DataObject - обьект с данными для отображения в выпадающем списке
- * Обьект должен содержать минимум одно поле (TextField), название которого передаётся через атрибут textField
- * его значение должно быть строкой, используется для отображения
- *
- * см. примеры в документации
- * */
-
-export interface DataObject {
-  [textField: string]: any,
-}
-
-export type Suggestion = DataObject | string | number | null;
-
-// Значения, которые приходят в onChange, помогают определить, какое событие вызвало срабатывание onChange
-export enum CHANGE_METHOD {
-  type = 'type', // ввод символа с клавиатуры
-  click = 'click', // клик по элементу в выпадающем списке
-  enter = 'enter', // нажатие на enter при выборе элемента в выпадающем списке с клавиатуры
-  trigger = 'trigger', // программный вызвов onChange
-  up = 'up', // нажатие вверх при переходе по выпадающему списку с клавиатуры
-  down = 'down', // нажатие вниз при переходе по выпадающему списку с клавиатуры
-  escape = 'escape', // нажатие escape
-  clear = 'clear', // клик по иконке закрытия в инпуте
-  reset = 'reset', // сборс значения
-}
-
-export interface KeyboardChangeEvent<T extends Suggestion> extends React.KeyboardEvent<HTMLInputElement> {
-  component: {
-    value: string,
-    method: CHANGE_METHOD.enter | CHANGE_METHOD.down | CHANGE_METHOD.up,
-    name?: string,
-    suggestion?: T,
-  },
-}
-
-export interface MouseChangeEvent<T extends Suggestion> extends React.MouseEvent<HTMLElement> {
-  component: {
-    value: string,
-    method: CHANGE_METHOD.click | CHANGE_METHOD.clear,
-    name?: string,
-    suggestion?: T,
-  },
-}
-
-export interface TypeChangeEvent<T extends Suggestion> extends React.ChangeEvent<HTMLInputElement> {
-  component: {
-    value: string,
-    method: CHANGE_METHOD.type,
-    name?: string,
-    suggestion?: T,
-  },
-}
-
-export interface TriggerChangeEvent<T extends Suggestion> extends React.FocusEvent<HTMLInputElement> {
-  component: {
-    value: string,
-    method: CHANGE_METHOD.trigger,
-    name?: string,
-    suggestion?: T,
-  },
-}
-
-export interface ResetChangeEvent<T extends Suggestion> {
-  component: {
-    value: string,
-    method: CHANGE_METHOD.reset,
-    name?: string,
-    suggestion?: T,
-  },
-}
-
-export type ChangeEvent<T extends Suggestion = Suggestion> = TypeChangeEvent<T> | KeyboardChangeEvent<T> | MouseChangeEvent<T> | TriggerChangeEvent<T> | ResetChangeEvent<T>;
-
-export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
-  component: {
-    value: string,
-    name?: string,
-  },
-}
-
-export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
-  component: {
-    isValid: boolean,
-    name?: string,
-    value: string,
-  },
-}
-
-export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
-  component: {
-    value: string,
-    name?: string,
-  },
-}
 
 export interface AutoCompleteProps<T extends Suggestion = Suggestion> extends ValidationProps {
   /** Браузерное автозаполнение поля ввода, по умолчанию "off" */
@@ -169,13 +75,109 @@ export interface AutoCompleteProps<T extends Suggestion = Suggestion> extends Va
   [x: string]: unknown,
 }
 
+export interface AutoCompleteRefCurrent {
+  wrapper: HTMLElement | null,
+  input: HTMLInputElement | null,
+}
+
 export interface AutoCompleteState {
   highlightedSuggestion: Suggestion,
   isFocused: boolean,
+  isOpen: boolean,
   lastCorrectValue: string,
   selectedSuggestion: Suggestion,
-  stateValue: string,
+  value: string | null,
 }
+
+// The values that are sent to onChange help you determine which event triggered onChange
+export enum CHANGE_METHOD {
+  type = 'type', // entering a character from the keyboard
+  click = 'click', // click on an item in the dropdown list
+  enter = 'enter', // press enter when selecting an item from the dropdown list using the keyboard
+  trigger = 'trigger', // onChange call
+  up = 'up', // pressing up when navigating the dropdown list from the keyboard
+  down = 'down', // pressing down when navigating the dropdown list from the keyboard
+  escape = 'escape', // pressing escape
+  clear = 'clear', // click on the closing icon in the input
+  reset = 'reset', // value reset
+}
+
+export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
+  component: {
+    isValid: boolean,
+    name?: string,
+    value: string,
+  },
+}
+
+export type ChangeEvent<T extends Suggestion = Suggestion> = TypeChangeEvent<T> | KeyboardChangeEvent<T> | MouseChangeEvent<T> | TriggerChangeEvent<T> | ResetChangeEvent<T>;
+
+/** DataObject - object with data to display in the dropdown list
+ * The object must contain at least one field (TextField), the name of which is passed through the textField attribute
+ * its value must be a string, used for displaying
+ *
+ * see examples in documentation
+ * */
+export interface DataObject {
+  [textField: string]: any,
+}
+
+export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
+  component: {
+    value: string,
+    name?: string,
+  },
+}
+
+export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
+  component: {
+    value: string,
+    name?: string,
+  },
+}
+
+export interface HandlerCreatorData {
+  props: AutoCompleteProps,
+  state: AutoCompleteState,
+  mergeState: React.Dispatch<Partial<AutoCompleteState>>,
+  value: AutoCompleteState['value'],
+  inputRef: React.MutableRefObject<HTMLInputElement | null>,
+  validate: (value?: string | number | SomeObject | null) => boolean,
+  isValueControlled: boolean,
+}
+
+export interface InputElementProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  ref: React.Ref<HTMLInputElement | null>,
+}
+
+export interface KeyboardChangeEvent<T extends Suggestion> extends React.KeyboardEvent<HTMLInputElement> {
+  component: {
+    value: string,
+    method: CHANGE_METHOD.enter | CHANGE_METHOD.down | CHANGE_METHOD.up,
+    name?: string,
+    suggestion?: T,
+  },
+}
+
+export interface MouseChangeEvent<T extends Suggestion> extends React.MouseEvent<HTMLElement> {
+  component: {
+    value: string,
+    method: CHANGE_METHOD.click | CHANGE_METHOD.clear,
+    name?: string,
+    suggestion?: T,
+  },
+}
+
+export interface ResetChangeEvent<T extends Suggestion> {
+  component: {
+    value: string,
+    method: CHANGE_METHOD.reset,
+    name?: string,
+    suggestion?: T,
+  },
+}
+
+export type Suggestion = DataObject | string | number | null;
 
 export interface SuggestionsVal {
   data: Suggestion[],
@@ -188,11 +190,20 @@ export interface SuggestionsVal {
   searchFields?: string[],
 }
 
-export interface AutoCompleteRefCurrent {
-  wrapper: HTMLElement | null,
-  input: HTMLInputElement | null,
+export interface TriggerChangeEvent<T extends Suggestion> extends React.FocusEvent<HTMLInputElement> {
+  component: {
+    value: string,
+    method: CHANGE_METHOD.trigger,
+    name?: string,
+    suggestion?: T,
+  },
 }
 
-export interface InputElementProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  ref: React.Ref<HTMLInputElement | null>,
+export interface TypeChangeEvent<T extends Suggestion> extends React.ChangeEvent<HTMLInputElement> {
+  component: {
+    value: string,
+    method: CHANGE_METHOD.type,
+    name?: string,
+    suggestion?: T,
+  },
 }
