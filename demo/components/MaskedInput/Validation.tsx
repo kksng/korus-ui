@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 
-export const Validation = (): React.ReactElement => {
+export const Validation = ({ ...restProps }): React.ReactElement => {
   const [MIValue, setMIValue] = React.useState('1234567');
   return (
     <L.Div _box _inner>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   isFunction, isObject,
 } from 'lodash';
+
 import {
   correctValue, getSuggestionFromValue,
 } from './helpers';
@@ -13,30 +14,27 @@ import {
   FocusEvent,
   DataObject,
   Suggestion,
+  AutoCompleteState,
+  HandlerCreatorData,
 } from './types';
 import { getText } from '../../src/SuggestionList/helpers';
-import { CustomEventHandler, SetState } from '../../commonTypes';
+import { CustomEventHandler } from '../../commonTypes';
 import { SuggestionTarget } from '../../src/SuggestionList/types';
 
+/**
+ * Function creates clear button click handler
+ * @param {HandlerCreatorData} props
+ *
+ * @return {React.MouseEventHandler<HTMLElement>} - clear button click event handler
+ */
 export const clearButtonClickHandlerCreator = ({
-  inputRef,
-  isDisabled,
-  isValueControlled,
-  name,
-  onChange,
-  setStateValue,
-}: {
-  inputRef: React.MutableRefObject<HTMLInputElement | null>,
-  isDisabled?: boolean,
-  isValueControlled: boolean,
-  name?: string,
-  onChange: (event: ChangeEvent) => void,
-  setStateValue: SetState<string>,
-}): React.MouseEventHandler<HTMLElement> => (event) => {
+  props, mergeState, inputRef, isValueControlled,
+}: HandlerCreatorData): React.MouseEventHandler<HTMLElement> => (event) => {
+  const { isDisabled, name, onChange } = props;
+
   if (isDisabled) return;
+
   if (inputRef.current) inputRef.current.focus();
-  // todo check it is needed
-  // setIsFocused(true);
 
   const customEvent: ChangeEvent = {
     ...event,
@@ -49,35 +47,22 @@ export const clearButtonClickHandlerCreator = ({
   };
 
   if (isFunction(onChange)) onChange(customEvent);
-  if (!isValueControlled) setStateValue('');
+  if (!isValueControlled) mergeState({ value: '' });
 };
 
+/**
+ * Function creates suggestion list click handler
+ * @param {HandlerCreatorData} props
+ *
+ * @returns {CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget>} suggestion list click handler
+ */
 export const suggestionClickHandlerCreator = ({
-  props,
-  lastCorrectValue,
-  setLastCorrectValue,
-  data,
-  isValueControlled,
-  name,
-  onChange,
-  setIsFocused,
-  setStateValue,
-  setHighlightedSuggestion,
-  textField,
-}: {
-  props: AutoCompleteProps,
-  lastCorrectValue: string,
-  setLastCorrectValue: SetState<string>,
-  data: Suggestion[],
-  textField?: string,
-  name?: string,
-  onChange: (event: ChangeEvent) => void,
-  isValueControlled: boolean,
-  setStateValue: SetState<string>,
-  setIsFocused: SetState<boolean>,
-  setHighlightedSuggestion: SetState<Suggestion>,
-}): CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget> => (event) => {
-  const { shouldCorrectValue } = props;
+  props, state, mergeState, isValueControlled,
+}: HandlerCreatorData): CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget> => (event) => {
+  const {
+    shouldCorrectValue, data, name, onChange, textField,
+  } = props;
+  const { lastCorrectValue } = state;
 
   if (isObject(event.target.value) && textField === undefined) {
     // todo handle error
@@ -92,7 +77,9 @@ export const suggestionClickHandlerCreator = ({
     ? event.target.value as DataObject
     : getSuggestionFromValue({ data, value, textField });
 
-  setHighlightedSuggestion(suggestion);
+  mergeState({
+    highlightedSuggestion: suggestion,
+  });
 
   if (shouldCorrectValue) {
     correctValue({
@@ -100,8 +87,7 @@ export const suggestionClickHandlerCreator = ({
       isValueControlled,
       lastCorrectValue,
       props,
-      setLastCorrectValue,
-      setStateValue,
+      mergeState,
       value,
     });
   }
@@ -118,34 +104,35 @@ export const suggestionClickHandlerCreator = ({
 
   if (isFunction(onChange)) onChange(customEvent);
 
-  if (!isValueControlled) setStateValue(value);
+  if (!isValueControlled) mergeState({ value });
 
-  setIsFocused(false);
+  mergeState({
+    isFocused: false,
+    isOpen: false,
+  });
 };
 
-
+/**
+ * Function creates input change event handler
+ * @param {HandlerCreatorData} props
+ *
+ * @returns {React.ChangeEventHandler<HTMLInputElement>} input change event handler
+ */
 export const inputChangeHandlerCreator = ({
-  data,
-  isValueControlled,
-  name,
-  onChange,
-  setStateValue,
-  setSelectedSuggestion,
-  textField,
-}: {
-  data: Suggestion[],
-  isValueControlled: boolean,
-  name?: string,
-  onChange: (event: ChangeEvent) => void,
-  setStateValue: SetState<string>,
-  setSelectedSuggestion: SetState<Suggestion>,
-  textField?: string,
-}): React.ChangeEventHandler<HTMLInputElement> => (event) => {
+  props, mergeState, isValueControlled,
+}: HandlerCreatorData): React.ChangeEventHandler<HTMLInputElement> => (event) => {
+  const {
+    data, name, onChange, textField,
+  } = props;
+
   const { value } = event.currentTarget;
 
   const suggestion = getSuggestionFromValue({ data, value, textField });
 
-  setSelectedSuggestion(suggestion);
+  mergeState({
+    highlightedSuggestion: suggestion,
+    selectedSuggestion: suggestion,
+  });
 
   const customEvent: ChangeEvent = {
     ...event,
@@ -158,39 +145,33 @@ export const inputChangeHandlerCreator = ({
   };
 
   if (isFunction(onChange)) onChange(customEvent);
-  if (!isValueControlled) setStateValue(value);
+  if (!isValueControlled) mergeState({ value });
 };
 
+/**
+ * Function creates input blur event handler
+ * @param {HandlerCreatorData} props
+ *
+ * @returns {React.FocusEventHandler<HTMLInputElement>} input blur event handler
+ */
 export const inputBlurHandlerCreator = ({
-  isValueControlled,
-  lastCorrectValue,
-  props,
-  setIsFocused,
-  setLastCorrectValue,
-  setStateValue,
-  validateCurrent,
-  value,
-}: {
-  isValueControlled: boolean,
-  lastCorrectValue: string,
-  props: AutoCompleteProps,
-  setIsFocused: SetState<boolean>,
-  setLastCorrectValue: SetState<string>,
-  setStateValue: SetState<string>,
-  validateCurrent: () => boolean,
-  value?: string | null,
-}): React.FocusEventHandler<HTMLInputElement> => (event) => {
+  props, state, mergeState, isValueControlled, validate, value,
+}: HandlerCreatorData): React.FocusEventHandler<HTMLInputElement> => (event) => {
   const { shouldCorrectValue, onBlur, name } = props;
-  const isValid = validateCurrent();
-  setIsFocused(false);
+  const { lastCorrectValue } = state;
+  const isValid = validate();
+
+  mergeState({
+    isFocused: false,
+    isOpen: false,
+  });
 
   const newValue = shouldCorrectValue ? correctValue({
     event,
     isValueControlled,
     lastCorrectValue,
     props,
-    setLastCorrectValue,
-    setStateValue,
+    mergeState,
     value,
   }) : event.target.value;
 
@@ -206,14 +187,20 @@ export const inputBlurHandlerCreator = ({
   if (isFunction(onBlur)) onBlur(customEvent);
 };
 
+/**
+ * Function creates input focus event handler
+ * @param {HandlerCreatorData} props
+ *
+ * @returns {React.FocusEventHandler<HTMLInputElement>} input focus event handler
+ */
 export const inputFocusHandlerCreator = ({
-  onFocus,
-  setIsFocused,
-}: {
-  onFocus?: (event: FocusEvent) => void,
-  setIsFocused: SetState<boolean>,
-}): React.FocusEventHandler<HTMLInputElement> => (event) => {
-  setIsFocused(true);
+  props, mergeState,
+}: HandlerCreatorData): React.FocusEventHandler<HTMLInputElement> => (event) => {
+  const { onFocus } = props;
+
+  mergeState({
+    isFocused: true,
+  });
 
   const customEvent: FocusEvent = {
     ...event,
@@ -226,31 +213,15 @@ export const inputFocusHandlerCreator = ({
   if (isFunction(onFocus)) onFocus(customEvent);
 };
 
+/**
+ * Function creates input key down event handler
+ * @param {HandlerCreatorData & {suggestions: Suggestion[], isSuggestionsListOpen: boolean}} props
+ *
+ * @returns {React.KeyboardEventHandler<HTMLInputElement>} input key down event handler
+ */
 export const inputKeyDownHandlerCreator = ({
-  lastCorrectValue,
-  setLastCorrectValue,
-  highlightedSuggestion,
-  isSuggestionsListOpen,
-  isValueControlled,
-  props,
-  setHighlightedSuggestion,
-  setSelectedSuggestion,
-  setIsFocused,
-  setStateValue,
-  suggestions,
-}: {
-  lastCorrectValue: string,
-  setLastCorrectValue: SetState<string>,
-  highlightedSuggestion: Suggestion,
-  isSuggestionsListOpen: boolean,
-  isValueControlled: boolean,
-  props: AutoCompleteProps,
-  setHighlightedSuggestion: SetState<Suggestion>,
-  setSelectedSuggestion: SetState<Suggestion>,
-  setStateValue: SetState<string>,
-  setIsFocused: SetState<boolean>,
-  suggestions: Suggestion[],
-}): React.KeyboardEventHandler<HTMLInputElement> => (event) => {
+  props, state, mergeState, isValueControlled, suggestions, isSuggestionsListOpen,
+}: HandlerCreatorData & {suggestions: Suggestion[], isSuggestionsListOpen: boolean}): React.KeyboardEventHandler<HTMLInputElement> => (event) => {
   const {
     shouldCorrectValue,
     onChange,
@@ -261,30 +232,39 @@ export const inputKeyDownHandlerCreator = ({
     textField,
   } = props;
 
+  const { lastCorrectValue, highlightedSuggestion } = state;
+
   // in some cases isFocused is set false, revert it back
-  if (!isSuggestionsListOpen) setIsFocused(true);
+  if (!isSuggestionsListOpen) {
+    mergeState({
+      isFocused: true,
+      isOpen: true,
+    });
+  }
 
   const suggestionIndex = highlightedSuggestion !== null
     ? suggestions.indexOf(highlightedSuggestion || '')
     : suggestions.indexOf(placeholder || '');
 
   if (event.key === 'ArrowDown' || event.key === 'Down') {
-    // предотвращаем скроллинг страницы
+    // prevent page scrolling
     event.preventDefault();
 
-    // новый индекс, механизм работает как барабан
+    // new index, the mechanism works like a roller
     const nextIndex = (suggestionIndex + 1) % suggestions.length;
 
     const newHighlightedSuggestion = suggestions[nextIndex];
 
-    setHighlightedSuggestion(newHighlightedSuggestion);
+    mergeState({
+      highlightedSuggestion: newHighlightedSuggestion,
+    });
   }
 
   if (event.key === 'ArrowUp' || event.key === 'Up') {
-    // предотвращаем скроллинг страницы
+    // prevent page scrolling
     event.preventDefault();
 
-    // новый индекс, механизм работает как барабан
+    // new index, the mechanism works like a roller
     const nextIndex = (() => {
       if (suggestionIndex <= 0) return suggestions.length - 1;
 
@@ -293,7 +273,9 @@ export const inputKeyDownHandlerCreator = ({
 
     const newHighlightedSuggestion = suggestions[nextIndex];
 
-    setHighlightedSuggestion(newHighlightedSuggestion);
+    mergeState({
+      highlightedSuggestion: newHighlightedSuggestion,
+    });
   }
 
   if (event.key === 'Enter') {
@@ -314,7 +296,12 @@ export const inputKeyDownHandlerCreator = ({
       const value = getText(highlightedSuggestion, textField);
 
       // the dropdown list is open, enter press should choose a value
-      if (isSuggestionsListOpen) setIsFocused(false);
+      if (isSuggestionsListOpen) {
+        mergeState({
+          isFocused: false,
+          isOpen: false,
+        });
+      }
 
       if (shouldCorrectValue) {
         correctValue({
@@ -322,8 +309,7 @@ export const inputKeyDownHandlerCreator = ({
           isValueControlled,
           lastCorrectValue,
           props,
-          setLastCorrectValue,
-          setStateValue,
+          mergeState,
           value,
         });
       }
@@ -339,15 +325,18 @@ export const inputKeyDownHandlerCreator = ({
 
       // Change value only if suggestions list is open
       if (isSuggestionsListOpen) {
-        setSelectedSuggestion(highlightedSuggestion);
+        mergeState({ selectedSuggestion: highlightedSuggestion });
         if (isFunction(onChange)) onChange(customEvent);
-        if (!isValueControlled) setStateValue(value);
+        if (!isValueControlled) mergeState({ value });
       }
     }
   }
 
   if (event.key === 'Escape' || event.key === 'Esc') {
-    setIsFocused(false);
+    mergeState({
+      isFocused: false,
+      isOpen: false,
+    });
   }
 
   if (isFunction(onKeyDown)) onKeyDown(event);
@@ -361,16 +350,27 @@ export const inputKeyDownHandlerCreator = ({
   // }
 };
 
+/**
+ * Function creates reset handler
+ * @param {AutoCompleteProps} props.props - properties of component
+ * @param {React.Dispatch<Partial<AutoCompleteState>>} props.mergeState - set state action to set value state
+ * @param {string} props.value - default value
+ *
+ * @returns {() => void} reset handler
+ */
 export const createResetHandler = ({
   props,
-  setStateValue,
+  mergeState,
   value,
 }: {
   props: AutoCompleteProps,
-  setStateValue: SetState<string>,
+  mergeState: React.Dispatch<Partial<AutoCompleteState>>,
   value: string,
 }) => () => {
-  setStateValue(value);
+  mergeState({
+    value,
+  });
+
   props.onChange({
     component: {
       value,

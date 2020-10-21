@@ -78,3 +78,27 @@ Cypress.Commands.add('paste', {prevSubject: true}, (element, pastePayload) => {
   element[0].dispatchEvent(pasteEvent);
   return element
 });
+
+/**
+ * Command changes default behavior of cy.window().blur() event
+ * so that it simulates blur event on last active element
+ */
+Cypress.Commands.add('windowBlur', {prevSubject: true}, (element) => {
+  cy.window()
+    .blur().then(() => {
+      element.blur();
+      return element;
+    })
+})
+
+/**
+ * Command changes default behavior of cy.window().focus() event
+ * so that it simulates returning focus to last active element
+ */
+Cypress.Commands.add('windowFocus', {prevSubject: true}, (element) => {
+  cy.window()
+    .focus().then(() => {
+      element.focus();
+      return element;
+    })
+})

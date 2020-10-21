@@ -6,6 +6,7 @@ export const DropZone = (): React.ReactElement => {
     acceptedFiles: [{ name: 'external file', link: 'external file link' }],
     rejectedFiles: [],
   });
+  const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
 
   return (
     <L.Div _demoStory>
@@ -29,10 +30,12 @@ export const DropZone = (): React.ReactElement => {
         value={value}
         onChange={({ component: { value } }) => setValue(value)}
         isRequired
+        isDisabled={isDisabled}
       />
       <br />
       <L.Button onClick={() => setValue(null)}>Set state as null</L.Button>
-
+      <br />
+      <L.Button name="disable" onClick={() => setIsDisabled(!isDisabled)}>Disable / Enable</L.Button>
       <br />
 
       <L.Span>Uncontrolled (prop value is null)</L.Span>

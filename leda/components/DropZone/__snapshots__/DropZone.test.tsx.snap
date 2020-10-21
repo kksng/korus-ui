@@ -110,6 +110,7 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
               "description": "dropzone-description",
               "disabled": "disabled",
               "fileDeleteIcon": "dropzone-delete-icon",
+              "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
               "invalid": "danger",
@@ -147,6 +148,7 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
             "description": "dropzone-description",
             "disabled": "disabled",
             "fileDeleteIcon": "dropzone-delete-icon",
+            "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
             "invalid": "danger",
@@ -305,6 +307,7 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
               "description": "dropzone-description",
               "disabled": "disabled",
               "fileDeleteIcon": "dropzone-delete-icon",
+              "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
               "invalid": "danger",
@@ -342,6 +345,7 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
             "description": "dropzone-description",
             "disabled": "disabled",
             "fileDeleteIcon": "dropzone-delete-icon",
+            "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
             "invalid": "danger",
@@ -505,6 +509,7 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
               "description": "dropzone-description",
               "disabled": "disabled",
               "fileDeleteIcon": "dropzone-delete-icon",
+              "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
               "invalid": "danger",
@@ -542,6 +547,7 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
             "description": "dropzone-description",
             "disabled": "disabled",
             "fileDeleteIcon": "dropzone-delete-icon",
+            "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
             "invalid": "danger",
@@ -627,7 +633,7 @@ exports[`DropZone SNAPSHOTS should render file list 1`] = `
         style="display: none;"
       />
       <a
-        class="pointer"
+        class="pointer dropzone-delete-icon-wrapper"
       >
         <i
           class="dropzone-delete-icon"
@@ -649,7 +655,7 @@ exports[`DropZone SNAPSHOTS should render file list 1`] = `
         style="display: none;"
       />
       <a
-        class="pointer"
+        class="pointer dropzone-delete-icon-wrapper"
       >
         <i
           class="dropzone-delete-icon"
@@ -671,7 +677,7 @@ exports[`DropZone SNAPSHOTS should render file list 1`] = `
         style="display: none;"
       />
       <a
-        class="pointer"
+        class="pointer dropzone-delete-icon-wrapper"
       >
         <i
           class="dropzone-delete-icon"

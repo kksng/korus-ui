@@ -41,9 +41,11 @@ export const createChangeHandler = (
   ev,
   removedFile,
 ) => {
-  const { value: valueProp, onChange } = props;
+  const { value: valueProp, onChange, isDisabled } = props;
 
   const value = valueProp || state;
+
+  if (isDisabled) return value;
 
   const [acceptedFiles, rejectedFiles] = checkFiles(props, state, accepted, rejected);
 

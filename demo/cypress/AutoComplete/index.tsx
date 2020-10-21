@@ -11,6 +11,8 @@ export const AutoComplete = (): React.ReactElement => {
   const [stringValue3, setStringValue3] = React.useState<string | null>(null);
   const [stringValue5, setStringValue5] = React.useState<string | null>(null);
   const [objectValue6, setObjectValue6] = React.useState<string | null>(null);
+  const [stringValue7, setStringValue7] = React.useState<string | null>(null);
+
   const itemRender1 = ({
     Element, elementProps, componentProps,
   }: any) => {
@@ -184,6 +186,23 @@ export const AutoComplete = (): React.ReactElement => {
           textField="name"
           value={objectValue1}
           _width30
+        />
+      </L.Div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <L.Div _demoStory _flexRow>
+      <L.AutoComplete
+        name="AutoComplete7"
+        data={['1', '2', '3', '33']}
+        onChange={(event) => setStringValue7(event.component.value)}
+        value={stringValue7}
+        minSearchLength={0}
         />
       </L.Div>
     </>
