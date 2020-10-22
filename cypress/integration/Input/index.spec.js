@@ -69,15 +69,13 @@ describe('Input', () => {
         .type('oklhdskjgfлдопрлдшп9304587230')
         .should('have.value', 'oklhdskjgfлдопрлдшп9304587230');
     });
-    it('Paste handler should add string to existing value, not replace it', () => {
+    it('Should paste text starting from cursor position', () => {
       cy.get('input#corr-Input')
-        .type('8888888')
-        .should('have.value', '8888888')
-        .get('input#corr-Input')
-        .paste('pasted')
-        .should('have.value', '8888888pasted')
-        .paste('pasted')
-        .should('have.value', '8888888pastedpasted')
+        .type('8888')
+        .should('have.value', '8888')
+        .type('{leftarrow}')
+        .paste('sssss')
+        .should('have.value', '888sssss8')
     });
     it('IsRequired should check if the field is required (highlight the field in red if nothing is entered and press the submit button)', () => {
       cy.get('input#checkDangerClass')
