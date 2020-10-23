@@ -14,11 +14,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DropDownLink: Close on mouseleave
 - DropDown: Close on button and item click
 - Input: Fixed paste event handler, paste is handled by default
-- DropDownSelect: Removed dropdown opening logic from focus handler to click handler 
-- MultiSelect: Fixed checkbox classes 
+- DropDownSelect: Removed dropdown opening logic from focus handler to click handler
+- MultiSelect: Fixed checkbox classes
 - AutoComplete: Fixed component's behavior on enter press by synchronizing selected and highlighted values
 - ToolTip: Fixed calculation of position for selecting the opening side
-- DropZone: Prohibited deleting files in disabled mode 
+- DropZone: Prohibited deleting files in disabled mode
+- FileDrop: Fixed danger class on error.
 
 ## [0.32.0] - 2020-10-12
 
