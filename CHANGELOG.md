@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.33.0] - 2020-10-26
 
 ### Added
+- README: Added description to README.md
 - DatePicker: Added tests for Input, onEnterPress event, test for pressing the "Backspace", "Esc" and "Tab"
 
 ### Fixed
