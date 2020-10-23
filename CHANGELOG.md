@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DatePicker: Added tests for Input, onEnterPress event, test for pressing the "Backspace", "Esc" and "Tab"
 
 ### Fixed
+- DropDownLink: Close on mouseleave
+- DropDown: Close on button and item click
 - Input: Fixed paste event handler, paste is handled by default
 - DropDownSelect: Removed dropdown opening logic from focus handler to click handler 
 - MultiSelect: Fixed checkbox classes 
