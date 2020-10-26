@@ -33,7 +33,7 @@ export { Password } from './Password';
 export { Pagination } from './Pagination';
 export { ProgressBar } from './ProgressBar';
 export { Radio } from './Radio';
-export { Rating } from './Rating';
+export { RatingGroup } from './RatingGroup';
 export { Slider } from './Slider';
 export { StateButtonGroup } from './StateButtonGroup';
 export { StatusBar } from './StatusBar';

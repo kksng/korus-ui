@@ -8,7 +8,7 @@ import {
   MultiSelect, Notifications, NumericRange, NumericTextBox, Password,
   Pagination, Radio, ProgressBar, Slider, StatusBar, StickyPanel, Switcher,
   Tabs, Tags, DropZone, Textarea, DateTimePicker, TimePicker,
-  DateTimeRange, TimeRange, DropDownLink, Currency, Rating,
+  DateTimeRange, TimeRange, DropDownLink, Currency, RatingGroup,
   Div, Table, Dl, FileUpload, HTMLTags, Validation,
   Collapsible, Collapse, VStepper, Button, Tooltip, FileDrop, Tour, Wizard
 } from './components';
@@ -58,7 +58,7 @@ export const Demo = hot(() => (
       <Password />
       <ProgressBar />
       <Radio />
-      <Rating />
+      <RatingGroup />
       <Slider />
       <StatusBar />
       <StickyPanel />
