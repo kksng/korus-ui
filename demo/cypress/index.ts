@@ -7,6 +7,7 @@ export { DateRange } from './DateRange';
 export { DropDownSelect } from './DropDownSelect';
 export { DateTimePicker } from './DateTimePicker';
 export { DropZone } from './DropZone';
+export { FileDrop } from './FileDrop';
 export { Input } from './Input';
 export { MaskedInput } from './MaskedInput';
 export { Modal } from './Modal';
