@@ -12,7 +12,7 @@ export const Loader = () => {
       <p>Лоадер как обертка:</p>
       <L.Loader
         isLoading
-        onClick={ev => console.log('ev', ev)}
+        onClick={(ev) => console.log('ev', ev)}
         {...props}
       >
         <p>Content</p>
@@ -26,8 +26,8 @@ export const Loader = () => {
       <StateButtonGroup
         data={[
           { text: 'Default', props: { } },
-          { text: 'Spinner', props: { iconRender: ({ elementProps }) => <L.Div _loaderSpinner {...elementProps} /> } },
-          { text: 'Custom', props: { iconRender: ({ elementProps }) => <><L.Div _loaderHourglass {...elementProps}></L.Div><L.Span>БЛАБЛАБЛАБЛАБЛА</L.Span></> } },
+          { text: 'Spinner', props: { iconRender: ({ elementProps }: { elementProps: any }) => <L.Div _loaderSpinner {...elementProps} /> } },
+          { text: 'Custom', props: { iconRender: ({ elementProps }: { elementProps: any }) => <><L.Div _loaderHourglass {...elementProps} /><L.Span>БЛАБЛАБЛАБЛАБЛА</L.Span></> } },
           { text: 'Disabled', props: { isLoading: false } },
         ]}
         setProps={setProps}
@@ -38,8 +38,8 @@ export const Loader = () => {
       <L.Button
         _warning
         onClick={() => {
-          setProps(prevProps => ({ ...prevProps, isGlobal: true }));
-          setTimeout(() => { setProps(prevProps => ({ ...prevProps, isGlobal: false })); alert('Полноэкранный лоадер отключен'); }, 6000);
+          setProps((prevProps) => ({ ...prevProps, isGlobal: true }));
+          setTimeout(() => { setProps((prevProps) => ({ ...prevProps, isGlobal: false })); alert('Полноэкранный лоадер отключен'); }, 6000);
         }}
       >
         Включить глобальный лоадер на 6 сек

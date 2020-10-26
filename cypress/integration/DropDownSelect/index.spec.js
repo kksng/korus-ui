@@ -272,6 +272,37 @@ describe('DropDownSelect', () => {
         });
     });
 
+    it('Should not open on Window focus event', () => {
+      cy.name('DDSFocusCheck')
+        .focus()
+        .type('{downarrow}', { force: true })
+        .type('{enter}', { force: true })
+        .windowBlur()
+        .windowFocus()
+        .parent()
+        .parent()
+        .find('.suggestion-list')
+        .should('not.be.visible')
+    });
+
+    it('onFocus: should not open on focus event', () => {
+      cy.name('DDSFocusCheck')
+        .focus()
+        .parent()
+        .parent()
+        .children('.suggestion-wrapper.visible')
+        .should('not.exist')
+    })
+
+    it('onClick: should open on click event', () => {
+      cy.name('DDSFocusCheck')
+        .click()
+        .parent()
+        .parent()
+        .children('.suggestion-wrapper.visible')
+        .should('exist')
+    })
+
     it('OnChange', () => {
       cy.name('DDSCompareObjectsByObjects')
         .focus()

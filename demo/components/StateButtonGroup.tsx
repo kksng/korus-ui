@@ -1,13 +1,18 @@
 import * as React from 'react';
 import * as L from '../../leda';
+import { SomeObject, SetState } from '../../leda/commonTypes';
 
-export const StateButtonGroup = ({
-  data,
-  setProps,
-}: {
+
+export const StateButtonGroup = (props: {
   data?: any[],
-  setProps: (value: any) => void,
+  setProps: SetState<any>,
+  theme?: SomeObject,
 }) => {
+  const {
+    data,
+    setProps,
+  } = props;
+
   const [value, setValue] = React.useState(data && data[0]);
 
   return (

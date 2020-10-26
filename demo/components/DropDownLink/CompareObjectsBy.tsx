@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { Value } from '../../../leda/components/DropDownLink/types';
 
 const data = [
   { id: 0, attr: 'value0', city: 'Moscow' },
@@ -13,7 +14,7 @@ const data = [
 
 // eslint-disable-next-line
 export const CompareObjectsBy = (anyProps: any): React.ReactElement => {
-  const [value, setValue] = React.useState<string | null>();
+  const [value, setValue] = React.useState<Value>('');
 
   return (
     <L.Div _box _inner _demoBg>
@@ -25,8 +26,6 @@ export const CompareObjectsBy = (anyProps: any): React.ReactElement => {
           data={data}
           textField="city"
           value={value}
-          compareObjectsBy="id"
-          minSearchLength={0}
           onChange={(event) => {
             setValue(event.component.value);
           }}
@@ -40,19 +39,6 @@ export const CompareObjectsBy = (anyProps: any): React.ReactElement => {
         >
           set value
         </L.Button>
-      </L.P>
-      <L.P>
-        uncontrolled
-      </L.P>
-      <L.P>
-        <L.DropDownLink
-          data={data}
-          textField="city"
-          compareObjectsBy={(item) => item.id}
-          onChange={(event) => {
-            console.log(event.component.value);
-          }}
-        />
       </L.P>
     </L.Div>
   );

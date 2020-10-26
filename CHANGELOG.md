@@ -4,12 +4,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.33.0] - 2020-10-26
+
+### Added
+- README: Added description to README.md
+- DatePicker: Added tests for Input, onEnterPress event, test for pressing the "Backspace", "Esc" and "Tab"
+
+### Fixed
+- DropDownLink: Close on mouseleave
+- DropDown: Close on button and item click
+- Input: Fixed paste event handler, paste is handled by default
+- DropDownSelect: Removed dropdown opening logic from focus handler to click handler
+- MultiSelect: Fixed checkbox classes
+- AutoComplete: Fixed component's behavior on enter press by synchronizing selected and highlighted values
+- ToolTip: Fixed calculation of position for selecting the opening side
+- DropZone: Prohibited deleting files in disabled mode
+- FileDrop: Fixed danger class on error.
+
 ## [0.32.0] - 2020-10-12
 
 ### Fixed
 - Wizard: Added new div element with class .progress-line to set styles for progress bar
 - Modal: Increased the sm width of the component from 420px to 480px
-- DateRange: Added possibility to set array of empty strings as state 
+- DateRange: Added possibility to set array of empty strings as state
 - MultiSelect: Fixed selectAll text
 - RadioGroup: Restricted possibility to work with value=undefined. Component defaults to first RadioButton's value
 - DropZone: Fixed change event handler for removed files

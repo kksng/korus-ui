@@ -9,6 +9,7 @@ import {
   DataObject,
   SuggestionsVal,
   Suggestion,
+  AutoCompleteState,
 } from './types';
 
 import { FILTER_RULES, filterSuggestionByRule } from '../../utils';
@@ -133,16 +134,14 @@ export const correctValue = ({
   isValueControlled,
   lastCorrectValue,
   props,
-  setLastCorrectValue,
-  setStateValue,
+  mergeState,
   value,
 }: {
   event: React.SyntheticEvent,
   isValueControlled: boolean,
   lastCorrectValue: string,
   props: AutoCompleteProps,
-  setLastCorrectValue: (val: string) => void,
-  setStateValue: (val: string) => void,
+  mergeState: React.Dispatch<Partial<AutoCompleteState>>,
   value?: string | null,
 }): string => {
   // если value нет в data
@@ -162,7 +161,7 @@ export const correctValue = ({
   // если значение корректно, записать его в lastCorrectValue
   // иначе, передать наверх последнее корректное значение
   if (value === '' || dataIncludesValue) {
-    setLastCorrectValue(value || '');
+    mergeState({ lastCorrectValue: value || '' });
   } else {
     if (isFunction(onChange)) {
       const suggestion = getSuggestionFromValue({ data, value: lastCorrectValue, textField });
@@ -178,7 +177,7 @@ export const correctValue = ({
 
       onChange(customEvent);
     }
-    if (!isValueControlled) setStateValue(lastCorrectValue);
+    if (!isValueControlled) mergeState({ value: lastCorrectValue });
 
     return lastCorrectValue;
   }

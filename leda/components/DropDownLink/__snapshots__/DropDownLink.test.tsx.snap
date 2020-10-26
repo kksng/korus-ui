@@ -18,6 +18,7 @@ exports[`DropDownLink ATTRIBUTES should customize render items 1`] = `
   <DropDown
     isOpen={false}
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     theme={
       Object {
         "wrapper": "dropdown-wrapper blank button-wrapper",
@@ -60,9 +61,11 @@ exports[`DropDownLink ATTRIBUTES should customize render items 1`] = `
           <Ul
             default={true}
             key=".1"
+            onClick={[Function]}
           >
             <ul
               default={true}
+              onClick={[Function]}
             >
               <Component
                 className="dropdown-item level-2"
@@ -176,6 +179,7 @@ exports[`DropDownLink ATTRIBUTES should customize title 1`] = `
   <DropDown
     isOpen={false}
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     theme={
       Object {
         "wrapper": "dropdown-wrapper blank button-wrapper",
@@ -211,9 +215,11 @@ exports[`DropDownLink ATTRIBUTES should customize title 1`] = `
           <Ul
             default={true}
             key=".1"
+            onClick={[Function]}
           >
             <ul
               default={true}
+              onClick={[Function]}
             >
               <Component
                 className="dropdown-item level-2"
@@ -406,6 +412,7 @@ exports[`DropDownLink SNAPSHOTS should render with array string 1`] = `
   <DropDown
     isOpen={false}
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     theme={
       Object {
         "wrapper": "dropdown-wrapper blank button-wrapper",
@@ -448,9 +455,11 @@ exports[`DropDownLink SNAPSHOTS should render with array string 1`] = `
           <Ul
             default={true}
             key=".1"
+            onClick={[Function]}
           >
             <ul
               default={true}
+              onClick={[Function]}
             >
               <Component
                 className="dropdown-item level-2"
@@ -682,6 +691,7 @@ exports[`DropDownLink SNAPSHOTS should render with data objects 1`] = `
   <DropDown
     isOpen={false}
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     theme={
       Object {
         "wrapper": "dropdown-wrapper blank button-wrapper",
@@ -724,9 +734,11 @@ exports[`DropDownLink SNAPSHOTS should render with data objects 1`] = `
           <Ul
             default={true}
             key=".1"
+            onClick={[Function]}
           >
             <ul
               default={true}
+              onClick={[Function]}
             >
               <Component
                 className="dropdown-item level-2"

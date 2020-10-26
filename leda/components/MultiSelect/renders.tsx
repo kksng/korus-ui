@@ -47,8 +47,7 @@ export const createCheckBoxesRender = ({ theme, itemRender }: { theme: typeof de
 
   const isCheckBoxSelected = (() => {
     if (isSelectAllItem) {
-      if (selectAllState === SelectedState.Nothing || selectAllState === SelectedState.Some) return false;
-      return true;
+      return selectAllState !== SelectedState.Nothing;
     }
     return !!isSelected;
   })();
@@ -59,7 +58,7 @@ export const createCheckBoxesRender = ({ theme, itemRender }: { theme: typeof de
         value={isCheckBoxSelected}
         // replace label with div so that when you click on the checkbox, the focus doesn't move from the multiselect and the list doesn't close
         labelRender={({ elementProps: labelElementProps }) => <Div {...labelElementProps} />}
-        isSemi={isSelectAllItem && selectAllState === SelectedState.All}
+        isSemi={isSelectAllItem && selectAllState === SelectedState.Some}
       />
       {isSelectAllItem && (
         <SelectAllItem>

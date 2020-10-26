@@ -99,7 +99,7 @@ describe('AutoComplete', () => {
           .should('not.have.class', 'txt-success');
       });
 
-      it('succes', () => {
+      it('success', () => {
         cy.get('[name=AutoComplete4]')
           .clear()
           .type('n')
@@ -294,6 +294,22 @@ describe('AutoComplete', () => {
         .click()
         .get(`.${theme.wrapper} input`)
         .should('have.value', 'Magadan');
+    });
+
+    it('should synchronize selected and highlighted values', () => {
+      cy.name('AutoComplete7')
+        .type('3')
+        .should('have.value', '3')
+        .parent()
+        .parent()
+        .find('.suggestion-item')
+        .first()
+        .click()
+        .name('AutoComplete7')
+        .should('have.value', '3')
+        .type('3')
+        .type('{enter}')
+        .should('have.value', '33')
     });
 
     it('should clear input on clear button click', () => {
