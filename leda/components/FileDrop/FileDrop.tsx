@@ -56,7 +56,7 @@ export const FileDrop = React.forwardRef((props: FileDropProps, ref: React.Ref<F
     theme.wrapper,
     {
       [theme.disabled]: isDisabled,
-      [theme.invalid]: !isValid,
+      [theme.invalid]: !isValid || error != null,
       [theme.required]: getIsEmptyAndRequired(value, isRequired),
     },
   );

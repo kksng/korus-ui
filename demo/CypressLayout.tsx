@@ -11,6 +11,7 @@ import {
   DateRange,
   DropDownSelect,
   DropZone,
+  FileDrop,
   Input,
   MaskedInput,
   Modal,
@@ -39,6 +40,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
+        </Route>
+        <Route path="/cypress/filedrop">
+          <FileDrop />
         </Route>
         <Route path="/cypress/input">
           <Input />
