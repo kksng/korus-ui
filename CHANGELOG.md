@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.33.0] - 2020-11-09
 
-
+### Fixed
+- Validation: Fixed validation in controlled mode
 
 ## [0.33.0] - 2020-10-26
 

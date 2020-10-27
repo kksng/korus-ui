@@ -21,7 +21,8 @@ import {
   DropDownLink,
   RadioGroup,
   MultiSelect,
-  ToolTip
+  ToolTip,
+  Validation
 } from './cypress';
 import { Styles } from './components/Styles';
 
@@ -85,6 +86,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/tooltip">
           <ToolTip />
+        </Route>
+        <Route path="/cypress/validation">
+          <Validation />
         </Route>
       </Switch>
     </L.Div>

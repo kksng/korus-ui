@@ -1,6 +1,7 @@
 import {
   isArray, isFunction, isNil, isString, isRegExp, isObject,
 } from 'lodash';
+
 import { PREDEFINED_VALIDATORS } from './predefinedValidators';
 import {
   AddFieldData,
@@ -50,6 +51,14 @@ export const getField = (formName?: string, fieldName?: string): Field | undefin
   return currentField;
 };
 
+/**
+ * Validation function. Used in form submit handler
+ * @param {string | undefined} formName - name of form
+ * @param {string} fieldName - name of field
+ * @param {unknown} externalValue - value that will be validated instead of current field value
+ *
+ * @returns {boolean} - flag defines if form or field is valid
+ */
 export const validate = (formName: string | undefined, fieldName?: string, externalValue?: unknown): boolean => {
   const forms: Form[] = getForms();
 
@@ -67,20 +76,21 @@ export const validate = (formName: string | undefined, fieldName?: string, exter
 
   const invalidMessages: string[] = [];
 
-  let isValid = true;
+  // take the current isValid value of the field. Can be false in controlled mode
+  let { isValid } = currentField;
 
   const value = externalValue === undefined ? currentField.value : externalValue;
 
   const isFilled = checkIsFilled(value);
 
-  // не проверяем валидаторы, если поле обязательное и не заполнено
+  // don't check validators if the field is required and not filled in
   if (currentField.isRequired && !isFilled) {
     isValid = false;
 
     if (currentField.requiredMessage) invalidMessages.push(currentField.requiredMessage);
   } else if (isFilled) {
     currentField.validators.forEach((validator) => {
-      // если валидатор имеет вид { validator, invalidMessage } - извлекаем сообщение об ошибке
+      // if the validator looks like { validator, invalidMessage } - get the error message
       if (isObject(validator) && 'validator' in validator) {
         const result = validator.validator(value);
 
@@ -221,7 +231,7 @@ export const removeField = (formName: string, fieldName: string, options: Remove
 
       const newFields = [...currentForm.fields.map((field) => {
         if (field.name !== fieldName) return field;
-        // заглушка для unmounted компонента
+        // stub for an unmounted component
         return { ...field, setIsValid: () => {} };
       })];
 
@@ -281,13 +291,13 @@ export const updateField = ({
   }
 
   const isValid = (() => {
-    // если контролируемая валидация
+    // if validation is controlled
     if (!isNil(isValidProp)) return isValidProp;
-    // если значение поменялось - снять невалидность
+    // if the value has changed, return to initial validation state
     if (value !== currentField.value) return true;
-    // если изменилась обязательность поля - снять невалидность
+    // if isRequired prop was added or removed, return to initial validation state
     if (isRequired !== currentField.isRequired) return true;
-    // ничего не делать
+    // do nothing
     return currentField.isValid;
   })();
 
@@ -316,7 +326,7 @@ export const updateField = ({
   if (currentField.isValid !== isValid) {
     currentField.setIsValid(isValid);
   }
-  // если invalidMessages поменялись или были убраные (length === 0)
+  // if invalidMessages were changed or removed (length === 0)
   if (currentField.invalidMessages !== invalidMessages && invalidMessages && invalidMessages.length !== 0) {
     currentField.setMessages(invalidMessages);
   }
