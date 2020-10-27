@@ -3,7 +3,7 @@ import * as L from '../../../leda';
 import { Span } from '../../../leda/components/Span';
 import { StateButtonGroup } from '../StateButtonGroup';
 
-export const Rating = (args: any): React.ReactElement => {
+export const Basic = (args: any): React.ReactElement => {
   const [value, setValue] = React.useState(1);
   const [props, setProps] = React.useState<any>();
 

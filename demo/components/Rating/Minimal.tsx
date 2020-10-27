@@ -1,7 +1,7 @@
 import React from 'react';
 import * as L from '../../../leda';
 
-export const RatingGroupMinimal = (props: any): React.ReactElement => {
+export const Minimal = (props: any): React.ReactElement => {
 
   return (
     <L.Div>
