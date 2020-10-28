@@ -1,8 +1,8 @@
-import * as React from 'react';
-import * as L from '../../leda';
-import { StateButtonGroup } from './StateButtonGroup';
+import React from 'react';
+import * as L from '../../../leda';
+import { StateButtonGroup } from '../StateButtonGroup';
 
-export const Pagination = (): React.ReactElement => {
+export const Basic = (args: any): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [pageSize, setPageSize] = React.useState<number | undefined>(10);
   const [currentPage, setCurrentPage] = React.useState<number>(1);
