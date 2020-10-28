@@ -10,11 +10,48 @@ import {
  *
  * @returns {boolean} - true, if tooltip element is inside viewport
  */
-const checkDimensions = (elementRect: DOMRect, tooltipRect: DOMRect, arrowSize: number) => {
+const checkVerticalPosition = (elementRect: DOMRect, tooltipRect: DOMRect, arrowSize: number) => {
   const isOutsideRightBorder = window.innerWidth - elementRect.right + (elementRect.width / 2) - arrowSize < (tooltipRect.width / 2);
   const isOutsideLeftBorder = elementRect.left + (elementRect.width / 2) - arrowSize < (tooltipRect.width / 2);
-  return !isOutsideRightBorder && !isOutsideLeftBorder;
+
+  const isInHorizontalViewPort = !isOutsideRightBorder && !isOutsideLeftBorder;
+
+  const isTop = (elementRect.top >= tooltipRect.height + arrowSize) && isInHorizontalViewPort;
+  const isBottom = (elementRect.bottom + tooltipRect.height + arrowSize <= window.innerHeight) && isInHorizontalViewPort;
+
+  return {
+    isTop, isBottom, isOutsideRightBorder, isOutsideLeftBorder,
+  };
 };
+
+const checkHorizontalPosition = (elementRect: DOMRect, tooltipRect: DOMRect, arrowSize: number) => {
+  const isOutsideTopBorder = elementRect.top + (elementRect.height / 2) < (tooltipRect.height / 2);
+  const isOutsideBottomBorder = window.innerHeight - elementRect.bottom + (elementRect.height / 2) < (tooltipRect.height / 2);
+
+  const isInVerticalViewPort = !isOutsideTopBorder && !isOutsideBottomBorder;
+
+  const isLeft = (elementRect.left >= tooltipRect.width + arrowSize) && isInVerticalViewPort;
+  const isRight = (elementRect.right + tooltipRect.width + arrowSize <= window.innerWidth) && isInVerticalViewPort;
+
+  return {
+    isLeft, isRight, isOutsideTopBorder, isOutsideBottomBorder,
+  };
+};
+
+const checkCornerPosition = (isOutsideRightBorder: boolean, isOutsideLeftBorder: boolean, isOutsideTopBorder: boolean, isOutsideBottomBorder: boolean) => {
+  const isInTopLeftCorner = isOutsideTopBorder && isOutsideLeftBorder;
+  const isInTopRightCorner = isOutsideTopBorder && isOutsideRightBorder;
+  const isInBottomLeftCorner = isOutsideBottomBorder && isOutsideLeftBorder;
+  const isInBottomRightCorner = isOutsideBottomBorder && isOutsideRightBorder;
+
+  return {
+    isBottomCorners: isInBottomLeftCorner || isInBottomRightCorner,
+    isRightCorners: isInBottomRightCorner || isInTopRightCorner,
+    isLeftCorners: isInTopLeftCorner || isInBottomLeftCorner,
+    isTopCorners: isInTopLeftCorner || isInTopRightCorner,
+  };
+};
+
 
 /**
  * Helper determines tooltip element position against target element
@@ -28,22 +65,41 @@ const checkDimensions = (elementRect: DOMRect, tooltipRect: DOMRect, arrowSize: 
 export const getTooltipPosition: GetTooltipPosition = ({
   position, elementRect, tooltipRect, arrowSize = 0,
 }) => {
-  const isInViewPort = checkDimensions(elementRect, tooltipRect, arrowSize);
+  const {
+    isTop, isBottom, isOutsideRightBorder, isOutsideLeftBorder,
+  } = checkVerticalPosition(elementRect, tooltipRect, arrowSize);
+
+  const {
+    isLeft, isRight, isOutsideTopBorder, isOutsideBottomBorder,
+  } = checkHorizontalPosition(elementRect, tooltipRect, arrowSize);
+
+  const {
+    isBottomCorners,
+    isRightCorners,
+    isLeftCorners,
+    isTopCorners,
+  } = checkCornerPosition(isOutsideRightBorder, isOutsideLeftBorder, isOutsideTopBorder, isOutsideBottomBorder);
+
+  const isCornerPosition = isBottomCorners || isTopCorners;
 
   const checkPosition = (tooltipPosition: TooltipPosition): boolean => {
     switch (tooltipPosition) {
       case 'top':
-        return (elementRect.top >= tooltipRect.height + arrowSize) && isInViewPort;
+        return isBottomCorners || isTop;
       case 'left':
-        return elementRect.left >= tooltipRect.width + arrowSize;
+        return isRightCorners || isLeft;
       case 'right':
-        return elementRect.right + tooltipRect.width + arrowSize <= window.innerWidth;
+        return isLeftCorners || isRight;
       case 'bottom':
-        return (elementRect.bottom + tooltipRect.height + arrowSize <= window.innerHeight) && isInViewPort;
+        return isTopCorners || isBottom;
       default:
         return false;
     }
   };
+
+  if (isCornerPosition) {
+    return Array<TooltipPosition>('top', 'bottom', 'right', 'left').filter(checkPosition).join('') as TooltipPosition;
+  }
 
   switch (position) {
     case 'top':
@@ -69,26 +125,18 @@ export const getTooltipPosition: GetTooltipPosition = ({
 export const getTooltipOffsets: GetTooltipOffsets = ({
   position, elementRect,
 }) => {
+  const includesDirection = (direction: string) => position?.includes(direction);
+
   const top = ((): number => {
-    switch (position) {
-      case 'top':
-        return window.pageYOffset + elementRect.top;
-      case 'bottom':
-        return window.pageYOffset + elementRect.bottom;
-      default:
-        return window.pageYOffset + elementRect.top + elementRect.height / 2;
-    }
+    if (includesDirection('top')) return window.pageYOffset + elementRect.top;
+    if (includesDirection('bottom')) return window.pageYOffset + elementRect.bottom;
+    return window.pageYOffset + elementRect.top + elementRect.height / 2;
   })();
 
   const left = ((): number => {
-    switch (position) {
-      case 'left':
-        return window.pageXOffset + elementRect.left;
-      case 'right':
-        return window.pageXOffset + elementRect.right;
-      default:
-        return window.pageXOffset + elementRect.left + elementRect.width / 2;
-    }
+    if (includesDirection('left')) return window.pageXOffset + elementRect.left;
+    if (includesDirection('right')) return window.pageXOffset + elementRect.right;
+    return window.pageXOffset + elementRect.left + elementRect.width / 2;
   })();
 
   return {

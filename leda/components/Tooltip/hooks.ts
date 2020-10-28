@@ -45,7 +45,7 @@ export const useTooltip: UseTooltip = ({
     const newPosition = getTooltipPosition({
       position: initialPosition, elementRect, tooltipRect, arrowSize,
     }) || initialPosition;
-
+    console.log('newPosition', newPosition);
     setPosition(newPosition);
 
     const newOffsets = getTooltipOffsets({

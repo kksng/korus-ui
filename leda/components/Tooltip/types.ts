@@ -56,7 +56,7 @@ export interface TooltipBodyProps {
 /**
  * Position of tooltip against target element
  */
-export type TooltipPosition = 'top' | 'right' | 'bottom' | 'left' | undefined;
+export type TooltipPosition = 'top' | 'right' | 'bottom' | 'left' | 'topleft' | 'topright' | 'bottomleft' | 'bottomright' | undefined;
 
 export interface TooltipProps {
   /** Размер стрелки тултипа в px */

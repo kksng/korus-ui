@@ -49,6 +49,61 @@
       border-right-color: $black-02;
     }
   }
+
+  @if $position == 'topleft' {
+    margin-top: -7px;
+    margin-left: 21px;
+    transform: translate(-100%, -100%);
+
+    &::after {
+      top: 100%;
+      right: 0;
+      transform: translateX(-150%);
+      border-width: 7px 4px 0;
+      border-top-color: $black-02;
+    }
+  }
+
+  @if $position == 'topright' {
+    margin-top: -7px;
+    margin-left: -21px;
+    transform: translateY(-100%);
+
+    &::after {
+      top: 100%;
+      left: 0;
+      transform: translateX(150%);
+      border-width: 7px 4px 0;
+      border-top-color: $black-02;
+    }
+  }
+
+  @if $position == 'bottomleft' {
+    margin-top: 7px;
+    margin-left: 21px;
+    transform: translateX(-100%);
+
+    &::after {
+      bottom: 100%;
+      right: 0;
+      transform: translateX(-150%);
+      border-width: 0 4px 7px;
+      border-bottom-color: $black-02;
+    }
+  }
+
+  @if $position == 'bottomright' {
+    margin-top: 7px;
+    margin-left: -21px;
+
+    &::after {
+      bottom: 100%;
+      left: 0;
+      transform: translateX(150%);
+      border-width: 0 4px 7px;
+      border-bottom-color: $black-02;
+    }
+  }
 }
 
 .tooltip {
@@ -102,5 +157,21 @@
 
   &.left {
     @include position('left');
+  }
+
+  &.topleft {
+    @include position('topleft');
+  }
+
+  &.topright {
+    @include position('topright');
+  }
+
+  &.bottomleft {
+    @include position('bottomleft');
+  }
+
+  &.bottomright {
+    @include position('bottomright');
   }
 }
