@@ -5,7 +5,7 @@ import { Minimal } from './Minimal';
 
 export const Pagination = () => (
   <Story title="Pagination">
-    <Basic title="Базовый пример" />
+    <Basic title="Basic example" />
     <Minimal title="Minimal example" />
   </Story>
 );
