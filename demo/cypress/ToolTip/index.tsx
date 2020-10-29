@@ -18,6 +18,32 @@ export const ToolTip = (): React.ReactElement => {
 
   return (
     <L.Div style={{ position: 'relative', paddingBottom: '50px' }} _demoStory>
+      <L.Div style={{ position: 'relative', paddingBottom: '50px' }}>
+        <L.Tooltip
+          isOpen={open}
+          position="top"
+          title="Tooltip at tTop Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner"
+        >
+          <L.Button
+            name="topLeftCorner"
+            style={{ position: 'absolute', left: 0 }}
+          >
+            Top Left Corner
+          </L.Button>
+        </L.Tooltip>
+        <L.Tooltip
+          isOpen={open}
+          position="left"
+          title="Tooltip at Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner"
+        >
+          <L.Button
+            name="topRightCorner"
+            style={{ position: 'absolute', right: 0 }}
+          >
+            Top Right Corner
+          </L.Button>
+        </L.Tooltip>
+      </L.Div>
       <L.H4 _title>Tooltip</L.H4>
       <br />
       <L.ButtonGroup

@@ -50,7 +50,7 @@
     }
   }
 
-  @if $position == 'topleft' {
+  @if $position == 'top-left' {
     margin-top: -7px;
     margin-left: 21px;
     transform: translate(-100%, -100%);
@@ -64,7 +64,7 @@
     }
   }
 
-  @if $position == 'topright' {
+  @if $position == 'top-right' {
     margin-top: -7px;
     margin-left: -21px;
     transform: translateY(-100%);
@@ -78,7 +78,7 @@
     }
   }
 
-  @if $position == 'bottomleft' {
+  @if $position == 'bottom-left' {
     margin-top: 7px;
     margin-left: 21px;
     transform: translateX(-100%);
@@ -92,7 +92,7 @@
     }
   }
 
-  @if $position == 'bottomright' {
+  @if $position == 'bottom-right' {
     margin-top: 7px;
     margin-left: -21px;
 
@@ -159,19 +159,19 @@
     @include position('left');
   }
 
-  &.topleft {
-    @include position('topleft');
+  &.top-left {
+    @include position('top-left');
   }
 
-  &.topright {
-    @include position('topright');
+  &.top-right {
+    @include position('top-right');
   }
 
-  &.bottomleft {
-    @include position('bottomleft');
+  &.bottom-left {
+    @include position('bottom-left');
   }
 
-  &.bottomright {
-    @include position('bottomright');
+  &.bottom-right {
+    @include position('bottom-right');
   }
 }
