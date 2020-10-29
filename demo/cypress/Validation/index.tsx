@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react';
 import * as L from '../../../leda';
-import { StoryProps } from '../../types';
 
-export const IsValid = (props: StoryProps) => {
+export const Validation = () => {
   const [isValid, setIsValid] = React.useState(true);
+  const [message, setMessage] = React.useState('');
 
   return (
     <L.Div _box _inner>
@@ -19,16 +18,18 @@ export const IsValid = (props: StoryProps) => {
           />
         </L.Div>
         <L.Div _inner>
-          <L.Switcher onClick={() => setIsValid(!isValid)} _warning>
+          <L.Button name="Toggle" onClick={() => setIsValid(!isValid)} _warning>
             Toggle isValid
-          </L.Switcher>
+          </L.Button>
           <L.Button
+            name="Submit"
             form="formIsValid"
-            onClick={(ev) => console.log(ev.forms)}
-            onValidationFail={(ev) => console.log(ev.invalidForms)}
+            onClick={() => setMessage('Submitted')}
+            onValidationFail={() => setMessage('Submit failed')}
           >
             Submit
           </L.Button>
+          <L.Div name="Message">{message}</L.Div>
         </L.Div>
       </L.Div>
     </L.Div>
