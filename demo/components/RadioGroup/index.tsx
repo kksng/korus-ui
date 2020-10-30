@@ -5,7 +5,7 @@ import { RadioGroupMinimal } from './Minimal';
 
 export const RadioGroup = () => (
   <Story title="RadioGroup">
-    <Radio title="Базовый пример" />
-    <RadioGroupMinimal title="Минимальный пример" />
+    <Radio title="Basic example" />
+    <RadioGroupMinimal title="Minimal example" />
   </Story>
 );
