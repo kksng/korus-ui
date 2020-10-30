@@ -1,5 +1,5 @@
 import {
-  isArray, isFunction, isNil, isString, isRegExp, isObject,
+  isArray, isFunction, isNil, isString, isRegExp, isObject, isDate,
 } from 'lodash';
 
 import { PREDEFINED_VALIDATORS } from './predefinedValidators';
@@ -12,6 +12,7 @@ import {
   ValidatorObject,
 } from './types';
 import { checkIsFilled } from '../../form/helpers';
+import { isDatesEqual } from '../../src/Calendar/helpers';
 
 export const getForms = (formName?: string | string[]): Form[] => {
   // @ts-ignore
@@ -267,6 +268,10 @@ export const removeForm = (formName: string): void => {
   setForms(forms.filter((form) => (form.name !== formName)));
 };
 
+/**
+ * Helper updates state of field
+ * @param {UpdateFieldData} data
+ */
 export const updateField = ({
   formName,
   fieldName,
@@ -294,8 +299,12 @@ export const updateField = ({
   const isValid = (() => {
     // if validation is controlled
     if (!isNil(isValidProp)) return isValidProp;
+    // if is date value and previous value was null, return to initial validation state
+    if (isDate(value) && currentField.value == null) return true;
+    // if date value has changed, return to initial validation state
+    if (isDate(value) && !isDatesEqual(value, currentField.value)) return true;
     // if the value has changed, return to initial validation state
-    if (value !== currentField.value) return true;
+    if (!isDate(value) && value !== currentField.value) return true;
     // if isRequired prop was added or removed, return to initial validation state
     if (isRequired !== currentField.isRequired) return true;
     // do nothing

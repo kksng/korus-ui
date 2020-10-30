@@ -22,6 +22,7 @@ import {
   RadioGroup,
   MultiSelect,
   ToolTip,
+  TimePicker,
   Validation
 } from './cypress';
 import { Styles } from './components/Styles';
@@ -86,6 +87,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/tooltip">
           <ToolTip />
+        </Route>
+        <Route path="/cypress/timepicker">
+          <TimePicker />
         </Route>
         <Route path="/cypress/validation">
           <Validation />
