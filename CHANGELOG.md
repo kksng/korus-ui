@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.33.0] - 2020-11-09
 
 ### Fixed
+- DatePicker, TimePicker: Fixed validation
 - MultiSelect: Input is cleared after selecting item
 - Validation: Fixed validation in controlled mode
 
