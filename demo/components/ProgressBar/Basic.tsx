@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as L from '../../../leda';
 
 export const Basic = (props: any) => {
-  // Ref используется для хранения данных вне контекста компонента.
-  // Это нужно для правильной работы setInterval.
+  // Ref is used to store data outside of the component context.
+  // This is required for setInterval to work properly.
   const state = React.useRef<{ value: number, interval: number | null }>({ value: 25, interval: null }).current;
   const [value, setValue] = React.useState(25);
 
