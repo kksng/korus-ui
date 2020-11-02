@@ -92,7 +92,7 @@ export const DateRange = (): React.ReactElement => {
       </L.Div>
 
       <div style={{
-        height: '190px',
+        height: '30vh',
       }} />
 
       <L.Div _demoStory _flexRow _justifyContentBetween _grow1>
@@ -119,7 +119,7 @@ export const DateRange = (): React.ReactElement => {
       </L.Div>
 
       <div style={{
-        height: '190px',
+        height: '30vh',
       }} />
 
 
