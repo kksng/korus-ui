@@ -8,7 +8,7 @@ describe('DatePicker', () => {
     cy.visit('http://localhost:9000/cypress/datepicker')
   });
 
-  beforeEach(() => { cy.get('button').focus() }) // Это нужно из-за баги с фокусами разных дейтпикеров
+  beforeEach(() => { cy.name('success').focus() }) // It is needed because of bug with focus on several datepickers
 
   describe('Display', () => {
     it('should render placeholder', () => {
@@ -470,6 +470,19 @@ describe('DatePicker', () => {
 
       xit('Validation tests', () => { })
       xit('InputWithTab', () => { })
+    });
+  });
+  describe('Validation', () => {
+    it('Should display validation error', () => {
+      cy.name('MinValueDatePicker')
+        .should('have.value', '12.10.2020')
+        .name('submit')
+        .click()
+        .name('submitMessage')
+        .should('have.text', 'Submit failed!')
+        .name('MinValueDatePicker')
+        .parent()
+        .should('have.class', 'danger');
     });
   });
 });

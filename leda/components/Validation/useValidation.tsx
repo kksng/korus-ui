@@ -84,8 +84,9 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
     }
   }, [form, isRequired, name, value, isValidProp, validator, invalidMessage, shouldValidateUnmounted, requiredMessage]);
 
+  const isValidateCurrent = true;
   // функция, которую получает пользователь для валидации текущего поля, её можно вызывать, например, в обработчике onBlur
-  const validateCurrent = React.useCallback((val?: unknown) => (isNil(isValidProp) ? validate(form, name, val) : isValidProp), [form, isValidProp, name]);
+  const validateCurrent = React.useCallback((val?: unknown) => (isNil(isValidProp) ? validate(form, name, val, isValidateCurrent) : isValidProp), [form, isValidProp, name]);
 
   // сообщение о невалидном поле, автоматически отслеживает состояние поля и показывает сообщение, когда поле не валидно
   const InvalidMessage = useElement(
