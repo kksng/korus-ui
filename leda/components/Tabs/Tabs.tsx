@@ -1,17 +1,18 @@
 import React from 'react';
 import isNil from 'lodash/isNil';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import {
+  bindFunctionalRef, getClassNames, useProps, useTheme,
+} from '~/utils';
+import { Div } from '~/components/Div';
 import { createSelectHandler } from './handlers';
 import { useCustomElements, useTabsScroll } from './hooks';
 import { TabContent } from './TabContent';
 import { Tab } from './Tab';
-import {
-  bindFunctionalRef, getClassNames, useProps, useTheme,
-} from '../../utils';
 import { TabsContext } from './TabsContext';
 import { TabsProps, TabsRefCurrent } from './types';
 import { ArrowLeft, ArrowRight } from './ScrollArrows';
-import { Div } from '../Div';
 
 export const Tabs = React.forwardRef((props: TabsProps, ref?: React.Ref<TabsRefCurrent>): React.ReactElement | null => {
   const {

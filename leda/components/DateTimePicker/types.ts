@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   BlurEvent, ChangeEvent, FocusEvent, DateTimeInputProps,
   DateTimeInputRefCurrent, TimeLimits,
-} from '../../src/DateTimeInput/types';
+} from '~/src/DateTimeInput/types';
 
 export interface DateTimePickerProps extends DateTimeInputProps {
   /* Dates that are disabled to be selected. Array of dates or dates ranges. */

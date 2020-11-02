@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { useElement } from '../../utils';
-import { Div } from '../Div';
-import { Span } from '../Span';
+import { useElement } from '~/utils';
+import { Div } from '~/components/Div';
+import { Span } from '~/components/Span';
 import { filterData } from './helpers';
 import {
   CustomElements, DropDownSelectProps, DropDownSelectState, UseCustomElementsExtra, Value,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Span } from '../Span';
+import { Span } from '~/components/Span';
 import { LABELS } from './constants';
 import { SliderLabelsProps } from './types';
 

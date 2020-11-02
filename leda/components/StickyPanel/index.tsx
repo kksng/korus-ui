@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
   bindFunctionalRef, getClassNames, useProps, useTheme,
-} from '../../utils';
-import { Div } from '../Div';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+} from '~/utils';
+import { Div } from '~/components/Div';
+import { COMPONENTS_NAMESPACES } from '~/constants';
 import { useStickyPanelEffect } from './hooks';
 import {
   StickyPanelProps, StickyPanelRefCurrent, StickyPanelPosition, StickyPanelStyles,

@@ -2,6 +2,7 @@ import {
   every, isArray, isFunction, isObject, isString,
 } from 'lodash';
 
+import { FILTER_RULES, filterSuggestionByRule } from '~/utils';
 import {
   AutoCompleteProps,
   CHANGE_METHOD,
@@ -11,8 +12,6 @@ import {
   Suggestion,
   AutoCompleteState,
 } from './types';
-
-import { FILTER_RULES, filterSuggestionByRule } from '../../utils';
 
 export const safeTrim = (value?: string | null): string => {
   if (value == null) {

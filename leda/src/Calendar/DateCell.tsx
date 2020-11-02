@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Div } from '../../components/Div';
-import { LedaContext } from '../../components/LedaProvider';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
+import { getClassNames, useElement } from '~/utils';
 import { formatDate } from '../DateTimeInput/helpers';
 import { CALENDAR_CLICK_ACTION } from './constants';
 import {
   getDateCellClassNames, getDateCellConditions,
 } from './helpers';
-import { getClassNames, useElement } from '../../utils';
 import { DateCellProps } from './types';
 
 export const DateCell = (props: DateCellProps): React.ReactElement => {

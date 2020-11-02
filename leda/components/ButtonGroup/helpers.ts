@@ -1,6 +1,7 @@
 import { isNil, isObject } from 'lodash';
+
+import { SomeObject } from '~/commonTypes';
 import { ButtonGroupProps } from './types';
-import { SomeObject } from '../../commonTypes';
 
 export const getArrayValue = (value: ButtonGroupProps['value'], currentItem: number | string | SomeObject): NonNullable<ButtonGroupProps['data']> => {
   if (!Array.isArray(value)) return [currentItem];

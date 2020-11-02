@@ -2,16 +2,16 @@ import React from 'react';
 import { DropzoneRef, useDropzone } from 'react-dropzone';
 import {
   bindFunctionalRef, getClassNames, getIsEmptyAndRequired, useProps, useTheme,
-} from '../../utils';
-import { MAX_FILE_SIZE } from '../../constants';
-import { Div } from '../Div';
+} from '~/utils';
+import { MAX_FILE_SIZE } from '~/constants';
+import { Div } from '~/components/Div';
+import { useValidation } from '~/components/Validation';
 import { createChangeHandler, createClickHandler } from './handlers';
 import {
   FileDropProps, FileDropRefCurrent,
 } from './types';
 import { useCustomElements, useFileDropRestProps } from './hooks';
 import { SingleFileView } from './SingleFileView';
-import { useValidation } from '../Validation';
 
 export const FileDrop = React.forwardRef((props: FileDropProps, ref: React.Ref<FileDropRefCurrent>): React.ReactElement => {
   const {

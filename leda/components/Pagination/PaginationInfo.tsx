@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Span } from '../Span';
+import { Span } from '~/components/Span';
 import { PaginationInfoProps } from './types';
 
 export const PaginationInfo = (props: PaginationInfoProps): React.ReactElement => {

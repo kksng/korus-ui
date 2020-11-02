@@ -2,8 +2,8 @@ import * as React from 'react';
 import { isNil } from 'lodash';
 import {
   bindFunctionalRef, getClassNames, useTheme, useProps,
-} from '../../utils';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+} from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
 import { createClickHandler } from './handlers';
 import { useCustomElements } from './hooks';
 import { SwitcherProps, SwitcherRefCurrent } from './types';

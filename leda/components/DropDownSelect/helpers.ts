@@ -1,7 +1,7 @@
 import { isNil, isArray, isObject } from 'lodash';
-import { SomeObject } from '../../commonTypes';
-import { getText } from '../../src/SuggestionList/helpers';
-import { filterSuggestionByRule, getClassNames, getIsEmptyAndRequired } from '../../utils';
+import { SomeObject } from '~/commonTypes';
+import { getText } from '~/src/SuggestionList/helpers';
+import { filterSuggestionByRule, getClassNames, getIsEmptyAndRequired } from '~/utils';
 import { DropDownSelectProps, FilterDataProps, GetComponentClassNames } from './types';
 
 /** классы для элементов компонента */

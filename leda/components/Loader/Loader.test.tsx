@@ -1,8 +1,9 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { mount, shallow } from 'enzyme';
+
+import { Div } from '~/components/Div';
 import { Loader } from './index';
-import { Div } from '../Div';
 
 describe('Loader SNAPSHOTS', () => {
   it('should render', () => {

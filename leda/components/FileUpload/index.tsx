@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { DropzoneRef, useDropzone } from 'react-dropzone';
-import { bindFunctionalRef, useProps } from '../../utils';
-import { MAX_FILE_SIZE, MIN_FILE_SIZE } from '../../constants';
-import { Div } from '../Div';
+
+import { bindFunctionalRef, useProps } from '~/utils';
+import { MAX_FILE_SIZE, MIN_FILE_SIZE } from '~/constants';
+import { Div } from '~/components/Div';
+import { useValidation } from '~/components/Validation';
 import { createChangeHandler, createClickHandler, createLoadHandler } from './handlers';
 import { FileUploadProps, FileUploadRefCurrent } from './types';
 import { useCustomElements } from './hooks';
-import { useValidation } from '../Validation';
 
 export const FileUpload = React.forwardRef((props: FileUploadProps, ref: React.Ref<FileUploadRefCurrent>): React.ReactElement => {
   const {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { globalDefaultTheme } from '../LedaProvider';
+import { globalDefaultTheme } from '~/components/LedaProvider';
 import { ModalContextType } from './types';
 
 export const ModalContext = React.createContext<ModalContextType>({

@@ -1,6 +1,6 @@
+import { useElement } from '~/utils';
+import { Div } from '~/components/Div';
 import { CustomElements, VStepperItemProps } from './types';
-import { useElement } from '../../utils';
-import { Div } from '../Div';
 
 export const useCustomElements = (props: VStepperItemProps, state: { isOpen: boolean }): CustomElements => {
   const {

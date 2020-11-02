@@ -2,6 +2,7 @@ import {
   isArray, isFunction, isNil, isString, isRegExp, isObject, isDate,
 } from 'lodash';
 
+import { checkIsFilled } from '~/form/helpers';
 import { PREDEFINED_VALIDATORS } from './predefinedValidators';
 import {
   AddFieldData,
@@ -11,8 +12,7 @@ import {
   Validator,
   ValidatorObject,
 } from './types';
-import { checkIsFilled } from '../../form/helpers';
-import { isDatesEqual } from '../../src/Calendar/helpers';
+import { isDatesEqual } from '~/src/Calendar/helpers';
 
 export const getForms = (formName?: string | string[]): Form[] => {
   // @ts-ignore

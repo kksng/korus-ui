@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { isObject } from 'lodash';
-import { Div } from '../Div';
-import { Button as DefaultButton } from '../Button';
+import { Div } from '~/components/Div';
+import { Button as DefaultButton } from '~/components/Button';
 import {
   bindFunctionalRef, getClassNames, useTheme, useValue, useElement, useProps, getIsEmptyAndRequired,
-} from '../../utils';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+} from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { useValidation } from '~/components/Validation';
+import { SomeObject } from '~/commonTypes';
 import { createChangeHandler, createResetHandler } from './handlers';
 import { compareItems } from './helpers';
 import {
   ButtonGroupProps, ButtonGroupRefCurrent, Value,
 } from './types';
-import { useValidation } from '../Validation';
-import { SomeObject } from '../../commonTypes';
 
 export const ButtonGroup = React.forwardRef((props: ButtonGroupProps, ref?: React.Ref<ButtonGroupRefCurrent>): React.ReactElement | null => {
   const {

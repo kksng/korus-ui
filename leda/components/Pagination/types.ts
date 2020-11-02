@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { CustomRender } from '../../commonTypes';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { SuggestionElementProps, SuggestionItemProps } from '../../src/SuggestionList/types';
+import { CustomRender } from '~/commonTypes';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { SuggestionElementProps, SuggestionItemProps } from '~/src/SuggestionList/types';
 import { DropDownSelectProps } from '../DropDownSelect/types';
 
 export interface ChangeEvent {

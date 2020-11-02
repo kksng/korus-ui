@@ -1,8 +1,8 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { mount, shallow } from 'enzyme';
+import { Li } from '~/components/Li';
 import { Ul } from './index';
-import { Li } from '../Li';
 import { Ol } from '../Ol';
 
 describe('Ul SNAPSHOTS', () => {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
-import { Div } from '../Div';
+import { useProps } from '~/utils';
+import { Div } from '~/components/Div';
+import { Collapsible } from '~/components/Collapsible';
 import { VStepperContext } from './VStepperContext';
-import { useProps } from '../../utils';
-import { Collapsible } from '../Collapsible';
 import {
   getItemClassNames,
 } from './helpers';

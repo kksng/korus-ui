@@ -1,11 +1,11 @@
 import React from 'react';
-import { NotificationItem } from './NotificationItem';
-import { Div } from '../Div';
 import {
   useTheme, bindFunctionalRef, getClassNames, useProps,
-} from '../../utils';
+} from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Div } from '~/components/Div';
+import { NotificationItem } from './NotificationItem';
 import { Item, NotificationRefCurrent, NotificationsProps } from './types';
-import { COMPONENTS_NAMESPACES } from '../../constants';
 import { ChangeMethods } from './constants';
 
 export const Notifications = React.forwardRef((

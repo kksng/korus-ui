@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { htmlTagFactory } from '../../src/HTMLTagsFactory';
+import { htmlTagFactory } from '~/src/HTMLTagsFactory';
 
 export interface LabelProps extends React.HTMLAttributes<HTMLLabelElement> {
   ref?: React.Ref<LabelRefCurrent>,

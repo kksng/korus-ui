@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
   CustomRender, CustomEventHandler, SomeObject,
-} from '../../commonTypes';
-import { DivProps } from '../../components/Div';
-import { LiProps } from '../../components/Li';
-import { UlProps } from '../../components/Ul';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { SelectedState } from '../../components/MultiSelect/constants';
+} from '~/commonTypes';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { DivProps } from '~/components/Div';
+import { LiProps } from '~/components/Li';
+import { UlProps } from '~/components/Ul';
+import { SelectedState } from '~/components/MultiSelect/constants';
 
 export type Value = SomeObject | string | number | null;
 

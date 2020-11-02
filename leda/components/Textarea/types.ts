@@ -1,9 +1,9 @@
 import React from 'react';
-import { ValidationProps } from '../Validation/types';
-import { CustomRender } from '../../commonTypes';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { DivProps } from '../Div';
+import { CustomRender } from '~/commonTypes';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { DivProps } from '~/components/Div';
+import { ValidationProps } from '~/components/Validation/types';
 
 export interface TextareaRefCurrent {
   wrapper: HTMLDivElement | null,

@@ -3,9 +3,9 @@ import {
   isFunction, isObject,
 } from 'lodash';
 
-import {
-  correctValue, getSuggestionFromValue,
-} from './helpers';
+import { getText } from '~/src/SuggestionList/helpers';
+import { CustomEventHandler } from '~/commonTypes';
+import { SuggestionTarget } from '~/src/SuggestionList/types';
 import {
   AutoCompleteProps,
   BlurEvent,
@@ -17,9 +17,9 @@ import {
   AutoCompleteState,
   HandlerCreatorData,
 } from './types';
-import { getText } from '../../src/SuggestionList/helpers';
-import { CustomEventHandler } from '../../commonTypes';
-import { SuggestionTarget } from '../../src/SuggestionList/types';
+import {
+  correctValue, getSuggestionFromValue,
+} from './helpers';
 
 /**
  * Function creates clear button click handler

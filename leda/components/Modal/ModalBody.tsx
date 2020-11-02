@@ -1,7 +1,7 @@
 import React from 'react';
-import { getClassNames, useElement, useProps } from '../../utils';
-import { Div } from '../Div';
-import { LedaContext } from '../LedaProvider';
+import { getClassNames, useElement, useProps } from '~/utils';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
 import { ModalContext } from './ModalContext';
 import { ModalElementsProps } from './types';
 

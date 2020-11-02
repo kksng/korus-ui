@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Div } from '../../components/Div';
-import { LedaContext } from '../../components/LedaProvider';
-import { useElement } from '../../utils';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
+import { useElement } from '~/utils';
 import { VIEW_TYPES } from './constants';
 import { DateCell } from './DateCell';
 import {

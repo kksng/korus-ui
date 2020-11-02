@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   bindFunctionalRef, useProps,
-} from '../../utils';
+} from '~/utils';
 import { Loader } from '../Loader';
 import { CollapsePanelContext } from './CollapseContext';
 import { useBodyWrapper } from './helpers';

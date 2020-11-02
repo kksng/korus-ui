@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { CustomRender, CustomEventHandler } from '../../commonTypes';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { DivRefCurrent } from '../Div';
-import { ValidationProps } from '../Validation/types';
+import { CustomRender, CustomEventHandler } from '~/commonTypes';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { DivRefCurrent } from '~/components/Div';
+import { ValidationProps } from '~/components/Validation/types';
 
 // the event from keyboard type input
 interface InputChangeEvent extends React.ChangeEvent<HTMLInputElement> {

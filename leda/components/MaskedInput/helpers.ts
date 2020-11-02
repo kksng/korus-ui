@@ -1,5 +1,5 @@
-import { escapeRegexp, toStringOrEmpty } from '../../utils';
-import { DEFAULT_PLACEHOLDER_CHAR } from '../../src/MaskedInputBase/constants';
+import { escapeRegexp, toStringOrEmpty } from '~/utils';
+import { DEFAULT_PLACEHOLDER_CHAR } from '~/src/MaskedInputBase/constants';
 import { ValueToValidateData } from './types';
 
 export const getValue = (valueProp: string | null | undefined, valueState: string): string => {

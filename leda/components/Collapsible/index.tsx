@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { isFunction } from 'lodash';
-import { bindFunctionalRef, useProps } from '../../utils';
+
+import { bindFunctionalRef, useProps } from '~/utils';
+import { Div } from '~/components/Div';
 import { DEFAULT_TRANSITION } from './contants';
 import { generateTransitionProperty } from './helpers';
 import { CollapsibleProps, CollapsibleRefCurrent } from './types';
 import { useCollapse } from '../Collapse/useCollapse';
-import { Div } from '../Div';
 
 export const Collapsible = React.forwardRef((props: CollapsibleProps, ref: React.Ref<CollapsibleRefCurrent>) => {
   const {

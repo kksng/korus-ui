@@ -1,7 +1,7 @@
 import React from 'react';
-import { Div } from '../Div';
-import { Span } from '../Span';
-import { useProps } from '../../utils';
+import { Div } from '~/components/Div';
+import { Span } from '~/components/Span';
+import { useProps } from '~/utils';
 import { ModalContext } from './ModalContext';
 import { ModalAlertProps } from './types';
 

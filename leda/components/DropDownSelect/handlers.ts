@@ -1,6 +1,6 @@
 import { isFunction, isNil } from 'lodash';
 
-import { getText } from '../../src/SuggestionList/helpers';
+import { getText } from '~/src/SuggestionList/helpers';
 import { filterData } from './helpers';
 import {
   BlurHandler,

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CustomRender, CustomEventHandler } from '../../commonTypes';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { CustomRender, CustomEventHandler } from '~/commonTypes';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
 
 export interface TagsProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Реф */

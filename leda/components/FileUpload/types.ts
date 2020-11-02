@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { RenderEvent } from '../../commonTypes';
-import { ValidationProps } from '../Validation/types';
-import { FileErrorCodes } from '../../constants';
+import { RenderEvent } from '~/commonTypes';
+import { ValidationProps } from '~/components/Validation/types';
+import { FileErrorCodes } from '~/constants';
 
-export { FileErrorCodes } from '../../constants';
+export { FileErrorCodes } from '~/constants';
 
 export interface RejectedFileType extends File {
   errorCode?: FileErrorCodes,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CustomEventHandler, SetState } from '../../commonTypes';
+import { CustomEventHandler, SetState } from '~/commonTypes';
 import {
   extractValue, formatInputValue, formatValue, getSeparator, normalizeValue,
 } from './helpers';

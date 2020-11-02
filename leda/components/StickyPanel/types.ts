@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { SetState } from '../../commonTypes';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { SetState } from '~/commonTypes';
 
 export interface StickyPanelProps {
   /** Дочерние элементы */

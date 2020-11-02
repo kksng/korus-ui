@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Div } from '../../components/Div';
-import { LedaContext } from '../../components/LedaProvider';
-import { Span } from '../../components/Span';
-import { useElement } from '../../utils';
+import { useElement } from '~/utils';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
+import { Span } from '~/components/Span';
 import { CustomElements, DateTimeInputRangeProps, DateTimeInputRangeState } from './types';
 import { getDateRangeFromValue } from './helpers';
 

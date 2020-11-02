@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { COMPONENT_TYPES } from '../../src/DateTimeInput/constants';
-import { DateTimeInputRange } from '../../src/DateTimeInputRange';
-import { DateTimeInputRangeRefCurrent } from '../../src/DateTimeInputRange/types';
+import { COMPONENT_TYPES } from '~/src/DateTimeInput/constants';
+import { DateTimeInputRange } from '~/src/DateTimeInputRange';
+import { DateTimeInputRangeRefCurrent } from '~/src/DateTimeInputRange/types';
 import { DateRangeProps } from './types';
 
 

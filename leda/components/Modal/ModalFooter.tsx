@@ -1,8 +1,8 @@
 import React from 'react';
-import { LedaContext } from '../LedaProvider';
+import { LedaContext } from '~/components/LedaProvider';
+import { Div } from '~/components/Div';
+import { getClassNames, useElement, useProps } from '~/utils';
 import { ModalContext } from './ModalContext';
-import { Div } from '../Div';
-import { getClassNames, useElement, useProps } from '../../utils';
 import { ModalElementsProps } from './types';
 
 export const ModalFooter: React.FC<ModalElementsProps> = (props: ModalElementsProps): React.ReactElement => {

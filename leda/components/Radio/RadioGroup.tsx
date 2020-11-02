@@ -3,14 +3,14 @@ import { isFunction, isBoolean } from 'lodash';
 
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useProps,
-} from '../../utils';
-import { Div } from '../Div';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+} from '~/utils';
+import { Div } from '~/components/Div';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { useValidation } from '~/components/Validation';
 import {
   ChangeEvent, RadioGroupProps, RadioGroupRefCurrent, WrapperProps, RadioValue,
 } from './types';
 import { getValue, getFirstChildValue, isValidRadioButton } from './helpers';
-import { useValidation } from '../Validation';
 import { createResetHandler } from './handlers';
 
 /**

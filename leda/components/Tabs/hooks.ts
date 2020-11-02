@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { useElement, useElementRef } from '../../utils';
-import { Div } from '../Div';
-import { LedaContext } from '../LedaProvider';
-import { Ul } from '../Ul';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { useElement, useElementRef } from '~/utils';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
+import { Ul } from '~/components/Ul';
 import {
   CustomElements, TabsProps, TabsScroll, TabsScrollProps,
 } from './types';

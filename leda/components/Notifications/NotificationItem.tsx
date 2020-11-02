@@ -1,10 +1,10 @@
 import React from 'react';
 import { isNil } from 'lodash';
-import { Div } from '../Div';
+import { getClassNames, useElement } from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
 import { NotificationItemProps } from './types';
-import { getClassNames, useElement } from '../../utils';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { LedaContext } from '../LedaProvider';
 import { ChangeMethods, DEFAULT_NOTIFICATION_LIFETIME } from './constants';
 
 export const NotificationItem = (props: NotificationItemProps): React.ReactElement => {

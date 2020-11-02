@@ -1,13 +1,14 @@
 import React from 'react';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
 import {
   CustomEventHandler, CustomRender, SetState, SomeObject,
-} from '../../commonTypes';
-import { ValidationProps } from '../Validation/types';
+} from '~/commonTypes';
+import { SuggestionItemComputedProps, SuggestionListProps, SuggestionTarget } from '~/src/SuggestionList/types';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { ValidationProps } from '~/components/Validation/types';
+import { DivProps } from '~/components/Div';
 import { FilterRules } from '../DropDownSelect/types';
-import { SuggestionItemComputedProps, SuggestionListProps, SuggestionTarget } from '../../src/SuggestionList/types';
-import { DivProps } from '../Div';
 import { TagProps } from '../Tags/types';
 
 export type Value = SomeObject | string | number | null;

@@ -2,9 +2,9 @@ import * as React from 'react';
 import {
   isNil, isFunction, isString, isDate,
 } from 'lodash';
-import { Values } from '../../commonTypes';
-import { getClassNames, getIsEmptyAndRequired } from '../../utils';
-import { GlobalDefaultTheme } from '../../utils/useTheme';
+import { getClassNames, getIsEmptyAndRequired } from '~/utils';
+import { GlobalDefaultTheme } from '~/utils/useTheme';
+import { Values } from '~/commonTypes';
 import { COMPONENT_TYPES, HOURS_LIMITS, MINUTES_LIMITS } from './constants';
 import {
   DateWithToDateMethod, DateTimeInputProps, DateTimeInputState, NormalizeValueArgs, TimeLimits,

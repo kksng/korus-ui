@@ -1,10 +1,10 @@
-import { defaultSuggestionListTheme } from '../../src/SuggestionList/theme';
+import { defaultSuggestionListTheme } from '~/src/SuggestionList/theme';
+import { defaultDateTimeInputRangeTheme } from '~/src/DateTimeInputRange/theme';
+import { defaultDateTimeInputTheme } from '~/src/DateTimeInput/theme';
 import { defaultAutoCompleteTheme } from '../AutoComplete/theme';
 import { defaultButtonGroupTheme } from '../ButtonGroup/theme';
 import { defaultButtonTheme } from '../Button/theme';
 import { defaultCheckBoxTheme } from '../CheckBox/theme';
-import { defaultDateTimeInputRangeTheme } from '../../src/DateTimeInputRange/theme';
-import { defaultDateTimeInputTheme } from '../../src/DateTimeInput/theme';
 import { defaultCollapseTheme } from '../Collapse/theme';
 import { defaultDropDownLinkTheme } from '../DropDownLink/theme';
 import { defaultDropDownTheme } from '../DropDown/theme';

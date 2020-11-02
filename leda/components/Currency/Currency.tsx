@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { isString, isNumber } from 'lodash';
-import { Span } from '../Span';
-import { bindFunctionalRef, useElement } from '../../utils';
+import { bindFunctionalRef, useElement } from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Span } from '~/components/Span';
+import { LedaContext } from '~/components/LedaProvider';
 import { CurrencyProps, CurrencyRefCurrent, CurrencySymbolProps } from './types';
 import { formatNumber, getNumericValue } from './helpers';
-import { LedaContext } from '../LedaProvider';
-import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export const Currency = React.forwardRef((props: CurrencyProps, ref?: React.Ref<CurrencyRefCurrent>) => {
   const {

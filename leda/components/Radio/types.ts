@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { CustomRender } from '../../commonTypes';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { CustomRender } from '~/commonTypes';
 
 /**
  * Change event handler, used for select and reset events
