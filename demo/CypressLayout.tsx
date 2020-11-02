@@ -11,15 +11,19 @@ import {
   DateRange,
   DropDownSelect,
   DropZone,
+  FileDrop,
   Input,
   MaskedInput,
   Modal,
   VStepper,
   Wizard,
   DropDown,
+  DropDownLink,
   RadioGroup,
   MultiSelect,
-  ToolTip
+  ToolTip,
+  TimePicker,
+  Validation
 } from './cypress';
 import { Styles } from './components/Styles';
 
@@ -38,6 +42,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
+        </Route>
+        <Route path="/cypress/filedrop">
+          <FileDrop />
         </Route>
         <Route path="/cypress/input">
           <Input />
@@ -69,6 +76,9 @@ export const CypressLayout = () => (
         <Route path="/cypress/dropdown">
           <DropDown />
         </Route>
+        <Route path="/cypress/dropdownlink">
+          <DropDownLink />
+        </Route>
         <Route path="/cypress/radio-group">
           <RadioGroup />
         </Route>
@@ -77,6 +87,12 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/tooltip">
           <ToolTip />
+        </Route>
+        <Route path="/cypress/timepicker">
+          <TimePicker />
+        </Route>
+        <Route path="/cypress/validation">
+          <Validation />
         </Route>
       </Switch>
     </L.Div>

@@ -142,7 +142,7 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
     value,
   });
 
-  const handleMouseDown = createMouseDownHandler(props, {
+  const handleMouseDown = createMouseDownHandler({
     inputRef,
   });
 

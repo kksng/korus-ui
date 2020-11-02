@@ -11,8 +11,7 @@ import { Ul } from '../Ul';
 import { InteractionModes } from './constants';
 
 /**
- * DropDown component
- * renders child list as dropdown list
+ * DropDown component renders child list as dropdown list
  * @param {DropDownProps} props
  *
  * @returns {React.ReactElement}
@@ -48,16 +47,13 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
   const context = React.useContext(LedaContext);
 
   /**
-   * Function sets dropdown list state to open if click was made on wrapper
-   * and sets dropdown list state to close if click was made outside wrapper
-   * @param {MouseEvent} e - click event
+   * Function sets dropdown state to close if click was made outside wrapper
+   * @param {MouseEvent} event - click event
    */
   const handleClick = (event: MouseEvent) => {
     const target = event.target as Node;
     const isWrapperClicked = wrapperRef && (wrapperRef as React.MutableRefObject<DropDownRefCurrent | null>).current?.wrapper?.contains(target);
-    if (isWrapperClicked) {
-      setIsOpen(true);
-    } else {
+    if (!isWrapperClicked) {
       setIsOpen(false);
     }
   };
@@ -93,7 +89,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
 
   const interaction = interactionMode === InteractionModes.Click
     ? {
-      onClick: (event: MouseEvent) => handleClick(event),
+      onClick: () => setIsOpen(!isOpenState),
     }
     : {
       onMouseOver: () => setIsOpen(true),
@@ -111,7 +107,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === Ul) {
-          return React.cloneElement(child, { ref: containerRef });
+          return React.cloneElement(child, { ref: containerRef, onClick: () => setIsOpen(false) });
         }
 
         return child;
