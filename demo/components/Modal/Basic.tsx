@@ -1,6 +1,6 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../leda';
+import * as L from '../../../leda';
 
 const Alerts = ({ setActiveAlertKey }: any) => (
   <>
@@ -30,7 +30,7 @@ const Alerts = ({ setActiveAlertKey }: any) => (
   </>
 );
 
-export const Modal = () => {
+export const Basic = (props: any) => {
   const [isOpen, setOpen] = React.useState(false);
   const [activeAlertKey, setActiveAlertKey] = React.useState<string | null>(null);
 
