@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
 import {
   ArrayElement, CustomEventHandler, CustomRender, SetState, SomeObject,
-} from '../../commonTypes';
+} from '~/commonTypes';
+import { ValidationProps } from '~/components/Validation/types';
 import { ButtonProps } from '../Button/types';
-import { ValidationProps } from '../Validation/types';
 
 export type Value = string | SomeObject | number | null;
 

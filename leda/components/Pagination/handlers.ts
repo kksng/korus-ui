@@ -1,5 +1,5 @@
 import { isFunction } from 'lodash';
-import { CustomEventHandler, SetState } from '../../commonTypes';
+import { CustomEventHandler, SetState } from '~/commonTypes';
 import { ChangeEvent, PageChangeHandler, PageSizeChangeEvent } from './types';
 
 export const createPageChangeHandler = (

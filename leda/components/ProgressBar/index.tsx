@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Div } from '../Div';
+import { Div } from '~/components/Div';
 import {
   bindFunctionalRef, getClassNames, useElement, useProps, useTheme,
-} from '../../utils';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+} from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Span } from '~/components/Span';
+import { LedaContext } from '~/components/LedaProvider';
 import { ProgressBarProps, ProgressBarRefCurrent } from './types';
-import { Span } from '../Span';
-import { LedaContext } from '../LedaProvider';
 
 export const ProgressBar = React.forwardRef((props: ProgressBarProps, ref?: React.Ref<ProgressBarRefCurrent>) => {
   const {

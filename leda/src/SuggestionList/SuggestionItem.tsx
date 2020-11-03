@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { isObject } from 'lodash';
 
-import { LedaContext } from '../../components/LedaProvider';
-import { Li } from '../../components/Li';
-import { Span } from '../../components/Span';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { getClassNames, useElement } from '../../utils';
+import { getClassNames, useElement } from '~/utils';
+import { getWrapperRef } from '~/utils/getWrapperRef';
+import { CommonRefCurrent } from '~/commonTypes';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { LedaContext } from '~/components/LedaProvider';
+import { Li } from '~/components/Li';
+import { Span } from '~/components/Span';
 import { createClickHandler } from './handlers';
 import { SuggestionItemProps } from './types';
-import { getWrapperRef } from '../../utils/getWrapperRef';
-import { CommonRefCurrent } from '../../commonTypes';
 
 /**
  * SuggestionItem component renders item of SuggestionList

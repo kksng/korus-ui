@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { useElement } from '~/utils';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
+import { COMPONENTS_NAMESPACES } from '~/constants';
 import { CustomElements, TextareaProps } from './types';
-import { useElement } from '../../utils';
-import { Div } from '../Div';
-import { LedaContext } from '../LedaProvider';
-import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export const useCustomElements = (props: TextareaProps): CustomElements => {
   const { wrapperRender } = props;

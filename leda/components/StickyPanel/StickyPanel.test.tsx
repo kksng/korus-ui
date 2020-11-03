@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+
+import { Button } from '~/components/Button';
 import { StickyPanel } from './index';
-import { Button } from '../Button';
 import { H1 } from '../Headers';
 
 describe('StickyPanel SNAPSHOTS', () => {

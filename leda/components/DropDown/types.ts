@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { RenderEvent } from '../../commonTypes';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { RenderEvent } from '~/commonTypes';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
 
 /**
  * Custom elements

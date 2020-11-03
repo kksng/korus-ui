@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { COMPONENTS_NAMESPACES } from '~/constants';
 import {
   BlurEvent,
   ChangeEvent,
   FocusEvent,
   DateTimeInputProps,
   DateTimeInputRefCurrent,
-} from '../../src/DateTimeInput/types';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+} from '~/src/DateTimeInput/types';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
 
 export interface DatePickerProps extends DateTimeInputProps {
   /* Dates that are disabled to be selected. Array of dates or dates ranges. */

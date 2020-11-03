@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { ValidationProps } from '../Validation/types';
-import { PasswordStrength } from './constants';
-import { CustomRender } from '../../commonTypes';
+
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { ValidationProps } from '~/components/Validation/types';
+import { CustomRender } from '~/commonTypes';
+import { DivProps } from '~/components/Div';
+import { PredefinedAllowedSymbols } from '~/utils/isSymbolAllowed';
+import { PredefinedForbiddenSymbols } from '~/utils/isSymbolForbidden';
 import { defaultPasswordTheme } from './theme';
-import { DivProps } from '../Div';
-import { PredefinedAllowedSymbols } from '../../utils/isSymbolAllowed';
-import { PredefinedForbiddenSymbols } from '../../utils/isSymbolForbidden';
+import { PasswordStrength } from './constants';
 
 export interface ClearEvent extends React.MouseEvent<HTMLInputElement> {
   component: {

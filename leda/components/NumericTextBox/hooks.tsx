@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { SetState } from '../../commonTypes';
-import { useElement } from '../../utils';
-import { Div } from '../Div';
-import { LedaContext } from '../LedaProvider';
+import { SetState } from '~/commonTypes';
+import { useElement } from '~/utils';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
 import { formatInputValue, formatValue } from './helpers';
 import { CustomElements, NumericTextBoxProps, NumericTextBoxState } from './types';
 

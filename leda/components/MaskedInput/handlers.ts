@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { isFunction } from 'lodash';
+
+import {
+  BlurEvent, FocusEvent, ChangeEvent, EnterPressEvent,
+} from '~/src/MaskedInputBase/types';
+import { CustomEventHandler, SetState } from '~/commonTypes';
+import { maskValue } from '~/src/MaskedInputBase/helpers';
+import { getValueToValidate } from './helpers';
 import {
   BlurData, ChangeData, FocusData, MaskedInputProps, MaskedInputState,
 } from './types';
-import {
-  BlurEvent, FocusEvent, ChangeEvent, EnterPressEvent,
-} from '../../src/MaskedInputBase/types';
-import { CustomEventHandler, SetState } from '../../commonTypes';
-import { getValueToValidate } from './helpers';
-import { maskValue } from '../../src/MaskedInputBase/helpers';
 
 export const createChangeHandler = (
   props: MaskedInputProps,

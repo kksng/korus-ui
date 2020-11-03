@@ -3,7 +3,7 @@ import {
   isString, isBoolean,
 } from 'lodash';
 
-import { SuggestionList } from '../../src/SuggestionList';
+import { SuggestionList } from '~/src/SuggestionList';
 import {
   bindFunctionalRef,
   getClassNames,
@@ -11,9 +11,11 @@ import {
   useElement,
   useProps,
   useTheme,
-} from '../../utils';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { Div } from '../Div';
+} from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Div } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
+import { useValidation } from '~/components/Validation';
 import {
   getSuggestions,
   safeTrim,
@@ -33,8 +35,6 @@ import {
   Suggestion,
   AutoCompleteState,
 } from './types';
-import { useValidation } from '../Validation';
-import { LedaContext } from '../LedaProvider';
 
 /**
  * AutoComplete component renders input with dropdown list

@@ -2,19 +2,19 @@ import React from 'react';
 import { DropzoneRef, useDropzone } from 'react-dropzone';
 import {
   getClassNames, bindFunctionalRef, useTheme, useProps, getIsEmptyAndRequired,
-} from '../../utils';
-import { MAX_FILE_SIZE, MIN_FILE_SIZE } from '../../constants';
-import { Div } from '../Div';
+} from '~/utils';
+import { MAX_FILE_SIZE, MIN_FILE_SIZE } from '~/constants';
+import * as messages from '~/messages';
+import { Div } from '~/components/Div';
+import { useValidation } from '~/components/Validation';
 import { DescriptionMessage, getValue } from './helpers';
 import { createChangeHandler, createClickHandler } from './handlers';
 import { DropZoneFiles } from './DropZoneFiles';
 import { RejectedFilesList } from './RejectedFilesList';
-import * as messages from '../../messages';
 import {
   ChangeEventHandler, DropZoneProps, DropZoneRefCurrent, DropZoneState,
 } from './types';
 import { useCustomElements, useDropZoneRestProps } from './hooks';
-import { useValidation } from '../Validation';
 import { EMPTY_DROP_ZONE_FILES } from './constants';
 
 export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<DropZoneRefCurrent>): React.ReactElement => {

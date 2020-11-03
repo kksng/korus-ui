@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { ValidationProps } from '../Validation/types';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { CustomRender, SetState } from '../../commonTypes';
-import { DivProps } from '../Div';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { CustomRender, SetState } from '~/commonTypes';
+import { DivProps } from '~/components/Div';
 import {
   ChangeEvent as BaseChangeEvent, BlurEvent, EnterPressEvent, FocusEvent, MaskedInputBaseProps,
-} from '../../src/MaskedInputBase/types';
+} from '~/src/MaskedInputBase/types';
+import { ValidationProps } from '~/components/Validation/types';
 
 export {
   BlurEvent, EnterPressEvent, FocusEvent,

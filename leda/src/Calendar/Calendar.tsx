@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { DivRefCurrent } from '~/components/Div';
+import { useAdaptivePosition } from '~/utils';
 import { CALENDAR_CLICK_ACTION } from './constants';
 import { useCustomElements } from './hooks';
 import { CalendarProps } from './types';
-import { DivRefCurrent } from '../../components/Div';
 import {
   getCalendarConditions, getCalendarFormat,
 } from './helpers';
 import { TodayButton } from './TodayButton';
-import { useAdaptivePosition } from '../../utils';
 
 export const Calendar = (props: CalendarProps): React.ReactElement | null => {
   const {

@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { SuggestionList } from '../../src/SuggestionList';
+
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { SuggestionList } from '~/src/SuggestionList';
+import { getText } from '~/src/SuggestionList/helpers';
 import {
   bindFunctionalRef, useProps, useTheme,
-} from '../../utils';
-import { Div } from '../Div';
-import { useValidation } from '../Validation';
+} from '~/utils';
+import { Div } from '~/components/Div';
+import { Span } from '~/components/Span';
+import { useValidation } from '~/components/Validation';
 import {
   createBlurHandler,
   createChangeHandler,
@@ -24,8 +27,6 @@ import {
 import {
   DropDownSelectProps, DropDownSelectRefCurrent, DropDownSelectState, Value,
 } from './types';
-import { Span } from '../Span';
-import { getText } from '../../src/SuggestionList/helpers';
 
 /**
  * DropDownSelect component. Renders input with dropdown list with possibility to select one item

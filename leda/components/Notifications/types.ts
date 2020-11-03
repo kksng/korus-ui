@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { CustomRender } from '../../commonTypes';
-import { DivProps } from '../Div';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { CustomRender } from '~/commonTypes';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { DivProps } from '~/components/Div';
 import { ChangeMethods } from './constants';
 
 export interface Item {

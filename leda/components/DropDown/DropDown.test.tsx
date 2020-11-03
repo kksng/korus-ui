@@ -3,9 +3,9 @@ import {
   render, screen, fireEvent,
 } from '@testing-library/react';
 
+import * as L from '~';
 import { DropDown } from './index';
 // eslint-disable-next-line import/no-useless-path-segments
-import * as L from '../../../leda';
 
 describe('DropDown SNAPSHOTS', () => {
   it('should render', () => {

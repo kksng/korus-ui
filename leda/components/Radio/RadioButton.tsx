@@ -1,13 +1,13 @@
 import React from 'react';
 import {
   bindFunctionalRef, getClassNames, useElement, useProps,
-} from '../../utils';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { generateId } from '../../utils/generateId';
-import { Div } from '../Div';
+} from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { generateId } from '~/utils/generateId';
+import { Div } from '~/components/Div';
+import { globalDefaultTheme, LedaContext } from '~/components/LedaProvider';
+import { getWrapperRef } from '~/utils/getWrapperRef';
 import { PropsFromParent, RadioButtonProps, RadioGroupRefCurrent } from './types';
-import { globalDefaultTheme, LedaContext } from '../LedaProvider';
-import { getWrapperRef } from '../../utils/getWrapperRef';
 
 export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: React.Ref<RadioGroupRefCurrent>): React.ReactElement => {
   const {

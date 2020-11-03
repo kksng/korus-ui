@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 // Статический HTML элемент с обработчиком событий требует роль
 import * as React from 'react';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { COMPONENTS_NAMESPACES } from '~/constants';
 import {
   bindFunctionalRef, getClassNames, useElement, useProps,
-} from '../../utils';
-import { globalDefaultTheme, LedaContext } from '../LedaProvider';
-import { Span } from '../Span';
+} from '~/utils';
+import { Span } from '~/components/Span';
+import { globalDefaultTheme, LedaContext } from '~/components/LedaProvider';
 import { TagProps, TagsRefCurrent } from './types';
 
 export const Tag = React.forwardRef((props: TagProps, ref?: React.Ref<TagsRefCurrent>): React.ReactElement => {

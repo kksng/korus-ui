@@ -1,15 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useElement, useProps } from '~/utils';
+import { Div } from '~/components/Div';
+import { Span } from '~/components/Span';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Ul } from '~/components/Ul';
+import { Button } from '~/components/Button';
+import { LedaContext } from '~/components/LedaProvider';
 import {
   AcceptedFilesProps, CustomElements, DropZoneProps, DropZoneState, UploadButtonProps,
 } from './types';
-import { useElement, useProps } from '../../utils';
-import { Div } from '../Div';
-import { Ul } from '../Ul';
-import { Span } from '../Span';
-import { Button } from '../Button';
-import { LedaContext } from '../LedaProvider';
-import { COMPONENTS_NAMESPACES } from '../../constants';
 
 const defaultAccepted = (elProps: AcceptedFilesProps): React.ReactElement => (elProps.dropZoneFilesNode
   ? ReactDOM.createPortal(elProps.children, elProps.dropZoneFilesNode)

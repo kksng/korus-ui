@@ -1,5 +1,5 @@
 /* eslint-disable key-spacing */
-import { defaultSuggestionListTheme } from '../../src/SuggestionList/theme';
+import { defaultSuggestionListTheme } from '~/src/SuggestionList/theme';
 
 export const defaultDropDownSelectTheme = {
   ...defaultSuggestionListTheme,

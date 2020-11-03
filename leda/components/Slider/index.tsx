@@ -1,12 +1,12 @@
 import React from 'react';
 import { isNumber, isNil } from 'lodash';
-import { Div } from '../Div';
-import { Span } from '../Span';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { SliderSrc } from '../../src/ReactSlider';
+import { Div } from '~/components/Div';
+import { Span } from '~/components/Span';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { SliderSrc } from '~/src/ReactSlider';
 import {
   getClassNames, useTheme, bindFunctionalRef, useElement, useProps,
-} from '../../utils';
+} from '~/utils';
 import { LABELS } from './constants';
 import { createAfterChangeHandler, createChangeHandler } from './handlers';
 import { SliderLabels } from './SliderLabels';

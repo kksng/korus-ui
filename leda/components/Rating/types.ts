@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CustomRender } from '../../commonTypes';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { CustomRender } from '~/commonTypes';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
 
 export interface ChangeEvent {
   component: {

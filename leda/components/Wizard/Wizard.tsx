@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 import {
-  getLabelText,
-  getDataType,
-} from '../StatusBar/helpers';
-import {
   getClassNames, useTheme, bindFunctionalRef, useProps,
-} from '../../utils';
+} from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Div } from '~/components/Div';
 import {
   WizardProps, WizardValue, WizardRefCurrent,
 } from './types';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { Div } from '../Div';
+import {
+  getLabelText,
+  getDataType,
+} from '../StatusBar/helpers';
 import { WizardItem } from './WizardItem';
 import { isActive, isSuccess, getCurrentIndex } from './helpers';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   bindFunctionalRef, getClassNames, useElement, useProps,
-} from '../../utils';
-import { Li, LiProps } from '../Li';
+} from '~/utils';
+import { Li, LiProps } from '~/components/Li';
 import { TabsContext } from './TabsContext';
 import { TabProps, TabRefCurrent } from './types';
 

@@ -1,10 +1,11 @@
 import * as React from 'react';
+
+import { getClassNames } from '~/utils';
 import { DropZoneViewTypes } from './constants';
 import { createDownloadLink, getErrorMessage } from './helpers';
 import {
   SingleFileViewProps,
 } from './types';
-import { getClassNames } from '../../utils';
 import { ErrorComponent } from './ErrorComponent';
 import { SuccessComponent } from './SuccessComponent';
 import { LoadingComponent } from './LoadingComponent';

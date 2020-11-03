@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import { Div } from '../Div';
+import { getClassNames, useElement } from '~/utils';
+import { SuggestionListProps } from '~/src/SuggestionList/types';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Div } from '~/components/Div';
+import { Span } from '~/components/Span';
+import { LedaContext } from '~/components/LedaProvider';
 import { CheckBox } from '../CheckBox';
-import { getClassNames, useElement } from '../../utils';
 import { defaultMultiSelectTheme } from './theme';
-import { SuggestionListProps } from '../../src/SuggestionList/types';
 import { selectAllSuggestion, SelectedState } from './constants';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { LedaContext } from '../LedaProvider';
-import { Span } from '../Span';
 
 /**
  * Component creates render function for checkboxes in SuggestionList

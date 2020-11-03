@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { isFunction } from 'lodash';
 
+import { CustomEventHandler, SetState, SomeObject } from '~/commonTypes';
+import { SuggestionTarget } from '~/src/SuggestionList/types';
 import {
   BlurData,
   ClearData,
@@ -11,8 +13,6 @@ import {
   SelectData,
   Value,
 } from './types';
-import { CustomEventHandler, SetState, SomeObject } from '../../commonTypes';
-import { SuggestionTarget } from '../../src/SuggestionList/types';
 import { filterData, getShouldUniteTags } from './helpers';
 import { selectAllSuggestion } from './constants';
 

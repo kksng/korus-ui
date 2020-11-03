@@ -1,6 +1,7 @@
 import React from 'react';
+
+import { bindFunctionalRef, getClassNames, useProps } from '~/utils';
 import { useCollapseHeading, useIcon } from './helpers';
-import { bindFunctionalRef, getClassNames, useProps } from '../../utils';
 import { handleHeadingClick } from './handlers';
 import { CollapsePanelContext } from './CollapseContext';
 import { HeadingProps, HeadingRefCurrent } from './types';

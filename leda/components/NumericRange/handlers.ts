@@ -1,5 +1,5 @@
 import { isFunction } from 'lodash';
-import { SetState } from '../../commonTypes';
+import { SetState } from '~/commonTypes';
 import { ChangeEvent } from '../NumericTextBox/types';
 import { NumericRangeProps, NumericRangeState } from './types';
 import { formatValue } from '../NumericTextBox/helpers';

@@ -4,8 +4,8 @@ import { isString } from 'lodash';
 
 import {
   ERROR_MESSAGES, FileErrorCodes, MAX_FILE_SIZE, MIN_FILE_SIZE,
-} from '../../constants';
-import { Div } from '../Div';
+} from '~/constants';
+import { Div } from '~/components/Div';
 import {
   DropZoneError, DropZoneFileType, DropZoneProps, DropZoneState, FileType, ExternalFile, DropZoneFiles,
 } from './types';

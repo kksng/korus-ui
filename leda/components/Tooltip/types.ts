@@ -1,6 +1,6 @@
 import React from 'react';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
 
 /**
  * Type of helper that calculates offsets

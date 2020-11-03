@@ -1,6 +1,6 @@
-import { GlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { CustomRender } from '../../commonTypes';
+import { GlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { CustomRender } from '~/commonTypes';
 
 /**
  *  Custom properties of component's item

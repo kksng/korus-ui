@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Div } from '../../components/Div';
-import { Span } from '../../components/Span';
-import { getClassNames } from '../../utils';
+import { Div } from '~/components/Div';
+import { Span } from '~/components/Span';
+import { getClassNames } from '~/utils';
 import { BUTTON_TYPE, CALENDAR_CLICK_ACTION } from './constants';
 import { getButtonActionType, getCalendarTitle } from './helpers';
 import { CalendarHeaderProps } from './types';

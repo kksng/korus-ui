@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isString, isNil } from 'lodash';
-import { useElement, checkFormProps } from '../../utils';
+import { useElement, checkFormProps } from '~/utils';
 import {
   addField, getValidators, removeField, updateField, validate,
 } from './helpers';

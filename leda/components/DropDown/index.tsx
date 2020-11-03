@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useAdaptivePosition, useProps,
-} from '../../utils';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+} from '~/utils';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { Div, DivRefCurrent } from '~/components/Div';
+import { LedaContext } from '~/components/LedaProvider';
+import { Ul } from '~/components/Ul';
 import { DropDownProps, DropDownRefCurrent, WrapperProps } from './types';
-import { Div, DivRefCurrent } from '../Div';
-import { LedaContext } from '../LedaProvider';
-import { Ul } from '../Ul';
 import { InteractionModes } from './constants';
 
 /**

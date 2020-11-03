@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Div } from '../../components/Div';
+import { Div } from '~/components/Div';
+import { getClassNames } from '~/utils';
 import { CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import { getMonthYearArray, getYearCellClassNames } from './helpers';
-import { getClassNames } from '../../utils';
 import { YearViewProps } from './types';
 
 export const YearView = (props: YearViewProps): React.ReactElement | null => {

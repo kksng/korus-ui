@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { htmlTagFactory } from '../../src/HTMLTagsFactory';
+import { htmlTagFactory } from '~/src/HTMLTagsFactory';
 
 export interface LiProps extends React.HTMLAttributes<HTMLLIElement> {
   ref?: React.Ref<LiRefCurrent>,

@@ -15,4 +15,8 @@ module.exports = {
     'enzyme-to-json/serializer',
   ],
   testRegex: '\\.test\\.tsx?$',
+  moduleNameMapper: {
+    "~/(.*)": "<rootDir>/leda/$1",
+    "~": "<rootDir>/leda/index.ts",
+  }
 };

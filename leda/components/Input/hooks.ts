@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {
   useRunAfterUpdate,
-} from '../../utils';
+} from '~/utils';
 
 /**
  * Hook provides function that returns cursor to initial position after cancelled paste or change event

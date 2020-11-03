@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { CustomRender } from '../../commonTypes';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { BlurEvent, FocusEvent, NumericTextBoxProps } from '../NumericTextBox/types';
-import { DivProps } from '../Div';
+
+import { CustomRender } from '~/commonTypes';
+import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { DivProps } from '~/components/Div';
+import { BlurEvent, FocusEvent, NumericTextBoxProps } from '~/components/NumericTextBox/types';
 
 export interface LabelProps {
   className?: string,

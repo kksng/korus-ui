@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { COMPONENTS_NAMESPACES } from '../../constants';
-import { useElement } from '../../utils';
-import { LedaContext } from '../LedaProvider';
+import { COMPONENTS_NAMESPACES } from '~/constants';
+import { useElement } from '~/utils';
+import { LedaContext } from '~/components/LedaProvider';
 import { PagesDropDown as PaginationPagesDropDown } from './PagesDropDown';
 import { PaginationInfo } from './PaginationInfo';
 import { PaginationRangeInfo } from './PaginationRangeInfo';

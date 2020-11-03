@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   getClassNames,
-} from '../../utils';
+} from '~/utils';
+import { SomeObject } from '~/commonTypes';
 import {
   ItemClassNames, VStepperItemProps, VStepperProps,
 } from './types';
-import { SomeObject } from '../../commonTypes';
 
 export const VSTEPPER_STATUS_TYPES = {
   SUCCESS: 'success',

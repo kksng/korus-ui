@@ -4,7 +4,7 @@ import {
   bindFunctionalRef,
   getClassNames,
   useProps,
-} from '../../utils';
+} from '~/utils';
 import { extractIdAndNamespace } from './helpers';
 import { SvgProps, SvgRefCurrent } from './types';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CustomEventHandler, SetState } from '../../commonTypes';
+import { CustomEventHandler, SetState } from '~/commonTypes';
 import { InputProps } from './types';
 import {
   isSymbolAllowed, isSymbolForbidden, transformToCase,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CustomRender } from '../../commonTypes';
+import { CustomRender } from '~/commonTypes';
 
 export interface CurrencyProps {
   /** значение, как потомок */

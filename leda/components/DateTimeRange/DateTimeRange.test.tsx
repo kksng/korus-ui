@@ -3,10 +3,10 @@ import {
   render,
   fireEvent,
 } from '@testing-library/react';
-
 import userEvent from '@testing-library/user-event';
+
+import { MonthsNames, WeekDayNames } from '~/src/Calendar/types';
 import { DateTimeRange } from './index';
-import { MonthsNames, WeekDayNames } from '../../src/Calendar/types';
 
 const validName = 'test';
 const validFormat = 'dd.MM.yyyy hh:mm';

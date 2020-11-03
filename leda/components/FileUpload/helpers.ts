@@ -1,5 +1,5 @@
 import accept from 'attr-accept';
-import { FileErrorCodes, MAX_FILE_SIZE, MIN_FILE_SIZE } from '../../constants';
+import { FileErrorCodes, MAX_FILE_SIZE, MIN_FILE_SIZE } from '~/constants';
 import { FileUploadProps } from './types';
 
 export const getErrorCode = (file: File, props: FileUploadProps): number => {

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { isObject } from 'lodash';
-import { A } from '../A';
-import { Li } from '../Li';
+
+import { A } from '~/components/A';
+import { Li } from '~/components/Li';
+import { useElement } from '~/utils';
 import { ClickEvent, DropDownLinkItemProps, ItemProps } from './types';
-import { useElement } from '../../utils';
 
 export const DropDownLinkItem: React.FC<DropDownLinkItemProps> = (props: DropDownLinkItemProps): React.ReactElement => {
   const {

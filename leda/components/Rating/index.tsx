@@ -1,11 +1,12 @@
 import React from 'react';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+
+import { COMPONENTS_NAMESPACES } from '~/constants';
 import {
   bindFunctionalRef, getClassNames, useElement, useProps, useTheme,
-} from '../../utils';
+} from '~/utils';
+import { Span } from '~/components/Span';
 import { RatingProps, RatingRefCurrent } from './types';
 import { createChangeHandler, createMouseOutHandler, createMouseOverHandler } from './handlers';
-import { Span } from '../Span';
 
 export const Rating = React.forwardRef((props: RatingProps, ref?: React.Ref<RatingRefCurrent>): React.ReactElement => {
   const {

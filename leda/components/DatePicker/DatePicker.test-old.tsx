@@ -3,8 +3,9 @@ import React from 'react';
 import toJson from 'enzyme-to-json';
 import { mount } from 'enzyme';
 import { advanceTo } from 'jest-date-mock';
+
+import { fixJSON } from '~/utils';
 import { DatePicker } from './index';
-import { fixJSON } from '../../utils';
 
 beforeAll(() => {
   // установим текущую дату на 27.05.2018, чтобы дата в снапшотах не обновлялась
