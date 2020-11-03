@@ -4,7 +4,19 @@ const createPoint = (x: number, y: number) => ({
   x, y,
 });
 
-export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: number): string => {
+export const setElementDefaultStyles = (element: HTMLElement | null | undefined): void => {
+  if (!element) return;
+  element.style.position = '';
+  element.style.zIndex = '';
+};
+
+export const setElementStyles = (element: HTMLElement | null | undefined): void => {
+  if (!element) return;
+  element.style.position = 'relative';
+  element.style.zIndex = '10002';
+};
+
+export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: number, padding: number): string => {
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
 
@@ -21,10 +33,10 @@ export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: 
 
   const rect = element.getBoundingClientRect();
 
-  const elementTopLeft = createPoint(rect.left, rect.top);
-  const elementTopRight = createPoint(rect.right, rect.top);
-  const elementBottomRight = createPoint(rect.right, rect.bottom);
-  const elementBottomLeft = createPoint(rect.left, rect.bottom);
+  const elementTopLeft = createPoint(rect.left - padding, rect.top - padding);
+  const elementTopRight = createPoint(rect.right + padding, rect.top - padding);
+  const elementBottomRight = createPoint(rect.right + padding, rect.bottom + padding);
+  const elementBottomLeft = createPoint(rect.left - padding, rect.bottom + padding);
 
   return `
     M 0 0
