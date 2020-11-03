@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 
+// eslint-disable-next-line
 export const Minimal = (props: any): React.ReactElement => {
   const [value, setValue] = React.useState('');
 
