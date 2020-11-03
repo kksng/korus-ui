@@ -1,7 +1,7 @@
 import React from 'react';
-import * as L from '../../leda';
+import * as L from '../../../leda';
 
-export const Collapse = () => {
+export const Basic = (props: any) => {
   const [activeKey, setActiveKey] = React.useState<string | string[] | null>(['1']);
   const [isAccordion, setIsAccordion] = React.useState(false);
   const [isDisabled, setIsDisabled] = React.useState(false);
