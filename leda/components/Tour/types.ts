@@ -1,16 +1,28 @@
 import * as React from 'react';
 
+/**
+ * Change event
+ */
 export interface ChangeEvent {
   component: {
+    /** Current step key */
     value: number | string | null,
+    /** Current TourStepItem */
     item: TourStepItem | null,
   },
 }
 
+/**
+ * Modal window content properties
+ */
 export interface ContentProps {
+  /** Function allows to jump to any tour item */
   goTo: (stepNumber: number) => void,
+  /** Function switches to next tour item */
   next: () => void,
+  /** Function switches to previous tour item */
   prev: () => void,
+  /** Function stops tour  */
   stopTour: () => void,
 }
 

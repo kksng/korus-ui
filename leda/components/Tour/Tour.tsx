@@ -8,6 +8,12 @@ import {
 } from './helpers';
 import { TourProps, TourStepItem } from './types';
 
+/**
+ * Tour component - highlights items and shows tooltips
+ * @param {TourProps} props
+ *
+ * @returns {React.ReactElement | null}
+ */
 export const Tour = (props: TourProps): React.ReactElement | null => {
   const {
     data, activeStepKey, onChange,
@@ -39,7 +45,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
   }, [activeItem]);
 
   React.useEffect((): () => void => {
-    const prevOverflow = document.body.style.overflow; // реализация как в Modal
+    const prevOverflow = document.body.style.overflow; // implementation as in Modal
 
     if (activeItem?.element) {
       const scrollOffsetTop = activeItem.offsetTop ?? 200;
@@ -53,18 +59,18 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
       document.body.style.overflow = 'hidden';
 
       if (
-        bodyScrollHeight <= window.innerHeight // высота body меньше, чем высота экрана, скролла нет
-        || window.scrollY === shiftedDocumentOffsetTop // страница уже прокручена до элемента
-        || neededToScrollAmount >= availableScrollLength // страница прокручена до конца и не может быть прокручена дальше
-      ) { // прокручивать не нужно - отображаем тур сразу
+        bodyScrollHeight <= window.innerHeight // if body height is less than screen height, there is no scroll
+        || window.scrollY === shiftedDocumentOffsetTop // the page is already scrolled to the element
+        || neededToScrollAmount >= availableScrollLength // the page is scrolled to the end and cannot be scrolled further
+      ) { // no need to scroll - display the tour immediately
         setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius, padding));
         setElementStyles(activeItem?.element);
-      } else { // иначе отобразим тур после скролла
+      } else { // otherwise display the tour after scrolling
         setIsScrolling(true);
         setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
 
         const scrollHandler = debounce(() => {
-          // прокрутка закончилась
+          // scrolling is over
           setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius, padding));
           setElementStyles(activeItem?.element);
           setIsScrolling(false);
