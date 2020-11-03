@@ -18,5 +18,6 @@ export { DropDownLink } from './DropDownLink';
 export { RadioGroup } from './RadioGroup';
 export { MultiSelect } from './MultiSelect';
 export { ToolTip } from './ToolTip';
+export { Tour } from './Tour';
 export { TimePicker } from './TimePicker';
 export { Validation } from './Validation';
