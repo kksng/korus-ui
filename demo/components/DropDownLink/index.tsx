@@ -3,11 +3,13 @@ import { Story } from '../Story';
 import { DataStrings } from './DataStrings';
 import { DataObjects } from './DataObjects';
 import { CompareObjectsBy } from './CompareObjectsBy';
+import { Minimal } from './Minimal';
 
 export const DropDownLink = () => (
   <Story title="DropDownLink">
-    <DataStrings title="Строки в data" />
-    <DataObjects title="Обьекты в data" />
-    <CompareObjectsBy title="Сравнение" />
+    <DataStrings title="Strings in data" />
+    <DataObjects title="Objects in data" />
+    <CompareObjectsBy title="Comparison" />
+    <Minimal title="Minimal example" />
   </Story>
 );
