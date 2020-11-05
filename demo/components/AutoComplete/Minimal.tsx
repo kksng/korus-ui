@@ -2,8 +2,6 @@ import * as React from 'react';
 import * as L from '../../../leda';
 
 export const Minimal = (props: { title: string }): React.ReactElement => {
-  const [value, setValue] = React.useState('');
-
   return (
     <L.Div>
       <L.AutoComplete
@@ -19,9 +17,7 @@ export const Minimal = (props: { title: string }): React.ReactElement => {
           'Ottawa',
           'Moscow',
         ]}
-        value={value}
         onChange={(ev) => {
-          setValue(ev.component.value);
           console.log('ev.component', ev.component);
         }}
       />
