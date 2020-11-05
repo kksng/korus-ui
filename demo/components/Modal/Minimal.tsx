@@ -13,7 +13,7 @@ const SimpleAlerts = ({ setActiveAlertKey }: any) => (
   </>
 );
 
-export const Minimal = (props: any) => {
+export const Minimal = (props: { title: string }): React.ReactElement => {
   const [isOpen, setOpen] = React.useState(false);
   const [activeAlertKey, setActiveAlertKey] = React.useState<string | null>(null);
 
