@@ -30,17 +30,6 @@ module.exports = {
         use: 'babel-loader',
         exclude: /node_modules/,
       },
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-            },
-          },
-        ],
-      },
     ],
   },
   devServer: {

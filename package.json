@@ -13,7 +13,9 @@
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",
     "all": true,
-    "reporter": ["html"],
+    "reporter": [
+      "html"
+    ],
     "include": [
       "leda/**/*.ts",
       "leda/**/*.tsx"
@@ -32,7 +34,7 @@
     "build": "npm run clean && npm run tsc && npm run sass",
     "lint": "eslint --color --ext .ts,.tsx leda",
     "test": "jest --color --silent",
-    "tsc": "tsc",
+    "tsc": "tsc --project tsconfig.app.json",
     "tsc:withDemo": "tsc --noEmit --project tsconfig.demo.json",
     "jest": "jest",
     "cypress": "start-test wds 9000 cypress:open",
@@ -126,7 +128,7 @@
     "source-map-support": "^0.5.19",
     "start-server-and-test": "1.10.11",
     "ts-jest": "25.2.1",
-    "ts-loader": "6.2.1",
+    "ts-loader": "^8.0.9",
     "ts-node": "^9.0.0",
     "typescript": "3.8.3",
     "webpack": "4.41.5",
