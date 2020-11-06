@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import * as L from '../../../leda';
-import { validate } from '../../../leda/components/Validation';
+import * as L from '~';
+import { validate } from '~/components/Validation';
 import { StoryProps } from '../../types';
 
 

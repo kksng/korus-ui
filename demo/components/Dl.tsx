@@ -1,5 +1,5 @@
 import React from 'react';
-import * as L from '../../leda';
+import * as L from '~';
 
 export const Dl = () => (
   <L.Div _demoStory>

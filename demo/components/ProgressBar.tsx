@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../leda';
+import * as L from '~';
 
 export const ProgressBar = () => {
   // Ref используется для хранения данных вне контекста компонента.

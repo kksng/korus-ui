@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 
 // eslint-disable-next-line
 export const AllSuggestions = (componentProps: any) => {

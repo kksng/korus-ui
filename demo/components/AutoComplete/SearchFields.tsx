@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isObject } from 'lodash';
-import * as L from '../../../leda';
+import * as L from '~';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 export const customItemRender: L.AutoCompleteTypes.AutoCompleteProps['itemRender'] = (renderData) => {

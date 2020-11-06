@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useElementRef } from '../../../leda/utils';
+import * as L from '~';
+import { useElementRef } from '~/utils';
 
 export const TabsNode = (props: any) => {
   const [selected, setSelected] = React.useState<string | number>(0);

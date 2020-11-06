@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as L from '../../../leda';
+import * as L from '~';
 
 export const DropDown = (): React.ReactElement => {
 

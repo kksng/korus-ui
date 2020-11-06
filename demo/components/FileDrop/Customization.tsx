@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useInterval } from '../../../leda/utils';
-import { FileDropError } from '../../../leda/components/FileDrop/types';
-import { DescriptionMessage } from '../../../leda/components/FileDrop/helpers';
-import * as messages from '../../../leda/messages';
+import * as L from '~';
+import { useInterval } from '~/utils';
+import { FileDropError } from '~/components/FileDrop/types';
+import { DescriptionMessage } from '~/components/FileDrop/helpers';
+import * as messages from '~/messages';
 
 export const Customization = (props: { title: string }) => {
   const [file, setFile] = React.useState<File | null>(null);

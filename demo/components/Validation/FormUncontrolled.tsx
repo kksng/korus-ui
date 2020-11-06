@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 import { StoryProps } from '../../types';
 
 const Label = (props: {

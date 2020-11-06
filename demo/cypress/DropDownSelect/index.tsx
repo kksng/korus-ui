@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
-import * as L from '../../../leda';
+import { SomeObject } from '~/commonTypes';
+import * as L from '~';
 import { StateButtonGroup } from '../../../demo/components';
 const data = [
   { id: 0, city: 'Moscow' },

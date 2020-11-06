@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
-import { validate } from '../../../leda/components/Validation';
+import { validate } from '~/components/Validation';
 
 export const Customization = (attrs: any) => {
   const [props, setProps] = React.useState({});

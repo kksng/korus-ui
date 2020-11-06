@@ -1,8 +1,8 @@
 /* eslint-disable no-alert, no-console,import/no-extraneous-dependencies */
 import * as React from 'react';
 import shortId from 'shortid';
-import * as L from '../../leda';
-import { Item } from '../../leda/components/Notifications/types';
+import * as L from '~';
+import { Item } from '~/components/Notifications/types';
 
 const hooks1 = {
   text: `
