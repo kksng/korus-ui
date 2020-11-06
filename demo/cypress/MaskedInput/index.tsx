@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 
 export const MaskedInput = (): React.ReactElement => {
   const [cardValue, setCardValue] = React.useState<string>('');

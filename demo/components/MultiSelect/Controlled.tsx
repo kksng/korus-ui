@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { SomeObject } from '../../../leda/commonTypes';
+import * as L from '~';
+import { SomeObject } from '~/commonTypes';
 
 export const Controlled = (args: SomeObject): React.ReactElement => {
   const [value, setValue] = React.useState<string[]>(['London', 'Paris']);

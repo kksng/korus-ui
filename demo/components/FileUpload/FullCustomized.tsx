@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 const exampleCode = `

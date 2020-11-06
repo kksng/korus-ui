@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 
 export const DropZone = (): React.ReactElement => {
   const [value, setValue] = React.useState<L.DropZoneTypes.DropZoneFiles | null>({

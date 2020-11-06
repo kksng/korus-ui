@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 import { StoryProps } from '../../types';
 
 
@@ -30,7 +30,7 @@ export const InvalidMessage = (props: StoryProps) => (
         <L.Input
           form="formInvalidMessage"
           name="function"
-          validator={val => (val.length > 10)}
+          validator={(val) => (val.length > 10)}
           invalidMessage="пользовательское сообщение об ошибке function (введите не менее десяти символов)"
           placeholder="function с пользовательским сообщением"
           _width50
@@ -40,7 +40,7 @@ export const InvalidMessage = (props: StoryProps) => (
         <L.Input
           form="formInvalidMessage"
           name="regexp"
-          validator={val => /[A-Z]/.test(val)}
+          validator={(val) => /[A-Z]/.test(val)}
           invalidMessage="пользовательское сообщение об ошибке regexp (введите прописные буквы)"
           placeholder="regexp с пользовательским сообщением"
           _width50

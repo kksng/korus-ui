@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 
 export const ToolTip = (): React.ReactElement => {
   const [display, setDisplay] = React.useState(true);

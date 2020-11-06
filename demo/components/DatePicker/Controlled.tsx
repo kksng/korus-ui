@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
-import * as L from '../../../leda';
+import { SomeObject } from '~/commonTypes';
+import * as L from '~';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 export const Controlled = (args: SomeObject): React.ReactElement => {

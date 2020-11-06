@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 import { StateButtonGroup } from '../StateButtonGroup';
-import { RenderEvent } from '../../../leda/commonTypes';
-import { FileLoadEvent } from '../../../leda/components/FileUpload/types';
+import { RenderEvent } from '~/commonTypes';
+import { FileLoadEvent } from '~/components/FileUpload/types';
 
 const exampleCode = `
 export const PartialCustomized = () => {

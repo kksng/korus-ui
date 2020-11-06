@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../leda';
+import * as L from '~';
 
 const bodyWrapper = ({ elementProps }: any) => (
   <L.Tr _block {...elementProps} />

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 import { StoryProps } from '../../types';
 
 
@@ -44,7 +44,7 @@ export const Scroll = (props: StoryProps) => (
           placeholder="Введите номер телефона"
           isRequired
           requiredMessage="Обязательное поле!"
-          onChange={ev => {
+          onChange={(ev) => {
             console.log('ev.component.value', ev.component.value);
           }}
           form="scroll3"
@@ -58,10 +58,10 @@ export const Scroll = (props: StoryProps) => (
           scrollOffset={64}
           form={['scroll', 'scroll2', 'scroll3']}
           onClick={() => console.log('submitted')}
-          onValidationFail={ev => console.log('failed', ev.invalidForms)}
+          onValidationFail={(ev) => console.log('failed', ev.invalidForms)}
           _warning
         >
-            Click me
+          Click me
         </L.Button>
       </L.Div>
       <L.Div _inner>
@@ -71,10 +71,10 @@ export const Scroll = (props: StoryProps) => (
           scrollDelay={1000}
           form={['scroll', 'scroll2', 'scroll3']}
           onClick={() => console.log('submitted')}
-          onValidationFail={ev => console.log('failed', ev.invalidForms)}
+          onValidationFail={(ev) => console.log('failed', ev.invalidForms)}
           _warning
         >
-            Click me (delayed scroll)
+          Click me (delayed scroll)
         </L.Button>
       </L.Div>
     </L.Div>

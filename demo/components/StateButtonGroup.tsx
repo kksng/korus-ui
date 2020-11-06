@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../leda';
-import { SomeObject, SetState } from '../../leda/commonTypes';
+import * as L from '~';
+import { SomeObject, SetState } from '~/commonTypes';
 
 
 export const StateButtonGroup = (props: {

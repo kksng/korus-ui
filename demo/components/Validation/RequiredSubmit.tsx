@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 import { StoryProps } from '../../types';
 
 const Label: React.FC<{}> = ({ children }) => (
@@ -153,7 +153,7 @@ export const RequiredSubmit = (props: StoryProps) => {
           </Label>
           <L.DropDownSelect
             value={textValue}
-            onChange={ev => setTextValue(ev.component.value)}
+            onChange={(ev) => setTextValue(ev.component.value)}
             isRequired
             requiredMessage="Required field"
             validator={() => false}

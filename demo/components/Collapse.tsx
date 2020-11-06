@@ -1,5 +1,5 @@
 import React from 'react';
-import * as L from '../../leda';
+import * as L from '~';
 
 export const Collapse = () => {
   const [activeKey, setActiveKey] = React.useState<string | string[] | null>(['1']);

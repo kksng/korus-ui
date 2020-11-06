@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import * as React from 'react';
-import * as L from '../../../leda';
-import { isDateGreater } from '../../../leda/src/Calendar/helpers';
+import * as L from '~';
+import { isDateGreater } from '~/src/Calendar/helpers';
 
 export const DatePicker = (): React.ReactElement => {
   const [value1, setValue1] = React.useState('');

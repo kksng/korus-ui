@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { getWordEnding } from '../../../leda/utils';
+import * as L from '~';
+import { getWordEnding } from '~/utils';
 
 export const CheckBoxes = (args: any): React.ReactElement => {
   const [value, setValue] = React.useState<string[]>(['London', 'Paris']);

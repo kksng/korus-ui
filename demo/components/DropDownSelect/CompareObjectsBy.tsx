@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { SomeObject } from '../../../leda/commonTypes';
+import * as L from '~';
+import { SomeObject } from '~/commonTypes';
 
 const data = [
   { id: 0, city: 'Moscow' },

@@ -1,8 +1,8 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../leda';
-import { SetState } from '../../leda/commonTypes';
-import { useInterval } from '../../leda/utils';
+import * as L from '~';
+import { SetState } from '~/commonTypes';
+import { useInterval } from '~/utils';
 
 const data = [
   { labelText: 'Согласование' },

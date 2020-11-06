@@ -1,5 +1,5 @@
 import React from 'react';
-import * as L from '../../leda';
+import * as L from '~';
 import { Styles } from './Styles';
 
 const themes: string[] = ['Nova', 'Bootstrap'];

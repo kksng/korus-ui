@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '~';
 
 export const Validation = ({ ...restProps }): React.ReactElement => {
   const [MIValue, setMIValue] = React.useState('1234567');
