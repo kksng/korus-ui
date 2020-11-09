@@ -1,10 +1,19 @@
 import * as React from 'react';
 import { debounce } from 'lodash';
 import ReactDOM from 'react-dom';
-import { createOverlaySvgPath, getModalPositionStyles } from './helpers';
+
 import { Div } from '../Div';
+import {
+  createOverlaySvgPath, getModalPositionStyles, setElementDefaultStyles, setElementStyles,
+} from './helpers';
 import { TourProps, TourStepItem } from './types';
 
+/**
+ * Tour component - highlights items and shows tooltips
+ * @param {TourProps} props
+ *
+ * @returns {React.ReactElement | null}
+ */
 export const Tour = (props: TourProps): React.ReactElement | null => {
   const {
     data, activeStepKey, onChange,
@@ -13,8 +22,9 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
   const activeItem = data.find((item) => item.stepKey === activeStepKey);
 
   const borderRadius = activeItem?.borderRadius ?? 15;
+  const padding = activeItem?.padding ?? 0;
 
-  const [svgPath, setSvgPath] = React.useState<string>(createOverlaySvgPath(activeItem?.element ?? null, borderRadius));
+  const [svgPath, setSvgPath] = React.useState<string>(createOverlaySvgPath(activeItem?.element ?? null, borderRadius, padding));
   const [isScrolling, setIsScrolling] = React.useState<boolean>(false);
 
   React.useEffect((): (() => void) | void => {
@@ -23,7 +33,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     }
 
     const resizeHandler = debounce(() => {
-      setSvgPath(createOverlaySvgPath(activeItem.element, borderRadius));
+      setSvgPath(createOverlaySvgPath(activeItem.element, borderRadius, padding));
     }, 100);
 
     window.addEventListener('resize', resizeHandler);
@@ -35,7 +45,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
   }, [activeItem]);
 
   React.useEffect((): () => void => {
-    const prevOverflow = document.body.style.overflow; // реализация как в Modal
+    const prevOverflow = document.body.style.overflow; // implementation as in Modal
 
     if (activeItem?.element) {
       const scrollOffsetTop = activeItem.offsetTop ?? 200;
@@ -49,18 +59,20 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
       document.body.style.overflow = 'hidden';
 
       if (
-        bodyScrollHeight <= window.innerHeight // высота body меньше, чем высота экрана, скролла нет
-        || window.scrollY === shiftedDocumentOffsetTop // страница уже прокручена до элемента
-        || neededToScrollAmount >= availableScrollLength // страница прокручена до конца и не может быть прокручена дальше
-      ) { // прокручивать не нужно - отображаем тур сразу
-        setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius));
-      } else { // иначе отобразим тур после скролла
+        bodyScrollHeight <= window.innerHeight // if body height is less than screen height, there is no scroll
+        || window.scrollY === shiftedDocumentOffsetTop // the page is already scrolled to the element
+        || neededToScrollAmount >= availableScrollLength // the page is scrolled to the end and cannot be scrolled further
+      ) { // no need to scroll - display the tour immediately
+        setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius, padding));
+        setElementStyles(activeItem?.element);
+      } else { // otherwise display the tour after scrolling
         setIsScrolling(true);
-        setSvgPath(createOverlaySvgPath(null, borderRadius));
+        setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
 
         const scrollHandler = debounce(() => {
-          // прокрутка закончилась
-          setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius));
+          // scrolling is over
+          setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius, padding));
+          setElementStyles(activeItem?.element);
           setIsScrolling(false);
 
           window.removeEventListener('scroll', scrollHandler); // remove listener
@@ -71,7 +83,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
         window.scrollTo({ top: shiftedDocumentOffsetTop, left: 0, behavior: 'smooth' });
       }
     } else {
-      setSvgPath(createOverlaySvgPath(null, borderRadius));
+      setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
     }
 
     return () => {
@@ -82,6 +94,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const contentProps = React.useMemo(() => {
     const triggerOnChange = (item?: TourStepItem) => {
+      data?.forEach((stepItem) => setElementDefaultStyles(stepItem?.element));
       onChange({
         component: {
           value: item?.stepKey ?? null,
@@ -134,7 +147,6 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
       </Div>
     </>
   );
-
   return ReactDOM.createPortal(content, document.body);
 };
 

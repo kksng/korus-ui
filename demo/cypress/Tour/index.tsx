@@ -1,25 +1,27 @@
 import * as React from 'react';
-import * as L from '../../leda';
-import { useElementRef } from '../../leda/utils';
+import * as L from '../../../leda';
+import { useElementRef } from '../../../leda/utils';
 
-const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] => [
+const getData = (
+  elements: (HTMLElement | null)[]
+): L.TourTypes.TourStepItem[] => [
   {
     stepKey: '1',
     borderRadius: 4,
     padding: 4,
     content: (props) => (
-      <L.Div _inner>
-        <L.H1>Заголовок 1</L.H1>
-        какой-то текст тут
+      <L.Div name="Modal1" _inner>
+        <L.H1>Header 1</L.H1>
+        some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button onClick={props.stopTour}>
-              Закрыть
+            <L.Button name="Close" onClick={props.stopTour}>
+              Close
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button _success onClick={props.next}>
-              Далее
+            <L.Button name="Next" _success onClick={props.next}>
+              Next
             </L.Button>
           </L.Li>
         </L.Ul>
@@ -32,23 +34,23 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
     stepKey: '2',
     borderRadius: 4,
     content: (props) => (
-      <L.Div _inner>
-        <L.H1>Заголовок 2</L.H1>
-        какой-то текст тут
+      <L.Div name="Modal2" _inner>
+        <L.H1>Header 2</L.H1>
+        some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button onClick={props.stopTour}>
-              Закрыть
+            <L.Button name="Close" onClick={props.stopTour}>
+              Close
             </L.Button>
           </L.Li>
           <L.Li>
             <L.Button _success onClick={props.prev}>
-              Назад
+              Back
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button _success onClick={props.next}>
-              Далее
+            <L.Button name="Next" _success onClick={props.next}>
+              Next
             </L.Button>
           </L.Li>
         </L.Ul>
@@ -61,23 +63,23 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
     stepKey: '3',
     borderRadius: 4,
     content: (props) => (
-      <L.Div _inner>
-        <L.H1>Заголовок 3</L.H1>
-        какой-то текст тут
+      <L.Div name="Modal3" _inner>
+        <L.H1>Header 3</L.H1>
+        some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button onClick={props.stopTour}>
-              Закрыть
+            <L.Button name="Close" onClick={props.stopTour}>
+              Close
             </L.Button>
           </L.Li>
           <L.Li>
             <L.Button _success onClick={props.prev}>
-              Назад
+              Back
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button _success onClick={props.next}>
-              Далее
+            <L.Button name="Next" _success onClick={props.next}>
+              Next
             </L.Button>
           </L.Li>
         </L.Ul>
@@ -90,18 +92,18 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
     stepKey: '4',
     borderRadius: 4,
     content: (props) => (
-      <L.Div _inner>
-        <L.H1>Заголовок 4</L.H1>
-        какой-то текст тут
+      <L.Div name="Modal4" _inner>
+        <L.H1>Header 4</L.H1>
+        some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button onClick={props.stopTour}>
-              Закрыть
+            <L.Button name="Close" onClick={props.stopTour}>
+              Close
             </L.Button>
           </L.Li>
           <L.Li>
             <L.Button _success onClick={props.prev}>
-              Назад
+              Back
             </L.Button>
           </L.Li>
         </L.Ul>
@@ -117,7 +119,10 @@ export const Tour = (): React.ReactElement => {
   const [element2, ref2] = useElementRef();
   const [element3, ref3] = useElementRef();
   const [element4, ref4] = useElementRef();
-  const [activeStep, setActiveStep] = React.useState<string | number | null>(null);
+  const [activeStep, setActiveStep] = React.useState<string | number | null>(
+    null
+  );
+  const [message, setMessage] = React.useState('');
 
   const data = getData([element1, element2, element3, element4]);
 
@@ -125,29 +130,50 @@ export const Tour = (): React.ReactElement => {
     <L.Div _demo-story>
       <L.H4 _title>Tour</L.H4>
       <L.Div _inner>
-        <L.Button _warning onClick={() => setActiveStep('1')}>
-          Начать гайд-тур
+        <L.Button name="startTour" _warning onClick={() => setActiveStep('1')}>
+          Start tour
         </L.Button>
         <br />
         <br />
         <L.Div _inner>
-          <L.Button _inner ref={ref1} onClick={() => console.log('Clicked 1!')}>
-            Элемент тура 1
+          <L.Button
+            name="tourElement1"
+            _inner
+            ref={ref1}
+            onClick={() => setMessage('Clicked 1!')}
+          >
+            Tour element 1
           </L.Button>
           <br />
           <br />
-          <L.Button _inner ref={ref2} onClick={() => console.log('Clicked 2!')}>
-            Элемент тура 2
+          <L.Button
+            name="tourElement2"
+            _inner
+            ref={ref2}
+            onClick={() => setMessage('Clicked 2!')}
+          >
+            Tour element 2
           </L.Button>
           <br />
           <br />
-          <L.Button _inner ref={ref3} onClick={() => console.log('Clicked 3!')}>
-            Элемент тура 3
+          <L.Button
+            name="tourElement3"
+            _inner
+            ref={ref3}
+            onClick={() => setMessage('Clicked 3!')}
+          >
+            Tour element 3
           </L.Button>
           <br />
           <br />
-          <L.Button _inner ref={ref4} style={{ marginLeft: '500px' }} onClick={() => console.log('Clicked 4!')}>
-            Элемент тура 4
+          <L.Button
+            name="tourElement4"
+            _inner
+            ref={ref4}
+            style={{ marginLeft: '500px' }}
+            onClick={() => setMessage('Clicked 4!')}
+          >
+            Tour element 4
           </L.Button>
         </L.Div>
         <L.Tour
@@ -156,6 +182,8 @@ export const Tour = (): React.ReactElement => {
           onChange={(ev) => setActiveStep(ev.component.value)}
         />
       </L.Div>
+      <L.H4 _title>onClick Message</L.H4>
+      <L.Div name="message">{message}</L.Div>
     </L.Div>
   );
 };
