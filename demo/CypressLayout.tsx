@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import * as L from '~';
+import * as L from '../leda';
 import {
   AutoComplete,
   Button,

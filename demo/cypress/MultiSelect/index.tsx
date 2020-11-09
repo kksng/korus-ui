@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import * as L from '~';
-import { getWordEnding } from '~/utils';
+import * as L from '../../../leda';
+import { getWordEnding } from '../../../leda/utils';
 
 
 export const MultiSelect = (): React.ReactElement => {

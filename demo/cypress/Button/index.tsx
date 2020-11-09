@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 
 
 export const Button = (): React.ReactElement => (

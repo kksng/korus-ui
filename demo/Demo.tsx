@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies,jsx-a11y/label-has-for */
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../leda';
 import {
   AutoComplete, ButtonGroup, CheckBox, DatePicker, DateRange,
   DropDown, DropDownSelect, Input, A, LedaProvider, Loader, MaskedInput, Modal,
@@ -12,7 +12,7 @@ import {
   Div, Table, Dl, FileUpload, HTMLTags, Validation,
   Collapsible, Collapse, VStepper, Button, Tooltip, FileDrop, Tour, Wizard
 } from './components';
-import { useElementRef } from '~/utils';
+import { useElementRef } from '../leda/utils';
 
 export const Demo = hot(() => (
   <L.Div style={{ color: 'black' }} _wrapper>

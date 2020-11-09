@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 import { stepContent } from '../../components/VStepper/constants';
 
 export const VStepper = (): React.ReactElement => (

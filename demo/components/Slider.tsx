@@ -1,6 +1,6 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../leda';
 
 export const Slider = () => {
   const [firstSliderValue, setFirstSliderValue] = React.useState<number | number[] | null | undefined>(10);

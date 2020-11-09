@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
 const Label = ({
@@ -29,7 +29,7 @@ export const Required = (props: StoryProps) => {
           </Label>
           <L.AutoComplete
             data={['Berlin', 'Paris']}
-            onChange={(ev) => setACValue(ev.component.value)}
+            onChange={ev => setACValue(ev.component.value)}
             value={ACValue}
             isRequired
             form="requiredForm"
@@ -131,7 +131,7 @@ export const Required = (props: StoryProps) => {
           </Label>
           <L.DropDownSelect
             value={DDSValue}
-            onChange={(ev) => setDDSValue(ev.component.value)}
+            onChange={ev => setDDSValue(ev.component.value)}
             isRequired
             form="requiredForm"
             name="DropDownSelect"

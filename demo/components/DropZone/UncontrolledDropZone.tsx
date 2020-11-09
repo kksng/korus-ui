@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 
 const Accepted = ({ onChange, value }: { onChange?: Function, value: { acceptedFiles: File[], rejectedFiles: File[]}}) => (
   <L.Ul _listItem>

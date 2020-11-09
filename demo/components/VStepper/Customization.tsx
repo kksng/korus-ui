@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 
 const exampleCode = `
 export const Customization = (props: { title: string }) => (

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
-import { PasswordStrength } from '~/components/Password/constants';
+import { PasswordStrength } from '../../../leda/components/Password/constants';
 
 export const Basic = (componentProps: any) => {
   const [props, setProps] = React.useState({});

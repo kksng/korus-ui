@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 
 const data = [
   { id: 0, attr: 'value0', city: 'Moscow' },

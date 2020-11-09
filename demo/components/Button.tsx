@@ -1,6 +1,6 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../leda';
 import { StateButtonGroup } from './StateButtonGroup';
 
 export const Button = () => {

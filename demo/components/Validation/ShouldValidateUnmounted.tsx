@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import * as L from '~';
-import { Form } from '~/components/Validation/types';
+import * as L from '../../../leda';
+import { Form } from '../../../leda/components/Validation/types';
 import { StoryProps } from '../../types';
 
 
@@ -31,19 +31,19 @@ export const ShouldValidateUnmounted = (props: StoryProps) => {
       <L.Div>
         <L.Tabs
           activeTabKey={selected}
-          onChange={(ev) => setSelected(ev.component.value)}
+          onChange={ev => setSelected(ev.component.value)}
         >
           <L.Tab title="Tab 1" tabKey={0}>
             <L.Div _inner>
               <L.Div _inner>
                 <L.Input
                   value={value1}
-                  onChange={(ev) => setValue1(ev.component.value)}
+                  onChange={ev => setValue1(ev.component.value)}
                   validator="postalCode"
                   form="unmountedForm"
                   name="Input1"
                   isRequired
-                  requiredMessage="kjhkjgfdff"
+                  requiredMessage={'kjhkjgfdff'}
                   placeholder="unmounted 1"
                   shouldValidateUnmounted
                 />
@@ -55,7 +55,7 @@ export const ShouldValidateUnmounted = (props: StoryProps) => {
               <L.Div _inner>
                 <L.Input
                   value={value2}
-                  onChange={(ev) => setValue2(ev.component.value)}
+                  onChange={ev => setValue2(ev.component.value)}
                   validator="postalCode"
                   form="unmountedForm"
                   name="Input2"
@@ -75,7 +75,7 @@ export const ShouldValidateUnmounted = (props: StoryProps) => {
               onClick={() => {
                 setInvalidFormData(null);
               }}
-              onValidationFail={(ev) => {
+              onValidationFail={ev => {
                 setInvalidFormData(ev.invalidForms);
                 // eslint-disable-next-line no-console
                 console.info(ev.invalidForms);

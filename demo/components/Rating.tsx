@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '~';
-import { Span } from '~/components/Span';
+import * as L from '../../leda';
+import { Span } from '../../leda/components/Span';
 import { StateButtonGroup } from './StateButtonGroup';
 
 export const Rating = () => {

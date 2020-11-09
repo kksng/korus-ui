@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../leda';
 
 export const DateTimeRange = (): React.ReactElement => {
   const [props, setProps] = React.useState<{ isDisabled: boolean | undefined, isOpen: boolean | undefined}>({ isDisabled: false, isOpen: undefined });

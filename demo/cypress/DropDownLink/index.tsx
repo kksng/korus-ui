@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as L from '~';
+import * as L from '../../../leda';
 
 export const DropDownLink = (): React.ReactElement => {
   const [ value, setValue ] = React.useState('Saint Petersburg');

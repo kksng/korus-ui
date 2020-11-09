@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { SomeObject } from '~/commonTypes';
-import * as L from '~';
+import { SomeObject } from '../../../leda/commonTypes';
+import * as L from '../../../leda';
 
 export const Customization = (args: SomeObject): React.ReactElement => {
   return (

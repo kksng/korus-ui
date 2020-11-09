@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import * as React from 'react';
-import * as L from '~';
-import { DataObject } from '~/commonTypes';
+import * as L from '../../../leda';
+import { DataObject } from '../../../leda/commonTypes';
 
 export const ButtonGroup = (): React.ReactElement => {
   const [value, setValue] = React.useState<string | undefined>();

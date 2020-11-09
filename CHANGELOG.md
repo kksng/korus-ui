@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.33.0] - 2020-11-09
 
 ### Added
-- Set up automatic calculation of test coverage, added aliases to demo folder
+- Set up automatic calculation of test coverage
 - Added aliases for imports
 - Tour: Added padding prop and possibility to interact with tour element
 

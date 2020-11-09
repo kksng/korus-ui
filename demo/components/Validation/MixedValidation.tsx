@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types, no-console */
 import * as React from 'react';
-import * as L from '~';
-import { MaskedInputRefCurrent } from '~/components/MaskedInput/types';
-import { AutoCompleteRefCurrent } from '~/components/AutoComplete/types';
+import * as L from '../../../leda';
+import { MaskedInputRefCurrent } from '../../../leda/components/MaskedInput/types';
+import { AutoCompleteRefCurrent } from '../../../leda/components/AutoComplete/types';
 
 const validate = (ref: any) => {
   if (ref.current && ref.current.triggerValidation) {
