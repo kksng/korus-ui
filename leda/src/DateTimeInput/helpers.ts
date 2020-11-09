@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 import * as React from 'react';
 import {
   isNil, isFunction, isString, isDate,

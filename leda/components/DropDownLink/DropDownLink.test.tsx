@@ -8,48 +8,48 @@ describe('DropDownLink SNAPSHOTS', () => {
   it('should render with data objects', () => {
     const data = [
       {
+        name: 'По умолчанию',
         order: {
           sortField: 'createDate',
           sortOrder: 'DESC',
         },
-        name: 'По умолчанию',
       },
       {
-        order: {
-          sortField: 'cost.commonPrice',
-          sortOrder: 'ASC',
-        },
         name: 'Цена по возрастанию',
+        order: {
+          sortField: 'cost.commonPrice',
+          sortOrder: 'ASC',
+        },
       },
       {
+        name: 'Цена по убыванию',
         order: {
           sortField: 'cost.commonPrice',
           sortOrder: 'DESC',
         },
-        name: 'Цена по убыванию',
       },
       {
+        name: 'Площадь по возрастанию',
         order: {
           sortField: 'commonArea',
           sortOrder: 'ASC',
         },
-        name: 'Площадь по возрастанию',
       },
       {
+        name: 'Площадь по убыванию',
         order: {
           sortField: 'commonArea',
           sortOrder: 'DESC',
         },
-        name: 'Площадь по убыванию',
       },
     ];
 
     const valueControll = {
+      name: 'Площадь по убыванию',
       order: {
         sortField: 'commonArea',
         sortOrder: 'DESC',
       },
-      name: 'Площадь по убыванию',
     };
 
     const wrapper = mount(

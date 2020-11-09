@@ -1,16 +1,16 @@
 export const STEP_POSITION = {
   CURRENT: 'current',
-  PREV: 'prev',
   NEXT: 'next',
+  PREV: 'prev',
 } as const;
 
 export const STEP_TYPES = {
+  DANGER: 'danger',
   PROGRESS: 'progress',
   SUCCESS: 'success',
-  DANGER: 'danger',
 } as const;
 
 export const DATA_TYPES = {
-  STRING: 'string',
   OBJECT: 'object',
+  STRING: 'string',
 } as const;

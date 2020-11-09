@@ -151,7 +151,7 @@ export const correctValue = ({
   } = props;
 
   const suggestions = getSuggestions({
-    data, textField, value, filterRule, isOpen, minSearchLength,
+    data, filterRule, isOpen, minSearchLength, textField, value,
   });
 
   const suggestionValues = suggestions.map((suggestion) => getSuggestionValue(suggestion, textField));
@@ -164,7 +164,7 @@ export const correctValue = ({
     mergeState({ lastCorrectValue: value || '' });
   } else {
     if (isFunction(onChange)) {
-      const suggestion = getSuggestionFromValue({ data, value: lastCorrectValue, textField });
+      const suggestion = getSuggestionFromValue({ data, textField, value: lastCorrectValue });
       const customEvent = {
         ...event,
         component: {

@@ -3,11 +3,11 @@ export const NO_DATA_TEMPLATES = {
 };
 
 export const FILE_SIZE_UNITS = {
+  GB: 'GB' as const,
+  MB: 'MB' as const,
+  TB: 'TB' as const,
   byte: 'byte' as const,
   kB: 'kB' as const,
-  MB: 'MB' as const,
-  GB: 'GB' as const,
-  TB: 'TB' as const,
 };
 
 export const FILE_SIZE_RUS_UNITS = {

@@ -79,9 +79,9 @@ export const useCustomElements = (
   );
 
   return {
-    Wrapper,
-    Input,
     Icon,
+    Input,
+    Wrapper,
   };
 };
 

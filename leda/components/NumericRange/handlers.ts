@@ -30,20 +30,20 @@ export const createNumericChangeHandler = ({
   const customEvent = {
     ...ev,
     component: {
-      value: newValue,
-      name,
       formattedValue: [formatValue(
         {
-          value: newValue[0],
           format,
           thousandsSeparator,
+          value: newValue[0],
         },
       ),
       formatValue({
-        value: newValue[1],
         format,
         thousandsSeparator,
+        value: newValue[1],
       })] as [string, string],
+      name,
+      value: newValue,
     },
   };
 

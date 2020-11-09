@@ -130,10 +130,10 @@ export const handleErrors = (props: DateTimeInputProps): void => {
   handleValueErrors(value, format);
 
   handleMinMaxErros({
+    format,
+    max,
+    min,
     type,
     value,
-    format,
-    min,
-    max,
   });
 };

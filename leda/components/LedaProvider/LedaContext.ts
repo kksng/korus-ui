@@ -11,7 +11,7 @@ export interface LedaContextType {
 }
 
 export const LedaContext = React.createContext<LedaContextType>({
-  theme: globalDefaultTheme,
   renders: globalDefaultRenders as GlobalDefaultRenders,
+  theme: globalDefaultTheme,
   underscoreClassesTransform: UnderscoreClasses.NoTransform,
 });

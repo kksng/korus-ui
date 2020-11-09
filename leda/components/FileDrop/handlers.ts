@@ -38,5 +38,5 @@ export const createChangeHandler = (
 
   onChange?.(customEvent);
 
-  return { file, error };
+  return { error, file };
 };

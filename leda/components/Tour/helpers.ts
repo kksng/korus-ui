@@ -99,36 +99,36 @@ export const getModalPositionStyles = (position: string, element: HTMLElement, i
 
   if (position === 'top') {
     return {
-      top: `${rect.top - 20}px`,
       left: `${rect.left}px`,
+      top: `${rect.top - 20}px`,
       transform: 'translateY(-100%)',
     };
   }
 
   if (position === 'right') {
     return {
-      top: `${rect.top}px`,
       left: `${rect.right + 20}px`,
+      top: `${rect.top}px`,
     };
   }
 
   if (position === 'bottom') {
     return {
-      top: `${rect.bottom + 20}px`,
       left: `${rect.left}px`,
+      top: `${rect.bottom + 20}px`,
     };
   }
 
   if (position === 'left') {
     return {
-      top: `${rect.top}px`,
       left: `${rect.left - 20}px`,
+      top: `${rect.top}px`,
       transform: 'translateX(-100%)',
     };
   }
 
   return {
-    top: '',
     left: '',
+    top: '',
   };
 };

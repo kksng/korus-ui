@@ -176,6 +176,6 @@ export const getTooltipOffsets: GetTooltipOffsets = ({
   })();
 
   return {
-    top, left,
+    left, top,
   };
 };

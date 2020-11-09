@@ -50,14 +50,14 @@ export const NumericTextBox = React.forwardRef((props: NumericTextBoxProps, ref:
   const [isFocused, setFocused] = React.useState(false);
 
   const normalizeValueParams: NormalizeParameters = {
-    value: defaultValue,
-    min,
     max,
+    min,
+    value: defaultValue,
   };
 
   const [value, setUncontrolledValue] = useValue<number | null>(valueProp, normalizeValue(normalizeValueParams));
 
-  const [inputValue, setInputValue] = React.useState<string>(formatInputValue(formatValue({ value, format, thousandsSeparator }), format));
+  const [inputValue, setInputValue] = React.useState<string>(formatInputValue(formatValue({ format, thousandsSeparator, value }), format));
 
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
@@ -67,7 +67,7 @@ export const NumericTextBox = React.forwardRef((props: NumericTextBoxProps, ref:
     value,
   }, {
     reset: createResetHandler({
-      props, setUncontrolledValue, format, thousandsSeparator, value: normalizeValue(normalizeValueParams),
+      format, props, setUncontrolledValue, thousandsSeparator, value: normalizeValue(normalizeValueParams),
     }),
   });
 
@@ -97,18 +97,18 @@ export const NumericTextBox = React.forwardRef((props: NumericTextBoxProps, ref:
     Wrapper,
     Input,
     ArrowButtons,
-  } = useCustomElements(props, { value, isFocused });
+  } = useCustomElements(props, { isFocused, value });
 
   useSyncedValue(valueProp, isFocused, format, thousandsSeparator, setInputValue);
 
   const getComponentValue = React.useMemo(
     () => getValue({
-      value,
-      inputValue,
       format,
+      inputValue,
       isFocused,
-      thousandsSeparator,
       shouldTrimTrailingZeros,
+      thousandsSeparator,
+      value,
     }),
     [value, inputValue, format, isFocused, thousandsSeparator, shouldTrimTrailingZeros],
   );
@@ -117,8 +117,8 @@ export const NumericTextBox = React.forwardRef((props: NumericTextBoxProps, ref:
     <Wrapper
       className={wrapperClassNames}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-        wrapper: (component.wrapper || component) as HTMLDivElement,
         input: inputRef.current,
+        wrapper: (component.wrapper || component) as HTMLDivElement,
       }))}
     >
       <Div

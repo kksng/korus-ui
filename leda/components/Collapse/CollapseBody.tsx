@@ -50,8 +50,8 @@ export const Body = React.forwardRef((props: BodyProps, ref?: React.Ref<BodyRefC
   const bodyRef = React.useRef<HTMLElement>();
 
   const { setIsExpandedStyle, setIsCollapsedStyle, style } = useCollapse({
-    isOpen: isExpanded,
     content: bodyRef,
+    isOpen: isExpanded,
   });
 
   const onTransitionEnd = React.useCallback((ev: React.TransitionEvent) => {
@@ -67,8 +67,8 @@ export const Body = React.forwardRef((props: BodyProps, ref?: React.Ref<BodyRefC
   }, [handleRest, isExpanded, setIsCollapsedStyle, setIsExpandedStyle]);
 
   const styles = React.useMemo(() => ({
-    willChange: 'height',
     transition: transition ?? 'height 250ms cubic-bezier(.4, 0, .2, 1)',
+    willChange: 'height',
     ...style,
   }), [style, transition]);
 

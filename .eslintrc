@@ -4,8 +4,12 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    // Sort keys in alphabetic order
+    "sort-keys": ["warn", "asc", {"caseSensitive": true, "natural": false, "minKeys": 2}],
+
     // Максимальная длина строки с учетом пробелов, в стандарте 100
     "max-len": ["error", 250],
+    
     // Точка с запятой нужна всегда
     "babel/semi": "error",
 

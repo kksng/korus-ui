@@ -28,11 +28,11 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref?: React.Ref<To
     style,
   } = useTooltip({
     arrowSize,
-    transitionTimeout,
+    elementRef,
     initialIsOpen: isOpen,
     initialPosition: positionProp,
-    elementRef,
     tooltipRef,
+    transitionTimeout,
   });
 
   const tooltipClassNames = getClassNames(position ? `${theme.tooltip} ${position}` : theme.tooltip);

@@ -44,8 +44,8 @@ export const createChangeHandler = (
   props.onChange?.({
     ...event,
     component: {
-      value: newValue,
       name: props.name,
+      value: newValue,
     },
   });
 };
@@ -74,8 +74,8 @@ export const createClearHandler = (
   props.onChange?.({
     ...event,
     component: {
-      value: '',
       name: props.name,
+      value: '',
     },
   });
 };
@@ -100,9 +100,9 @@ export const createBlurHandler = (
   props.onBlur?.({
     ...event,
     component: {
-      value: event.target.value,
-      name: props.name,
       isValid: newValid,
+      name: props.name,
+      value: event.target.value,
     },
   });
 };
@@ -125,9 +125,9 @@ export const createFocusHandler = (
   props.onFocus?.({
     ...event,
     component: {
-      value: event.target.value,
-      name: props.name,
       isValid,
+      name: props.name,
+      value: event.target.value,
     },
   });
 };
@@ -145,8 +145,8 @@ export const createKeyDownHandler = (
     props.onEnterPress?.({
       ...event,
       component: {
-        value: event.currentTarget.value,
         name: props.name,
+        value: event.currentTarget.value,
       },
     });
   }

@@ -177,9 +177,9 @@ describe('MaskedInput event handler test collection', () => {
     expect(onChange)
       .lastCalledWith(expect.objectContaining({
         component: expect.objectContaining({
+          inputValue: validValue,
           name: validName,
           value: rawValue,
-          inputValue: validValue,
         }),
       }));
   });

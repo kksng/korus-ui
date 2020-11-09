@@ -26,9 +26,9 @@ export const createFocusHandler = (
   onFocus?.({
     ...event,
     component: {
+      formattedValue: formatValue({ format, thousandsSeparator, value }),
       name,
       value,
-      formattedValue: formatValue({ value, format, thousandsSeparator }),
     },
   });
 
@@ -56,20 +56,20 @@ export const createBlurHandler = (
   shouldTrimTrailingZeros?: boolean,
 ): NumericHandlers['handleBlur'] => (event) => {
   const normalizeValueParams: NormalizeParameters = {
-    value,
-    min,
-    max,
     format,
+    max,
+    min,
+    value,
   };
 
   const newValue = normalizeValue(normalizeValueParams);
 
   const formattedValue = formatValue(
     {
-      value: newValue,
       format,
-      thousandsSeparator,
       shouldTrimTrailingZeros,
+      thousandsSeparator,
+      value: newValue,
     },
   );
 
@@ -77,9 +77,9 @@ export const createBlurHandler = (
     onChange?.({
       ...event,
       component: {
+        formattedValue,
         name,
         value: newValue,
-        formattedValue,
       },
     });
   }
@@ -89,10 +89,10 @@ export const createBlurHandler = (
   onBlur?.({
     ...event,
     component: {
+      formattedValue,
+      isValid,
       name,
       value: newValue,
-      isValid,
-      formattedValue,
     },
   });
 
@@ -126,9 +126,9 @@ export const createChangeHandler = (
     onChange?.({
       ...event,
       component: {
+        formattedValue: formatValue({ format, thousandsSeparator, value: newValue }),
         name,
         value: newValue,
-        formattedValue: formatValue({ value: newValue, format, thousandsSeparator }),
       },
     });
   }
@@ -169,7 +169,7 @@ export const createKeyDownHandler = (
 
   const newValue = value as number + step * sign;
 
-  const formattedValue = formatValue({ value: newValue, format, thousandsSeparator });
+  const formattedValue = formatValue({ format, thousandsSeparator, value: newValue });
 
   const newInputValue = formatInputValue(formattedValue, format);
 
@@ -178,9 +178,9 @@ export const createKeyDownHandler = (
   onChange?.({
     ...event,
     component: {
+      formattedValue,
       name,
       value: newValue,
-      formattedValue,
     },
   });
 
@@ -205,9 +205,9 @@ export const createPasteHandler = (
   onChange?.({
     ...event,
     component: {
+      formattedValue: formatValue({ format, thousandsSeparator, value: newValue }),
       name,
       value: newValue,
-      formattedValue: formatValue({ value: newValue, thousandsSeparator, format }),
     },
   });
 
@@ -240,17 +240,17 @@ export const createArrowButtonClick = (
   if (sign === null) return;
 
   const normalizeValueParams: NormalizeParameters = {
-    value,
-    min,
-    max,
     format,
-    step,
+    max,
+    min,
     sign,
+    step,
+    value,
   };
 
   const newValue = normalizeValue(normalizeValueParams);
 
-  const formattedValue = formatValue({ value: newValue, format, thousandsSeparator });
+  const formattedValue = formatValue({ format, thousandsSeparator, value: newValue });
 
   const newInputValue = formatInputValue(formattedValue, format);
 
@@ -261,9 +261,9 @@ export const createArrowButtonClick = (
   onChange?.({
     ...event,
     component: {
+      formattedValue,
       name,
       value: newValue,
-      formattedValue,
     },
   });
 
@@ -291,7 +291,7 @@ export const createResetHandler = ({
 
   props.onChange?.({
     component: {
-      formattedValue: formatValue({ value, format, thousandsSeparator }),
+      formattedValue: formatValue({ format, thousandsSeparator, value }),
       name: props.name,
       value,
     },

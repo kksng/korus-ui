@@ -94,10 +94,10 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
 
   const autoCompleteState: AutoCompleteState = {
     highlightedSuggestion: null,
-    selectedSuggestion: null,
     isFocused: false,
     isOpen: false,
     lastCorrectValue: '',
+    selectedSuggestion: null,
     value: '',
   };
 
@@ -109,7 +109,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     isValid, validateCurrent, InvalidMessage,
   } = useValidation(props, state, {
     reset: createResetHandler({
-      props, mergeState, value: '',
+      mergeState, props, value: '',
     }),
   });
 
@@ -122,7 +122,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
   const suggestionListValue = value === undefined ? null : value;
 
   const suggestions = getSuggestions({
-    data, textField, value, filterRule, isOpen: isOpenProp, minSearchLength, shouldShowAllSuggestions, searchFields,
+    data, filterRule, isOpen: isOpenProp, minSearchLength, searchFields, shouldShowAllSuggestions, textField, value,
   });
 
   const isSuggestionsListOpen = (() => {
@@ -146,7 +146,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const handlerData = {
-    props, state, mergeState, isValueControlled, inputRef, validate: validateCurrent, value,
+    inputRef, isValueControlled, mergeState, props, state, validate: validateCurrent, value,
   };
 
   const inputChangeHandler = inputChangeHandlerCreator(handlerData);
@@ -154,7 +154,7 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
   const clearButtonClickHandler = clearButtonClickHandlerCreator(handlerData);
   const inputFocusHandler = inputFocusHandlerCreator(handlerData);
   const inputBlurHandler = inputBlurHandlerCreator(handlerData);
-  const inputKeyDownHandler = inputKeyDownHandlerCreator({ ...handlerData, suggestions, isSuggestionsListOpen });
+  const inputKeyDownHandler = inputKeyDownHandlerCreator({ ...handlerData, isSuggestionsListOpen, suggestions });
   const inputClickHandler = () => {
     mergeState({
       isOpen: true,
@@ -194,8 +194,8 @@ export const AutoComplete = React.forwardRef((props: AutoCompleteProps, ref: Rea
     <Div
       className={wrapperClassNames}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-        wrapper: component.wrapper,
         input: inputRef.current,
+        wrapper: component.wrapper,
       }))}
     >
       <Div className={inputWrapperClassNames}>

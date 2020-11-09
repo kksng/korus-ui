@@ -106,7 +106,7 @@ export const Password = React.forwardRef((props: PasswordProps, ref: React.Ref<P
   const shouldRenderClearButton = hasClearButton && !isDisabled && value.length > 0;
 
   const state = {
-    value, isFocused, isPasswordVisible, isValid,
+    isFocused, isPasswordVisible, isValid, value,
   };
 
   const { renders: { [COMPONENTS_NAMESPACES.password]: passwordRenders } } = React.useContext(LedaContext);
@@ -139,8 +139,8 @@ export const Password = React.forwardRef((props: PasswordProps, ref: React.Ref<P
     <Wrapper
       className={wrapperClassNames}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && component.wrapper && {
-        wrapper: component.wrapper,
         input: component.wrapper.querySelector('input'),
+        wrapper: component.wrapper,
       }))}
     >
       <Div

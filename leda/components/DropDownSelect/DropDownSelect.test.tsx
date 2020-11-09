@@ -165,11 +165,11 @@ describe('DropDownSelect HANDLERS', () => {
       { id: 1, value: 'value1' },
     ];
     const eventMatcher = expect.objectContaining({
-      target: expect.objectContaining({
-        value: data[1],
-      }),
       component: expect.objectContaining({
         name,
+        value: data[1],
+      }),
+      target: expect.objectContaining({
         value: data[1],
       }),
     });
@@ -193,11 +193,11 @@ describe('DropDownSelect HANDLERS', () => {
       { id: 1, value: 'value1' },
     ];
     const eventMatcher = expect.objectContaining({
-      target: expect.objectContaining({
-        value,
-      }),
       component: expect.objectContaining({
         name,
+        value,
+      }),
+      target: expect.objectContaining({
         value,
       }),
     });

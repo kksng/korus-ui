@@ -115,14 +115,18 @@ export const getSuggestionItemProps = ({
   const item = suggestion === placeholder ? null : suggestion;
 
   return {
-    text,
     isHighlighted,
     isPlaceholder,
-    isSelected,
-    selectAllState, // todo: remove
-    isSelectAllItem,
+
     isScrollTarget,
-    key,
+
+    // todo: remove
+    isSelectAllItem,
+
+    isSelected,
     item,
+    key,
+    selectAllState,
+    text,
   };
 };

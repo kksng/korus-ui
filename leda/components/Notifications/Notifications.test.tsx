@@ -13,18 +13,18 @@ describe('Notifications SNAPSHOTS', () => {
   it('should render basic usage', () => {
     const items = [
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 10,
+        icon: 'success',
         id: 1,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 15,
+        icon: 'danger',
         id: 2,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
     ];
 
@@ -32,8 +32,8 @@ describe('Notifications SNAPSHOTS', () => {
 
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value: expect.any(Array),
         method: 'delay',
+        value: expect.any(Array),
       }),
     });
 
@@ -59,39 +59,39 @@ describe('Notifications SNAPSHOTS', () => {
   it('should render items < maxItems', () => {
     const items = [
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 10,
+        icon: 'success',
         id: 1,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 10,
+        icon: 'danger',
         id: 2,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 10,
+        icon: 'danger',
         id: 3,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 10,
+        icon: 'danger',
         id: 4,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 10,
+        icon: 'danger',
         id: 5,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
     ];
 
@@ -111,18 +111,18 @@ describe('Notifications SNAPSHOTS', () => {
   it('should render action button', () => {
     const items = [
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 10,
+        icon: 'success',
         id: 1,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 15,
+        icon: 'danger',
         id: 2,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
     ];
 
@@ -149,25 +149,25 @@ describe('Notifications handlers', () => {
   it('should trigger onChange close', () => {
     const items = [
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 10,
+        icon: 'success',
         id: 1,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 15,
+        icon: 'danger',
         id: 2,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
     ];
 
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value: expect.any(Array),
         method: 'delay',
+        value: expect.any(Array),
       }),
     });
 
@@ -207,25 +207,25 @@ describe('Notifications handlers', () => {
   it('should not delete items with delay 0', () => {
     const items = [
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 0,
+        icon: 'success',
         id: 1,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 15,
+        icon: 'danger',
         id: 2,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
     ];
 
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value: expect.any(Array),
         method: 'delay',
+        value: expect.any(Array),
       }),
     });
 
@@ -265,25 +265,25 @@ describe('Notifications handlers', () => {
   it('should delete items by close icon click', () => {
     const items = [
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 0,
+        icon: 'success',
         id: 1,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'danger',
         color: 'danger',
         delay: 0,
+        icon: 'danger',
         id: 2,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
     ];
 
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value: expect.any(Array),
         method: 'close-icon-click',
+        value: expect.any(Array),
       }),
     });
 
@@ -336,18 +336,18 @@ describe('Notifications handlers', () => {
 
   it('should pass deleted item to onChange handler as component.currentItem', () => {
     const item1 = {
-      text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-      icon: 'success',
       color: 'success',
       delay: 0,
+      icon: 'success',
       id: 1,
+      text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
     };
     const item2 = {
-      text: 'Прочь сомнения!',
-      icon: 'danger',
       color: 'danger',
       delay: 0,
+      icon: 'danger',
       id: 2,
+      text: 'Прочь сомнения!',
     };
     const items = [
       item1,
@@ -356,9 +356,9 @@ describe('Notifications handlers', () => {
 
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value: expect.any(Array),
+        currentItem: expect.objectContaining(item2),
         method: 'close-icon-click',
-        currentItem: expect.objectContaining(item2), // should receive removed item
+        value: expect.any(Array), // should receive removed item
       }),
     });
 
@@ -400,20 +400,20 @@ describe('Notifications add item', () => {
   it('should add new item', () => {
     const items = [
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 10,
+        icon: 'success',
         id: 1,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
     ];
 
     const item = {
-      text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-      icon: 'danger',
       color: 'danger',
       delay: 10,
+      icon: 'danger',
       id: 2,
+      text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
     };
 
     const Wrapper = () => {
@@ -457,26 +457,26 @@ describe('Notifications add item', () => {
   it('should add new items and delete more than maxItems', () => {
     const items = [
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 10,
+        icon: 'success',
         id: 1,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
       {
-        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-        icon: 'success',
         color: 'success',
         delay: 10,
+        icon: 'success',
         id: 3,
+        text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
       },
     ];
 
     const item = {
-      text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
-      icon: 'danger',
       color: 'danger',
       delay: 10,
+      icon: 'danger',
+      text: 'Сомнение определяет <a href="#">эмпирический катарсис</a>, не&nbsp;учитывая мнения авторитетов.',
     };
 
     const Wrapper = () => {

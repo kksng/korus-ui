@@ -46,7 +46,7 @@ describe('MaskedInput HANDLERS', () => {
     const onEnterPressHandler = jest.fn();
     const wrapper = mount(<MaskedInput mask="+# (###) ###-##-##" value="79521806763" onEnterPress={onEnterPressHandler} />);
 
-    wrapper.find('input').props().onKeyDown({ key: 'Enter', currentTarget: { value: '79521806763' } });
+    wrapper.find('input').props().onKeyDown({ currentTarget: { value: '79521806763' }, key: 'Enter' });
 
     expect(onEnterPressHandler).toHaveBeenCalled();
 

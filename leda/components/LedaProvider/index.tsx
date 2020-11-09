@@ -20,7 +20,7 @@ export const Leda = ((props: LedaProps): React.ReactElement => {
     children,
   } = props;
 
-  const context = { theme, renders, underscoreClassesTransform };
+  const context = { renders, theme, underscoreClassesTransform };
 
   return (
     <LedaContext.Provider value={context}>

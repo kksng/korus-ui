@@ -17,8 +17,8 @@ export const createResetHandler = ({
   if (isFunction(props.onChange)) {
     props.onChange({
       component: {
-        name: props.name,
         date,
+        name: props.name,
         value,
       },
     });
