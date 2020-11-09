@@ -15,13 +15,13 @@ export type Validator = FunctionalValidator | PredefinedValidator | RegExp;
 export type InvalidMessage = string;
 
 export interface SingleFunctionValidator {
-  validate: FunctionalValidator,
   invalidMessage?: InvalidMessage,
+  validate: FunctionalValidator,
 }
 
 export interface ExternalValidator {
-  validator: Validator | Validator[],
   invalidMessage?: string,
+  validator: Validator | Validator[],
 }
 
 export interface FormFieldHelpers {

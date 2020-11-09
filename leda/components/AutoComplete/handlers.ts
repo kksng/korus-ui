@@ -221,7 +221,7 @@ export const inputFocusHandlerCreator = ({
  */
 export const inputKeyDownHandlerCreator = ({
   props, state, mergeState, isValueControlled, suggestions, isSuggestionsListOpen,
-}: HandlerCreatorData & {suggestions: Suggestion[], isSuggestionsListOpen: boolean}): React.KeyboardEventHandler<HTMLInputElement> => (event) => {
+}: HandlerCreatorData & {isSuggestionsListOpen: boolean, suggestions: Suggestion[]}): React.KeyboardEventHandler<HTMLInputElement> => (event) => {
   const {
     shouldCorrectValue,
     onChange,
@@ -363,8 +363,8 @@ export const createResetHandler = ({
   mergeState,
   value,
 }: {
-  props: AutoCompleteProps,
   mergeState: React.Dispatch<Partial<AutoCompleteState>>,
+  props: AutoCompleteProps,
   value: string,
 }) => () => {
   mergeState({

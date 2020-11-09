@@ -23,6 +23,8 @@ export interface ResetEvent {
 export type ChangeEvent = BaseChangeEvent | ResetEvent;
 
 export interface MaskedInputProps extends ValidationProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Значение по-умолчанию, для неконтролируемого режима */
   defaultValue?: string,
   /** Кастомный рендер инпута (Заменяет MaskedInputBase!) */
@@ -34,9 +36,9 @@ export interface MaskedInputProps extends ValidationProps {
   /** имя компонента для использования в формах */
   name?: string,
   /** Обработчик изменения значения */
-  onChange?: (event: ChangeEvent) => void,
-  /** Обработчик изменения значения */
   onBlur?: (event: BlurEvent) => void,
+  /** Обработчик изменения значения */
+  onChange?: (event: ChangeEvent) => void,
   /** Обработчик нажатия Enter */
   onEnterPress?: (ev: EnterPressEvent) => void,
   /** Обработчик изменения значения */
@@ -53,19 +55,17 @@ export interface MaskedInputProps extends ValidationProps {
   value?: string | null,
   /** Кастомный враппер */
   wrapperRender?: CustomRender<MaskedInputProps, MaskedInputState, DivProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface MaskedInputRefCurrent {
-  wrapper: HTMLElement | null,
   input: HTMLInputElement | null,
+  wrapper: HTMLElement | null,
 }
 
 export interface MaskedInputState {
-  value: string,
   isFocused: boolean,
   isValid: boolean,
+  value: string,
 }
 
 export interface ChangeData {
@@ -73,11 +73,11 @@ export interface ChangeData {
 }
 
 export interface BlurData {
-  validateCurrent: (value?: string) => boolean,
-  setFocused: SetState<boolean>,
-  value: string,
   maskedInputRef: React.RefObject<HTMLInputElement>,
   placeholderChar?: string,
+  setFocused: SetState<boolean>,
+  validateCurrent: (value?: string) => boolean,
+  value: string,
 }
 
 export interface FocusData {
@@ -86,12 +86,12 @@ export interface FocusData {
 }
 
 export interface CustomElements {
-  Wrapper: React.FC<DivProps>,
   Input: React.FC<MaskedInputBaseProps>,
+  Wrapper: React.FC<DivProps>,
 }
 
 export interface ValueToValidateData {
-  value: string,
   maskedInputRef: React.RefObject<HTMLInputElement | null>,
   placeholderChar?: string,
+  value: string,
 }

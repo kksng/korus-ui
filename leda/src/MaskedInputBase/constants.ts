@@ -31,10 +31,10 @@ export const baseMaskRules: MaskRules = {
 
 export enum INPUT_METHODS {
   add = 'add',
-  remove = 'remove',
-  replace = 'replace',
   // метод, обозначающий отсутствие изменений
-  nothing = 'nothing'
+  nothing = 'nothing',
+  remove = 'remove',
+  replace = 'replace'
 }
 
 export const DEFAULT_PLACEHOLDER_CHAR = '_';

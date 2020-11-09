@@ -5,8 +5,8 @@ import { GlobalDefaultRenders, globalDefaultRenders } from './globalDefaultRende
 import { UnderscoreClasses } from './underscoreClasses';
 
 export interface LedaContextType {
-  theme: PartialGlobalDefaultTheme,
   renders: GlobalDefaultRenders,
+  theme: PartialGlobalDefaultTheme,
   underscoreClassesTransform: UnderscoreClasses,
 }
 

@@ -1,4 +1,4 @@
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import * as React from 'react';
 import {
   isNil, isFunction, isString, isDate,
@@ -231,10 +231,10 @@ export const getValue = ({
   dateState,
   format = 'dd.MM.yyyy',
 }: {
-  valueProp?: string | Date | null,
-  valueState: string,
   dateState: Date | null,
   format?: string,
+  valueProp?: string | Date | null,
+  valueState: string,
 }): string => {
   if (valueProp === undefined) return dateState ? formatDateTime(dateState, format) : valueState;
 

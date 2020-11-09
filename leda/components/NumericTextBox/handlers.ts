@@ -281,9 +281,9 @@ export const createResetHandler = ({
   thousandsSeparator,
   value,
 }: {
+  format: string,
   props: NumericTextBoxProps,
   setUncontrolledValue: SetState<number | null>,
-  format: string,
   thousandsSeparator: string,
   value: number | null,
 }) => () => {

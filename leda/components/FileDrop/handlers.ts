@@ -21,7 +21,7 @@ export const createChangeHandler = (
   accepted,
   rejected,
   ev,
-): { file: File, error: FileDropInnerError | null } => {
+): { error: FileDropInnerError | null, file: File } => {
   const { name, onChange } = props;
 
   // В обработчик передаем только те принятые файлы, которые еще не были добавлены

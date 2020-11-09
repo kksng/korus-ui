@@ -350,8 +350,8 @@ export const createResetHandler = ({
   mergeState,
   value,
 }: {
-  props: DropDownSelectProps,
   mergeState: (state: Partial<DropDownSelectState>) => void,
+  props: DropDownSelectProps,
   value: Value,
 }) => () => {
   mergeState({

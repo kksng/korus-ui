@@ -12,17 +12,21 @@ export type ChangeEvent = SelectEvent | ResetEvent;
  * Properties passed from RadioGroup to RadioButton
  */
 export interface PropsFromParent {
-  /** onChange callback */
-  onChange: (event: ChangeEvent) => void,
-  /** Defines if  RadioButton is checked */
-  isChecked?: boolean,
   /** Form name */
   form?: string,
+  /** Defines if  RadioButton is checked */
+  isChecked?: boolean,
+  /** onChange callback */
+  onChange: (event: ChangeEvent) => void,
 }
 
 export interface RadioButtonProps extends React.HTMLAttributes<HTMLInputElement> {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Id радио-кнопки */
   id?: string,
+  /** Кастомизация инпута, непосредственно инпут - невидим, но данный рендер позволяет добавить атрибуты в тег <input> */
+  inputRender?: CustomRender<RadioButtonProps, {}, React.InputHTMLAttributes<HTMLInputElement>>,
   /** Сделать неактивным */
   isDisabled?: boolean,
   /** Имя */
@@ -35,21 +39,19 @@ export interface RadioButtonProps extends React.HTMLAttributes<HTMLInputElement>
   value: RadioValue,
   /** Компонент-обертка для RadioButton. Передавать в виде <Wrapper props />. По умолчанию - <Div /> */
   wrapperRender?: CustomRender<RadioButtonProps, {}, WrapperProps>,
-  /** Кастомизация инпута, непосредственно инпут - невидим, но данный рендер позволяет добавить атрибуты в тег <input> */
-  inputRender?: CustomRender<RadioButtonProps, {}, React.InputHTMLAttributes<HTMLInputElement>>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface RadioGroupProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Дочерние элементы L.RadioButton */
   children: React.ReactNode,
+  /** Имя формы */
+  form?: string,
   /** Выключенное состояние всей группы */
   isDisabled?: boolean,
   /** Имя группы radio-элементов */
   name?: string,
-  /** Имя формы */
-  form?: string,
   /** Обработчик изменения состояния элементов */
   onChange?: (event: ChangeEvent) => void,
   /** Reference */
@@ -60,8 +62,6 @@ export interface RadioGroupProps {
   value?: RadioValue,
   /** Компонент-обертка для группы radio-элементов. */
   wrapperRender?: CustomRender<RadioGroupProps, { value?: RadioValue }, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 /** Current ref of RadioGroup component */
@@ -77,15 +77,15 @@ export type RadioValue = string | number;
  * Reset event
  */
 export interface ResetEvent {
-  /** Element on which event was fired */
-  currentTarget?: undefined,
   /** New component properties */
   component: {
-    /** Value of RadioButton */
-    value: RadioValue,
     /** Name of RadioButton */
     name?: string,
+    /** Value of RadioButton */
+    value: RadioValue,
   },
+  /** Element on which event was fired */
+  currentTarget?: undefined,
 }
 
 /**
@@ -94,10 +94,10 @@ export interface ResetEvent {
 export interface SelectEvent extends React.ChangeEvent<HTMLInputElement> {
   /** New component properties */
   component: {
-    /** Value of RadioButton */
-    value: RadioValue,
     /** Name of RadioButton */
     name?: string,
+    /** Value of RadioButton */
+    value: RadioValue,
   },
 }
 
@@ -105,8 +105,8 @@ export interface SelectEvent extends React.ChangeEvent<HTMLInputElement> {
  * Properties of wrapper element
  */
 export interface WrapperProps {
-  /** Custom className */
-  className?: string,
   /** Classes defined through _ */
   [x: string]: unknown,
+  /** Custom className */
+  className?: string,
 }

@@ -3,8 +3,8 @@ import { SetState } from '../../commonTypes';
 
 export interface MaskRules {
   [x: string]: {
-    validate: (char: string) => boolean,
     transform?: (char: string) => string,
+    validate: (char: string) => boolean,
   } | null,
 }
 
@@ -93,9 +93,9 @@ export interface KeyDownData {
 
 export interface FocusData {
   inputRef: React.MutableRefObject<HTMLInputElement | null>,
-  setFocused: SetState<boolean>,
-  isFocused: boolean,
   inputValue: string,
+  isFocused: boolean,
+  setFocused: SetState<boolean>,
   setInputValue: SetState<string>,
 }
 

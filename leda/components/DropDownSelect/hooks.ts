@@ -15,10 +15,10 @@ export const useSyncedHighlightedValue = ({
   data,
   textField,
 }: {
-  filterValue: string | null,
-  shouldFilterValues: boolean,
-  mergeState: React.Dispatch<Partial<DropDownSelectState>>,
   data: DropDownSelectProps['data'],
+  filterValue: string | null,
+  mergeState: React.Dispatch<Partial<DropDownSelectState>>,
+  shouldFilterValues: boolean,
   textField?: string,
 }): void => {
   React.useEffect((): void => {

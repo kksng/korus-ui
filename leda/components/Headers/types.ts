@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  [x: string]: unknown,
   ref?: React.Ref<HeaderRefCurrent>,
   shouldRender?: boolean,
-  [x: string]: unknown,
 }
 
 export interface HeaderRefCurrent {

@@ -10,6 +10,8 @@ import {
 } from '../../src/DateTimeInputRange/types';
 
 export interface DateRangeProps extends DateTimeInputRangeProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /* Dates that are disabled to be selected. Array of dates or dates ranges. */
   disabledDates?: (Date | [Date, Date])[],
   /** Формат отображаемой и вводимой даты. По-умолчанию "dd.MM.yyyy" */
@@ -30,16 +32,14 @@ export interface DateRangeProps extends DateTimeInputRangeProps {
   onBlur?: (ev: BlurEvent) => void,
   /** Функция обратного вызова при изменении значения полей */
   onChange?: (ev: CustomRangeEvent) => void,
-  /** Функция обратного вызова при фокусе */
-  onFocus?: (ev: FocusEvent) => void,
   /** Функция обратного вызова при нажатии Enter в поле "до" */
   onEnterPress?: (ev: ChangeEvent) => void,
+  /** Функция обратного вызова при фокусе */
+  onFocus?: (ev: FocusEvent) => void,
   /** Плейсхолдер полей "от" и "до" */
   placeholder?: string | [string | undefined, string | undefined],
   /** Реф */
   ref?: React.Ref<DateTimeInputRangeRefCurrent>,
   /** Значения полей "от" и "до" */
   value?: [DateTimeInputValueType, DateTimeInputValueType] | null,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }

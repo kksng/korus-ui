@@ -5,10 +5,10 @@ import * as React from 'react';
  */
 export interface ChangeEvent {
   component: {
-    /** Current step key */
-    value: number | string | null,
     /** Current TourStepItem */
     item: TourStepItem | null,
+    /** Current step key */
+    value: number | string | null,
   },
 }
 
@@ -38,14 +38,14 @@ export interface TourProps {
 export interface TourStepItem {
   /** Скругление у выделенных элементов в px, по-умолчанию 15px */
   borderRadius?: number,
-  /** Отступы выделенной области в px, по-умолчанию 0px */
-  padding?: number,
   /** Контент */
   content: (props: ContentProps) => React.ReactElement | null,
   /** Элемент, который надо подсветить */
   element: HTMLElement | null,
   /** Отступ при скролле в px, по умолчанию 200px */
   offsetTop?: number,
+  /** Отступы выделенной области в px, по-умолчанию 0px */
+  padding?: number,
   /** Положение модалки */
   position: 'top' | 'right' | 'bottom' | 'left',
   /** Идентификатор шага */

@@ -35,7 +35,7 @@ export const getIsPasswordOk = (value: string, evaluator: PasswordEvaluator['eva
   return evaluator(value);
 };
 
-export const getPasswordStrength = (value = '', passwordEvaluators?: PasswordEvaluator[]): { strengthLevel: PasswordStrength, message: string } => {
+export const getPasswordStrength = (value = '', passwordEvaluators?: PasswordEvaluator[]): { message: string, strengthLevel: PasswordStrength } => {
   if (passwordEvaluators) {
     const evaluationResult = (() => {
       // strongest to lowest

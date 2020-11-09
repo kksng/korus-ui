@@ -25,7 +25,6 @@ export interface SuggestionListProps {
   groupLabelRender?: CustomRender<{}, {}, LiProps>,
   groupWrapperRender?: CustomRender<{}, {}, DivProps>,
   highlightedSuggestion?: Value,
-  selectedSuggestion?: Value | Value[],
   isLoading?: boolean,
   isOpen: boolean,
   itemRender?: CustomRender<SuggestionItemProps, {}, SuggestionElementProps>,
@@ -35,6 +34,7 @@ export interface SuggestionListProps {
   placeholder?: string,
   selectAllItemRender?: CustomRender<{}, {}, {}>,
   selectAllState?: SelectAllState,
+  selectedSuggestion?: Value | Value[],
   shouldAllowEmpty: boolean,
   textField?: string,
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.suggestionList],
@@ -49,17 +49,17 @@ export interface SuggestionElementProps {
 }
 
 export interface SuggestionItemProps {
-  isScrollTarget: boolean,
-  isPlaceholder: boolean,
-  isHighlighted?: boolean,
-  isSelected?: boolean,
-  isSelectAllItem?: boolean,
-  selectAllItemRender?: SuggestionListProps['selectAllItemRender'],
-  selectAllState?: SelectedState,
   canSelectAll?: boolean,
+  isHighlighted?: boolean,
+  isPlaceholder: boolean,
+  isScrollTarget: boolean,
+  isSelectAllItem?: boolean,
+  isSelected?: boolean,
   item: string | number | SomeObject | null,
   itemRender?: CustomRender<SuggestionItemProps, {}, SuggestionElementProps>,
   onClick?: CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget>,
+  selectAllItemRender?: SuggestionListProps['selectAllItemRender'],
+  selectAllState?: SelectedState,
   suggestionRef: React.MutableRefObject<HTMLElement | null>,
   text: string | number,
   textField?: string,
@@ -71,8 +71,8 @@ export interface NoSuggestionsProps {
 }
 
 export interface GroupedSomeObject {
-  key: string,
   dataItems: SomeObject[],
+  key: string,
 }
 
 export interface GetSuggestionItemProps {
@@ -91,9 +91,9 @@ export interface SuggestionItemComputedProps {
   isScrollTarget: boolean,
   isSelectAllItem?: boolean,
   isSelected?: boolean,
-  selectAllState?: SelectedState,
   item: string | number | SomeObject | null,
   key: string,
+  selectAllState?: SelectedState,
   text: string | number,
 }
 

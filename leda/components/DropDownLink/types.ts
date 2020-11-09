@@ -28,22 +28,22 @@ export interface DropDownLinkProps<T extends Value = Value> extends Omit<React.H
    * Если передаётся массив обьектов, нужно указать textField - поле обьекта, которое содержит данные для вывода в списке
    * и valueField (не обязательно), если в onChange нужно передавать данные другого поля обьекта (например id) */
   data: DataObject[] | string[],
+  /** Принудительное открытие списка */
+  isOpen?: boolean,
   /** Функция для кастомизации значения и внешнего вида элемента выпадающего списка. Вызывается когда элемент собирается визуализироваться. */
   itemRender?: CustomRender<DropDownLinkItemProps, {}, ItemProps>,
   /** Имя компонента */
   name?: string,
   /** Обработчик выбора элемента */
   onChange: (event: ChangeEvent) => void,
+  /** Реф */
+  ref?: React.Ref<DropDownLinkRefCurrent>,
   /** Имя поля объекта, данные из которого будут рендериться в качестве элементов списка */
   textField?: T extends object ? string : never,
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropDownLink],
   /** Функция для кастомизации текущего значения */
   titleRender?: CustomRender<DropDownLinkProps, {}, TitleProps>,
-  /** Принудительное открытие списка */
-  isOpen?: boolean,
-  /** Реф */
-  ref?: React.Ref<DropDownLinkRefCurrent>,
   /** Устанавливает текущее значение */
   value: T,
 }

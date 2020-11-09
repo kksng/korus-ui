@@ -4,16 +4,16 @@ import throttle from 'lodash/throttle';
 import { DivRefCurrent } from '../components/Div';
 
 export interface ClassNamesMap {
-  top?: string,
   right?: string,
+  top?: string,
   visible?: string,
 }
 
 interface AdaptivePositionProps {
+  boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement | null}>,
+  classNames: ClassNamesMap,
   elRef: React.MutableRefObject<DivRefCurrent | null>,
   isOpen: boolean,
-  classNames: ClassNamesMap,
-  boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement | null}>,
 }
 
 const getElRectFromRef = (ref?: React.RefObject<HTMLElement | { wrapper: HTMLElement | null }>) => {

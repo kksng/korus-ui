@@ -1,22 +1,22 @@
 import * as React from 'react';
 
 export interface AttributesType {
-  className?: string,
-  size?: string,
   active?: boolean,
-  dropdown?: boolean,
   box?: boolean,
-  userBox?: boolean,
-  navBox?: boolean,
+  className?: string,
   contentBox?: boolean,
+  dropdown?: boolean,
   menuBox?: string,
+  navBox?: boolean,
   primary?: boolean,
+  size?: string,
+  userBox?: boolean,
   width?: number,
 }
 
 export interface ValidatedBlurEvent<T = HTMLInputElement> extends React.FocusEvent<T>{
-  target: EventTarget & T & { isValid?: boolean },
   relatedTarget: EventTarget,
+  target: EventTarget & T & { isValid?: boolean },
 }
 
 export interface DataObject { [x: string]: string | number }
@@ -61,8 +61,8 @@ export type Values<T> = T[keyof T];
 export type SetState<S> = React.Dispatch<React.SetStateAction<S>>;
 
 export interface Action<T, P = {}> {
-  type: T,
   payload: P,
+  type: T,
 }
 
 export type ArrayElement<A> = A extends readonly (infer T)[] ? T : A;

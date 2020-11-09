@@ -12,12 +12,12 @@ export const createNumericChangeHandler = ({
   thousandsSeparator = ' ',
   onChange,
 }: {
-  value: NumericRangeState['value'],
-  setValue: SetState<NumericRangeState['value']>,
+  format?: string,
   name?: string | [string | undefined, string | undefined],
   onChange: NumericRangeProps['onChange'],
-  format?: string,
+  setValue: SetState<NumericRangeState['value']>,
   thousandsSeparator?: string,
+  value: NumericRangeState['value'],
 }) => (type: 'from' | 'to') => (ev: ChangeEvent) => {
   const newValue = (() => {
     if (type === 'from') return [ev.component.value, value[1]] as [number | null, number | null];

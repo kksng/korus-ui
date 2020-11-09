@@ -11,30 +11,30 @@ import { PredefinedForbiddenSymbols } from '../../utils/isSymbolForbidden';
 
 export interface ClearEvent extends React.MouseEvent<HTMLInputElement> {
   component: {
-    value: string,
     name?: string,
+    value: string,
   },
 }
 
 export interface TypeEvent extends React.ChangeEvent<HTMLInputElement> {
   component: {
-    value: string,
     name?: string,
+    value: string,
   },
 }
 
 export interface ResetEvent {
-  currentTarget?: undefined,
   component: {
-    value: string,
     name?: string,
+    value: string,
   },
+  currentTarget?: undefined,
 }
 
 export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
   component: {
-    value: string,
     name?: string,
+    value: string,
   },
 }
 
@@ -42,27 +42,29 @@ export type ChangeEvent = TypeEvent | ClearEvent | ResetEvent;
 
 export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
   component: {
-    value: string,
-    name?: string,
     isValid: boolean,
+    name?: string,
+    value: string,
   },
 }
 
 export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
   component: {
-    value: string,
-    name?: string,
     isValid: boolean,
+    name?: string,
+    value: string,
   },
 }
 
 export interface PasswordEvaluator {
-  evaluator: RegExp | ((password: any) => boolean),
   evaluationMessage: string,
+  evaluator: RegExp | ((password: any) => boolean),
   strengthLevel: PasswordStrength,
 }
 
 export interface PasswordProps extends ValidationProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Позволяет вводить в поле ввода только символы, удовлеторвяющие RegExp или из списка предопределённых */
   allowedSymbols?: PredefinedAllowedSymbols | RegExp,
   /** Значение по умолчанию */
@@ -71,10 +73,10 @@ export interface PasswordProps extends ValidationProps {
   forbiddenSymbols?: PredefinedForbiddenSymbols | RegExp,
   /** Отображение кнопки очистки в инпуте */
   hasClearButton?: boolean,
-  /** Отключенное состояние инпута */
-  isDisabled?: boolean,
   /** Рендер инпута */
   inputRender?: CustomRender<PasswordProps, PasswordState, React.InputHTMLAttributes<HTMLInputElement>>,
+  /** Отключенное состояние инпута */
+  isDisabled?: boolean,
   /** Переводит все вводимые буквы в верхний или нижний регистр */
   letterCase?: 'lower' | 'upper',
   /** Максимальная длина введенного значения */
@@ -107,34 +109,32 @@ export interface PasswordProps extends ValidationProps {
   value?: string | null,
   /** Рендер враппера */
   wrapperRender?: CustomRender<PasswordProps, PasswordState, DivProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface PasswordState {
   isFocused: boolean,
-  isValid: boolean,
   isPasswordVisible: boolean,
+  isValid: boolean,
   value: string,
 }
 
 export interface PasswordRefCurrent {
-  wrapper: HTMLDivElement | null,
   input: HTMLInputElement | null,
+  wrapper: HTMLDivElement | null,
 }
 
 export interface PasswordMessageProps {
-  value: string | null,
-  theme: typeof defaultPasswordTheme,
   minPasswordEvaluationLength: number,
   passwordEvaluators?: PasswordEvaluator[],
   passwordRules?: string,
+  theme: typeof defaultPasswordTheme,
+  value: string | null,
 }
 
 export interface PasswordVisibilityIconProps {
   isVisible: boolean,
-  theme: typeof defaultPasswordTheme,
   onIconClick: () => void,
+  theme: typeof defaultPasswordTheme,
 }
 
 export interface StrengthLevelToCssClassProps {

@@ -7,8 +7,8 @@ export const createResetHandler = ({
   props,
   dispatch,
 }: {
-  props: DateTimeInputProps,
   dispatch: React.Dispatch<AllActions>,
+  props: DateTimeInputProps,
 }) => () => {
   const date = null;
   const value = '';

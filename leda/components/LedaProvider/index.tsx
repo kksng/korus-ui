@@ -7,8 +7,8 @@ import { UnderscoreClasses } from './underscoreClasses';
 
 export interface LedaProps {
   children: React.ReactNode,
-  theme?: PartialGlobalDefaultTheme,
   renders?: GlobalDefaultRenders,
+  theme?: PartialGlobalDefaultTheme,
   underscoreClassesTransform?: UnderscoreClasses,
 }
 

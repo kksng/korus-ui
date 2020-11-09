@@ -90,7 +90,7 @@ export const checkFiles = (
   props: FileDropProps,
   accepted: File[],
   rejected: File[],
-): { file: File, error: FileDropInnerError | null } => {
+): { error: FileDropInnerError | null, file: File } => {
   const rejectedFile = rejected[0];
 
   if (rejected.length > 1) {

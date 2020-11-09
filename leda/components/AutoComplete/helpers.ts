@@ -27,8 +27,8 @@ export const getSuggestionFromValue = ({
   textField,
 }: {
   data: Suggestion[],
-  value: string | DataObject,
   textField?: string,
+  value: string | DataObject,
 }): Suggestion => {
   const isEveryIsObject = every(data, isObject);
 
@@ -140,8 +140,8 @@ export const correctValue = ({
   event: React.SyntheticEvent,
   isValueControlled: boolean,
   lastCorrectValue: string,
-  props: AutoCompleteProps,
   mergeState: React.Dispatch<Partial<AutoCompleteState>>,
+  props: AutoCompleteProps,
   value?: string | null,
 }): string => {
   // если value нет в data

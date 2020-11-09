@@ -5,7 +5,8 @@
   },
   "rules": {
     // Sort keys in alphabetic order
-    "sort-keys": ["warn", "asc", {"caseSensitive": true, "natural": false, "minKeys": 2}],
+    //"sort-keys": ["warn", "asc", {"caseSensitive": true, "natural": true}],
+    "sort-keys-fix/sort-keys-fix": "error",
 
     // Максимальная длина строки с учетом пробелов, в стандарте 100
     "max-len": ["error", 250],
@@ -112,13 +113,16 @@
     "babel",
     "@typescript-eslint",
     "react-hooks",
-    "cypress"
+    "cypress",
+    "typescript-sort-keys",
+    "sort-keys-fix"
   ],
 
   "extends": [
     "airbnb",
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
+    "plugin:typescript-sort-keys/recommended",
     "plugin:jest/recommended",
     "plugin:cypress/recommended"
   ],
