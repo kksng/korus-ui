@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { dispatchEvent } from '~/utils';
-import { CustomEventHandler } from '~/commonTypes';
+import { CustomEventHandler } from '../../commonTypes';
+import { dispatchEvent } from '../../utils';
 import { SuggestionItemProps } from './types';
 
 export const createClickHandler = (

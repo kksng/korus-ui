@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Div } from '~/components/Div';
-import { getClassNames } from '~/utils';
+import { Div } from '../../components/Div';
 import { CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import {
   getMonthName,
   getMonthYearArray, getShortMonthName,
 } from './helpers';
+import { getClassNames } from '../../utils';
 import { MonthViewProps } from './types';
 
 export const MonthView = (props: MonthViewProps): React.ReactElement | null => {

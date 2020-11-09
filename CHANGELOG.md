@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Set up automatic calculation of test coverage
-- Added aliases for imports
 - Tour: Added padding prop and possibility to interact with tour element
 
 ### Fixed

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { useElement } from '~/utils';
-import { Div } from '~/components/Div';
-import { LedaContext } from '~/components/LedaProvider';
-import { Span } from '~/components/Span';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { useElement } from '../../utils';
+import { Div } from '../Div';
+import { LedaContext } from '../LedaProvider';
+import { Span } from '../Span';
 import { CustomElements, SwitcherProps, SwitcherState } from './types';
 
 export const useCustomElements = (props: SwitcherProps, state: SwitcherState): CustomElements => {

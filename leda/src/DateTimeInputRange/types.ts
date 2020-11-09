@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { CustomRender, Values } from '~/commonTypes';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { DivProps, DivRefCurrent } from '~/components/Div';
+import { DivProps, DivRefCurrent } from '../../components/Div';
 import {
   CalendarHeaderProps,
   CalendarProps,
@@ -18,6 +15,9 @@ import {
 import {
   BlurEvent, ChangeEvent, FocusEvent, DateTimeInputProps, DateTimeInputState, IconProps, WrapperProps,
 } from '../DateTimeInput/types';
+import { CustomRender, Values } from '../../commonTypes';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENT_TYPES } from '../DateTimeInput/constants';
 
 export type DateTimeInputValueType = undefined | null | string | Date;

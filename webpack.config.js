@@ -17,7 +17,6 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, 'leda/'),
       'react-dom': '@hot-loader/react-dom',
     },
     extensions: ['.ts', '.tsx', '.js'],

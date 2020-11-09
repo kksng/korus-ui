@@ -13,8 +13,8 @@ import {
  */
 
 import userEvent from '@testing-library/user-event';
-import { MonthsNames, WeekDayNames } from '~/src/Calendar/types';
 import { DateRange } from './index';
+import { MonthsNames, WeekDayNames } from '../../src/Calendar/types';
 
 const validName = 'test';
 const validFormat = 'dd.MM.yyyy';

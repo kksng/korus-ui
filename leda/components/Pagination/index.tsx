@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   bindFunctionalRef, getClassNames, useProps, useTheme,
-} from '~/utils';
-import { Div } from '~/components/Div';
-import { Span } from '~/components/Span';
+} from '../../utils';
+import { Div } from '../Div';
+import { Span } from '../Span';
 import { createPageChangeHandler, createPageSizeChangeHandler } from './handlers';
 import { getPageNumbers, normalizePageNumber } from './helpers';
 import { useCustomElements } from './hooks';

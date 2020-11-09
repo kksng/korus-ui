@@ -1,4 +1,4 @@
-import { Field, Form, FormsObject } from '~/components/Validation/types';
+import { Field, Form, FormsObject } from '../Validation/types';
 
 export const fromFormArraytoFormObject = (forms: Form[]): FormsObject => forms.reduce((
   acc: FormsObject,

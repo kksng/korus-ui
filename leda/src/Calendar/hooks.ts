@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { LedaContext } from '~/components/LedaProvider';
-import { useElement } from '~/utils';
-import { Div } from '~/components/Div';
+import { LedaContext } from '../../components/LedaProvider';
+import { useElement } from '../../utils';
 import { CalendarHeader as DefaultCalendarHeader } from './CalendarHeader';
 import { DateView as DefaultDateView } from './DateView';
 import { MonthView as DefaultMonthView } from './MonthView';
 import { CalendarProps, CustomElements } from './types';
 import { YearView as DefaultYearView } from './YearView';
+import { Div } from '../../components/Div';
 
 export const useCustomElements = (props: CalendarProps): CustomElements => {
   const {

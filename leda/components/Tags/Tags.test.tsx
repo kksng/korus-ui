@@ -2,9 +2,9 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { mount } from 'enzyme';
-import { I } from '~/components/I';
 import { Tags } from './index';
 import { Tag } from './Tag';
+import { I } from '../I';
 
 describe('Tags SNAPSHOTS', () => {
   it('should render', () => {

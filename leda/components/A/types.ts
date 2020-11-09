@@ -1,5 +1,5 @@
 import React from 'react';
-import { CustomEventHandler } from '~/commonTypes';
+import { CustomEventHandler } from '../../commonTypes';
 
 export interface AProps extends React.HTMLAttributes<HTMLAnchorElement> {
   /** Текст ссылки */

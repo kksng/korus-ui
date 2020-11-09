@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { CustomRender, CustomEventHandler } from '~/commonTypes';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { COMPONENTS_NAMESPACES, FileErrorCodes } from '~/constants';
-import { globalDefaultTheme } from '~/components/LedaProvider';
-import { ValidationProps } from '~/components/Validation/types';
+import { CustomRender, CustomEventHandler } from '../../commonTypes';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { COMPONENTS_NAMESPACES, FileErrorCodes } from '../../constants';
+import { globalDefaultTheme } from '../LedaProvider';
+import { ValidationProps } from '../Validation/types';
 
-export { FileErrorCodes } from '~/constants';
+export { FileErrorCodes } from '../../constants';
 
 /**
  * Properties of accepted files list

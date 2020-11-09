@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
   BlurEvent, ChangeEvent, FocusEvent, TimeLimits,
-} from '~/src/DateTimeInput/types';
+} from '../../src/DateTimeInput/types';
 import {
   CustomRangeEvent, DateTimeInputRangeProps,
   DateTimeInputRangeRefCurrent,
-} from '~/src/DateTimeInputRange/types';
+} from '../../src/DateTimeInputRange/types';
 
 export interface TimeRangeProps extends DateTimeInputRangeProps {
   /** Формат отображаемой и вводимой даты. По-умолчанию "hh:mm" */

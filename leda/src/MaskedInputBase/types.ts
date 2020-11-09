@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SetState } from '~/commonTypes';
+import { SetState } from '../../commonTypes';
 
 export interface MaskRules {
   [x: string]: {

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {
   CustomEventHandler, CustomRender, SomeObject,
-} from '~/commonTypes';
-import { SuggestionListProps } from '~/src/SuggestionList/types';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { DivProps } from '~/components/Div';
-import { SpanProps } from '~/components/Span';
-import { ValidationProps } from '~/components/Validation/types';
-import { EnterPressEvent } from '~/components/Input/types';
+} from '../../commonTypes';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { SuggestionListProps } from '../../src/SuggestionList/types';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { DivProps } from '../Div';
+import { SpanProps } from '../Span';
+import { ValidationProps } from '../Validation/types';
+import { EnterPressEvent } from '../Input/types';
 
 export type Value = SomeObject | string | number | null;
 

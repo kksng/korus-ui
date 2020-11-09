@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Div } from '~/components/Div';
-import { MaskedInputBase } from '~/src/MaskedInputBase';
-import { useElement } from '~/utils';
-import { LedaContext } from '~/components/LedaProvider';
-import { COMPONENTS_NAMESPACES } from '~/constants';
 import { CustomElements, MaskedInputProps, MaskedInputState } from './types';
+import { Div } from '../Div';
+import { MaskedInputBase } from '../../src/MaskedInputBase';
+import { useElement } from '../../utils';
+import { LedaContext } from '../LedaProvider';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export const useCustomElements = (props: MaskedInputProps, state: MaskedInputState): CustomElements => {
   const { wrapperRender, inputRender } = props;

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { FILTER_RULES } from '~/utils';
-import { CustomRender, Values, SomeObject } from '~/commonTypes';
-import { SuggestionListProps } from '~/src/SuggestionList/types';
-import { UlProps } from '~/components/Ul';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { ValidationProps } from '~/components/Validation/types';
+import { FILTER_RULES } from '../../utils';
+import { ValidationProps } from '../Validation/types';
+import { CustomRender, Values, SomeObject } from '../../commonTypes';
+import { SuggestionListProps } from '../../src/SuggestionList/types';
+import { UlProps } from '../Ul';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export interface AutoCompleteProps<T extends Suggestion = Suggestion> extends ValidationProps {
   /** Браузерное автозаполнение поля ввода, по умолчанию "off" */

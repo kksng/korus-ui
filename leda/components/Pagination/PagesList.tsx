@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getClassNames } from '~/utils';
-import { Span } from '~/components/Span';
-import { Ul } from '~/components/Ul';
-import { Li } from '~/components/Li';
+import { getClassNames } from '../../utils';
+import { Li } from '../Li';
+import { Span } from '../Span';
+import { Ul } from '../Ul';
 import { PaginationControl } from './PaginationControl';
 import { PagesListProps } from './types';
 

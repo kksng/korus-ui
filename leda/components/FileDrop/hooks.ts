@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { useElement, useProps } from '~/utils';
-import { Div } from '~/components/Div';
-import { Button } from '~/components/Button';
-import { LedaContext } from '~/components/LedaProvider';
-import { COMPONENTS_NAMESPACES } from '~/constants';
 import {
   CustomElements, FileDropProps, UploadButtonProps,
 } from './types';
+import { useElement, useProps } from '../../utils';
+import { Div } from '../Div';
+import { Button } from '../Button';
+import { LedaContext } from '../LedaProvider';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export const useCustomElements = (props: FileDropProps): CustomElements => {
   const {

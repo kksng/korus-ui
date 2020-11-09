@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as messages from '~/messages';
-import { Div } from '~/components/Div';
-import { Span } from '~/components/Span';
+import { Div } from '../Div';
+import { Span } from '../Span';
 import { DescriptionMessage } from './helpers';
+import * as messages from '../../messages';
 import { DefaultComponentProps } from './types';
 
 export const DefaultComponent = (props: DefaultComponentProps) => {

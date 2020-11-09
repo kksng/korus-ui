@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Span } from '~/components/Span';
-import { Button } from '~/components/Button';
+import { Span } from '../Span';
+import { Button } from '../Button';
 import { ErrorComponentProps } from './types';
 
 export const ErrorComponent = (props: ErrorComponentProps) => {

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { CustomRender, SetState } from '~/commonTypes';
+import { CustomRender, SetState } from '../../commonTypes';
 
 export interface ValidationProps {
   form?: string,

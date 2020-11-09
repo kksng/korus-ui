@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useProps,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { Span } from '~/components/Span';
-import { Div } from '~/components/Div';
+} from '../../utils';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { IconProps, LoaderProps, LoaderRefCurrent } from './types';
+import { Span } from '../Span';
+import { Div } from '../Div';
 
 export const Loader = React.forwardRef((props: LoaderProps, ref?: React.Ref<LoaderRefCurrent>): React.ReactElement => {
   const {

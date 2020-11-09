@@ -1,7 +1,7 @@
 import React from 'react';
 import { isFunction } from 'lodash';
-import { bindFunctionalRef, useProps } from '~/utils';
-import { CustomEventHandler } from '~/commonTypes';
+import { bindFunctionalRef, useProps } from '../../utils';
+import { CustomEventHandler } from '../../commonTypes';
 import { AProps, ARefCurrent } from './types';
 
 export const A = React.forwardRef((props: AProps, ref?: React.Ref<ARefCurrent>): React.ReactElement | null => {

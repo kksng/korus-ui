@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   getClassNames, bindFunctionalRef, useTheme, useProps,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+} from '../../utils';
 import { createCloseButtonClickHandler, createEscapePressHandler, createOverlayClickHandler } from './handlers';
 import { useCustomElements } from './hooks';
 import { ModalWindowProps } from './types';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { getModalWidth } from './helpers';
 import { ModalContext } from './ModalContext';
 

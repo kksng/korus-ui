@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { useProps } from '~/utils';
 import { createPanelHandlers } from './handlers';
 import { usePanelWrapper } from './helpers';
 import { CollapseContext, CollapsePanelContext } from './CollapseContext';
+import { useProps } from '../../utils';
 import { PanelProps } from './types';
 
 export const Panel: React.FC<PanelProps> = (props: PanelProps): React.ReactElement => {

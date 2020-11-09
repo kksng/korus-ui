@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { CustomRender, SomeObject } from '~/commonTypes';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { CustomRender, SomeObject } from '../../commonTypes';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export interface VStepperProps {
   /** Шаги */

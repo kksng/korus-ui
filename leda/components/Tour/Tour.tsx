@@ -2,7 +2,7 @@ import * as React from 'react';
 import { debounce } from 'lodash';
 import ReactDOM from 'react-dom';
 
-import { Div } from '~/components/Div';
+import { Div } from '../Div';
 import {
   createOverlaySvgPath, getModalPositionStyles, setElementDefaultStyles, setElementStyles,
 } from './helpers';

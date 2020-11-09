@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useElement } from '~/utils';
-import { A } from '~/components/A';
-import { Span } from '~/components/Span';
-import { LedaContext } from '~/components/LedaProvider';
-import { COMPONENTS_NAMESPACES } from '~/constants';
 import { CustomElements, FileUploadProps } from './types';
+import { useElement } from '../../utils';
+import { A } from '../A';
+import { Span } from '../Span';
+import { LedaContext } from '../LedaProvider';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export const useCustomElements = (props: FileUploadProps): CustomElements => {
   const { wrapperRender, infoRender } = props;

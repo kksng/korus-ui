@@ -2,9 +2,9 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { mount } from 'enzyme';
-import { Ul } from '~/components/Ul';
-import { Li } from '~/components/Li';
 import { RadioGroup, RadioButton } from './index';
+import { Ul } from '../Ul';
+import { Li } from '../Li';
 
 describe('Radio SNAPSHOTS', () => {
   it('should render', () => {

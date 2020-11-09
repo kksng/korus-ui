@@ -1,17 +1,14 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
 import {
-  bindFunctionalRef, getClassNames, getIsEmptyAndRequired, useElement, useProps, useTheme,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { SuggestionList } from '~/src/SuggestionList';
-import { Div } from '~/components/Div';
-import { Span } from '~/components/Span';
-import { LedaContext } from '~/components/LedaProvider';
-import { useValidation } from '~/components/Validation';
-import {
   MultiSelectComponent, MultiSelectProps, MultiSelectRefCurrent, Value,
 } from './types';
+import {
+  bindFunctionalRef, getClassNames, getIsEmptyAndRequired, useElement, useProps, useTheme,
+} from '../../utils';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { useValidation } from '../Validation';
+import { SuggestionList } from '../../src/SuggestionList';
 import {
   createBlurHandler,
   createClearHandler,
@@ -22,11 +19,14 @@ import {
   createSelectHandler,
 } from './handlers';
 import { TagsContainer } from './TagsContainer';
+import { Div } from '../Div';
+import { LedaContext } from '../LedaProvider';
 import { Tag } from '../Tags';
 import {
   filterData, getShouldUniteTags, getSortedSuggestions, getValue,
 } from './helpers';
 import { createCheckBoxesRender } from './renders';
+import { Span } from '../Span';
 import { selectAllSuggestion, SelectedState } from './constants';
 
 export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React.Ref<MultiSelectRefCurrent>): React.ReactElement => {

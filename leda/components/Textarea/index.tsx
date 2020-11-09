@@ -2,9 +2,9 @@ import 'element-closest/browser';
 import * as React from 'react';
 import {
   getClassNames, useTheme, bindFunctionalRef, useProps, getIsEmptyAndRequired,
-} from '~/utils';
-import { useValidation } from '~/components/Validation';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+} from '../../utils';
+import { useValidation } from '../Validation';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { TextareaProps, TextareaRefCurrent } from './types';
 import {
   createBlurHandler, createChangeHandler, createFocusHandler, createKeyDownHandler, createResetHandler,

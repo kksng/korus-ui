@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { isFunction, intersection } from 'lodash';
-import { form as LedaForm } from '~/form';
-import { getForms, validate } from '~/components/Validation';
+import { getForms, validate } from '../Validation';
 import { ButtonProps } from './types';
 import { fromFormArraytoFormObject } from './helpers';
+import { form as LedaForm } from '../../form';
 
 export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<HTMLButtonElement>): void => {
   const {

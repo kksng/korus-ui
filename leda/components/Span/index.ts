@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { htmlTagFactory } from '~/src/HTMLTagsFactory';
+import { htmlTagFactory } from '../../src/HTMLTagsFactory';
 
 export interface SpanProps extends React.HTMLAttributes<HTMLSpanElement> {
   ref?: React.Ref<SpanRefCurrent>,

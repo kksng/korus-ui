@@ -3,17 +3,17 @@ import { isEqual, isFunction, isObject } from 'lodash';
 
 import {
   bindFunctionalRef, useTheme, useElement, useAdaptivePosition, useProps,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { DataObject } from '~/commonTypes';
-import { A } from '~/components/A';
-import { Ul, UlRefCurrent } from '~/components/Ul';
-import { DivRefCurrent } from '~/components/Div';
-import { DropDown } from '~/components/DropDown';
+} from '../../utils';
+import { A } from '../A';
+import { DropDown } from '../DropDown';
+import { Ul, UlRefCurrent } from '../Ul';
+import { DropDownLinkItem } from './DropDownLinkItem';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   ClickEvent, DropDownLinkProps, DropDownLinkRefCurrent, DropDownLinkType, TitleProps,
 } from './types';
-import { DropDownLinkItem } from './DropDownLinkItem';
+import { DataObject } from '../../commonTypes';
+import { DivRefCurrent } from '../Div';
 
 /**
  * DropDownLink component renders dropdown list of link items

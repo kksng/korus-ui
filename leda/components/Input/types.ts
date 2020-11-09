@@ -1,11 +1,10 @@
 import * as React from 'react';
-
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { ValidationProps } from '~/components/Validation/types';
-import { CustomRender } from '~/commonTypes';
-import { DivProps } from '~/components/Div';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { ValidationProps } from '../Validation/types';
 import { predefinedAllowedSymbols, predefinedForbiddenSymbols } from './constants';
+import { CustomRender } from '../../commonTypes';
+import { DivProps } from '../Div';
 
 export type PredefinedAllowedSymbols = keyof typeof predefinedAllowedSymbols;
 

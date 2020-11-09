@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   bindFunctionalRef, getClassNames, getIsEmptyAndRequired, useProps, useTheme, useValue,
-} from '~/utils';
-import { Div } from '~/components/Div';
-import { Span } from '~/components/Span';
-import { useValidation } from '~/components/Validation';
+} from '../../utils';
+import { Div } from '../Div';
+import { Span } from '../Span';
+import { useValidation } from '../Validation';
 import {
   createArrowButtonClick,
   createBlurHandler,

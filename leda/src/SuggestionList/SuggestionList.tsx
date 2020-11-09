@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { useAdaptivePosition, useElement, useTheme } from '~/utils';
-import { LedaContext } from '~/components/LedaProvider';
-import { Loader } from '~/components/Loader';
-import { Div, DivRefCurrent } from '~/components/Div';
-import { Li } from '~/components/Li';
-import { Ul } from '~/components/Ul';
+import { LedaContext } from '../../components/LedaProvider';
+import { Loader } from '../../components/Loader';
+import { Div, DivRefCurrent } from '../../components/Div';
+import { Li } from '../../components/Li';
+import { Ul } from '../../components/Ul';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { useAdaptivePosition, useElement, useTheme } from '../../utils';
 import { getSuggestionItemProps, scrollToSuggestion } from './helpers';
 import { SuggestionItem } from './SuggestionItem';
 import { SuggestionListProps, GroupedSomeObject, Value } from './types';

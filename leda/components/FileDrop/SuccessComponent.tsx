@@ -1,8 +1,7 @@
 import * as React from 'react';
-
-import { Span } from '~/components/Span';
-import { Button } from '~/components/Button';
 import { SuccessComponentProps } from './types';
+import { Span } from '../Span';
+import { Button } from '../Button';
 
 
 export const SuccessComponent = (props: SuccessComponentProps) => {

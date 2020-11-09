@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
   CustomRender, DataObject, CustomEventHandler,
-} from '~/commonTypes';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+} from '../../commonTypes';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export type Value = DataObject | string | number;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useTheme } from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { useTheme } from '../../utils';
 import { createCollapseHandlers } from './handlers';
 import { CollapseContext } from './CollapseContext';
 import { Panel } from './CollapsePanel';

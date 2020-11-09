@@ -1,11 +1,10 @@
 import * as React from 'react';
-
-import { CustomEventHandler, SetState } from '~/commonTypes';
-import { isSymbolAllowed } from '~/utils/isSymbolAllowed';
-import { isSymbolForbidden } from '~/utils/isSymbolForbidden';
-import { stringToMaxLength } from '~/utils';
-import { transformToCase } from './helpers';
+import { CustomEventHandler, SetState } from '../../commonTypes';
 import { PasswordProps } from './types';
+import { transformToCase } from './helpers';
+import { isSymbolAllowed } from '../../utils/isSymbolAllowed';
+import { isSymbolForbidden } from '../../utils/isSymbolForbidden';
+import { stringToMaxLength } from '../../utils';
 
 export const createChangeHandler = (
   props: PasswordProps,

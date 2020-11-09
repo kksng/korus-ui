@@ -5,10 +5,10 @@ import * as React from 'react';
 import { isString } from 'lodash';
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, useProps,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { Div } from '~/components/Div';
-import { LedaContext } from '~/components/LedaProvider';
+} from '../../utils';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { Div } from '../Div';
+import { LedaContext } from '../LedaProvider';
 import { TagsProps, TagsRefCurrent } from './types';
 
 export const Tags = React.forwardRef((props: TagsProps, ref?: React.Ref<TagsRefCurrent>): React.ReactElement => {

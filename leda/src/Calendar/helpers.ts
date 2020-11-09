@@ -1,6 +1,6 @@
 import isDate from 'lodash/isDate';
-import { Values } from '~/commonTypes';
-import { getClassNames } from '~/utils';
+import { Values } from '../../commonTypes';
+import { getClassNames } from '../../utils';
 import { BUTTON_TYPE, CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import { COMPONENT_TYPES } from '../DateTimeInput/constants';
 import { TimeLimits } from '../DateTimeInput/types';

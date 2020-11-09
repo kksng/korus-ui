@@ -1,8 +1,8 @@
 import React from 'react';
-import { CustomRender } from '~/commonTypes';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { LiProps } from '~/components/Li';
+import { CustomRender } from '../../commonTypes';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { LiProps } from '../Li';
 import { defaultTabsTheme } from './theme';
 
 export interface TabsProps {

@@ -1,12 +1,12 @@
 import React from 'react';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   getClassNames, bindFunctionalRef, useTheme, useProps,
-} from '~/utils';
+} from '../../utils';
 import { createClickHandler } from './handlers';
 import { ButtonProps, ButtonRefCurrent } from './types';
 
-// как настраивать кнопку для валидации ввода: ~/components/Validation/validation.md
+// как настраивать кнопку для валидации ввода: ../Validation/validation.md
 export const Button = React.forwardRef((props: ButtonProps, ref: React.Ref<ButtonRefCurrent>): React.ReactElement | null => {
   const {
     children,

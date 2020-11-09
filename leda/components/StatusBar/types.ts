@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { CustomRender, CustomEventHandler } from '~/commonTypes';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { DATA_TYPES, STEP_POSITION } from './constants';
+import { CustomRender, CustomEventHandler } from '../../commonTypes';
 
 export interface StatusItem {
   [x: string]: any,
