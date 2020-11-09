@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 
 export const AutoComplete = (): React.ReactElement => {
   const [objectValue1, setObjectValue1] = React.useState<string | null>(null);
@@ -197,12 +197,12 @@ export const AutoComplete = (): React.ReactElement => {
       <br />
       <br />
       <L.Div _demoStory _flexRow>
-        <L.AutoComplete
-          name="AutoComplete7"
-          data={['1', '2', '3', '33']}
-          onChange={(event) => setStringValue7(event.component.value)}
-          value={stringValue7}
-          minSearchLength={0}
+      <L.AutoComplete
+        name="AutoComplete7"
+        data={['1', '2', '3', '33']}
+        onChange={(event) => setStringValue7(event.component.value)}
+        value={stringValue7}
+        minSearchLength={0}
         />
       </L.Div>
     </>

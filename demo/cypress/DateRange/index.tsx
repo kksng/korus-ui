@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 
 export const DateRange = (): React.ReactElement => {
   const [value1, setValue1] = React.useState<[string, string]>(['', '']);

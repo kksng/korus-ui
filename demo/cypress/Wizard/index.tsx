@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '~';
-import { SetState } from '~/commonTypes';
+import * as L from '../../../leda';
+import { SetState } from '../../../leda/commonTypes';
 
 const data = [
     { labelText: 'Согласование' },

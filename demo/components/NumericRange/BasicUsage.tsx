@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/accessible-emoji,react/prop-types,no-console */
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 

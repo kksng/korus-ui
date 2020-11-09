@@ -29,4 +29,7 @@
     "node_modules",
     "dist"
   ],
+  "include": [
+    "./leda/",
+  ]
 }

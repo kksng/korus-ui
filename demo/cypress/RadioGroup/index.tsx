@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as L from '~';
+import * as L from '../../../leda';
 
 export const RadioGroup = (): React.ReactElement => {
 const [value, setValue] = React.useState<string | number>(3);

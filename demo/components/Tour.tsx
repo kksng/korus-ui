@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '~';
-import { useElementRef } from '~/utils';
+import * as L from '../../leda';
+import { useElementRef } from '../../leda/utils';
 
 const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] => [
   {

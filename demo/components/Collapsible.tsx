@@ -1,5 +1,5 @@
 import React from 'react';
-import * as L from '~';
+import * as L from '../../leda';
 
 export const Collapsible = () => {
   const [isOpen, setIsOpen] = React.useState(false);

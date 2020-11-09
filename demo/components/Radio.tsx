@@ -1,6 +1,6 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../leda';
 
 export const Radio = (): React.ReactElement => {
  const [value, setValue] = React.useState<string | number>(0);

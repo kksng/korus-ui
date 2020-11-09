@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '~';
+import * as L from '../../leda';
 
 export const StickyPanel = () => {
   const [isFull, setIsFull] = React.useState(true);

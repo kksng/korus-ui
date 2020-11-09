@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import * as L from '~';
-import { isTimeGreater } from '~/src/Calendar/helpers';
+import * as L from '../../../leda';
+import { isTimeGreater } from '../../../leda/src/Calendar/helpers';
 
 export const TimePicker = () => {
   const [value, setValue] = React.useState('10:30:45');

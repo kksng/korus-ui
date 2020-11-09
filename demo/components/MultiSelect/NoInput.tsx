@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '~';
-import { SomeObject } from '~/commonTypes';
+import * as L from '../../../leda';
+import { SomeObject } from '../../../leda/commonTypes';
 
 export const NoInput = (args: SomeObject): React.ReactElement => {
   const [value, setValue] = React.useState<L.MultiSelectTypes.Value[] | null>(['London', 'Paris']);

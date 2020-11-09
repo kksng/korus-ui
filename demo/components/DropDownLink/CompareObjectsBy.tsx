@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '~';
-import { Value } from '~/components/DropDownLink/types';
+import * as L from '../../../leda';
+import { Value } from '../../../leda/components/DropDownLink/types';
 
 const data = [
   { id: 0, attr: 'value0', city: 'Moscow' },
