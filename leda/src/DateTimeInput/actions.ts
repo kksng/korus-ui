@@ -1,4 +1,4 @@
-import { Action, Values } from '~/commonTypes';
+import { Action, Values } from '../../commonTypes';
 import { VIEW_TYPES } from '../Calendar/constants';
 import { StateActionPayloads, StateActionTypes } from './types';
 

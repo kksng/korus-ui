@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
 
-import { LedaContext } from '~/components/LedaProvider';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { getClassNames, useElement } from '~/utils';
-import { Div } from '~/components/Div';
+import { LedaContext } from '../LedaProvider';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { WizardItemProps } from './types';
+import { getClassNames, useElement } from '../../utils';
+import { Div } from '../Div';
 import { Label } from '../Label';
 
 /**

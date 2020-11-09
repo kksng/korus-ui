@@ -3,9 +3,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
-
-import { Span } from '~/components/Span';
 import { FileUpload } from './index';
+import { Span } from '../Span';
 
 let files;
 let firstFile;

@@ -1,11 +1,11 @@
 import React from 'react';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   getClassNames, bindFunctionalRef, useTheme, useElement, useProps, getIsEmptyAndRequired,
-} from '~/utils';
-import { useValidation } from '~/components/Validation';
-import { Div } from '~/components/Div';
+} from '../../utils';
+import { useValidation } from '../Validation';
 import { InputProps, InputRefCurrent } from './types';
+import { Div } from '../Div';
 import {
   createBlurHandler,
   createChangeHandler,

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Div } from '~/components/Div';
+import { Div } from '../Div';
 import {
   useTheme, bindFunctionalRef, getClassNames, useProps,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+} from '../../utils';
 import { VStepperItem } from './VStepperItem';
 import { VStepperContext } from './VStepperContext';
 import { getChildren } from './helpers';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { VStepperItemProps, VStepperProps, VStepperRefCurrent } from './types';
 
 export const VStepper = React.forwardRef((props: VStepperProps, ref?: React.Ref<VStepperRefCurrent>): React.ReactElement => {

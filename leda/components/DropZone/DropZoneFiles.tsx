@@ -1,13 +1,13 @@
 import React from 'react';
-import { Span } from '~/components/Span';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { getClassNames } from '~/utils';
-import { Ul } from '~/components/Ul';
-import { Li } from '~/components/Li';
-import { A } from '~/components/A';
-import { Tooltip } from '~/components/Tooltip';
-import { globalDefaultTheme } from '~/components/LedaProvider';
+import { Ul } from '../Ul';
+import { Li } from '../Li';
+import { A } from '../A';
+import { Span } from '../Span';
+import { Tooltip } from '../Tooltip';
+import { globalDefaultTheme } from '../LedaProvider';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { DropZoneFilesProps, FileType } from './types';
+import { getClassNames } from '../../utils';
 
 const createDownloadLink = (file: FileType, theme: typeof globalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone]): React.ReactElement | null => {
   if (file instanceof File) {

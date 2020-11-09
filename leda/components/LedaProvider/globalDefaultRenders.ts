@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { RenderEvent } from '~/commonTypes';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { RenderEvent } from '../../commonTypes';
 
 export interface GlobalRenderField {
   [x: string]: ((<P, S, E>(props: RenderEvent<P, S, E>) => React.ReactNode) | undefined),

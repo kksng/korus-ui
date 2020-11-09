@@ -1,12 +1,11 @@
 import React from 'react';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   getClassNames, bindFunctionalRef, useTheme, useElement, useProps, getIsEmptyAndRequired,
-} from '~/utils';
-import { Div } from '~/components/Div';
-import { LedaContext } from '~/components/LedaProvider';
-import { useValidation } from '~/components/Validation';
+} from '../../utils';
+import { useValidation } from '../Validation';
 import { PasswordProps, PasswordRefCurrent } from './types';
+import { Div } from '../Div';
 import {
   createBlurHandler,
   createChangeHandler,
@@ -19,6 +18,7 @@ import { getValue } from './helpers';
 import { PasswordMessage } from './PasswordMessage';
 import { PasswordVisibilityIcon } from './PasswordVisibilityIcon';
 import { DEFAULT_MIN_PASSWORD_EVALUATION_LENGTH } from './constants';
+import { LedaContext } from '../LedaProvider';
 
 export const Password = React.forwardRef((props: PasswordProps, ref: React.Ref<PasswordRefCurrent>): React.ReactElement => {
   const {

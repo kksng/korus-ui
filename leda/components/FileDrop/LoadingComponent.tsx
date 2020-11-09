@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Span } from '~/components/Span';
 import { ProgressLoader } from './ProgressLoader';
+import { Span } from '../Span';
 import { SingleFileViewProps } from './types';
 
 

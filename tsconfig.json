@@ -18,18 +18,13 @@
     "outDir": "./dist",
     "declaration": true,
     "newLine": "LF",
-    "downlevelIteration": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["leda/*"], 
-      "~": ["leda/index.ts"],
-    }
+    "downlevelIteration": true
   },
   "exclude": [
     "node_modules",
     "dist"
   ],
   "include": [
-    "./leda/",
+    "./leda/"
   ]
 }

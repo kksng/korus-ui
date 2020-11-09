@@ -1,5 +1,5 @@
 import React from 'react';
-import { Div } from '~/components/Div';
+import { Div } from '../Div';
 import { PasswordMessageProps } from './types';
 import { getPasswordStrength, strengthLevelToCssClass } from './helpers';
 

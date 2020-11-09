@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { isFunction } from 'lodash';
 import { DropzoneRef } from 'react-dropzone';
-
-import { CustomEventHandler } from '~/commonTypes';
 import { getErrorCode } from './helpers';
+import { CustomEventHandler } from '../../commonTypes';
 import { FileUploadProps } from './types';
 import { errorCodeToMessage } from '../FileDrop/helpers';
 

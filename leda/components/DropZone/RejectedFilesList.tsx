@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Span } from '~/components/Span';
-import { Li } from '~/components/Li';
+import { Li } from '../Li';
+import { Span } from '../Span';
 import {
   DropZoneFileType, ExternalFile, FileErrorCodes, RejectedFilesListProps,
 } from './types';

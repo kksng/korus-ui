@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Span } from '~/components/Span';
-import { Div } from '~/components/Div';
-import { getText } from '~/src/SuggestionList/helpers';
-import { SomeObject } from '~/commonTypes';
 import { TagsContainerProps } from './types';
+import { Span } from '../Span';
+import { Div } from '../Div';
+import { getText } from '../../src/SuggestionList/helpers';
+import { SomeObject } from '../../commonTypes';
 
 export const TagsContainer = (props: TagsContainerProps): React.ReactElement | null => {
   const {

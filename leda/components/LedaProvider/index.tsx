@@ -1,7 +1,7 @@
 import React from 'react';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
 import { LedaContext } from './LedaContext';
 import { globalDefaultTheme } from './globalDefaultTheme';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { globalDefaultRenders, GlobalDefaultRenders } from './globalDefaultRenders';
 import { UnderscoreClasses } from './underscoreClasses';
 

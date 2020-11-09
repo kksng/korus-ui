@@ -134,12 +134,5 @@
         "no-console": "off"
       }
     }
-  ],
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "webpack.config.js"
-      }
-    }
-  }
+  ]
 }

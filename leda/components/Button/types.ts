@@ -1,7 +1,7 @@
 import React from 'react';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
-import { Form, FormsObject, ValidationButtonProps } from '~/components/Validation/types';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { Form, FormsObject, ValidationButtonProps } from '../Validation/types';
 
 export interface SubmitEvent extends React.MouseEvent<HTMLButtonElement> {
   form?: FormsObject,

@@ -1,5 +1,5 @@
 import { isFunction, kebabCase } from 'lodash';
-import { svgNamespacesDictionary } from '~/utils';
+import { svgNamespacesDictionary } from '../../utils';
 import { SvgProps } from './types';
 
 export const extractIdAndNamespace = (props: SvgProps): SvgProps & { id: string, namespace: string } => Object.keys(props).reduce((acc, attr) => {

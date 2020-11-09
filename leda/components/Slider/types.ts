@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CustomRender, Values } from '~/commonTypes';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '~/utils/useTheme';
+import { CustomRender, Values } from '../../commonTypes';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { LABELS } from './constants';
 
 export type SliderValue = number | number[];

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { isFunction } from 'lodash';
-import { getClassNames, useElement } from '~/utils';
-import { Div } from '~/components/Div';
-import { Span } from '~/components/Span';
-import { LedaContext } from '~/components/LedaProvider';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { StatusBarItemProps } from './types';
 import { STEP_POSITION, STEP_TYPES } from './constants';
+import { getClassNames, useElement } from '../../utils';
+import { StatusBarItemProps } from './types';
+import { Div } from '../Div';
+import { Span } from '../Span';
+import { LedaContext } from '../LedaProvider';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export const StatusBarItem: React.FC<StatusBarItemProps> = (props: StatusBarItemProps): React.ReactElement => {
   const {

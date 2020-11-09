@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { PartialGlobalDefaultTheme } from '~/utils/useTheme';
 import {
   Action, CustomRender, CustomEventHandler, Values,
-} from '~/commonTypes';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { DivProps, DivRefCurrent } from '~/components/Div';
-import { ValidationProps } from '~/components/Validation/types';
+} from '../../commonTypes';
+import { DivProps, DivRefCurrent } from '../../components/Div';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { VIEW_TYPES } from '../Calendar/constants';
 import {
   CalendarClickHandler,
@@ -24,6 +23,7 @@ import {
 import { MaskedInputBaseProps } from '../MaskedInputBase/types';
 import { stateActionTypes } from './actions';
 import { COMPONENT_TYPES } from './constants';
+import { ValidationProps } from '../../components/Validation/types';
 
 // todo: extend type
 export interface ChangeEvent {

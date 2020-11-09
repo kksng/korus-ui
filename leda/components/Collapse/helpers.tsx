@@ -1,9 +1,7 @@
 import React from 'react';
-import { useElement } from '~/utils';
-import { Div } from '~/components/Div';
-import { Span } from '~/components/Span';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { LedaContext } from '~/components/LedaProvider';
+import { useElement } from '../../utils';
+import { Div } from '../Div';
+import { Span } from '../Span';
 import {
   HeadingProps,
   BodyProps,
@@ -13,6 +11,8 @@ import {
   PanelProps,
   PanelWrapperProps,
 } from './types';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { LedaContext } from '../LedaProvider';
 
 const defaultPanelWrapper = ({ children }: React.PropsWithChildren<{}>) => <>{children}</>;
 

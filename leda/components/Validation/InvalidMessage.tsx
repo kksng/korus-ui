@@ -1,5 +1,5 @@
 import React from 'react';
-import { Span } from '~/components/Span';
+import { Span } from '../Span';
 import { InvalidMessageProps } from './types';
 
 export const InvalidMessage = ({ isValid, messages = [] }: InvalidMessageProps): React.ReactElement | null => (isValid || messages.length === 0

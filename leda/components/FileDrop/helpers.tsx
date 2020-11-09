@@ -3,13 +3,13 @@ import accept from 'attr-accept';
 import { isString, isNumber } from 'lodash';
 import {
   COMPONENTS_NAMESPACES, ERROR_MESSAGES, FileErrorCodes, MAX_FILE_SIZE, MIN_FILE_SIZE,
-} from '~/constants';
-import { Div } from '~/components/Div';
-import { A } from '~/components/A';
-import { globalDefaultTheme } from '~/components/LedaProvider';
+} from '../../constants';
+import { Div } from '../Div';
 import {
   FileDropProps, FileDropInnerError,
 } from './types';
+import { A } from '../A';
+import { globalDefaultTheme } from '../LedaProvider';
 
 export const compareFiles = (firstFile: File, secondFile: File): boolean => {
   if (firstFile.size !== secondFile.size) return false;

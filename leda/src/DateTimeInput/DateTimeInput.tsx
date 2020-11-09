@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { isNil, isDate } from 'lodash';
+import { useValidation } from '../../components/Validation';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { getCalendarConditions } from '../Calendar/helpers';
+import { Div } from '../../components/Div';
 import {
   bindFunctionalRef, getClassNames, useProps, useTheme,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { useValidation } from '~/components/Validation';
-import { Div } from '~/components/Div';
-import { Span } from '~/components/Span';
-import { getCalendarConditions } from '../Calendar/helpers';
+} from '../../utils';
 import { Calendar } from '../Calendar';
 import { COMPONENT_TYPES } from './constants';
 import {
@@ -27,6 +26,7 @@ import {
   getInputWrapperClassNames, getValue, stringToDate, normalizeTimeLimits,
 } from './helpers';
 import { useCustomElements, useDateTimeInputEffects, useDateTimeInputState } from './hooks';
+import { Span } from '../../components/Span';
 import { DateTimeInputProps, DateTimeInputRefCurrent } from './types';
 
 export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: React.Ref<DateTimeInputRefCurrent>) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { isFunction } from 'lodash';
-import { A } from '~/components/A';
-import { getClassNames } from '~/utils';
+import { A } from '../A';
+import { getClassNames } from '../../utils';
 import { PaginationControlProps } from './types';
 
 export const PaginationControl = (props: PaginationControlProps): React.ReactElement => {

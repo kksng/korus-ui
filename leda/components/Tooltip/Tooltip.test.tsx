@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { I } from '~/components/I';
+import { I } from '../I';
 import { Tooltip } from './index';
 
 jest.mock('./constants', () => ({

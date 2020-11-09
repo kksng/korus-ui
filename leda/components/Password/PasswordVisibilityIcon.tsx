@@ -1,6 +1,6 @@
 import React from 'react';
-import { I } from '~/components/I';
 import { PasswordVisibilityIconProps } from './types';
+import { I } from '../I';
 
 export const PasswordVisibilityIcon = (props: PasswordVisibilityIconProps) => {
   const { isVisible, theme, onIconClick } = props;

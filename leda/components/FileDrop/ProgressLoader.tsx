@@ -1,6 +1,6 @@
 import * as React from 'react';
 import isNumber from 'lodash/isNumber';
-import { Div } from '~/components/Div';
+import { Div } from '../Div';
 import { Loader } from '../Loader';
 import { ProgressLoaderProps } from './types';
 

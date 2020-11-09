@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   bindFunctionalRef, getClassNames, useTheme, useElement, generateId, useValue, useProps,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { Div } from '~/components/Div';
-import { LedaContext } from '~/components/LedaProvider';
+} from '../../utils';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { Div } from '../Div';
 import { createChangeHandler } from './handlers';
 import { CheckBoxProps, CheckBoxRefCurrent } from './types';
+import { LedaContext } from '../LedaProvider';
 import { Label } from '../../index';
 
 export const CheckBox = React.forwardRef((props: CheckBoxProps, ref?: React.Ref<CheckBoxRefCurrent>): React.ReactElement => {

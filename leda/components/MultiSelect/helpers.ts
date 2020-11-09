@@ -1,6 +1,6 @@
 import { difference } from 'lodash';
-import { filterSuggestionByRule, checkIsTheSameObject } from '~/utils';
-import { getText } from '~/src/SuggestionList/helpers';
+import { filterSuggestionByRule, checkIsTheSameObject } from '../../utils';
+import { getText } from '../../src/SuggestionList/helpers';
 import {
   FilterDataParams, GetSortedSuggestionsProps, MultiSelectProps, Value,
 } from './types';

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { isArray, isObject } from 'lodash';
 
-import { checkIsTheSameObject } from '~/utils';
-import { selectAllSuggestion, SelectedState } from '~/components/MultiSelect/constants';
 import {
   GetSuggestionItemProps,
   SuggestionItemComputedProps,
   Value,
 } from './types';
+import { checkIsTheSameObject } from '../../utils';
+import { selectAllSuggestion, SelectedState } from '../../components/MultiSelect/constants';
 
 /**
  * Helper gets name of the list item

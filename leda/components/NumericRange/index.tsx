@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
   bindFunctionalRef, getClassNames, useElement, useProps, useTheme, useValue,
-} from '~/utils';
-import { Div } from '~/components/Div';
-import { Span } from '~/components/Span';
+} from '../../utils';
+import { Div } from '../Div';
 import { NumericTextBox } from '../NumericTextBox';
+import { Span } from '../Span';
 import {
   createNumericChangeHandler,
 } from './handlers';

@@ -1,17 +1,16 @@
 import React from 'react';
-
-import {
-  bindFunctionalRef, getClassNames, useProps, useTheme,
-} from '~/utils';
-import { COMPONENTS_NAMESPACES } from '~/constants';
-import { Div } from '~/components/Div';
 import {
   isCustom,
   getLabelText,
   getStepPosition, getDataType,
 } from './helpers';
+import {
+  bindFunctionalRef, getClassNames, useProps, useTheme,
+} from '../../utils';
 import { StatusBarProps, StatusBarRefCurrent, StatusItem } from './types';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import { DATA_TYPES } from './constants';
+import { Div } from '../Div';
 import { StatusBarItem } from './StatusBarItem';
 
 export const StatusBar = React.forwardRef((props: StatusBarProps, ref?: React.Ref<StatusBarRefCurrent>): React.ReactElement => {

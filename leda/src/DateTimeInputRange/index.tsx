@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { isNil } from 'lodash';
-import { COMPONENTS_NAMESPACES } from '~/constants';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { DateTimeInput } from '../DateTimeInput';
 import {
   bindFunctionalRef, getClassNames, useProps, useTheme,
-} from '~/utils';
-import { DateTimeInput } from '../DateTimeInput';
+} from '../../utils';
 import { DateTimeInputRefCurrent } from '../DateTimeInput/types';
 import {
   getDisabled, getName, getOpen, getPlaceholder, getRequired, getRequiredMessage, isDateValue, getReplacedValue,

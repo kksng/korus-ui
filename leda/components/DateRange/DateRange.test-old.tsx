@@ -5,9 +5,8 @@ import { mount } from 'enzyme';
 import {
   render,
 } from '@testing-library/react';
-
-import { fixJSON } from '~/utils';
 import { DateRange } from './index';
+import { fixJSON } from '../../utils';
 
 describe('DateRange ATTRIBUTES', () => {
   it('should show requiredMessage when isRequired and invalid', async () => {

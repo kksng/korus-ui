@@ -1,8 +1,8 @@
 import { isFunction } from 'lodash';
 import React from 'react';
-import { SetState } from '~/commonTypes';
-import { stringToMaxLength } from '~/utils';
 import { TextareaProps } from './types';
+import { SetState } from '../../commonTypes';
+import { stringToMaxLength } from '../../utils';
 
 export const createChangeHandler = (
   props: TextareaProps, setValue: SetState<string>,

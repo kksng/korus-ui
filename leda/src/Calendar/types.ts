@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { CustomRender, Values } from '~/commonTypes';
-import { DivProps } from '~/components/Div';
+import { CustomRender, Values } from '../../commonTypes';
 import { AllActions } from '../DateTimeInput/types';
 import { CALENDAR_CLICK_ACTION, VIEW_TYPES } from './constants';
 import { defaultTheme } from './theme';
+import { DivProps } from '../../components/Div';
 
 export type MonthsNames = [string, string, string, string, string, string, string, string, string, string, string, string];
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Div } from '~/components/Div';
 import { ContentProps } from './types';
+import { Div } from '../Div';
 
 export const ContentElement = (props: ContentProps): React.ReactElement | null => {
   const {

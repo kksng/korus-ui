@@ -1,7 +1,7 @@
 import React from 'react';
 import { isFunction, isObject } from 'lodash';
-import { useProps } from '~/utils';
 import { MaskedInputBaseProps } from './types';
+import { useProps } from '../../utils';
 import {
   createBlurHandler,
   createChangeHandler,

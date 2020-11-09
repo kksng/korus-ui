@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Div } from '~/components/Div';
+import { Div } from '../../components/Div';
 import { formatDate } from '../DateTimeInput/helpers';
 import { TodayButtonProps } from './types';
 
