@@ -356,9 +356,10 @@ describe('Notifications handlers', () => {
 
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
+        // should receive removed item
         currentItem: expect.objectContaining(item2),
         method: 'close-icon-click',
-        value: expect.any(Array), // should receive removed item
+        value: expect.any(Array),
       }),
     });
 

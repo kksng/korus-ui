@@ -11,16 +11,16 @@ export type Value = string | SomeObject | number | null;
 
 export interface ResetEvent<T = Value | Value[]> {
   component: {
-    // Значение - элемент из data
     name?: string,
+    /** Значение - элемент из data */
     value?: T,
   },
 }
 
 export interface ButtonClickEvent<T = Value | Value[]> extends React.MouseEvent {
   component: {
-    // Значение - элемент из data
     name?: string,
+    /** Значение - элемент из data */
     value: T,
   },
 }

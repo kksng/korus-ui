@@ -117,16 +117,12 @@ export const getSuggestionItemProps = ({
   return {
     isHighlighted,
     isPlaceholder,
-
     isScrollTarget,
-
-    // todo: remove
     isSelectAllItem,
-
     isSelected,
     item,
     key,
-    selectAllState,
+    selectAllState, // todo: remove
     text,
   };
 };

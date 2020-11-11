@@ -36,9 +36,10 @@ export interface ChangeEvent {
 export interface FileUploadProps extends ValidationProps {
   /** Классы объявленные с _ */
   [x: string]: unknown,
-  /** Разрешенные типы файлов, см. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Attributes. Передача нескольких типов файлов происходит через запятую (.png, image/jpeg). allowedFiles и forbiddenFiles нельзя использовать вместе */
+  /** Разрешенные типы файлов, см. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Attributes. Передача нескольких типов файлов происходит через запятую (.png, image/jpeg). allowedFiles и forbiddenFiles нельзя использовать вместе
+   *  comma separated list of valid mime types: "image/*, application/pdf"
+   * */
   allowedFiles?: string,
-  // comma separated list of valid mime types: "image/*, application/pdf"
   /** Классы, применяемые к первому диву */
   className?: string,
   /** Запрещенные типы файлов. см. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Attributes. Передача нескольких типов файлов происходит через запятую (.png, image/jpeg). allowedFiles и forbiddenFiles нельзя использовать вместе */

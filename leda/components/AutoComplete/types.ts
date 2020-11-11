@@ -89,24 +89,28 @@ export interface AutoCompleteState {
   value: string | null,
 }
 
-// The values that are sent to onChange help you determine which event triggered onChange
+/**
+ * The values that are sent to onChange help you determine which event triggered onChange
+ * */
 export enum CHANGE_METHOD {
-  // pressing escape
-  clear = 'clear', // entering a character from the keyboard
+  /** click on the closing icon in the input */
+  clear = 'clear',
+  /** click on an item in the dropdown list */
   click = 'click',
-  // pressing up when navigating the dropdown list from the keyboard
+  /** pressing down when navigating the dropdown list from the keyboard */
   down = 'down',
-  // click on an item in the dropdown list
+  /** press enter when selecting an item from the dropdown list using the keyboard */
   enter = 'enter',
-  // pressing down when navigating the dropdown list from the keyboard
+  /** pressing escape */
   escape = 'escape',
-  // click on the closing icon in the input
+  /** value reset */
   reset = 'reset',
-  // press enter when selecting an item from the dropdown list using the keyboard
+  /** onChange call */
   trigger = 'trigger',
+  /** entering a character from the keyboard */
   type = 'type',
-  // onChange call
-  up = 'up' // value reset
+  /** pressing up when navigating the dropdown list from the keyboard */
+  up = 'up'
 }
 
 export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
