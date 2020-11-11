@@ -39,8 +39,10 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
 
   // добавление/удаление поля при mount/unmount
   React.useEffect((): (() => void) | void => {
+    if (isValidProp !== undefined && invalidMessage) setMessages([invalidMessage]);
+
     if (isString(form) && name) {
-      const validators = getValidators(validator, invalidMessage);
+      const validators = getValidators(validator, invalidMessage, isValidProp);
 
       addField({
         fieldName: name,
@@ -69,7 +71,7 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
   // каждый раз при смене props - записываем новые данные в forms, необходимо для корректной работы валидации
   React.useEffect(() => {
     if (form && name) {
-      const validators = getValidators(validator, invalidMessage);
+      const validators = getValidators(validator, invalidMessage, isValidProp);
 
       updateField({
         fieldName: name,
