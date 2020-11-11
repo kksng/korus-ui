@@ -53,8 +53,8 @@ export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<
               window.scrollBy(0, offset);
             } else {
               window.scrollBy({
-                top: offset,
                 behavior: 'smooth',
+                top: offset,
               });
             }
           }
@@ -76,8 +76,8 @@ export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<
 
     const customEvent = {
       ...ev,
-      forms,
       form: formsObject,
+      forms,
     };
 
     onClick(customEvent);

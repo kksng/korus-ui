@@ -170,20 +170,20 @@ describe('Password attributes test collection', () => {
     const passwordStrongTxt = 'Отличный пароль';
     const passwordEvaluators = [
       {
-        strengthLevel: PasswordStrength.Low,
-        evaluator: () => true,
         evaluationMessage: passworLowTxt,
+        evaluator: () => true,
+        strengthLevel: PasswordStrength.Low,
       },
       {
-        strengthLevel: PasswordStrength.Medium,
+        evaluationMessage: passwordMediumTxt,
         evaluator: (password: string) => {
           if (validatePassword(password)) return true;
           return false;
         },
-        evaluationMessage: passwordMediumTxt,
+        strengthLevel: PasswordStrength.Medium,
       },
       {
-        strengthLevel: PasswordStrength.Strong,
+        evaluationMessage: passwordStrongTxt,
         evaluator: (password: string) => {
           if (
             validatePassword(password)
@@ -194,7 +194,7 @@ describe('Password attributes test collection', () => {
           }
           return false;
         },
-        evaluationMessage: passwordStrongTxt,
+        strengthLevel: PasswordStrength.Strong,
       },
     ];
     const {

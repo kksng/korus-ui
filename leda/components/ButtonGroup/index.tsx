@@ -51,9 +51,9 @@ export const ButtonGroup = React.forwardRef((props: ButtonGroupProps, ref?: Reac
   });
 
   const handleChange = createChangeHandler(props, {
-    value,
     setUncontrolledValue,
     validateCurrent,
+    value,
   });
 
   const isEmptyAndRequired = getIsEmptyAndRequired(value, isRequired);

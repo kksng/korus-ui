@@ -32,9 +32,9 @@ export const getComponentClassNames: GetComponentClassNames = ({
   );
 
   return {
-    wrapperClassNames,
     inputWrapperClassNames,
     selectIconClassNames,
+    wrapperClassNames,
   };
 };
 

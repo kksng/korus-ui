@@ -114,10 +114,10 @@ export const getValue = ({
 
   return formatValue(
     {
-      value,
       format,
-      thousandsSeparator,
       shouldTrimTrailingZeros,
+      thousandsSeparator,
+      value,
     },
   );
 };

@@ -15,7 +15,7 @@ const createDownloadLink = (file: FileType, theme: typeof globalDefaultTheme[typ
 
     const linkProps = isIE
       ? { onClick: () => window.navigator.msSaveOrOpenBlob(file, file.name) }
-      : { href: URL.createObjectURL(file), download: file.name };
+      : { download: file.name, href: URL.createObjectURL(file) };
 
     return (
       <A theme={theme.fileDownloadLink} {...linkProps}>

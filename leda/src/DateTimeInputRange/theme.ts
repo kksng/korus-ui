@@ -3,8 +3,8 @@ import { defaultDateTimeInputTheme } from '../DateTimeInput/theme';
 
 export const defaultDateTimeInputRangeTheme = {
   delimiter:              'daterange-delimiter',
-  wrapper:                'daterange-wrapper',
   from:                   defaultDateTimeInputTheme,
   to:                     defaultDateTimeInputTheme,
+  wrapper:                'daterange-wrapper',
 };
 /* eslint-enable key-spacing */

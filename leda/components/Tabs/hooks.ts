@@ -41,9 +41,9 @@ export const useCustomElements = (props: TabsProps, state: { activeTabKey: strin
   );
 
   return {
-    Wrapper,
     Content,
     Heading,
+    Wrapper,
   };
 };
 
@@ -80,9 +80,9 @@ export const useTabsScroll = ({ shouldScrollTabs, theme }: TabsScrollProps): Tab
     const leftShift = Math.abs(tabsContainer.getBoundingClientRect().left - mainElementRect.left);
 
     Element?.scrollTo({
-      top: mainElementRect.top,
-      left: mainElementRect.left + tabShift + leftShift,
       behavior: 'smooth',
+      left: mainElementRect.left + tabShift + leftShift,
+      top: mainElementRect.top,
     });
   };
 
@@ -96,9 +96,9 @@ export const useTabsScroll = ({ shouldScrollTabs, theme }: TabsScrollProps): Tab
     const leftShift = Math.abs(tabsContainer.getBoundingClientRect().left - mainElementRect.left);
 
     Element?.scrollTo({
-      top: mainElementRect.top,
-      left: leftShift - tabShift,
       behavior: 'smooth',
+      left: leftShift - tabShift,
+      top: mainElementRect.top,
     });
   };
 

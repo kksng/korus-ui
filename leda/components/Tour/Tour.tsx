@@ -80,7 +80,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
         window.addEventListener('scroll', scrollHandler);
 
-        window.scrollTo({ top: shiftedDocumentOffsetTop, left: 0, behavior: 'smooth' });
+        window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
       }
     } else {
       setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
@@ -97,8 +97,8 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
       data?.forEach((stepItem) => setElementDefaultStyles(stepItem?.element));
       onChange({
         component: {
-          value: item?.stepKey ?? null,
           item: item ?? null,
+          value: item?.stepKey ?? null,
         },
       });
     };

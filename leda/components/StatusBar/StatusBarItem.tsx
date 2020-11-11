@@ -33,8 +33,8 @@ export const StatusBarItem: React.FC<StatusBarItemProps> = (props: StatusBarItem
       ...ev,
       target: {
         ...ev.target,
-        item,
         index,
+        item,
       },
     };
 

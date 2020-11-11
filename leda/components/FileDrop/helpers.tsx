@@ -90,28 +90,28 @@ export const checkFiles = (
   props: FileDropProps,
   accepted: File[],
   rejected: File[],
-): { file: File, error: FileDropInnerError | null } => {
+): { error: FileDropInnerError | null, file: File } => {
   const rejectedFile = rejected[0];
 
   if (rejected.length > 1) {
     // превышено максимальное количество файлов
     return {
-      file: rejectedFile,
       error: {
         errorCode: FileErrorCodes.TooManyFiles,
         errorMessage: errorCodeToMessage(FileErrorCodes.TooManyFiles),
       },
+      file: rejectedFile,
     };
   }
 
   if (rejectedFile) {
     const errorCode = getErrorCode(props, rejectedFile);
     return {
-      file: rejectedFile,
       error: {
         errorCode,
         errorMessage: errorCodeToMessage(errorCode),
       },
+      file: rejectedFile,
     };
   }
 
@@ -123,17 +123,17 @@ export const checkFiles = (
   // если ошибок нет errorCode равен 0
   if (errorCode && errorCode !== 0) {
     return {
-      file: acceptedFile,
       error: {
         errorCode,
         errorMessage: errorCodeToMessage(errorCode),
       },
+      file: acceptedFile,
     };
   }
 
   return {
-    file: acceptedFile,
     error: null,
+    file: acceptedFile,
   };
 };
 
@@ -152,7 +152,7 @@ export const createDownloadLink = (file: File, fileName: string | undefined, the
 
   const linkProps = isIE
     ? { onClick: (): boolean => window.navigator.msSaveOrOpenBlob(file, fileName) }
-    : { href: URL.createObjectURL(file), download: fileName };
+    : { download: fileName, href: URL.createObjectURL(file) };
 
   return (
     <A theme={theme.fileDownloadLink} {...linkProps}>

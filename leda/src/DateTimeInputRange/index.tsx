@@ -111,9 +111,9 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
       ref={ref && ((component) => {
         const inputs = (component && component.wrapper && component.wrapper.querySelectorAll('input')) || [null, null];
         bindFunctionalRef(component, ref, component && {
-          wrapper: component.wrapper,
           inputFrom: inputs[0],
           inputTo: inputs[1],
+          wrapper: component.wrapper,
         });
       })}
     >

@@ -56,7 +56,7 @@ export const useCustomElements = (props: DateTimeInputRangeProps, state: DateTim
   );
 
   return {
-    WrapperRange,
     Delimiter,
+    WrapperRange,
   };
 };

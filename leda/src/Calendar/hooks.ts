@@ -51,10 +51,10 @@ export const useCustomElements = (props: CalendarProps): CustomElements => {
   );
 
   return {
+    CalendarHeader,
     CalendarWrapper,
     DateView,
     MonthView,
     YearView,
-    CalendarHeader,
   };
 };

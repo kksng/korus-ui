@@ -2,9 +2,9 @@ import * as React from 'react';
 import { htmlTagFactory } from '../../src/HTMLTagsFactory';
 
 export interface DivProps extends React.HTMLAttributes<HTMLDivElement> {
+  [x: string]: unknown,
   ref?: React.Ref<DivRefCurrent>,
   shouldRender?: boolean,
-  [x: string]: unknown,
 }
 
 export interface DivRefCurrent {

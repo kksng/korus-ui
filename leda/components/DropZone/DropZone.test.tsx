@@ -12,7 +12,7 @@ const files = [
   new File(['file 2'], 'file_2.pdf', { type: 'application/pdf' }),
 ];
 
-const externalFile = { name: 'file_3.txt', link: 'http://example.com/file.txt' };
+const externalFile = { link: 'http://example.com/file.txt', name: 'file_3.txt' };
 
 const rejectedFile = new File(['rejected file'], 'rejected_file.txt', { type: 'plain/text' });
 Object.assign(rejectedFile, { errorCode: FileErrorCodes.FileIsTooBig });
@@ -92,9 +92,9 @@ describe('DropZone HANDLERS', () => {
       dataTransfer: {
         files,
         items: files.map((file) => ({
+          getAsFile: () => file,
           kind: 'file',
           type: file.type,
-          getAsFile: () => file,
         })),
         types: ['Files'],
       },
@@ -123,11 +123,11 @@ describe('DropZone HANDLERS', () => {
           acceptedFiles: [],
           rejectedFiles: [],
         },
+        removedFile: externalFile,
         value: {
           acceptedFiles: [],
           rejectedFiles: [],
         },
-        removedFile: externalFile,
       }),
     });
 

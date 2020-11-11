@@ -28,8 +28,8 @@ export const createChangeHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: maxLengthAdjustedValue,
         name,
+        value: maxLengthAdjustedValue,
       },
     };
 
@@ -50,9 +50,9 @@ export const createBlurHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: ev.target.value,
-        name,
         isValid,
+        name,
+        value: ev.target.value,
       },
     };
 
@@ -71,9 +71,9 @@ export const createFocusHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: ev.target.value,
-        name,
         isValid,
+        name,
+        value: ev.target.value,
       },
     };
 
@@ -113,8 +113,8 @@ export const createResetHandler = ({
   if (isFunction(props.onChange)) {
     const customEvent = {
       component: {
-        value,
         name: props.name,
+        value,
       },
     };
     props.onChange(customEvent);

@@ -42,8 +42,8 @@ export const createChangeHandler = ({ props, dispatch }: HandlersData) => (ev: C
     onChange({
       ...ev,
       component: {
-        name,
         date: newDate,
+        name,
         value: ev.component.value,
       },
     });

@@ -73,10 +73,10 @@ export const useDateTimeInputState = (props: DateTimeInputProps): [DateTimeInput
 
   const initialState = {
     date: null,
-    value: '',
-    isValid: true,
     isFocused: false,
     isOpen: false,
+    isValid: true,
+    value: '',
     viewDate: todayIsMin
     || todayIsMax
     || stringToDate(stringValue, format)
@@ -118,8 +118,8 @@ export const useCustomElements = (props: DateTimeInputProps, state: DateTimeInpu
   );
 
   return {
-    Wrapper,
-    Input,
     Icon,
+    Input,
+    Wrapper,
   };
 };

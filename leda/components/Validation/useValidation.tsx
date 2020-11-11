@@ -43,16 +43,16 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
       const validators = getValidators(validator, invalidMessage);
 
       addField({
-        formName: form,
         fieldName: name,
-        value,
+        formName: form,
+        isRequired,
+        requiredMessage,
+        reset: extra.reset,
         setIsValid,
         setMessages,
         shouldValidateUnmounted,
         validators,
-        isRequired,
-        requiredMessage,
-        reset: extra.reset,
+        value,
       });
 
       return (): void => {
@@ -72,14 +72,14 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
       const validators = getValidators(validator, invalidMessage);
 
       updateField({
-        formName: form,
         fieldName: name,
-        value,
-        isValidProp,
+        formName: form,
         isRequired,
-        validators,
-        shouldValidateUnmounted,
+        isValidProp,
         requiredMessage,
+        shouldValidateUnmounted,
+        validators,
+        value,
       });
     }
   }, [form, isRequired, name, value, isValidProp, validator, invalidMessage, shouldValidateUnmounted, requiredMessage]);
@@ -105,11 +105,11 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
   }, [isValid, messages]);
 
   // если формы нет - возвращаем заглушку, сделать это в самом начале нельзя из-за правила хуков
-  if (!form) return { isValid: true, validateCurrent: () => true, InvalidMessage: invalidMessageComponent };
+  if (!form) return { InvalidMessage: invalidMessageComponent, isValid: true, validateCurrent: () => true };
 
   return {
+    InvalidMessage: invalidMessageComponent,
     isValid,
     validateCurrent,
-    InvalidMessage: invalidMessageComponent,
   };
 };

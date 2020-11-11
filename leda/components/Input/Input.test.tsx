@@ -65,7 +65,7 @@ describe('Input HANDLERS', () => {
     const value = 'value';
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value, name,
+        name, value,
       }),
       target: expect.objectContaining({
         value,

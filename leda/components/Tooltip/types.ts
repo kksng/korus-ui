@@ -18,12 +18,12 @@ export interface CheckCornerPosition {
   ): {
     /** Flag defines if tooltip is in one of bottom corners */
     isBottomCorners: boolean,
-    /** Flag defines if tooltip is in one of top corners */
-    isTopCorners: boolean,
-    /** Flag defines if tooltip is in one of right corners */
-    isRightCorners: boolean,
     /** Flag defines if tooltip is in one of left corners */
     isLeftCorners: boolean,
+    /** Flag defines if tooltip is in one of right corners */
+    isRightCorners: boolean,
+    /** Flag defines if tooltip is in one of top corners */
+    isTopCorners: boolean,
   },
 }
 
@@ -41,12 +41,12 @@ export interface CheckHorizontalPosition {
   ): {
     /** Flag defines if tooltip can be show on left */
     isLeft: boolean,
-    /** Flag defines if tooltip can be show on right */
-    isRight: boolean,
-    /** Flag defines if tooltip is outside of top border of view port */
-    isOutsideTopBorder: boolean,
     /** Flag defines if tooltip is outside of bottom border of view port */
     isOutsideBottomBorder: boolean,
+    /** Flag defines if tooltip is outside of top border of view port */
+    isOutsideTopBorder: boolean,
+    /** Flag defines if tooltip can be show on right */
+    isRight: boolean,
   },
 }
 
@@ -62,14 +62,14 @@ export interface CheckVerticalPosition {
     /** Width or height of tooltip's arrow  */
     arrowSize: number,
   ): {
-    /** Flag defines if tooltip can be show on top */
-    isTop: boolean,
     /** Flag defines if tooltip can be show on bottom */
     isBottom: boolean,
-    /** Flag defines if tooltip is outside of right border of view port */
-    isOutsideRightBorder: boolean,
     /** Flag defines if tooltip is outside of left border of view port */
     isOutsideLeftBorder: boolean,
+    /** Flag defines if tooltip is outside of right border of view port */
+    isOutsideRightBorder: boolean,
+    /** Flag defines if tooltip can be show on top */
+    isTop: boolean,
   },
 }
 
@@ -84,10 +84,10 @@ export interface GetTooltipOffsets {
     /** Position of tooltip against target element */
     position: TooltipPosition,
   }): {
-    /** Top offset */
-    top?: number,
     /** Left offset */
     left?: number,
+    /** Top offset */
+    top?: number,
   },
 }
 
@@ -99,10 +99,10 @@ export interface GetTooltipPosition {
   (data: {
     /** Width or height of tooltip's arrow  */
     arrowSize?: number,
-    /** Position of tooltip against target element */
-    position: TooltipPosition,
     /** DOMRect object of target element */
     elementRect: DOMRect,
+    /** Position of tooltip against target element */
+    position: TooltipPosition,
     /** DOMRect object of tooltip */
     tooltipRect: DOMRect,
   }): TooltipPosition,
@@ -112,16 +112,16 @@ export interface GetTooltipPosition {
  * Properties of TooltipBody
  */
 export interface TooltipBodyProps {
-  /** Ref of tooltip element */
-  ref?: React.Ref<HTMLDivElement>,
   /** Handler of transition event */
   onTransitionEnd: React.TransitionEventHandler,
-  /** Class names */
-  tooltipClassNames?: string,
+  /** Ref of tooltip element */
+  ref?: React.Ref<HTMLDivElement>,
   /** Style object */
   style: TooltipStyle,
   /** Title is rendered as ReactNode */
   title: React.ReactNode,
+  /** Class names */
+  tooltipClassNames?: string,
 }
 
 /**
@@ -155,12 +155,12 @@ export interface TooltipRefCurrent {
 
 /** Tooltip style object */
 export interface TooltipStyle extends React.CSSProperties {
+  height?: number,
+  left?: number,
   opacity: 0 | 1,
   top: number,
-  left?: number,
   visibility?: 'hidden',
   width?: number,
-  height?: number,
 }
 
 /**
@@ -171,16 +171,16 @@ export interface UseTooltip {
   (data: {
     /** Width or height of tooltip's arrow  */
     arrowSize?: number,
-    /** Transition timeout  */
-    transitionTimeout?: number,
+    /** Current ref of target element */
+    elementRef?: React.RefObject<Element | undefined>,
     /** Defines is prop isOpen was passed to component */
     initialIsOpen?: boolean,
     /** Defines is prop position was passed to component. Defaults to "top" */
     initialPosition: TooltipPosition,
-    /** Current ref of target element */
-    elementRef?: React.RefObject<Element | undefined>,
     /** Current ref of tooltip */
     tooltipRef?: React.RefObject<Element | undefined>,
+    /** Transition timeout  */
+    transitionTimeout?: number,
   }): {
     /** Handler of transition event */
     handleTransitionEnd: React.TransitionEventHandler,

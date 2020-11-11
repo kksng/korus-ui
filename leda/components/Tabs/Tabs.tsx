@@ -37,7 +37,7 @@ export const Tabs = React.forwardRef((props: TabsProps, ref?: React.Ref<TabsRefC
   const handleSelect = createSelectHandler(props, activeTabKeyState, setActiveTabKeyState);
 
   const tabsContext = {
-    activeTabKey, onTabSelect: handleSelect, theme, tabRender,
+    activeTabKey, onTabSelect: handleSelect, tabRender, theme,
   };
 
   const combinedClassNames = getClassNames(theme.wrapper, className);
@@ -74,8 +74,8 @@ export const Tabs = React.forwardRef((props: TabsProps, ref?: React.Ref<TabsRefC
       className={combinedClassNames}
       style={style as React.CSSProperties}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-        wrapper: component.wrapper,
         content: component.wrapper && component.wrapper.querySelector(`.${theme.content}`),
+        wrapper: component.wrapper,
       }))}
     >
       <Div

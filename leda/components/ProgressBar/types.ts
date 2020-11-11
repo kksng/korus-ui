@@ -4,6 +4,8 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 import { CustomRender } from '../../commonTypes';
 
 export interface ProgressBarProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Реф */
   ref?: React.Ref<ProgressBarRefCurrent>,
   /** Тема компонента */
@@ -12,14 +14,12 @@ export interface ProgressBarProps {
   value: number,
   /** Кастомный рендер для цифр со значением компонента, если цифры не нужны - передайте () => null */
   valueRender?: CustomRender<ProgressBarProps, {}, ValueLabelProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface ValueLabelProps {
-  'data-value': number,
   children: React.ReactNode,
   className: string,
+  'data-value': number,
 }
 
 export interface ProgressBarRefCurrent {
