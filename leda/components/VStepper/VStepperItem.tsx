@@ -10,6 +10,7 @@ import {
 import { createClickHandler } from './handlers';
 import { VStepperItemProps } from './types';
 import { useCustomElements } from './hooks';
+import { Display } from './constants';
 
 export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemProps): React.ReactElement => {
   const {
@@ -27,6 +28,8 @@ export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemPro
 
   const isOpen = isNil(isOpenProp) ? isOpenState : isOpenProp;
 
+  const [contentDisplay, setContentDisplay] = React.useState<Display>(isOpen ? Display.Block : Display.None);
+
   const { theme } = React.useContext(VStepperContext);
 
   const statusText = statusTextField && item ? item[statusTextField] : props.statusText;
@@ -35,7 +38,7 @@ export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemPro
 
   const type = typeField && item ? item[typeField] : props.type;
 
-  const handleHeadingClick = createClickHandler(props, isOpenState, setIsOpenState);
+  const handleHeadingClick = createClickHandler(props, isOpenState, setIsOpenState, contentDisplay, setContentDisplay);
 
   const {
     wrapperClassName,
@@ -72,8 +75,11 @@ export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemPro
           </Div>
         </Heading>
         <Body>
-          <Collapsible isOpen={!isDisabled && isOpen}>
-            <Div className={theme.itemContent}>
+          <Collapsible
+            onClose={() => setContentDisplay(Display.None)}
+            isOpen={!isDisabled && isOpen}
+          >
+            <Div className={theme.itemContent} style={{ display: contentDisplay }}>
               {children}
             </Div>
           </Collapsible>

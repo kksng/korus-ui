@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed 
 - Validation: Fixed displaying of invalidMessage with isValid prop set to false
+- VStepper: Fixed hiding step content using 'display: none'
 
 ## [0.34.0] - 2020-11-09
 

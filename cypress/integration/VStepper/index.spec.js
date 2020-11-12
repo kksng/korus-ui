@@ -67,5 +67,18 @@ describe('VStepper tests', () => {
       .first()
       .next('div')
       .should('be.visible'));
+    it('Step content should have "display: none" style when closed', () => cy
+      .get('.v-stepper-wrapper .v-stepper-heading')
+      .first()
+      .click()
+      .next('div')
+      .find('.v-stepper-content')
+      .should('have.attr', 'style', 'display: block;')
+      .get('.v-stepper-wrapper .v-stepper-heading')
+      .first()
+      .click()
+      .next('div')
+      .find('.v-stepper-content')
+      .should('have.attr', 'style', 'display: none;'));
   });
 });
