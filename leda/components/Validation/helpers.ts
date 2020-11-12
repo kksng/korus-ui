@@ -90,7 +90,7 @@ export const validate = (formName: string | undefined, fieldName?: string, exter
     isValid = false;
 
     if (currentField.requiredMessage) invalidMessages.push(currentField.requiredMessage);
-  } else if (isFilled) {
+  } else if (isFilled || !isValid) {
     currentField.validators.forEach((validator) => {
       // if the validator looks like { validator, invalidMessage } - get the error message
       if (isObject(validator) && 'validator' in validator) {
@@ -408,7 +408,10 @@ const getArrayValidator = (
 export const getValidators = (
   validator?: Validator | PredefinedValidator | RegExp | ValidatorObject[],
   invalidMessage?: string,
+  isValidProp?: boolean,
 ): NormalizedValidatorObject[] => {
+  if (isValidProp !== undefined) return [{ invalidMessage, validator: () => isValidProp }];
+
   if (!validator) return [];
 
   if (isFunction(validator)) return [{ invalidMessage, validator }];
