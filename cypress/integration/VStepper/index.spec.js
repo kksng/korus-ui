@@ -73,12 +73,12 @@ describe('VStepper tests', () => {
       .click()
       .next('div')
       .find('.v-stepper-content')
-      .should('have.attr', 'style', 'display: block;')
+      .should('have.class', 'open')
       .get('.v-stepper-wrapper .v-stepper-heading')
       .first()
       .click()
       .next('div')
       .find('.v-stepper-content')
-      .should('have.attr', 'style', 'display: none;'));
+      .should('not.have.class', 'open'));
   });
 });

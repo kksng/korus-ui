@@ -91,6 +91,7 @@ export interface BodyProps {
 }
 
 export interface ItemClassNames {
+  contentClassName?: string,
   headingIconClassName?: string,
   iconClassName?: string,
   wrapperClassName?: string,

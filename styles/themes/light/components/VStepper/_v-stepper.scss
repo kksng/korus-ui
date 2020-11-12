@@ -214,5 +214,9 @@
     border-top: 1px solid $black-05;
     padding: 20px 32px 30px 0;
     margin-top: -7px;
+    display: none;
+    &.open {
+      display: block;
+    }
   }
 }

@@ -15,7 +15,7 @@ export const VSTEPPER_STATUS_TYPES = {
 
 export type StepTypes = typeof VSTEPPER_STATUS_TYPES[keyof typeof VSTEPPER_STATUS_TYPES];
 
-export const getItemClassNames = (props: VStepperItemProps, theme: NonNullable<Required<VStepperProps['theme']>>, type: StepTypes): ItemClassNames => {
+export const getItemClassNames = (props: VStepperItemProps, isDisplayBlock: boolean, theme: NonNullable<Required<VStepperProps['theme']>>, type: StepTypes): ItemClassNames => {
   const {
     className, isOpen, hasSignIcon, isDisabled,
   } = props;
@@ -47,7 +47,13 @@ export const getItemClassNames = (props: VStepperItemProps, theme: NonNullable<R
     { [theme.itemHeadingIconOpen]: isItemAvailable },
   );
 
+  const contentClassName = getClassNames(
+    theme.itemContent,
+    { [theme.itemContentOpen]: isDisplayBlock },
+  );
+
   return {
+    contentClassName,
     headingIconClassName,
     iconClassName,
     wrapperClassName,

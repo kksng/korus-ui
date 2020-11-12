@@ -2,6 +2,7 @@
 export const defaultVStepperTheme = {
   itemActive:               'active',
   itemContent:              'v-stepper-content',
+  itemContentOpen:          'open',
   itemContentWrapper:       'v-stepper-content-wrapper',
   itemHeading:              'v-stepper-heading',
   itemHeadingIcon:          'v-stepper-heading-icon',
