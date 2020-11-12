@@ -10,13 +10,13 @@ describe('NumericRange getControlledValue', () => {
 
   it('should handle number and null', () => {
     const value = [-42, null];
-    const expected = [-42, undefined];
+    const expected = [-42, null];
     expect(helpers.getControlledValue(value)).toEqual(expected);
   });
 
   it('should handle undefined and null', () => {
     const value = [null, undefined];
-    const expected = [undefined, undefined];
+    const expected = [null, undefined];
     expect(helpers.getControlledValue(value)).toEqual(expected);
   });
 
