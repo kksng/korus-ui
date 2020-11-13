@@ -56,6 +56,8 @@ export interface CustomElements {
   AcceptedFiles: React.FC<AcceptedFilesProps>,
   /** React component for info block */
   Info: React.FC<InfoProps>,
+  /** React component for loader */
+  LoadingItem: React.FC<LoaderProps>,
   /** React component for rejected files list wrapper */
   RejectedFiles: React.FC<RejectedFilesProps>,
   /** React component for upload button */
@@ -135,6 +137,12 @@ export interface DropZoneProps extends ValidationProps {
   infoRender?: CustomRender<DropZoneProps, DropZoneState, InfoProps>,
   /** Признак отключения дропзоны */
   isDisabled?: boolean,
+  /** Состояние загрузки */
+  isLoading?: boolean,
+  /** Прогресс загрузки, число от 1 до 100 */
+  loadingProgress?: number,
+  /** Кастомизация верстки состояния загрузки */
+  loadingViewRender?: CustomRender<DropZoneProps, DropZoneState, LoaderProps>,
   /** Максимальная длина имени файла, по-умолчанию 255 символов */
   maxFileNameLength?: number,
   /** Максимальный размер файла, в байтах */
@@ -204,6 +212,43 @@ export interface InfoProps {
   /** Custom class names */
   className?: string,
 }
+
+/**
+ * Properties of loader component
+ */
+export interface LoaderProps {
+  /** Child React nodes */
+  children?: React.ReactNode,
+  /** Custom class names */
+  className?: string,
+}
+
+/**
+ * Properties of loading component
+ */
+export interface LoadingComponentProps {
+  /** Loading item */
+  LoadingItem: React.FC<LoaderProps>,
+  /** Flag defines state of loading */
+  isLoading?: boolean,
+  /** Loading progress */
+  loadingProgress?: number,
+  /** Theme */
+  theme: typeof globalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone],
+}
+
+/**
+ * Properties of progress loader
+ */
+export interface ProgressLoaderProps {
+  /** Flag defines state of loading */
+  isLoading?: boolean,
+  /** Loading progress */
+  loadingProgress?: number,
+  /** Theme */
+  theme: typeof globalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone],
+}
+
 
 /**
  * Properties of rejected files list component

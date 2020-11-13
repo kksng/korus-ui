@@ -182,4 +182,36 @@ describe('DropZone', () => {
       });
     });
   });
+  describe('Loader', () => {
+    it('Should display default loader', () => {
+      cy.name('loader')
+        .click()
+        .get(wrapperClassName)
+        .eq(2)
+        .find('.loader-wrapper')
+        .should('exist')
+        .name('loader')
+        .click()
+    });
+    it('Should display progress loader', () => {
+      cy.name('progressLoader')
+        .click()
+        .get(wrapperClassName)
+        .eq(2)
+        .find('.dropzone-progress-loader')
+        .should('exist')
+        .name('progressLoader')
+        .click()
+    });
+    it('Should display custom loader', () => {
+      cy.name('customLoader')
+        .click()
+        .get(wrapperClassName)
+        .eq(2)
+        .find('.txt-success')
+        .should('have.text', 'Custom loader...')
+        .name('customLoader')
+        .click()
+    });
+  });
 });

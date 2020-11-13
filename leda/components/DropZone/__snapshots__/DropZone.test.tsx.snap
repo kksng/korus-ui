@@ -25,6 +25,7 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
           onDrop={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          shouldRender={true}
           tabIndex={0}
         >
           <div
@@ -79,6 +80,37 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
             </Info>
           </div>
         </Div>
+        <Component
+          LoadingItem={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "LoadingItem",
+              "render": [Function],
+            }
+          }
+          theme={
+            Object {
+              "button": "dropzone-button",
+              "content": "dropzone-content",
+              "description": "dropzone-description",
+              "disabled": "disabled",
+              "fileDeleteIcon": "dropzone-delete-icon",
+              "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
+              "fileDeleteLink": "dropzone-file-delete internal",
+              "fileDownloadLink": "dropzone-file-download internal",
+              "invalid": "danger",
+              "loader": "dropzone-loader",
+              "progressBase": "progress-base",
+              "progressCircle": "progress-circle",
+              "progressLoader": "dropzone-progress-loader",
+              "rejectedFilesWrapper": "rejected-list margin-none",
+              "rejectedMessage": "dropzone-rejected-message txt-danger",
+              "required": "required",
+              "status": "dropzone-status",
+              "wrapper": "dropzone-wrapper",
+            }
+          }
+        />
       </div>
     </Div>
   </Wrapper>
@@ -114,6 +146,10 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
               "invalid": "danger",
+              "loader": "dropzone-loader",
+              "progressBase": "progress-base",
+              "progressCircle": "progress-circle",
+              "progressLoader": "dropzone-progress-loader",
               "rejectedFilesWrapper": "rejected-list margin-none",
               "rejectedMessage": "dropzone-rejected-message txt-danger",
               "required": "required",
@@ -152,6 +188,10 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
             "invalid": "danger",
+            "loader": "dropzone-loader",
+            "progressBase": "progress-base",
+            "progressCircle": "progress-circle",
+            "progressLoader": "dropzone-progress-loader",
             "rejectedFilesWrapper": "rejected-list margin-none",
             "rejectedMessage": "dropzone-rejected-message txt-danger",
             "required": "required",
@@ -196,6 +236,7 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
           onDrop={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          shouldRender={true}
           tabIndex={0}
         >
           <div
@@ -276,6 +317,37 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
             </Info>
           </div>
         </Div>
+        <Component
+          LoadingItem={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "LoadingItem",
+              "render": [Function],
+            }
+          }
+          theme={
+            Object {
+              "button": "dropzone-button",
+              "content": "dropzone-content",
+              "description": "dropzone-description",
+              "disabled": "disabled",
+              "fileDeleteIcon": "dropzone-delete-icon",
+              "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
+              "fileDeleteLink": "dropzone-file-delete internal",
+              "fileDownloadLink": "dropzone-file-download internal",
+              "invalid": "danger",
+              "loader": "dropzone-loader",
+              "progressBase": "progress-base",
+              "progressCircle": "progress-circle",
+              "progressLoader": "dropzone-progress-loader",
+              "rejectedFilesWrapper": "rejected-list margin-none",
+              "rejectedMessage": "dropzone-rejected-message txt-danger",
+              "required": "required",
+              "status": "dropzone-status",
+              "wrapper": "dropzone-wrapper",
+            }
+          }
+        />
       </div>
     </Div>
   </Wrapper>
@@ -311,6 +383,10 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
               "invalid": "danger",
+              "loader": "dropzone-loader",
+              "progressBase": "progress-base",
+              "progressCircle": "progress-circle",
+              "progressLoader": "dropzone-progress-loader",
               "rejectedFilesWrapper": "rejected-list margin-none",
               "rejectedMessage": "dropzone-rejected-message txt-danger",
               "required": "required",
@@ -349,6 +425,10 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
             "invalid": "danger",
+            "loader": "dropzone-loader",
+            "progressBase": "progress-base",
+            "progressCircle": "progress-circle",
+            "progressLoader": "dropzone-progress-loader",
             "rejectedFilesWrapper": "rejected-list margin-none",
             "rejectedMessage": "dropzone-rejected-message txt-danger",
             "required": "required",
@@ -392,6 +472,7 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
           onDrop={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          shouldRender={true}
           tabIndex={0}
         >
           <div
@@ -478,6 +559,37 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
             </Info>
           </div>
         </Div>
+        <Component
+          LoadingItem={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "LoadingItem",
+              "render": [Function],
+            }
+          }
+          theme={
+            Object {
+              "button": "dropzone-button",
+              "content": "dropzone-content",
+              "description": "dropzone-description",
+              "disabled": "disabled",
+              "fileDeleteIcon": "dropzone-delete-icon",
+              "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
+              "fileDeleteLink": "dropzone-file-delete internal",
+              "fileDownloadLink": "dropzone-file-download internal",
+              "invalid": "danger",
+              "loader": "dropzone-loader",
+              "progressBase": "progress-base",
+              "progressCircle": "progress-circle",
+              "progressLoader": "dropzone-progress-loader",
+              "rejectedFilesWrapper": "rejected-list margin-none",
+              "rejectedMessage": "dropzone-rejected-message txt-danger",
+              "required": "required",
+              "status": "dropzone-status",
+              "wrapper": "dropzone-wrapper",
+            }
+          }
+        />
       </div>
     </Div>
   </Wrapper>
@@ -513,6 +625,10 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
               "invalid": "danger",
+              "loader": "dropzone-loader",
+              "progressBase": "progress-base",
+              "progressCircle": "progress-circle",
+              "progressLoader": "dropzone-progress-loader",
               "rejectedFilesWrapper": "rejected-list margin-none",
               "rejectedMessage": "dropzone-rejected-message txt-danger",
               "required": "required",
@@ -551,6 +667,10 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
             "invalid": "danger",
+            "loader": "dropzone-loader",
+            "progressBase": "progress-base",
+            "progressCircle": "progress-circle",
+            "progressLoader": "dropzone-progress-loader",
             "rejectedFilesWrapper": "rejected-list margin-none",
             "rejectedMessage": "dropzone-rejected-message txt-danger",
             "required": "required",
