@@ -75,7 +75,7 @@
   &-progress-loader {
     position: relative;
 
-    & .progress-base {
+    .progress-base {
       width: 70px;
       height: 70px;
       border: 2px solid #ddd;
@@ -83,7 +83,7 @@
       background-color: transparent;
     }
 
-    & .progress-circle {
+    .progress-circle {
       stroke: #1ecd97;
       width: 70px;
       height: 70px;
@@ -92,7 +92,7 @@
       top: 0;
       fill: none;
 
-      & circle {
+      circle {
         transition: stroke-dashoffset 0.3s;
       }
     }
