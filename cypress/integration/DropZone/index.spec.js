@@ -196,7 +196,7 @@ describe('DropZone', () => {
       cy.name('progressLoader')
         .click()
         .get('.controlledDZ')
-        .find('.dropzone-progress-loader')
+        .find('.progress-loader')
         .should('exist')
         .name('progressLoader')
         .click()

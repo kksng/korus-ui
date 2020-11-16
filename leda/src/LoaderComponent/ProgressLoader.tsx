@@ -1,7 +1,7 @@
 import * as React from 'react';
 import isNumber from 'lodash/isNumber';
-import { Div } from '../Div';
-import { Loader } from '../Loader';
+import { Div } from '../../components/Div';
+import { Loader } from '../../components/Loader';
 import { ProgressLoaderProps } from './types';
 
 export const ProgressLoader = (props: ProgressLoaderProps): React.ReactElement | null => {
@@ -16,7 +16,7 @@ export const ProgressLoader = (props: ProgressLoaderProps): React.ReactElement |
     return <Loader />;
   }
 
-  if (isNumber(loadingProgress) && (loadingProgress < 0 || loadingProgress > 100)) {
+  if (loadingProgress < 0 || loadingProgress > 100) {
     console.error('FileDrop: loadingProgress cannot be less than 0 or bigger than 100');
     return <Loader />;
   }

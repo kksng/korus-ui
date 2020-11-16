@@ -65,36 +65,4 @@
       pointer-events: none;
     }
   }
-
-  &-loader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &-progress-loader {
-    position: relative;
-
-    .progress-base {
-      width: 70px;
-      height: 70px;
-      border: 2px solid #ddd;
-      border-radius: 50%;
-      background-color: transparent;
-    }
-
-    .progress-circle {
-      stroke: #1ecd97;
-      width: 70px;
-      height: 70px;
-      stroke-width: 2;
-      position: absolute;
-      top: 0;
-      fill: none;
-
-      circle {
-        transition: stroke-dashoffset 0.3s;
-      }
-    }
-  }
 }

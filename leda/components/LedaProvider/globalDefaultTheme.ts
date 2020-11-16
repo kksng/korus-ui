@@ -12,6 +12,7 @@ import { defaultDropDownSelectTheme } from '../DropDownSelect/theme';
 import { defaultDropZoneTheme } from '../DropZone/theme';
 import { defaultInputTheme } from '../Input/theme';
 import { defaultLoaderTheme } from '../Loader/theme';
+import { defaultLoaderComponentTheme } from '../../src/LoaderComponent/theme';
 import { defaultMaskedInputTheme } from '../MaskedInput/theme';
 import { defaultModalTheme } from '../Modal/theme';
 import { defaultNumericRangeTheme } from '../NumericRange/theme';
@@ -50,6 +51,7 @@ export const globalDefaultTheme = {
   fileDrop: defaultFileDropTheme,
   input: defaultInputTheme,
   loader: defaultLoaderTheme,
+  loaderComponent: defaultLoaderComponentTheme,
   maskedInput: defaultMaskedInputTheme,
   modal: defaultModalTheme,
   multiSelect: defaultMultiSelectTheme,
