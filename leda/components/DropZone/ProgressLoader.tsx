@@ -16,7 +16,7 @@ export const ProgressLoader = (props: ProgressLoaderProps): React.ReactElement |
     return <Loader />;
   }
 
-  if (isNumber(loadingProgress) && (loadingProgress < 0 || loadingProgress > 100)) {
+  if (loadingProgress < 0 || loadingProgress > 100) {
     console.error('FileDrop: loadingProgress cannot be less than 0 or bigger than 100');
     return <Loader />;
   }
