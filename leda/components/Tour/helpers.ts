@@ -127,6 +127,38 @@ export const getModalPositionStyles = (position: string, element: HTMLElement, i
     };
   }
 
+  if (position === 'top-left') {
+    return {
+      left: `${rect.right}px`,
+      top: `${rect.top - 20}px`,
+      transform: 'translate(-100%, -100%)',
+    };
+  }
+
+  if (position === 'bottom-left') {
+    return {
+      left: `${rect.right}px`,
+      top: `${rect.bottom + 20}px`,
+      transform: 'translateX(-100%)',
+    };
+  }
+
+  if (position === 'top-center') {
+    return {
+      left: `${(rect.right + rect.left) / 2}px`,
+      top: `${rect.top - 20}px`,
+      transform: 'translate(-50%, -100%)',
+    };
+  }
+
+  if (position === 'bottom-center') {
+    return {
+      left: `${(rect.right + rect.left) / 2}px`,
+      top: `${rect.bottom + 20}px`,
+      transform: 'translateX(-50%)',
+    };
+  }
+
   return {
     left: '',
     top: '',

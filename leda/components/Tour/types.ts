@@ -47,7 +47,7 @@ export interface TourStepItem {
   /** Отступы выделенной области в px, по-умолчанию 0px */
   padding?: number,
   /** Положение модалки */
-  position: 'top' | 'right' | 'bottom' | 'left',
+  position: 'top' | 'right' | 'bottom' | 'left' | 'top-left' | 'top-center' | 'bottom-left' | 'bottom-center',
   /** Идентификатор шага */
   stepKey: string | number,
 }
