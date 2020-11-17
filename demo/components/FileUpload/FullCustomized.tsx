@@ -49,7 +49,7 @@ const MyOwnWrapper = ({ someCustomPropHere, ...props }: any) => <L.Button _warni
 
 const MyOwnInfo = (props: any) => <L.Span {...props} />;
 
-export const FullCustomized = (componentProps: any) => {
+export const FullCustomized = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
 
   return (

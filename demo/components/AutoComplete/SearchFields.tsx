@@ -2,6 +2,7 @@ import * as React from 'react';
 import { isObject } from 'lodash';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
 export const customItemRender: L.AutoCompleteTypes.AutoCompleteProps['itemRender'] = (renderData) => {
   const { componentProps: { item }, elementProps } = renderData;
@@ -28,7 +29,7 @@ export const customItemRender: L.AutoCompleteTypes.AutoCompleteProps['itemRender
 };
 
 // eslint-disable-next-line
-export const SearchFields = (componentProps: any) => {
+export const SearchFields = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
 

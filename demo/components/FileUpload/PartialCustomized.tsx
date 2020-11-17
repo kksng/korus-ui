@@ -3,6 +3,7 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { RenderEvent } from '../../../leda/commonTypes';
 import { FileLoadEvent } from '../../../leda/components/FileUpload/types';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const PartialCustomized = () => {
@@ -62,7 +63,7 @@ const infoRender = ({
   </Element>
 );
 
-export const PartialCustomized = (componentProps: any) => {
+export const PartialCustomized = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 
   return (

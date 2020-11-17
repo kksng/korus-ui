@@ -4,7 +4,7 @@ import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
 
-export const ValidationMessageRender = (props: StoryProps) => (
+export const ValidationMessageRender = (storyProps: StoryProps) => (
   <L.Div _box _inner>
     <L.Div>
       <L.Div _inner>

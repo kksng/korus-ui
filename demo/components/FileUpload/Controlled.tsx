@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
-export const Controlled = (componentProps: any) => {
+export const Controlled = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 
   return (

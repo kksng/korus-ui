@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
-export const Basic = (componentProps: any) => {
+export const Basic = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<string | null>(null);
   const [value2, setValue2] = React.useState<string | null>(null);

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Validation = ({ ...restProps }): React.ReactElement => {
+export const Validation = (storyProps: StoryProps): React.ReactElement => {
   const [MIValue, setMIValue] = React.useState('1234567');
   return (
     <L.Div _box _inner>

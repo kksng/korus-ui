@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 import { SomeObject } from '../../../leda/commonTypes';
+import { StoryProps } from '../../types';
 
 // eslint-disable-next-line
-export const BoundingElementRef = (args: SomeObject): React.ReactElement => {
+export const BoundingElementRef = (storyProps: StoryProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);

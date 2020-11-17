@@ -1,8 +1,9 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const CheckBox = () => {
+export const CheckBox = (storyProps: StoryProps) => {
   const [value, setValue] = React.useState<boolean>(true);
   return (
     <L.Div _demoStory>

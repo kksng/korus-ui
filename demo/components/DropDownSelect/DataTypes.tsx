@@ -2,9 +2,10 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { SomeObject } from '../../../leda/commonTypes';
 import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
 // eslint-disable-next-line
-export const DataTypes = (args: SomeObject): React.ReactElement => {
+export const DataTypes = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);

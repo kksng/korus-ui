@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const BasicUsage = (args: SomeObject): React.ReactElement => {
@@ -35,7 +35,7 @@ export const BasicUsage = (args: SomeObject): React.ReactElement => {
 
 `;
 
-export const Customization = (args: SomeObject): React.ReactElement => {
+export const Customization = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
   return (

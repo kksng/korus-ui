@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Validation: Fixed displaying of invalidMessage with isValid prop set to false
 - NumericRange: Fixed null value display bug
 - Tour: Added class 'tour-active-element' for active element to customize styles
-
+- Fixed typing of props for Demo examples
 
 ## [0.34.0] - 2020-11-09
 

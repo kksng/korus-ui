@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const Customization = (props: { title: string }) => (
@@ -118,7 +119,7 @@ const ArrowIcon = () => (
   </L.Div>
 );
 
-export const Customization = (props: { title: string }) => (
+export const Customization = (storyProps: StoryProps) => (
   <L.Div _box _inner _demoBg>
     <L.VStepper>
       <L.VStepper.Item

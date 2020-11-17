@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as L from '../../leda';
 import { Span } from '../../leda/components/Span';
+import { StoryProps } from '../types';
 import { StateButtonGroup } from './StateButtonGroup';
 
-export const Rating = () => {
+export const Rating = (storyProps: StoryProps) => {
   const [value, setValue] = React.useState(1);
   const [props, setProps] = React.useState<any>();
 

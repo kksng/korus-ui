@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const BasicUsage = (args: SomeObject): React.ReactElement => {
@@ -37,7 +37,7 @@ export const BasicUsage = (args: SomeObject): React.ReactElement => {
 
 `;
 
-export const NameArray = (args: SomeObject): React.ReactElement => {
+export const NameArray = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
   const { update, EventInfo } = useEventSpy(['date']);

@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
-export const IsValid = (props: StoryProps) => {
+export const IsValid = (storyProps: StoryProps) => {
   const [isValid, setIsValid] = React.useState(true);
 
   return (

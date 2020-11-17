@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
-export const Refactoring = (props: StoryProps) => {
+export const Refactoring = (storyProps: StoryProps) => {
   const [ACValue, setACValue] = React.useState('Moscow');
 
   return (

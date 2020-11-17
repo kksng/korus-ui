@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 import { stepContent } from './constants';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 const statusText = {
@@ -104,7 +105,7 @@ const data = [
   },
 ];
 
-export const ServerData = (props: { title: string }) => (
+export const ServerData = (storyProps: StoryProps) => (
   <L.Div _box _inner _demoBg>
     <L.VStepper>
       {data.map(dataItem => {

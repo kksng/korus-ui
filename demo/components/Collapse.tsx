@@ -1,7 +1,8 @@
 import React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const Collapse = () => {
+export const Collapse = (storyProps: StoryProps) => {
   const [activeKey, setActiveKey] = React.useState<string | string[] | null>(['1']);
   const [isAccordion, setIsAccordion] = React.useState(false);
   const [isDisabled, setIsDisabled] = React.useState(false);

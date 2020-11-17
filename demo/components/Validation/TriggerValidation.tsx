@@ -5,7 +5,7 @@ import { validate } from '../../../leda/components/Validation';
 import { StoryProps } from '../../types';
 
 
-export const TriggerValidation = (props: StoryProps) => (
+export const TriggerValidation = (storyProps: StoryProps) => (
   <L.Div _box _inner>
     <L.Div>
       <L.Div _inner>

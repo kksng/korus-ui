@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Customization = (args: SomeObject): React.ReactElement => {
+export const Customization = (storyProps: StoryProps): React.ReactElement => {
   return (
     <L.Div _box _inner _demoBg>
       <L.DateRange

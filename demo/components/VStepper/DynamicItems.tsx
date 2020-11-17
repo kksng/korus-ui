@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 import { stepContent } from './constants';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const DynamicItems = (props: { title: string }) => {
@@ -79,7 +80,7 @@ interface Data {
   statusProgress: string,
 }
 
-export const DynamicItems = (props: { title: string }) => {
+export const DynamicItems = (storyProps: StoryProps) => {
   const [value, setValue] = React.useState<Data | null>(data[0]);
   const [openKeys, setOpenKeys] = React.useState([0]);
 

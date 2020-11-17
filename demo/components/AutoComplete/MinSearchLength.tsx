@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 // eslint-disable-next-line
-export const MinSearchLength = (componentProps: any) => {
+export const MinSearchLength = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
 

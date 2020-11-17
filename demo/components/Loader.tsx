@@ -1,9 +1,10 @@
 /* eslint-disable no-alert,react/prop-types, no-console */
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 import { StateButtonGroup } from './StateButtonGroup';
 
-export const Loader = () => {
+export const Loader = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({ });
 
   return (
