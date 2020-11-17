@@ -126,6 +126,11 @@ export const Tour = (): React.ReactElement => {
 
   const data = getData([element1, element2, element3, element4]);
 
+  const handleClick3 = () => {
+    setMessage('Clicked 3!');
+    setActiveStep('1');
+  }
+
   return (
     <L.Div _demo-story>
       <L.H4 _title>Tour</L.H4>
@@ -160,7 +165,7 @@ export const Tour = (): React.ReactElement => {
             name="tourElement3"
             _inner
             ref={ref3}
-            onClick={() => setMessage('Clicked 3!')}
+            onClick={handleClick3}
           >
             Tour element 3
           </L.Button>
