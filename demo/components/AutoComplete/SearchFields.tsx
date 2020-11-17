@@ -28,7 +28,7 @@ export const customItemRender: L.AutoCompleteTypes.AutoCompleteProps['itemRender
 };
 
 // eslint-disable-next-line
-export const SearchFields = (componentProps: any) => {
+export const SearchFields = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
 

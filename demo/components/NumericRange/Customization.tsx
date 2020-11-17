@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 
-export const Customization = (args: any) => {
+export const Customization = (StoryProps: { title: string }) => {
 
   const [value, setValue] = React.useState<[number | null, number | null] | null>([5, 13]);
 

@@ -4,7 +4,7 @@ import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 import { validate } from '../../../leda/components/Validation';
 
-export const Customization = (attrs: any) => {
+export const Customization = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
   const [count, setCount] = React.useState<number>(0);

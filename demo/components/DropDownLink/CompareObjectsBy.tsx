@@ -13,7 +13,7 @@ const data = [
 ];
 
 // eslint-disable-next-line
-export const CompareObjectsBy = (anyProps: any): React.ReactElement => {
+export const CompareObjectsBy = (StoryProps: { title: string }): React.ReactElement => {
   const [value, setValue] = React.useState<Value>('');
 
   return (

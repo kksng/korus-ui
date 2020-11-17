@@ -40,7 +40,7 @@ export const Customization = (componentProps: any) => {
 };
 `;
 
-export const Customization = (componentProps: any) => {
+export const Customization = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
 
   return (

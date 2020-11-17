@@ -4,7 +4,7 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 
-export const BasicUsage = (args: any) => {
+export const BasicUsage = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState<{ isDisabled?: boolean }>({});
 
   const { update, EventInfo } = useEventSpy(['formattedValue']);

@@ -3,7 +3,7 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 // eslint-disable-next-line
-export const Objects = (componentProps: any) => {
+export const Objects = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
 

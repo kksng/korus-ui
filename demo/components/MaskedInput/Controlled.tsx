@@ -4,7 +4,7 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 
-export const Controlled = (some: any): React.ReactElement => {
+export const Controlled = (StoryProps: { title: string }): React.ReactElement => {
   const [props, setProps] = React.useState<any>({});
   const ref = React.useRef(null);
 

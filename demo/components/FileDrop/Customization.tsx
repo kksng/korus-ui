@@ -5,7 +5,7 @@ import { FileDropError } from '../../../leda/components/FileDrop/types';
 import { DescriptionMessage } from '../../../leda/components/FileDrop/helpers';
 import * as messages from '../../../leda/messages';
 
-export const Customization = (props: { title: string }) => {
+export const Customization = (StoryProps: { title: string }) => {
   const [file, setFile] = React.useState<File | null>(null);
   const [error, setError] = React.useState<FileDropError>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);

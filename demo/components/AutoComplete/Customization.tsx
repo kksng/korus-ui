@@ -2,8 +2,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 
-// eslint-disable-next-line
-export const Customization = (componentProps: any) => {
+export const Customization = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
 

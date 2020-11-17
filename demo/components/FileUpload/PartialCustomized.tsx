@@ -62,7 +62,7 @@ const infoRender = ({
   </Element>
 );
 
-export const PartialCustomized = (componentProps: any) => {
+export const PartialCustomized = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
 
   return (

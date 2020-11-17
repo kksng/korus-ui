@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 
-export const Tabs = (props: any) => {
+export const Tabs = (StoryProps: { title: string }) => {
   const [selected, setSelected] = React.useState<string | number>(0);
 
   return (

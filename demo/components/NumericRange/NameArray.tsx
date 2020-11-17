@@ -4,7 +4,7 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 
-export const NameArray = (args: any) => {
+export const NameArray = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
 
   const { update, EventInfo } = useEventSpy();

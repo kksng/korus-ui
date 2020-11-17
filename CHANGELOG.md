@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed 
 - Validation: Fixed displaying of invalidMessage with isValid prop set to false
+- Changed the types of props in the Demo
+(AutoComplite, Currency, DropDownLink, FileDrop, FileUpload, Input, LedaProvider, MaskedInput, MultiSelect, NumericRange, NumericTextBox, Password, Tabs)
 
 ## [0.34.0] - 2020-11-09
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 
-export const Controlled = (componentProps: any) => {
+export const Controlled = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
 
   return (

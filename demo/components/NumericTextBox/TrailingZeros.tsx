@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { useEventSpy } from '../../useEventSpy';
 
-export const TrailingZeros = (args: any) => {
+export const TrailingZeros = (StoryProps: { title: string }) => {
   const [value, setValue] = React.useState<number | null>(1)
   const [shouldTrimTrailingZeros, setShouldTrimTrailingZeros] = React.useState<boolean>(false)
 

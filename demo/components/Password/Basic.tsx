@@ -4,7 +4,7 @@ import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 import { PasswordStrength } from '../../../leda/components/Password/constants';
 
-export const Basic = (componentProps: any) => {
+export const Basic = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<string | null>(null);
 

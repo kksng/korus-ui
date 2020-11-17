@@ -4,7 +4,7 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 
-export const BasicUsage = (args: any) => {
+export const BasicUsage = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
 
   const [value, setValue] = React.useState<[number | null, number | null] | null>([5, 10]);

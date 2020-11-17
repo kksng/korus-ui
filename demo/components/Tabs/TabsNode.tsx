@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { useElementRef } from '../../../leda/utils';
 
-export const TabsNode = (props: any) => {
+export const TabsNode = (StoryProps: { title: string }) => {
   const [selected, setSelected] = React.useState<string | number>(0);
 
   const [Element, ref] = useElementRef();

@@ -35,7 +35,7 @@ export const BasicUsage = (componentProps: any) => {
 };
 `;
 
-export const BasicUsage = (componentProps: any) => {
+export const BasicUsage = (StoryProps: { title: string }) => {
   const [props, setProps] = React.useState({});
 
   const [shouldTrim, setShouldTrim] = React.useState<boolean>(false);

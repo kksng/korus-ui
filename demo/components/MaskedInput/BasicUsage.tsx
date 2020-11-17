@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 
-export const BasicUsage = (props: any): React.ReactElement => {
+export const BasicUsage = (StoryProps: { title: string }): React.ReactElement => {
   const [value, setValue] = React.useState('');
 
   return (

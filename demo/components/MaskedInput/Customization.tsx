@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 
-export const Customization = (props: any): React.ReactElement => {
+export const Customization = (StoryProps: { title: string }): React.ReactElement => {
   return (
     <L.Div _box _inner>
       <L.MaskedInput

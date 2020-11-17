@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 
-export const Basic = (componentProps: any) => {
+export const Basic = (StoryProps: { title: string }) => {
   return (
     <L.Div _box _inner _demoBg>
       <L.Leda>
