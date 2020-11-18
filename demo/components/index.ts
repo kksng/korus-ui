@@ -32,7 +32,7 @@ export { NumericTextBox } from './NumericTextBox';
 export { Password } from './Password';
 export { Pagination } from './Pagination';
 export { ProgressBar } from './ProgressBar';
-export { Radio } from './Radio';
+export { RadioGroup } from './RadioGroup';
 export { Rating } from './Rating';
 export { Slider } from './Slider';
 export { StateButtonGroup } from './StateButtonGroup';
