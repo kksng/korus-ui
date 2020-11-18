@@ -28,6 +28,7 @@ import { defaultSwitcherTheme } from '../Switcher/theme';
 import { defaultTabsTheme } from '../Tabs/theme';
 import { defaultTagsTheme } from '../Tags/theme';
 import { defaultTooltipTheme } from '../Tooltip/theme';
+import { defaultTourTheme } from '../Tour/theme';
 import { defaultVStepperTheme } from '../VStepper/theme';
 import { defaultTextAreaTheme } from '../Textarea/theme';
 import { defaultNotificationsTheme } from '../Notifications/theme';
@@ -70,6 +71,7 @@ export const globalDefaultTheme = {
   tags: defaultTagsTheme,
   textarea: defaultTextAreaTheme,
   tooltip: defaultTooltipTheme,
+  tour: defaultTourTheme,
   vstepper: defaultVStepperTheme,
   wizard: defaultWizardTheme,
 };

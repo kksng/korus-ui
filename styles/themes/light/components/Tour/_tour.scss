@@ -138,4 +138,9 @@
       @include position('bottom-center');
     }
   }
+
+  &-active-element {
+    z-index: 10002;
+    position: relative;
+  }
 }

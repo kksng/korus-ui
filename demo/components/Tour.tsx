@@ -222,7 +222,7 @@ export const Tour = (): React.ReactElement => {
         <br />
         <br />
         <L.Div _inner>
-          <L.Button _inner ref={ref1} onClick={() => console.log('Clicked 1!')}>
+          <L.Button _inner ref={ref1} onClick={() => setActiveStep('3')}>
             Элемент тура 1
           </L.Button>
           <br />

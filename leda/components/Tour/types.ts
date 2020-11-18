@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 
 /**
  * Change event
@@ -33,6 +35,8 @@ export interface TourProps {
   data: TourStepItem[],
   /** Обработчик изменения */
   onChange: (ev: ChangeEvent) => void,
+  /** Тема компонента */
+  theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.tour],
   /** Пауза перед отрисовкой гайд-тура. Передается в секундах */
   timeOut?: number,
 }
