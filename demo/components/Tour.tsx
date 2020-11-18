@@ -1,3 +1,4 @@
+import { isNil } from 'lodash';
 import * as React from 'react';
 import * as L from '../../leda';
 import { useElementRef } from '../../leda/utils';
@@ -209,6 +210,7 @@ export const Tour = (): React.ReactElement => {
   const [element7, ref7] = useElementRef();
 
   const [activeStep, setActiveStep] = React.useState<string | number | null>(null);
+  const [timeOut, setTimeOut] = React.useState<number | undefined>(undefined); 
 
   const data = getData([element1, element2, element3, element4, element5, element6, element7]);
 
@@ -260,8 +262,14 @@ export const Tour = (): React.ReactElement => {
           data={data}
           activeStepKey={activeStep}
           onChange={(ev) => setActiveStep(ev.component.value)}
-          timeOut={2}
+          timeOut={timeOut}
         />
+        <L.Button 
+          _warning
+          onClick={() => setTimeOut((timeOut) => isNil(timeOut) ? 2 : undefined)}
+        >
+          Set/remove timeout 2 sec
+        </L.Button>
       </L.Div>
     </L.Div>
   );
