@@ -64,18 +64,9 @@ export const useCustomElements = (props: DropZoneProps, state: DropZoneState): C
     state,
   );
 
-  const LoadingItem = useElement(
-    'LoadingItem',
-    Div,
-    loadingViewRender || context.renders[COMPONENTS_NAMESPACES.dropZone].loadingViewRender,
-    props,
-    state,
-  );
-
   return {
     AcceptedFiles,
     Info,
-    LoadingItem,
     RejectedFiles,
     UploadButton,
     Wrapper,
