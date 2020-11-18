@@ -8,7 +8,6 @@ export const ProgressLoader = (props: ProgressLoaderProps): React.ReactElement |
   const {
     isLoading, loadingProgress, theme,
   } = props;
-
   if (!isLoading) return null;
 
   // do not show loading progress

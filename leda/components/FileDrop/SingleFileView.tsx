@@ -42,6 +42,7 @@ export const SingleFileView = (props: SingleFileViewProps): React.ReactElement |
         loadingProgress={loadingProgress}
         loadingViewRender={loadingViewRender}
         className={theme.description}
+        theme={{ progressLoader: theme.progressLoader }}
       />
     );
   }
