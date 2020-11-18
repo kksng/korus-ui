@@ -257,9 +257,9 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
       onChange({
         ...ev,
         component: {
-          value: formatDateTime(normalizedDateValue, format),
-          name,
           date: normalizedDateValue,
+          name,
+          value: formatDateTime(normalizedDateValue, format),
         },
       });
     }
@@ -275,8 +275,8 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
       onChange({
         ...ev,
         component: {
-          name,
           date: newDate,
+          name,
           value: formatDateTime(newDate, format) || '',
         },
       });
@@ -413,11 +413,11 @@ export const createKeyDownHandler = ({
   } = conditions;
 
   const dateShorthand = {
-    year: viewDate.getFullYear(),
-    month: viewDate.getMonth(),
     dateVal: viewDate.getDate(),
     hours: viewDate.getHours(),
     minutes: viewDate.getMinutes(),
+    month: viewDate.getMonth(),
+    year: viewDate.getFullYear(),
   };
   // пишем атрибуты в две строки
   /* eslint-disable object-property-newline */
@@ -425,35 +425,35 @@ export const createKeyDownHandler = ({
     case KEYS.LEFT_IE:
     case KEYS.LEFT: {
       handleLeftKeyPress({
-        dateShorthand, ev, isOpen, max, min, viewType, dispatch,
+        dateShorthand, dispatch, ev, isOpen, max, min, viewType,
       });
       break;
     }
     case KEYS.RIGHT_IE:
     case KEYS.RIGHT: {
       handleRightKeyPress({
-        dateShorthand, ev, isOpen, max, min, viewType, dispatch,
+        dateShorthand, dispatch, ev, isOpen, max, min, viewType,
       });
       break;
     }
     case KEYS.UP_IE:
     case KEYS.UP: {
       handleUpKeyPress({
-        dateShorthand, ev, isOpen, max, min, viewType, dispatch,
+        dateShorthand, dispatch, ev, isOpen, max, min, viewType,
       });
       break;
     }
     case KEYS.DOWN_IE:
     case KEYS.DOWN: {
       handleDownKeyPress({
-        dateShorthand, ev, isOpen, max, min, viewType, dispatch,
+        dateShorthand, dispatch, ev, isOpen, max, min, viewType,
       });
       break;
     }
     case KEYS.ENTER: {
       handleEnterKeyPress({
-        dateShorthand, ev, isOpen, max, min, viewType, onEnterPress, name, date, type, value, viewDate,
-        dispatch, format, onChange, maskedInputRef, timeMin, timeMax,
+        date, dateShorthand, dispatch, ev, format, isOpen, maskedInputRef, max, min, name, onChange, onEnterPress,
+        timeMax, timeMin, type, value, viewDate, viewType,
       });
       break;
     }
@@ -466,7 +466,7 @@ export const createKeyDownHandler = ({
     }
     case KEYS.TAB: {
       handleTabKeyPress({
-        ev, isOpen, viewType, dispatch, isOneMonthInRange, isOneYearInRange,
+        dispatch, ev, isOneMonthInRange, isOneYearInRange, isOpen, viewType,
       });
       break;
     }

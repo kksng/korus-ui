@@ -1,5 +1,6 @@
 import React from 'react';
 import { isEqual, isFunction, isObject } from 'lodash';
+
 import {
   bindFunctionalRef, useTheme, useElement, useAdaptivePosition, useProps,
 } from '../../utils';
@@ -14,6 +15,12 @@ import {
 import { DataObject } from '../../commonTypes';
 import { DivRefCurrent } from '../Div';
 
+/**
+ * DropDownLink component renders dropdown list of link items
+ * @param {DropDownLinkProps} props
+ *
+ * @returns {React.ReactElement}
+ */
 export const DropDownLink = React.forwardRef((props: DropDownLinkProps, ref?: React.Ref<DropDownLinkRefCurrent>): React.ReactElement | null => {
   const {
     data,
@@ -44,12 +51,12 @@ export const DropDownLink = React.forwardRef((props: DropDownLinkProps, ref?: Re
   const containerRef = React.useRef<DivRefCurrent | null>(null);
 
   const classMap = React.useMemo(() => ({
-    top: theme.wrapperTop,
     right: theme.wrapperRight,
+    top: theme.wrapperTop,
     visible: theme.wrapperVisible,
   }), [theme.wrapperTop, theme.wrapperVisible, theme.wrapperRight]);
 
-  useAdaptivePosition({ elRef: containerRef, isOpen, classNames: classMap });
+  useAdaptivePosition({ classNames: classMap, elRef: containerRef, isOpen });
 
   const handleClick = React.useCallback((ev: ClickEvent): void => {
     setIsOpen(false);
@@ -72,6 +79,7 @@ export const DropDownLink = React.forwardRef((props: DropDownLinkProps, ref?: Re
   return (
     <DropDown
       onMouseEnter={handleMouseEnter}
+      onMouseLeave={() => setIsOpen(false)}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
         wrapper: component.wrapper,
       }))}
@@ -82,18 +90,18 @@ export const DropDownLink = React.forwardRef((props: DropDownLinkProps, ref?: Re
       <Title className={theme.currentText}>{titleText}</Title>
       <Ul default ref={containerRef as React.Ref<UlRefCurrent>}>
         {
-            (data as (DataObject | string)[]).map((item) => (
-              <DropDownLinkItem
-                className={theme.item}
-                item={item}
-                itemRender={itemRender}
-                key={`${name}_${isObject(item) ? item[textField] : item}`}
-                name={name}
-                onClick={handleClick}
-                textField={textField}
-              />
-            ))
-          }
+          (data as (DataObject | string)[]).map((item) => (
+            <DropDownLinkItem
+              className={theme.item}
+              item={item}
+              itemRender={itemRender}
+              key={`${name}_${isObject(item) ? item[textField] : item}`}
+              name={name}
+              onClick={handleClick}
+              textField={textField}
+            />
+          ))
+        }
       </Ul>
     </DropDown>
   );

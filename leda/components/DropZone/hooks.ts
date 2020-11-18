@@ -66,9 +66,9 @@ export const useCustomElements = (props: DropZoneProps, state: DropZoneState): C
 
   return {
     AcceptedFiles,
+    Info,
     RejectedFiles,
     UploadButton,
-    Info,
     Wrapper,
   };
 };

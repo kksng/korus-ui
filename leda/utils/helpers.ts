@@ -63,7 +63,7 @@ export const getDedupedClassNames = (...classNames: ClassValue[]): string | unde
 
 // при генерации снапшотов некоторые проперти изменяются динамически и снапшоты ломаются, чтобы избежать этого удалим ненужные проперти
 const removeProp = <T extends object>(obj: T): Partial<T> => {
-  const object = { ...obj } as { props: { [x: string]: unknown}, children: unknown};
+  const object = { ...obj } as { children: unknown, props: { [x: string]: unknown}};
   const forbiddenProps = [
     'activedescendant',
     'anchor',

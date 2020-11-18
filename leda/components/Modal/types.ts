@@ -7,6 +7,8 @@ import { DivRefCurrent } from '../Div';
 export type WindowSizeType = 'sm' | 'md' | 'lg';
 
 export interface ModalProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Alert unique ID key */
   activeAlertKey?: string | null,
   /** Дочерние элементы */
@@ -36,27 +38,25 @@ export interface ModalProps {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.modal],
   /** Кастомный рендер для wrapper */
   wrapperRender?: CustomRender<ModalWindowProps, {}, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export type ModalWindowProps = ModalProps & { innerRef?: React.Ref<ModalRefCurrent> };
 
 export interface ModalElementsProps {
+  [x: string]: unknown,
   children?: React.ReactNode,
   className?: string,
   wrapperRender?: CustomRender<ModalElementsProps, {}, React.HTMLAttributes<HTMLDivElement>>,
-  [x: string]: unknown,
 }
 
 export interface ModalAlertProps {
+  [x: string]: unknown,
   /** Alert unique ID key */
   alertKey: string,
   children?: React.ReactNode,
   className?: string,
   /** Alert close handler */
   onClose?: () => void,
-  [x: string]: unknown,
 }
 
 export interface ModalContextType {

@@ -57,21 +57,21 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
   const commonProps = {
     form,
     format,
-    step,
+    isValid,
     onBlur,
     onFocus,
-    isValid,
     shouldTrimTrailingZeros,
+    step,
     thousandsSeparator,
   };
 
   const handleChange = createNumericChangeHandler({
-    value,
-    setValue: setUncontrolledValue,
+    format,
     name: nameProp,
     onChange,
-    format,
+    setValue: setUncontrolledValue,
     thousandsSeparator,
+    value,
   });
 
   const wrapperClassNames = getClassNames(
@@ -95,9 +95,9 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
         const inputs = component && component.wrapper && component.wrapper.querySelectorAll('input');
 
         bindFunctionalRef(component, ref, component && {
-          wrapper: component.wrapper,
           inputFrom: inputs && inputs[0],
           inputTo: inputs && inputs[1],
+          wrapper: component.wrapper,
         });
       })}
     >

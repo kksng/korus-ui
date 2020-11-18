@@ -1,10 +1,10 @@
 /* eslint-disable key-spacing */
 export const defaultMaskedInputTheme = {
-  inputWrapperInvalid:      'danger',
+  input:                    'masked-input-element',
+  inputWrapper:             'masked-input-wrapper',
   inputWrapperDisabled:     'disabled',
   inputWrapperFocused:      'focused',
+  inputWrapperInvalid:      'danger',
   inputWrapperRequired:     'required',
-  inputWrapper:             'masked-input-wrapper',
-  input:                    'masked-input-element',
   wrapper:                  'masked-wrapper',
 };

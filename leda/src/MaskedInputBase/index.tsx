@@ -44,10 +44,10 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
   const handlePaste = createPasteHandler(props);
 
   const handleFocus = createFocusHandler(props, {
-    isFocused,
     inputRef,
-    setFocused,
     inputValue,
+    isFocused,
+    setFocused,
     setInputValue,
   });
 
@@ -97,11 +97,11 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
       onChange={handleChange}
       placeholder={placeholder}
       value={getValue({
-        valueProp: value,
-        mask,
         inputValue,
-        placeholderChar,
         isFocused,
+        mask,
+        placeholderChar,
+        valueProp: value,
       })}
       {...restProps}
       ref={(component) => {

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { htmlTagFactory } from '../../src/HTMLTagsFactory';
 
 export interface FooterProps extends React.HTMLAttributes<HTMLElement> {
+  [x: string]: unknown,
   ref?: FooterRefCurrent,
   shouldRender?: boolean,
-  [x: string]: unknown,
 }
 
 export interface FooterRefCurrent {

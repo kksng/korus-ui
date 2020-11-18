@@ -1,10 +1,10 @@
 /* eslint-disable key-spacing */
 export const defaultTextAreaTheme = {
   input:                  'textarea-input',
-  wrapper:                'textarea-wrapper',
-  inputFocused:           'focused',
   inputDisabled:          'disabled',
+  inputFocused:           'focused',
   inputInvalid:           'danger',
   inputRequired:          'required',
+  wrapper:                'textarea-wrapper',
 };
 /* eslint-enable key-spacing */

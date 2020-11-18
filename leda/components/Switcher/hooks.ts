@@ -49,9 +49,9 @@ export const useCustomElements = (props: SwitcherProps, state: SwitcherState): C
   );
 
   return {
-    Wrapper,
-    Label,
     Base,
     Icon,
+    Label,
+    Wrapper,
   };
 };

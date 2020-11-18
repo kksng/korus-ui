@@ -9,13 +9,13 @@ export const CollapseContext = React.createContext<CollapseContextType>({
 });
 
 export const CollapsePanelContext = React.createContext<CollapsePanelContextType>({
-  panelKey: '',
-  isClicked: false,
-  name: '',
-  isExpanded: false,
   activePanelKey: null,
-  onHeadingClick: () => {},
+  isClicked: false,
+  isExpanded: false,
+  name: '',
   onBodyRest: () => {},
+  onHeadingClick: () => {},
   onSelect: () => {},
+  panelKey: '',
   theme: globalDefaultTheme.collapse,
 });

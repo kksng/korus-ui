@@ -25,11 +25,11 @@ export const Panel: React.FC<PanelProps> = (props: PanelProps): React.ReactEleme
     : panelKey === parentContext.activePanelKey;
 
   const context = {
-    panelKey,
     isClicked,
     isDisabled,
-    name,
     isExpanded,
+    name,
+    panelKey,
     ...handlers,
     ...parentContext,
   };

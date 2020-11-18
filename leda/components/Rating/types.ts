@@ -5,16 +5,16 @@ import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 
 export interface ChangeEvent {
   component: {
-    value: number,
     index: number,
     name?: string,
+    value: number,
   },
 }
 
 export interface IconProps {
-  key: string,
-  className?: string,
   [x: string]: unknown,
+  className?: string,
+  key: string,
 }
 
 export interface RatingState {
@@ -27,6 +27,8 @@ export type SetCurrentSelected = React.Dispatch<React.SetStateAction<number>>;
 export type SetIsHovered = React.Dispatch<React.SetStateAction<boolean>>;
 
 export interface RatingProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Кастомизация иконки */
   iconRender?: CustomRender<RatingProps, RatingState, IconProps>,
   /** Выключенное состояние */
@@ -45,8 +47,6 @@ export interface RatingProps {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.rating],
   /** Рейтинг */
   value: number,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface RatingIconProps {

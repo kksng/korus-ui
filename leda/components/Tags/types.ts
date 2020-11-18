@@ -4,28 +4,30 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
 
 export interface TagsProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Реф */
   ref?: React.Ref<TagsRefCurrent>,
   /* Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.tags],
   /** Кастомный wrapper */
   wrapperRender?: CustomRender<TagsProps, {}, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface IconProps {
-  onClick?: CustomEventHandler<React.MouseEvent<HTMLSpanElement>>,
   className?: string,
+  onClick?: CustomEventHandler<React.MouseEvent<HTMLSpanElement>>,
 }
 
 export interface WrapperProps {
+  children?: React.ReactNode,
   className?: string,
   ref?: React.Ref<TagsRefCurrent>,
-  children?: React.ReactNode,
 }
 
 export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Иконка для тега */
   iconRender?: CustomRender<TagProps, {}, IconProps>,
   /** Обработчик клика по иконке */
@@ -36,8 +38,6 @@ export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   theme?: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.tags],
   /** Кастомный wrapper */
   wrapperRender?: CustomRender<TagProps, {}, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface TagsRefCurrent {

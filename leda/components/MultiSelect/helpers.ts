@@ -22,7 +22,7 @@ export const filterData = ({
 
     return data
       // убираем все значения, которые уже выбраны
-      .filter((item) => !values.find((value) => checkIsTheSameObject({ obj1: item, obj2: value, compareObjectsBy })));
+      .filter((item) => !values.find((value) => checkIsTheSameObject({ compareObjectsBy, obj1: item, obj2: value })));
   })();
 
   // и фильтруем по filterValue

@@ -1,14 +1,23 @@
 import * as React from 'react';
-import { isFunction } from 'lodash';
+
 import { CustomEventHandler, SetState } from '../../commonTypes';
 import { InputProps } from './types';
-import { isSymbolAllowed, isSymbolForbidden, transformToCase } from './helpers';
-import { stringToMaxLength } from '../../utils';
+import {
+  isSymbolAllowed, isSymbolForbidden, transformToCase,
+} from './helpers';
 
+/**
+ * Function creates change event handler
+ * @param {InputProps} props - properties of component
+ * @param {SetState<string>} setValue - set state action
+ * @param {(event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>) => void} setCursorToPrevPosition - function returns cursor to initial position
+ *
+ * @returns {CustomEventHandler<React.ChangeEvent<HTMLInputElement>>} - change event handler
+ */
 export const createChangeHandler = (
   props: InputProps,
   setValue: SetState<string>,
-  runAfterUpdate: (callback: () => void) => void,
+  setCursorToPrevPosition: (event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>) => void,
 ): CustomEventHandler<React.ChangeEvent<HTMLInputElement>> => (event) => {
   const { value } = event.target;
   const {
@@ -19,26 +28,14 @@ export const createChangeHandler = (
 
   if (!isSymbolAllowed(value, allowedSymbols)) return;
 
-  const inputElement = event.target;
-  const prevSelection = {
-    start: inputElement.selectionStart,
-    end: inputElement.selectionEnd,
-  };
-
+  // Next block prevents from replacing previous value if maxLength is exceeded
+  // and sets cursor back to initial position
   if (maxLength != null && value.length > maxLength) {
-    const newSelectionPosition = prevSelection.start ? prevSelection.start - 1 : 0;
-    // возвращаем курсор на предыдущую позицию в блокирующем режиме
-    runAfterUpdate(() => {
-      inputElement.selectionStart = newSelectionPosition;
-      inputElement.selectionEnd = newSelectionPosition;
-    });
-
+    setCursorToPrevPosition(event);
     return;
   }
 
-  const maxLengthAdjustedValue = stringToMaxLength(value, maxLength);
-
-  const newValue = letterCase ? transformToCase(maxLengthAdjustedValue, letterCase) : maxLengthAdjustedValue;
+  const newValue = letterCase ? transformToCase(value, letterCase) : value;
 
   if (props.value === undefined) {
     setValue(newValue);
@@ -47,12 +44,20 @@ export const createChangeHandler = (
   props.onChange?.({
     ...event,
     component: {
-      value: newValue,
       name: props.name,
+      value: newValue,
     },
   });
 };
 
+/**
+ * Function creates clear event handler
+ * @param {InputProps} props - properties of component
+ * @param {SetState<string>} setValue - set state action
+ * @param {React.MutableRefObject<HTMLInputElement | null>} inputRef - input ref
+ *
+ * @returns {CustomEventHandler<React.MouseEvent<HTMLInputElement>>} - clear event handler
+ */
 export const createClearHandler = (
   props: InputProps,
   setValue: SetState<string>,
@@ -69,12 +74,20 @@ export const createClearHandler = (
   props.onChange?.({
     ...event,
     component: {
-      value: '',
       name: props.name,
+      value: '',
     },
   });
 };
 
+/**
+ * Function creates blur event handler
+ * @param {InputProps} props - properties of component
+ * @param {SetState<boolean>} setFocused - set state action
+ * @param {() => boolean} validate - validation function
+ *
+ * @returns {React.FocusEventHandler<HTMLInputElement>} - blur event handler
+ */
 export const createBlurHandler = (
   props: InputProps,
   setFocused: SetState<boolean>,
@@ -87,13 +100,21 @@ export const createBlurHandler = (
   props.onBlur?.({
     ...event,
     component: {
-      value: event.target.value,
-      name: props.name,
       isValid: newValid,
+      name: props.name,
+      value: event.target.value,
     },
   });
 };
 
+/**
+ * Function creates focus event handler
+ * @param {InputProps} props - properties of component
+ * @param {boolean} isValid - flag defines if input value is valid
+ * @param {SetState<boolean>} setFocused - set state action
+ *
+ * @returns {React.FocusEventHandler<HTMLInputElement>} - focus event handler
+ */
 export const createFocusHandler = (
   props: InputProps,
   isValid: boolean,
@@ -104,13 +125,19 @@ export const createFocusHandler = (
   props.onFocus?.({
     ...event,
     component: {
-      value: event.target.value,
-      name: props.name,
       isValid,
+      name: props.name,
+      value: event.target.value,
     },
   });
 };
 
+/**
+ * Function creates key down event handler
+ * @param {InputProps} props - properties of component
+ *
+ * @returns {React.KeyboardEventHandler<HTMLInputElement>} - key down event handler
+ */
 export const createKeyDownHandler = (
   props: InputProps,
 ): React.KeyboardEventHandler<HTMLInputElement> => (event) => {
@@ -118,13 +145,20 @@ export const createKeyDownHandler = (
     props.onEnterPress?.({
       ...event,
       component: {
-        value: event.currentTarget.value,
         name: props.name,
+        value: event.currentTarget.value,
       },
     });
   }
 };
 
+/**
+ * Function creates reset handler
+ * @param {InputProps} props - properties of component
+ * @param {SetState<string>} setValue - set state action
+ *
+ * @returns {() => void} - reset handler
+ */
 export const createResetHandler = (
   props: InputProps,
   setValue: SetState<string>,
@@ -141,37 +175,27 @@ export const createResetHandler = (
   });
 };
 
+/**
+ * Function creates paste event handler which checks if new value exceeds maxLength
+ * and in this case returns cursor to initial position.
+ * Paste handler is needed, because input.selectionStart value is counted differently depending on event type
+ *
+ * @param {InputProps} props - properties of component
+ * @param {(event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>) => void} setCursorToPrevPosition - function sets cursor to previous position if maxLength is exceeded
+ *
+ * @returns {CustomEventHandler<React.ClipboardEvent<HTMLInputElement>>} - paste event handler
+ */
 export const createPasteHandler = (
   props: InputProps,
-  value: string,
-  setValue: SetState<string>,
-) => (event: React.ClipboardEvent<HTMLInputElement>) => {
-  const {
-    onChange, name, isDisabled, maxLength,
-  } = props;
+  setCursorToPrevPosition: (event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>) => void,
+): CustomEventHandler<React.ClipboardEvent<HTMLInputElement>> => (event) => {
+  const { value } = event.target as HTMLInputElement;
+  const { maxLength } = props;
 
-  event.preventDefault();
-  // по неизвестным причинам onPaste работает даже на отключенных инпутах
-  if (isDisabled) return;
+  const pastedValue = event.clipboardData.getData('Text');
+  const newValueLength = value.length + pastedValue.length;
 
-  const text = value + event.clipboardData.getData('Text');
-  const maxLengthAdjustedValue = stringToMaxLength(text, maxLength);
-  const newValue = maxLength != null ? maxLengthAdjustedValue : text;
-
-  if (props.value === undefined) {
-    setValue(newValue);
-  }
-
-  if (isFunction(onChange)) {
-    const customEvent = {
-      ...event,
-      target: event.target as HTMLInputElement,
-      component: {
-        name,
-        value: newValue,
-      },
-    };
-
-    onChange(customEvent);
+  if (maxLength != null && newValueLength > maxLength) {
+    setCursorToPrevPosition(event);
   }
 };

@@ -40,16 +40,16 @@ export const useCustomElements = (props: NumericTextBoxProps, state: NumericText
   );
 
   return {
-    Wrapper,
-    Input,
     ArrowButtons,
+    Input,
+    Wrapper,
   };
 };
 
 export const useSyncedValue = (value: NumericTextBoxProps['value'], isFocused: boolean, format: string, thousandsSeparator: string, setInputValue: SetState<string>): void => {
   React.useEffect((): void => {
     if (value !== undefined && !isFocused) {
-      const newValue = formatValue({ value, format, thousandsSeparator });
+      const newValue = formatValue({ format, thousandsSeparator, value });
 
       const newInputValue = formatInputValue(newValue, format);
 

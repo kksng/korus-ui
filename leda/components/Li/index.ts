@@ -2,9 +2,9 @@ import * as React from 'react';
 import { htmlTagFactory } from '../../src/HTMLTagsFactory';
 
 export interface LiProps extends React.HTMLAttributes<HTMLLIElement> {
+  [x: string]: unknown,
   ref?: React.Ref<LiRefCurrent>,
   shouldRender?: boolean,
-  [x: string]: unknown,
 }
 
 export interface LiRefCurrent {

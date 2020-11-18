@@ -37,8 +37,8 @@ export const createChangeHandler = (
   const customEvent = {
     ...ev,
     component: {
-      value: newValue,
       name,
+      value: newValue,
     },
   };
 

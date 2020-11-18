@@ -9,8 +9,8 @@ export interface StatusItem {
 }
 
 export interface ItemProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
 }
 
 export interface IconProps {
@@ -19,8 +19,8 @@ export interface IconProps {
 }
 
 export interface LabelProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
 }
 
 export type DataType = typeof DATA_TYPES[keyof typeof DATA_TYPES];
@@ -52,8 +52,8 @@ export interface StatusBarProps extends Omit<React.HTMLAttributes<HTMLDivElement
 
 export interface StatusBarItemClickEvent {
   target: {
-    item: string | StatusItem,
     index: number,
+    item: string | StatusItem,
   },
 }
 
@@ -61,6 +61,7 @@ export type PositionType = typeof STEP_POSITION[keyof typeof STEP_POSITION];
 
 export interface StatusBarItemProps {
   className?: string,
+  currentStepProgress?: number,
   iconRender?: CustomRender<StatusBarItemProps, {}, IconProps>,
   index: number,
   isFirst: boolean,
@@ -72,7 +73,6 @@ export interface StatusBarItemProps {
   labelText: string,
   onClick?: CustomEventHandler<StatusBarItemClickEvent>,
   position: PositionType | null,
-  currentStepProgress?: number,
   theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.statusBar],
   type: string | null,
 }

@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 import * as React from 'react';
 import * as L from '../../../leda';
+import { isDateGreater } from '../../../leda/src/Calendar/helpers';
 
 export const DatePicker = (): React.ReactElement => {
   const [value1, setValue1] = React.useState('');
@@ -10,6 +11,8 @@ export const DatePicker = (): React.ReactElement => {
   const [value5, setValue5] = React.useState('');
   const [value6, setValue6] = React.useState('');
   const [value7, setValue7] = React.useState('');
+  const [value8, setValue8] = React.useState('12.10.2020');
+  const [submitMessage, setSubmitMessage] = React.useState('');
 
   const handleChange1 = (event) => {
     const { date, value } = event.component;
@@ -43,6 +46,11 @@ export const DatePicker = (): React.ReactElement => {
   const handleChange7 = (event) => {
     const { date, value } = event.component;
     setValue7(value);
+    console.log(value, date);
+  };
+  const handleChange8 = (event) => {
+    const { date, value } = event.component;
+    setValue8(value);
     console.log(value, date);
   };
 
@@ -122,7 +130,42 @@ export const DatePicker = (): React.ReactElement => {
           name='CustomMonthsDatePicker'
           placeholder="Type your date..."
         />
-         <L.Button _success>success!</L.Button>
+         <L.Button _success name="success">success!</L.Button>
+      </L.Div>
+      <div
+        style={{
+          height: '30vh',
+        }}
+      />
+      <L.Div>
+        <L.H4>DatePicker with min value 12.10.2021</L.H4>
+        <L.DatePicker
+          _width40
+          form="datePicker"
+          name="MinValueDatePicker"
+          value={value8}
+          onChange={handleChange8}
+          min={new Date('2021-10-12')}
+          validator={[
+            {
+              validator: (value) => !isDateGreater(new Date('2021-10-12'), value),
+              invalidMessage: 'Current value is less than min value',
+            },
+          ]}
+        />
+        <br />
+        <br />
+        <br />
+        <L.Button
+          _warning
+          name="submit"
+          form="datePicker"
+          onClick={() => setSubmitMessage('Submitted!')}
+          onValidationFail={() => setSubmitMessage('Submit failed!')}
+        >
+          Submit
+        </L.Button>
+        <L.Div name="submitMessage">{submitMessage}</L.Div>
       </L.Div>
     </L.Div>
   );

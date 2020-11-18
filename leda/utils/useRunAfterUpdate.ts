@@ -1,7 +1,11 @@
 import * as React from 'react';
 
-// хук для вызова обновлений перед окончанием ререндера, пример - изменение позиции курсора без мигания
-export const useRunAfterUpdate = () => {
+/**
+ *  hook for calling updates before the end of the re-render, example-changing the cursor position without blinking
+ *
+ * @returns {(callback: () => void) => void} - function helps manage state before the end of the re-render
+ */
+export const useRunAfterUpdate = (): (callback: () => void) => void => {
   const afterPaintRef = React.useRef<() => void | undefined>();
   const [counter, setCounter] = React.useState(0);
 

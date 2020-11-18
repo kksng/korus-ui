@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { isFunction, isNil } from 'lodash';
+import { isFunction } from 'lodash';
+
 import {
   BlurData,
   ClearData,
@@ -15,6 +16,13 @@ import { SuggestionTarget } from '../../src/SuggestionList/types';
 import { filterData, getShouldUniteTags } from './helpers';
 import { selectAllSuggestion } from './constants';
 
+/**
+ * Function creates focus handler
+ * @param {MultiSelectProps} props
+ * @param {FocusData} extraData
+ *
+ * @returns {React.FocusEventHandler<HTMLInputElement>} - focus handler
+ */
 export const createFocusHandler = (
   props: MultiSelectProps, extraData: FocusData,
 ): React.FocusEventHandler<HTMLInputElement> => (ev) => {
@@ -37,6 +45,13 @@ export const createFocusHandler = (
   setFocused(true);
 };
 
+/**
+ * Function creates blur handler
+ * @param {MultiSelectProps} props
+ * @param {BlurData} extraData
+ *
+ * @returns {React.FocusEventHandler<HTMLInputElement>} - blur handler
+ */
 export const createBlurHandler = (
   props: MultiSelectProps, extraData: BlurData,
 ): React.FocusEventHandler<HTMLInputElement> => (ev) => {
@@ -52,9 +67,9 @@ export const createBlurHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value,
-        name,
         isValid,
+        name,
+        value,
       },
     };
 
@@ -66,11 +81,18 @@ export const createBlurHandler = (
   setFilterValue('');
 };
 
+/**
+ * Function creates item select handler
+ * @param {MultiSelectProps} props
+ * @param {SelectData} extraData
+ *
+ * @returns {CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget>} - item select handler
+ */
 export const createSelectHandler = (
   props: MultiSelectProps, extraData: SelectData,
 ): CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget> => (ev) => {
   const {
-    data, onChange, name, value: valueProp, isDisabled, maxSelected,
+    data, onChange, name, value: valueProp, isDisabled,
   } = props;
 
   if (isDisabled) return;
@@ -108,9 +130,7 @@ export const createSelectHandler = (
     return shouldRemoveValue ? [ev.target.value] as string[] | number[] | SomeObject[] : undefined;
   })();
 
-  if (!isNil(maxSelected) && newValue.length === maxSelected) {
-    setFilterValue('');
-  }
+  setFilterValue('');
 
   if (valueProp === undefined) setValue(newValue);
 
@@ -118,10 +138,10 @@ export const createSelectHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: newValue,
+        deselectedValues,
         name,
         selectedValue,
-        deselectedValues,
+        value: newValue,
       },
     };
 
@@ -129,6 +149,13 @@ export const createSelectHandler = (
   }
 };
 
+/**
+ * Function creates clear handler
+ * @param {MultiSelectProps} props
+ * @param {ClearData} extraData
+ *
+ * @returns {React.MouseEventHandler<HTMLElement>} - clear handler
+ */
 export const createClearHandler = (
   props: MultiSelectProps, extraData: ClearData,
 ): React.MouseEventHandler<HTMLElement> => (ev) => {
@@ -146,9 +173,9 @@ export const createClearHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: [] as string[] | number[] | SomeObject[],
-        name,
         deselectedValues: value,
+        name,
+        value: [] as string[] | number[] | SomeObject[],
       },
     };
 
@@ -156,8 +183,14 @@ export const createClearHandler = (
   }
 };
 
+/**
+ * Function creates mouse down handler
+ * @param {MouseDownData} extraData
+ *
+ * @returns {React.MouseEventHandler<HTMLElement>}
+ */
 export const createMouseDownHandler = (
-  props: MultiSelectProps, extraData: MouseDownData,
+  extraData: MouseDownData,
 ): React.MouseEventHandler<HTMLElement> => (ev) => {
   ev.preventDefault();
 
@@ -166,6 +199,13 @@ export const createMouseDownHandler = (
   if (input) input.focus();
 };
 
+/**
+ * Function creates key down handler
+ * @param {MultiSelectProps} props
+ * @param {KeyDownData} extraData
+ *
+ * @returns {React.KeyboardEventHandler<HTMLInputElement>} - key down handler
+ */
 export const createKeyDownHandler = (
   props: MultiSelectProps, extraData: KeyDownData,
 ): React.KeyboardEventHandler<HTMLInputElement> => (ev) => {
@@ -180,22 +220,22 @@ export const createKeyDownHandler = (
   if (!data) return;
 
   const filteredData = filterData({
+    compareObjectsBy,
     data,
+    filterRule,
     filterValue,
     textField,
-    filterRule,
     value,
-    compareObjectsBy,
   }) || [];
 
   const highlightedItem = (filteredData as (string | number | SomeObject)[]).find((item) => item === highlightedSuggestion);
-  // текущий индекс
+  // current index
   const currentIndex = (filteredData as (string | number | SomeObject)[]).indexOf(highlightedItem || '');
 
   if (ev.key === 'ArrowDown' || ev.key === 'Down') {
-    // предотвращаем скролл страницы
+    // prevent page scrolling
     ev.preventDefault();
-    // новый индекс, механизм работает как барабан
+    // new index, the mechanism works like a roller
     const nextIndex = (currentIndex + 1) % filteredData.length;
 
     const newHighlightedSuggestion = filteredData[nextIndex];
@@ -206,9 +246,9 @@ export const createKeyDownHandler = (
   }
 
   if (ev.key === 'ArrowUp' || ev.key === 'Up') {
-    // предотвращаем скроллинг страницы
+    // prevent page scrolling
     ev.preventDefault();
-    // новый индекс, механизм работает как барабан
+    // new index, the mechanism works like a roller
     const nextIndex = (() => {
       if (currentIndex <= 0) return filteredData.length - 1;
 
@@ -227,8 +267,8 @@ export const createKeyDownHandler = (
       onEnterPress({
         ...ev,
         component: {
-          value: ev.currentTarget.value,
           name: props.name,
+          value: ev.currentTarget.value,
         },
       });
     }
@@ -236,7 +276,6 @@ export const createKeyDownHandler = (
 
     setHighlightedSuggestion(null);
 
-    // вызываем обработчик
     handleSelect({
       ...ev,
       target: {
@@ -252,7 +291,6 @@ export const createKeyDownHandler = (
     const shouldUniteTags = getShouldUniteTags({ maxTags, value });
     if (shouldUniteTags) return;
 
-    // вызываем обработчик
     handleSelect({
       ...ev,
       target: {
@@ -263,6 +301,14 @@ export const createKeyDownHandler = (
   }
 };
 
+/**
+ * Function creates reset handler
+ * @param {MultiSelectProps} params.props - component properties
+ * @param {SetState<Value[]>} params.setValue - set state function
+ * @param {Value[]} params.value - component's value
+ *
+ * @returns {() => void} - reset handler
+ */
 export const createResetHandler = ({
   props,
   setValue,
@@ -276,10 +322,10 @@ export const createResetHandler = ({
   if (isFunction(props.onChange)) {
     const customEvent = {
       component: {
-        name: props.name,
-        value,
         deselectedValues: undefined,
+        name: props.name,
         selectedValue: undefined,
+        value,
       },
     };
     props.onChange(customEvent);

@@ -6,21 +6,21 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 import { DivProps } from '../Div';
 
 export interface TextareaRefCurrent {
-  wrapper: HTMLDivElement | null,
   input: HTMLInputElement | null,
+  wrapper: HTMLDivElement | null,
 }
 
 export interface ResetEvent {
   component: {
-    value: string,
     name?: string,
+    value: string,
   },
 }
 
 export interface TypeEvent extends React.ChangeEvent<HTMLTextAreaElement> {
   component: {
-    value: string,
     name?: string,
+    value: string,
   },
 }
 
@@ -28,33 +28,33 @@ export type ChangeEvent = TypeEvent | ResetEvent;
 
 export interface BlurEvent extends React.FocusEvent<HTMLTextAreaElement> {
   component: {
-    value: string,
-    name?: string,
     isValid?: boolean,
+    name?: string,
+    value: string,
   },
 }
 
 export interface EnterPressEvent extends React.KeyboardEvent<HTMLTextAreaElement> {
   component: {
-    value: string,
     name?: string,
+    value: string,
   },
 }
 
 export interface FocusEvent extends React.FocusEvent<HTMLTextAreaElement> {
   component: {
-    value: string,
     name?: string,
+    value: string,
   },
 }
 
 export interface TextareaProps extends ValidationProps {
-  /** Auto adjusting component height on text input to avoid scroll. Overwrites inline style 'height' and 'overflow-y' CSS props. */
-  shouldAutoResize?: boolean,
-  /** Значение по умолчанию */
-  defaultValue?: string,
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Переданные дети в качестве value */
   children?: React.ReactNode,
+  /** Значение по умолчанию */
+  defaultValue?: string,
   /** Отключение ввода в компоненте */
   isDisabled?: boolean,
   /** Максимальная длина значения */
@@ -71,6 +71,8 @@ export interface TextareaProps extends ValidationProps {
   onFocus?: (ev: FocusEvent) => void,
   /** Плейсхолдер в инпуте */
   placeholder?: string,
+  /** Auto adjusting component height on text input to avoid scroll. Overwrites inline style 'height' and 'overflow-y' CSS props. */
+  shouldAutoResize?: boolean,
   /** Inline styles */
   style?: React.CSSProperties,
   /** Тема для компонента */
@@ -79,8 +81,6 @@ export interface TextareaProps extends ValidationProps {
   value?: string,
   /** Обертка компонента */
   wrapperRender?: CustomRender<TextareaProps, { value: string }, DivProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface CustomElements {

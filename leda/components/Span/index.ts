@@ -2,9 +2,9 @@ import * as React from 'react';
 import { htmlTagFactory } from '../../src/HTMLTagsFactory';
 
 export interface SpanProps extends React.HTMLAttributes<HTMLSpanElement> {
+  [x: string]: unknown,
   ref?: React.Ref<SpanRefCurrent>,
   shouldRender?: boolean,
-  [x: string]: unknown,
 }
 
 export interface SpanRefCurrent {

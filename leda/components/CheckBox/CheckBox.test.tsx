@@ -18,8 +18,8 @@ describe('CheckBox SNAPSHOTS', () => {
   it('should render controllable mode', () => {
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value: false,
         name: 'checker',
+        value: false,
       }),
     });
     const Wrapper = () => {
@@ -59,8 +59,8 @@ describe('CheckBox HANDLERS', () => {
     const onChange = jest.fn();
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value: true,
         name: 'chegevara',
+        value: true,
       }),
     });
     const { container } = render(<CheckBox onChange={onChange} id="test" name="chegevara" />);

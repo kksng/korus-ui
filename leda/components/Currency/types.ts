@@ -2,6 +2,8 @@ import * as React from 'react';
 import { CustomRender } from '../../commonTypes';
 
 export interface CurrencyProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** значение, как потомок */
   children?: number | string,
   /** Валюта в формате ISO 4217 - EUR, USD, RUB etc, по-умолчанию RUB */
@@ -20,8 +22,6 @@ export interface CurrencyProps {
   value?: number | string,
   /** Кастомизация враппера (по-умолчанию span) */
   wrapperRender?: CustomRender<CurrencyProps, {}, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface CurrencySymbolProps {

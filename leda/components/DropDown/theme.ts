@@ -1,8 +1,8 @@
 /* eslint-disable key-spacing */
 export const defaultDropDownTheme = {
   wrapper:                 'dropdown-wrapper',
-  wrapperTop:              'pos-top',
   wrapperRight:            'pos-right',
+  wrapperTop:              'pos-top',
   wrapperVisible:          'visible',
 };
 /* eslint-enable key-spacing */

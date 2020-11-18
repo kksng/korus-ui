@@ -65,7 +65,7 @@ describe('Input HANDLERS', () => {
     const value = 'value';
     const eventMatcher = expect.objectContaining({
       component: expect.objectContaining({
-        value, name,
+        name, value,
       }),
       target: expect.objectContaining({
         value,
@@ -93,46 +93,6 @@ describe('Input HANDLERS', () => {
     });
 
     expect(handleEnterPress).toBeCalledTimes(1);
-  });
-
-  it('should test onPaste', () => {
-    const handleChange = jest.fn();
-    const pastedText = 'pasted text';
-    const validName = 'auto';
-    const validValue = 'text';
-
-    render((
-      <Input name={validName} value={validValue} onChange={handleChange} />
-    ));
-
-    const input = screen.getByRole('textbox');
-
-    // ClipboardApi не поддерживается в jsdom
-    // Пользовательское событие для вставки('paste')
-    const clipboardEvent = new Event('paste', {
-      bubbles: true,
-      cancelable: true,
-      composed: true,
-    });
-
-    // Mock свойств clipboardData и getData
-    // @ts-ignore: Property 'clipboardData' does not exist on type 'Event'.
-    clipboardEvent.clipboardData = {
-      getData: () => pastedText,
-    };
-
-    input.dispatchEvent(clipboardEvent);
-
-    expect(handleChange)
-      .toHaveBeenCalled();
-
-    expect(handleChange)
-      .lastCalledWith(expect.objectContaining({
-        component: expect.objectContaining({
-          name: validName,
-          value: validValue + pastedText,
-        }),
-      }));
   });
 });
 

@@ -4,7 +4,7 @@ import { globalDefaultTheme } from '../LedaProvider';
 import { TabsContextType } from './types';
 
 export const TabsContext = React.createContext<TabsContextType>({
-  onTabSelect: () => {},
   activeTabKey: 0,
+  onTabSelect: () => {},
   theme: globalDefaultTheme[COMPONENTS_NAMESPACES.tabs],
 });
