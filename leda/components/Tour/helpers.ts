@@ -15,20 +15,18 @@ const createPoint = (x: number, y: number) => ({
  * Helper sets default tour element styles
  * @param {HTMLElement | null | undefined} element - tour element
  */
-export const setElementDefaultStyles = (element: HTMLElement | null | undefined): void => {
+export const removeActiveClass = (element: HTMLElement | null | undefined, activeClass: string): void => {
   if (!element) return;
-  element.style.position = '';
-  element.style.zIndex = '';
+  element.classList.remove(activeClass);
 };
 
 /**
  * Helper sets tour element styles
  * @param {HTMLElement | null | undefined} element - tour element
  */
-export const setElementStyles = (element: HTMLElement | null | undefined): void => {
+export const setActiveClass = (element: HTMLElement | null | undefined, activeClass: string): void => {
   if (!element) return;
-  element.style.position = 'relative';
-  element.style.zIndex = '10002';
+  element.classList.add(activeClass);
 };
 
 /**
