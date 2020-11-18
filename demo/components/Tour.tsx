@@ -260,6 +260,7 @@ export const Tour = (): React.ReactElement => {
           data={data}
           activeStepKey={activeStep}
           onChange={(ev) => setActiveStep(ev.component.value)}
+          timeOut={2}
         />
       </L.Div>
     </L.Div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { debounce } from 'lodash';
+import { debounce, isNil } from 'lodash';
 import ReactDOM from 'react-dom';
 
 import { Div } from '../Div';
@@ -16,7 +16,7 @@ import { TourProps, TourStepItem } from './types';
  */
 export const Tour = (props: TourProps): React.ReactElement | null => {
   const {
-    data, activeStepKey, onChange,
+    data, activeStepKey, onChange, timeOut,
   } = props;
 
   const activeItem = data.find((item) => item.stepKey === activeStepKey);
@@ -26,6 +26,19 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const [svgPath, setSvgPath] = React.useState<string>(createOverlaySvgPath(activeItem?.element ?? null, borderRadius, padding));
   const [isScrolling, setIsScrolling] = React.useState<boolean>(false);
+
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (isNil(activeStepKey)) return;
+    if (isNil(timeOut)) return;
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, timeOut * 1000);
+  }, [activeStepKey, timeOut]);
 
   React.useEffect((): (() => void) | void => {
     if (!activeItem?.element) {
@@ -137,14 +150,18 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const content = (
     <>
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="tour-overlay">
-        <path
-          d={svgPath}
-        />
-      </svg>
-      <Div className={`tour-modal ${activeItem.position}`} style={style}>
-        {activeItem.content(contentProps)}
-      </Div>
+      {!isLoading && (
+        <>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="tour-overlay">
+            <path
+              d={svgPath}
+            />
+          </svg>
+          <Div className={`tour-modal ${activeItem.position}`} style={style}>
+            {activeItem.content(contentProps)}
+          </Div>
+        </>
+      )}
     </>
   );
   return ReactDOM.createPortal(content, document.body);

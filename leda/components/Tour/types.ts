@@ -33,6 +33,8 @@ export interface TourProps {
   data: TourStepItem[],
   /** Обработчик изменения */
   onChange: (ev: ChangeEvent) => void,
+  /** Пауза перед отрисовкой гайд-тура. Передается в секундах */
+  timeOut?: number,
 }
 
 export interface TourStepItem {
