@@ -97,8 +97,12 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
         }, 100);
 
         window.addEventListener('scroll', scrollHandler);
-        setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), timeOut * 1000);
-        // window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
+
+        if (timeOut) {
+          setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), timeOut * 1000);
+        } else {
+          window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
+        }
       }
     } else {
       setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
