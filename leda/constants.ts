@@ -64,6 +64,7 @@ export const COMPONENTS_NAMESPACES = {
   tags: 'tags',
   textarea: 'textarea',
   tooltip: 'tooltip',
+  tour: 'tour',
   vstepper: 'vstepper',
   wizard: 'wizard',
 } as const;
