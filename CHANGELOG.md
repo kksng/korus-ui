@@ -6,9 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.35.0] - 2020-11-23
 
-### Fixed 
+### Fixed
 - Validation: Fixed displaying of invalidMessage with isValid prop set to false
+- NumericRange: Fixed null value display bug
 - Tour: Added class 'tour-active-element' for active element to customize styles
+
 
 ## [0.34.0] - 2020-11-09
 
@@ -21,6 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - MultiSelect: Input is cleared after selecting item
 - ToolTip: Added corner position
 - Validation: Fixed validation in controlled mode
+
 
 ## [0.33.0] - 2020-10-26
 
@@ -39,6 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DropZone: Prohibited deleting files in disabled mode
 - FileDrop: Fixed danger class on error.
 
+
 ## [0.32.0] - 2020-10-12
 
 ### Fixed
@@ -52,10 +56,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DropDown: Fixed closing dropdown list on click outside an element in interactionMode="click"
 - Switcher: Changed wrapper span tag to div
 
+
 ## [0.31.1] - 2020-09-28
 
 ### Fixed
 - RadioGroup: Fixed change-event type
+
 
 ## [0.31.0] - 2020-09-28
 
@@ -65,6 +71,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - DropZone: Fixed downloading external and attached files
+
 
 ## [0.30.0] - 2020-09-14
 
@@ -91,6 +98,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - NumericRange: Incorrect 0 value handler.
 - Autocomplete, Input, MultiSelect, Password: hide clear button when disabled.
+
 
 ## [0.28.0] - 2020-08-17
 
@@ -134,6 +142,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added "form" and "name" props checker for input components
 (Input, DateTimeInput, DateTimeInputRange, TextArea, AutoComplete, ButtonGroup, DropZone, FileDrop, MaskedInput, MultiSelect, NumericRange, CheckBox, Password, Switcher, NumericTextBox)
 
+
 ## [0.25.0] - 2020-07-02
 - Datepicker: month names changed
 - Modify interface for dateTimePicker. TabKeyPressPayload add two constant: isOneMonthInRange, isOneYearInRange
@@ -144,12 +153,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - classNames that appended to CheckBox component now passes to Wrapper instead of checkbox label
 - Button type=reset added
 
+
 ## [0.0.7] - 2020-03-12
 
 ### Fixed
 - DropDownSelect: onFilterChange incorrect value on suggestion click
 - DateTimePicker: date parsing errors
 - Validation: validating by validator when empty and not required
+
 
 ## [0.0.6] - 2020-03-05
 
