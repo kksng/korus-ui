@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed 
 - Validation: Fixed displaying of invalidMessage with isValid prop set to false
+- Tour: Added class 'tour-active-element' for active element to customize styles
 
 ## [0.34.0] - 2020-11-09
 
