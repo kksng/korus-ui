@@ -22,7 +22,6 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
   } = props;
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.tour);
-
   const activeItem = data.find((item) => item.stepKey === activeStepKey);
 
   const borderRadius = activeItem?.borderRadius ?? 15;
@@ -30,18 +29,19 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const [svgPath, setSvgPath] = React.useState<string>(createOverlaySvgPath(activeItem?.element ?? null, borderRadius, padding));
   const [isScrolling, setIsScrolling] = React.useState<boolean>(false);
-
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    if (isNil(activeStepKey)) return;
-    if (isNil(timeOut)) return;
+  React.useEffect((): (() => void) | void => {
+    if (isNil(activeStepKey)) return undefined;
+    if (isNil(timeOut)) return undefined;
 
     setIsLoading(true);
 
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoading(false);
     }, timeOut * 1000);
+
+    return () => clearTimeout(timer);
   }, [activeStepKey, timeOut]);
 
   React.useEffect((): (() => void) | void => {
@@ -97,8 +97,8 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
         }, 100);
 
         window.addEventListener('scroll', scrollHandler);
-
-        window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
+        setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), timeOut * 1000);
+        // window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
       }
     } else {
       setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
@@ -149,7 +149,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, activeItem, onChange]);
 
-  if (!activeItem || !activeItem.element) {
+  if (!activeItem || !activeItem.element || isLoading) {
     return null;
   }
 
@@ -157,18 +157,14 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const content = (
     <>
-      {!isLoading && (
-        <>
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="tour-overlay">
-            <path
-              d={svgPath}
-            />
-          </svg>
-          <Div className={`tour-modal ${activeItem.position}`} style={style}>
-            {activeItem.content(contentProps)}
-          </Div>
-        </>
-      )}
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="tour-overlay">
+        <path
+          d={svgPath}
+        />
+      </svg>
+      <Div className={`tour-modal ${activeItem.position}`} style={style}>
+        {activeItem.content(contentProps)}
+      </Div>
     </>
   );
   return ReactDOM.createPortal(content, document.body);
