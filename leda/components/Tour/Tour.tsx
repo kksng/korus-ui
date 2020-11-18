@@ -161,12 +161,12 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const content = (
     <>
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="tour-overlay">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className={theme.overlay}>
         <path
           d={svgPath}
         />
       </svg>
-      <Div className={`tour-modal ${activeItem.position}`} style={style}>
+      <Div className={`${theme.modal} ${activeItem.position}`} style={style}>
         {activeItem.content(contentProps)}
       </Div>
     </>
