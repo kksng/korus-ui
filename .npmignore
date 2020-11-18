@@ -3,7 +3,13 @@
 /styles/
 /types/
 
+/coverage/
+/docs/
+/storybook/
+
 /.idea/
+/.nyc_output/
+/.vscode/
 
 /cypress.json
 /webpack.analyze.js
