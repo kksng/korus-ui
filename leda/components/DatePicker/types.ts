@@ -10,14 +10,16 @@ import {
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 
 export interface DatePickerProps extends DateTimeInputProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /* Dates that are disabled to be selected. Array of dates or dates ranges. */
   disabledDates?: (Date | [Date, Date])[],
   /** Формат отображаемой и вводимой даты. По-умолчанию dd.MM.yyyy */
   format?: string,
-  /** Признак принудительного открытия календаря */
-  isOpen?: boolean,
   /** Признак отключения инпута */
   isDisabled?: boolean,
+  /** Признак принудительного открытия календаря */
+  isOpen?: boolean,
   /** Максимально доступная дата для выбора */
   max?: Date,
   /** Минимально доступная дата для выбора */
@@ -40,6 +42,4 @@ export interface DatePickerProps extends DateTimeInputProps {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInput],
   /** Значение поля ввода */
   value?: string | Date | null,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }

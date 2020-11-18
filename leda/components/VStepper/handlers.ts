@@ -18,8 +18,8 @@ export const createClickHandler = (
       ...ev,
       target: {
         ...ev.target,
-        value: isNil(isOpenProp) ? isOpenState : isOpenProp,
         index,
+        value: isNil(isOpenProp) ? isOpenState : isOpenProp,
       },
     };
 

@@ -6,8 +6,8 @@ import { BlurEvent, FocusEvent, NumericTextBoxProps } from '../NumericTextBox/ty
 import { DivProps } from '../Div';
 
 export interface LabelProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
 }
 
 export interface NumericRangeState {
@@ -18,9 +18,9 @@ export type NumericRangeInputType = undefined | null | number;
 
 export interface RangeChangeEvent {
   component: {
+    formattedValue: [string, string],
     name?: string | [string | undefined, string | undefined],
     value: [null | number, null | number],
-    formattedValue: [string, string],
   },
 }
 
@@ -32,12 +32,14 @@ export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
 }
 
 export interface NumericRangeProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Классы для компонента */
   className?: string,
-  /** Формат. подробнее: formatting.md */
-  format?: string,
   /** Имя формы, нужно для валидации */
   form?: string,
+  /** Формат. подробнее: formatting.md */
+  format?: string,
   /** Рендеры для инпутов, [render, render] */
   inputsRender?: [NumericTextBoxProps['inputRender'] | null, NumericTextBoxProps['inputRender'] | null],
   /** Выключенное состояние */
@@ -52,10 +54,12 @@ export interface NumericRangeProps {
   min?: number,
   /** Имя для нумериков ОТ и ДО */
   name?: string | [string | undefined, string | undefined],
-  /** Обработчик изменения, срабатывает при изменении любого из нумериков, реагирует на onBlur */
-  onChange?: (event: RangeChangeEvent) => void,
   /** Обработчик блюра, приходит из NumericTextBox без изменений */
   onBlur?: (event: BlurEvent) => void,
+  /** Обработчик изменения, срабатывает при изменении любого из нумериков, реагирует на onBlur */
+  onChange?: (event: RangeChangeEvent) => void,
+  /**  Функция обратного вызова при нажатии Enter */
+  onEnterPress?: (event: EnterPressEvent) => void,
   /** Обработчик фокуса, приходит из NumericTextBox без изменений */
   onFocus?: (event: FocusEvent) => void,
   /** Плейсхолдер для нумериков ОТ и ДО */
@@ -66,22 +70,18 @@ export interface NumericRangeProps {
   shouldTrimTrailingZeros?: boolean,
   /** Шаговое значение */
   step?: number,
-  /** Разделитель разрядов */
-  thousandsSeparator?: string,
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.numericRange],
+  /** Разделитель разрядов */
+  thousandsSeparator?: string,
   /** Значение для нумериков ОТ и ДО */
   value?: [NumericRangeInputType, NumericRangeInputType] | null,
   /** Кастомный рендер для враппера */
   wrapperRender?: CustomRender<NumericRangeProps, NumericRangeState, DivProps>,
-  /**  Функция обратного вызова при нажатии Enter */
-  onEnterPress?: (event: EnterPressEvent) => void,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface NumericRangeRefCurrent {
-  wrapper: HTMLDivElement | null,
   inputFrom: HTMLInputElement | null,
   inputTo: HTMLInputElement | null,
+  wrapper: HTMLDivElement | null,
 }

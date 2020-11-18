@@ -15,9 +15,9 @@ export const createChangeHandler = (props: RatingProps) => (event: React.MouseEv
   const customEvent = {
     ...event,
     component: {
-      value: currentSelected,
       index: currentSelected - 1,
       name,
+      value: currentSelected,
     },
   };
 

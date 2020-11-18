@@ -27,9 +27,9 @@ export const StickyPanel = React.forwardRef((props: StickyPanelProps, ref?: Reac
   const [panelStyles, setPanelStyles] = React.useState<StickyPanelStyles>({});
 
   useStickyPanelEffect({
-    panelRef,
     offsetTop,
     panelPosition,
+    panelRef,
     setPanelPosition,
     setPanelStyles,
   });

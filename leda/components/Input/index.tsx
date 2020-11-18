@@ -99,7 +99,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
   const shouldRenderClearButton = hasClearButton && !isDisabled && value.length > 0;
 
   const state = {
-    value, isFocused, isValid,
+    isFocused, isValid, value,
   };
 
   const Wrapper = useElement(
@@ -122,8 +122,8 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
     <Wrapper
       className={wrapperClassNames}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && component.wrapper && {
-        wrapper: component.wrapper,
         input: inputRef.current,
+        wrapper: component.wrapper,
       }))}
     >
       <Div className={inputClassNames}>

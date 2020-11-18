@@ -58,8 +58,8 @@ export const createChangeHandler = (
     component: {
       ...ev?.target,
       dropped: newDropped,
-      value: newValue,
       removedFile,
+      value: newValue,
     },
   };
   // controlled mode

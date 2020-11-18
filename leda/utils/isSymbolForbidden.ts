@@ -4,9 +4,9 @@ import { predefinedForbiddenSymbols } from '../constants';
 export type PredefinedForbiddenSymbols = keyof typeof predefinedForbiddenSymbols;
 
 interface IsSymbolForbiddenProps {
-  value: string,
-  forbiddenSymbols?: PredefinedForbiddenSymbols | RegExp,
   componentName: string,
+  forbiddenSymbols?: PredefinedForbiddenSymbols | RegExp,
+  value: string,
 }
 
 export const isSymbolForbidden = (props: IsSymbolForbiddenProps): boolean => {

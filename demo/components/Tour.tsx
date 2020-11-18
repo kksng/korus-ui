@@ -5,6 +5,8 @@ import { useElementRef } from '../../leda/utils';
 const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] => [
   {
     stepKey: '1',
+    borderRadius: 4,
+    padding: 4,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 1</L.H1>
@@ -28,6 +30,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   },
   {
     stepKey: '2',
+    borderRadius: 4,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 2</L.H1>
@@ -56,6 +59,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   },
   {
     stepKey: '3',
+    borderRadius: 4,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 3</L.H1>
@@ -84,6 +88,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   },
   {
     stepKey: '4',
+    borderRadius: 4,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 4</L.H1>
@@ -126,24 +131,24 @@ export const Tour = (): React.ReactElement => {
         <br />
         <br />
         <L.Div _inner>
-          <L.Span _inner ref={ref1}>
+          <L.Button _inner ref={ref1} onClick={() => console.log('Clicked 1!')}>
             Элемент тура 1
-          </L.Span>
+          </L.Button>
           <br />
           <br />
-          <L.Span _inner ref={ref2}>
+          <L.Button _inner ref={ref2} onClick={() => console.log('Clicked 2!')}>
             Элемент тура 2
-          </L.Span>
+          </L.Button>
           <br />
           <br />
-          <L.Span _inner ref={ref3}>
+          <L.Button _inner ref={ref3} onClick={() => console.log('Clicked 3!')}>
             Элемент тура 3
-          </L.Span>
+          </L.Button>
           <br />
           <br />
-          <L.Span _inner ref={ref4} style={{ marginLeft: '500px' }}>
+          <L.Button _inner ref={ref4} style={{ marginLeft: '500px' }} onClick={() => console.log('Clicked 4!')}>
             Элемент тура 4
-          </L.Span>
+          </L.Button>
         </L.Div>
         <L.Tour
           data={data}

@@ -4,9 +4,9 @@ import { predefinedAllowedSymbols } from '../constants';
 export type PredefinedAllowedSymbols = keyof typeof predefinedAllowedSymbols;
 
 interface IsSymbolAllowedProps {
-  value: string,
   allowedSymbols?: PredefinedAllowedSymbols | RegExp,
   componentName: string,
+  value: string,
 }
 
 export const isSymbolAllowed = (props: IsSymbolAllowedProps): boolean => {

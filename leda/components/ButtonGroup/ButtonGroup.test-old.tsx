@@ -59,7 +59,7 @@ describe('ButtonGroup HANDLERS', () => {
   });
 
   it('should render active class', () => {
-    let value = { target: { value: '1', index: 1 } };
+    let value = { target: { index: 1, value: '1' } };
 
     const handleChange = (ev) => {
       value = ev;

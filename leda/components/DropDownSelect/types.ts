@@ -58,6 +58,7 @@ export interface FocusEvent<T extends Value = Value> extends React.FocusEvent<HT
 }
 
 export interface DropDownSelectProps<T extends Value = Value> extends ValidationProps {
+  [x: string]: unknown,
   autoComplete?: string,
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement | null }>,
   compareObjectsBy?: T extends object ? ((suggestionListItem: T) => any) | string : never,
@@ -77,9 +78,9 @@ export interface DropDownSelectProps<T extends Value = Value> extends Validation
   noSuggestionsRender?: SuggestionListProps['noSuggestionsRender'],
   onBlur?: CustomEventHandler<BlurEvent<T>>,
   onChange?: CustomEventHandler<ChangeEvent<T>>,
+  onEnterPress?: (ev: EnterPressEvent) => void,
   onFilterChange?: CustomEventHandler<ChangeEvent<string>>,
   onFocus?: CustomEventHandler<FocusEvent<T>>,
-  onEnterPress?: (ev: EnterPressEvent) => void,
   placeholder?: string,
   ref?: React.Ref<DropDownSelectRefCurrent>,
   /** Поля, в которых содержатся данные для поиска */
@@ -92,15 +93,14 @@ export interface DropDownSelectProps<T extends Value = Value> extends Validation
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropDownSelect],
   value?: T | null,
   wrapperRender?: CustomRender<DropDownSelectProps<T>, DropDownSelectState, DivProps>,
-  [x: string]: unknown,
 }
 
 export interface DropDownSelectState {
   filterValue: string | null,
   highlightedSuggestion: Value,
-  selectedSuggestion: Value,
   isFocused: boolean,
   isOpen: boolean,
+  selectedSuggestion: Value,
   value: string | number | SomeObject | null,
 }
 
@@ -111,13 +111,13 @@ export interface DropDownSelectRefCurrent {
 
 export interface GetComponentClassNames {
   (data: {
-    theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropDownSelect],
     className?: string,
     isDisabled?: boolean,
     isFocused?: boolean,
     isOpen?: boolean,
     isRequired?: boolean,
     isValid?: boolean,
+    theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropDownSelect],
     value: string | number | SomeObject | null,
   }): {
     inputWrapperClassNames?: string,
@@ -127,12 +127,12 @@ export interface GetComponentClassNames {
 }
 
 export interface HandlerCreatorData {
+  inputRef: React.MutableRefObject<HTMLInputElement | null>,
+  mergeState: (state: Partial<DropDownSelectState>) => void,
   props: DropDownSelectProps,
   state: DropDownSelectState,
-  mergeState: (state: Partial<DropDownSelectState>) => void,
-  value: DropDownSelectState['value'],
-  inputRef: React.MutableRefObject<HTMLInputElement | null>,
   validate: (value?: string | number | SomeObject | null) => boolean,
+  value: DropDownSelectState['value'],
 }
 
 export type ChangeHandler = CustomEventHandler<React.MouseEvent<HTMLElement> & { target: { value: string | number | SomeObject }}>;
@@ -159,10 +159,10 @@ export type FilterRules = 'smart' | 'startsWith' | 'includes';
 
 export interface FilterDataProps {
   data: DropDownSelectProps['data'],
-  filterValue: string | null,
-  textField?: string,
   filterRule?: FilterRules,
+  filterValue: string | null,
   searchFields?: string[],
+  textField?: string,
 }
 
 export interface UseCustomElementsExtra {

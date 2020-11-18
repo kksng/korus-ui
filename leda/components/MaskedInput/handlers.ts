@@ -23,8 +23,8 @@ export const createChangeHandler = (
     const customEvent = {
       ...ev,
       component: {
-        name,
         inputValue: ev.component.inputValue,
+        name,
         value: ev.component.value,
       },
     };
@@ -51,7 +51,7 @@ export const createBlurHandler = (
   } = extraData;
 
   const valueToValidate = getValueToValidate({
-    value, maskedInputRef, placeholderChar,
+    maskedInputRef, placeholderChar, value,
   });
 
   const isValid = validateCurrent(valueToValidate);
@@ -60,9 +60,9 @@ export const createBlurHandler = (
     const customEvent = {
       ...ev,
       component: {
+        isValid,
         name,
         value,
-        isValid,
       },
     };
 
@@ -105,9 +105,9 @@ export const createKeyDownHandler = (
     const event = {
       ...ev,
       component: {
+        inputValue: ev.currentTarget.value,
         name,
         value: ev.component.value,
-        inputValue: ev.currentTarget.value,
       },
     };
     onEnterPress(event);
@@ -127,9 +127,9 @@ export const createResetHandler = ({
   if (isFunction(props.onChange)) {
     const customEvent = {
       component: {
+        inputValue: maskValue(value, props.mask, props.placeholderChar),
         name: props.name,
         value,
-        inputValue: maskValue(value, props.mask, props.placeholderChar),
       },
     };
     props.onChange(customEvent);

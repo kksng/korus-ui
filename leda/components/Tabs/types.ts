@@ -6,6 +6,8 @@ import { LiProps } from '../Li';
 import { defaultTabsTheme } from './theme';
 
 export interface TabsProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Устанавливает номер выбранного таба */
   activeTabKey?: string | number,
   /** Вложенные элементы */
@@ -28,8 +30,6 @@ export interface TabsProps {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.tabs],
   /** Кастомный wrapper */
   wrapperRender?: CustomRender<TabsProps, TabsState, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface TabsState {
@@ -37,6 +37,8 @@ export interface TabsState {
 }
 
 export type TabProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> & {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Вложенные элементы */
   children?: React.ReactNode,
   /** Делает вкладку неактивной */
@@ -49,8 +51,6 @@ export type TabProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> & {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.tabs],
   /** Название таба. Может принимать название в виде строки или ReactNode */
   title: React.ReactNode,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 };
 
 export interface TabsContextType {
@@ -86,32 +86,32 @@ export interface ChangeEvent extends React.MouseEvent {
 }
 
 export interface WrapperProps {
-  className?: string,
-  style?: React.CSSProperties,
-  ref?: React.Ref<TabsRefCurrent>,
   children?: React.ReactNode,
+  className?: string,
+  ref?: React.Ref<TabsRefCurrent>,
+  style?: React.CSSProperties,
 }
 
 export interface ContentProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
   tabContentNode?: Element | null,
 }
 
 export interface HeadingProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
 }
 
 export interface CustomElements {
-  Wrapper: React.FC<WrapperProps>,
   Content: React.FC<ContentProps>,
   Heading: React.FC<HeadingProps>,
+  Wrapper: React.FC<WrapperProps>,
 }
 
 export interface TabsRefCurrent {
-  wrapper: HTMLElement | null,
   content: HTMLElement | null,
+  wrapper: HTMLElement | null,
 }
 
 export interface TabRefCurrent {
@@ -125,11 +125,11 @@ export interface ArrowProps {
 
 export interface TabsScroll {
   containerRef: React.Ref<any>,
-  hasScroll: boolean,
   hasLeftArrow: boolean,
   hasRightArrow: boolean,
-  onRightClick: React.MouseEventHandler,
+  hasScroll: boolean,
   onLeftClick: React.MouseEventHandler,
+  onRightClick: React.MouseEventHandler,
 }
 
 export interface TabsScrollProps {

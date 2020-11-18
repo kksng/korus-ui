@@ -84,9 +84,9 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
   }), {
     filterValue: null,
     highlightedSuggestion: defaultValue ?? null,
-    selectedSuggestion: defaultValue ?? null,
     isFocused: false,
     isOpen: false,
+    selectedSuggestion: defaultValue ?? null,
     value: defaultValue,
   });
 
@@ -104,7 +104,7 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
     isValid, validateCurrent, InvalidMessage,
   } = useValidation(props, state, {
     reset: createResetHandler({
-      props, mergeState, value: defaultValue,
+      mergeState, props, value: defaultValue,
     }),
   });
 
@@ -115,11 +115,11 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
     selectIconClassNames,
     wrapperClassNames,
   } = getComponentClassNames({
-    theme, className, isDisabled, isFocused, isOpen, isValid, isRequired, value,
+    className, isDisabled, isFocused, isOpen, isRequired, isValid, theme, value,
   });
 
   const handlerData = {
-    props, state, mergeState, inputRef, validate: validateCurrent, value,
+    inputRef, mergeState, props, state, validate: validateCurrent, value,
   };
 
   const handleChange = createChangeHandler(handlerData);
@@ -154,7 +154,7 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
   const suggestionListData = (() => {
     const filteredData = shouldFilterValues
       ? filterData({
-        data, filterValue, textField, filterRule, searchFields,
+        data, filterRule, filterValue, searchFields, textField,
       })
       : data;
 
@@ -179,8 +179,8 @@ export const DropDownSelect = React.forwardRef((props: DropDownSelectProps, ref:
     <Wrapper
       className={wrapperClassNames}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-        wrapper: component.wrapper,
         input: inputRef.current,
+        wrapper: component.wrapper,
       }))}
     >
       <Div className={inputWrapperClassNames}>

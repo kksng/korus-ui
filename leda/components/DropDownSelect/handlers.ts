@@ -27,8 +27,8 @@ export const createChangeHandler = ({
     const changeEvent = {
       ...ev,
       component: {
-        value: ev.target.value,
         name,
+        value: ev.target.value,
       },
     };
 
@@ -39,9 +39,9 @@ export const createChangeHandler = ({
     const customEvent = {
       ...ev,
       component: {
-        value: getText(ev.target.value, textField),
         name,
         suggestion: ev.target.value,
+        value: getText(ev.target.value, textField),
       },
     };
 
@@ -75,8 +75,8 @@ export const createBlurHandler = ({
       ...ev,
       component: {
         name,
-        value: getText(value, textField),
         suggestion: value,
+        value: getText(value, textField),
       },
     };
 
@@ -87,9 +87,9 @@ export const createBlurHandler = ({
     const customEvent = {
       ...ev,
       component: {
-        value,
-        name,
         isValid,
+        name,
+        value,
       },
     };
 
@@ -115,8 +115,8 @@ export const createFocusHandler = ({
     const customEvent = {
       ...ev,
       component: {
-        value,
         name,
+        value,
       },
     };
 
@@ -169,7 +169,7 @@ export const createKeyDownHandler = ({
   const filteredData = (() => {
     if (shouldFilterValues != null) {
       return filterData({
-        data, filterValue, textField, filterRule, searchFields,
+        data, filterRule, filterValue, searchFields, textField,
       }) || [];
     }
     return data;
@@ -223,8 +223,8 @@ export const createKeyDownHandler = ({
       props.onEnterPress({
         ...ev,
         component: {
-          value: ev.currentTarget.value,
           name: props.name,
+          value: ev.currentTarget.value,
         },
       });
     }
@@ -241,8 +241,8 @@ export const createKeyDownHandler = ({
         ...ev,
         component: {
           name,
-          value: textValue,
           suggestion: highlightedSuggestion,
+          value: textValue,
         },
       };
 
@@ -253,8 +253,8 @@ export const createKeyDownHandler = ({
       const changeEvent = {
         ...ev,
         component: {
-          value: highlightedSuggestion,
           name,
+          value: highlightedSuggestion,
         },
       };
 
@@ -299,8 +299,8 @@ export const createFilterChangeHandler = ({
       ...ev,
       component: {
         name,
-        value: ev.target.value,
         suggestion: getText(value, textField) === ev.target.value ? value : null,
+        value: ev.target.value,
       },
     };
 
@@ -330,8 +330,8 @@ export const createClearIconClickHandler = ({
     const changeEvent = {
       ...ev,
       component: {
-        value: null,
         name,
+        value: null,
       },
     };
     onChange(changeEvent);
@@ -350,8 +350,8 @@ export const createResetHandler = ({
   mergeState,
   value,
 }: {
-  props: DropDownSelectProps,
   mergeState: (state: Partial<DropDownSelectState>) => void,
+  props: DropDownSelectProps,
   value: Value,
 }) => () => {
   mergeState({

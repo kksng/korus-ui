@@ -17,3 +17,4 @@ import './commands';
 import 'cypress-plugin-tab';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+import '@cypress/code-coverage/support'

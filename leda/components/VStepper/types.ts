@@ -4,8 +4,11 @@ import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export interface VStepperProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Шаги */
   children: React.ReactNode,
+  ref?: React.Ref<VStepperRefCurrent>,
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.vstepper],
   /** Текущий шаг, если передано - текущему шагу передается класс progress, а всем предыдущим класс success
@@ -13,77 +16,74 @@ export interface VStepperProps {
   * Если undefined - все шаги пустые
   * Если null - все шаги success */
   value?: SomeObject | null,
-  ref?: React.Ref<VStepperRefCurrent>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface VStepperItemProps {
-  /** Классы для компонента */
-  className?: string,
-  /** Поле из item с заголовком шага */
-  titleTextField?: string,
+  /** Классы переданные через _ */
+  [x: string]: unknown,
+  /** */
+  bodyRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, BodyProps>,
   /** Содержимое шага */
   children?: React.ReactNode,
+  /** Классы для компонента */
+  className?: string,
+  /** Кастомизация содержимого шага */
+  contentRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, ContentProps>,
+  /** Вместо цифры используется галка или крестик (в зависимости от статуса) */
+  hasSignIcon?: boolean,
+  /** Кастомизация заголовка */
+  headingRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, HeadingProps>,
+  /** Кастомизация иконки */
+  iconRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, IconProps>,
+  /** Отключение шага */
+  isDisabled?: boolean,
+  /** Состояние шага - открыт/закрыт */
+  isOpen?: boolean,
+  /** Объект с данными шага */
+  item?: SomeObject,
+  /** Обработчик клика по заголовку */
+  onClick?: React.MouseEventHandler,
+  /** Кастомизация статуса */
+  statusRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, StatusProps>,
+  /** Текст статуса, используется если не передан item */
+  statusText?: string,
   /** Поле из item с текстом для статуса шага */
   statusTextField?: string,
   /** Текст заголовка, используется если не передан item */
   titleText?: string,
-  /** Текст статуса, используется если не передан item */
-  statusText?: string,
+  /** Поле из item с заголовком шага */
+  titleTextField?: string,
   /** Поле из item с типом текущего шага (по-умолчанию принимаются типы "success, progress, danger" */
   typeField?: string,
-  /** Кастомизация иконки */
-  iconRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, IconProps>,
-  /** Кастомизация содержимого шага */
-  contentRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, ContentProps>,
   /** Кастомизация враппера шага */
   wrapperRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, WrapperProps>,
-  /** Кастомизация статуса */
-  statusRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, StatusProps>,
-  /** Кастомизация заголовка */
-  headingRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, HeadingProps>,
-  /** */
-  bodyRender?: CustomRender<VStepperItemProps, { isOpen: boolean}, BodyProps>,
-  /** Вместо цифры используется галка или крестик (в зависимости от статуса) */
-  hasSignIcon?: boolean,
-  /** Отключение шага */
-  isDisabled?: boolean,
-  /** Объект с данными шага */
-  item?: SomeObject,
-  /** Состояние шага - открыт/закрыт */
-  isOpen?: boolean,
-  /** Обработчик клика по заголовку */
-  onClick?: React.MouseEventHandler,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface IconProps {
+  children?: React.ReactNode,
   className?: string,
   type?: string,
-  children?: React.ReactNode,
 }
 
 export interface ContentProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
 }
 
 export interface WrapperProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
 }
 
 export interface StatusProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
 }
 
 export interface HeadingProps {
+  children?: React.ReactNode,
   className?: string,
   onClick?: React.MouseEventHandler,
-  children?: React.ReactNode,
 }
 
 export interface BodyProps {
@@ -91,9 +91,9 @@ export interface BodyProps {
 }
 
 export interface ItemClassNames {
-  wrapperClassName?: string,
-  iconClassName?: string,
   headingIconClassName?: string,
+  iconClassName?: string,
+  wrapperClassName?: string,
 }
 
 export interface CustomElements {

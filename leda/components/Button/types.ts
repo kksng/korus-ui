@@ -11,6 +11,8 @@ export interface SubmitEvent extends React.MouseEvent<HTMLButtonElement> {
 export type ValidationFailEvent = React.MouseEvent<HTMLButtonElement> & { invalidForms: Form[] };
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>, ValidationButtonProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Название формы */
   form?: string | string[],
   /** Отключение кнопки */
@@ -36,8 +38,6 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>, Va
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.button],
   /** Тип кнопки */
   type?: React.ButtonHTMLAttributes<{}>['type'],
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface ButtonRefCurrent {

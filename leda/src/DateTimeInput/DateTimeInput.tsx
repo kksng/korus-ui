@@ -84,7 +84,7 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
   const timeMax = React.useMemo(() => normalizeTimeLimits(timeMaxProp), [timeMaxProp]);
 
   const newProps = {
-    ...props, min, max, timeMin, timeMax,
+    ...props, max, min, timeMax, timeMin,
   };
 
   const [state, dispatch] = useDateTimeInputState(newProps);
@@ -94,7 +94,7 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
 
   // набор условий для обработки событий календаря (отключенные даты, неактивные стрелочки и тд)
   const conditions = getCalendarConditions({
-    min, max, viewDate: state.viewDate, viewType: state.viewType, value: state.date,
+    max, min, value: state.date, viewDate: state.viewDate, viewType: state.viewType,
   });
   // валидируем по Date, а не по строке. Т.к. 12.__.____ - невалидная дата
   const validationValue = isDate(valueProp) || isNil(valueProp) ? valueProp : stringToDate(valueProp, format);
@@ -112,12 +112,12 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
     validateCurrent, isValid, InvalidMessage,
   } = useValidation(validationProps, validationState, {
     reset: createResetHandler({
-      props, dispatch,
+      dispatch, props,
     }),
   });
 
   useDateTimeInputEffects({
-    props: newProps, state, dispatch, conditions,
+    conditions, dispatch, props: newProps, state,
   });
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.dateTimeInput);
@@ -127,7 +127,7 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
   const isOpen = isNil(isOpenProp) ? state.isOpen : isOpenProp;
 
   const handlersData = {
-    props: newProps, state, dispatch, maskedInputRef, validate: validateCurrent, conditions,
+    conditions, dispatch, maskedInputRef, props: newProps, state, validate: validateCurrent,
   };
 
   const handleBlur = createBlurHandler(handlersData);
@@ -150,10 +150,10 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
   );
 
   const inputValue = getValue({
-    valueProp,
-    valueState: state.value,
     dateState: state.date,
     format,
+    valueProp,
+    valueState: state.value,
   });
 
   return (
@@ -161,8 +161,8 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
       className={wrapperClassNames}
       onKeyDown={(ev) => handleCalendarKeyDown(ev)}
       ref={ref && ((divComponent) => bindFunctionalRef(divComponent, ref, divComponent && {
-        wrapper: divComponent.wrapper,
         input: maskedInputRef.current,
+        wrapper: divComponent.wrapper,
       }))}
     >
       <Div

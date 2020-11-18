@@ -1,7 +1,7 @@
 export const COMPONENT_TYPES = {
   DATE_ONLY: 'date-only',
-  TIME_ONLY: 'time-only',
   DATE_TIME: 'date-time',
+  TIME_ONLY: 'time-only',
 } as const;
 
 export const HOURS_LIMITS = [0, 23];
@@ -15,16 +15,16 @@ export const YEARS_IN_ROW = 4;
 export const DAYS_IN_WEEK = 7;
 
 export const KEYS = {
-  LEFT: 'ArrowLeft',
-  LEFT_IE: 'Left',
-  RIGHT: 'ArrowRight',
-  RIGHT_IE: 'Right',
-  UP: 'ArrowUp',
-  UP_IE: 'Up',
   DOWN: 'ArrowDown',
   DOWN_IE: 'Down',
   ENTER: 'Enter',
   ESC: 'Escape',
   ESC_IE: 'Esc',
+  LEFT: 'ArrowLeft',
+  LEFT_IE: 'Left',
+  RIGHT: 'ArrowRight',
+  RIGHT_IE: 'Right',
   TAB: 'Tab',
+  UP: 'ArrowUp',
+  UP_IE: 'Up',
 } as const;
