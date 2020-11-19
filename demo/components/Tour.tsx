@@ -266,7 +266,7 @@ export const Tour = (): React.ReactElement => {
         />
         <L.Button 
           _warning
-          onClick={() => setStepDelay((stepDelay) => isNil(stepDelay) ? 2 : undefined)}
+          onClick={() => setStepDelay((stepDelay) => isNil(stepDelay) ? 2000 : undefined)}
         >
           Set/remove stepDelay 2 sec
         </L.Button>

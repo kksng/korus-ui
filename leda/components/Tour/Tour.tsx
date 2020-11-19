@@ -39,7 +39,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, stepDelay * 1000);
+    }, stepDelay);
 
     return () => clearTimeout(timer);
   }, [activeStepKey, stepDelay]);
@@ -99,7 +99,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
         window.addEventListener('scroll', scrollHandler);
 
         if (stepDelay) {
-          setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), stepDelay * 1000);
+          setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), stepDelay);
         } else {
           window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
         }
