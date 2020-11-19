@@ -63,6 +63,7 @@ export const Validation = (args: SomeObject): React.ReactElement => {
 
 `;
 
+// eslint-disable-next-line
 export const Validation = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({ isRequired: true });
   const [value, setValue] = React.useState<[string, string]>(['', '']);

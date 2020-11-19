@@ -5,6 +5,7 @@ import { useEventSpy } from '../../useEventSpy';
 import { PasswordStrength } from '../../../leda/components/Password/constants';
 import { StoryProps } from '../../types';
 
+// eslint-disable-next-line
 export const Basic = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<string | null>(null);

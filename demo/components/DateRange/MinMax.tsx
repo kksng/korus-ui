@@ -38,6 +38,7 @@ export const MinMax = (args: SomeObject): React.ReactElement => {
 };
 `;
 
+// eslint-disable-next-line
 export const MinMax = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<[string, string]>(['', '']);

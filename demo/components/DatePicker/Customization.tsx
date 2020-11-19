@@ -35,6 +35,7 @@ export const BasicUsage = (args: SomeObject): React.ReactElement => {
 
 `;
 
+// eslint-disable-next-line
 export const Customization = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 

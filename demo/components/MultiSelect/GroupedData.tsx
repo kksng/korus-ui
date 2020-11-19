@@ -29,6 +29,7 @@ const MSData = [
   { city: 'Budapest', id: 11, attr: 'value11' },
 ];
 
+// eslint-disable-next-line
 export const GroupedData = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
