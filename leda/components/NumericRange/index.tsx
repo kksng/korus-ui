@@ -111,7 +111,7 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
         onEnterPress={onEnterPress}
         onChange={handleChange('from')}
         placeholder={placeholder[0]}
-        theme={theme.to}
+        theme={theme.from}
         value={value[0]}
         {...commonProps}
       />
@@ -126,7 +126,7 @@ export const NumericRange = React.forwardRef((props: NumericRangeProps, ref?: Re
         onEnterPress={onEnterPress}
         onChange={handleChange('to')}
         placeholder={placeholder[1]}
-        theme={theme.from}
+        theme={theme.to}
         value={value[1]}
         {...commonProps}
       />
