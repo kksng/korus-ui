@@ -353,8 +353,8 @@ export const createCalendarClickHandler = ({
       onChange({
         ...ev,
         component: {
-          name,
           date: newDate,
+          name,
           value: formatDateTime(newDate, format) || '',
         },
       });
@@ -362,11 +362,11 @@ export const createCalendarClickHandler = ({
   };
 
   const dateShorthand = {
-    year: viewDate.getFullYear(),
-    month: viewDate.getMonth(),
     dateVal: viewDate.getDate(),
     hours: viewDate.getHours(),
     minutes: viewDate.getMinutes(),
+    month: viewDate.getMonth(),
+    year: viewDate.getFullYear(),
   };
 
   const {
@@ -384,68 +384,68 @@ export const createCalendarClickHandler = ({
   switch (type) {
     case CALENDAR_CLICK_ACTION.DATES_PREV: {
       handleDatesPrevClick({
-        viewDate, dateShorthand, dispatch, min, isPrevButtonDisabled,
+        dateShorthand, dispatch, isPrevButtonDisabled, min, viewDate,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.DATES_NEXT: {
       handleDatesNextClick({
-        viewDate, dateShorthand, dispatch, max, isNextButtonDisabled,
+        dateShorthand, dispatch, isNextButtonDisabled, max, viewDate,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.DATES_SELECT: {
       handleDatesSelect({
-        dateCell: payload && payload.dateCell, updateDate, dispatch, dateShorthand,
-        type: componentType, format, maskedInputRef, monthCell: payload && payload.monthCell,
+        dateCell: payload && payload.dateCell, dateShorthand, dispatch, format,
+        maskedInputRef, monthCell: payload && payload.monthCell, type: componentType, updateDate,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.MONTHS_PREV: {
       handleMonthsPrevClick({
-        viewDate, dateShorthand, isDateOutOfMinYearRange, dispatch, min,
+        dateShorthand, dispatch, isDateOutOfMinYearRange, min, viewDate,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.MONTHS_NEXT: {
       handleMonthsNextClick({
-        viewDate, dateShorthand, isDateOutOfMaxYearRange, dispatch, max,
+        dateShorthand, dispatch, isDateOutOfMaxYearRange, max, viewDate,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.MONTHS_SELECT: {
       handleMonthsSelect({
-        viewDate, dateShorthand, isDateOutOfMinDecadeRange, dispatch, min, max, monthCell: payload && payload.monthCell,
+        dateShorthand, dispatch, isDateOutOfMinDecadeRange, max, min, monthCell: payload && payload.monthCell, viewDate,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.YEARS_PREV: {
       handleYearsPrevClick({
-        viewDate, dateShorthand, isDateOutOfMinDecadeRange, dispatch, min,
+        dateShorthand, dispatch, isDateOutOfMinDecadeRange, min, viewDate,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.YEARS_NEXT: {
       handleYearsNextClick({
-        viewDate, dateShorthand, isDateOutOfMaxDecadeRange, dispatch, max,
+        dateShorthand, dispatch, isDateOutOfMaxDecadeRange, max, viewDate,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.YEARS_SELECT: {
       handleYearsSelect({
-        viewDate, dateShorthand, dispatch, max, min, yearCell: payload && payload.yearCell,
+        dateShorthand, dispatch, max, min, viewDate, yearCell: payload && payload.yearCell,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.TITLE_CLICK: {
       handleTitleClick({
-        viewType, isOneMonthInRange, isOneYearInRange, dispatch,
+        dispatch, isOneMonthInRange, isOneYearInRange, viewType,
       });
       break;
     }
     case CALENDAR_CLICK_ACTION.TODAY_BUTTON_CLICK: {
       handleTodayButtonClick({
-        updateDate, dispatch, min, max,
+        dispatch, max, min, updateDate,
       });
       break;
     }

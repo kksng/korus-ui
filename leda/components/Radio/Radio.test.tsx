@@ -117,7 +117,7 @@ describe('Radio HANDLERS', () => {
 
     wrapper.find('input').last().getDOMNode().addEventListener('change', (ev) => wrapper.props().onChange(ev));
 
-    wrapper.find('input').last().props().onChange({ value: 'radio-3', name: 'radio-group' });
+    wrapper.find('input').last().props().onChange({ name: 'radio-group', value: 'radio-3' });
 
     expect(onChange).toHaveBeenCalled();
 

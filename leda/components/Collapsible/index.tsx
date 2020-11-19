@@ -35,8 +35,8 @@ export const Collapsible = React.forwardRef((props: CollapsibleProps, ref: React
   const bodyRef = React.useRef<HTMLElement>();
 
   const { setIsExpandedStyle, setIsCollapsedStyle, style } = useCollapse({
-    isOpen,
     content: bodyRef,
+    isOpen,
   });
 
   const onTransitionEnd = React.useCallback((ev: React.TransitionEvent) => {
@@ -53,8 +53,8 @@ export const Collapsible = React.forwardRef((props: CollapsibleProps, ref: React
   [isOpen, onRest, setIsCollapsedStyle, setIsExpandedStyle]);
 
   const styles = React.useMemo(() => ({
-    willChange: 'height',
     transition: transitionProperty,
+    willChange: 'height',
     ...style,
   }), [style, transitionProperty]);
 

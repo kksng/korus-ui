@@ -44,20 +44,20 @@ describe('DropDownSelect filterData', () => {
     const props = {
       data: [
         {
-          region: 'Europe',
           city: 'Berlin',
+          region: 'Europe',
         },
         {
-          region: 'Europe',
           city: 'Paris',
+          region: 'Europe',
         },
         {
-          region: 'Europe',
           city: 'Rome',
+          region: 'Europe',
         },
         {
-          region: 'Europe',
           city: 'Moscow',
+          region: 'Europe',
         },
       ],
       filterValue: 'm',
@@ -65,12 +65,12 @@ describe('DropDownSelect filterData', () => {
     };
     const expected = [
       {
-        region: 'Europe',
         city: 'Rome',
+        region: 'Europe',
       },
       {
-        region: 'Europe',
         city: 'Moscow',
+        region: 'Europe',
       },
     ];
     expect(helpers.filterData(props)).toEqual(expected);

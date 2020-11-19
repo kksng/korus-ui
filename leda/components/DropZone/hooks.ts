@@ -19,7 +19,7 @@ defaultAccepted.displayName = 'AcceptedFiles';
 
 export const useCustomElements = (props: DropZoneProps, state: DropZoneState): CustomElements => {
   const {
-    acceptedFilesRender, rejectedFilesRender, infoRender, uploadButtonRender, wrapperRender,
+    acceptedFilesRender, rejectedFilesRender, infoRender, uploadButtonRender, wrapperRender, loadingViewRender,
   } = props;
 
   const context = React.useContext(LedaContext);
@@ -66,9 +66,9 @@ export const useCustomElements = (props: DropZoneProps, state: DropZoneState): C
 
   return {
     AcceptedFiles,
+    Info,
     RejectedFiles,
     UploadButton,
-    Info,
     Wrapper,
   };
 };
@@ -82,6 +82,8 @@ export const useDropZoneRestProps = (props: DropZoneProps): {} => {
     dropZoneFilesNode,
     forbiddenFiles,
     infoRender,
+    loadingProgress,
+    loadingViewRender,
     maxFileNameLength,
     maxFileSize,
     maxFilesNumber,
@@ -97,6 +99,7 @@ export const useDropZoneRestProps = (props: DropZoneProps): {} => {
     requiredMessage,
     invalidMessageRender,
     invalidMessage,
+    isLoading,
     isRequired,
     isValid,
     shouldValidateUnmounted,

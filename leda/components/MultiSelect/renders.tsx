@@ -17,7 +17,7 @@ import { Span } from '../Span';
  *
  * @returns {CustomRender<SuggestionItemProps, {}, SuggestionElementProps> | undefined} - custom render function for checkboxes
  */
-export const createCheckBoxesRender = ({ theme, itemRender }: { theme: typeof defaultMultiSelectTheme, itemRender: SuggestionListProps['itemRender'] }): SuggestionListProps['itemRender'] => ({ componentProps, Element, elementProps }) => {
+export const createCheckBoxesRender = ({ theme, itemRender }: { itemRender: SuggestionListProps['itemRender'], theme: typeof defaultMultiSelectTheme }): SuggestionListProps['itemRender'] => ({ componentProps, Element, elementProps }) => {
   const {
     isSelected, isSelectAllItem, selectAllState, selectAllItemRender,
   } = componentProps;

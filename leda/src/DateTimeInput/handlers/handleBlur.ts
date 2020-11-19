@@ -36,9 +36,9 @@ export const createBlurHandler = ({
     onChange({
       ...ev,
       component: {
-        value: formatDateTime(normalizedDateValue, format),
-        name,
         date: normalizedDateValue,
+        name,
+        value: formatDateTime(normalizedDateValue, format),
       },
     });
   }
@@ -49,10 +49,10 @@ export const createBlurHandler = ({
     onBlur({
       ...ev,
       component: {
-        value: formatDateTime(normalizedDateValue, format),
-        name,
         date: normalizedDateValue,
         isValid,
+        name,
+        value: formatDateTime(normalizedDateValue, format),
       },
     });
   }

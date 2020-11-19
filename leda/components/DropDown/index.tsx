@@ -75,8 +75,8 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
   );
 
   const classMap = React.useMemo(() => ({
-    top: theme.wrapperTop,
     right: theme.wrapperRight,
+    top: theme.wrapperTop,
     visible: theme.wrapperVisible,
   }), [theme.wrapperTop, theme.wrapperVisible, theme.wrapperRight]);
 
@@ -92,8 +92,8 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
       onClick: () => setIsOpen(!isOpenState),
     }
     : {
-      onMouseOver: () => setIsOpen(true),
       onMouseLeave: () => setIsOpen(false),
+      onMouseOver: () => setIsOpen(true),
     };
 
   return (
@@ -107,7 +107,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === Ul) {
-          return React.cloneElement(child, { ref: containerRef, onClick: () => setIsOpen(false) });
+          return React.cloneElement(child, { onClick: () => setIsOpen(false), ref: containerRef });
         }
 
         return child;

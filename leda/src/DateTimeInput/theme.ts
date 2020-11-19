@@ -3,10 +3,10 @@ import { defaultTheme as calendarTheme } from '../Calendar/theme';
 /* eslint-disable key-spacing */
 export const defaultDateTimeInputTheme = {
   calendar:             calendarTheme,
+  calendarIcon:         'datepicker-calendar-icon',
   iconsWrapper:         'datepicker-icons-wrapper',
   input:                'datepicker-input',
   inputWrapper:         'datepicker-input-wrapper',
-  calendarIcon:         'datepicker-calendar-icon',
   inputWrapperFocused:  'focused',
   inputWrapperInvalid:  'danger',
   inputWrapperRequired: 'required',

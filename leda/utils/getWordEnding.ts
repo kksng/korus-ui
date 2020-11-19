@@ -9,7 +9,7 @@
 */
 export const getWordEnding = ({
   count, one, two, five,
-}: { count: number, one: string, two: string, five: string }): string => {
+}: { count: number, five: string, one: string, two: string }): string => {
   let n = Math.abs(count);
   n %= 100;
 

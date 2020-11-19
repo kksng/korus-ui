@@ -3,13 +3,13 @@ import { defaultSuggestionListTheme } from '../../src/SuggestionList/theme';
 
 export const defaultDropDownSelectTheme = {
   ...defaultSuggestionListTheme,
+  clearIcon:                  'dropdownselect-clear-icon',
   input:                      'dropdownselect-input',
   inputWrapper:               'dropdownselect-input-wrapper',
   inputWrapperDisabled:       'disabled',
   inputWrapperFocused:        'focused',
   inputWrapperInvalid:        'danger',
   inputWrapperRequired:       'required',
-  clearIcon:                  'dropdownselect-clear-icon',
   selectIcon:                 'dropdownselect-select-icon',
   selectIconClosed:           'closed',
   selectIconOpened:           'opened',
