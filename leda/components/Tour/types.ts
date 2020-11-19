@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { Position } from './constants';
 
 /**
  * Change event
@@ -53,7 +54,7 @@ export interface TourStepItem {
   /** Отступы выделенной области в px, по-умолчанию 0px */
   padding?: number,
   /** Положение модалки */
-  position: 'top' | 'right' | 'bottom' | 'left' | 'top-left' | 'top-center' | 'bottom-left' | 'bottom-center',
+  position: (typeof Position)[keyof typeof Position],
   /** Идентификатор шага */
   stepKey: string | number,
 }
