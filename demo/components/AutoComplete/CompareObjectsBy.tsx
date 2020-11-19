@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
 const data = [
   { id: 0, attr: 'value0', city: 'Moscow' },
@@ -12,7 +13,7 @@ const data = [
   { id: 6, attr: 'value6', city: 'Madrid' },
 ];
 
-export const CompareObjectsBy = (StoryProps: { title: string }): React.ReactElement => {
+export const CompareObjectsBy = (StoryProps: StoryProps): React.ReactElement => {
   const [value, setValue] = React.useState<string | null>();
 
   return (

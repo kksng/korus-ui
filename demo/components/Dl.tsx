@@ -1,7 +1,8 @@
 import React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const Dl = () => (
+export const Dl = (StoryProps: StoryProps) => (
   <L.Div _demoStory>
     <L.H4 _title>Description List</L.H4>
     <br />

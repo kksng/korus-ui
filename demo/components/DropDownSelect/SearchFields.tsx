@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as L from '../../../leda';
-import { SomeObject } from '../../../leda/commonTypes';
+import { StoryProps } from '../../types';
 
 // eslint-disable-next-line
-export const SearchFields = (args: SomeObject): React.ReactElement => {
+export const SearchFields = (StoryProps: StoryProps): React.ReactElement => {
 
   return (
     <L.Div _box _inner _demoBg>

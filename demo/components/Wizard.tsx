@@ -2,6 +2,7 @@
 import * as React from 'react';
 import * as L from '../../leda';
 import { useInterval } from '../../leda/utils';
+import { StoryProps } from '../types';
 
 const data = [
     { labelText: 'Согласование' },
@@ -12,7 +13,7 @@ const data = [
     { labelText: 'Оплата' },
   ];
 
-export const Wizard = () => {
+export const Wizard = (StoryProps: StoryProps) => {
     const [index, setIndex] = React.useState(2);
     const [value, setValue] = React.useState(data[index]);
     const [progress, setProgress] = React.useState(0);

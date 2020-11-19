@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { MaskedInputRefCurrent } from '../../../leda/components/MaskedInput/types';
 import { AutoCompleteRefCurrent } from '../../../leda/components/AutoComplete/types';
+import { StoryProps } from '../../types';
 
 const validate = (ref: any) => {
   if (ref.current && ref.current.triggerValidation) {
@@ -16,7 +17,7 @@ const validate = (ref: any) => {
   return false;
 };
 
-export const MixedValidation = (props: { title: string }) => {
+export const MixedValidation = (StoryProps: StoryProps) => {
   const [valueI1, setValueI1] = React.useState('');
   const [valueI2, setValueI2] = React.useState('');
   const [valueAC, setValueAC] = React.useState('');

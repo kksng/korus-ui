@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 import { useElementRef } from '../../../leda/utils';
+import { StoryProps } from '../../types';
 
-export const TabsNode = (StoryProps: { title: string }) => {
+export const TabsNode = (StoryProps: StoryProps) => {
   const [selected, setSelected] = React.useState<string | number>(0);
 
   const [Element, ref] = useElementRef();

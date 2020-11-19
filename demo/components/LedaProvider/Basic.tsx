@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Basic = (StoryProps: { title: string }) => {
+export const Basic = (StoryProps: StoryProps) => {
   return (
     <L.Div _box _inner _demoBg>
       <L.Leda>

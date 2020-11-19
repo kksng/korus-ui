@@ -1,7 +1,8 @@
 import React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const Collapsible = () => {
+export const Collapsible = (StoryProps: StoryProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (

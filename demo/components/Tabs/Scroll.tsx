@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Scroll = (StoryProps: { title: string }) => {
+export const Scroll = (StoryProps: StoryProps) => {
   const [selected, setSelected] = React.useState<string | number>(0);
 
   return (

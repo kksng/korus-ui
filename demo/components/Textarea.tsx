@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 import { StateButtonGroup } from './StateButtonGroup';
 
-export const Textarea = () => {
+export const Textarea = (StoryProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
   const [name, setName] = React.useState<string | undefined>('');

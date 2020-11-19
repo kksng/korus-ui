@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const Validation = (args: SomeObject): React.ReactElement => {
@@ -63,7 +63,8 @@ export const Validation = (args: SomeObject): React.ReactElement => {
 
 `;
 
-export const Validation = (args: SomeObject): React.ReactElement => {
+// eslint-disable-next-line
+export const Validation = (StoryProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({ isRequired: true });
   const [value, setValue] = React.useState<[string, string]>(['', '']);
   const [eventData, setEventData] = React.useState<any>({});

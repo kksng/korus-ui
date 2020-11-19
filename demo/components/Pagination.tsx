@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 import { StateButtonGroup } from './StateButtonGroup';
 
-export const Pagination = (): React.ReactElement => {
+export const Pagination = (StoryProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [pageSize, setPageSize] = React.useState<number | undefined>(10);
   const [currentPage, setCurrentPage] = React.useState<number>(1);

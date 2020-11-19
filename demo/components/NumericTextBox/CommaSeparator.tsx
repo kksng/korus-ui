@@ -3,8 +3,9 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
-export const CommaSeparator = (StoryProps: { title: string }) => {
+export const CommaSeparator = (StoryProps: StoryProps) => {
   const [props, setProps] = React.useState<{ isDisabled?: boolean }>({});
 
   const { update, EventInfo } = useEventSpy(['formattedValue']);

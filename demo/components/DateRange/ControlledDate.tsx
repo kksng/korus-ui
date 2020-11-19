@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const ControlledDate = (args: SomeObject): React.ReactElement => {
@@ -69,7 +69,8 @@ export const ControlledDate = (args: SomeObject): React.ReactElement => {
 };
 `;
 
-export const ControlledDate = (args: SomeObject): React.ReactElement => {
+// eslint-disable-next-line
+export const ControlledDate = (StoryProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
   const [date, setDate] = React.useState<[Date | null, Date | null]>([new Date(2019, 5, 5), new Date(2019, 5, 15)]);

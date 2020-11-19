@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const TimeRange = () => {
+export const TimeRange = (StoryProps: StoryProps) => {
   const [props, setProps] = React.useState({ isDisabled: false, isOpen: false });
   const [value, setValue] = React.useState<[string, string]>(['13:30', '15:00']);
 

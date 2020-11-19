@@ -1,8 +1,9 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const Radio = (): React.ReactElement => {
+export const Radio = (StoryProps: StoryProps): React.ReactElement => {
  const [value, setValue] = React.useState<string | number>(0);
 
   return (

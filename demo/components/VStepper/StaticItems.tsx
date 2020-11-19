@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { stepContent } from './constants';
 
 const exampleCode = `
@@ -26,7 +27,7 @@ export const StaticItems = (props: { title: string }) => (
 );
 `;
 
-export const StaticItems = (props: { title: string }) => (
+export const StaticItems = (StoryProps: StoryProps) => (
   <L.Div _box _inner _demoBg>
     <L.VStepper>
       <L.VStepper.Item hasSignIcon titleText="Добавление расходов" statusText="Заполнено" type="success">

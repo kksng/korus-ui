@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
 const MSData = [
   {
@@ -29,7 +29,8 @@ const MSData = [
   { city: 'Budapest', id: 11, attr: 'value11' },
 ];
 
-export const GroupedData = (args: SomeObject): React.ReactElement => {
+// eslint-disable-next-line
+export const GroupedData = (StoryProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);

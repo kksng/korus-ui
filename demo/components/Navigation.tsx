@@ -1,10 +1,11 @@
 import React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 import { Styles } from './Styles';
 
 const themes: string[] = ['Nova', 'Bootstrap'];
 
-export const Navigation = () => {
+export const Navigation = (StoryProps: StoryProps) => {
   const [theme, setTheme] = React.useState<string>();
 
   const handleClick = (ev: L.ButtonGroupTypes.ChangeEvent<string>): void => {

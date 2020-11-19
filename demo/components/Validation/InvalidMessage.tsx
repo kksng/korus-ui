@@ -4,7 +4,7 @@ import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
 
-export const InvalidMessage = (props: StoryProps) => (
+export const InvalidMessage = (StoryProps: StoryProps) => (
   <L.Div _box _inner>
     <L.Div>
       <L.Div _inner>

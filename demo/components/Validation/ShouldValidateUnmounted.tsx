@@ -5,7 +5,7 @@ import { Form } from '../../../leda/components/Validation/types';
 import { StoryProps } from '../../types';
 
 
-export const ShouldValidateUnmounted = (props: StoryProps) => {
+export const ShouldValidateUnmounted = (StoryProps: StoryProps) => {
   const [selected, setSelected] = React.useState<number | string>(0);
   const [invalidFormInfo, setInvalidFormInfo] = React.useState('');
   const [isValid, setIsValid] = React.useState(false);

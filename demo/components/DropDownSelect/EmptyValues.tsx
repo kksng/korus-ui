@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 import { SomeObject } from '../../../leda/commonTypes';
+import { StoryProps } from '../../types';
 
 // eslint-disable-next-line
-export const EmptyValues = (args: SomeObject): React.ReactElement => (
+export const EmptyValues = (StoryProps: StoryProps): React.ReactElement => (
   <L.Div _box _inner _demoBg>
     <L.DropDownSelect
       data={[

@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
-export const Customization = (StoryProps: { title: string }) => {
+// eslint-disable-next-line
+export const Customization = (StoryProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
 

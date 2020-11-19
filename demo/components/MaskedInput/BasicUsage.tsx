@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const BasicUsage = (StoryProps: { title: string }): React.ReactElement => {
+export const BasicUsage = (StoryProps: StoryProps): React.ReactElement => {
   const [value, setValue] = React.useState('');
 
   return (

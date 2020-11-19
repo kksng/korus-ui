@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const Tooltip = () => {
+export const Tooltip = (StoryProps: StoryProps) => {
   const [display, setDisplay] = React.useState(true);
   const [open, setOpen] = React.useState<boolean>();
 

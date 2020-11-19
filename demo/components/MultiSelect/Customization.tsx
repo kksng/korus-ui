@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Customization = (args: SomeObject): React.ReactElement => {
+export const Customization = (StoryProps: StoryProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);

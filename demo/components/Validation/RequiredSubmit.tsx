@@ -12,7 +12,7 @@ const Label: React.FC<{}> = ({ children }) => (
   </L.Span>
 );
 
-export const RequiredSubmit = (props: StoryProps) => {
+export const RequiredSubmit = (StoryProps: StoryProps) => {
   const [textValue, setTextValue] = React.useState<string>('');
   const [numberValue, setNumberValue] = React.useState<number | null>(null);
 

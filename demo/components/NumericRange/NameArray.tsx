@@ -3,8 +3,9 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
-export const NameArray = (StoryProps: { title: string }) => {
+export const NameArray = (StoryProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 
   const { update, EventInfo } = useEventSpy();

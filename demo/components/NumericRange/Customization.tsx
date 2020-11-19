@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/accessible-emoji,react/prop-types,no-console */
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Customization = (StoryProps: { title: string }) => {
+export const Customization = (StoryProps: StoryProps) => {
 
   const [value, setValue] = React.useState<[number | null, number | null] | null>([5, 13]);
 

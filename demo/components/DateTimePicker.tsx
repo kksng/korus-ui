@@ -1,9 +1,10 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 import { StateButtonGroup } from './StateButtonGroup';
 
-export const DateTimePicker = () => {
+export const DateTimePicker = (StoryProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('23.10.18 14:30:25');
 

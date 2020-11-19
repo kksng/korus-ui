@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const DisabledDates = (args: SomeObject): React.ReactElement => {
+export const DisabledDates = (StoryProps: StoryProps): React.ReactElement => {
   const [value, setValue] = React.useState('23.10.2018');
 
   return (

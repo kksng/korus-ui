@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../leda';
-import { SomeObject } from '../../../leda/commonTypes';
+import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 interface DataItem {
@@ -22,7 +22,8 @@ const data: DataItem[] = [
   { region: 'America', city: 'Costa Ricco' },
 ]
 
-export const Filterable = (args: SomeObject): React.ReactElement => {
+// eslint-disable-next-line
+export const Filterable = (StoryProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<DataItem | null>(data[0]);
 

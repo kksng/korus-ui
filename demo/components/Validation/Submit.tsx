@@ -5,7 +5,7 @@ import * as L from '../../../leda';
 import { Form } from '../../../leda/components/Validation/types';
 import { StoryProps } from '../../types';
 
-export const Submit = (props: StoryProps) => {
+export const Submit = (StoryProps: StoryProps) => {
   const [failed, setFailed] = React.useState<Form[]>([]);
   const [submitted, setSubmitted] = React.useState<string[]>([]);
 

@@ -1,6 +1,7 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
 const Alerts = ({ setActiveAlertKey }: any) => (
   <>
@@ -30,7 +31,7 @@ const Alerts = ({ setActiveAlertKey }: any) => (
   </>
 );
 
-export const Modal = () => {
+export const Modal = (StoryProps: StoryProps) => {
   const [isOpen, setOpen] = React.useState(false);
   const [activeAlertKey, setActiveAlertKey] = React.useState<string | null>(null);
 

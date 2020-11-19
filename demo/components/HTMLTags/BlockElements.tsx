@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const BlockElements = () => (
@@ -13,7 +14,7 @@ export const BlockElements = () => (
 );
 `;
 
-export const BlockElements = ({ ...restProps }) => (
+export const BlockElements = (StoryProps: StoryProps) => (
   <L.Div _box _inner>
     <L.Div style={{ backgroundColor: '#9fcdeb' }} _inner>
       Элемент Div

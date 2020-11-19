@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 import { SomeObject } from '../../../leda/commonTypes';
+import { StoryProps } from '../../types';
 
 const data = [
   { id: 0, city: 'Moscow' },
@@ -14,7 +15,7 @@ const data = [
 ];
 
 // eslint-disable-next-line
-export const CompareObjectsBy = (args: SomeObject): React.ReactElement => {
+export const CompareObjectsBy = (StoryProps: StoryProps): React.ReactElement => {
   const [value, setValue] = React.useState<SomeObject>({ id: 1, city: 'London' });
 
   return (

@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
-export const Controlled = (StoryProps: { title: string }) => {
+// eslint-disable-next-line
+export const Controlled = (StoryProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 
   return (

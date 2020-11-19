@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const StickyPanel = () => {
+export const StickyPanel = (StoryProps: StoryProps) => {
   const [isFull, setIsFull] = React.useState(true);
 
   return (

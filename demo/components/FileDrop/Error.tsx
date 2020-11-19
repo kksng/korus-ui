@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 import { FileDropError } from '../../../leda/components/FileDrop/types';
+import { StoryProps } from '../../types';
 
-export const ErrorFileDrop = (StoryProps: { title: string }) => {
+// eslint-disable-next-line
+export const ErrorFileDrop = (StoryProps: StoryProps) => {
   const [file, setFile] = React.useState<File | null>(null);
   const [error, setError] = React.useState<FileDropError>(null);
 

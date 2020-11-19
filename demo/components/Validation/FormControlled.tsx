@@ -17,7 +17,7 @@ const Label = (props: {
   </L.Span>
 );
 
-export const FormControlled = (props: StoryProps) => {
+export const FormControlled = (StoryProps: StoryProps) => {
   const formName = 'form-name';
   const [valueOfAutoComplete, setValueOfAutoComplete] = React.useState<string | null>(null);
   const [valueOfButtonGroup, setValueOfButtonGroup] = React.useState<L.ButtonGroupTypes.Value | undefined>(null);

@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const DateTimeRange = (): React.ReactElement => {
+export const DateTimeRange = (StoryProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState<{ isDisabled: boolean | undefined, isOpen: boolean | undefined}>({ isDisabled: false, isOpen: undefined });
   const [DTRValue, setDTRValue] = React.useState<[string, string]>(['12.05.2018 12:30', '15.05.2018 16:30']);
 

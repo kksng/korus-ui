@@ -17,7 +17,7 @@ const Label = (props: {
   </L.Span>
 );
 
-export const FormUncontrolled = (props: StoryProps) => {
+export const FormUncontrolled = (StoryProps: StoryProps) => {
   const formName = 'form-name';
   const handleChange = (event: {
     component: {},

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const DropDown = () => {
+export const DropDown = (StoryProps: StoryProps) => {
   const containerRef = React.useRef(null);
 
   return (

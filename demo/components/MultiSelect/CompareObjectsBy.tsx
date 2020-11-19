@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
 const data = [
   { id: 0, city: 'Moscow' },
@@ -14,7 +14,7 @@ const data = [
 ];
 
 // eslint-disable-next-line
-export const CompareObjectsBy = (args: SomeObject): React.ReactElement => {
+export const CompareObjectsBy = (StoryProps: StoryProps): React.ReactElement => {
   const [value, setValue] = React.useState<any>([data[0]]);
 
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();

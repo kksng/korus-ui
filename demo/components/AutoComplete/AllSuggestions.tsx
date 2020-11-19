@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const AllSuggestions = (StoryProps: { title: string }) => {
+export const AllSuggestions = (StoryProps: StoryProps) => {
   const [value, setValue] = React.useState('');
 
   return (

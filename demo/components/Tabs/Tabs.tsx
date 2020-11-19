@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Tabs = (StoryProps: { title: string }) => {
+export const Tabs = (StoryProps: StoryProps) => {
   const [selected, setSelected] = React.useState<string | number>(0);
 
   return (

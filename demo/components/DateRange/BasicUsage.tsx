@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
-export const BasicUsage = (args: SomeObject): React.ReactElement => {
+// eslint-disable-next-line
+export const BasicUsage = (StoryProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<[string, string]>(['', '']);
 

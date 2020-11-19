@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types, no-console */
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { useEventSpy } from '../../useEventSpy';
 
-export const TrailingZeros = (StoryProps: { title: string }) => {
+export const TrailingZeros = (StoryProps: StoryProps) => {
   const [value, setValue] = React.useState<number | null>(1)
   const [shouldTrimTrailingZeros, setShouldTrimTrailingZeros] = React.useState<boolean>(false)
 

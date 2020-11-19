@@ -16,7 +16,7 @@ const Label = ({
   </L.Span>
 );
 
-export const Required = (props: StoryProps) => {
+export const Required = (StoryProps: StoryProps) => {
   const [ACValue, setACValue] = React.useState('');
   const [DDSValue, setDDSValue] = React.useState<string | null>(null);
 
