@@ -12,6 +12,7 @@ import { defaultDropDownSelectTheme } from '../DropDownSelect/theme';
 import { defaultDropZoneTheme } from '../DropZone/theme';
 import { defaultInputTheme } from '../Input/theme';
 import { defaultLoaderTheme } from '../Loader/theme';
+import { defaultLoaderComponentTheme } from '../../src/LoaderComponent/theme';
 import { defaultMaskedInputTheme } from '../MaskedInput/theme';
 import { defaultModalTheme } from '../Modal/theme';
 import { defaultNumericRangeTheme } from '../NumericRange/theme';
@@ -28,6 +29,7 @@ import { defaultSwitcherTheme } from '../Switcher/theme';
 import { defaultTabsTheme } from '../Tabs/theme';
 import { defaultTagsTheme } from '../Tags/theme';
 import { defaultTooltipTheme } from '../Tooltip/theme';
+import { defaultTourTheme } from '../Tour/theme';
 import { defaultVStepperTheme } from '../VStepper/theme';
 import { defaultTextAreaTheme } from '../Textarea/theme';
 import { defaultNotificationsTheme } from '../Notifications/theme';
@@ -50,6 +52,7 @@ export const globalDefaultTheme = {
   fileDrop: defaultFileDropTheme,
   input: defaultInputTheme,
   loader: defaultLoaderTheme,
+  loaderComponent: defaultLoaderComponentTheme,
   maskedInput: defaultMaskedInputTheme,
   modal: defaultModalTheme,
   multiSelect: defaultMultiSelectTheme,
@@ -70,6 +73,7 @@ export const globalDefaultTheme = {
   tags: defaultTagsTheme,
   textarea: defaultTextAreaTheme,
   tooltip: defaultTooltipTheme,
+  tour: defaultTourTheme,
   vstepper: defaultVStepperTheme,
   wizard: defaultWizardTheme,
 };

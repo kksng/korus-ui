@@ -5,6 +5,7 @@ import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENTS_NAMESPACES, FileErrorCodes } from '../../constants';
 import { globalDefaultTheme } from '../LedaProvider';
 import { ValidationProps } from '../Validation/types';
+import { LoadingComponentProps } from '../../src/LoaderComponent/types';
 
 export { FileErrorCodes } from '../../constants';
 
@@ -135,6 +136,12 @@ export interface DropZoneProps extends ValidationProps {
   infoRender?: CustomRender<DropZoneProps, DropZoneState, InfoProps>,
   /** Признак отключения дропзоны */
   isDisabled?: boolean,
+  /** Состояние загрузки */
+  isLoading?: boolean,
+  /** Прогресс загрузки, число от 1 до 100 */
+  loadingProgress?: number,
+  /** Кастомизация верстки состояния загрузки */
+  loadingViewRender?: LoadingComponentProps['loadingViewRender'],
   /** Максимальная длина имени файла, по-умолчанию 255 символов */
   maxFileNameLength?: number,
   /** Максимальный размер файла, в байтах */

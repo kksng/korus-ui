@@ -41,6 +41,7 @@ export const COMPONENTS_NAMESPACES = {
   fileUpload: 'fileUpload',
   input: 'input',
   loader: 'loader',
+  loaderComponent: 'loaderComponent',
   maskedInput: 'maskedInput',
   modal: 'modal',
   modalBody: 'modalBody',
@@ -64,6 +65,7 @@ export const COMPONENTS_NAMESPACES = {
   tags: 'tags',
   textarea: 'textarea',
   tooltip: 'tooltip',
+  tour: 'tour',
   vstepper: 'vstepper',
   wizard: 'wizard',
 } as const;

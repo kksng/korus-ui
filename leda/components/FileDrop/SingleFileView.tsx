@@ -7,14 +7,17 @@ import {
 import { getClassNames } from '../../utils';
 import { ErrorComponent } from './ErrorComponent';
 import { SuccessComponent } from './SuccessComponent';
-import { LoadingComponent } from './LoadingComponent';
 import { DefaultComponent } from './DefaultComponent';
+import { LoaderComponent } from '../../src/LoaderComponent';
+
 
 export const SingleFileView = (props: SingleFileViewProps): React.ReactElement | null => {
   const {
     error,
     value,
     isLoading,
+    loadingProgress,
+    loadingViewRender,
     theme,
     isDisabled,
   } = props;
@@ -34,7 +37,13 @@ export const SingleFileView = (props: SingleFileViewProps): React.ReactElement |
 
   if (currentView === DropZoneViewTypes.Loading) {
     return (
-      <LoadingComponent {...props} />
+      <LoaderComponent
+        isLoading
+        loadingProgress={loadingProgress}
+        loadingViewRender={loadingViewRender}
+        className={theme.description}
+        theme={{ progressLoader: theme.progressLoader }}
+      />
     );
   }
 
