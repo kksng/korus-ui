@@ -1,8 +1,8 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
 import * as L from '../../leda';
-import { StateButtonGroup } from './StateButtonGroup';
 import { StoryProps } from '../types';
+import { StateButtonGroup } from './StateButtonGroup';
 
 export const Button = (storyProps: StoryProps) => {
   const [statusProps, setStatusProps] = React.useState({ });

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
-import { stepContent } from './constants';
 import { StoryProps } from '../../types';
+import { stepContent } from './constants';
 
 const exampleCode = `
 export const StaticItems = (props: { title: string }) => (

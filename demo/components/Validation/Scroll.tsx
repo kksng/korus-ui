@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
-
 export const Scroll = (storyProps: StoryProps) => (
   <L.Div _box _inner>
     <L.Div>

@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
-
 export const BasicUsage = (storyProps: StoryProps) => {
   const [value, setValue] = React.useState('');
 
