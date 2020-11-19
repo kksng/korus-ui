@@ -29,6 +29,11 @@ export interface ContentProps {
   stopTour: () => void,
 }
 
+/**
+ * Type of possible positions
+ */
+export type PositionType = (typeof Position)[keyof typeof Position];
+
 export interface TourProps {
   /** Идентификатор активного шага, если null - гайд-тур закрыт */
   activeStepKey?: number | string | null,
@@ -54,7 +59,7 @@ export interface TourStepItem {
   /** Отступы выделенной области в px, по-умолчанию 0px */
   padding?: number,
   /** Положение модалки */
-  position: (typeof Position)[keyof typeof Position],
+  position: PositionType,
   /** Идентификатор шага */
   stepKey: string | number,
 }

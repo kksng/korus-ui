@@ -157,7 +157,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     return null;
   }
 
-  const style = getModalPositionStyles(activeItem.position, activeItem.element, isScrolling);
+  const style = getModalPositionStyles(activeItem.position, activeItem.element.getBoundingClientRect(), isScrolling);
 
   const content = (
     <>

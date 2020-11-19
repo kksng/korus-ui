@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { PositionType } from './types';
+import { Position } from './constants';
 
 /**
  * Helper creates point
@@ -81,84 +83,69 @@ export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: 
 /**
  * Helper calculates modal window position
  * @param {string} position - position of modal window against tour element
- * @param {HTMLElement} element - tour element
+ * @param {DOMRect} rect - DOMRect of tour element
  * @param {boolean} isScrolling - flag defines if document is scrolling
  *
  * @returns {React.CSSProperties} - styles of modal window
  */
-export const getModalPositionStyles = (position: string, element: HTMLElement, isScrolling: boolean): React.CSSProperties => {
+export const getModalPositionStyles = (position: PositionType, rect: DOMRect, isScrolling: boolean): React.CSSProperties => {
   if (isScrolling) {
     return {
       display: 'none',
     };
   }
 
-  const rect = element.getBoundingClientRect();
-
-  if (position === 'top') {
-    return {
-      left: `${rect.left}px`,
-      top: `${rect.top - 20}px`,
-      transform: 'translateY(-100%)',
-    };
+  switch (position) {
+    case Position.Top:
+      return {
+        left: `${(rect.right + rect.left) / 2}px`,
+        top: `${rect.top - 20}px`,
+        transform: 'translate(-50%, -100%)',
+      };
+    case Position.Bottom:
+      return {
+        left: `${(rect.right + rect.left) / 2}px`,
+        top: `${rect.bottom + 20}px`,
+        transform: 'translateX(-50%)',
+      };
+    case Position.Right:
+      return {
+        left: `${rect.right + 20}px`,
+        top: `${rect.top}px`,
+      };
+    case Position.Left:
+      return {
+        left: `${rect.left - 20}px`,
+        top: `${rect.top}px`,
+        transform: 'translateX(-100%)',
+      };
+    case Position.TopLeft:
+      return {
+        left: `${rect.right}px`,
+        top: `${rect.top - 20}px`,
+        transform: 'translate(-100%, -100%)',
+      };
+    case Position.TopRight:
+      return {
+        left: `${rect.left}px`,
+        top: `${rect.top - 20}px`,
+        transform: 'translateY(-100%)',
+      };
+    case Position.BottomLeft:
+      return {
+        left: `${rect.right}px`,
+        top: `${rect.bottom + 20}px`,
+        transform: 'translateX(-100%)',
+      };
+    case Position.BottomRight:
+      return {
+        left: `${rect.left}px`,
+        top: `${rect.bottom + 20}px`,
+      };
+    default:
+      return {
+        left: '',
+        top: '',
+      };
   }
-
-  if (position === 'right') {
-    return {
-      left: `${rect.right + 20}px`,
-      top: `${rect.top}px`,
-    };
-  }
-
-  if (position === 'bottom') {
-    return {
-      left: `${rect.left}px`,
-      top: `${rect.bottom + 20}px`,
-    };
-  }
-
-  if (position === 'left') {
-    return {
-      left: `${rect.left - 20}px`,
-      top: `${rect.top}px`,
-      transform: 'translateX(-100%)',
-    };
-  }
-
-  if (position === 'top-left') {
-    return {
-      left: `${rect.right}px`,
-      top: `${rect.top - 20}px`,
-      transform: 'translate(-100%, -100%)',
-    };
-  }
-
-  if (position === 'bottom-left') {
-    return {
-      left: `${rect.right}px`,
-      top: `${rect.bottom + 20}px`,
-      transform: 'translateX(-100%)',
-    };
-  }
-
-  if (position === 'top-center') {
-    return {
-      left: `${(rect.right + rect.left) / 2}px`,
-      top: `${rect.top - 20}px`,
-      transform: 'translate(-50%, -100%)',
-    };
-  }
-
-  if (position === 'bottom-center') {
-    return {
-      left: `${(rect.right + rect.left) / 2}px`,
-      top: `${rect.bottom + 20}px`,
-      transform: 'translateX(-50%)',
-    };
-  }
-
-  return {
-    left: '',
-    top: '',
-  };
 };
