@@ -18,7 +18,7 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
  */
 export const Tour = (props: TourProps): React.ReactElement | null => {
   const {
-    data, activeStepKey, onChange, theme: themeProp, timeOut,
+    data, activeStepKey, onChange, theme: themeProp, stepDelay,
   } = props;
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.tour);
@@ -33,16 +33,16 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   React.useEffect((): (() => void) | void => {
     if (isNil(activeStepKey)) return undefined;
-    if (isNil(timeOut)) return undefined;
+    if (isNil(stepDelay)) return undefined;
 
     setIsLoading(true);
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, timeOut * 1000);
+    }, stepDelay * 1000);
 
     return () => clearTimeout(timer);
-  }, [activeStepKey, timeOut]);
+  }, [activeStepKey, stepDelay]);
 
   React.useEffect((): (() => void) | void => {
     if (!activeItem?.element) {
@@ -98,8 +98,8 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
         window.addEventListener('scroll', scrollHandler);
 
-        if (timeOut) {
-          setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), timeOut * 1000);
+        if (stepDelay) {
+          setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), stepDelay * 1000);
         } else {
           window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
         }

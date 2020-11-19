@@ -72,8 +72,8 @@ describe('Tour tests', () => {
         .name('Close')
         .click();
     });
-    it('Should set timeout', () => {
-      cy.name('timeOut')
+    it('Should set stepDelay', () => {
+      cy.name('stepDelay')
         .click()
         .name('startTour')
         .click()
@@ -91,7 +91,7 @@ describe('Tour tests', () => {
         .should('be.visible')       
         .name('Close')
         .click()
-        .name('timeOut')
+        .name('stepDelay')
         .click();
     });
     describe('Should set and remove active styles correctly', () => {

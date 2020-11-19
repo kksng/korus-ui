@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.35.0] - 2020-11-23
 
 ### Added
-- Tour: Added timeOut prop, added positions: top-left, bottom-left, top-center, bottom-center
+- Tour: Added stepDelay prop, added positions: top-left, bottom-left, top-center, bottom-center
 
 ### Fixed 
 - Validation: Fixed displaying of invalidMessage with isValid prop set to false

@@ -35,10 +35,10 @@ export interface TourProps {
   data: TourStepItem[],
   /** Обработчик изменения */
   onChange: (ev: ChangeEvent) => void,
+  /** Пауза перед отрисовкой шага гайд-тура. Передается в секундах */
+  stepDelay?: number,
   /** Тема компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.tour],
-  /** Пауза перед отрисовкой гайд-тура. Передается в секундах */
-  timeOut?: number,
 }
 
 export interface TourStepItem {

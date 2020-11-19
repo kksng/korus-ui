@@ -215,7 +215,7 @@ export const Tour = (): React.ReactElement => {
     null
   );
   const [message, setMessage] = React.useState('');
-  const [timeOut, setTimeOut] = React.useState<number | undefined>(undefined);
+  const [stepDelay, setStepDelay] = React.useState<number | undefined>(undefined);
 
   const data = getData([element1, element2, element3, element4, element5, element6, element7]);
 
@@ -293,15 +293,15 @@ export const Tour = (): React.ReactElement => {
           data={data}
           activeStepKey={activeStep}
           onChange={(ev) => setActiveStep(ev.component.value)}
-          timeOut={timeOut}
+          stepDelay={stepDelay}
         />
       </L.Div>
       <L.Button 
         _warning
-        name="timeOut" 
-        onClick={()=> setTimeOut((timeOut) => isNil(timeOut) ? 5 : undefined)}
+        name="stepDelay" 
+        onClick={()=> setStepDelay((stepDelay) => isNil(stepDelay) ? 5 : undefined)}
       >
-        Set/remove timeout 5 sec
+        Set/remove stepDelay 5 sec
       </L.Button>
       <L.H4 _title>onClick Message</L.H4>
       <L.Div name="message">{message}</L.Div>
