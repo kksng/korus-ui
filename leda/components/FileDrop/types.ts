@@ -49,6 +49,8 @@ export interface FileDropProps extends ValidationProps {
   isLoading?: boolean,
   /** Прогресс загрузки, число от 1 до 100 */
   loadingProgress?: number,
+  /** Текст зарузки, по умолчанию "Загрузка..." */
+  loadingText?: string,
   /** Кастомизация верстки состояния загрузки */
   loadingViewRender?: LoadingComponentProps['loadingViewRender'],
   /* Максимальная длина имени файла, по-умолчанию 255 символов */

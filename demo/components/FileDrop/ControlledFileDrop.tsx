@@ -30,6 +30,7 @@ export const ControlledFileDrop = (props: { title: string }) => {
         isLoading={isLoading}
         isDisabled={isDisabledUploading}
         loadingProgress={loaded}
+        loadingText="Loading..."
         error={error}
         maxFileNameLength={250}
         onChange={(ev) => {
