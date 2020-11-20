@@ -7,8 +7,8 @@ export const createResetHandler = ({
   props,
   dispatch,
 }: {
-  props: DateTimeInputProps,
   dispatch: React.Dispatch<AllActions>,
+  props: DateTimeInputProps,
 }) => () => {
   const date = null;
   const value = '';
@@ -17,8 +17,8 @@ export const createResetHandler = ({
   if (isFunction(props.onChange)) {
     props.onChange({
       component: {
-        name: props.name,
         date,
+        name: props.name,
         value,
       },
     });

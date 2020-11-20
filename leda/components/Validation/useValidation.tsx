@@ -39,20 +39,22 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
 
   // добавление/удаление поля при mount/unmount
   React.useEffect((): (() => void) | void => {
+    if (isValidProp !== undefined && invalidMessage) setMessages([invalidMessage]);
+
     if (isString(form) && name) {
-      const validators = getValidators(validator, invalidMessage);
+      const validators = getValidators(validator, invalidMessage, isValidProp);
 
       addField({
-        formName: form,
         fieldName: name,
-        value,
+        formName: form,
+        isRequired,
+        requiredMessage,
+        reset: extra.reset,
         setIsValid,
         setMessages,
         shouldValidateUnmounted,
         validators,
-        isRequired,
-        requiredMessage,
-        reset: extra.reset,
+        value,
       });
 
       return (): void => {
@@ -69,17 +71,17 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
   // каждый раз при смене props - записываем новые данные в forms, необходимо для корректной работы валидации
   React.useEffect(() => {
     if (form && name) {
-      const validators = getValidators(validator, invalidMessage);
+      const validators = getValidators(validator, invalidMessage, isValidProp);
 
       updateField({
-        formName: form,
         fieldName: name,
-        value,
-        isValidProp,
+        formName: form,
         isRequired,
-        validators,
-        shouldValidateUnmounted,
+        isValidProp,
         requiredMessage,
+        shouldValidateUnmounted,
+        validators,
+        value,
       });
     }
   }, [form, isRequired, name, value, isValidProp, validator, invalidMessage, shouldValidateUnmounted, requiredMessage]);
@@ -105,11 +107,11 @@ export const useValidation = <P extends ValidationProps, S extends ValidationSta
   }, [isValid, messages]);
 
   // если формы нет - возвращаем заглушку, сделать это в самом начале нельзя из-за правила хуков
-  if (!form) return { isValid: true, validateCurrent: () => true, InvalidMessage: invalidMessageComponent };
+  if (!form) return { InvalidMessage: invalidMessageComponent, isValid: true, validateCurrent: () => true };
 
   return {
+    InvalidMessage: invalidMessageComponent,
     isValid,
     validateCurrent,
-    InvalidMessage: invalidMessageComponent,
   };
 };

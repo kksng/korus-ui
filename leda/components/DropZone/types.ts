@@ -5,6 +5,7 @@ import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENTS_NAMESPACES, FileErrorCodes } from '../../constants';
 import { globalDefaultTheme } from '../LedaProvider';
 import { ValidationProps } from '../Validation/types';
+import { LoadingComponentProps } from '../../src/LoaderComponent/types';
 
 export { FileErrorCodes } from '../../constants';
 
@@ -27,10 +28,10 @@ export interface ChangeEvent {
   component: {
     /** Files that were added */
     dropped: DropZoneFiles,
-    /** Actual state */
-    value: DropZoneFiles,
     /** File that was removed */
     removedFile?: FileType,
+    /** Actual state */
+    value: DropZoneFiles,
   },
 }
 
@@ -54,10 +55,10 @@ export type ChangeEventHandler = (
 export interface CustomElements {
   /** React component for accepted files list wrapper */
   AcceptedFiles: React.FC<AcceptedFilesProps>,
-  /** React component for rejected files list wrapper */
-  RejectedFiles: React.FC<RejectedFilesProps>,
   /** React component for info block */
   Info: React.FC<InfoProps>,
+  /** React component for rejected files list wrapper */
+  RejectedFiles: React.FC<RejectedFilesProps>,
   /** React component for upload button */
   UploadButton: React.FC<UploadButtonProps>,
   /** React component for wrapper */
@@ -68,24 +69,24 @@ export interface CustomElements {
  * DropZone error object
  */
 export interface DropZoneError {
-  /** Error message */
-  message: string,
   /** Error code */
   errorCode: FileErrorCodes,
+  /** Error message */
+  message: string,
 }
 
 /**
  * DropZone file type
  */
 export interface DropZoneFileType extends File {
+  /** Error code */
+  errorCode?: FileErrorCodes,
+  /** Date and time when file was last modified */
+  lastModified: number,
   /** File path */
   path?: string,
   /** File preview */
   preview?: string,
-  /** Date and time when file was last modified */
-  lastModified: number,
-  /** Error code */
-  errorCode?: FileErrorCodes,
 }
 
 /**
@@ -101,6 +102,8 @@ export interface DropZoneFiles {
 export interface DropZoneFilesProps {
   /** Массив файлов, который будет отображен в виде списка */
   files: FileType[],
+  /** Признак отключения дропзоны */
+  isDisabled?: boolean,
   /** Обработчик удаления файла */
   onChange: (
     acceptedFiles: FileType[],
@@ -110,15 +113,15 @@ export interface DropZoneFilesProps {
   ) => void,
   /** Флаг обозначающий нужно ли отображать файлы */
   shouldRender: boolean,
-  /** Принятые и отклоненные файлы */
-  value: DropZoneState | NonNullable<DropZoneProps['value']>,
   /** Тема компонента */
   theme: typeof globalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone],
-  /** Признак отключения дропзоны */
-  isDisabled?: boolean,
+  /** Принятые и отклоненные файлы */
+  value: DropZoneState | NonNullable<DropZoneProps['value']>,
 }
 
 export interface DropZoneProps extends ValidationProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Отображение добавленных файлов */
   acceptedFilesRender?: CustomRender<DropZoneProps, DropZoneState, AcceptedFilesProps>,
   /** Разрешенные типы файлов, см. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Attributes. Передача нескольких типов файлов происходит через запятую (.png, image/jpeg). allowedFiles и forbiddenFiles вместе не могут находиться. */
@@ -133,22 +136,28 @@ export interface DropZoneProps extends ValidationProps {
   infoRender?: CustomRender<DropZoneProps, DropZoneState, InfoProps>,
   /** Признак отключения дропзоны */
   isDisabled?: boolean,
+  /** Состояние загрузки */
+  isLoading?: boolean,
+  /** Прогресс загрузки, число от 1 до 100 */
+  loadingProgress?: number,
+  /** Кастомизация верстки состояния загрузки */
+  loadingViewRender?: LoadingComponentProps['loadingViewRender'],
   /** Максимальная длина имени файла, по-умолчанию 255 символов */
   maxFileNameLength?: number,
-  /** Максимальное количество файлов */
-  maxFilesNumber?: number,
   /** Максимальный размер файла, в байтах */
   maxFileSize?: number,
+  /** Максимальное количество файлов */
+  maxFilesNumber?: number,
   /** Минимальный размер файла, в байтах */
   minFileSize?: number,
   /** Функция обратного вызова для метода onChange */
   onChange?: (event: ChangeEvent) => void,
   /** Функция обратного вызова для метода onClick */
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void,
-  /** Отображение отклоненных файлов */
-  rejectedFilesRender?: CustomRender<DropZoneProps, DropZoneState, RejectedFilesProps>,
   /** Реф */
   ref?: React.Ref<DropZoneRefCurrent>,
+  /** Отображение отклоненных файлов */
+  rejectedFilesRender?: CustomRender<DropZoneProps, DropZoneState, RejectedFilesProps>,
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone],
   /** Текст кнопки загрузки файла, может принимать JSX */
@@ -157,18 +166,16 @@ export interface DropZoneProps extends ValidationProps {
   value?: DropZoneFiles | null,
   /** Кастомизация враппера */
   wrapperRender?: CustomRender<DropZoneProps, DropZoneState, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 /**
  * DropZone current ref
  */
 export interface DropZoneRefCurrent {
-  /** Wrapper element */
-  wrapper: HTMLElement | null,
   /** Input element */
   input: HTMLInputElement | null,
+  /** Wrapper element */
+  wrapper: HTMLElement | null,
 }
 
 /**
@@ -180,10 +187,10 @@ export type DropZoneState = DropZoneFiles;
  * External file
  */
 export interface ExternalFile {
-  /** File name. Required for displaying in the list and deleting */
-  name: string,
   /** Link to download the file. If available, the file will be displayed in the list as available for download */
   link?: string,
+  /** File name. Required for displaying in the list and deleting */
+  name: string,
   /** Synonym for the file name. Required for displaying in the list and deleting */
   path?: string,
   /** File type */
@@ -209,12 +216,12 @@ export interface InfoProps {
  * Properties of rejected files list component
  */
 export interface RejectedFilesListProps {
+  /** Maximum files number allowed */
+  maxFilesNumber?: number,
   /** Theme */
   theme: typeof globalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropZone],
   /** Value got from state or props */
   value: DropZoneState | NonNullable<DropZoneProps['value']>,
-  /** Maximum files number allowed */
-  maxFilesNumber?: number,
 }
 
 /**
@@ -231,14 +238,14 @@ export interface RejectedFilesProps {
  * Properties of upload button component
  */
 export interface UploadButtonProps {
+  /** Custom classes passed through _ */
+  [x: string]: unknown,
   /** Child React nodes */
   children?: React.ReactNode,
   /** Custom class names */
   className?: string,
   /** onClick callback */
   onClick?: CustomEventHandler<React.MouseEvent>,
-  /** Custom classes passed through _ */
-  [x: string]: unknown,
 }
 
 /**

@@ -1,14 +1,14 @@
 /* eslint-disable key-spacing */
 export const defaultSliderTheme = {
-  wrapper:                  'slider-wrapper',
   container:                'slider-container',
-  track:                    'slider-track',
-  trackActive:              'active',
   handle:                   'slider-handle',
-  labelContainer:           'slider-label-container',
   label:                    'slider-label',
-  tooltipWrap:              'tooltip top',
+  labelContainer:           'slider-label-container',
   tooltipArrow:             'tooltip-arrow',
   tooltipInner:             'tooltip-inner',
+  tooltipWrap:              'tooltip top',
+  track:                    'slider-track',
+  trackActive:              'active',
+  wrapper:                  'slider-wrapper',
 };
 /* eslint-enable key-spacing */

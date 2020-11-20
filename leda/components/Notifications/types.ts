@@ -6,15 +6,15 @@ import { DivProps } from '../Div';
 import { ChangeMethods } from './constants';
 
 export interface Item {
-  // текст, можно использовать html
-  text: string,
-  // по умолчанию 5000 мс, чтобы уведомление не закрывалось по timeout - передайте 0
-  delay?: number,
-  id: string | number,
-  className?: string,
-  iconClassName?: string,
   // можно передать любые дополнительные данные
   [x: string]: unknown,
+  className?: string,
+  // по умолчанию 5000 мс, чтобы уведомление не закрывалось по timeout - передайте 0
+  delay?: number,
+  iconClassName?: string,
+  id: string | number,
+  // текст, можно использовать html
+  text: string,
 }
 
 // todo: extend ChangeEvent
@@ -44,6 +44,8 @@ export interface NotificationItemProps {
 }
 
 export interface NotificationsProps {
+  /** Классы, переданные через _ */
+  [x: string]: unknown,
   /** Кастомизация кнопки внутри оповещения, по-умолчанию не отображается */
   actionButtonRender?: CustomRender<NotificationItemProps, {}, React.PropsWithChildren<{}>>,
   /** Сообщение внутри оповещения. Принимается функция. */
@@ -60,8 +62,6 @@ export interface NotificationsProps {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.notifications],
   /** Уведомления, если передано больше, чем maxItems - отображаются в порядке очереди */
   value: Item[],
-  /** Классы, переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface NotificationRefCurrent {

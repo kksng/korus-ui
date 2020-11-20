@@ -67,9 +67,9 @@ export const createBlurHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value,
-        name,
         isValid,
+        name,
+        value,
       },
     };
 
@@ -138,10 +138,10 @@ export const createSelectHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: newValue,
+        deselectedValues,
         name,
         selectedValue,
-        deselectedValues,
+        value: newValue,
       },
     };
 
@@ -173,9 +173,9 @@ export const createClearHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: [] as string[] | number[] | SomeObject[],
-        name,
         deselectedValues: value,
+        name,
+        value: [] as string[] | number[] | SomeObject[],
       },
     };
 
@@ -220,12 +220,12 @@ export const createKeyDownHandler = (
   if (!data) return;
 
   const filteredData = filterData({
+    compareObjectsBy,
     data,
+    filterRule,
     filterValue,
     textField,
-    filterRule,
     value,
-    compareObjectsBy,
   }) || [];
 
   const highlightedItem = (filteredData as (string | number | SomeObject)[]).find((item) => item === highlightedSuggestion);
@@ -267,8 +267,8 @@ export const createKeyDownHandler = (
       onEnterPress({
         ...ev,
         component: {
-          value: ev.currentTarget.value,
           name: props.name,
+          value: ev.currentTarget.value,
         },
       });
     }
@@ -322,10 +322,10 @@ export const createResetHandler = ({
   if (isFunction(props.onChange)) {
     const customEvent = {
       component: {
-        name: props.name,
-        value,
         deselectedValues: undefined,
+        name: props.name,
         selectedValue: undefined,
+        value,
       },
     };
     props.onChange(customEvent);

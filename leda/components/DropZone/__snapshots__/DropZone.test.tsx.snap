@@ -25,6 +25,7 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
           onDrop={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          shouldRender={true}
           tabIndex={0}
         >
           <div
@@ -79,6 +80,7 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
             </Info>
           </div>
         </Div>
+        <LoaderComponent />
       </div>
     </Div>
   </Wrapper>
@@ -196,6 +198,7 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
           onDrop={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          shouldRender={true}
           tabIndex={0}
         >
           <div
@@ -276,6 +279,7 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
             </Info>
           </div>
         </Div>
+        <LoaderComponent />
       </div>
     </Div>
   </Wrapper>
@@ -392,6 +396,7 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
           onDrop={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          shouldRender={true}
           tabIndex={0}
         >
           <div
@@ -478,6 +483,7 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
             </Info>
           </div>
         </Div>
+        <LoaderComponent />
       </div>
     </Div>
   </Wrapper>

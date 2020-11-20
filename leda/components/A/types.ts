@@ -2,6 +2,8 @@ import React from 'react';
 import { CustomEventHandler } from '../../commonTypes';
 
 export interface AProps extends React.HTMLAttributes<HTMLAnchorElement> {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Текст ссылки */
   children?: React.ReactNode,
   /** Ссылка */
@@ -12,8 +14,6 @@ export interface AProps extends React.HTMLAttributes<HTMLAnchorElement> {
   ref?: React.Ref<ARefCurrent>,
   /** Если передано false, компонент не будет рендериться */
   shouldRender?: boolean,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface ARefCurrent {

@@ -91,6 +91,8 @@ export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
 }
 
 export interface NumericTextBoxProps extends ValidationProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Кастомный рендер для стрелочек */
   arrowButtonsRender?: CustomRender<NumericTextBoxProps, NumericTextBoxState, ArrowButtonsProps>,
   /** Значение по-умолчанию */
@@ -131,30 +133,28 @@ export interface NumericTextBoxProps extends ValidationProps {
   value?: number | null,
   /** Кастомный рендер враппера */
   wrapperRender?: CustomRender<NumericTextBoxProps, NumericTextBoxState, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface NumericTextBoxState {
-  /** Значение компонента */
-  value: number | null,
   /** Состояние фокуса */
   isFocused: boolean,
+  /** Значение компонента */
+  value: number | null,
 }
 
 export interface NumericRefCurrent {
-  wrapper: HTMLDivElement | null,
   input: HTMLInputElement | null,
+  wrapper: HTMLDivElement | null,
 }
 
 export interface NumericHandlers {
-  handleClick: CustomEventHandler<React.MouseEvent<HTMLInputElement>>,
+  handleArrowButtonClick: (type: 'increase' | 'decrease') => CustomEventHandler<React.MouseEvent<HTMLElement>>,
   handleBlur: CustomEventHandler<React.FocusEvent<HTMLInputElement>>,
-  handleFocus: CustomEventHandler<React.FocusEvent<HTMLInputElement>>,
   handleChange: CustomEventHandler<React.ChangeEvent<HTMLInputElement>>,
+  handleClick: CustomEventHandler<React.MouseEvent<HTMLInputElement>>,
+  handleFocus: CustomEventHandler<React.FocusEvent<HTMLInputElement>>,
   handleKeyDown: CustomEventHandler<React.KeyboardEvent<HTMLInputElement>>,
   handlePaste: CustomEventHandler<React.ClipboardEvent<HTMLInputElement>>,
-  handleArrowButtonClick: (type: 'increase' | 'decrease') => CustomEventHandler<React.MouseEvent<HTMLElement>>,
 }
 
 export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -165,25 +165,25 @@ export type ArrowButtonsProps = React.HTMLAttributes<HTMLDivElement>;
 
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   disabled?: boolean,
-  name?: string,
   form?: string,
+  name?: string,
   ref?: React.Ref<HTMLInputElement>,
   value?: string,
 }
 
 export interface CustomElements {
-  Wrapper: React.FC<WrapperProps>,
-  Input: React.FC<InputProps>,
   ArrowButtons: React.FC<ArrowButtonsProps>,
+  Input: React.FC<InputProps>,
+  Wrapper: React.FC<WrapperProps>,
 }
 
 export type NormalizeParameters = {
-  value: number | null,
-  min?: number,
-  max?: number,
   format?: string,
+  max?: number,
+  min?: number,
   sign?: number,
   step?: number,
+  value: number | null,
 };
 
 export type FormatValueProps = {
@@ -194,9 +194,9 @@ export type FormatValueProps = {
 };
 
 export type GetValueProps = {
+  format: string,
   inputValue: string,
   isFocused: boolean,
-  format: string,
   shouldTrimTrailingZeros?: boolean,
   thousandsSeparator: string,
   value: number | null,

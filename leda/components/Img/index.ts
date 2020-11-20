@@ -2,9 +2,9 @@ import * as React from 'react';
 import { htmlTagFactory } from '../../src/HTMLTagsFactory';
 
 export interface ImgProps extends React.HTMLAttributes<HTMLImageElement> {
+  [x: string]: unknown,
   ref?: React.Ref<ImgRefCurrent>,
   shouldRender?: boolean,
-  [x: string]: unknown,
 }
 
 export interface ImgRefCurrent {

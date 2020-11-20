@@ -8,16 +8,16 @@ import { DropDownSelect } from '../DropDownSelect';
 
 const theme = {
   buttonGroup: {
-    wrapper: 'custom-buttonGroup-wrapper',
     button: 'custom-buttonGroup-button',
-  },
-  slider: {
-    wrapper: 'custom-wrapper-slider',
-    container: 'custom-container-slider',
-    handle: 'custom-handle-slider',
+    wrapper: 'custom-buttonGroup-wrapper',
   },
   dropDownSelect: {
     input: 'custom-input-class',
+  },
+  slider: {
+    container: 'custom-container-slider',
+    handle: 'custom-handle-slider',
+    wrapper: 'custom-wrapper-slider',
   },
 };
 

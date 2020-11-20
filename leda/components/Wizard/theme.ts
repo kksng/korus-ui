@@ -1,7 +1,6 @@
 /* eslint-disable key-spacing */
 export const defaultWizardTheme = {
   label:                    'bottom',
-  wizardStep:               'step',
   wizardItemActive:         'active',
   wizardItemFirst:          'first',
   wizardItemLast:           'last',
@@ -9,6 +8,7 @@ export const defaultWizardTheme = {
   wizardItemSuccess:        'success',
   wizardLine:               'line',
   wizardLineProgress:        'progress-line',
+  wizardStep:               'step',
   wrapper:                  'wizard',
 };
   /* eslint-enable key-spacing */

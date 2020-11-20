@@ -25,7 +25,7 @@ export const PasswordMessage = (props: PasswordMessageProps) => {
 
   return (
     <Div
-      className={strengthLevelToCssClass({ theme, strengthLevel })}
+      className={strengthLevelToCssClass({ strengthLevel, theme })}
     >
       {message}
     </Div>

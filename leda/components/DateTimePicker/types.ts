@@ -5,14 +5,16 @@ import {
 } from '../../src/DateTimeInput/types';
 
 export interface DateTimePickerProps extends DateTimeInputProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /* Dates that are disabled to be selected. Array of dates or dates ranges. */
   disabledDates?: (Date | [Date, Date])[],
   /** Формат отображаемой и вводимой даты. По-умолчанию "dd.MM.yyyy hh:mm" */
   format?: string,
-  /** Признак принудительного открытия календаря */
-  isOpen?: boolean,
   /** Признак отключения инпута */
   isDisabled?: boolean,
+  /** Признак принудительного открытия календаря */
+  isOpen?: boolean,
   /** Максимально доступная дата для выбора */
   max?: Date,
   /** Минимально доступная дата для выбора */
@@ -29,14 +31,12 @@ export interface DateTimePickerProps extends DateTimeInputProps {
   onFocus?: (ev: FocusEvent) => void,
   /** Плейсхолдер для поля ввода */
   placeholder?: string,
-  /** Минимальное время */
-  timeMin?: TimeLimits,
-  /** Максимальное время */
-  timeMax?: TimeLimits,
   /** Реф */
   ref?: React.Ref<DateTimeInputRefCurrent>,
+  /** Максимальное время */
+  timeMax?: TimeLimits,
+  /** Минимальное время */
+  timeMin?: TimeLimits,
   /** Значение поля ввода */
   value?: string | Date | null,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }

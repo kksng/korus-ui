@@ -1,5 +1,6 @@
 /* eslint-disable key-spacing */
 export const defaultTheme = {
+  buttonDisabled:         'disabled-button',
   dateCell:               'calendar-date-cell',
   dateCellActive:         'active',
   dateCellDayOff:         'day-off',
@@ -17,7 +18,6 @@ export const defaultTheme = {
   monthRow:               'calendar-month-year-row',
   monthView:              'calendar-month-year-view',
   nextButton:             'calendar-next-button',
-  buttonDisabled:         'disabled-button',
   nextIcon:               'calendar-next-icon',
   prevButton:             'calendar-prev-button',
   prevIcon:               'calendar-prev-icon',
@@ -25,13 +25,13 @@ export const defaultTheme = {
   titleDisabled:          'disabled-title',
   weekDaysRow:            'calendar-week-days',
   wrapper:                'calendar-wrapper',
-  wrapperTop:             'pos-top',
   wrapperRight:           'pos-right',
+  wrapperTop:             'pos-top',
   wrapperVisible:         'visible',
   yearCell:               'calendar-month-year-cell',
   yearCellActive:         'active',
-  yearCellDisabled:       'disabled-month-year',
   yearCellDifferentDecade:'different-year',
+  yearCellDisabled:       'disabled-month-year',
   yearRow:                'calendar-month-year-row',
   yearView:               'calendar-month-year-view',
 };

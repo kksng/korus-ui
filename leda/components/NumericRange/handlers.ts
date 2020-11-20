@@ -12,12 +12,12 @@ export const createNumericChangeHandler = ({
   thousandsSeparator = ' ',
   onChange,
 }: {
-  value: NumericRangeState['value'],
-  setValue: SetState<NumericRangeState['value']>,
+  format?: string,
   name?: string | [string | undefined, string | undefined],
   onChange: NumericRangeProps['onChange'],
-  format?: string,
+  setValue: SetState<NumericRangeState['value']>,
   thousandsSeparator?: string,
+  value: NumericRangeState['value'],
 }) => (type: 'from' | 'to') => (ev: ChangeEvent) => {
   const newValue = (() => {
     if (type === 'from') return [ev.component.value, value[1]] as [number | null, number | null];
@@ -30,20 +30,20 @@ export const createNumericChangeHandler = ({
   const customEvent = {
     ...ev,
     component: {
-      value: newValue,
-      name,
       formattedValue: [formatValue(
         {
-          value: newValue[0],
           format,
           thousandsSeparator,
+          value: newValue[0],
         },
       ),
       formatValue({
-        value: newValue[1],
         format,
         thousandsSeparator,
+        value: newValue[1],
       })] as [string, string],
+      name,
+      value: newValue,
     },
   };
 

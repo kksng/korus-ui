@@ -75,7 +75,7 @@ export const suggestionClickHandlerCreator = ({
 
   const suggestion = isObject(event.target.value)
     ? event.target.value as DataObject
-    : getSuggestionFromValue({ data, value, textField });
+    : getSuggestionFromValue({ data, textField, value });
 
   mergeState({
     highlightedSuggestion: suggestion,
@@ -86,8 +86,8 @@ export const suggestionClickHandlerCreator = ({
       event,
       isValueControlled,
       lastCorrectValue,
-      props,
       mergeState,
+      props,
       value,
     });
   }
@@ -127,7 +127,7 @@ export const inputChangeHandlerCreator = ({
 
   const { value } = event.currentTarget;
 
-  const suggestion = getSuggestionFromValue({ data, value, textField });
+  const suggestion = getSuggestionFromValue({ data, textField, value });
 
   mergeState({
     highlightedSuggestion: suggestion,
@@ -170,17 +170,17 @@ export const inputBlurHandlerCreator = ({
     event,
     isValueControlled,
     lastCorrectValue,
-    props,
     mergeState,
+    props,
     value,
   }) : event.target.value;
 
   const customEvent: BlurEvent = {
     ...event,
     component: {
-      value: newValue,
-      name,
       isValid,
+      name,
+      value: newValue,
     },
   };
 
@@ -205,8 +205,8 @@ export const inputFocusHandlerCreator = ({
   const customEvent: FocusEvent = {
     ...event,
     component: {
-      value: event.target.value,
       name: event.target.name,
+      value: event.target.value,
     },
   };
 
@@ -221,7 +221,7 @@ export const inputFocusHandlerCreator = ({
  */
 export const inputKeyDownHandlerCreator = ({
   props, state, mergeState, isValueControlled, suggestions, isSuggestionsListOpen,
-}: HandlerCreatorData & {suggestions: Suggestion[], isSuggestionsListOpen: boolean}): React.KeyboardEventHandler<HTMLInputElement> => (event) => {
+}: HandlerCreatorData & {isSuggestionsListOpen: boolean, suggestions: Suggestion[]}): React.KeyboardEventHandler<HTMLInputElement> => (event) => {
   const {
     shouldCorrectValue,
     onChange,
@@ -283,8 +283,8 @@ export const inputKeyDownHandlerCreator = ({
       onEnterPress({
         ...event,
         component: {
-          value: event.currentTarget.value,
           name: props.name,
+          value: event.currentTarget.value,
         },
       });
     }
@@ -308,8 +308,8 @@ export const inputKeyDownHandlerCreator = ({
           event,
           isValueControlled,
           lastCorrectValue,
-          props,
           mergeState,
+          props,
           value,
         });
       }
@@ -363,8 +363,8 @@ export const createResetHandler = ({
   mergeState,
   value,
 }: {
-  props: AutoCompleteProps,
   mergeState: React.Dispatch<Partial<AutoCompleteState>>,
+  props: AutoCompleteProps,
   value: string,
 }) => () => {
   mergeState({
@@ -373,10 +373,10 @@ export const createResetHandler = ({
 
   props.onChange({
     component: {
-      value,
       method: CHANGE_METHOD.reset,
       name: props.name,
       suggestion: null,
+      value,
     },
   });
 };

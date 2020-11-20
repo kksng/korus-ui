@@ -8,3 +8,6 @@
 
 /cypress/videos/
 /cypress/screenshots/
+
+/.nyc_output/
+/cypress-coverage/

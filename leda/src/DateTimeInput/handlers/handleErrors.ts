@@ -85,11 +85,11 @@ const handleMinMaxErros = ({
   max,
   format,
 }: {
+  format: DateTimeInputProps['format'],
+  max: DateTimeInputProps['max'],
+  min: DateTimeInputProps['min'],
   type: DateTimeInputProps['type'],
   value: DateTimeInputProps['value'],
-  min: DateTimeInputProps['min'],
-  max: DateTimeInputProps['max'],
-  format: DateTimeInputProps['format'],
 }): void => {
   if (type !== COMPONENT_TYPES.TIME_ONLY && !isNil(value) && isDate(value) && !isNil(min) && isDateLess(value, min)) {
     console.error(`DateTimeInput: you passed the value "${value.toLocaleString()}" that is less than min! This is probably a mistake!`);
@@ -130,10 +130,10 @@ export const handleErrors = (props: DateTimeInputProps): void => {
   handleValueErrors(value, format);
 
   handleMinMaxErros({
+    format,
+    max,
+    min,
     type,
     value,
-    format,
-    min,
-    max,
   });
 };

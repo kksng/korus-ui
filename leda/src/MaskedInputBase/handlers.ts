@@ -56,45 +56,45 @@ export const createChangeHandler = (
   const newValue = (() => {
     if (inputMethod === INPUT_METHODS.replace) {
       const hurtValue = removeChar({
-        value: inputValue,
+        input,
         mask,
         placeholderChar,
-        selection,
         position: compareResult[0],
         removed: compareResult[2],
-        input,
+        selection,
+        value: inputValue,
       });
 
       return addChar({
-        value: hurtValue,
+        char,
+        input,
         mask,
         placeholderChar,
         selection: [position, position],
-        char,
-        input,
+        value: hurtValue,
       });
     }
 
     if (inputMethod === INPUT_METHODS.add) {
       return addChar({
-        value: inputValue,
+        char,
+        input,
         mask,
         placeholderChar,
         selection: [position, position],
-        char,
-        input,
+        value: inputValue,
       });
     }
 
     if (inputMethod === INPUT_METHODS.remove) {
       return removeChar({
-        value: inputValue,
+        input,
         mask,
         placeholderChar,
-        selection,
         position: compareResult[0],
         removed: compareResult[2],
-        input,
+        selection,
+        value: inputValue,
       });
     }
     // это inputMethod === 'nothing'
@@ -109,8 +109,8 @@ export const createChangeHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: newValue.includes(placeholderChar) ? '' : getRawValue(newValue, mask),
         inputValue: newValue,
+        value: newValue.includes(placeholderChar) ? '' : getRawValue(newValue, mask),
       },
     };
 
@@ -151,8 +151,8 @@ export const createKeyDownHandler = (
       const customEvent = {
         ...ev,
         component: {
-          value: '',
           inputValue: emptyValue,
+          value: '',
         },
       };
 
@@ -178,8 +178,8 @@ export const createPasteHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: newValue.includes(placeholderChar) ? '' : getRawValue(newValue, mask),
         inputValue: newValue,
+        value: newValue.includes(placeholderChar) ? '' : getRawValue(newValue, mask),
       },
     };
 
@@ -210,11 +210,11 @@ export const createFocusHandler = (
   setInputValue(newInputValue);
 
   const value = getValue({
-    valueProp,
     inputValue,
+    isFocused,
     mask,
     placeholderChar,
-    isFocused,
+    valueProp,
   });
 
   if (ev.target) {

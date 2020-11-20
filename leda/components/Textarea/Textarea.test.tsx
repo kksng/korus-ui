@@ -34,7 +34,7 @@ describe('Textarea HANDLERS', () => {
     const onEnterPress = jest.fn();
     const wrapper = mount(<Textarea name="auto" value="text" onEnterPress={onEnterPress} />);
 
-    wrapper.find('textarea').props().onKeyDown({ key: 'Enter', currentTarget: { value: 'text' } });
+    wrapper.find('textarea').props().onKeyDown({ currentTarget: { value: 'text' }, key: 'Enter' });
 
     expect(onEnterPress).toHaveBeenCalled();
   });
@@ -92,7 +92,7 @@ describe('Textarea VALIDATION', () => {
     const onBlurHandler = jest.fn();
     const wrapper = mount(<Textarea onBlur={onBlurHandler} name="ARIA" invalidMessage="value should not be empty!" isRequired form="requiredForm" />);
 
-    wrapper.find('textarea').props().onBlur({ target: { value: '', name: 'ARIA' } });
+    wrapper.find('textarea').props().onBlur({ target: { name: 'ARIA', value: '' } });
 
     wrapper.update();
 
@@ -128,7 +128,7 @@ describe('Textarea VALIDATION', () => {
 
     wrapper.find('textarea').getDOMNode().dispatchEvent(new Event('blur'));
 
-    wrapper.find('textarea').props().onBlur({ target: { value: 'OUAT', name: 'ARIA' } });
+    wrapper.find('textarea').props().onBlur({ target: { name: 'ARIA', value: 'OUAT' } });
 
     const [[event]] = onBlurHandler.mock.calls;
 

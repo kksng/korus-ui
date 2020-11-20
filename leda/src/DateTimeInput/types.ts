@@ -28,26 +28,26 @@ import { ValidationProps } from '../../components/Validation/types';
 // todo: extend type
 export interface ChangeEvent {
   component: {
-    value: string,
-    name?: string,
     date: Date | null,
+    name?: string,
+    value: string,
   },
 }
 
 export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
   component: {
-    value: string,
-    name?: string,
     date: Date | null,
     isValid?: boolean,
+    name?: string,
+    value: string,
   },
 }
 
 export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
   component: {
-    value: string,
-    name?: string,
     date: Date | null,
+    name?: string,
+    value: string,
   },
 }
 
@@ -56,14 +56,26 @@ export type TimeLimits = [number, number];
 export interface DateTimeInputProps extends ValidationProps {
   /** Ссылка на контейнер, относительно которого нужно позиционировать элемент */
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
+  /** Кастомный заголовок календаря */
+  calendarHeaderRender?: CustomRender<DateViewProps, {}, CalendarHeaderProps>,
+  /** Кастомный рендер враппера календаря */
+  calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
   /** Классы для компонента */
   className?: string,
+  /** Кастомная ячейка с датой */
+  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
+  /** Кастомный вид выбора даты */
+  dateViewRender?: CustomRender<DateViewProps, {}, DateViewProps>,
   /* Dates that are disabled to be selected. Array of dates or dates ranges. */
   disabledDates?: (Date | [Date, Date])[],
   /** Формат даты, по-умолчанию dd.MM.yyyy */
   format?: string,
   /** Кнопка "Сегодня" под календарем */
   hasTodayButton?: boolean,
+  /** Кастомная иконка календаря */
+  iconRender?: CustomRender<DateTimeInputProps, DateTimeInputState, IconProps>,
+  /** Кастомный инпут */
+  inputRender?: CustomRender<DateTimeInputProps, DateTimeInputState, MaskedInputBaseProps>,
   /** Выключенное состояние */
   isDisabled?: boolean,
   /** Открытый календарь */
@@ -74,6 +86,10 @@ export interface DateTimeInputProps extends ValidationProps {
   max?: Date,
   /** Минимальная дата */
   min?: Date,
+  /** Массив кастомных названий месяцев */
+  monthNames?: MonthsNames,
+  /** Кастомный вид выбора месяца */
+  monthViewRender?: CustomRender<DateViewProps, {}, MonthViewProps>,
   /** Имя компонента */
   name?: string,
   /** Обработчик блюра */
@@ -86,6 +102,10 @@ export interface DateTimeInputProps extends ValidationProps {
   onFocus?: (ev: FocusEvent) => void,
   /** Плейсхолдер инпута */
   placeholder?: string,
+  /** Массив сокращенных кастомных названий месяцев */
+  shortMonthNames?: MonthsNames,
+  /** Массив сокращенных кастомных названий дней недели */
+  shortWeekDayNames?: WeekDayNames,
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInput],
   /** Максимальное время */
@@ -96,34 +116,14 @@ export interface DateTimeInputProps extends ValidationProps {
   type?: Values<typeof COMPONENT_TYPES>,
   /** Значение в инпуте */
   value?: string | Date | null,
-  /** Кастомный враппер */
-  wrapperRender?: CustomRender<DateTimeInputProps, DateTimeInputState, WrapperProps>,
-  /** Кастомная иконка календаря */
-  iconRender?: CustomRender<DateTimeInputProps, DateTimeInputState, IconProps>,
-  /** Кастомный инпут */
-  inputRender?: CustomRender<DateTimeInputProps, DateTimeInputState, MaskedInputBaseProps>,
-  /** Кастомная ячейка с датой */
-  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
-  /** Кастомный список дней недели */
-  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  /** Кастомный вид выбора даты */
-  dateViewRender?: CustomRender<DateViewProps, {}, DateViewProps>,
-  /** Кастомный вид выбора месяца */
-  monthViewRender?: CustomRender<DateViewProps, {}, MonthViewProps>,
-  /** Кастомный вид выбора года */
-  yearViewRender?: CustomRender<DateViewProps, {}, YearViewProps>,
-  /** Кастомный заголовок календаря */
-  calendarHeaderRender?: CustomRender<DateViewProps, {}, CalendarHeaderProps>,
-  /** Кастомный рендер враппера календаря */
-  calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
-  /** Массив кастомных названий месяцев */
-  monthNames?: MonthsNames,
-  /** Массив сокращенных кастомных названий месяцев */
-  shortMonthNames?: MonthsNames,
   /** Массив кастомных названий дней недели */
   weekDayNames?: WeekDayNames,
-  /** Массив сокращенных кастомных названий дней недели */
-  shortWeekDayNames?: WeekDayNames,
+  /** Кастомный список дней недели */
+  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
+  /** Кастомный враппер */
+  wrapperRender?: CustomRender<DateTimeInputProps, DateTimeInputState, WrapperProps>,
+  /** Кастомный вид выбора года */
+  yearViewRender?: CustomRender<DateViewProps, {}, YearViewProps>,
 }
 
 export interface DateTimeInputState {
@@ -180,18 +180,18 @@ export interface EnterKeyPressPayload {
   ev: React.KeyboardEvent<HTMLDivElement>,
   format: DateTimeInputProps['format'],
   isOpen: DateTimeInputProps['isOpen'],
+  maskedInputRef: React.MutableRefObject<HTMLInputElement | null>,
   max: DateTimeInputProps['max'],
   min: DateTimeInputProps['min'],
-  timeMax: DateTimeInputProps['timeMax'],
-  timeMin: DateTimeInputProps['timeMin'],
   name: DateTimeInputProps['name'],
   onChange: DateTimeInputProps['onChange'],
   onEnterPress: DateTimeInputProps['onEnterPress'],
+  timeMax: DateTimeInputProps['timeMax'],
+  timeMin: DateTimeInputProps['timeMin'],
   type: DateTimeInputProps['type'],
   value: DateTimeInputState['value'],
   viewDate: DateTimeInputState['viewDate'],
   viewType: DateTimeInputState['viewType'],
-  maskedInputRef: React.MutableRefObject<HTMLInputElement | null>,
 }
 
 export interface EscKeyPressPayload {
@@ -201,15 +201,15 @@ export interface EscKeyPressPayload {
 export interface TabKeyPressPayload {
   dispatch: React.Dispatch<AllActions>,
   ev: React.KeyboardEvent<HTMLDivElement>,
-  isOpen: DateTimeInputProps['isOpen'],
-  viewType: DateTimeInputState['viewType'],
   isOneMonthInRange: boolean,
   isOneYearInRange: boolean,
+  isOpen: DateTimeInputProps['isOpen'],
+  viewType: DateTimeInputState['viewType'],
 }
 
 export interface Handlers {
-  handleCalendarClick: CalendarClickHandler,
   handleBlur: CustomEventHandler<FocusEvent>,
+  handleCalendarClick: CalendarClickHandler,
   handleCalendarIconMouseDown: CustomEventHandler<React.MouseEvent<HTMLSpanElement>>,
   handleCalendarKeyDown: CustomEventHandler<React.KeyboardEvent<HTMLDivElement>>,
   handleCalendarMouseDown: CustomEventHandler<React.MouseEvent<HTMLDivElement>>,
@@ -232,94 +232,94 @@ export type StateActionTypes = typeof stateActionTypes;
 export type AllActions = Values<{ [K in keyof typeof stateActionTypes]: Action<typeof stateActionTypes[K], StateActionPayloads[K]> }>;
 
 export interface DatesPrevClickPayload {
-  isPrevButtonDisabled: boolean,
-  viewDate: DateTimeInputState['viewDate'],
-  min?: Date,
-  dispatch: React.Dispatch<AllActions>,
   dateShorthand: DateShorthand,
+  dispatch: React.Dispatch<AllActions>,
+  isPrevButtonDisabled: boolean,
+  min?: Date,
+  viewDate: DateTimeInputState['viewDate'],
 }
 
 export interface DatesNextClickPayload {
-  isNextButtonDisabled: boolean,
-  viewDate: DateTimeInputState['viewDate'],
-  max?: Date,
   dateShorthand: DateShorthand,
   dispatch: React.Dispatch<AllActions>,
+  isNextButtonDisabled: boolean,
+  max?: Date,
+  viewDate: DateTimeInputState['viewDate'],
 }
 
 export interface DatesSelectPayload {
   dateCell?: number,
-  monthCell?: number,
   dateShorthand: DateShorthand,
-  updateDate: (newDate: Date) => void,
   dispatch: React.Dispatch<AllActions>,
-  type: DateTimeInputProps['type'],
   format: DateTimeInputProps['format'],
   maskedInputRef: React.MutableRefObject<HTMLInputElement | null>,
+  monthCell?: number,
+  type: DateTimeInputProps['type'],
+  updateDate: (newDate: Date) => void,
 }
 
 export interface MonthsPrevClickPayload {
-  isDateOutOfMinYearRange: boolean,
-  viewDate: DateTimeInputState['viewDate'],
-  min?: Date,
   dateShorthand: DateShorthand,
   dispatch: React.Dispatch<AllActions>,
+  isDateOutOfMinYearRange: boolean,
+  min?: Date,
+  viewDate: DateTimeInputState['viewDate'],
 }
 
 export interface MonthsNextClickPayload {
-  isDateOutOfMaxYearRange: boolean,
-  viewDate: DateTimeInputState['viewDate'],
-  max?: Date,
   dateShorthand: DateShorthand,
   dispatch: React.Dispatch<AllActions>,
+  isDateOutOfMaxYearRange: boolean,
+  max?: Date,
+  viewDate: DateTimeInputState['viewDate'],
 }
 
 export interface MonthsSelectPayload {
-  viewDate: DateTimeInputState['viewDate'],
-  monthCell?: number,
-  min?: Date,
-  max?: Date,
   dateShorthand: DateShorthand,
-  isDateOutOfMinDecadeRange: boolean,
   dispatch: React.Dispatch<AllActions>,
+  isDateOutOfMinDecadeRange: boolean,
+  max?: Date,
+  min?: Date,
+  monthCell?: number,
+  viewDate: DateTimeInputState['viewDate'],
 }
 
 export interface YearsPrevClickPayload {
-  viewDate: DateTimeInputState['viewDate'],
-  min?: Date,
   dateShorthand: DateShorthand,
-  isDateOutOfMinDecadeRange: boolean,
   dispatch: React.Dispatch<AllActions>,
+  isDateOutOfMinDecadeRange: boolean,
+  min?: Date,
+  viewDate: DateTimeInputState['viewDate'],
 }
 
 export interface YearsNextClickPayload {
-  viewDate: DateTimeInputState['viewDate'],
-  max?: Date,
   dateShorthand: DateShorthand,
-  isDateOutOfMaxDecadeRange: boolean,
   dispatch: React.Dispatch<AllActions>,
+  isDateOutOfMaxDecadeRange: boolean,
+  max?: Date,
+  viewDate: DateTimeInputState['viewDate'],
 }
 
 export interface YearsSelectPayload {
-  viewDate: DateTimeInputState['viewDate'],
-  yearCell?: number,
-  min?: Date,
-  max?: Date,
   dateShorthand: DateShorthand,
   dispatch: React.Dispatch<AllActions>,
+  max?: Date,
+  min?: Date,
+  viewDate: DateTimeInputState['viewDate'],
+  yearCell?: number,
 }
 
 export interface TitleClickPayload {
-  viewType: DateTimeInputState['viewType'],
+  dispatch: React.Dispatch<AllActions>,
   isOneMonthInRange: boolean,
   isOneYearInRange: boolean,
-  dispatch: React.Dispatch<AllActions>,
+  viewType: DateTimeInputState['viewType'],
 }
 
 export interface TodayButtonClickPayload {
-  min?: Date,
-  max?: Date,
   dispatch: React.Dispatch<AllActions>,
+  max?: Date,
+  min?: Date,
   updateDate: (newDate: Date) => void,
 }
 
@@ -330,14 +330,14 @@ export interface IconProps {
 
 export interface WrapperProps {
   className?: string,
-  ref?: React.Ref<DivRefCurrent>,
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>,
+  ref?: React.Ref<DivRefCurrent>,
 }
 
 export interface CustomElements {
-  Wrapper: React.FC<WrapperProps>,
-  Input: React.FC<MaskedInputBaseProps & { [x: string]: unknown }>,
   Icon: React.FC<IconProps>,
+  Input: React.FC<MaskedInputBaseProps & { [x: string]: unknown }>,
+  Wrapper: React.FC<WrapperProps>,
 }
 
 export interface HandlersData {
@@ -364,15 +364,15 @@ export interface EffectData {
 }
 
 export interface NormalizeValueArgs {
-  value: string,
   format: string,
-  min?: Date,
   max?: Date,
+  min?: Date,
+  value: string,
 }
 
 export interface NormalizeDateArgs {
   date: Date | null,
-  min?: Date,
   max?: Date,
+  min?: Date,
   type?: Values<typeof COMPONENT_TYPES>,
 }

@@ -181,11 +181,11 @@ describe('AutoComplete HANDLERS', () => {
     const onFocusHandler = jest.fn();
     const onBlurHandler = jest.fn();
     const eventMatcher = expect.objectContaining({
-      target: expect.objectContaining({
-        value: 'value',
-      }),
       component: expect.objectContaining({
         name: 'name',
+        value: 'value',
+      }),
+      target: expect.objectContaining({
         value: 'value',
       }),
     });
@@ -214,12 +214,12 @@ describe('AutoComplete HANDLERS', () => {
     const oldValue = 'old value';
     const newValue = 'new value';
     const eventMatcher = expect.objectContaining({
-      target: expect.objectContaining({
-        value: oldValue,
-      }),
       component: expect.objectContaining({
         name: formName,
         value: newValue,
+      }),
+      target: expect.objectContaining({
+        value: oldValue,
       }),
     });
     render((
@@ -302,13 +302,13 @@ describe('AutoComplete ATTRIBUTES', () => {
     const data = ['value0', 'value1'];
     const newValue = 'value';
     const eventMatcher = expect.objectContaining({
-      target: expect.objectContaining({
-        value: newValue,
-      }),
       component: expect.objectContaining({
         method: 'type',
-        value: newValue,
         suggestion: null,
+        value: newValue,
+      }),
+      target: expect.objectContaining({
+        value: newValue,
       }),
     });
     render((
@@ -330,13 +330,13 @@ describe('AutoComplete ATTRIBUTES', () => {
     const data = ['value0', 'value1'];
     const newValue = data[0];
     const eventMatcher = expect.objectContaining({
-      target: expect.objectContaining({
-        value: newValue,
-      }),
       component: expect.objectContaining({
         method: 'type',
-        value: newValue,
         suggestion: newValue,
+        value: newValue,
+      }),
+      target: expect.objectContaining({
+        value: newValue,
       }),
     });
     render((
