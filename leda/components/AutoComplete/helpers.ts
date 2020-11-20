@@ -27,8 +27,8 @@ export const getSuggestionFromValue = ({
   textField,
 }: {
   data: Suggestion[],
-  value: string | DataObject,
   textField?: string,
+  value: string | DataObject,
 }): Suggestion => {
   const isEveryIsObject = every(data, isObject);
 
@@ -140,8 +140,8 @@ export const correctValue = ({
   event: React.SyntheticEvent,
   isValueControlled: boolean,
   lastCorrectValue: string,
-  props: AutoCompleteProps,
   mergeState: React.Dispatch<Partial<AutoCompleteState>>,
+  props: AutoCompleteProps,
   value?: string | null,
 }): string => {
   // если value нет в data
@@ -151,7 +151,7 @@ export const correctValue = ({
   } = props;
 
   const suggestions = getSuggestions({
-    data, textField, value, filterRule, isOpen, minSearchLength,
+    data, filterRule, isOpen, minSearchLength, textField, value,
   });
 
   const suggestionValues = suggestions.map((suggestion) => getSuggestionValue(suggestion, textField));
@@ -164,7 +164,7 @@ export const correctValue = ({
     mergeState({ lastCorrectValue: value || '' });
   } else {
     if (isFunction(onChange)) {
-      const suggestion = getSuggestionFromValue({ data, value: lastCorrectValue, textField });
+      const suggestion = getSuggestionFromValue({ data, textField, value: lastCorrectValue });
       const customEvent = {
         ...event,
         component: {

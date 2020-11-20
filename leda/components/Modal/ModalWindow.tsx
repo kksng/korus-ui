@@ -65,9 +65,9 @@ export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
 
   const modalContext = {
     activeAlertKey,
-    headerClassName: theme.header,
     bodyClassName: theme.body,
     footerClassName: theme.footer,
+    headerClassName: theme.header,
   };
 
   return (

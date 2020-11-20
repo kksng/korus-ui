@@ -51,12 +51,12 @@ export const DropDownLink = React.forwardRef((props: DropDownLinkProps, ref?: Re
   const containerRef = React.useRef<DivRefCurrent | null>(null);
 
   const classMap = React.useMemo(() => ({
-    top: theme.wrapperTop,
     right: theme.wrapperRight,
+    top: theme.wrapperTop,
     visible: theme.wrapperVisible,
   }), [theme.wrapperTop, theme.wrapperVisible, theme.wrapperRight]);
 
-  useAdaptivePosition({ elRef: containerRef, isOpen, classNames: classMap });
+  useAdaptivePosition({ classNames: classMap, elRef: containerRef, isOpen });
 
   const handleClick = React.useCallback((ev: ClickEvent): void => {
     setIsOpen(false);

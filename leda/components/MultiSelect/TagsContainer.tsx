@@ -29,6 +29,7 @@ export const TagsContainer = (props: TagsContainerProps): React.ReactElement | n
       onMouseDown={onMouseDown}
     >
       {(value as (string | number | SomeObject)[]).map((item, index) => React.cloneElement(children, {
+        children: getText(item, textField),
         key: index.toString(),
         onIconClick: (ev: React.MouseEvent<HTMLElement>) => onTagClick({
           ...ev,
@@ -37,7 +38,6 @@ export const TagsContainer = (props: TagsContainerProps): React.ReactElement | n
             value: item,
           },
         }),
-        children: getText(item, textField),
       }))}
       {hasClearButton && (
         <Span

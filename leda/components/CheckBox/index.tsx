@@ -69,9 +69,9 @@ export const CheckBox = React.forwardRef((props: CheckBoxProps, ref?: React.Ref<
         const wrapper = component ? (component.wrapper || component as unknown as HTMLElement) : null;
 
         return bindFunctionalRef(component, ref, component && wrapper && {
-          wrapper,
           input: wrapper.firstElementChild as HTMLInputElement,
           label: wrapper.firstElementChild ? wrapper.firstElementChild.nextElementSibling as HTMLLabelElement : null,
+          wrapper,
         });
       })}
     >

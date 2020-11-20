@@ -27,7 +27,7 @@ export const useCustomElements = (props: ModalWindowProps): CustomElements => {
   );
 
   return {
-    Wrapper,
     Icon,
+    Wrapper,
   };
 };

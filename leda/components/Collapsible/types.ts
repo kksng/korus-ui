@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 export interface TransitionOptions {
-  /** Длительность анимации коллапса. Число в миллисекундах. Строки с единицами измерения */
-  duration: number | string,
   /** Функция анимации коллапса. См. https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function */
   animation: string,
   /** Длительность задержки перед началом анимации. Число в миллисекундах. Строки с единицами измерения */
   delay?: number | string,
+  /** Длительность анимации коллапса. Число в миллисекундах. Строки с единицами измерения */
+  duration: number | string,
 }
 
 export interface CollapsibleProps extends React.HTMLAttributes<HTMLDivElement> {

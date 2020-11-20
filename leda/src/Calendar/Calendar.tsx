@@ -40,17 +40,17 @@ export const Calendar = (props: CalendarProps): React.ReactElement | null => {
   const calendarRef = React.useRef<DivRefCurrent | null>(null);
 
   const classMap = React.useMemo(() => ({
+    right: theme.wrapperRight,
     top: theme.wrapperTop,
     visible: theme.wrapperVisible,
-    right: theme.wrapperRight,
   }), [theme.wrapperRight, theme.wrapperTop, theme.wrapperVisible]);
 
   // смена позиции календаря при скролле/открытии
   useAdaptivePosition({
     boundingContainerRef,
+    classNames: classMap,
     elRef: calendarRef,
     isOpen,
-    classNames: classMap,
   });
 
   const {

@@ -16,6 +16,7 @@ import {
 import { useCustomElements, useDropZoneRestProps } from './hooks';
 import { useValidation } from '../Validation';
 import { EMPTY_DROP_ZONE_FILES } from './constants';
+import { LoaderComponent } from '../../src/LoaderComponent';
 
 export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<DropZoneRefCurrent>): React.ReactElement => {
   const {
@@ -24,7 +25,10 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
     dropZoneFilesNode,
     forbiddenFiles,
     isDisabled,
+    isLoading,
     isRequired,
+    loadingProgress,
+    loadingViewRender,
     maxFileSize = MAX_FILE_SIZE,
     maxFilesNumber,
     minFileSize = MIN_FILE_SIZE,
@@ -67,14 +71,14 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
   const singleMode = maxFilesNumber && maxFilesNumber <= 1;
 
   const { getRootProps, getInputProps, open } = useDropzone({
+    accept: allowedFiles,
+    disabled: isDisabled,
+    maxSize: maxFileSize,
+    multiple: !singleMode,
     onDrop: (...args) => {
       const newValue = handleChange(...args as Parameters<ChangeEventHandler>);
       validateCurrent(newValue);
     },
-    accept: allowedFiles,
-    maxSize: maxFileSize,
-    multiple: !singleMode,
-    disabled: isDisabled,
   });
 
   dropZoneRef.current = { open };
@@ -94,12 +98,13 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
       <Wrapper
         className={combinedClassNames}
         ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-          wrapper: component.wrapper,
           input: component.wrapper && component.wrapper.querySelector('input'),
+          wrapper: component.wrapper,
         }))}
       >
         <Div
           {...rootProps}
+          shouldRender={!isLoading}
           onClick={handleClick}
           className={combinedContentClassNames}
           ref={(component) => {
@@ -135,6 +140,11 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
             </DescriptionMessage>
           </Info>
         </Div>
+        <LoaderComponent
+          isLoading={isLoading}
+          loadingProgress={loadingProgress}
+          loadingViewRender={loadingViewRender}
+        />
       </Wrapper>
       <InvalidMessage />
       <RejectedFiles

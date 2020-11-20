@@ -5,13 +5,13 @@ import { GlobalDefaultRenders, globalDefaultRenders } from './globalDefaultRende
 import { UnderscoreClasses } from './underscoreClasses';
 
 export interface LedaContextType {
-  theme: PartialGlobalDefaultTheme,
   renders: GlobalDefaultRenders,
+  theme: PartialGlobalDefaultTheme,
   underscoreClassesTransform: UnderscoreClasses,
 }
 
 export const LedaContext = React.createContext<LedaContextType>({
-  theme: globalDefaultTheme,
   renders: globalDefaultRenders as GlobalDefaultRenders,
+  theme: globalDefaultTheme,
   underscoreClassesTransform: UnderscoreClasses.NoTransform,
 });

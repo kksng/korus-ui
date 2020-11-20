@@ -1,21 +1,20 @@
 /* eslint-disable key-spacing */
 export const defaultFileDropTheme = {
-  progressLoader:       'filedrop-progress-loader',
   button:               'filedrop-button',
-  content:              'filedrop-content',
-  progressBase:         'progress-base',
-  progressCircle:       'progress-circle',
-  disabled:             'disabled',
   cloudIcon:            'filedrop-cloud-icon',
-  retryIcon:            'filedrop-retry-icon',
-  retryButton:          'filedrop-retry-button',
-  successIcon:          'filedrop-ok-icon',
-  errorIcon:            'filedrop-not-ok-icon',
+  content:              'filedrop-content',
   description:          'filedrop-description',
+  disabled:             'disabled',
+  errorIcon:            'filedrop-not-ok-icon',
   fileDownloadLink:     'dropzone-file-download internal',
-  status:               'filedrop-status',
   invalid:              'danger',
+  progressLoader:       'filedrop-progress-loader',
   required:             'required',
+  retryButton:          'filedrop-retry-button',
+  retryIcon:            'filedrop-retry-icon',
+  status:               'filedrop-status',
+  successIcon:          'filedrop-ok-icon',
   wrapper:              'filedrop-wrapper',
+
 };
 /* eslint-enable key-spacing */

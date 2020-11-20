@@ -134,8 +134,8 @@ describe('validate controlled form', () => {
   const fieldName = 'auto-complete';
   const handleChange = jest.fn();
   const validationReference = {
-    name: fieldName,
     isValid: true,
+    name: fieldName,
   };
   const component = (
     <AutoComplete
@@ -172,8 +172,8 @@ describe('validate controlled form with empty field', () => {
   const fieldName = 'auto-complete';
   const handleChange = jest.fn();
   const validationReference = {
-    name: fieldName,
     isValid: false,
+    name: fieldName,
   };
   const component = (
     <AutoComplete
@@ -212,9 +212,9 @@ describe('validate controlled form with field validator', () => {
   const validate = (value: string) => value.length < 9;
   const invalidMessage = 'invalid-message';
   const validationReference = {
-    name: fieldName,
-    isValid: false,
     invalidMessages: [invalidMessage],
+    isValid: false,
+    name: fieldName,
   };
   const component = (
     <AutoComplete
@@ -253,9 +253,9 @@ describe('validate controlled form with validators', () => {
   const handleChange = jest.fn();
   const invalidMessage = 'invalid-message';
   const validationReference = {
-    name: fieldName,
-    isValid: false,
     invalidMessages: [invalidMessage],
+    isValid: false,
+    name: fieldName,
   };
   const component = (
     <AutoComplete
@@ -268,11 +268,11 @@ describe('validate controlled form with validators', () => {
     />
   );
   const validators = [{
+    invalidMessage,
     validator: (value: string) => value.length > 0,
-    invalidMessage,
   }, {
-    validator: (value: string) => value.length < 9,
     invalidMessage,
+    validator: (value: string) => value.length < 9,
   }];
   test('validate one', () => {
     render(component);
@@ -293,9 +293,9 @@ describe('validate uncontrolled form with field validator', () => {
   const validate = (value: string) => value.length < 9;
   const invalidMessage = 'invalid-message';
   const validationReference = {
-    name: fieldName,
-    isValid: false,
     invalidMessages: [invalidMessage],
+    isValid: false,
+    name: fieldName,
   };
   const component = (
     <AutoComplete

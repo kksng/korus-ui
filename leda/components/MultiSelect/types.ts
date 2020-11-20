@@ -22,8 +22,8 @@ export interface MultiSelectComponent {
 export interface ClearEvent<T> extends React.MouseEvent {
   component: {
     deselectedValues: T[],
-    selectedValue: undefined,
     name?: string,
+    selectedValue: undefined,
     value: T,
   },
 }
@@ -39,8 +39,8 @@ export interface MouseSelectEvent<T> extends React.MouseEvent {
 
 export interface EnterSelectEvent<T> extends React.KeyboardEvent {
   component: {
-    name?: string,
     deselectedValues: undefined,
+    name?: string,
     selectedValue: T,
     value: T[],
   },
@@ -49,8 +49,8 @@ export interface EnterSelectEvent<T> extends React.KeyboardEvent {
 export interface ResetEvent<T> {
   component: {
     deselectedValues: undefined,
-    selectedValue: undefined,
     name?: string,
+    selectedValue: undefined,
     value: T[],
   },
 }
@@ -80,6 +80,7 @@ export interface FocusEvent<T = Value> extends React.FocusEvent<HTMLInputElement
 export type ChangeEvent<T = Value> = MouseSelectEvent<T> | EnterSelectEvent<T> | ClearEvent<T> | ResetEvent<T>;
 
 export interface MultiSelectProps<T extends MultiSelectValue | null | undefined = MultiSelectValue | null | undefined> extends ValidationProps {
+  [x: string]: unknown,
   /** Браузерное автозаполнение поля ввода, по умолчанию "off" */
   autoComplete?: string,
   /** "Выбрать все" в выпадающем списке */
@@ -124,6 +125,8 @@ export interface MultiSelectProps<T extends MultiSelectValue | null | undefined 
   onBlur?: (event: FocusEvent) => void,
   /** Обработчик изменения данных в инпуте */
   onChange?: (event: ChangeEvent) => void,
+  /** Классы переданные через _ */
+  onEnterPress?: (ev: EnterPressEvent) => void,
   /** Обработчик фокуса элемента */
   onFocus?: (event: FocusEvent) => void,
   /** Плейсхолдер инпута */
@@ -152,9 +155,6 @@ export interface MultiSelectProps<T extends MultiSelectValue | null | undefined 
   value?: T,
   /** Кастомный рендер враппера */
   wrapperRender?: CustomRender<MultiSelectProps, MultiSelectState, DivProps>,
-  /** Классы переданные через _ */
-  onEnterPress?: (ev: EnterPressEvent) => void,
-  [x: string]: unknown,
 }
 
 export interface MultiSelectState {
@@ -230,8 +230,8 @@ export interface KeyDownData {
 }
 
 export interface GetSortedSuggestionsProps {
-  shouldSelectedGoFirst?: boolean,
-  selectedSuggestions?: Value[],
   filteredData?: Value[],
+  selectedSuggestions?: Value[],
+  shouldSelectedGoFirst?: boolean,
   sortSuggestions: MultiSelectProps['sortSuggestions'],
 }

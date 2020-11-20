@@ -5,12 +5,14 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export interface ChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   component: {
-    value: boolean,
     name?: string,
+    value: boolean,
   },
 }
 
 export interface CheckBoxProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Всё, что обёрнуто в L.Checkbox, попадает в label */
   children?: React.ReactNode,
   /** Значение по-умолчанию, если не передано - false */
@@ -37,12 +39,10 @@ export interface CheckBoxProps {
   value?: boolean,
   /** Кастомизация враппера */
   wrapperRender?: CustomRender<CheckBoxProps, {}, Partial<CheckBoxProps>>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface CheckBoxRefCurrent {
-  wrapper: HTMLElement | null,
   input: HTMLInputElement | null,
   label: HTMLLabelElement | null,
+  wrapper: HTMLElement | null,
 }

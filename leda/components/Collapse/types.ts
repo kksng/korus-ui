@@ -30,6 +30,8 @@ export interface CollapseProps {
 }
 
 export interface HeadingProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Дочерние элементы */
   children: React.ReactNode,
   /** Иконка возле заголовка */
@@ -40,11 +42,11 @@ export interface HeadingProps {
   ref?: React.Ref<HeadingRefCurrent>,
   /** Компонент-обертка в который будет помещен Collapse.Heading. Передавать в виде <Wrapper props />. По умолчанию - <Div /> */
   wrapperRender?: CustomRender<HeadingProps, { }, HeadingWrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface BodyProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Дочерние элементы */
   children?: React.ReactNode,
   /** Состояние загрузки данных */
@@ -61,11 +63,11 @@ export interface BodyProps {
   transition?: string,
   /** Компонент-обертка в который будет помещен Collapse.Body. Передавать в виде <Wrapper props />. По умолчанию - <Div /> */
   wrapperRender?: CustomRender<BodyProps, { }, BodyWrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface PanelProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Дочерние элементы */
   children: React.ReactNode,
   /** Отключение панели */
@@ -76,8 +78,6 @@ export interface PanelProps {
   panelKey: string,
   /** Компонент-обертка для панели, например Div. Передавать в виде <Wrapper props /> */
   wrapperRender?: CustomRender<PanelProps, { isClicked: boolean }, PanelWrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface CollapseContextType {
@@ -87,13 +87,13 @@ export interface CollapseContextType {
 }
 
 export interface CollapsePanelContextType extends CollapseContextType {
-  panelKey: string,
   isClicked: boolean,
   isDisabled?: boolean,
-  name?: string,
   isExpanded: boolean,
-  onHeadingClick: CollapsePanelHandlers['onHeadingClick'],
+  name?: string,
   onBodyRest: CollapsePanelHandlers['onBodyRest'],
+  onHeadingClick: CollapsePanelHandlers['onHeadingClick'],
+  panelKey: string,
 }
 
 export interface HeadingWrapperProps {
@@ -108,8 +108,8 @@ export interface IconProps {
 }
 
 export interface BodyWrapperProps {
-  className?: string,
   children?: React.ReactNode,
+  className?: string,
 }
 
 export interface PanelWrapperProps {
@@ -126,11 +126,11 @@ export interface SelectHandler {
 export type SetClicked = React.Dispatch<React.SetStateAction<boolean>>;
 
 export interface CollapsePanelHandlers {
-  onHeadingClick: () => void,
   onBodyRest: () => void,
+  onHeadingClick: () => void,
 }
 
-export type CollapseComponent = React.FC<CollapseProps> & { Panel: React.FC<PanelProps>, Body: React.FC<BodyProps>, Heading: React.FC<HeadingProps> };
+export type CollapseComponent = React.FC<CollapseProps> & { Body: React.FC<BodyProps>, Heading: React.FC<HeadingProps>, Panel: React.FC<PanelProps> };
 
 export interface BodyRefCurrent {
   wrapper: HTMLElement | null,

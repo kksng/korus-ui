@@ -53,7 +53,7 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
   const value = getValue(valueProp, valueState);
 
   const valueToValidate = getValueToValidate({
-    value, maskedInputRef, placeholderChar,
+    maskedInputRef, placeholderChar, value,
   });
 
   const {
@@ -68,7 +68,7 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
     }),
   });
 
-  const state = { value: valueState, isFocused, isValid };
+  const state = { isFocused, isValid, value: valueState };
 
   // revalidate value when it is changed from the outside
   React.useEffect(() => {
@@ -82,7 +82,7 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
       }
 
       const currentValueToValidate = getValueToValidate({
-        value, maskedInputRef, placeholderChar,
+        maskedInputRef, placeholderChar, value,
       });
 
       validateCurrent(currentValueToValidate);
@@ -90,11 +90,11 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
   }, [isFocused, placeholderChar, validateCurrent, value, valueProp]);
 
   const handleBlur = createBlurHandler(props, state, {
-    validateCurrent,
-    value,
-    setFocused,
     maskedInputRef,
     placeholderChar,
+    setFocused,
+    validateCurrent,
+    value,
   });
 
   const handleChange = createChangeHandler(props, state, {
@@ -132,8 +132,8 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
     <Wrapper
       className={wrapperClassNames}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-        wrapper: component.wrapper,
         input: maskedInputRef.current,
+        wrapper: component.wrapper,
       }))}
     >
       <Div className={inputWrapperClassNames}>

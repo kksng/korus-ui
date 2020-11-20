@@ -12,6 +12,7 @@ import { defaultDropDownSelectTheme } from '../DropDownSelect/theme';
 import { defaultDropZoneTheme } from '../DropZone/theme';
 import { defaultInputTheme } from '../Input/theme';
 import { defaultLoaderTheme } from '../Loader/theme';
+import { defaultLoaderComponentTheme } from '../../src/LoaderComponent/theme';
 import { defaultMaskedInputTheme } from '../MaskedInput/theme';
 import { defaultModalTheme } from '../Modal/theme';
 import { defaultNumericRangeTheme } from '../NumericRange/theme';
@@ -28,6 +29,7 @@ import { defaultSwitcherTheme } from '../Switcher/theme';
 import { defaultTabsTheme } from '../Tabs/theme';
 import { defaultTagsTheme } from '../Tags/theme';
 import { defaultTooltipTheme } from '../Tooltip/theme';
+import { defaultTourTheme } from '../Tour/theme';
 import { defaultVStepperTheme } from '../VStepper/theme';
 import { defaultTextAreaTheme } from '../Textarea/theme';
 import { defaultNotificationsTheme } from '../Notifications/theme';
@@ -50,12 +52,13 @@ export const globalDefaultTheme = {
   fileDrop: defaultFileDropTheme,
   input: defaultInputTheme,
   loader: defaultLoaderTheme,
+  loaderComponent: defaultLoaderComponentTheme,
   maskedInput: defaultMaskedInputTheme,
-  multiSelect: defaultMultiSelectTheme,
   modal: defaultModalTheme,
+  multiSelect: defaultMultiSelectTheme,
+  notifications: defaultNotificationsTheme,
   numericRange: defaultNumericRangeTheme,
   numericTextBox: defaultNumericTextBoxTheme,
-  notifications: defaultNotificationsTheme,
   pagination: defaultPaginationTheme,
   password: defaultPasswordTheme,
   progressBar: defaultProgressBarTheme,
@@ -68,8 +71,9 @@ export const globalDefaultTheme = {
   switcher: defaultSwitcherTheme,
   tabs: defaultTabsTheme,
   tags: defaultTagsTheme,
-  tooltip: defaultTooltipTheme,
   textarea: defaultTextAreaTheme,
+  tooltip: defaultTooltipTheme,
+  tour: defaultTourTheme,
   vstepper: defaultVStepperTheme,
   wizard: defaultWizardTheme,
 };

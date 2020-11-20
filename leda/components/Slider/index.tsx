@@ -61,7 +61,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref?: React.Ref<Slid
 
   const shouldRender = shouldRenderCurrentLabel || shouldRenderMinMaxLabels;
 
-  const handleChange = createChangeHandler({ onMove, setValueState, name });
+  const handleChange = createChangeHandler({ name, onMove, setValueState });
 
   const handleAfterChange = createAfterChangeHandler({ name, onChange });
 

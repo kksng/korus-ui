@@ -39,6 +39,7 @@ interface ExternalFile {
 export const ControlledDropZone = (props: ControlledDropZoneProps) => {
   const [state1, setState1] = React.useState<L.DropZoneTypes.DropZoneFiles>({ acceptedFiles: [], rejectedFiles: [] });
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false)
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   const [state2, setState2] = React.useState<{
     acceptedFiles: ExternalFile[],
@@ -50,6 +51,7 @@ export const ControlledDropZone = (props: ControlledDropZoneProps) => {
       <L.DropZone
         allowedFiles=".jpg, .gif, .png"
         maxFilesNumber={2}
+        isLoading={isLoading}
         form="dd-zone"
         name="file"
         isRequired
@@ -99,6 +101,9 @@ export const ControlledDropZone = (props: ControlledDropZoneProps) => {
       </L.Button>
       <br />
       <br />
+      <L.Button onClick={() => setIsLoading(!isLoading)}>
+        Show/hide Loader
+      </L.Button>
       <L.DropZone
         value={state2}
         onChange={(ev) => setState2(ev.component.value)}

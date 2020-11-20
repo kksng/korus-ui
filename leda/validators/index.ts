@@ -18,9 +18,9 @@ import { validateBankCardNumber as bankCardNumber } from './bankCardNumber';
 import { validatePassword as password } from './password';
 
 export const validate = {
+  bankCardNumber,
   cadastralNumber,
   email,
-  url,
   inn,
   innCorp,
   innPrivate,
@@ -31,5 +31,5 @@ export const validate = {
   password,
   postalCode,
   snils,
-  bankCardNumber,
+  url,
 };

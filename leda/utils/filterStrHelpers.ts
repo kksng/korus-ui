@@ -1,8 +1,8 @@
 // Возможные опции для фильтра значений в выпадающем списке
 export const FILTER_RULES = {
+  includes: 'includes' as const,
   smart: 'smart' as const,
   startsWith: 'startsWith' as const,
-  includes: 'includes' as const,
 };
 
 
