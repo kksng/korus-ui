@@ -26,7 +26,7 @@ export const useCustomElements = (props: FileUploadProps): CustomElements => {
   );
 
   return {
-    Wrapper,
     Info,
+    Wrapper,
   };
 };

@@ -49,6 +49,61 @@
       border-right-color: $black-02;
     }
   }
+
+  @if $position == 'top-left' {
+    margin-top: -7px;
+    margin-left: 21px;
+    transform: translate(-100%, -100%);
+
+    &::after {
+      top: 100%;
+      right: 0;
+      transform: translateX(-150%);
+      border-width: 7px 4px 0;
+      border-top-color: $black-02;
+    }
+  }
+
+  @if $position == 'top-right' {
+    margin-top: -7px;
+    margin-left: -21px;
+    transform: translateY(-100%);
+
+    &::after {
+      top: 100%;
+      left: 0;
+      transform: translateX(150%);
+      border-width: 7px 4px 0;
+      border-top-color: $black-02;
+    }
+  }
+
+  @if $position == 'bottom-left' {
+    margin-top: 7px;
+    margin-left: 21px;
+    transform: translateX(-100%);
+
+    &::after {
+      bottom: 100%;
+      right: 0;
+      transform: translateX(-150%);
+      border-width: 0 4px 7px;
+      border-bottom-color: $black-02;
+    }
+  }
+
+  @if $position == 'bottom-right' {
+    margin-top: 7px;
+    margin-left: -21px;
+
+    &::after {
+      bottom: 100%;
+      left: 0;
+      transform: translateX(150%);
+      border-width: 0 4px 7px;
+      border-bottom-color: $black-02;
+    }
+  }
 }
 
 .tooltip {
@@ -102,5 +157,21 @@
 
   &.left {
     @include position('left');
+  }
+
+  &.top-left {
+    @include position('top-left');
+  }
+
+  &.top-right {
+    @include position('top-right');
+  }
+
+  &.bottom-left {
+    @include position('bottom-left');
+  }
+
+  &.bottom-right {
+    @include position('bottom-right');
   }
 }

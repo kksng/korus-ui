@@ -82,4 +82,9 @@
       @include position('left');
     }
   }
+
+  &-active-element {
+    z-index: 10002;
+    position: relative;
+  }
 }

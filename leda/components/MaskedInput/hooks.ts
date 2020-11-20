@@ -28,7 +28,7 @@ export const useCustomElements = (props: MaskedInputProps, state: MaskedInputSta
   );
 
   return {
-    Wrapper,
     Input,
+    Wrapper,
   };
 };

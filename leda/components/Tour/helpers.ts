@@ -1,10 +1,43 @@
 import * as React from 'react';
 
+/**
+ * Helper creates point
+ * @param {number} x - x coordinate of point
+ * @param {number} y - y coordinate of point
+ *
+ * @returns { {x: number; y: number;} } - coordinates of point
+ */
 const createPoint = (x: number, y: number) => ({
   x, y,
 });
 
-export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: number): string => {
+/**
+ * Helper sets default tour element styles
+ * @param {HTMLElement | null | undefined} element - tour element
+ */
+export const removeActiveClass = (element: HTMLElement | null | undefined, activeClass: string): void => {
+  if (!element) return;
+  element.classList.remove(activeClass);
+};
+
+/**
+ * Helper sets tour element styles
+ * @param {HTMLElement | null | undefined} element - tour element
+ */
+export const setActiveClass = (element: HTMLElement | null | undefined, activeClass: string): void => {
+  if (!element) return;
+  element.classList.add(activeClass);
+};
+
+/**
+ * Helper creates path of svg overlay element
+ * @param {HTMLElement | null} element - tour element
+ * @param {number} borderRadius - border radius of highlighted space
+ * @param {number} padding - padding of highlighted space
+ *
+ * @returns {string} - path of svg overlay element
+ */
+export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: number, padding: number): string => {
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
 
@@ -21,10 +54,10 @@ export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: 
 
   const rect = element.getBoundingClientRect();
 
-  const elementTopLeft = createPoint(rect.left, rect.top);
-  const elementTopRight = createPoint(rect.right, rect.top);
-  const elementBottomRight = createPoint(rect.right, rect.bottom);
-  const elementBottomLeft = createPoint(rect.left, rect.bottom);
+  const elementTopLeft = createPoint(rect.left - padding, rect.top - padding);
+  const elementTopRight = createPoint(rect.right + padding, rect.top - padding);
+  const elementBottomRight = createPoint(rect.right + padding, rect.bottom + padding);
+  const elementBottomLeft = createPoint(rect.left - padding, rect.bottom + padding);
 
   return `
     M 0 0
@@ -45,6 +78,14 @@ export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: 
     Z`;
 };
 
+/**
+ * Helper calculates modal window position
+ * @param {string} position - position of modal window against tour element
+ * @param {HTMLElement} element - tour element
+ * @param {boolean} isScrolling - flag defines if document is scrolling
+ *
+ * @returns {React.CSSProperties} - styles of modal window
+ */
 export const getModalPositionStyles = (position: string, element: HTMLElement, isScrolling: boolean): React.CSSProperties => {
   if (isScrolling) {
     return {
@@ -56,36 +97,36 @@ export const getModalPositionStyles = (position: string, element: HTMLElement, i
 
   if (position === 'top') {
     return {
-      top: `${rect.top - 20}px`,
       left: `${rect.left}px`,
+      top: `${rect.top - 20}px`,
       transform: 'translateY(-100%)',
     };
   }
 
   if (position === 'right') {
     return {
-      top: `${rect.top}px`,
       left: `${rect.right + 20}px`,
+      top: `${rect.top}px`,
     };
   }
 
   if (position === 'bottom') {
     return {
-      top: `${rect.bottom + 20}px`,
       left: `${rect.left}px`,
+      top: `${rect.bottom + 20}px`,
     };
   }
 
   if (position === 'left') {
     return {
-      top: `${rect.top}px`,
       left: `${rect.left - 20}px`,
+      top: `${rect.top}px`,
       transform: 'translateX(-100%)',
     };
   }
 
   return {
-    top: '',
     left: '',
+    top: '',
   };
 };

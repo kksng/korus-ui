@@ -8,6 +8,8 @@ import {
 } from '../../src/DateTimeInputRange/types';
 
 export interface TimeRangeProps extends DateTimeInputRangeProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Формат отображаемой и вводимой даты. По-умолчанию "hh:mm" */
   format?: string,
   /** Признак отключения инпута */
@@ -22,20 +24,18 @@ export interface TimeRangeProps extends DateTimeInputRangeProps {
   onBlur?: (ev: BlurEvent) => void,
   /** Функция обратного вызова при изменении значения полей */
   onChange?: (ev: CustomRangeEvent) => void,
-  /** Функция обратного вызова при фокусе */
-  onFocus?: (ev: FocusEvent) => void,
   /** Функция обратного вызова при нажатии Enter в поле "до" */
   onEnterPress?: (ev: ChangeEvent) => void,
+  /** Функция обратного вызова при фокусе */
+  onFocus?: (ev: FocusEvent) => void,
   /** Плейсхолдер полей "от" и "до" */
   placeholder?: string | [string | undefined, string | undefined],
-  /** Минимальное время, применяется к обоим полям */
-  timeMin?: TimeLimits,
-  /** Минимальное время, применяется к обоим полям */
-  timeMax?: TimeLimits,
   /** Реф */
   ref?: React.Ref<DateTimeInputRangeRefCurrent>,
+  /** Минимальное время, применяется к обоим полям */
+  timeMax?: TimeLimits,
+  /** Минимальное время, применяется к обоим полям */
+  timeMin?: TimeLimits,
   /** Значение полей "от" и "до" */
   value?: [string, string] | [Date | null, Date | null],
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }

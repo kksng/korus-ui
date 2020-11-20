@@ -11,8 +11,12 @@ export interface CustomElements {
 }
 
 export interface DropDownProps extends React.HTMLAttributes<HTMLElement> {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Ссылка на контейнер, относительно которого нужно позиционировать элемент */
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement | null }>,
+  /** Открытие по клику, по умолчанию открытие по наведению */
+  interactionMode?: 'click',
   /** Принудительное открытие списка */
   isOpen?: boolean,
   /** Реф */
@@ -21,10 +25,6 @@ export interface DropDownProps extends React.HTMLAttributes<HTMLElement> {
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dropDown],
   /** Тег-обертка, при наведении на который, будет отображаться данный dropdown, по умолчанию <div> */
   wrapperRender?: (props: RenderEvent<DropDownProps>) => React.ReactNode,
-  /** Открытие по клику, по умолчанию открытие по наведению */
-  interactionMode?: 'click',
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 /**
@@ -39,12 +39,12 @@ export interface DropDownRefCurrent {
  * Props of Wrapper component
  */
 export interface WrapperProps {
-  /** Custom class */
-  className?: string,
-  /** Child elements */
-  children?: React.ReactNode,
-  /** Component's current ref */
-  ref?: React.Ref<DropDownRefCurrent>,
   /** Classes passed through _ */
   [x: string]: unknown,
+  /** Child elements */
+  children?: React.ReactNode,
+  /** Custom class */
+  className?: string,
+  /** Component's current ref */
+  ref?: React.Ref<DropDownRefCurrent>,
 }

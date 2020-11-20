@@ -1,0 +1,1 @@
+export const defaultText = 'Загрузка...';

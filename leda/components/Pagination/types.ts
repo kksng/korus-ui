@@ -18,6 +18,8 @@ export interface PageSizeChangeEvent {
 }
 
 export interface PaginationProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Номер текущей страницы */
   currentPage?: number,
   /** Начальное количество элементов на странице при передаче pageSizeOptions. По умолчанию - первый элемент массива */
@@ -34,8 +36,6 @@ export interface PaginationProps {
   onChange?: (event: ChangeEvent) => void,
   /** Обработчик изменения количества отображаемых элементов */
   onPageSizeChange?: (event: PageSizeChangeEvent) => void,
-  /** Кастомизация выпадающего списка с выбором количества записей на странице */
-  pagesDropDownRender?: CustomRender<PaginationProps, PaginationState, PagesDropDownProps>,
   /** Количество элементов на странице */
   pageSize?: number,
   /** Кастомизация поля ввода выпадающего списка с выбором количества записей на странице */
@@ -44,14 +44,14 @@ export interface PaginationProps {
   pageSizeItemRender?: CustomRender<SuggestionItemProps, {}, SuggestionElementProps>,
   /** Выбор вариантов количества элементов на странице, если передан, то появляется выпадающий список */
   pageSizeOptions?: number[],
+  /** Кастомизация выпадающего списка с выбором количества записей на странице */
+  pagesDropDownRender?: CustomRender<PaginationProps, PaginationState, PagesDropDownProps>,
   /** Reference */
   ref?: React.Ref<PaginationRefCurrent>,
   /** Тема компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.pagination],
   /** Общее количество записей */
   totalItems: number,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface PaginationState {
@@ -84,10 +84,10 @@ export interface PaginationInfoProps {
 }
 
 export interface PaginationRangeInfoProps {
-  /** Начало диапазона числа элементов на странице */
-  startingItemNumber: number,
   /** Конец диапазона числа элементов на странице */
   endingItemNumber: number,
+  /** Начало диапазона числа элементов на странице */
+  startingItemNumber: number,
   /** Общее количество элементов на странице */
   totalItemsNumber: number,
 }
@@ -98,10 +98,10 @@ export interface PaginationTotalInfoProps {
 }
 
 export interface PaginationControlProps {
-  /** Классы для компонента */
-  className?: string,
   /** Дочерние элементы */
   children?: React.ReactNode,
+  /** Классы для компонента */
+  className?: string,
   /** Контрол с номером страницы */
   isPageNumber?: boolean,
   /** Обработчик клика */
@@ -117,10 +117,10 @@ export interface PageChangeHandler {
 }
 
 export interface PagesListProps {
-  theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.pagination],
-  pageNumbers: number[],
   currentPage: number,
   onClick: PageChangeHandler,
+  pageNumbers: number[],
+  theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.pagination],
 }
 
 export interface PaginationRefCurrent {

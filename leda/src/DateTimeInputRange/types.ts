@@ -24,58 +24,58 @@ export type DateTimeInputValueType = undefined | null | string | Date;
 
 export interface DateTimeInputRangeProps {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
-  className?: string,
-  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
-  disabledDates?: (Date | [Date, Date])[],
-  max?: Date,
-  min?: Date,
-  theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInputRange],
-  onChange?: (ev: CustomRangeEvent) => void,
-  onBlur?: (ev: BlurEvent) => void,
-  onFocus?: (ev: FocusEvent) => void,
-  onEnterPress?: (ev: ChangeEvent) => void,
-  isRequired?: boolean | [boolean, boolean],
-  format?: string,
-  form?: string,
-  requiredMessage?: string | [string, string],
-  type?: Values<typeof COMPONENT_TYPES>,
-  value?: [DateTimeInputValueType, DateTimeInputValueType] | null,
-  placeholder?: string | [string | undefined, string | undefined],
-  name?: string | [string | undefined, string | undefined],
-  isOpen?: boolean | [boolean, boolean],
-  isDisabled?: boolean | [boolean, boolean],
-  /** Кастомный враппер */
-  wrapperRangeRender?: CustomRender<DateTimeInputRangeProps, DateTimeInputRangeState, WrapperRangeProps>,
-  /** Кастомный разделитель инпутов */
-  delimiterRender?: CustomRender<DateTimeInputRangeProps, DateTimeInputRangeState, DelimiterProps>,
-  /** Кастомный враппер DateTimeInput */
-  wrapperRender?: CustomRender<DateTimeInputProps, DateTimeInputState, WrapperProps>,
-  /** Кастомная иконка календаря */
-  iconRender?: CustomRender<DateTimeInputProps, DateTimeInputState, IconProps>,
-  /** Рендеры для инпутов, [render, render] */
-  inputsRender?: [DateTimeInputProps['inputRender'] | null, DateTimeInputProps['inputRender'] | null],
-  /** Кастомная ячейка с датой */
-  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
-  /** Кастомный список дней недели (строка "Пн Вт Ср Чт Пт Сб Вс") */
-  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  /** Кастомный вид выбора даты */
-  dateViewRender?: CustomRender<DateViewProps, {}, DateViewProps>,
-  /** Кастомный вид выбора месяца */
-  monthViewRender?: CustomRender<DateViewProps, {}, MonthViewProps>,
-  /** Кастомный вид выбора года */
-  yearViewRender?: CustomRender<DateViewProps, {}, YearViewProps>,
   /** Кастомный заголовок календаря */
   calendarHeaderRender?: CustomRender<DateViewProps, {}, CalendarHeaderProps>,
   /** Кастомный рендер враппера календаря */
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
+  className?: string,
+  /** Кастомная ячейка с датой */
+  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
+  /** Кастомный вид выбора даты */
+  dateViewRender?: CustomRender<DateViewProps, {}, DateViewProps>,
+  /** Кастомный разделитель инпутов */
+  delimiterRender?: CustomRender<DateTimeInputRangeProps, DateTimeInputRangeState, DelimiterProps>,
+  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  disabledDates?: (Date | [Date, Date])[],
+  form?: string,
+  format?: string,
+  /** Кастомная иконка календаря */
+  iconRender?: CustomRender<DateTimeInputProps, DateTimeInputState, IconProps>,
+  /** Рендеры для инпутов, [render, render] */
+  inputsRender?: [DateTimeInputProps['inputRender'] | null, DateTimeInputProps['inputRender'] | null],
+  isDisabled?: boolean | [boolean, boolean],
+  isOpen?: boolean | [boolean, boolean],
+  isRequired?: boolean | [boolean, boolean],
+  max?: Date,
+  min?: Date,
   /** Массив кастомных названий месяцев */
   monthNames?: MonthsNames,
+  /** Кастомный вид выбора месяца */
+  monthViewRender?: CustomRender<DateViewProps, {}, MonthViewProps>,
+  name?: string | [string | undefined, string | undefined],
+  onBlur?: (ev: BlurEvent) => void,
+  onChange?: (ev: CustomRangeEvent) => void,
+  onEnterPress?: (ev: ChangeEvent) => void,
+  onFocus?: (ev: FocusEvent) => void,
+  placeholder?: string | [string | undefined, string | undefined],
+  requiredMessage?: string | [string, string],
   /** Массив сокращенных кастомных названий месяцев */
   shortMonthNames?: MonthsNames,
-  /** Массив кастомных названий дней недели */
-  weekDayNames?: WeekDayNames,
   /** Массив сокращенных кастомных названий дней недели */
   shortWeekDayNames?: WeekDayNames,
+  theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInputRange],
+  type?: Values<typeof COMPONENT_TYPES>,
+  value?: [DateTimeInputValueType, DateTimeInputValueType] | null,
+  /** Массив кастомных названий дней недели */
+  weekDayNames?: WeekDayNames,
+  /** Кастомный список дней недели (строка "Пн Вт Ср Чт Пт Сб Вс") */
+  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
+  /** Кастомный враппер */
+  wrapperRangeRender?: CustomRender<DateTimeInputRangeProps, DateTimeInputRangeState, WrapperRangeProps>,
+  /** Кастомный враппер DateTimeInput */
+  wrapperRender?: CustomRender<DateTimeInputProps, DateTimeInputState, WrapperProps>,
+  /** Кастомный вид выбора года */
+  yearViewRender?: CustomRender<DateViewProps, {}, YearViewProps>,
 }
 
 export interface DateTimeInputRangeState {
@@ -87,16 +87,16 @@ export interface DateTimeInputRangeState {
 }
 
 export interface DateTimeInputRangeRefCurrent {
-  wrapper: HTMLDivElement | null,
   inputFrom: HTMLInputElement | null,
   inputTo: HTMLInputElement | null,
+  wrapper: HTMLDivElement | null,
 }
 
 export interface CustomRangeEvent {
   component: {
-    value: [string, string],
     date: [Date | null, Date | null],
     name?: string | [string | undefined, string | undefined],
+    value: [string, string],
   },
 }
 
@@ -110,6 +110,6 @@ export interface DelimiterProps {
 }
 
 export interface CustomElements {
-  WrapperRange: React.FC<WrapperRangeProps>,
   Delimiter: React.FC<DelimiterProps>,
+  WrapperRange: React.FC<WrapperRangeProps>,
 }

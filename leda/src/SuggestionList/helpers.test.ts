@@ -20,8 +20,8 @@ describe('getText', () => {
   it('works with object', () => {
     const expected = 'London';
     expect(helpers.getText({
-      region: 'Europe',
       city: 'London',
+      region: 'Europe',
     }, 'city')).toEqual(expected);
   });
 

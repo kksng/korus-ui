@@ -11,6 +11,8 @@ export interface ChangeEvent extends React.MouseEvent<HTMLDivElement> {
 }
 
 export interface SwitcherProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Кастомный switcher для компонента (подложка + иконка) */
   baseRender?: CustomRender<SwitcherProps, SwitcherState, BaseProps>,
   /** Дочерние элементы (рендерятся внутри <label> */
@@ -35,8 +37,6 @@ export interface SwitcherProps {
   value?: boolean,
   /** Кастомный wrapper для компонента */
   wrapperRender?: CustomRender<SwitcherProps, SwitcherState, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface SwitcherState {
@@ -44,15 +44,15 @@ export interface SwitcherState {
 }
 
 export interface WrapperProps {
+  children?: React.ReactNode,
   className?: string,
   ref?: React.Ref<SwitcherRefCurrent> | null,
-  children?: React.ReactNode,
 }
 
 export interface LabelProps {
+  children?: React.ReactNode,
   className?: string,
   onClick?: React.MouseEventHandler<HTMLSpanElement>,
-  children?: React.ReactNode,
 }
 
 export interface BaseProps {
@@ -65,10 +65,10 @@ export interface IconProps {
 }
 
 export interface CustomElements {
-  Wrapper: React.FC<WrapperProps>,
-  Label: React.FC<LabelProps>,
   Base: React.FC<BaseProps>,
   Icon: React.FC<IconProps>,
+  Label: React.FC<LabelProps>,
+  Wrapper: React.FC<WrapperProps>,
 }
 
 export interface SwitcherRefCurrent {

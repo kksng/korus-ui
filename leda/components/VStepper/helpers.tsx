@@ -8,9 +8,9 @@ import {
 import { SomeObject } from '../../commonTypes';
 
 export const VSTEPPER_STATUS_TYPES = {
-  SUCCESS: 'success',
-  PROGRESS: 'progress',
   DANGER: 'danger',
+  PROGRESS: 'progress',
+  SUCCESS: 'success',
 } as const;
 
 export type StepTypes = typeof VSTEPPER_STATUS_TYPES[keyof typeof VSTEPPER_STATUS_TYPES];
@@ -48,9 +48,9 @@ export const getItemClassNames = (props: VStepperItemProps, theme: NonNullable<R
   );
 
   return {
-    wrapperClassName,
-    iconClassName,
     headingIconClassName,
+    iconClassName,
+    wrapperClassName,
   };
 };
 

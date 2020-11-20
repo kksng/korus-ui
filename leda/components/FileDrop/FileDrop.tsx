@@ -41,14 +41,14 @@ export const FileDrop = React.forwardRef((props: FileDropProps, ref: React.Ref<F
   const combinedContentClassNames = getClassNames(theme.content, { [theme.disabled]: isDisabled });
 
   const { getRootProps, getInputProps, open } = useDropzone({
+    accept: allowedFiles,
+    disabled: isDisabled,
+    maxSize: maxFileSize,
+    multiple: false,
     onDrop: (acceptedFiles, rejectedFiles, event) => {
       const newValue = handleChange(acceptedFiles, rejectedFiles, event as React.DragEvent<HTMLDivElement>);
       validateCurrent(error ? null : newValue);
     },
-    accept: allowedFiles,
-    maxSize: maxFileSize,
-    multiple: false,
-    disabled: isDisabled,
   });
 
   const combinedClassNames = getClassNames(
@@ -64,7 +64,7 @@ export const FileDrop = React.forwardRef((props: FileDropProps, ref: React.Ref<F
   fileDropRef.current = { open };
 
   const {
-    ErrorItem, SuccessItem, DefaultItem, LoadingItem, UploadButton, Wrapper,
+    ErrorItem, SuccessItem, DefaultItem, UploadButton, Wrapper,
   } = useCustomElements(props);
 
   const rootProps = getRootProps();
@@ -78,8 +78,8 @@ export const FileDrop = React.forwardRef((props: FileDropProps, ref: React.Ref<F
       <Wrapper
         className={combinedClassNames}
         ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-          wrapper: component.wrapper,
           input: component.wrapper && component.wrapper.querySelector('input'),
+          wrapper: component.wrapper,
         }))}
       >
         <Div
@@ -98,7 +98,6 @@ export const FileDrop = React.forwardRef((props: FileDropProps, ref: React.Ref<F
             value={value}
             UploadButton={UploadButton}
             ErrorItem={ErrorItem}
-            LoadingItem={LoadingItem}
             SuccessItem={SuccessItem}
             DefaultItem={DefaultItem}
           />

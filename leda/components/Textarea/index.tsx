@@ -100,8 +100,8 @@ export const Textarea = React.forwardRef((props: TextareaProps, ref: React.Ref<T
         onFocus={handleFocus}
         placeholder={placeholder}
         ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-          wrapper: component.closest(`.${theme.wrapper}`),
           input: component,
+          wrapper: component.closest(`.${theme.wrapper}`),
         }))}
         style={shouldAutoResize ? { ...style, height: 'auto', overflowY: 'hidden' } : style}
         value={getValue(valueProp, value)}

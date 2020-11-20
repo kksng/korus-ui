@@ -99,9 +99,9 @@ export const createChangeHandler = (
     const customEvent = {
       ...ev,
       component: {
-        value: newValue,
-        name,
         date: newDate,
+        name,
+        value: newValue,
       },
     };
 

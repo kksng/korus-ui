@@ -62,8 +62,8 @@ export const createCollapseHandlers = (
 });
 
 export const createPanelHandlers = (setClicked: SetClicked): CollapsePanelHandlers => ({
-  onHeadingClick: createHeadingClickHandler(setClicked),
   onBodyRest: createBodyRestHandler(setClicked),
+  onHeadingClick: createHeadingClickHandler(setClicked),
 });
 
 export const handleHeadingClick = (props: HeadingProps, context: CollapsePanelContextType): React.MouseEventHandler<HTMLDivElement> => (ev) => {
@@ -77,13 +77,13 @@ export const handleHeadingClick = (props: HeadingProps, context: CollapsePanelCo
   const customEvent = {
     ...ev,
     component: {
-      value: panelKey,
       name,
+      value: panelKey,
     },
     target: {
       ...ev.target,
-      value: panelKey,
       name,
+      value: panelKey,
     },
   };
 

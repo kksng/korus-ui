@@ -4,24 +4,28 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    // Максимальная длина строки с учетом пробелов, в стандарте 100
+    // Sort keys in alphabetic order
+    "sort-keys-fix/sort-keys-fix": "error",
+
+    // Maximum string length including spaces, standard 100
     "max-len": ["error", 250],
-    // Точка с запятой нужна всегда
+    
+    // The semicolon is always needed
     "babel/semi": "error",
 
-    // Дефолтные пропсы нам не нужны
+    // No need for default props
     "react/require-default-props": 0,
 
-    // Отключаем соответствие defaulProps и propTypes (propTypes не используются)
+    // Disable defaultProps and propTypes matching (propTypes are not used)
     "react/default-props-match-prop-types": 0,
 
-    // В js файлах мы используем jsx синтаксис
+    // In js files jsx syntax is used
     "react/jsx-filename-extension": 0,
 
     "react/jsx-one-expression-per-line": "off",
 
-    // Отредактируем организацию для порядка методов при создании React компонента
-    // Добавим в начало определение типов (type-annotations)
+    // Organizing method order when creating a React component
+    // Add type annotations to the beginning of file
     "react/sort-comp": [2, {
       "order": [
         "type-annotations",
@@ -35,36 +39,36 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
 
-    // Это строка для того, чтобы не проверялись на тестах
+    // Avoid being checked on tests
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test-old.tsx", "**/*.test.tsx"]}],    
 
-    // Не используем дефолтный экспорт
+    // Do not use fot default exports
     "import/prefer-default-export": "off",
-    // один файл может содержать несколько экспортов
+    // One file can contain several exports
     "import/no-cycle": "warn",
 
-    // По умолчанию рекомендуется проверять как вложенность, так и идентификатор на сопоставление лейбла с элементом управления
-    // Сделаем так, чтобы одной проверки было достаточно
+    // By default, it is recommended to check both nesting and ID to match label with control
+    // One check should be is enough
     "jsx-a11y/label-has-for": "off",
 
-    // Правила для accessibility:
+    // Rules for accessibility:
 
-    // Элемент с обработчиком кликов должен иметь обработчик клавиатуры
+    // The element with a click handler must have a keyboard handler
     "jsx-a11y/click-events-have-key-events": "off",
 
-    // Принудительное срабатывание onfocus/onblur при onmouseover/onmouseout
+    // Force firing onfocus / onblur on onmouseover / onmouseout
     "jsx-a11y/mouse-events-have-key-events": "off",
 
-    // HTML элемент с обработчиком должен иметь роль
+    // HTML element with handler must have a role
     "jsx-a11y/no-static-element-interactions": "off",
 
     "jsx-a11y/anchor-is-valid": "off",
-    // не всегда используется
-    // todo: обновить правило, когда появится опция minAttributes
+    // not always used
+    // todo: update the rule when the minAttributes option appears
     "react/destructuring-assignment": "off",
-    // у нас лейбл не всегда имеет htmlFor
+    // labels do not always have htmlFor
     "jsx-a11y/label-has-associated-control": "off",
-    // поле current у ref является мутируемым
+    // ref's current field is mutable
     "no-param-reassign": ["error", { "ignorePropertyModificationsFor": ["ref"]}],
 
     "@typescript-eslint/member-delimiter-style": ["error", {
@@ -79,7 +83,7 @@
     }],
 
     "no-use-before-define": ["error", { "functions":  false }],
-    // spread разрешен
+    // spread is allowed
     "react/jsx-props-no-spreading": "off",
 
     "react/static-property-placement": "warn",
@@ -99,7 +103,7 @@
 
     "no-unused-expressions": "off",
     "@typescript-eslint/no-unused-expressions": "error",
-    // TODO: удалить и починить ошибки
+    // TODO: remove and fix errors
     "@typescript-eslint/no-empty-function": "warn"
   },
 
@@ -108,13 +112,16 @@
     "babel",
     "@typescript-eslint",
     "react-hooks",
-    "cypress"
+    "cypress",
+    "typescript-sort-keys",
+    "sort-keys-fix"
   ],
 
   "extends": [
     "airbnb",
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
+    "plugin:typescript-sort-keys/recommended",
     "plugin:jest/recommended",
     "plugin:cypress/recommended"
   ],

@@ -15,44 +15,44 @@ export interface CalendarClickHandler {
 
 export interface CalendarProps {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
+  calendarHeaderRender?: CustomRender<CalendarProps, {}, CalendarHeaderProps>,
+  calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
+  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
+  dateViewRender?: CustomRender<CalendarProps, {}, DateViewProps>,
   /* Dates that are disabled to be selected. Array of dates or dates ranges. */
   disabledDates?: (Date | [Date, Date])[],
   dispatch: React.Dispatch<AllActions>,
   format: string,
   hasTodayButton?: boolean,
-  isOpen?: boolean,
   isDisabled?: boolean,
+  isOpen?: boolean,
   max?: Date,
   min?: Date,
+  monthNames?: MonthsNames,
+  monthViewRender?: CustomRender<CalendarProps, {}, MonthViewProps>,
   onClick: CalendarClickHandler,
   onMouseDown: React.MouseEventHandler<HTMLDivElement>,
+  shortMonthNames?: MonthsNames,
+  shortWeekDayNames?: WeekDayNames,
   theme: typeof defaultTheme,
   value: Date | null,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
-  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
-  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  dateViewRender?: CustomRender<CalendarProps, {}, DateViewProps>,
-  monthViewRender?: CustomRender<CalendarProps, {}, MonthViewProps>,
-  yearViewRender?: CustomRender<CalendarProps, {}, YearViewProps>,
-  calendarHeaderRender?: CustomRender<CalendarProps, {}, CalendarHeaderProps>,
-  calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
-  monthNames?: MonthsNames,
-  shortMonthNames?: MonthsNames,
   weekDayNames?: WeekDayNames,
-  shortWeekDayNames?: WeekDayNames,
+  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
+  yearViewRender?: CustomRender<CalendarProps, {}, YearViewProps>,
 }
 
 export interface DateCellProps {
   children?: React.ReactNode,
   date: number,
-  dates: number[][],
   dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
+  dates: number[][],
   /* Dates that are disabled to be selected. Array of dates or dates ranges. */
   disabledDates?: (Date | [Date, Date])[],
+  index: number,
   max?: Date,
   min?: Date,
-  index: number,
   onClick: CalendarClickHandler,
   theme: typeof defaultTheme,
   value: Date | null,
@@ -62,13 +62,13 @@ export interface DateCellProps {
 }
 
 export interface CalendarHeaderProps {
-  theme: CalendarProps['theme'],
-  conditions: CalendarConditions,
-  viewType: CalendarProps['viewType'],
-  viewDate: CalendarProps['viewDate'],
-  onClick: CalendarClickHandler,
   children?: React.ReactNode,
+  conditions: CalendarConditions,
   monthNames?: MonthsNames,
+  onClick: CalendarClickHandler,
+  theme: CalendarProps['theme'],
+  viewDate: CalendarProps['viewDate'],
+  viewType: CalendarProps['viewType'],
 }
 
 export interface DateViewProps {
@@ -79,45 +79,45 @@ export interface DateViewProps {
   max?: Date,
   min?: Date,
   onClick: CalendarClickHandler,
+  shortWeekDayNames?: WeekDayNames,
   theme: typeof defaultTheme,
   value: Date | null,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
-  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
   weekDayNames?: WeekDayNames,
-  shortWeekDayNames?: WeekDayNames,
+  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
 }
 
 export interface MonthViewProps {
+  children?: React.ReactNode,
   max?: Date,
   min?: Date,
-  theme: typeof defaultTheme,
+  monthNames?: MonthsNames,
   onClick: CalendarClickHandler,
-  children?: React.ReactNode,
+  shortMonthNames?: MonthsNames,
+  theme: typeof defaultTheme,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
-  monthNames?: MonthsNames,
-  shortMonthNames?: MonthsNames,
 }
 
 export interface YearViewProps {
-  max?: Date,
-  min?: Date,
-  theme: typeof defaultTheme,
-  onClick: CalendarClickHandler,
   children?: React.ReactNode,
   format: string,
+  max?: Date,
+  min?: Date,
+  onClick: CalendarClickHandler,
+  theme: typeof defaultTheme,
   value?: Date,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
 }
 
 export interface DateCellItemProps extends DivProps {
+  children?: React.ReactNode,
   className?: string,
   key?: string,
-  title?: string,
-  children?: React.ReactNode,
   onClick?: React.MouseEventHandler<HTMLDivElement>,
+  title?: string,
 }
 
 export interface WeekRowProps extends DivProps {
@@ -125,11 +125,11 @@ export interface WeekRowProps extends DivProps {
 }
 
 export interface CalendarConditionProps {
-  min?: Date,
   max?: Date,
+  min?: Date,
+  value: Date | null,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
-  value: Date | null,
 }
 
 export interface CalendarConditions {
@@ -167,9 +167,9 @@ export interface DateCellConditions {
 }
 
 export interface CustomElements {
+  CalendarHeader: React.FC<CalendarHeaderProps>,
+  CalendarWrapper: React.FC<DivProps>,
   DateView: React.FC<DateViewProps>,
   MonthView: React.FC<MonthViewProps>,
   YearView: React.FC<YearViewProps>,
-  CalendarHeader: React.FC<CalendarHeaderProps>,
-  CalendarWrapper: React.FC<DivProps>,
 }

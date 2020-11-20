@@ -14,9 +14,9 @@ export const createChangeHandler = (
     allowedSymbols, forbiddenSymbols, letterCase, maxLength, name, onChange, value,
   } = props;
 
-  if (isSymbolForbidden({ forbiddenSymbols, value: event.target.value, componentName: 'Password' })) return;
+  if (isSymbolForbidden({ componentName: 'Password', forbiddenSymbols, value: event.target.value })) return;
 
-  if (!isSymbolAllowed({ allowedSymbols, value: event.target.value, componentName: 'Password' })) return;
+  if (!isSymbolAllowed({ allowedSymbols, componentName: 'Password', value: event.target.value })) return;
 
   const maxLengthAdjustedValue = stringToMaxLength(event.target.value, maxLength);
 
@@ -29,8 +29,8 @@ export const createChangeHandler = (
   onChange?.({
     ...event,
     component: {
-      value: newValue,
       name,
+      value: newValue,
     },
   });
 };
@@ -48,8 +48,8 @@ export const createClearHandler = (
   props.onChange?.({
     ...event,
     component: {
-      value: '',
       name: props.name,
+      value: '',
     },
   });
 };
@@ -66,9 +66,9 @@ export const createBlurHandler = (
   props.onBlur?.({
     ...event,
     component: {
-      value: event.target.value,
-      name: props.name,
       isValid: newValid,
+      name: props.name,
+      value: event.target.value,
     },
   });
 };
@@ -83,9 +83,9 @@ export const createFocusHandler = (
   props.onFocus?.({
     ...event,
     component: {
-      value: event.target.value,
-      name: props.name,
       isValid,
+      name: props.name,
+      value: event.target.value,
     },
   });
 };
@@ -97,8 +97,8 @@ export const createKeyDownHandler = (
     props.onEnterPress?.({
       ...event,
       component: {
-        value: event.currentTarget.value,
         name: props.name,
+        value: event.currentTarget.value,
       },
     });
   }

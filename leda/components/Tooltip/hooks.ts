@@ -43,16 +43,16 @@ export const useTooltip: UseTooltip = ({
     const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
     const newPosition = getTooltipPosition({
-      position: initialPosition, elementRect, tooltipRect, arrowSize,
+      arrowSize, elementRect, position: initialPosition, tooltipRect,
     }) || initialPosition;
 
     setPosition(newPosition);
 
     const newOffsets = getTooltipOffsets({
-      position: newPosition, elementRect,
+      elementRect, position: newPosition,
     });
     // is needed to prevent uncontrolled change of dimensions after tooltip becomes visible
-    const fixedDimensions = { width: tooltipRect.width, height: tooltipRect.height };
+    const fixedDimensions = { height: tooltipRect.height, width: tooltipRect.width };
 
     mergeStyle({ ...newOffsets, ...fixedDimensions });
   }, [elementRef, tooltipRef, initialPosition, arrowSize, mergeStyle]);

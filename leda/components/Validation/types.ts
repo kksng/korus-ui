@@ -4,15 +4,15 @@ import { CustomRender, SetState } from '../../commonTypes';
 
 export interface ValidationProps {
   form?: string,
-  name?: string,
+  invalidMessage?: string,
+  invalidMessageRender?: CustomRender<ValidationProps, ValidationState, InvalidMessageProps>,
   isRequired?: boolean,
   isValid?: boolean,
-  value?: any,
-  validator?: Validator | PredefinedValidator | RegExp | ValidatorObject[],
-  invalidMessage?: string,
+  name?: string,
   requiredMessage?: string,
   shouldValidateUnmounted?: boolean,
-  invalidMessageRender?: CustomRender<ValidationProps, ValidationState, InvalidMessageProps>,
+  validator?: Validator | PredefinedValidator | RegExp | ValidatorObject[],
+  value?: any,
 }
 
 export interface ValidationButtonProps {
@@ -24,8 +24,8 @@ export interface Validator {
 }
 
 export interface ValidatorObject {
-  validator: string | RegExp | Validator,
   invalidMessage?: string,
+  validator: string | RegExp | Validator,
 }
 
 export interface NormalizedValidatorObject extends ValidatorObject {
@@ -38,9 +38,9 @@ export interface ValidationState {
 
 // результат - isValid, validateField, validateForm
 export interface ValidationResult {
+  InvalidMessage: React.FC<{}>,
   isValid: boolean,
   validateCurrent: (value?: any) => boolean,
-  InvalidMessage: React.FC<{}>,
 }
 
 export interface FormGetField {
@@ -66,8 +66,8 @@ export interface Field {
 }
 
 export interface Form {
-  name: string,
   fields: Field[],
+  name: string,
 }
 
 export interface FormsObject {
@@ -97,27 +97,27 @@ export type PredefinedValidator =
   | 'okpo';
 
 export interface AddFieldData {
-  formName: string,
   fieldName: string,
-  value: unknown,
+  formName: string,
+  isRequired?: boolean,
+  requiredMessage?: string,
+  reset: () => void,
   setIsValid: SetState<boolean>,
   setMessages: SetState<string[] | undefined>,
   shouldValidateUnmounted?: boolean,
   validators: NormalizedValidatorObject[],
-  isRequired?: boolean,
-  requiredMessage?: string,
-  reset: () => void,
+  value: unknown,
 }
 
 export interface UpdateFieldData {
-  formName: string,
   fieldName: string,
-  value: unknown,
-  isValidProp?: boolean,
+  formName: string,
   isRequired?: boolean,
+  isValidProp?: boolean,
   requiredMessage?: string,
   shouldValidateUnmounted?: boolean,
   validators: NormalizedValidatorObject[],
+  value: unknown,
 }
 
 export interface ValidationExtra {

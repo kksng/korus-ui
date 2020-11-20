@@ -12,18 +12,20 @@ export interface SliderState {
 
 export interface ChangeEvent {
   component: {
-    value: SliderValue | null | undefined,
     name?: string,
+    value: SliderValue | null | undefined,
   },
 }
 
 export interface SliderProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Значение по умолчанию */
   defaultValue?: SliderValue,
-  /** Невозможно изменить значение */
-  isDisabled?: boolean,
   /** Показывать тултипы над ползунками */
   hasTooltip?: boolean,
+  /** Невозможно изменить значение */
+  isDisabled?: boolean,
   /** Тип лейблов */
   labelType?: 'current' | 'minmax',
   /** Максимальное значение */
@@ -48,24 +50,22 @@ export interface SliderProps {
   unitsRender?: CustomRender<SliderProps, SliderState, {}>,
   /** Текущее значение */
   value?: SliderValue | null,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface SliderLabelsProps {
+  children?: React.ReactNode,
+  max: number,
+  min: number,
   shouldRender: boolean,
   theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.slider],
-  min: number,
-  max: number,
   type: Values<typeof LABELS>,
-  children?: React.ReactNode,
   value: number | number[],
 }
 
 export interface SliderTooltipProps {
+  shouldRender: boolean,
   theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.slider],
   value: number | number[],
-  shouldRender: boolean,
 }
 
 export interface SliderRefCurrent {
