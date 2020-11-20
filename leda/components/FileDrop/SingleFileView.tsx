@@ -17,6 +17,7 @@ export const SingleFileView = (props: SingleFileViewProps): React.ReactElement |
     value,
     isLoading,
     loadingProgress,
+    loadingText,
     loadingViewRender,
     theme,
     isDisabled,
@@ -42,6 +43,7 @@ export const SingleFileView = (props: SingleFileViewProps): React.ReactElement |
         loadingProgress={loadingProgress}
         loadingViewRender={loadingViewRender}
         className={theme.description}
+        text={loadingText}
         theme={{ progressLoader: theme.progressLoader }}
       />
     );

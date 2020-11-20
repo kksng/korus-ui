@@ -28,6 +28,7 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
     isLoading,
     isRequired,
     loadingProgress,
+    loadingText,
     loadingViewRender,
     maxFileSize = MAX_FILE_SIZE,
     maxFilesNumber,
@@ -144,6 +145,7 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
           isLoading={isLoading}
           loadingProgress={loadingProgress}
           loadingViewRender={loadingViewRender}
+          text={loadingText}
         />
       </Wrapper>
       <InvalidMessage />
