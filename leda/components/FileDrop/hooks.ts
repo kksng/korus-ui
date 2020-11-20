@@ -12,7 +12,6 @@ export const useCustomElements = (props: FileDropProps): CustomElements => {
   const {
     errorViewRender,
     infoRender,
-    loadingViewRender,
     successViewRender,
     uploadButtonRender,
     wrapperRender,
@@ -31,13 +30,6 @@ export const useCustomElements = (props: FileDropProps): CustomElements => {
     'ErrorItem',
     Div,
     errorViewRender || context.renders[COMPONENTS_NAMESPACES.dropZone].errorViewRender,
-    props,
-  );
-
-  const LoadingItem = useElement(
-    'LoadingItem',
-    Div,
-    loadingViewRender || context.renders[COMPONENTS_NAMESPACES.dropZone].loadingViewRender,
     props,
   );
 
@@ -65,7 +57,6 @@ export const useCustomElements = (props: FileDropProps): CustomElements => {
   return {
     DefaultItem,
     ErrorItem,
-    LoadingItem,
     SuccessItem,
     UploadButton,
     Wrapper,
@@ -89,6 +80,7 @@ export const useFileDropRestProps = (props: FileDropProps): {} => {
     isValid,
     loadingData,
     loadingProgress,
+    loadingText,
     loadingViewRender,
     maxFileNameLength,
     maxFileSize,

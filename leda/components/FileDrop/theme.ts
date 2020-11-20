@@ -8,8 +8,6 @@ export const defaultFileDropTheme = {
   errorIcon:            'filedrop-not-ok-icon',
   fileDownloadLink:     'dropzone-file-download internal',
   invalid:              'danger',
-  progressBase:         'progress-base',
-  progressCircle:       'progress-circle',
   progressLoader:       'filedrop-progress-loader',
   required:             'required',
   retryButton:          'filedrop-retry-button',
@@ -17,5 +15,6 @@ export const defaultFileDropTheme = {
   status:               'filedrop-status',
   successIcon:          'filedrop-ok-icon',
   wrapper:              'filedrop-wrapper',
+
 };
 /* eslint-enable key-spacing */
