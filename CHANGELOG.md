@@ -7,16 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.35.0] - 2020-11-23
 
 ### Added
-- FileDrop, DropZone: Added loadingText prop
+- Tour: Added stepDelay prop, added positions: top-left, bottom-left, top-center, bottom-center
+- DropZone: Added isLoading, loadingProgress and loadingViewRender props
 
 ### Fixed
 - Validation: Fixed displaying of invalidMessage with isValid prop set to false
 - NumericRange: Fixed null value display bug
 - Tour: Added class 'tour-active-element' for active element to customize styles
+- FileDrop, DropZone: Added loadingText prop
 - ToolTip: Updated styles
 
-### Added
-- DropZone: Added isLoading, loadingProgress and loadingViewRender props
 
 ## [0.34.0] - 2020-11-09
 
