@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Tour: Added class 'tour-active-element' for active element to customize styles
 - FileDrop, DropZone: Added loadingText prop
 - ToolTip: Updated styles
+- VStepper: hiding step content using 'display: none'. Required to fix IE related bug.
 
 
 ## [0.34.0] - 2020-11-09
