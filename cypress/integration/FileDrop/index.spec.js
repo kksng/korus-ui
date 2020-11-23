@@ -12,8 +12,18 @@ describe('FileDrop', () => {
   describe('Display', () => {
     it('Should be displayed', () => {
       cy.get(wrapperClassName)
-        .should('have.length', 1)
+        .should('have.length', 2)
         .should('be.visible');
+    });
+    it('Should displayed custom loading text', () => {
+      cy.name('loading')
+        .click()
+        .name('FDwithLoader')
+        .parent()
+        .find('.loader-component-wrapper')
+        .should('have.text', 'Loading...')
+        .name('loading')
+        .click()
     });
   });
 

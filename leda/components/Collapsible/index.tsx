@@ -18,12 +18,25 @@ export const Collapsible = React.forwardRef((props: CollapsibleProps, ref: React
     transition = DEFAULT_TRANSITION,
   } = useProps(props);
 
+  /* Should not display after collapse animation finished. `visibility: hidden;` is not enough on IE */
+  const [shouldDisplay, setShouldDisplay] = React.useState(isOpen);
+  const firstRenderRef = React.useRef(true);
+
+  React.useEffect(() => {
+    if (firstRenderRef.current) {
+      firstRenderRef.current = false;
+    } else {
+      setShouldDisplay(true);
+    }
+  }, [isOpen]);
+
   const onRest = (): void => {
     if (isOpen && isFunction(onOpen)) {
       onOpen();
     }
-    if (!isOpen && isFunction(onClose)) {
-      onClose();
+    if (!isOpen) {
+      setShouldDisplay(false);
+      onClose?.();
     }
     if (isFunction(onToggle)) {
       onToggle();
@@ -35,8 +48,8 @@ export const Collapsible = React.forwardRef((props: CollapsibleProps, ref: React
   const bodyRef = React.useRef<HTMLElement>();
 
   const { setIsExpandedStyle, setIsCollapsedStyle, style } = useCollapse({
-    isOpen,
     content: bodyRef,
+    isOpen,
   });
 
   const onTransitionEnd = React.useCallback((ev: React.TransitionEvent) => {
@@ -53,10 +66,16 @@ export const Collapsible = React.forwardRef((props: CollapsibleProps, ref: React
   [isOpen, onRest, setIsCollapsedStyle, setIsExpandedStyle]);
 
   const styles = React.useMemo(() => ({
-    willChange: 'height',
+    display: isOpen || shouldDisplay ? undefined : 'none',
     transition: transitionProperty,
+    willChange: 'height',
     ...style,
-  }), [style, transitionProperty]);
+  }), [
+    isOpen,
+    shouldDisplay,
+    style,
+    transitionProperty,
+  ]);
 
   return (
     <Div

@@ -6,10 +6,10 @@ import { CustomRender } from '../../commonTypes';
  *  Custom properties of component's item
  */
 export interface ItemProps {
-  /** Item's custom class name */
-  className?: string,
   /** Item's child nodes */
   children?: React.ReactNode,
+  /** Item's custom class name */
+  className?: string,
 }
 
 /**
@@ -21,35 +21,35 @@ export type WizardData = WizardStepItem[] | string[];
  *  Properties of component's item
  */
 export interface WizardItemProps {
-  /** Customization of component's item */
-  itemRender?: CustomRender<WizardItemProps, {}, ItemProps>,
-  /** Default theme */
-  theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.wizard],
+  /** Percentage of completion of the current step */
+  currentStepProgress?: number,
+  /** Flag shows if item is active */
+  isActive: boolean,
   /** Flag shows if item is first */
   isFirst: boolean,
   /** Flag shows if item is last */
   isLast: boolean,
   /** Flag shows if item has success status */
   isSuccess: boolean,
-  /** Flag shows if item is active */
-  isActive: boolean,
+  /** Customization of component's item */
+  itemRender?: CustomRender<WizardItemProps, {}, ItemProps>,
   /** Label of item */
   labelText: string,
-  /** Percentage of completion of the current step */
-  currentStepProgress?: number,
+  /** Default theme */
+  theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.wizard],
 }
 
 export interface WizardProps {
-  /** Тема компонента */
-  theme?: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.wizard],
-  /** Поле из которого извлекается текст для лейбла, работает только если в data объекты */
-  textField?: string,
+  /** Процент завершенности текущего шага */
+  currentStepProgress?: number,
   /** Массив объектов или строк, которые представляют собой шаги */
   data: WizardData,
   /** Кастомизация Wizard целиком */
   itemRender?: CustomRender<WizardItemProps, {}, ItemProps>,
-  /** Процент завершенности текущего шага */
-  currentStepProgress?: number,
+  /** Поле из которого извлекается текст для лейбла, работает только если в data объекты */
+  textField?: string,
+  /** Тема компонента */
+  theme?: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.wizard],
   /** Текущий шаг */
   value: WizardValue,
 }

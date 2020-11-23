@@ -29,7 +29,9 @@ export const getDisabled = (isDisabled?: boolean | [boolean, boolean]): [boolean
   return [false, false];
 };
 
-export const getControlledValue = (value: NumericRangeProps['value']): (number | undefined)[] => {
-  if (Array.isArray(value)) return value.map((v) => (isNumber(v) ? v : undefined));
-  return [undefined, undefined];
+export const getControlledValue = (value: NumericRangeProps['value']): (number | null)[] | undefined => {
+  if (Array.isArray(value)) {
+    return value.map((v) => (isNumber(v) ? v : null));
+  }
+  return undefined;
 };

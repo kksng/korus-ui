@@ -81,11 +81,11 @@ export const RadioGroup = React.forwardRef((props: RadioGroupProps, ref?: React.
         const validRadioButton = isValidRadioButton(child) ? child as React.ReactElement : null;
         if (validRadioButton) {
           return React.cloneElement(validRadioButton, {
-            name,
             form,
-            onChange: handleChange,
-            isDisabled: isBoolean(isDisabled) ? isDisabled : validRadioButton.props.isDisabled,
             isChecked: validRadioButton.props.value === value,
+            isDisabled: isBoolean(isDisabled) ? isDisabled : validRadioButton.props.isDisabled,
+            name,
+            onChange: handleChange,
             theme: { ...theme, ...validRadioButton.props.theme },
           });
         }

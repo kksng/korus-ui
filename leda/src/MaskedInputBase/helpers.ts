@@ -189,12 +189,12 @@ export const addChar = ({
   selection,
   input,
 }: {
-  value: string,
+  char: string,
+  input: HTMLInputElement,
   mask: string,
   placeholderChar?: string,
-  char: string,
   selection: SelectionType,
-  input: HTMLInputElement,
+  value: string,
 }): string => {
   const editableCharsIndex = getEditableCharsIndex(mask);
   const nextEditableIndex = getNextEditableIndex(mask, placeholderChar, selection);
@@ -242,13 +242,13 @@ export const removeChar = ({
   selection,
   input,
 }: {
-  value: string,
+  input: HTMLInputElement,
   mask: string,
+  placeholderChar?: string,
   position: number,
   removed: string,
-  placeholderChar?: string,
   selection: SelectionType,
-  input: HTMLInputElement,
+  value: string,
 }): string => {
   const editableCharsIndex = getEditableCharsIndex(mask);
 
@@ -281,11 +281,11 @@ export const getValue = ({
   isFocused,
   mask,
 }: {
-  valueProp: string,
   inputValue: string,
   isFocused: boolean,
-  placeholderChar?: string,
   mask: string,
+  placeholderChar?: string,
+  valueProp: string,
 }): string => {
   if (valueProp) return maskValue(valueProp, mask, placeholderChar);
 

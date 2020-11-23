@@ -23,10 +23,10 @@ const checkVerticalPosition: CheckVerticalPosition = (elementRect, tooltipRect, 
   const isBottom = (elementRect.bottom + tooltipRect.height + arrowSize <= window.innerHeight) && isInHorizontalViewPort;
 
   return {
-    isTop,
     isBottom,
-    isOutsideRightBorder,
     isOutsideLeftBorder,
+    isOutsideRightBorder,
+    isTop,
   };
 };
 
@@ -49,9 +49,9 @@ const checkHorizontalPosition: CheckHorizontalPosition = (elementRect, tooltipRe
 
   return {
     isLeft,
-    isRight,
-    isOutsideTopBorder,
     isOutsideBottomBorder,
+    isOutsideTopBorder,
+    isRight,
   };
 };
 
@@ -77,9 +77,9 @@ const checkCornerPosition: CheckCornerPosition = (
 
   return {
     isBottomCorners,
-    isTopCorners,
-    isRightCorners,
     isLeftCorners,
+    isRightCorners,
+    isTopCorners,
   };
 };
 
@@ -176,6 +176,6 @@ export const getTooltipOffsets: GetTooltipOffsets = ({
   })();
 
   return {
-    top, left,
+    left, top,
   };
 };

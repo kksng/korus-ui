@@ -3,55 +3,55 @@ import { NormalizedValidatorObject, PredefinedValidator } from './types';
 
 export const PREDEFINED_VALIDATORS: Record<PredefinedValidator, NormalizedValidatorObject> = {
   cadastralNumber: {
-    validator: validate.cadastralNumber,
     invalidMessage: 'Введите кадастровый номер',
+    validator: validate.cadastralNumber,
   },
   email: {
-    validator: validate.email,
     invalidMessage: 'Введите e-mail',
+    validator: validate.email,
   },
   inn: {
-    validator: validate.inn,
     invalidMessage: 'Введите ИНН',
+    validator: validate.inn,
   },
   innCorp: {
-    validator: validate.innCorp,
     invalidMessage: 'Введите ИНН юридического лица',
+    validator: validate.innCorp,
   },
   innPrivate: {
-    validator: validate.innPrivate,
     invalidMessage: 'Введите ИНН физического лица',
-  },
-  password: {
-    validator: validate.password,
-    invalidMessage: 'Пароль должен содержать не менее 8-и символов, латинские строчные, прописные буквы и цифры',
-  },
-  postalCode: {
-    validator: validate.postalCode,
-    invalidMessage: 'Введите почтовый индекс',
-  },
-  snils: {
-    validator: validate.snils,
-    invalidMessage: 'Введите СНИЛС',
-  },
-  url: {
-    validator: validate.url,
-    invalidMessage: 'Введите URL',
-  },
-  ogrn: {
-    validator: validate.ogrn,
-    invalidMessage: 'Введите ОГРН',
-  },
-  ogrnIp: {
-    validator: validate.ogrnIp,
-    invalidMessage: 'Введите ОГРНИП',
+    validator: validate.innPrivate,
   },
   kpp: {
-    validator: validate.kpp,
     invalidMessage: 'Введите КПП',
+    validator: validate.kpp,
+  },
+  ogrn: {
+    invalidMessage: 'Введите ОГРН',
+    validator: validate.ogrn,
+  },
+  ogrnIp: {
+    invalidMessage: 'Введите ОГРНИП',
+    validator: validate.ogrnIp,
   },
   okpo: {
-    validator: validate.okpo,
     invalidMessage: 'Введите ОКПО',
+    validator: validate.okpo,
+  },
+  password: {
+    invalidMessage: 'Пароль должен содержать не менее 8-и символов, латинские строчные, прописные буквы и цифры',
+    validator: validate.password,
+  },
+  postalCode: {
+    invalidMessage: 'Введите почтовый индекс',
+    validator: validate.postalCode,
+  },
+  snils: {
+    invalidMessage: 'Введите СНИЛС',
+    validator: validate.snils,
+  },
+  url: {
+    invalidMessage: 'Введите URL',
+    validator: validate.url,
   },
 };

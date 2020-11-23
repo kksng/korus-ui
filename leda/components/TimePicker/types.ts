@@ -5,6 +5,8 @@ import {
 } from '../../src/DateTimeInput/types';
 
 export interface TimePickerProps extends DateTimeInputProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Дата для компонента, используется вместо value */
   date?: Date | null,
   /** Формат отображаемого и вводимого времени. По-умолчанию "hh:mm" */
@@ -27,12 +29,10 @@ export interface TimePickerProps extends DateTimeInputProps {
   placeholder?: string,
   /** Реф */
   ref?: React.Ref<DateTimeInputRefCurrent>,
-  /** Минимальное время */
-  timeMin?: TimeLimits,
   /** Максимальное время */
   timeMax?: TimeLimits,
+  /** Минимальное время */
+  timeMin?: TimeLimits,
   /** Значение поля ввода */
   value?: string | Date | null,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }

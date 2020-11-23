@@ -90,7 +90,7 @@ export const validate = (formName: string | undefined, fieldName?: string, exter
     isValid = false;
 
     if (currentField.requiredMessage) invalidMessages.push(currentField.requiredMessage);
-  } else if (isFilled) {
+  } else if (isFilled || !isValid) {
     currentField.validators.forEach((validator) => {
       // if the validator looks like { validator, invalidMessage } - get the error message
       if (isObject(validator) && 'validator' in validator) {
@@ -112,11 +112,11 @@ export const validate = (formName: string | undefined, fieldName?: string, exter
       if (field.name !== fieldName) return field;
 
       return {
-        ...field, isValid, invalidMessages, value,
+        ...field, invalidMessages, isValid, value,
       };
     });
 
-    return { name: formName, fields: newFields };
+    return { fields: newFields, name: formName };
   })];
 
   setForms(newForms);
@@ -146,19 +146,19 @@ export const addField = ({
 
   if (!currentForm) {
     const newForms = [...forms, {
-      name: formName,
       fields: [{
-        name: fieldName,
+        isRequired,
         isValid: true,
-        value,
+        name: fieldName,
+        requiredMessage,
+        reset,
         setIsValid,
         setMessages,
         shouldValidateUnmounted,
         validators,
-        isRequired,
-        requiredMessage,
-        reset,
+        value,
       }],
+      name: formName,
     }];
 
     setForms(newForms);
@@ -173,19 +173,19 @@ export const addField = ({
       if (form.name !== formName) return form;
 
       const newFields = [...currentForm.fields, {
-        name: fieldName,
-        isValid: true,
-        setIsValid,
-        setMessages,
-        value,
-        shouldValidateUnmounted,
-        validators,
         isRequired,
+        isValid: true,
+        name: fieldName,
         requiredMessage,
         reset,
+        setIsValid,
+        setMessages,
+        shouldValidateUnmounted,
+        validators,
+        value,
       }];
 
-      return { name: formName, fields: newFields };
+      return { fields: newFields, name: formName };
     })];
 
     setForms(newForms);
@@ -203,7 +203,7 @@ export const addField = ({
         return { ...field, setIsValid };
       })];
 
-      return { name: formName, fields: newFields };
+      return { fields: newFields, name: formName };
     })];
 
     setForms(newForms);
@@ -237,7 +237,7 @@ export const removeField = (formName: string, fieldName: string, options: Remove
         return { ...field, setIsValid: () => {} };
       })];
 
-      return { name: formName, fields: newFields };
+      return { fields: newFields, name: formName };
     })];
 
     setForms(newForms);
@@ -250,7 +250,7 @@ export const removeField = (formName: string, fieldName: string, options: Remove
 
     const newFields = currentForm.fields.filter((field) => field.name !== fieldName);
 
-    return { name: formName, fields: newFields };
+    return { fields: newFields, name: formName };
   })];
 
   setForms(newForms.filter((form) => form.fields.length !== 0));
@@ -321,16 +321,16 @@ export const updateField = ({
 
       return {
         ...field,
-        isValid,
-        value,
         isRequired,
+        isValid,
         requiredMessage,
         shouldValidateUnmounted,
         validators,
+        value,
       };
     });
 
-    return { name: formName, fields: newFields };
+    return { fields: newFields, name: formName };
   })];
 
   if (currentField.isValid !== isValid) {
@@ -367,13 +367,13 @@ export const getPredefinedValidator = (type: PredefinedValidator, customMessage?
 
   if (!predefinedValidator) throw new Error('L.Validator: no such predefined validator');
 
-  return customMessage ? { validator: predefinedValidator.validator, invalidMessage: customMessage } : predefinedValidator;
+  return customMessage ? { invalidMessage: customMessage, validator: predefinedValidator.validator } : predefinedValidator;
 };
 
 const getRegExpValidator = (validator: RegExp, invalidMessage?: string): NormalizedValidatorObject => {
   const testRegExp: Validator = (value) => !!value.match(validator);
 
-  return { validator: testRegExp, invalidMessage };
+  return { invalidMessage, validator: testRegExp };
 };
 
 const getArrayValidator = (
@@ -384,21 +384,21 @@ const getArrayValidator = (
     if (!isObject(validatorItem)) throw new Error(`L.Validation: type of validator ${JSON.stringify(validator)} is incorrect!`);
     // { function, message? }
     if (isFunction(validatorItem.validator)) {
-      return { validator: validatorItem.validator, invalidMessage: validatorItem.invalidMessage };
+      return { invalidMessage: validatorItem.invalidMessage, validator: validatorItem.validator };
     }
 
     // { predefinedValidator, message? }
     if (isString(validatorItem.validator)) {
       const predefinedValidator = getPredefinedValidator(validatorItem.validator as PredefinedValidator);
 
-      return customMessage ? { validator: predefinedValidator.validator, invalidMessage: customMessage } : predefinedValidator;
+      return customMessage ? { invalidMessage: customMessage, validator: predefinedValidator.validator } : predefinedValidator;
     }
 
     // { regexp, message? }
     if (isRegExp(validatorItem.validator)) {
       return {
-        validator: (value: string) => !!(value).match(validatorItem.validator as RegExp),
         invalidMessage: validatorItem.invalidMessage,
+        validator: (value: string) => !!(value).match(validatorItem.validator as RegExp),
       };
     }
 
@@ -408,10 +408,13 @@ const getArrayValidator = (
 export const getValidators = (
   validator?: Validator | PredefinedValidator | RegExp | ValidatorObject[],
   invalidMessage?: string,
+  isValidProp?: boolean,
 ): NormalizedValidatorObject[] => {
+  if (isValidProp !== undefined) return [{ invalidMessage, validator: () => isValidProp }];
+
   if (!validator) return [];
 
-  if (isFunction(validator)) return [{ validator, invalidMessage }];
+  if (isFunction(validator)) return [{ invalidMessage, validator }];
 
   if (isString(validator)) return [getPredefinedValidator(validator as PredefinedValidator, invalidMessage)];
 
@@ -437,10 +440,10 @@ export const getFieldValidState = (formName: string, fieldName: string): FormGet
   })();
 
   return {
-    name,
-    value,
     isFilled,
     isRequired,
     isValid,
+    name,
+    value,
   };
 };

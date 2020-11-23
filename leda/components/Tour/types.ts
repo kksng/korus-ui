@@ -1,14 +1,17 @@
 import * as React from 'react';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { Position } from './constants';
 
 /**
  * Change event
  */
 export interface ChangeEvent {
   component: {
-    /** Current step key */
-    value: number | string | null,
     /** Current TourStepItem */
     item: TourStepItem | null,
+    /** Current step key */
+    value: number | string | null,
   },
 }
 
@@ -26,6 +29,11 @@ export interface ContentProps {
   stopTour: () => void,
 }
 
+/**
+ * Type of possible positions
+ */
+export type PositionType = (typeof Position)[keyof typeof Position];
+
 export interface TourProps {
   /** Идентификатор активного шага, если null - гайд-тур закрыт */
   activeStepKey?: number | string | null,
@@ -33,21 +41,25 @@ export interface TourProps {
   data: TourStepItem[],
   /** Обработчик изменения */
   onChange: (ev: ChangeEvent) => void,
+  /** Пауза перед отрисовкой шага гайд-тура. Передается в миллисекундах */
+  stepDelay?: number,
+  /** Тема компонента */
+  theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.tour],
 }
 
 export interface TourStepItem {
   /** Скругление у выделенных элементов в px, по-умолчанию 15px */
   borderRadius?: number,
-  /** Отступы выделенной области в px, по-умолчанию 0px */
-  padding?: number,
   /** Контент */
   content: (props: ContentProps) => React.ReactElement | null,
   /** Элемент, который надо подсветить */
   element: HTMLElement | null,
   /** Отступ при скролле в px, по умолчанию 200px */
   offsetTop?: number,
+  /** Отступы выделенной области в px, по-умолчанию 0px */
+  padding?: number,
   /** Положение модалки */
-  position: 'top' | 'right' | 'bottom' | 'left',
+  position: PositionType,
   /** Идентификатор шага */
   stepKey: string | number,
 }

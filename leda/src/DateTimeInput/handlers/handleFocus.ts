@@ -16,8 +16,8 @@ export const createFocusHandler = ({ props, state, dispatch }: HandlersData) => 
     onFocus({
       ...ev,
       component: {
-        name,
         date,
+        name,
         value: ev.component.value,
       },
     });

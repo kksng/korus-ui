@@ -17,11 +17,11 @@ export const formatNumber = (CurrencySymbol: React.FC<CurrencySymbolProps>, numb
   const formattedString = new Intl.NumberFormat(
     'ru-RU',
     {
-      style: 'currency',
       currency: currencyCode,
       currencyDisplay: 'symbol',
-      minimumFractionDigits: sholudTrim ? 0 : (precision || 0),
       maximumFractionDigits: precision || 2,
+      minimumFractionDigits: sholudTrim ? 0 : (precision || 0),
+      style: 'currency',
     },
   )
     .format(number || 0)

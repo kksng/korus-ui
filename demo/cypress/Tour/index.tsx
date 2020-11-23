@@ -1,3 +1,4 @@
+import { isNil } from 'lodash';
 import * as React from 'react';
 import * as L from '../../../leda';
 import { useElementRef } from '../../../leda/utils';
@@ -106,11 +107,98 @@ const getData = (
               Back
             </L.Button>
           </L.Li>
+          <L.Li>
+            <L.Button name="Next" _success onClick={props.next}>
+              Next
+            </L.Button>
+          </L.Li>
         </L.Ul>
       </L.Div>
     ),
-    position: 'left',
+    position: 'top-left',
     element: elements[3],
+  },
+  {
+    stepKey: '5',
+    borderRadius: 4,
+    content: (props) => (
+      <L.Div name="Modal5" _inner>
+        <L.H1>Header 5</L.H1>
+        some text
+        <L.Ul _list-h>
+          <L.Li>
+            <L.Button name="Close" onClick={props.stopTour}>
+              Close
+            </L.Button>
+          </L.Li>
+          <L.Li>
+            <L.Button _success onClick={props.prev}>
+              Back
+            </L.Button>
+          </L.Li>
+          <L.Li>
+            <L.Button name="Next" _success onClick={props.next}>
+              Next
+            </L.Button>
+          </L.Li>
+        </L.Ul>
+      </L.Div>
+    ),
+    position: 'top-center',
+    element: elements[4],
+  },
+  {
+    stepKey: '6',
+    borderRadius: 4,
+    content: (props) => (
+      <L.Div name="Modal6" _inner>
+        <L.H1>Header 6</L.H1>
+        some text
+        <L.Ul _list-h>
+          <L.Li>
+            <L.Button name="Close" onClick={props.stopTour}>
+              Close
+            </L.Button>
+          </L.Li>
+          <L.Li>
+            <L.Button _success onClick={props.prev}>
+              Back
+            </L.Button>
+          </L.Li>
+          <L.Li>
+            <L.Button name="Next" _success onClick={props.next}>
+              Next
+            </L.Button>
+          </L.Li>
+        </L.Ul>
+      </L.Div>
+    ),
+    position: 'bottom-center',
+    element: elements[5],
+  },
+  {
+    stepKey: '7',
+    borderRadius: 4,
+    content: (props) => (
+      <L.Div name="Modal7" _inner>
+        <L.H1>Header 7</L.H1>
+        some text
+        <L.Ul _list-h>
+          <L.Li>
+            <L.Button name="Close" onClick={props.stopTour}>
+              Close
+            </L.Button>
+          </L.Li>
+          <L.Li>
+            <L.Button _success onClick={props.prev}>
+              Back
+            </L.Button>
+          </L.Li>
+        </L.Ul>
+      </L.Div>
+    ),
+    position: 'bottom-left',
+    element: elements[6],
   },
 ];
 
@@ -119,12 +207,22 @@ export const Tour = (): React.ReactElement => {
   const [element2, ref2] = useElementRef();
   const [element3, ref3] = useElementRef();
   const [element4, ref4] = useElementRef();
+  const [element5, ref5] = useElementRef();
+  const [element6, ref6] = useElementRef();
+  const [element7, ref7] = useElementRef();
+
   const [activeStep, setActiveStep] = React.useState<string | number | null>(
     null
   );
   const [message, setMessage] = React.useState('');
+  const [stepDelay, setStepDelay] = React.useState<number | undefined>(undefined);
 
-  const data = getData([element1, element2, element3, element4]);
+  const data = getData([element1, element2, element3, element4, element5, element6, element7]);
+
+  const handleClick3 = () => {
+    setMessage('Clicked 3!');
+    setActiveStep('1');
+  }
 
   return (
     <L.Div _demo-story>
@@ -160,7 +258,7 @@ export const Tour = (): React.ReactElement => {
             name="tourElement3"
             _inner
             ref={ref3}
-            onClick={() => setMessage('Clicked 3!')}
+            onClick={handleClick3}
           >
             Tour element 3
           </L.Button>
@@ -175,13 +273,36 @@ export const Tour = (): React.ReactElement => {
           >
             Tour element 4
           </L.Button>
+          <br />
+          <br />
+          <L.Button _inner ref={ref5} style={{ marginLeft: '250px' }} onClick={() => console.log('Clicked 5!')}>
+            Tour element 5
+          </L.Button>
+          <br />
+          <br />
+          <L.Button _inner ref={ref6} style={{ marginLeft: '250px' }} onClick={() => console.log('Clicked 6!')}>
+            Tour element 6
+          </L.Button>
+          <br />
+          <br />
+          <L.Button _inner ref={ref7} style={{ marginLeft: '500px' }} onClick={() => console.log('Clicked 7!')}>
+            Tour element 7
+          </L.Button>
         </L.Div>
         <L.Tour
           data={data}
           activeStepKey={activeStep}
           onChange={(ev) => setActiveStep(ev.component.value)}
+          stepDelay={stepDelay}
         />
       </L.Div>
+      <L.Button 
+        _warning
+        name="stepDelay" 
+        onClick={()=> setStepDelay((stepDelay) => isNil(stepDelay) ? 5000 : undefined)}
+      >
+        Set/remove stepDelay 5 sec
+      </L.Button>
       <L.H4 _title>onClick Message</L.H4>
       <L.Div name="message">{message}</L.Div>
     </L.Div>

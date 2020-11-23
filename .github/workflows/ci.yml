@@ -52,7 +52,7 @@ jobs:
         with:
           path: node_modules
           key: package-lock=${{ hashFiles('package-lock.json') }}
-      - uses: cypress-io/github-action@v1
+      - uses: cypress-io/github-action@v2
         with:
           start: npm start
       - uses: actions/upload-artifact@v1

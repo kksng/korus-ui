@@ -109,15 +109,15 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const handleFocus = createFocusHandler(props, {
-    value,
     setFocused,
+    value,
   });
 
   const handleBlur = createBlurHandler(props, {
-    value,
+    setFilterValue,
     setFocused,
     validateCurrent,
-    setFilterValue,
+    value,
   });
 
   const handleSelect = createSelectHandler(props, {
@@ -158,9 +158,9 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
   const { renders: { [COMPONENTS_NAMESPACES.multiSelect]: multiSelectRenders } } = React.useContext(LedaContext);
 
   const state = {
-    value: valueState,
-    isFocused,
     filterValue,
+    isFocused,
+    value: valueState,
   };
 
   const Wrapper = useElement(
@@ -224,9 +224,9 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
 
   const suggestionListData = (() => {
     const allSuggestions = getSortedSuggestions({
-      shouldSelectedGoFirst,
-      selectedSuggestions,
       filteredData,
+      selectedSuggestions,
+      shouldSelectedGoFirst,
       sortSuggestions,
     });
 
@@ -242,8 +242,8 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
     <Wrapper
       className={wrapperClassNames}
       ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-        wrapper: component.wrapper,
         input: inputRef.current,
+        wrapper: component.wrapper,
       }))}
     >
       <Div
@@ -298,9 +298,9 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
           ref={inputRef}
           style={(isMaxItemsSelected || shouldHideInput)
             ? {
-              position: 'absolute',
-              opacity: 0,
               height: 0,
+              opacity: 0,
+              position: 'absolute',
               width: 0,
             }
             : undefined}

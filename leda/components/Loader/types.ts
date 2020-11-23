@@ -4,6 +4,8 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 import { CustomRender } from '../../commonTypes';
 
 export interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   iconRender?: CustomRender<LoaderProps, {}, {}>,
   /** Глобальный лоадер */
   isGlobal?: boolean,
@@ -13,8 +15,6 @@ export interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {
   ref?: React.Ref<LoaderRefCurrent>,
   /** Тема компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.loader],
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface IconProps {

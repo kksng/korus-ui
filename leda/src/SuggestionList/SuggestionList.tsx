@@ -80,10 +80,10 @@ export const SuggestionList = (props: SuggestionListProps): React.ReactElement |
   }), [theme.containerTop, theme.containerVisible]);
 
   useAdaptivePosition({
+    boundingContainerRef,
+    classNames: classMap,
     elRef: wrapperRef,
     isOpen,
-    classNames: classMap,
-    boundingContainerRef,
   });
 
   React.useEffect((): void => {
@@ -104,7 +104,7 @@ export const SuggestionList = (props: SuggestionListProps): React.ReactElement |
         } else {
           dataItemsMap.set(key, dataItems);
           accumulator.push({
-            key, dataItems,
+            dataItems, key,
           });
         }
       } else {
@@ -166,10 +166,10 @@ export const SuggestionList = (props: SuggestionListProps): React.ReactElement |
       compareObjectsBy,
       highlightedSuggestion,
       placeholder,
+      selectAllState,
       selectedSuggestion,
       suggestion,
       textField,
-      selectAllState,
     });
 
     return suggestionItemComputedProps;

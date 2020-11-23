@@ -11,6 +11,7 @@ export { FileDrop } from './FileDrop';
 export { Input } from './Input';
 export { MaskedInput } from './MaskedInput';
 export { Modal } from './Modal';
+export { NumericRange } from './NumericRange';
 export { VStepper } from './VStepper';
 export { Wizard } from './Wizard';
 export { DropDown } from './DropDown';

@@ -149,15 +149,15 @@ const utils = {
   getIsSentenceIncludingWords,
   getSizeInBytes,
   getWordEnding,
+  maskValue,
   scrollIntoView,
   stringToDate,
   useElement,
   useElementRef,
   useInterval,
   useProps,
-  useValue,
   useRunAfterUpdate,
-  maskValue,
+  useValue,
 };
 
 export {

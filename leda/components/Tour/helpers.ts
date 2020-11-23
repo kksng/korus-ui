@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { PositionType } from './types';
+import { Position } from './constants';
 
 /**
  * Helper creates point
@@ -15,20 +17,18 @@ const createPoint = (x: number, y: number) => ({
  * Helper sets default tour element styles
  * @param {HTMLElement | null | undefined} element - tour element
  */
-export const setElementDefaultStyles = (element: HTMLElement | null | undefined): void => {
+export const removeActiveClass = (element: HTMLElement | null | undefined, activeClass: string): void => {
   if (!element) return;
-  element.style.position = '';
-  element.style.zIndex = '';
+  element.classList.remove(activeClass);
 };
 
 /**
  * Helper sets tour element styles
  * @param {HTMLElement | null | undefined} element - tour element
  */
-export const setElementStyles = (element: HTMLElement | null | undefined): void => {
+export const setActiveClass = (element: HTMLElement | null | undefined, activeClass: string): void => {
   if (!element) return;
-  element.style.position = 'relative';
-  element.style.zIndex = '10002';
+  element.classList.add(activeClass);
 };
 
 /**
@@ -83,52 +83,69 @@ export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: 
 /**
  * Helper calculates modal window position
  * @param {string} position - position of modal window against tour element
- * @param {HTMLElement} element - tour element
+ * @param {DOMRect} rect - DOMRect of tour element
  * @param {boolean} isScrolling - flag defines if document is scrolling
  *
  * @returns {React.CSSProperties} - styles of modal window
  */
-export const getModalPositionStyles = (position: string, element: HTMLElement, isScrolling: boolean): React.CSSProperties => {
+export const getModalPositionStyles = (position: PositionType, rect: DOMRect, isScrolling: boolean): React.CSSProperties => {
   if (isScrolling) {
     return {
       display: 'none',
     };
   }
 
-  const rect = element.getBoundingClientRect();
-
-  if (position === 'top') {
-    return {
-      top: `${rect.top - 20}px`,
-      left: `${rect.left}px`,
-      transform: 'translateY(-100%)',
-    };
+  switch (position) {
+    case Position.Top:
+      return {
+        left: `${(rect.right + rect.left) / 2}px`,
+        top: `${rect.top - 20}px`,
+        transform: 'translate(-50%, -100%)',
+      };
+    case Position.Bottom:
+      return {
+        left: `${(rect.right + rect.left) / 2}px`,
+        top: `${rect.bottom + 20}px`,
+        transform: 'translateX(-50%)',
+      };
+    case Position.Right:
+      return {
+        left: `${rect.right + 20}px`,
+        top: `${rect.top}px`,
+      };
+    case Position.Left:
+      return {
+        left: `${rect.left - 20}px`,
+        top: `${rect.top}px`,
+        transform: 'translateX(-100%)',
+      };
+    case Position.TopLeft:
+      return {
+        left: `${rect.right}px`,
+        top: `${rect.top - 20}px`,
+        transform: 'translate(-100%, -100%)',
+      };
+    case Position.TopRight:
+      return {
+        left: `${rect.left}px`,
+        top: `${rect.top - 20}px`,
+        transform: 'translateY(-100%)',
+      };
+    case Position.BottomLeft:
+      return {
+        left: `${rect.right}px`,
+        top: `${rect.bottom + 20}px`,
+        transform: 'translateX(-100%)',
+      };
+    case Position.BottomRight:
+      return {
+        left: `${rect.left}px`,
+        top: `${rect.bottom + 20}px`,
+      };
+    default:
+      return {
+        left: '',
+        top: '',
+      };
   }
-
-  if (position === 'right') {
-    return {
-      top: `${rect.top}px`,
-      left: `${rect.right + 20}px`,
-    };
-  }
-
-  if (position === 'bottom') {
-    return {
-      top: `${rect.bottom + 20}px`,
-      left: `${rect.left}px`,
-    };
-  }
-
-  if (position === 'left') {
-    return {
-      top: `${rect.top}px`,
-      left: `${rect.left - 20}px`,
-      transform: 'translateX(-100%)',
-    };
-  }
-
-  return {
-    top: '',
-    left: '',
-  };
 };

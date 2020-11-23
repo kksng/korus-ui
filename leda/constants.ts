@@ -3,11 +3,11 @@ export const NO_DATA_TEMPLATES = {
 };
 
 export const FILE_SIZE_UNITS = {
+  GB: 'GB' as const,
+  MB: 'MB' as const,
+  TB: 'TB' as const,
   byte: 'byte' as const,
   kB: 'kB' as const,
-  MB: 'MB' as const,
-  GB: 'GB' as const,
-  TB: 'TB' as const,
 };
 
 export const FILE_SIZE_RUS_UNITS = {
@@ -41,6 +41,7 @@ export const COMPONENTS_NAMESPACES = {
   fileUpload: 'fileUpload',
   input: 'input',
   loader: 'loader',
+  loaderComponent: 'loaderComponent',
   maskedInput: 'maskedInput',
   modal: 'modal',
   modalBody: 'modalBody',
@@ -64,6 +65,7 @@ export const COMPONENTS_NAMESPACES = {
   tags: 'tags',
   textarea: 'textarea',
   tooltip: 'tooltip',
+  tour: 'tour',
   vstepper: 'vstepper',
   wizard: 'wizard',
 } as const;

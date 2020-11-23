@@ -25,6 +25,18 @@ describe('Validation', () => {
         .name('Toggle')
         .click();
     });
+    it('should display invalidMessage', () => {
+      cy.name('Toggle')
+        .click()
+        .get('.invalid-message-item')
+        .should('exist')
+        .should(
+          'have.text',
+          'The app decides component to have invalid content'
+        )
+        .name('Toggle')
+        .click();
+    });
   });
 
   describe('Interaction', () => {

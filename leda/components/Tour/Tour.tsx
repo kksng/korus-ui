@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { debounce } from 'lodash';
+import { debounce, isNil } from 'lodash';
 import ReactDOM from 'react-dom';
 
 import { Div } from '../Div';
 import {
-  createOverlaySvgPath, getModalPositionStyles, setElementDefaultStyles, setElementStyles,
+  createOverlaySvgPath, getModalPositionStyles, removeActiveClass, setActiveClass,
 } from './helpers';
 import { TourProps, TourStepItem } from './types';
+import { useTheme } from '../../utils';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 /**
  * Tour component - highlights items and shows tooltips
@@ -16,9 +18,10 @@ import { TourProps, TourStepItem } from './types';
  */
 export const Tour = (props: TourProps): React.ReactElement | null => {
   const {
-    data, activeStepKey, onChange,
+    data, activeStepKey, onChange, theme: themeProp, stepDelay,
   } = props;
 
+  const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.tour);
   const activeItem = data.find((item) => item.stepKey === activeStepKey);
 
   const borderRadius = activeItem?.borderRadius ?? 15;
@@ -26,6 +29,20 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const [svgPath, setSvgPath] = React.useState<string>(createOverlaySvgPath(activeItem?.element ?? null, borderRadius, padding));
   const [isScrolling, setIsScrolling] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  React.useEffect((): (() => void) | void => {
+    if (isNil(activeStepKey)) return undefined;
+    if (isNil(stepDelay)) return undefined;
+
+    setIsLoading(true);
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, stepDelay);
+
+    return () => clearTimeout(timer);
+  }, [activeStepKey, stepDelay]);
 
   React.useEffect((): (() => void) | void => {
     if (!activeItem?.element) {
@@ -34,6 +51,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
     const resizeHandler = debounce(() => {
       setSvgPath(createOverlaySvgPath(activeItem.element, borderRadius, padding));
+      setActiveClass(activeItem?.element, theme.activeElement);
     }, 100);
 
     window.addEventListener('resize', resizeHandler);
@@ -64,7 +82,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
         || neededToScrollAmount >= availableScrollLength // the page is scrolled to the end and cannot be scrolled further
       ) { // no need to scroll - display the tour immediately
         setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius, padding));
-        setElementStyles(activeItem?.element);
+        setActiveClass(activeItem?.element, theme.activeElement);
       } else { // otherwise display the tour after scrolling
         setIsScrolling(true);
         setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
@@ -72,7 +90,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
         const scrollHandler = debounce(() => {
           // scrolling is over
           setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius, padding));
-          setElementStyles(activeItem?.element);
+          setActiveClass(activeItem?.element, theme.activeElement);
           setIsScrolling(false);
 
           window.removeEventListener('scroll', scrollHandler); // remove listener
@@ -80,7 +98,11 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
         window.addEventListener('scroll', scrollHandler);
 
-        window.scrollTo({ top: shiftedDocumentOffsetTop, left: 0, behavior: 'smooth' });
+        if (stepDelay) {
+          setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), stepDelay);
+        } else {
+          window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
+        }
       }
     } else {
       setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
@@ -93,12 +115,13 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
   }, [activeItem]);
 
   const contentProps = React.useMemo(() => {
+    data?.forEach((stepItem) => removeActiveClass(stepItem?.element, theme.activeElement));
+
     const triggerOnChange = (item?: TourStepItem) => {
-      data?.forEach((stepItem) => setElementDefaultStyles(stepItem?.element));
       onChange({
         component: {
-          value: item?.stepKey ?? null,
           item: item ?? null,
+          value: item?.stepKey ?? null,
         },
       });
     };
@@ -127,22 +150,23 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
       },
       stopTour: () => triggerOnChange(),
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, activeItem, onChange]);
 
-  if (!activeItem || !activeItem.element) {
+  if (!activeItem || !activeItem.element || isLoading) {
     return null;
   }
 
-  const style = getModalPositionStyles(activeItem.position, activeItem.element, isScrolling);
+  const style = getModalPositionStyles(activeItem.position, activeItem.element.getBoundingClientRect(), isScrolling);
 
   const content = (
     <>
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="tour-overlay">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className={theme.overlay}>
         <path
           d={svgPath}
         />
       </svg>
-      <Div className={`tour-modal ${activeItem.position}`} style={style}>
+      <Div className={`${theme.modal} ${activeItem.position}`} style={style}>
         {activeItem.content(contentProps)}
       </Div>
     </>

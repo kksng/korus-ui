@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { CustomRender, CustomEventHandler } from '../../commonTypes';
 import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { COMPONENTS_NAMESPACES, FileErrorCodes } from '../../constants';
 import { ValidationProps } from '../Validation/types';
-import { FileErrorCodes } from '../../constants';
+
+import { LoadingComponentProps } from '../../src/LoaderComponent/types';
+
 
 export { FileErrorCodes } from '../../constants';
 
@@ -27,6 +29,8 @@ export interface ChangeEvent {
 }
 
 export interface FileDropProps extends ValidationProps {
+  /** Классы переданные через _ */
+  [x: string]: unknown,
   /** Разрешенные типы файлов, см. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Attributes. Передача нескольких типов файлов происходит через запятую (.png, image/jpeg). allowedFiles и forbiddenFiles вместе не могут находиться. */
   allowedFiles?: string,
   /** Классы, применяемые к компоненту */
@@ -37,14 +41,18 @@ export interface FileDropProps extends ValidationProps {
   errorViewRender?: CustomRender<LayoutRenderProps, {}, CustomItemProps>,
   /** Запрещенные типы файлов. см. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Attributes. Передача нескольких типов файлов происходит через запятую (.png, image/jpeg). allowedFiles и forbiddenFiles вместе не могут находиться. */
   forbiddenFiles?: string,
+  /** Кастомизация верстки стартовой панели */
+  infoRender?: CustomRender<LayoutRenderProps, {}, CustomItemProps>,
   /** Признак отключения дропзоны */
   isDisabled?: boolean,
   /** Состояние загрузки */
   isLoading?: boolean,
   /** Прогресс загрузки, число от 1 до 100 */
   loadingProgress?: number,
+  /** Текст зарузки, по умолчанию "Загрузка..." */
+  loadingText?: string,
   /** Кастомизация верстки состояния загрузки */
-  loadingViewRender?: CustomRender<LayoutRenderProps, {}, CustomItemProps>,
+  loadingViewRender?: LoadingComponentProps['loadingViewRender'],
   /* Максимальная длина имени файла, по-умолчанию 255 символов */
   maxFileNameLength?: number,
   /** Максимальный размер файла, в байтах */
@@ -57,8 +65,6 @@ export interface FileDropProps extends ValidationProps {
   onClick?: (event: React.MouseEvent) => void,
   /** Реф */
   ref?: React.Ref<FileDropRefCurrent>,
-  /** Кастомизация верстки стартовой панели */
-  infoRender?: CustomRender<LayoutRenderProps, {}, CustomItemProps>,
   /** Кастомизация верстки удачной загрузки */
   successViewRender?: CustomRender<LayoutRenderProps, {}, CustomItemProps>,
   /** Тема для компонента */
@@ -69,8 +75,6 @@ export interface FileDropProps extends ValidationProps {
   value: File | null,
   /** Кастомизация враппера */
   wrapperRender?: CustomRender<FileDropProps, {}, WrapperProps>,
-  /** Классы переданные через _ */
-  [x: string]: unknown,
 }
 
 export interface LayoutRenderProps extends FileDropProps {
@@ -79,10 +83,10 @@ export interface LayoutRenderProps extends FileDropProps {
 }
 
 export interface UploadButtonProps {
+  [x: string]: unknown,
   children?: React.ReactNode,
   className?: string,
   onClick?: CustomEventHandler<React.MouseEvent>,
-  [x: string]: unknown,
 }
 
 export interface CustomItemProps {
@@ -97,10 +101,9 @@ export interface WrapperProps {
 }
 
 export interface CustomElements {
-  ErrorItem: React.FC<CustomItemProps>,
-  LoadingItem: React.FC<CustomItemProps>,
-  SuccessItem: React.FC<CustomItemProps>,
   DefaultItem: React.FC<CustomItemProps>,
+  ErrorItem: React.FC<CustomItemProps>,
+  SuccessItem: React.FC<CustomItemProps>,
   UploadButton: React.FC<UploadButtonProps>,
   Wrapper: React.FC<WrapperProps>,
 }
@@ -115,28 +118,21 @@ export interface ChangeEventHandler {
 }
 
 export interface FileDropRefCurrent {
-  wrapper: HTMLElement | null,
   input: HTMLInputElement | null,
-}
-
-export interface ProgressLoaderProps {
-  loadingProgress?: number,
-  isLoading?: boolean,
-  theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.fileDrop],
+  wrapper: HTMLElement | null,
 }
 
 export interface SingleFileViewProps extends FileDropProps {
-  theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.fileDrop],
-  UploadButton: React.FC<UploadButtonProps>,
-  ErrorItem: React.FC<CustomItemProps>,
-  LoadingItem: React.FC<CustomItemProps>,
-  SuccessItem: React.FC<CustomItemProps>,
   DefaultItem: React.FC<CustomItemProps>,
+  ErrorItem: React.FC<CustomItemProps>,
+  SuccessItem: React.FC<CustomItemProps>,
+  UploadButton: React.FC<UploadButtonProps>,
+  theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.fileDrop],
 }
 
 export interface ErrorComponentProps extends SingleFileViewProps {
-  errorMessage: string,
   combinedButtonClassNames: string | undefined,
+  errorMessage: string,
 }
 
 export interface DefaultComponentProps extends SingleFileViewProps {

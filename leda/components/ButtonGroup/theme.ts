@@ -4,9 +4,9 @@ export const defaultButtonGroupTheme = {
   buttonActive:               'active',
   buttonFirst:                'first',
   buttonLast:                 'last',
-  wrapperDisabled:            'disabled',
-  wrapperRequired:            'required',
   buttonsWrapper:             'button-group-buttons-wrapper',
   wrapper:                    'button-group-wrapper',
+  wrapperDisabled:            'disabled',
+  wrapperRequired:            'required',
 };
 /* eslint-enable key-spacing */

@@ -46,8 +46,8 @@ export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: Reac
     const customEvent = {
       ...ev,
       component: {
-        value,
         name,
+        value,
       },
     };
 
@@ -71,9 +71,9 @@ export const RadioButton = React.forwardRef((props: RadioButtonProps, ref?: Reac
       ref={ref && ((component: RadioGroupRefCurrent | HTMLElement | null) => {
         const wrapperRef = getWrapperRef<RadioGroupRefCurrent>(component);
         bindFunctionalRef(component, ref, component && {
-          wrapper: wrapperRef,
           input: wrapperRef ? wrapperRef.firstElementChild : null,
           label: wrapperRef ? wrapperRef.lastElementChild : null,
+          wrapper: wrapperRef,
         });
       })}
     >

@@ -37,6 +37,46 @@
       border-right-color: $white;
     }
   }
+
+  @if $position == 'top-left' {
+    &::after {
+      top: 100%;
+      right: 20px;
+      transform: translateX(50%);
+      border-width: 7px 4px 0;
+      border-top-color: $white;
+    }
+  }
+
+  @if $position == 'bottom-left' {
+    &::after {
+      bottom: 100%;
+      right: 20px;
+      transform: translateX(50%);
+      border-width: 0 4px 7px;
+      border-bottom-color: $white;
+    }
+  }
+
+  @if $position == 'top-center' {
+    &::after {
+      top: 100%;
+      left: 210px;
+      transform: translateX(-50%);
+      border-width: 7px 4px 0;
+      border-top-color: $white;
+    }
+  }
+
+  @if $position == 'bottom-center' {
+    &::after {
+      bottom: 100%;
+      left: 210px;
+      transform: translateX(-50%);
+      border-width: 0 4px 7px;
+      border-bottom-color: $white;
+    }
+  }
 }
 
 .tour {
@@ -81,5 +121,26 @@
     &.left {
       @include position('left');
     }
+
+    &.top-left {
+      @include position('top-left');
+    }
+
+    &.bottom-left {
+      @include position('bottom-left');
+    }
+
+    &.top-center {
+      @include position('top-center');
+    }
+
+    &.bottom-center {
+      @include position('bottom-center');
+    }
+  }
+
+  &-active-element {
+    z-index: 10002;
+    position: relative;
   }
 }

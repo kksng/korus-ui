@@ -41,7 +41,7 @@ export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemPro
     wrapperClassName,
     iconClassName,
     headingIconClassName,
-  } = getItemClassNames({ ...props, isOpen, className }, theme, type);
+  } = getItemClassNames({ ...props, className, isOpen }, theme, type);
 
   const {
     Body,

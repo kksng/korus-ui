@@ -35,7 +35,7 @@ export const getIsPasswordOk = (value: string, evaluator: PasswordEvaluator['eva
   return evaluator(value);
 };
 
-export const getPasswordStrength = (value = '', passwordEvaluators?: PasswordEvaluator[]): { strengthLevel: PasswordStrength, message: string } => {
+export const getPasswordStrength = (value = '', passwordEvaluators?: PasswordEvaluator[]): { message: string, strengthLevel: PasswordStrength } => {
   if (passwordEvaluators) {
     const evaluationResult = (() => {
       // strongest to lowest
@@ -59,33 +59,33 @@ export const getPasswordStrength = (value = '', passwordEvaluators?: PasswordEva
     if (evaluationResult) {
       const { strengthLevel, evaluationMessage } = evaluationResult;
       return {
-        strengthLevel,
         message: evaluationMessage,
+        strengthLevel,
       };
     }
 
     return {
-      strengthLevel: PasswordStrength.Low,
       message: 'Слабый пароль',
+      strengthLevel: PasswordStrength.Low,
     };
   }
 
   if (value == null) {
     return {
-      strengthLevel: PasswordStrength.Low,
       message: 'Слабый пароль',
+      strengthLevel: PasswordStrength.Low,
     };
   }
 
   if (validate.password(value)) {
     return {
-      strengthLevel: PasswordStrength.Medium,
       message: 'Надёжный пароль',
+      strengthLevel: PasswordStrength.Medium,
     };
   }
 
   return {
-    strengthLevel: PasswordStrength.Low,
     message: 'Слабый пароль',
+    strengthLevel: PasswordStrength.Low,
   };
 };
