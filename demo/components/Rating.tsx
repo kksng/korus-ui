@@ -34,7 +34,7 @@ export const Rating = (storyProps: StoryProps) => {
       <StateButtonGroup
         data={[
           { text: 'Default', props: {} },
-          { text: 'Disabled', props: { isDisabled: true } },
+          { text: 'ReadOnly', props: { isReadOnly: true } },
         ]}
         setProps={setProps}
       />

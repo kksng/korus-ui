@@ -15,6 +15,45 @@ describe('Tour tests', () => {
         .get('.tour-overlay')
         .should('not.be.visible');
     });
+    it('Should set class corresponding to position', () => {
+      cy.name('startTour')
+        .click()
+        .name('Modal1')
+        .parent()
+        .should('have.class', 'top')
+        .name('Next')
+        .click()
+        .name('Modal2')
+        .parent()
+        .should('have.class', 'right')
+        .name('Next')
+        .click()
+        .name('Modal3')
+        .parent()
+        .should('have.class', 'bottom')
+        .name('Next')
+        .click()
+        .name('Modal4')
+        .parent()
+        .should('have.class', 'top-left')
+        .name('Next')
+        .click()
+        .name('Modal5')
+        .parent()
+        .should('have.class', 'top-center')
+        .name('Next')
+        .click()
+        .name('Modal6')
+        .parent()
+        .should('have.class', 'bottom-center')
+        .name('Next')
+        .click()
+        .name('Modal7')
+        .parent()
+        .should('have.class', 'bottom-left')
+        .name('Close')
+        .click()
+    });
   });
   describe('Interaction', () => {
     it('Should be able to interact with tour elements during tour', () => {
@@ -31,6 +70,28 @@ describe('Tour tests', () => {
         .name('message')
         .should('have.text', 'Clicked 2!')
         .name('Close')
+        .click();
+    });
+    it('Should set stepDelay', () => {
+      cy.name('stepDelay')
+        .click()
+        .name('startTour')
+        .click()
+        .get('.tour-overlay')
+        .should('not.be.visible')
+        .wait(5000)
+        .get('.tour-overlay')
+        .should('be.visible')
+        .name('Next')
+        .click()
+        .name('Modal2')
+        .should('not.be.visible')
+        .wait(5000)
+        .name('Modal2')
+        .should('be.visible')       
+        .name('Close')
+        .click()
+        .name('stepDelay')
         .click();
     });
     describe('Should set and remove active styles correctly', () => {

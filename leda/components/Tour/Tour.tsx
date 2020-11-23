@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { debounce } from 'lodash';
+import { debounce, isNil } from 'lodash';
 import ReactDOM from 'react-dom';
 
 import { Div } from '../Div';
@@ -18,11 +18,10 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
  */
 export const Tour = (props: TourProps): React.ReactElement | null => {
   const {
-    data, activeStepKey, onChange, theme: themeProp,
+    data, activeStepKey, onChange, theme: themeProp, stepDelay,
   } = props;
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.tour);
-
   const activeItem = data.find((item) => item.stepKey === activeStepKey);
 
   const borderRadius = activeItem?.borderRadius ?? 15;
@@ -30,6 +29,20 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const [svgPath, setSvgPath] = React.useState<string>(createOverlaySvgPath(activeItem?.element ?? null, borderRadius, padding));
   const [isScrolling, setIsScrolling] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  React.useEffect((): (() => void) | void => {
+    if (isNil(activeStepKey)) return undefined;
+    if (isNil(stepDelay)) return undefined;
+
+    setIsLoading(true);
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, stepDelay);
+
+    return () => clearTimeout(timer);
+  }, [activeStepKey, stepDelay]);
 
   React.useEffect((): (() => void) | void => {
     if (!activeItem?.element) {
@@ -85,7 +98,11 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
         window.addEventListener('scroll', scrollHandler);
 
-        window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
+        if (stepDelay) {
+          setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), stepDelay);
+        } else {
+          window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
+        }
       }
     } else {
       setSvgPath(createOverlaySvgPath(null, borderRadius, padding));
@@ -133,13 +150,14 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
       },
       stopTour: () => triggerOnChange(),
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, activeItem, onChange]);
 
-  if (!activeItem || !activeItem.element) {
+  if (!activeItem || !activeItem.element || isLoading) {
     return null;
   }
 
-  const style = getModalPositionStyles(activeItem.position, activeItem.element, isScrolling);
+  const style = getModalPositionStyles(activeItem.position, activeItem.element.getBoundingClientRect(), isScrolling);
 
   const content = (
     <>

@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { CustomRender, CustomEventHandler } from '../../commonTypes';
 import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import { COMPONENTS_NAMESPACES, FileErrorCodes } from '../../constants';
 import { ValidationProps } from '../Validation/types';
-import { FileErrorCodes } from '../../constants';
+
+import { LoadingComponentProps } from '../../src/LoaderComponent/types';
+
 
 export { FileErrorCodes } from '../../constants';
 
@@ -47,8 +49,10 @@ export interface FileDropProps extends ValidationProps {
   isLoading?: boolean,
   /** Прогресс загрузки, число от 1 до 100 */
   loadingProgress?: number,
+  /** Текст зарузки, по умолчанию "Загрузка..." */
+  loadingText?: string,
   /** Кастомизация верстки состояния загрузки */
-  loadingViewRender?: CustomRender<LayoutRenderProps, {}, CustomItemProps>,
+  loadingViewRender?: LoadingComponentProps['loadingViewRender'],
   /* Максимальная длина имени файла, по-умолчанию 255 символов */
   maxFileNameLength?: number,
   /** Максимальный размер файла, в байтах */
@@ -99,7 +103,6 @@ export interface WrapperProps {
 export interface CustomElements {
   DefaultItem: React.FC<CustomItemProps>,
   ErrorItem: React.FC<CustomItemProps>,
-  LoadingItem: React.FC<CustomItemProps>,
   SuccessItem: React.FC<CustomItemProps>,
   UploadButton: React.FC<UploadButtonProps>,
   Wrapper: React.FC<WrapperProps>,
@@ -119,16 +122,9 @@ export interface FileDropRefCurrent {
   wrapper: HTMLElement | null,
 }
 
-export interface ProgressLoaderProps {
-  isLoading?: boolean,
-  loadingProgress?: number,
-  theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.fileDrop],
-}
-
 export interface SingleFileViewProps extends FileDropProps {
   DefaultItem: React.FC<CustomItemProps>,
   ErrorItem: React.FC<CustomItemProps>,
-  LoadingItem: React.FC<CustomItemProps>,
   SuccessItem: React.FC<CustomItemProps>,
   UploadButton: React.FC<UploadButtonProps>,
   theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.fileDrop],

@@ -41,6 +41,7 @@ export const COMPONENTS_NAMESPACES = {
   fileUpload: 'fileUpload',
   input: 'input',
   loader: 'loader',
+  loaderComponent: 'loaderComponent',
   maskedInput: 'maskedInput',
   modal: 'modal',
   modalBody: 'modalBody',

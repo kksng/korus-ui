@@ -4,13 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.36.0] - 2020-12-07
+
 ## [0.35.0] - 2020-11-23
+
+### Added
+- Tour: Added stepDelay prop, added positions: top-left, bottom-left, top-center, bottom-center
+- DropZone: Added isLoading, loadingProgress and loadingViewRender props
 
 ### Fixed
 - Validation: Fixed displaying of invalidMessage with isValid prop set to false
 - NumericRange: Fixed null value display bug
 - Tour: Added class 'tour-active-element' for active element to customize styles
 - Fixed typing of props for Demo examples
+- FileDrop, DropZone: Added loadingText prop
+- ToolTip: Updated styles
+- VStepper: hiding step content using 'display: none'. Required to fix IE related bug.
+
 
 ## [0.34.0] - 2020-11-09
 
