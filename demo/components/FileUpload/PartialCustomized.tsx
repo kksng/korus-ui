@@ -63,7 +63,6 @@ const infoRender = ({
   </Element>
 );
 
-// eslint-disable-next-line
 export const PartialCustomized = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 

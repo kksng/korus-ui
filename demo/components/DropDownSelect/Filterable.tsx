@@ -22,7 +22,6 @@ const data: DataItem[] = [
   { region: 'America', city: 'Costa Ricco' },
 ]
 
-// eslint-disable-next-line
 export const Filterable = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<DataItem | null>(data[0]);

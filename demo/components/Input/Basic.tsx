@@ -4,7 +4,6 @@ import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 import { StoryProps } from '../../types';
 
-// eslint-disable-next-line
 export const Basic = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<string | null>(null);

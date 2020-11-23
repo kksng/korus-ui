@@ -6,7 +6,6 @@ import { DescriptionMessage } from '../../../leda/components/FileDrop/helpers';
 import * as messages from '../../../leda/messages';
 import { StoryProps } from '../../types';
 
-// eslint-disable-next-line
 export const ControlledFileDrop = (storyProps: StoryProps) => {
   const [file, setFile] = React.useState<File | null>(null);
   const [error, setError] = React.useState<FileDropError>(null);

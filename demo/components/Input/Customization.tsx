@@ -5,7 +5,6 @@ import { useEventSpy } from '../../useEventSpy';
 import { validate } from '../../../leda/components/Validation';
 import { StoryProps } from '../../types';
 
-// eslint-disable-next-line
 export const Customization = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');

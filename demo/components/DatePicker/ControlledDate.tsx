@@ -58,7 +58,6 @@ export const ControlledDate = (args: SomeObject): React.ReactElement => {
 };
 `;
 
-// eslint-disable-next-line
 export const ControlledDate = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 

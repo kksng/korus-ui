@@ -41,7 +41,6 @@ export const Customization = (componentProps: any) => {
 };
 `;
 
-// eslint-disable-next-line
 export const Customization = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 

@@ -45,7 +45,6 @@ export const WorkTypes = (args: SomeObject): React.ReactElement => {
 };
 `;
 
-// eslint-disable-next-line
 export const WorkTypes = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
