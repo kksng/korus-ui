@@ -3,8 +3,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
-
-export const IsRequired = (props: StoryProps) => {
+export const IsRequired = (storyProps: StoryProps) => {
   const [isRequired, setIsRequired] = React.useState(true);
   const [validator, setValidator] = React.useState<'email' | 'postalCode'>('email');
 

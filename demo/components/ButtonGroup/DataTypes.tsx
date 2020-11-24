@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
-export const DataTypes = (args: SomeObject): React.ReactElement => {
+export const DataTypes = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);

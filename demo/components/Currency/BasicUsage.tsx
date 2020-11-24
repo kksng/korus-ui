@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 const exampleCode = `
@@ -35,7 +36,7 @@ export const BasicUsage = (componentProps: any) => {
 };
 `;
 
-export const BasicUsage = (componentProps: any) => {
+export const BasicUsage = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 
   const [shouldTrim, setShouldTrim] = React.useState<boolean>(false);

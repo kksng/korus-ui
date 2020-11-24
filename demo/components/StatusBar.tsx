@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as L from '../../leda';
 import { SetState } from '../../leda/commonTypes';
 import { useInterval } from '../../leda/utils';
+import { StoryProps } from '../types';
 
 const data = [
   { labelText: 'Согласование' },
@@ -54,7 +55,7 @@ const handleClick = (newIndex: number, setValue: SetState<{ labelText: string }>
   }
 };
 
-export const StatusBar = () => {
+export const StatusBar = (storyProps: StoryProps) => {
   const [index, setIndex] = React.useState(2);
   const [value, setValue] = React.useState(data[index]);
   const [progress, setProgress] = React.useState(0);

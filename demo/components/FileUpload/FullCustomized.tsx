@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 const exampleCode = `
@@ -49,7 +50,7 @@ const MyOwnWrapper = ({ someCustomPropHere, ...props }: any) => <L.Button _warni
 
 const MyOwnInfo = (props: any) => <L.Span {...props} />;
 
-export const FullCustomized = (componentProps: any) => {
+export const FullCustomized = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 
   return (

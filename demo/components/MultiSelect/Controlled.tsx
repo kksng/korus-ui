@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
-import { SomeObject } from '../../../leda/commonTypes';
+import { StoryProps } from '../../types';
 
-export const Controlled = (args: SomeObject): React.ReactElement => {
+export const Controlled = (storyProps: StoryProps): React.ReactElement => {
   const [value, setValue] = React.useState<string[]>(['London', 'Paris']);
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);

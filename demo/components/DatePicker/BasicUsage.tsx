@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
-export const BasicUsage = (args: SomeObject): React.ReactElement => {
+export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
   return (

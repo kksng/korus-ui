@@ -3,8 +3,9 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
-export const BasicUsage = (args: any) => {
+export const BasicUsage = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 
   const [value, setValue] = React.useState<[number | null, number | null] | null>([5, 10]);
