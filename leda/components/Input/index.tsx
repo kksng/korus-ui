@@ -55,7 +55,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
 
   const value = getValue(valueProp, valueState);
 
-  const setCursorToPrevPosition = useSetCursorToPrevPosition();
+  const adjustCursor = useSetCursorToPrevPosition();
 
   const {
     isValid, validateCurrent, InvalidMessage,
@@ -71,7 +71,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
 
   const handleBlur = createBlurHandler(props, setFocused, validateCurrent);
 
-  const handleChange = createChangeHandler(props, setValue, setCursorToPrevPosition);
+  const handleChange = createChangeHandler(props, setValue, adjustCursor);
 
   const handleFocus = createFocusHandler(props, isValid, setFocused);
 
@@ -79,7 +79,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
 
   const handleKeyDown = createKeyDownHandler(props);
 
-  const handlePaste = createPasteHandler(props, setCursorToPrevPosition);
+  const handlePaste = createPasteHandler(props, value, setValue, adjustCursor);
 
   const wrapperClassNames = getClassNames(
     className,

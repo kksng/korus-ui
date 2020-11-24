@@ -1,6 +1,6 @@
-import { isString } from 'lodash';
+import { isNumber, isString } from 'lodash';
 import { predefinedAllowedSymbols, predefinedForbiddenSymbols } from './constants';
-import { InputProps } from './types';
+import { GetNewPastedValue, GetSelection, InputProps } from './types';
 
 export const isSymbolAllowed = (value: string, allowedSymbols?: keyof typeof predefinedAllowedSymbols | RegExp): boolean => {
   if (!allowedSymbols || value.length === 0) return true;
@@ -58,4 +58,57 @@ export const getValue = (valueProp: string | null | undefined, valueState: strin
   }
 
   return valueProp;
+};
+
+/**
+ * Helper defines cursor position or selection range
+ * @param {HTMLInputElement} inputElement - input element
+ */
+export const getSelection: GetSelection = (inputElement) => {
+  const range = isNumber(inputElement.selectionEnd) && isNumber(inputElement.selectionStart)
+    ? (inputElement.selectionEnd - inputElement.selectionStart)
+    : null;
+
+  return {
+    end: inputElement.selectionEnd,
+    range,
+    start: inputElement.selectionStart,
+  };
+};
+
+export const getNewValueLength = (oldValue: string, pastedValue: string, selectedRange: number | null): number => {
+  const isAllSelected = selectedRange === oldValue.length;
+  const isPartSelected = !isAllSelected && selectedRange !== 0;
+
+  if (isAllSelected) return pastedValue.length;
+  if (isPartSelected && selectedRange) return oldValue.length - selectedRange + pastedValue.length;
+  return oldValue.length + pastedValue.length;
+};
+
+export const getMaxPastedLength = (oldValue: string, maxLength: number, selectedRange: number | null): number => {
+  const isAllSelected = selectedRange === oldValue.length;
+  const isPartSelected = !isAllSelected && selectedRange !== 0;
+
+  if (isAllSelected || oldValue === '') return maxLength;
+  if (isPartSelected && selectedRange) return maxLength - (oldValue.length - selectedRange);
+  return maxLength - oldValue.length;
+};
+
+export const getNewPastedValue: GetNewPastedValue = (
+  {
+    adjustedPastedValue,
+    selectionEnd,
+    selectedRange,
+    maxLength,
+    selectionStart,
+    oldValue,
+  },
+) => {
+  const isAllSelected = selectedRange === oldValue.length;
+  const isPartSelected = !isAllSelected && selectedRange !== 0;
+
+  if (isAllSelected || oldValue === '') return adjustedPastedValue;
+  if (isPartSelected && isNumber(selectionStart) && isNumber(selectionEnd)) return oldValue.substring(0, selectionStart) + adjustedPastedValue + oldValue.substring(selectionEnd, oldValue.length);
+  if (oldValue.length < maxLength && isNumber(selectionStart)) return oldValue.substring(0, selectionStart) + adjustedPastedValue + oldValue.substring(selectionStart, oldValue.length);
+  return null;
 };

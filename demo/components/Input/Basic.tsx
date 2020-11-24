@@ -76,6 +76,7 @@ export const Basic = (componentProps: any) => {
           update('Blur', ev);
         }}
         _width30
+        {...props}
       />
 
       <br />

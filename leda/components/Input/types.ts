@@ -6,6 +6,13 @@ import { predefinedAllowedSymbols, predefinedForbiddenSymbols } from './constant
 import { CustomRender } from '../../commonTypes';
 import { DivProps } from '../Div';
 
+export interface AdjustCursor {
+  (
+    event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>,
+    position?: number
+  ): void,
+}
+
 export type PredefinedAllowedSymbols = keyof typeof predefinedAllowedSymbols;
 
 export type PredefinedForbiddenSymbols = keyof typeof predefinedForbiddenSymbols;
@@ -14,6 +21,25 @@ export interface ClearEvent extends React.MouseEvent<HTMLInputElement> {
   component: {
     name?: string,
     value: string,
+  },
+}
+
+export interface GetNewPastedValue {
+  (props: {
+    adjustedPastedValue: string,
+    maxLength: number,
+    oldValue: string,
+    selectedRange: number | null,
+    selectionEnd: number | null,
+    selectionStart: number | null,
+  }): string | null,
+}
+
+export interface GetSelection {
+  (inputElement: HTMLInputElement): {
+    end: number | null,
+    range: number | null,
+    start: number | null,
   },
 }
 
