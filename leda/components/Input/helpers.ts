@@ -62,20 +62,27 @@ export const getValue = (valueProp: string | null | undefined, valueState: strin
 
 /**
  * Helper defines cursor position or selection range
- * @param {HTMLInputElement} inputElement - input element
  */
 export const getSelection: GetSelection = (inputElement) => {
-  const range = isNumber(inputElement.selectionEnd) && isNumber(inputElement.selectionStart)
+  const selectedRange = isNumber(inputElement.selectionEnd) && isNumber(inputElement.selectionStart)
     ? (inputElement.selectionEnd - inputElement.selectionStart)
     : null;
 
   return {
-    end: inputElement.selectionEnd,
-    range,
-    start: inputElement.selectionStart,
+    selectedRange,
+    selectionEnd: inputElement.selectionEnd,
+    selectionStart: inputElement.selectionStart,
   };
 };
 
+/**
+ * Helper calculates new value length
+ * @param {string} oldValue - value of input before paste
+ * @param {pastedValue} pastedValue - pasted value
+ * @param {number | null} selectedRange - selected range for paste
+ *
+ * @returns {number} - new value length
+ */
 export const getNewValueLength = (oldValue: string, pastedValue: string, selectedRange: number | null): number => {
   const isAllSelected = selectedRange === oldValue.length;
   const isPartSelected = !isAllSelected && selectedRange !== 0;
@@ -85,6 +92,14 @@ export const getNewValueLength = (oldValue: string, pastedValue: string, selecte
   return oldValue.length + pastedValue.length;
 };
 
+/**
+ * Helper calculates maximum allowed length of pasted value
+ * @param {string} oldValue - value of input before paste
+ * @param {number} maxLength - maximum allowed value length
+ * @param {number} selectedRange - selected range for paste
+ *
+ * @returns {number} - maximum allowed length of pasted value
+ */
 export const getMaxPastedLength = (oldValue: string, maxLength: number, selectedRange: number | null): number => {
   const isAllSelected = selectedRange === oldValue.length;
   const isPartSelected = !isAllSelected && selectedRange !== 0;
@@ -94,6 +109,9 @@ export const getMaxPastedLength = (oldValue: string, maxLength: number, selected
   return maxLength - oldValue.length;
 };
 
+/**
+ * Helper defines new value after paste
+ */
 export const getNewPastedValue: GetNewPastedValue = (
   {
     adjustedPastedValue,

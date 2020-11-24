@@ -195,19 +195,19 @@ export const createPasteHandler = (
   setValue: SetState<string>,
   adjustCursor: AdjustCursor,
 ): CustomEventHandler<React.ClipboardEvent<HTMLInputElement>> => (event) => {
-  const inputElement = event.target as HTMLInputElement;
   const {
     maxLength, letterCase, isDisabled, onChange, name,
   } = props;
+  const inputElement = event.target as HTMLInputElement;
 
   if (isDisabled) return;
 
-  const { start, end, range } = getSelection(inputElement);
+  const { selectionStart, selectionEnd, selectedRange } = getSelection(inputElement);
   const pastedValue = event.clipboardData.getData('Text');
-  const newValueLength = getNewValueLength(value, pastedValue, range);
+  const newValueLength = getNewValueLength(value, pastedValue, selectedRange);
 
   if (!isNil(maxLength) && newValueLength > maxLength) {
-    const maxPastedLength = getMaxPastedLength(value, maxLength, range);
+    const maxPastedLength = getMaxPastedLength(value, maxLength, selectedRange);
 
     const adjustedPastedValue = stringToMaxLength(pastedValue, maxPastedLength);
 
@@ -215,9 +215,9 @@ export const createPasteHandler = (
       adjustedPastedValue,
       maxLength,
       oldValue: value,
-      selectedRange: range,
-      selectionEnd: end,
-      selectionStart: start,
+      selectedRange,
+      selectionEnd,
+      selectionStart,
     });
 
     if (newValue !== null) {
@@ -242,7 +242,7 @@ export const createPasteHandler = (
         onChange(customEvent);
       }
 
-      if (start !== null) adjustCursor(event, start + maxPastedLength);
+      if (selectionStart !== null) adjustCursor(event, selectionStart + maxPastedLength);
     } else {
       adjustCursor(event);
     }

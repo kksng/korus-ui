@@ -13,12 +13,33 @@ export interface AdjustCursor {
   ): void,
 }
 
-export type PredefinedAllowedSymbols = keyof typeof predefinedAllowedSymbols;
+export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
+  component: {
+    isValid: boolean,
+    name?: string,
+    value: string,
+  },
+}
 
-export type PredefinedForbiddenSymbols = keyof typeof predefinedForbiddenSymbols;
+export type ChangeEvent = TypeEvent | ClearEvent | ResetEvent;
 
 export interface ClearEvent extends React.MouseEvent<HTMLInputElement> {
   component: {
+    name?: string,
+    value: string,
+  },
+}
+
+export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
+  component: {
+    name?: string,
+    value: string,
+  },
+}
+
+export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
+  component: {
+    isValid: boolean,
     name?: string,
     value: string,
   },
@@ -37,49 +58,9 @@ export interface GetNewPastedValue {
 
 export interface GetSelection {
   (inputElement: HTMLInputElement): {
-    end: number | null,
-    range: number | null,
-    start: number | null,
-  },
-}
-
-export interface TypeEvent extends React.ChangeEvent<HTMLInputElement> {
-  component: {
-    name?: string,
-    value: string,
-  },
-}
-
-export interface ResetEvent {
-  component: {
-    name?: string,
-    value: string,
-  },
-  currentTarget?: undefined,
-}
-
-export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
-  component: {
-    name?: string,
-    value: string,
-  },
-}
-
-export type ChangeEvent = TypeEvent | ClearEvent | ResetEvent;
-
-export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
-  component: {
-    isValid: boolean,
-    name?: string,
-    value: string,
-  },
-}
-
-export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
-  component: {
-    isValid: boolean,
-    name?: string,
-    value: string,
+    selectedRange: number | null,
+    selectionEnd: number | null,
+    selectionStart: number | null,
   },
 }
 
@@ -122,13 +103,32 @@ export interface InputProps extends ValidationProps {
   wrapperRender?: CustomRender<InputProps, InputState, DivProps>,
 }
 
+export interface InputRefCurrent {
+  input: HTMLInputElement | null,
+  wrapper: HTMLDivElement | null,
+}
+
 export interface InputState {
   isFocused: boolean,
   isValid: boolean,
   value: string,
 }
 
-export interface InputRefCurrent {
-  input: HTMLInputElement | null,
-  wrapper: HTMLDivElement | null,
+export type PredefinedAllowedSymbols = keyof typeof predefinedAllowedSymbols;
+
+export type PredefinedForbiddenSymbols = keyof typeof predefinedForbiddenSymbols;
+
+export interface ResetEvent {
+  component: {
+    name?: string,
+    value: string,
+  },
+  currentTarget?: undefined,
+}
+
+export interface TypeEvent extends React.ChangeEvent<HTMLInputElement> {
+  component: {
+    name?: string,
+    value: string,
+  },
 }
