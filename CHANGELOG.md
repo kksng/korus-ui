@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.36.0] - 2020-12-07
 
+### Fixed
+- Input: Fixed paste event handler for Input with maxLength prop
+
+
 ## [0.35.0] - 2020-11-23
 
 ### Added
