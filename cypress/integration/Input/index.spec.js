@@ -55,11 +55,6 @@ describe('Input', () => {
         .type('test text')
         .should('have.value', 'test ');
     });
-    it('MaxLength should limit the number of characters', () => {
-      cy.get('input#only5Characters')
-        .type('test text')
-        .should('have.value', 'test ');
-    });
     it('Should display characters equivalent to those entered', () => {
       cy.get('input#corr-Input')
         .type('888888899879465143164651356')
