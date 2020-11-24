@@ -13,7 +13,6 @@ const data = [
   { id: 5, city: 'Madrid' },
 ];
 
-// eslint-disable-next-line
 export const CompareObjectsBy = (storyProps: StoryProps): React.ReactElement => {
   const [value, setValue] = React.useState<any>([data[0]]);
 

@@ -50,7 +50,6 @@ const MyOwnWrapper = ({ someCustomPropHere, ...props }: any) => <L.Button _warni
 
 const MyOwnInfo = (props: any) => <L.Span {...props} />;
 
-// eslint-disable-next-line
 export const FullCustomized = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
 

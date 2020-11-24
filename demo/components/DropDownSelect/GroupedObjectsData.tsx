@@ -29,7 +29,6 @@ const DDSData = [
   { city: 'Budapest', id: 11, attr: 'value11' },
 ];
 
-// eslint-disable-next-line
 export const GroupedObjectsData = (storyProps: StoryProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);

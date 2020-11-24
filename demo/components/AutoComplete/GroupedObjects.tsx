@@ -17,7 +17,6 @@ const ACData = [
   { id: 9, attr: 'value9', city: 'Paris' },
 ];
 
-// eslint-disable-next-line
 export const GroupedObjects = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
