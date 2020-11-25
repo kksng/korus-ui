@@ -242,14 +242,16 @@ export const ValidationMessageRender = () => (
 
 ## Git Workflow
 
-We use [Gitflow][18].
+We use a simplified approach based on [Gitflow][18].
+
+Branch `master` reflects the release history and is updated at the end of each Sprint. Branch `develop` reflects actual state of development. Feature branches are used to accomplish particular tasks and are merged into branch `develop` after task is completed.
 
 ### Branch names
 Feature branch names are formed from the `feature/bugfix` name and the code of task in Jira.
 For example: `feature/FEND-500`, `bugfix/FEND-1122`
 
-### Forming messages in commits
-The message in the commit begins with the task code, for example: `FEND-500: added isLoading prop to DropZone`.
+### Commit messages
+The commit message begins with the task code followed by name of component in brackets `[]` and short description of changes that were made. For example: `FEND-500 [DropZone] added isLoading prop to DropZone`.
 
 
 ## Contributing
