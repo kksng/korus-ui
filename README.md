@@ -242,14 +242,14 @@ export const ValidationMessageRender = () => (
 
 ## Git Workflow
 
-The project uses [Gitflow][18].
+We use [Gitflow][18].
 
 ### Branch names
 Feature branch names are formed from the `feature/bugfix` name and the code of task in Jira.
 For example: `feature/FEND-500`, `bugfix/FEND-1122`
 
 ### Forming messages in commits
-The message in the commit begins with the task code, for example: FEND-500: added isLoading prop to DropZone.
+The message in the commit begins with the task code, for example: `FEND-500: added isLoading prop to DropZone`.
 
 
 ## Contributing
