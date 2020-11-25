@@ -1,12 +1,14 @@
 # Korus-UI
 
+Project's repository: [GitHub][16]
+
 Korus-UI is a customizable UI component library with built-in forms handling and some other niceties.
 
-Supports TypeScript and React@^16.8.0 (the one with hooks).
+Supports TypeScript@^3.8.3 and React@^16.8.0 (the one with hooks).
 
 ![](https://github.com/kksng/leda/workflows/.github/workflows/ci.yml/badge.svg)
 
-Key Features
+## Key Features
 
 - Full customization of library components for your project in [3 different ways][7]
 - Concise and functional forms with validation (significantly less code than in popular solutions, with more flexibility and functionality)
@@ -14,7 +16,7 @@ Key Features
 - Uniform API (if you worked with one component you know how to work with the rest)
 - About 70 components for building forms and layout
 
-Everything that you wanted from validation you can find in Korus-UI
+### Everything that you wanted from validation you can find in Korus-UI
 
 - Simplicity
 - Field validation by function or RegExp
@@ -28,16 +30,12 @@ Everything that you wanted from validation you can find in Korus-UI
 - One-click validation of multiple forms
 - Helper functions for validation of passed values
 
-## Installation
 
-```
-npm install korus-ui
-```
-Use the `L` namespace to distinguish library components from other components in your application.
+## Technologies
 
-```
-import * as L from 'korus-ui';
-```
+- React@^16.8.0
+- TypeScript@^3.8.3
+
 
 ## Documentation
 
@@ -51,6 +49,104 @@ All available features are documented in Russian. English version is on it's way
 - [Forms][11]
 - [Validation][12]
 - [Refs and DOM][13]
+
+
+## Code Style
+
+We use [Airbnb JavaScript Style Guide][17]
+
+
+## Installation
+
+```
+npm install korus-ui
+```
+Use the `L` namespace to distinguish library components from other components in your application.
+
+```
+import * as L from 'korus-ui';
+```
+
+## Development mode
+
+- Clone or download the repo
+- Run `npm i` to install dependencies
+- Run `npm start` to launch dev-server with demo examples on `http://localhost:9000/`
+
+
+### Available NPM scripts
+
+| script | description | 
+|----------------|----------------|
+| npm start | runs project in development mode | 
+| npm run build | builds project | 
+| npm run check | checks eslint and typescript errors, runs jest tests | 
+| npm run cypress | runs cypress tests | 
+| npm run coverage | shows coverage after running cypress tests | 
+
+
+## File Structure
+
+```
+├── demo                         : demo examples
+│   ├── components                   : demo examples for dev mode
+│   │   └── AutoComplete                : demo examples of component
+│   │       ├── Minimal.tsx                 : example of usage with minimal required props
+│   │       ├── Customization.tsx           : some other examples of important component's features
+│   │       └── index.tsx                   : export of component's examples
+│   │
+│   └── cypress                     : demo examples for cypress tests
+│       └── AutoComplete                : demo examples of component for cypress tests
+│           └── index.tsx                   : component's usage examples
+│
+├── leda                         : library
+│   ├── commonTypes                 : common types
+│   │   └── index.ts              
+│   ├── components                  : exported library components
+│   │   └── DropZone                    : component
+│   │       ├── constants.ts                : constants   
+│   │       ├── DropZone.test.tsx           : tests for component  
+│   │       ├── DropZone.tsx                : main component's features 
+│   │       ├── DropZoneFiles.tsx           : additional component's features       
+│   │       ├── handlers.ts                 : event handlers   
+│   │       ├── helpers.test.tsx            : tests for helper functions 
+│   │       ├── helpers.ts                  : helper functions 
+│   │       ├── hooks.ts                    : hooks   
+│   │       ├── index.tsx                   : export of component 
+│   │       ├── theme.ts                    : component's theme
+│   │       └── types.ts                    : component's types
+│   │
+│   ├── form                    : form helpers
+│   │   ├── form.test.tsx           : tests for form helpers         
+│   │   ├── form.ts                 : form validation helpers   
+│   │   ├── helpers.ts              : helper functions   
+│   │   ├── index.ts                : export form helpers 
+│   │   └── types.ts                : types
+│   │ 
+│   ├── src                     : internal reusable components
+│   │   └── DateTimeInputRange      : reusable component         
+│   │       ├── handlers.ts             : event handlers   
+│   │       ├── helpers.ts              : helper functions   
+│   │       ├── hooks.ts                : hooks 
+│   │       ├── index.tsx               : export of component 
+│   │       ├── theme.ts                : component's theme 
+│   │       └── types.ts                : component's types
+│   │ 
+│   ├── utils                   : helpers
+│   │   ├── getWordEnding.ts        : helper function 
+│   │   └── index.ts                : export of helper functions
+│   │ 
+│   ├── validators              : constants and helpers for form validation
+│   │   ├── email.ts                : constant and helper function for email validation
+│   │   └── index.ts                : export of validators
+│   │
+│   ├── constants.ts            : common constants
+│   ├── index.ts                : export of library's components
+│   └── messages.ts             : constants for messages
+│
+├── storybook                 
+└── styles
+```
 
 
 ## Examples
@@ -114,8 +210,8 @@ const MultipleForms = () => (
 Possibility to display custom validation messages:
 
 ```jsx
-import * as React from 'react';
-import * as L from '../../../leda';
+import React from 'react';
+import * as L from 'korus-ui';
 
 export const ValidationMessageRender = () => (
   <L.Div _box _inner>
@@ -143,6 +239,18 @@ export const ValidationMessageRender = () => (
   </L.Div>
 );
 ```
+
+## Git Workflow
+
+The project uses [Gitflow][18].
+
+### Branch names
+Feature branch names are formed from the `feature/bugfix` name and the code of task in Jira.
+For example: `feature/FEND-500`, `bugfix/FEND-1122`
+
+### Forming messages in commits
+The message in the commit begins with the task code, for example: FEND-500: added isLoading prop to DropZone.
+
 
 ## Contributing
 
@@ -179,7 +287,8 @@ Made by [Artem Povolskikh][2] and [Andrew Dimitrov][3] for their company with in
 - Maxim Fomin
 - [Oksana Kukushkina][5]
 - Vyacheslav Semyonov
-
+- Ilya Shevchuck
+- Ksenia Lugovaya
 
 [1]: https://leda.esphere.ru
 [2]: https://github.com/Apollo-11
@@ -198,3 +307,7 @@ Made by [Artem Povolskikh][2] and [Andrew Dimitrov][3] for their company with in
 
 [14]: https://github.com/kksng/korus-ui/blob/master/CONTRIBUTING.md
 [15]: https://github.com/kksng/korus-ui/blob/master/LICENSE.md
+[16]: https://github.com/kksng/korus-ui
+
+[17]: https://github.com/airbnb/javascript#airbnb-javascript-style-guide-
+[18]: https://nvie.com/posts/a-successful-git-branching-model/
