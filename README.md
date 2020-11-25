@@ -95,14 +95,14 @@ import * as L from 'korus-ui';
 │   │       ├── Customization.tsx           : some other examples of important component's features
 │   │       └── index.tsx                   : export of component's examples
 │   │
-│   └── cypress                     : demo examples for cypress tests
+│   └── cypress                      : demo examples for cypress tests
 │       └── AutoComplete                : demo examples of component for cypress tests
 │           └── index.tsx                   : component's usage examples
 │
 ├── leda                         : library
-│   ├── commonTypes                 : common types
+│   ├── commonTypes                  : common types
 │   │   └── index.ts              
-│   ├── components                  : exported library components
+│   ├── components                   : exported library components
 │   │   └── DropZone                    : component
 │   │       ├── constants.ts                : constants   
 │   │       ├── DropZone.test.tsx           : tests for component  
@@ -116,33 +116,33 @@ import * as L from 'korus-ui';
 │   │       ├── theme.ts                    : component's theme
 │   │       └── types.ts                    : component's types
 │   │
-│   ├── form                    : form helpers
-│   │   ├── form.test.tsx           : tests for form helpers         
-│   │   ├── form.ts                 : form validation helpers   
-│   │   ├── helpers.ts              : helper functions   
-│   │   ├── index.ts                : export form helpers 
-│   │   └── types.ts                : types
+│   ├── form                         : form helpers
+│   │   ├── form.test.tsx               : tests for form helpers         
+│   │   ├── form.ts                     : form validation helpers   
+│   │   ├── helpers.ts                  : helper functions   
+│   │   ├── index.ts                    : export form helpers 
+│   │   └── types.ts                    : types
 │   │ 
-│   ├── src                     : internal reusable components
-│   │   └── DateTimeInputRange      : reusable component         
-│   │       ├── handlers.ts             : event handlers   
-│   │       ├── helpers.ts              : helper functions   
-│   │       ├── hooks.ts                : hooks 
-│   │       ├── index.tsx               : export of component 
-│   │       ├── theme.ts                : component's theme 
-│   │       └── types.ts                : component's types
+│   ├── src                          : internal reusable components
+│   │   └── DateTimeInputRange          : reusable component         
+│   │       ├── handlers.ts                 : event handlers   
+│   │       ├── helpers.ts                  : helper functions   
+│   │       ├── hooks.ts                    : hooks 
+│   │       ├── index.tsx                   : export of component 
+│   │       ├── theme.ts                    : component's theme 
+│   │       └── types.ts                    : component's types
 │   │ 
-│   ├── utils                   : helpers
-│   │   ├── getWordEnding.ts        : helper function 
-│   │   └── index.ts                : export of helper functions
+│   ├── utils                        : helpers
+│   │   ├── getWordEnding.ts            : helper function 
+│   │   └── index.ts                    : export of helper functions
 │   │ 
-│   ├── validators              : constants and helpers for form validation
-│   │   ├── email.ts                : constant and helper function for email validation
-│   │   └── index.ts                : export of validators
+│   ├── validators                   : constants and helpers for form validation
+│   │   ├── email.ts                    : constant and helper function for email validation
+│   │   └── index.ts                    : export of validators
 │   │
-│   ├── constants.ts            : common constants
-│   ├── index.ts                : export of library's components
-│   └── messages.ts             : constants for messages
+│   ├── constants.ts                 : common constants
+│   ├── index.ts                     : export of library's components
+│   └── messages.ts                  : constants for messages
 │
 ├── storybook                 
 └── styles
