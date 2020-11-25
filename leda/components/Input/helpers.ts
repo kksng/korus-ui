@@ -61,6 +61,20 @@ export const getValue = (valueProp: string | null | undefined, valueState: strin
 };
 
 /**
+ * Helper defines if value was selected completely or partly
+ * @param {number | null} selectedRange - selected range
+ * @param {number} oldValueLength - length of previous value
+ *
+ * @returns {[boolean, boolean]} - array of flags that define if value was selected completely or partly
+ */
+const getSelectionType = (selectedRange: number | null, oldValueLength: number): [boolean, boolean] => {
+  const isAllSelected = selectedRange === oldValueLength;
+  const isPartSelected = !isAllSelected && selectedRange !== 0;
+
+  return [isAllSelected, isPartSelected];
+};
+
+/**
  * Helper defines cursor position or selection range
  */
 export const getSelection: GetSelection = (inputElement) => {
@@ -84,8 +98,7 @@ export const getSelection: GetSelection = (inputElement) => {
  * @returns {number} - new value length
  */
 export const getNewValueLength = (oldValue: string, pastedValue: string, selectedRange: number | null): number => {
-  const isAllSelected = selectedRange === oldValue.length;
-  const isPartSelected = !isAllSelected && selectedRange !== 0;
+  const [isAllSelected, isPartSelected] = getSelectionType(selectedRange, oldValue.length);
 
   if (isAllSelected) return pastedValue.length;
   if (isPartSelected && selectedRange) return oldValue.length - selectedRange + pastedValue.length;
@@ -101,8 +114,7 @@ export const getNewValueLength = (oldValue: string, pastedValue: string, selecte
  * @returns {number} - maximum allowed length of pasted value
  */
 export const getMaxPastedLength = (oldValue: string, maxLength: number, selectedRange: number | null): number => {
-  const isAllSelected = selectedRange === oldValue.length;
-  const isPartSelected = !isAllSelected && selectedRange !== 0;
+  const [isAllSelected, isPartSelected] = getSelectionType(selectedRange, oldValue.length);
 
   if (isAllSelected || oldValue === '') return maxLength;
   if (isPartSelected && selectedRange) return maxLength - (oldValue.length - selectedRange);
@@ -122,8 +134,7 @@ export const getNewPastedValue: GetNewPastedValue = (
     oldValue,
   },
 ) => {
-  const isAllSelected = selectedRange === oldValue.length;
-  const isPartSelected = !isAllSelected && selectedRange !== 0;
+  const [isAllSelected, isPartSelected] = getSelectionType(selectedRange, oldValue.length);
 
   if (isAllSelected || oldValue === '') return adjustedPastedValue;
   if (isPartSelected && isNumber(selectionStart) && isNumber(selectionEnd)) return oldValue.substring(0, selectionStart) + adjustedPastedValue + oldValue.substring(selectionEnd, oldValue.length);
