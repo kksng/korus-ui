@@ -46,7 +46,6 @@ export const Minimal = (StoryProps: StoryProps): React.ReactElement => {
         </L.Div>
         <L.Tour
           data={data}
-          activeStepKey={activeStep}
           onChange={(ev) => setActiveStep(ev.component.value)}
         />
       </L.Div>
