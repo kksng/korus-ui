@@ -77,6 +77,7 @@ export const Basic = (storyProps: StoryProps) => {
           update('Blur', ev);
         }}
         _width30
+        {...props}
       />
 
       <br />
