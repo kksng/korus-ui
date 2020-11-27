@@ -20,6 +20,7 @@ import {
   Wizard,
   DropDown,
   DropDownLink,
+  ProgressBar,
   RadioGroup,
   MultiSelect,
   ToolTip,
@@ -86,6 +87,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/radio-group">
           <RadioGroup />
+        </Route>
+        <Route path="/cypress/progressbar">
+          <ProgressBar />
         </Route>
         <Route path="/cypress/multi-select">
           <MultiSelect />
