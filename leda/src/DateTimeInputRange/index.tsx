@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isString } from 'lodash';
+import { isNil, isString } from 'lodash';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { DateTimeInput } from '../DateTimeInput';
 import {
@@ -99,6 +99,10 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
     if (isStringValue(valueProp)) {
       setValue(valueProp);
     }
+    if (isNil(valueProp)) {
+      setDate([null, null]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueProp]);
 
   const wrapperClassNames = getClassNames(

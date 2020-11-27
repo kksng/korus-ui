@@ -16,6 +16,10 @@ export const DateRange = (): React.ReactElement => {
     new Date(2019, 5, 5),
     new Date(2019, 5, 15),
   ]);
+  const [value9, setValue9] = React.useState<[Date | null, Date | null] | null>([
+    new Date(2019, 5, 5),
+    new Date(2019, 5, 15),
+  ]);
 
   const handleChange1 = (ev) => {
     const { value, date } = ev.component;
@@ -64,6 +68,12 @@ export const DateRange = (): React.ReactElement => {
     console.log(value);
     console.log(date);
     setValue8(value);
+  };
+  const handleChange9 = (ev) => {
+    const { value, date } = ev.component;
+    console.log(value);
+    console.log(date);
+    setValue9(value);
   };
 
   const DateRangeStyles = () => (
@@ -183,6 +193,14 @@ export const DateRange = (): React.ReactElement => {
           onChange={handleChange8}
           onEnterPress={console.log}
           value={value8}
+          name="DatePickerNullArrayReset"
+          placeholder="Type your date..."
+        />
+        <L.DateRange
+          _grow1
+          onChange={handleChange9}
+          onEnterPress={console.log}
+          value={value9}
           name="DatePickerNullReset"
           placeholder="Type your date..."
         />
@@ -192,6 +210,7 @@ export const DateRange = (): React.ReactElement => {
           onClick={() => {
             setValue7(['', '']);
             setValue8([null, null]);
+            setValue9(null);
           }}
         >
           Reset
@@ -202,6 +221,7 @@ export const DateRange = (): React.ReactElement => {
           onClick={() => {
             setValue7(['11.12.2012','12.12.2012']);
             setValue8([new Date(2019, 5, 5), new Date(2019, 5, 15)]);
+            setValue9([new Date(2019, 5, 5), new Date(2019, 5, 15)]);
           }}
         >
           To initial state

@@ -14,7 +14,7 @@ describe('DateRange', () => {
       .parents('div.demo-story')
       .parent()
       .find('.daterange-delimiter')
-      .should('have.length', 8)
+      .should('have.length', 9)
   })
 
   it('EnterPress', () => {
@@ -117,6 +117,10 @@ describe('DateRange', () => {
         .name('DatePickerStringReset-from')
         .should('have.attr', 'value', '')
         .name('DatePickerStringReset-to')
+        .should('have.attr', 'value', '')
+        .name('DatePickerNullArrayReset-from')
+        .should('have.attr', 'value', '')
+        .name('DatePickerNullArrayReset-to')
         .should('have.attr', 'value', '')
         .name('DatePickerNullReset-from')
         .should('have.attr', 'value', '')

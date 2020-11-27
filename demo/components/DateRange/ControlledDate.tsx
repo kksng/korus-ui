@@ -72,7 +72,7 @@ export const ControlledDate = (args: SomeObject): React.ReactElement => {
 export const ControlledDate = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
-  const [date, setDate] = React.useState<[Date | null, Date | null]>([new Date(2019, 5, 5), new Date(2019, 5, 15)]);
+  const [date, setDate] = React.useState<[Date | null, Date | null] | null>([new Date(2019, 5, 5), new Date(2019, 5, 15)]);
 
   return (
     <L.Div _box _inner _demoBg>

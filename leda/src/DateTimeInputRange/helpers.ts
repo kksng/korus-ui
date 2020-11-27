@@ -56,7 +56,7 @@ export const isDateValue = (value: DateTimeInputRangeProps['value']): value is [
 
 /**
  * Helper checks if both input values of component are of type string
- * @param {[DateTimeInputValueType, DateTimeInputValueType] | undefined} value - component's range value
+ * @param {[DateTimeInputValueType, DateTimeInputValueType] | null | undefined} value - component's range value
  *
  * @returns {boolean} - true if value is of type [string, string]
  */
@@ -67,7 +67,7 @@ export const isStringValue = (value: DateTimeInputRangeProps['value']): value is
 
 /**
  * Helper converts input values to date range values
- * @param {[DateTimeInputValueType, DateTimeInputValueType] | undefined} value - component's range value
+ * @param {[DateTimeInputValueType, DateTimeInputValueType] | null | undefined} value - component's range value
  * @param {string | undefined} format - value format
  *
  * @returns {[Date | null, Date | null]}
