@@ -105,9 +105,7 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/wizard">
           <Wizard />
-        </Route>
-
-        
+        </Route>       
       </Switch>
     </L.Div>
   </>

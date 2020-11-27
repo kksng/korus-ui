@@ -113,8 +113,5 @@ export const Collapse = () => {
       </L.Div>
 
     </L.Div>
-
-    
-
   );
 };
