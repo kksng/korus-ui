@@ -65,7 +65,7 @@ export interface DateTimeInputRangeProps {
   shortWeekDayNames?: WeekDayNames,
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInputRange],
   type?: Values<typeof COMPONENT_TYPES>,
-  value?: [DateTimeInputValueType, DateTimeInputValueType] | null,
+  value?: [DateTimeInputValueType, DateTimeInputValueType],
   /** Массив кастомных названий дней недели */
   weekDayNames?: WeekDayNames,
   /** Кастомный список дней недели (строка "Пн Вт Ср Чт Пт Сб Вс") */
@@ -81,6 +81,7 @@ export interface DateTimeInputRangeProps {
 export interface DateTimeInputRangeState {
   date: [Date | null, Date | null],
   setDate: (date: [Date | null, Date | null]) => void,
+  setValue: (value: [string, string]) => void,
   setValueFrom: (value: string) => void,
   setValueTo: (value: string) => void,
   value: [string, string],

@@ -14,7 +14,7 @@ describe('DateRange', () => {
       .parents('div.demo-story')
       .parent()
       .find('.daterange-delimiter')
-      .should('have.length', 7)
+      .should('have.length', 8)
   })
 
   it('EnterPress', () => {
@@ -111,13 +111,19 @@ describe('DateRange', () => {
         .parent()
         .should('have.class', 'danger')
     })
-    it('should set array of empty strings as state', () => {
+    it('should be able to reset values with empty strings and with null', () => {
       cy.name('resetButton')
         .click()
-        .name('DatePickerReset-from')
+        .name('DatePickerStringReset-from')
         .should('have.attr', 'value', '')
-        .name('DatePickerReset-to')
+        .name('DatePickerStringReset-to')
         .should('have.attr', 'value', '')
+        .name('DatePickerNullReset-from')
+        .should('have.attr', 'value', '')
+        .name('DatePickerNullReset-to')
+        .should('have.attr', 'value', '')
+        .name('toInitialStateButton')
+        .click()
     })
   })
 

@@ -73,7 +73,7 @@ export const stringToDate = (string: string | undefined, format: string | undefi
     );
 };
 
-export const formatDateTime = (date: Date | null, format: string): string => {
+export const formatDateTime = (date: Date | null, format = 'dd.MM.yyyy hh:mm'): string => {
   if (!date) return '';
 
   const dateTable = {

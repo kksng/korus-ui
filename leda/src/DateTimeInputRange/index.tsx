@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isNil } from 'lodash';
+import { isString } from 'lodash';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { DateTimeInput } from '../DateTimeInput';
 import {
@@ -7,7 +7,7 @@ import {
 } from '../../utils';
 import { DateTimeInputRefCurrent } from '../DateTimeInput/types';
 import {
-  getDisabled, getName, getOpen, getPlaceholder, getRequired, getRequiredMessage, isDateValue, getReplacedValue,
+  getDisabled, getName, getOpen, getPlaceholder, getRequired, getRequiredMessage, isDateValue, isStringValue,
 } from './helpers';
 import { useCustomElements, useDateRange } from './hooks';
 import {
@@ -64,11 +64,10 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
 
   const {
     date,
+    value,
     setDate,
-    value: valueState,
+    setValue,
   } = state;
-
-  const value = isNil(valueProp) ? date : getReplacedValue(valueProp);
 
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.dateTimeInputRange);
 
@@ -97,7 +96,10 @@ export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangePro
     if (isDateValue(valueProp)) {
       setDate(valueProp);
     }
-  }, [valueProp, setDate]);
+    if (isStringValue(valueProp)) {
+      setValue(valueProp);
+    }
+  }, [valueProp]);
 
   const wrapperClassNames = getClassNames(
     className,

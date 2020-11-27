@@ -25,7 +25,7 @@ export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
         onFocus={ev => {
           update('Focus', ev);
         }}
-        value={value}
+       value={value}
         {...props}
       />
       <br />

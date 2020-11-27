@@ -79,6 +79,7 @@ export const ControlledDate = (storyProps: StoryProps): React.ReactElement => {
       <L.DateRange
         value={date}
         onChange={ev => {
+          console.log(ev.component);
           setDate(ev.component.date);
         }}
         {...props}
@@ -86,6 +87,7 @@ export const ControlledDate = (storyProps: StoryProps): React.ReactElement => {
       <br />
       <br />
       <L.Button _warning onClick={() => setDate([new Date(), new Date()])}>Set Today</L.Button>
+      <L.Button _warning onClick={() => setDate([null, null])}>Clear</L.Button>
       <br />
       <br />
       <StateButtonGroup

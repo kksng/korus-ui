@@ -69,7 +69,7 @@ export const useDateTimeInputState = (props: DateTimeInputProps): [DateTimeInput
   // сегодня, время берется равно 00:00
   const today = new Date();
 
-  const stringValue = isDate(valueProp) || valueProp === null ? '' : valueProp;
+  const stringValue = isDate(valueProp) || isNil(valueProp) ? '' : valueProp;
 
   const initialState = {
     date: null,
