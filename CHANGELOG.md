@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Completed description in README.md: technologies, git workflow, project's structure
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c9cb0ff19927b9d9906b2219508f8a9c9133e7e
 ### Fixed
 - Input: Fixed paste event handler for Input with maxLength prop
 
