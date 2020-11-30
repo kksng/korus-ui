@@ -22,7 +22,7 @@ import {
   NumericRange,
   ToolTip,
   TimePicker,
-  Tour, 
+  Tour,
   RadioGroup,
   Validation,
   VStepper,
@@ -96,7 +96,7 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/tour">
           <Tour />
-        </Route>       
+        </Route>
         <Route path="/cypress/validation">
           <Validation />
         </Route>
@@ -105,7 +105,7 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/wizard">
           <Wizard />
-        </Route>       
+        </Route>
       </Switch>
     </L.Div>
   </>
