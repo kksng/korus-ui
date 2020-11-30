@@ -1,6 +1,6 @@
-import { isString } from 'lodash';
+import { isNumber, isString } from 'lodash';
 import { predefinedAllowedSymbols, predefinedForbiddenSymbols } from './constants';
-import { InputProps } from './types';
+import { GetNewPastedValue, GetSelection, InputProps } from './types';
 
 export const isSymbolAllowed = (value: string, allowedSymbols?: keyof typeof predefinedAllowedSymbols | RegExp): boolean => {
   if (!allowedSymbols || value.length === 0) return true;
@@ -58,4 +58,86 @@ export const getValue = (valueProp: string | null | undefined, valueState: strin
   }
 
   return valueProp;
+};
+
+/**
+ * Helper defines if value was selected completely or partly
+ * @param {number | null} selectedRange - selected range
+ * @param {number} oldValueLength - length of previous value
+ *
+ * @returns {[boolean, boolean]} - array of flags that define if value was selected completely or partly
+ */
+const getSelectionType = (selectedRange: number | null, oldValueLength: number): [boolean, boolean] => {
+  const isAllSelected = selectedRange === oldValueLength;
+  const isPartSelected = !isAllSelected && selectedRange !== 0;
+
+  return [isAllSelected, isPartSelected];
+};
+
+/**
+ * Helper defines cursor position or selection range
+ */
+export const getSelection: GetSelection = (inputElement) => {
+  const selectedRange = isNumber(inputElement.selectionEnd) && isNumber(inputElement.selectionStart)
+    ? (inputElement.selectionEnd - inputElement.selectionStart)
+    : null;
+
+  return {
+    selectedRange,
+    selectionEnd: inputElement.selectionEnd,
+    selectionStart: inputElement.selectionStart,
+  };
+};
+
+/**
+ * Helper calculates new value length
+ * @param {string} oldValue - value of input before paste
+ * @param {pastedValue} pastedValue - pasted value
+ * @param {number | null} selectedRange - selected range for paste
+ *
+ * @returns {number} - new value length
+ */
+export const getNewValueLength = (oldValue: string, pastedValue: string, selectedRange: number | null): number => {
+  const [isAllSelected, isPartSelected] = getSelectionType(selectedRange, oldValue.length);
+
+  if (isAllSelected) return pastedValue.length;
+  if (isPartSelected && selectedRange) return oldValue.length - selectedRange + pastedValue.length;
+  return oldValue.length + pastedValue.length;
+};
+
+/**
+ * Helper calculates maximum allowed length of pasted value
+ * @param {string} oldValue - value of input before paste
+ * @param {number} maxLength - maximum allowed value length
+ * @param {number} selectedRange - selected range for paste
+ *
+ * @returns {number} - maximum allowed length of pasted value
+ */
+export const getMaxPastedLength = (oldValue: string, maxLength: number, selectedRange: number | null): number => {
+  const [isAllSelected, isPartSelected] = getSelectionType(selectedRange, oldValue.length);
+
+  if (isAllSelected || oldValue === '') return maxLength;
+  if (isPartSelected && selectedRange) return maxLength - (oldValue.length - selectedRange);
+  return maxLength - oldValue.length;
+};
+
+/**
+ * Helper defines new value after paste
+ */
+export const getNewPastedValue: GetNewPastedValue = (
+  {
+    adjustedPastedValue,
+    selectionEnd,
+    selectedRange,
+    maxLength,
+    selectionStart,
+    oldValue,
+  },
+) => {
+  const [isAllSelected, isPartSelected] = getSelectionType(selectedRange, oldValue.length);
+
+  if (isAllSelected || oldValue === '') return adjustedPastedValue;
+  if (isPartSelected && isNumber(selectionStart) && isNumber(selectionEnd)) return oldValue.substring(0, selectionStart) + adjustedPastedValue + oldValue.substring(selectionEnd, oldValue.length);
+  if (oldValue.length < maxLength && isNumber(selectionStart)) return oldValue.substring(0, selectionStart) + adjustedPastedValue + oldValue.substring(selectionStart, oldValue.length);
+  return null;
 };
