@@ -1,6 +1,7 @@
 import * as React from 'react';
-import * as L from '../../leda';
-import { useElementRef } from '../../leda/utils';
+import * as L from '../../../leda';
+import { useElementRef } from '../../../leda/utils';
+import { StoryProps } from '../../types';
 
 const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] => [
   {
@@ -112,7 +113,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   },
 ];
 
-export const Tour = (): React.ReactElement => {
+export const Basic = (StoryProps: StoryProps): React.ReactElement => {
   const [element1, ref1] = useElementRef();
   const [element2, ref2] = useElementRef();
   const [element3, ref3] = useElementRef();
@@ -160,4 +161,4 @@ export const Tour = (): React.ReactElement => {
   );
 };
 
-Tour.displayName = 'Tour';
+Basic.displayName = 'Tour';
