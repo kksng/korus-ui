@@ -39,7 +39,7 @@ Supports TypeScript@^3.8.3 and React@^16.8.0 (the one with hooks).
 
 ## Documentation
 
-The Korus-UI docs are located at [https://leda.esphere.ru][1].
+The Korus-UI docs are located at [https://opensource.esphere.ru/korus-ui/][1].
 
 All available features are documented in Russian. English version is on it's way.
 
@@ -292,20 +292,20 @@ Made by [Artem Povolskikh][2] and [Andrew Dimitrov][3] for their company with in
 - Ilya Shevchuck
 - Ksenia Lugovaya
 
-[1]: https://leda.esphere.ru
+[1]: https://opensource.esphere.ru/korus-ui/
 [2]: https://github.com/Apollo-11
 [3]: https://github.com/777PolarFox777
 [4]: https://github.com/roshal
 [5]: https://github.com/JustOxxy
 [6]: https://github.com/Binetsky
 
-[7]: https://leda.esphere.ru/?path=/story/basics-кастомизация--кастомизация
-[8]: https://leda.esphere.ru/?path=/story/basics-начало-работы--введение
-[9]: https://leda.esphere.ru/?path=/story/basics-api--api
-[10]: https://leda.esphere.ru/?path=/story/basics-вёрстка--css-классы
-[11]: https://leda.esphere.ru/?path=/story/basics-формы--особенности
-[12]: https://leda.esphere.ru/?path=/story/basics-валидация-форм--api
-[13]: https://leda.esphere.ru/?path=/story/basics-рефы-и-dom--использование-рефов
+[7]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-кастомизация--кастомизация
+[8]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-начало-работы--введение
+[9]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-api--api
+[10]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-вёрстка--css-классы
+[11]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-формы--особенности
+[12]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-валидация-форм--api
+[13]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-рефы-и-dom--использование-рефов
 
 [14]: https://github.com/kksng/korus-ui/blob/master/CONTRIBUTING.md
 [15]: https://github.com/kksng/korus-ui/blob/master/LICENSE.md
