@@ -3,14 +3,6 @@ describe('ProgressBar', () => {
     cy.visit('http://localhost:9000/cypress/progressbar');
   });
 
-  describe('Display', () => {
-    it('Should be render', () => {
-      cy.get('.demo-story')
-        .screenshot()
-        .should('be.visible')
-    });
-  });
-
   describe('Interaction', () => {
     it('Start and stop on click', () => {
       cy.get('button')
@@ -25,7 +17,7 @@ describe('ProgressBar', () => {
         .click()
         .parent()
         .find('.progressbar-fill')
-        .trigger('stop')
+        .trigger('stop');
     });
 
     it('Reset progress', () => {
@@ -34,7 +26,7 @@ describe('ProgressBar', () => {
         .click()
         .parent()
         .find('.progressbar-fill')
-        .should('have.value', '')
-    })
+        .should('have.value', '');
+    });
   });
 });
