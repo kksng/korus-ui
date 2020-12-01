@@ -7,6 +7,7 @@ import {
   Button,
   ButtonGroup,
   CheckBox,
+  Currency,
   DatePicker,
   DateRange,
   DropDownSelect,
@@ -25,7 +26,7 @@ import {
   ToolTip,
   TimePicker,
   Tour,
-  Validation
+  Validation,
 } from './cypress';
 import { Styles } from './components/Styles';
 
@@ -44,6 +45,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
+        </Route>
+        <Route path="/cypress/currency">
+          <Currency />
         </Route>
         <Route path="/cypress/filedrop">
           <FileDrop />
