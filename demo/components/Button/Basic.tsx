@@ -1,9 +1,10 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../leda';
-import { StateButtonGroup } from './StateButtonGroup';
+import * as L from '../../../leda';
+import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
-export const Button = () => {
+export const Basic = (storyProps: StoryProps) => {
   const [statusProps, setStatusProps] = React.useState({ });
   const [stateProps, setStateProps] = React.useState({ });
   const [sizeProps, setSizeProps] = React.useState({ });
