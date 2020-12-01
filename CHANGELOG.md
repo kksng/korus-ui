@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Input: Fixed paste event handler for Input with maxLength prop
+- MaskedInput: Fixed clearing incomplete mask value by setting null value or calling reset function
 
 
 ## [0.35.0] - 2020-11-23
