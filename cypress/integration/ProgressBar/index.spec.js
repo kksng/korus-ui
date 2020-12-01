@@ -4,7 +4,7 @@ describe('ProgressBar', () => {
   });
 
   describe('Interaction', () => {
-    it('Start and stop on click', () => {
+    it('Start and stop progress on click', () => {
       cy.get('button')
         .contains('Launch')
         .click()
