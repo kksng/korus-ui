@@ -28,3 +28,5 @@ export const KEYS = {
   UP: 'ArrowUp',
   UP_IE: 'Up',
 } as const;
+
+export const DEFAULT_FORMAT = 'dd.MM.yyyy hh:mm';

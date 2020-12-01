@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { DateValueType } from '../../../leda/src/DateTimeInputRange/types';
 
 export const DateRange = (): React.ReactElement => {
   const [value1, setValue1] = React.useState<[string, string]>(['', '']);
@@ -12,11 +13,11 @@ export const DateRange = (): React.ReactElement => {
     '11.12.2012',
     '12.12.2012',
   ]);
-  const [value8, setValue8] = React.useState<[Date | null, Date | null]>([
+  const [value8, setValue8] = React.useState<DateValueType>([
     new Date(2019, 5, 5),
     new Date(2019, 5, 15),
   ]);
-  const [value9, setValue9] = React.useState<[Date | null, Date | null] | null>([
+  const [value9, setValue9] = React.useState<DateValueType | null>([
     new Date(2019, 5, 5),
     new Date(2019, 5, 15),
   ]);

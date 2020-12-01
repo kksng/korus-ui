@@ -2,12 +2,13 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { StoryProps } from '../../types';
+import { DateValueType } from '../../../leda/src/DateTimeInputRange/types';
 
 const exampleCode = `
 export const ControlledDate = (args: SomeObject): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
-  const [date, setDate] = React.useState<[Date | null, Date | null]>([new Date(2019, 5, 5), new Date(2019, 5, 15)]);
+  const [date, setDate] = React.useState<DateValueType>([new Date(2019, 5, 5), new Date(2019, 5, 15)]);
 
   const [allowEmpty, setAllowEmpty] = React.useState<boolean>(false);
 
@@ -72,7 +73,7 @@ export const ControlledDate = (args: SomeObject): React.ReactElement => {
 export const ControlledDate = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
-  const [date, setDate] = React.useState<[Date | null, Date | null] | null>([new Date(2019, 5, 5), new Date(2019, 5, 15)]);
+  const [date, setDate] = React.useState<DateValueType | null>([new Date(2019, 5, 5), new Date(2019, 5, 15)]);
 
   return (
     <L.Div _box _inner _demoBg>

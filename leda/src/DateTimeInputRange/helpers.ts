@@ -3,7 +3,7 @@ import {
 } from 'lodash';
 
 import { stringToDate } from '../DateTimeInput/helpers';
-import { DateTimeInputRangeProps } from './types';
+import { DateTimeInputRangeProps, DateValueType } from './types';
 
 /**
  * Helper checks types of params that should be boolean or undefined
@@ -47,9 +47,9 @@ export const isBothValueDateType = (value: DateTimeInputRangeProps['value']): bo
  * Helper checks if both input values of component are of type Date or null
  * @param {[DateTimeInputValueType, DateTimeInputValueType] | undefined} value - component's range value
  *
- * @returns {boolean} - true if value is of type [Date | null, Date | null]
+ * @returns {boolean} - true if value is of type DateValueType
  */
-export const isDateValue = (value: DateTimeInputRangeProps['value']): value is [Date | null, Date | null] => Array.isArray(value)
+export const isDateValue = (value: DateTimeInputRangeProps['value']): value is DateValueType => Array.isArray(value)
   && value.length === 2
   && (isNil(value[0]) || isDate(value[0]))
   && (isNil(value[1]) || isDate(value[1]));
@@ -70,9 +70,9 @@ export const isStringValue = (value: DateTimeInputRangeProps['value']): value is
  * @param {[DateTimeInputValueType, DateTimeInputValueType] | null | undefined} value - component's range value
  * @param {string | undefined} format - value format
  *
- * @returns {[Date | null, Date | null]}
+ * @returns {DateValueType}
  */
-export const getDateRangeFromValue = (valueProp: DateTimeInputRangeProps['value'], format: string | undefined): [Date | null, Date | null] => {
+export const getDateRangeFromValue = (valueProp: DateTimeInputRangeProps['value'], format: string | undefined): DateValueType => {
   if (!valueProp) return [null, null];
 
   if (isDateValue(valueProp)) return valueProp;

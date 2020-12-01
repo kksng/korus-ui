@@ -22,6 +22,8 @@ import { COMPONENT_TYPES } from '../DateTimeInput/constants';
 
 export type DateTimeInputValueType = undefined | null | string | Date;
 
+export type DateValueType = [Date | null, Date | null];
+
 export interface DateTimeInputRangeProps {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
   /** Кастомный заголовок календаря */
@@ -97,8 +99,8 @@ export interface DateTimeInputRangeProps {
 }
 
 export interface DateTimeInputRangeState {
-  date: [Date | null, Date | null],
-  setDate: (date: [Date | null, Date | null]) => void,
+  date: DateValueType,
+  setDate: (date: DateValueType) => void,
   setValue: (value: [string, string]) => void,
   setValueFrom: (value: string) => void,
   setValueTo: (value: string) => void,
@@ -113,7 +115,7 @@ export interface DateTimeInputRangeRefCurrent {
 
 export interface CustomRangeEvent {
   component: {
-    date: [Date | null, Date | null],
+    date: DateValueType,
     name?: string | [string | undefined, string | undefined],
     value: [string, string],
   },

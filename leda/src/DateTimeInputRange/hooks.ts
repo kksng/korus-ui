@@ -4,7 +4,7 @@ import { LedaContext } from '../../components/LedaProvider';
 import { Span } from '../../components/Span';
 import { useElement } from '../../utils';
 import {
-  CustomElements, DateTimeInputRangeProps, DateTimeInputRangeState,
+  CustomElements, DateTimeInputRangeProps, DateTimeInputRangeState, DateValueType,
 } from './types';
 import { getDateRangeFromValue } from './helpers';
 import { formatDateTime } from '../DateTimeInput/helpers';
@@ -20,7 +20,7 @@ export const useDateRange = (props: DateTimeInputRangeProps): DateTimeInputRange
   const [valueTo, setValueTo] = React.useState<string>(initialValue[1]);
   const [dateTo, setDateTo] = React.useState<Date | null>(initialDate[1]);
 
-  const setDate = (date: [Date | null, Date | null]): void => {
+  const setDate = (date: DateValueType): void => {
     setDateFrom(date[0]);
     setValueFrom(formatDateTime(date[0], format));
 
@@ -40,7 +40,7 @@ export const useDateRange = (props: DateTimeInputRangeProps): DateTimeInputRange
 
   const value: [string, string] = [valueFrom, valueTo];
 
-  const date: [Date | null, Date | null] = [dateFrom, dateTo];
+  const date: DateValueType = [dateFrom, dateTo];
 
   return {
     date,

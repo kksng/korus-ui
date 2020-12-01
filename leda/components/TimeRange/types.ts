@@ -5,6 +5,7 @@ import {
 import {
   CustomRangeEvent, DateTimeInputRangeProps,
   DateTimeInputRangeRefCurrent,
+  DateValueType,
 } from '../../src/DateTimeInputRange/types';
 
 export interface TimeRangeProps extends DateTimeInputRangeProps {
@@ -37,5 +38,5 @@ export interface TimeRangeProps extends DateTimeInputRangeProps {
   /** Минимальное время, применяется к обоим полям */
   timeMin?: TimeLimits,
   /** Значение полей "от" и "до" */
-  value?: [string, string] | [Date | null, Date | null],
+  value?: [string, string] | DateValueType,
 }
