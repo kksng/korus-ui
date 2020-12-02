@@ -132,10 +132,11 @@ export const createSelectHandler = (
   })() as (string[] | number[] | SomeObject[]);
 
   const selectedValue = (() => {
-    if (isSelectAllClicked && data) {
-      return value.length < data.length ? data : [];
+    if (isSelectAllClicked) {
+      if (Array.isArray(data)) return value.length < data.length ? data : [];
+      return undefined;
     }
-    return shouldRemoveValue ? undefined : ev.target.value;
+    return shouldRemoveValue ? undefined : currentValue;
   })();
 
   const deselectedValues = (() => {
