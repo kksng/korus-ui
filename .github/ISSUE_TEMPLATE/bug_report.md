@@ -8,7 +8,7 @@ labels: "bug"
 ## Bug report
 
 ### Describe the bug
-A clear and concise description of what the bug is. Must include component name.
+A clear and concise bug description. Must include component name.
 
 ### Steps To Reproduce
 Steps to reproduce the behavior:
