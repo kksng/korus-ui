@@ -7,6 +7,7 @@ import {
   Button,
   ButtonGroup,
   CheckBox,
+  Collapse,
   DatePicker,
   DateRange,
   DropDown,
@@ -46,17 +47,8 @@ export const CypressLayout = () => (
         <Route path="/cypress/checkbox">
           <CheckBox />
         </Route>
-        <Route path="/cypress/filedrop">
-          <FileDrop />
-        </Route>
-        <Route path="/cypress/input">
-          <Input />
-        </Route>
-        <Route path="/cypress/modal">
-          <Modal />
-        </Route>
-        <Route path="/cypress/numericrange">
-          <NumericRange />
+        <Route path="/cypress/collapse">
+          <Collapse />
         </Route>
         <Route path="/cypress/datepicker">
           <DatePicker />
@@ -64,35 +56,41 @@ export const CypressLayout = () => (
         <Route path="/cypress/daterange">
           <DateRange />
         </Route>
-        <Route path="/cypress/masked-input">
-          <MaskedInput />
-        </Route>
-        <Route path="/cypress/dropdownselect">
-          <DropDownSelect />
-        </Route>
-        <Route path="/cypress/vstepper">
-          <VStepper />
-        </Route>
-        <Route path="/cypress/dropzone">
-          <DropZone />
-        </Route>
-        <Route path="/cypress/wizard">
-          <Wizard />
-        </Route>
         <Route path="/cypress/dropdown">
           <DropDown />
         </Route>
         <Route path="/cypress/dropdownlink">
           <DropDownLink />
         </Route>
-        <Route path="/cypress/radio-group">
-          <RadioGroup />
+        <Route path="/cypress/dropdownselect">
+          <DropDownSelect />
+        </Route>
+        <Route path="/cypress/dropzone">
+          <DropZone />
+        </Route>
+        <Route path="/cypress/filedrop">
+          <FileDrop />
+        </Route>
+        <Route path="/cypress/input">
+          <Input />
+        </Route>
+        <Route path="/cypress/masked-input">
+          <MaskedInput />
+        </Route>
+        <Route path="/cypress/modal">
+          <Modal />
         </Route>
         <Route path="/cypress/progressbar">
           <ProgressBar />
         </Route>
         <Route path="/cypress/multi-select">
           <MultiSelect />
+        </Route>
+        <Route path="/cypress/numericrange">
+          <NumericRange />
+        </Route>
+        <Route path="/cypress/radio-group">
+          <RadioGroup />
         </Route>
         <Route path="/cypress/tooltip">
           <ToolTip />
@@ -105,6 +103,12 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/validation">
           <Validation />
+        </Route>
+        <Route path="/cypress/vstepper">
+          <VStepper />
+        </Route>
+        <Route path="/cypress/wizard">
+          <Wizard />
         </Route>
       </Switch>
     </L.Div>

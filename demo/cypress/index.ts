@@ -2,6 +2,7 @@ export { AutoComplete } from './AutoComplete';
 export { Button } from './Button';
 export { ButtonGroup } from './ButtonGroup';
 export { CheckBox } from './CheckBox';
+export { Collapse } from './Collapse';
 export { DatePicker } from './DatePicker';
 export { DateRange } from './DateRange';
 export { DropDown } from './DropDown';
