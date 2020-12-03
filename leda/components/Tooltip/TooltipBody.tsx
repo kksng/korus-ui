@@ -10,6 +10,8 @@ export const TooltipBody = React.forwardRef((props: TooltipBodyProps, ref?: Reac
     title,
   } = props;
 
+  const { width } = style;
+
   const tooltip = (
     <div
       className={className}
@@ -17,7 +19,7 @@ export const TooltipBody = React.forwardRef((props: TooltipBodyProps, ref?: Reac
       style={style}
       onTransitionEnd={handleTransitionEnd}
     >
-      <div>
+      <div style={{ width }}>
         {title}
       </div>
     </div>
