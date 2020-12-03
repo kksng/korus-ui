@@ -7,15 +7,17 @@ import { Validation } from './Validation';
 import { NameArray } from './NameArray';
 import { Positioned } from './Positioned';
 import { Customization } from './Customization';
+import { Minimal } from './Minimal'
 
 export const DateRange = () => (
   <Story title="DateRange">
-    <BasicUsage title="Простейшее использование" />
+    <BasicUsage title="Basic example" />
     <NameArray title="Name as [string, string]"/>
-    <ControlledDate title="Контролирование только date" />
-    <MinMax title="Ограничение даты min-max" />
-    <Validation title="Валидация" />
-    <Positioned title="Позиционирование" />
-    <Customization title="Кастомизация" />
+    <ControlledDate title="Controlled only date" />
+    <MinMax title="Date constraint min-max" />
+    <Validation title="Validation" />
+    <Positioned title="Positioning" />
+    <Customization title="Customization" />
+    <Minimal title="Minimal example" />
   </Story>
 );
