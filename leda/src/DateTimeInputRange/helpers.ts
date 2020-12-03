@@ -3,7 +3,7 @@ import {
 } from 'lodash';
 
 import { stringToDate } from '../DateTimeInput/helpers';
-import { DateTimeInputRangeProps, DateTimeInputValueType } from './types';
+import { DateTimeInputRangeProps, DateValueType } from './types';
 
 /**
  * Helper checks types of params that should be boolean or undefined
@@ -45,48 +45,39 @@ export const isBothValueDateType = (value: DateTimeInputRangeProps['value']): bo
 
 /**
  * Helper checks if both input values of component are of type Date or null
- * @param {[DateTimeInputValueType, DateTimeInputValueType] | null | undefined} value - component's range value
+ * @param {[DateTimeInputValueType, DateTimeInputValueType] | undefined} value - component's range value
  *
- * @returns {boolean} - true if value is of type [Date | null, Date | null]
+ * @returns {boolean} - true if value is of type DateValueType
  */
-export const isDateValue = (value: DateTimeInputRangeProps['value']): value is [Date | null, Date | null] => Array.isArray(value)
+export const isDateValue = (value: DateTimeInputRangeProps['value']): value is DateValueType => Array.isArray(value)
   && value.length === 2
   && (isNil(value[0]) || isDate(value[0]))
   && (isNil(value[1]) || isDate(value[1]));
 
 /**
- * Helper converts input values to date range values
- * @param {DateTimeInputRangeProps} props - properties of component
+ * Helper checks if both input values of component are of type string
+ * @param {[DateTimeInputValueType, DateTimeInputValueType] | null | undefined} value - component's range value
  *
- * @returns {[Date | null, Date | null]}
+ * @returns {boolean} - true if value is of type [string, string]
  */
-export const getDateRangeFromValue = (props: DateTimeInputRangeProps): [Date | null, Date | null] => {
-  const { value: valueProp, format } = props;
+export const isStringValue = (value: DateTimeInputRangeProps['value']): value is [string, string] => Array.isArray(value)
+  && value.length === 2
+  && (isString(value[0]))
+  && (isString(value[1]));
 
+/**
+ * Helper converts input values to date range values
+ * @param {[DateTimeInputValueType, DateTimeInputValueType] | null | undefined} value - component's range value
+ * @param {string | undefined} format - value format
+ *
+ * @returns {DateValueType}
+ */
+export const getDateRangeFromValue = (valueProp: DateTimeInputRangeProps['value'], format: string | undefined): DateValueType => {
   if (!valueProp) return [null, null];
 
   if (isDateValue(valueProp)) return valueProp;
 
   return [stringToDate(valueProp[0] as string, format), stringToDate(valueProp[1] as string, format)];
-};
-
-/**
- * Helper validates the value passed to component
- * @param {[DateTimeInputValueType, DateTimeInputValueType]} value - value property of component
- *
- * @returns {[string | Date | undefined, string | Date | undefined]} - value of predefined type
- */
-export const getReplacedValue = (value: [DateTimeInputValueType, DateTimeInputValueType]): [string | Date | undefined, string | Date | undefined] => {
-  const result: (string | Date | undefined)[] = [];
-
-  if (value && Array.isArray(value)) {
-    value.forEach((item: string | Date | null | undefined) => {
-      result.push(isString(item) || isDate(item) ? item : undefined);
-    });
-    return [result[0], result[1]];
-  }
-
-  return [undefined, undefined];
 };
 
 /**
