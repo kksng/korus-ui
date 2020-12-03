@@ -10,27 +10,25 @@ export const Currency = () => (
 );
 
 export const BasicUsage = (storyProps: StoryProps) => {
-  const props = React.useState({});
-
   return (
     <L.Div _box _inner _demoBg>
       <L.Div _basic>
         <L.Div _rub>
-          <L.Currency precision={2} currencyCode="RUB" {...props}>
+          <L.Currency precision={2} currencyCode="RUB">
             12 550
           </L.Currency>
         </L.Div>
         <br />
         <br />
         <L.Div _usd>
-          <L.Currency precision={2} currencyCode="USD" {...props}>
+          <L.Currency precision={2} currencyCode="USD">
             12 550
           </L.Currency>
         </L.Div>
         <br />
         <br />
         <L.Div _eur>
-          <L.Currency precision={2} currencyCode="EUR" {...props}>
+          <L.Currency precision={2} currencyCode="EUR">
             12 550
           </L.Currency>
         </L.Div>
@@ -53,7 +51,6 @@ export const BasicUsage = (storyProps: StoryProps) => {
             wrapperRender={({ elementProps }: any) => <L.A {...elementProps} />}
             precision={2}
             currencyCode="RUB"
-            {...props}
           >
             12 550
           </L.Currency>
@@ -68,7 +65,6 @@ export const BasicUsage = (storyProps: StoryProps) => {
             precision={2}
             currencyCode="EUR"
             placeholder="тут ничего нет"
-            {...props}
           ></L.Currency>
         </L.Div>
         <br />
@@ -81,7 +77,6 @@ export const BasicUsage = (storyProps: StoryProps) => {
             precision={2}
             currencyCode="EUR"
             shouldTrimFraction={false}
-            {...props}
           >
             12 500.00
           </L.Currency>
@@ -92,7 +87,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <hr />
         <br />
         <L.Div _prec>
-          <L.Currency precision={3} currencyCode="EUR" {...props}>
+          <L.Currency precision={3} currencyCode="EUR">
             12 500.00
           </L.Currency>
         </L.Div>
