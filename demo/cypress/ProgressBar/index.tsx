@@ -2,9 +2,12 @@ import * as React from 'react';
 import * as L from '../../../leda';
 
 export const ProgressBar = () => {
-  // Ref используется для хранения данных вне контекста компонента.
-  // Это нужно для правильной работы setInterval.
-  const state = React.useRef<{ value: number, interval: number | null }>({ value: 25, interval: null }).current;
+  // Ref is used to store data outside the component context.
+  // This is necessary for setInterval to work correctly.
+  const state = React.useRef<{ value: number; interval: number | null }>({
+    value: 25,
+    interval: null,
+  }).current;
   const [value, setValue] = React.useState(25);
 
   const resetProgress = () => {
@@ -40,9 +43,12 @@ export const ProgressBar = () => {
       <L.ProgressBar value={value} valueRender={() => null} />
       <br />
       <br />
-      <L.Button _warning onClick={launchProgress}>{state.interval !== null ? 'Stop' : 'Launch'} progress</L.Button>
-      {' '}
-      <L.Button _warning onClick={resetProgress}>Reset progress</L.Button>
+      <L.Button _warning onClick={launchProgress}>
+        {state.interval !== null ? 'Stop' : 'Launch'} progress
+      </L.Button>{' '}
+      <L.Button _warning onClick={resetProgress}>
+        Reset progress
+      </L.Button>
     </L.Div>
   );
 };
