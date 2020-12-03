@@ -20,6 +20,18 @@ I want [functionality]
 
 so that [benefit]
 
+### Change request template
+1. Component name(required)
+2. What need to be changed(required)
+3. Actual component behavior(required)
+4. Expected component behavior(required)
+
+### New component request template
+1. Component name(required)
+2. Component behavior description(required)
+3. Provide component design file(PSD/Sketch/Figma)(required)
+4. Provide HTML/CSS layout markup for the new component(required)
+
 ### Describe a step-by-step behavior of your feature
 1. Step 1
 2. Step 2
