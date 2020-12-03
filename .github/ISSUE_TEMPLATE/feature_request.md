@@ -11,6 +11,10 @@ labels: "feature"
 A clear and concise description of what the feature is.
 Would be useful if you describe your use case and provide an example.
 E.g. I'd like AutoComplete component to have a new feature [...]
+Would be great if you describe your feature as a user story:
+As a [description of user],
+I want [functionality]
+so that [benefit]
 
 ### Describe a step-by-step behavior of your feature
 1. Step 1
