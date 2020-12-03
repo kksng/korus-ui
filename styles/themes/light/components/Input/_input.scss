@@ -5,6 +5,10 @@
     position: relative;
   }
 
+  &-element::-ms-clear {
+    display: none;
+  }
+
   &-element-wrapper {
     @extend %input-wrapper;
     padding: 0;
@@ -27,10 +31,6 @@
     &.disabled {
       @extend %input-disabled;
     }
-    
-    .input-clear-icon {
-      display: none;
-    }
   }
 
   &-clear-icon {
@@ -44,7 +44,7 @@
       font-family: "Font Awesome 5 Free";
       content: "\00D7";
       position: absolute;
-      top: 50%;
+      top: 45%;
       right: 2px;
       transform: translate(-50%, -50%);
       font-style: normal;
