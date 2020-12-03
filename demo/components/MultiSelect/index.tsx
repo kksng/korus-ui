@@ -7,15 +7,17 @@ import { GroupedData } from './GroupedData';
 import { CompareObjectsBy } from './CompareObjectsBy';
 import { CheckBoxes } from './CheckBoxes';
 import { NoInput } from './NoInput';
+import { Minimal } from './Minimal';
 
 export const MultiSelect = (): React.ReactElement => (
   <Story title="MultiSelect">
-    <Controlled title="Контролируемый режим" />
-    <CheckBoxes title="Чекбоксы" />
-    <CompareObjectsBy title="Сравнение" />
-    <DataTypes title="Разные типы data" />
-    <Customization title="Кастомизация" />
-    <GroupedData title="Сгруппированные списки" />
+    <Controlled title="Controlled mode" />
+    <CheckBoxes title="CheckBoxes" />
+    <CompareObjectsBy title="Comparison" />
+    <DataTypes title="Different types data" />
+    <Customization title="Customization" />
+    <GroupedData title="Grouped lists" />
     <NoInput title="shouldHideInput" />
+    <Minimal title="Minimal example" />
   </Story>
 );
