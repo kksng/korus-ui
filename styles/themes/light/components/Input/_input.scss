@@ -27,6 +27,10 @@
     &.disabled {
       @extend %input-disabled;
     }
+    
+    .input-clear-icon {
+      display: none;
+    }
   }
 
   &-clear-icon {
