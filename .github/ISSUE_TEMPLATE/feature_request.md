@@ -22,7 +22,7 @@ so that [benefit]
 
 ### Change request template
 1. Component name(required)
-2. What need to be changed(required)
+2. What needs to be changed(required)
 3. Actual component behavior(required)
 4. Expected component behavior(required)
 
