@@ -5,7 +5,7 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 import { CustomRender, SetState } from '../../commonTypes';
 import { DivProps } from '../Div';
 import {
-  ChangeEvent as BaseChangeEvent, BlurEvent, EnterPressEvent, FocusEvent, MaskedInputBaseProps,
+  ChangeEvent as BaseChangeEvent, BlurEvent, EnterPressEvent, FocusEvent, MaskedInputBaseProps, InputValueType,
 } from '../../src/MaskedInputBase/types';
 
 export {
@@ -21,7 +21,7 @@ export interface BlurData {
 }
 
 export interface ChangeData {
-  setInputValue: SetState<string | null>,
+  setInputValue: SetState<InputValueType>,
   setValue: SetState<string>,
 }
 

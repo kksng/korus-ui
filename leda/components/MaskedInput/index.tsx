@@ -12,6 +12,7 @@ import {
 import { useCustomElements } from './hooks';
 import { getValue, getValueToValidate } from './helpers';
 import { maskValue } from '../../src/MaskedInputBase/helpers';
+import { InputValueType } from '../../src/MaskedInputBase/types';
 
 export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React.Ref<MaskedInputRefCurrent>) => {
   const {
@@ -51,7 +52,7 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
   const maskedInputRef = React.useRef<HTMLInputElement | null>(null);
   const valuePropRef = React.useRef(valueProp);
 
-  const [inputValue, setInputValue] = React.useState<string | null>(null);
+  const [inputValue, setInputValue] = React.useState<InputValueType>(null);
 
   const value = getValue(valueProp, valueState);
 

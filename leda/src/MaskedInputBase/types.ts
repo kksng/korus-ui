@@ -57,6 +57,8 @@ export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
   },
 }
 
+export type InputValueType = string | null;
+
 export interface KeyDownData {
   inputRef: React.MutableRefObject<HTMLInputElement | null>,
   isFocused: boolean,
@@ -75,7 +77,7 @@ export interface MaskedInputBaseProps {
   /** Кастомный класс */
   className?: string,
   /** Текущее значение маски инпута */
-  inputValue?: string | null,
+  inputValue?: InputValueType,
   /** Признак неактивного инпута */
   isDisabled?: boolean,
   /** Маска ввода */

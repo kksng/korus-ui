@@ -4,7 +4,7 @@ import {
   BlurData, ChangeData, FocusData, MaskedInputProps, MaskedInputState,
 } from './types';
 import {
-  BlurEvent, FocusEvent, ChangeEvent, EnterPressEvent,
+  BlurEvent, FocusEvent, ChangeEvent, EnterPressEvent, InputValueType,
 } from '../../src/MaskedInputBase/types';
 import { CustomEventHandler, SetState } from '../../commonTypes';
 import { getValueToValidate } from './helpers';
@@ -148,7 +148,7 @@ export const createKeyDownHandler = (
 /**
  * Function creates reset handler
  * @param {MaskedInputProps} params.props - properties of component
- * @param {SetState<string | null>} params.setInputValue - set state function for component's masked value
+ * @param {SetState<InputValueType>} params.setInputValue - set state function for component's masked value
  * @param {SetState<string>} params.setValue - set state function for component's value
  * @param {string} params.value - component's value
  *
@@ -161,7 +161,7 @@ export const createResetHandler = ({
   value,
 }: {
   props: MaskedInputProps,
-  setInputValue: SetState<string | null>,
+  setInputValue: SetState<InputValueType>,
   setValue: SetState<string>,
   value: string,
 }) => () => {
