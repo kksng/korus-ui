@@ -1,9 +1,10 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../leda';
-import { StateButtonGroup } from './StateButtonGroup';
+import * as L from '../../../leda';
+import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
-export const A = () => {
+export const Basic = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({ href: 'https://google.com/', _external: true });
 
   return (
