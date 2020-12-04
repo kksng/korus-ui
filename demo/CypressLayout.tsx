@@ -20,11 +20,11 @@ import {
   Modal,
   MultiSelect,
   NumericRange,
+  ProgressBar,
+  RadioGroup,
   ToolTip,
   TimePicker,
   Tour,
-  ProgressBar,
-  RadioGroup,
   Validation,
   VStepper,
   Wizard,
@@ -80,14 +80,14 @@ export const CypressLayout = () => (
         <Route path="/cypress/modal">
           <Modal />
         </Route>
-        <Route path="/cypress/progressbar">
-          <ProgressBar />
-        </Route>
         <Route path="/cypress/multi-select">
           <MultiSelect />
         </Route>
         <Route path="/cypress/numericrange">
           <NumericRange />
+        </Route>
+        <Route path="/cypress/progressbar">
+          <ProgressBar />
         </Route>
         <Route path="/cypress/radio-group">
           <RadioGroup />
