@@ -6,17 +6,30 @@ import {
 } from '../../commonTypes';
 import { ValidationProps } from '../Validation/types';
 import { FilterRules } from '../DropDownSelect/types';
-import { SuggestionItemComputedProps, SuggestionListProps, SuggestionTarget } from '../../src/SuggestionList/types';
+import { SuggestionListProps, SuggestionTarget } from '../../src/SuggestionList/types';
 import { DivProps } from '../Div';
 import { TagProps } from '../Tags/types';
 
-export type Value = SomeObject | string | number | null;
+export interface BlurData {
+  setFilterValue: SetState<string>,
+  setFocused: SetState<boolean>,
+  validateCurrent: () => boolean,
+  value: MultiSelectValue,
+}
 
-export type MultiSelectValue = Value[];
+export interface BlurEvent<T = Value> extends React.FocusEvent<HTMLInputElement> {
+  component: {
+    isValid?: boolean,
+    name?: string,
+    value: T[],
+  },
+}
 
-export interface MultiSelectComponent {
-  <T extends MultiSelectValue | null | undefined>(props: MultiSelectProps<T>): React.ReactElement,
-  displayName?: string,
+export type ChangeEvent<T = Value> = MouseSelectEvent<T> | EnterSelectEvent<T> | ClearEvent<T> | ResetEvent<T>;
+
+export interface ClearData {
+  setValue: SetState<MultiSelectValue>,
+  value: MultiSelectValue,
 }
 
 export interface ClearEvent<T> extends React.MouseEvent {
@@ -28,12 +41,10 @@ export interface ClearEvent<T> extends React.MouseEvent {
   },
 }
 
-export interface MouseSelectEvent<T> extends React.MouseEvent {
+export interface EnterPressEvent<T = Value> extends React.KeyboardEvent<HTMLInputElement> {
   component: {
-    deselectedValues?: T[],
     name?: string,
-    selectedValue?: T,
-    value: T[],
+    value: T[] | string,
   },
 }
 
@@ -41,33 +52,24 @@ export interface EnterSelectEvent<T> extends React.KeyboardEvent {
   component: {
     deselectedValues: undefined,
     name?: string,
-    selectedValue: T,
+    selectedValue: T | T[],
     value: T[],
   },
 }
 
-export interface ResetEvent<T> {
-  component: {
-    deselectedValues: undefined,
-    name?: string,
-    selectedValue: undefined,
-    value: T[],
-  },
+export interface FilterDataParams {
+  compareObjectsBy: MultiSelectProps['compareObjectsBy'],
+  data: MultiSelectProps['data'],
+  filterRule?: FilterRules,
+  filterValue: string,
+  shouldKeepSuggestions?: boolean,
+  textField?: string,
+  value: MultiSelectValue,
 }
 
-export interface BlurEvent<T = Value> extends React.FocusEvent<HTMLInputElement> {
-  component: {
-    isValid?: boolean,
-    name?: string,
-    value: T[],
-  },
-}
-
-export interface EnterPressEvent<T = Value> extends React.KeyboardEvent<HTMLInputElement> {
-  component: {
-    name?: string,
-    value: T[] | string,
-  },
+export interface FocusData {
+  setFocused: SetState<boolean>,
+  value: MultiSelectValue,
 }
 
 export interface FocusEvent<T = Value> extends React.FocusEvent<HTMLInputElement> {
@@ -77,7 +79,40 @@ export interface FocusEvent<T = Value> extends React.FocusEvent<HTMLInputElement
   },
 }
 
-export type ChangeEvent<T = Value> = MouseSelectEvent<T> | EnterSelectEvent<T> | ClearEvent<T> | ResetEvent<T>;
+export interface GetSortedSuggestionsProps {
+  filteredData?: Value[],
+  selectedSuggestions?: Value[],
+  shouldSelectedGoFirst?: boolean,
+  sortSuggestions: MultiSelectProps['sortSuggestions'],
+}
+
+
+export interface KeyDownData {
+  filterValue: string,
+  handleSelect: CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget>,
+  highlightedSuggestion: Value,
+  setFocused: SetState<boolean>,
+  setHighlightedSuggestion: SetState<Value>,
+  value: MultiSelectValue,
+}
+
+export interface MouseDownData {
+  inputRef: React.MutableRefObject<HTMLInputElement | null>,
+}
+
+export interface MouseSelectEvent<T> extends React.MouseEvent {
+  component: {
+    deselectedValues?: T[],
+    name?: string,
+    selectedValue?: T | T[],
+    value: T[],
+  },
+}
+
+export interface MultiSelectComponent {
+  <T extends MultiSelectValue | null | undefined>(props: MultiSelectProps<T>): React.ReactElement,
+  displayName?: string,
+}
 
 export interface MultiSelectProps<T extends MultiSelectValue | null | undefined = MultiSelectValue | null | undefined> extends ValidationProps {
   [x: string]: unknown,
@@ -157,9 +192,33 @@ export interface MultiSelectProps<T extends MultiSelectValue | null | undefined 
   wrapperRender?: CustomRender<MultiSelectProps, MultiSelectState, DivProps>,
 }
 
+export interface MultiSelectRefCurrent {
+  input: HTMLInputElement | null,
+  wrapper: HTMLElement | null,
+}
+
 export interface MultiSelectState {
   filterValue: string,
   isFocused: boolean,
+  value: MultiSelectValue,
+}
+
+export type MultiSelectValue = Value[];
+
+export interface ResetEvent<T> {
+  component: {
+    deselectedValues: undefined,
+    name?: string,
+    selectedValue: undefined,
+    value: T[],
+  },
+}
+
+export interface SelectData {
+  data: MultiSelectProps['data'],
+  setFilterValue: SetState<string>,
+  setFocused: SetState<boolean>,
+  setValue: SetState<MultiSelectValue>,
   value: MultiSelectValue,
 }
 
@@ -176,62 +235,4 @@ export interface TagsContainerProps {
   value: MultiSelectValue,
 }
 
-export interface MultiSelectRefCurrent {
-  input: HTMLInputElement | null,
-  wrapper: HTMLElement | null,
-}
-
-export interface FocusData {
-  setFocused: SetState<boolean>,
-  value: MultiSelectValue,
-}
-
-export interface BlurData {
-  setFilterValue: SetState<string>,
-  setFocused: SetState<boolean>,
-  validateCurrent: () => boolean,
-  value: MultiSelectValue,
-}
-
-export interface SelectData {
-  data: MultiSelectProps['data'],
-  setFilterValue: SetState<string>,
-  setFocused: SetState<boolean>,
-  setValue: SetState<MultiSelectValue>,
-  value: MultiSelectValue,
-}
-
-export interface ClearData {
-  setValue: SetState<MultiSelectValue>,
-  value: MultiSelectValue,
-}
-
-export interface MouseDownData {
-  inputRef: React.MutableRefObject<HTMLInputElement | null>,
-}
-
-export interface FilterDataParams {
-  compareObjectsBy: MultiSelectProps['compareObjectsBy'],
-  data: MultiSelectProps['data'],
-  filterRule?: FilterRules,
-  filterValue: string,
-  shouldKeepSuggestions?: boolean,
-  textField?: string,
-  value: MultiSelectValue,
-}
-
-export interface KeyDownData {
-  filterValue: string,
-  handleSelect: CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget>,
-  highlightedSuggestion: Value,
-  setFocused: SetState<boolean>,
-  setHighlightedSuggestion: SetState<Value>,
-  value: MultiSelectValue,
-}
-
-export interface GetSortedSuggestionsProps {
-  filteredData?: Value[],
-  selectedSuggestions?: Value[],
-  shouldSelectedGoFirst?: boolean,
-  sortSuggestions: MultiSelectProps['sortSuggestions'],
-}
+export type Value = SomeObject | string | number | null;
