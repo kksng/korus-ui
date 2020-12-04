@@ -4,7 +4,7 @@ We encourage anyone to propose bugfixes and improvements to library. Here are a 
 
 ## Sending a Pull Request
 
-Before starting to work on changes we strongly recommend to open an issue or contact development team to discuss them.
+Before starting to work on changes we strongly recommend to [open an issue](https://github.com/kksng/korus-ui/issues/new/choose) or contact development team to discuss them.
 It is also recommended to follow the rule of 1 feature or bugfix per Pull Request.
 
 Next steps will help you to proceed with contributing:

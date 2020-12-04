@@ -9,9 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Completed description in README.md: technologies, git workflow, project's structure
 
+### Changed
+- CONTRIBUTING.md, Issue template: Update GitHub issue template
+
 ### Fixed
 - Input: Fixed paste event handler for Input with maxLength prop
 - MultiSelect: Fixed styles for IE
+- Tooltip: Fixed displaying in IE
+- MultiSelect: Fixed working with object data
 
 
 ## [0.35.0] - 2020-11-23

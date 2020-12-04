@@ -145,5 +145,26 @@ describe('MultiSelect', () => {
         .type('{enter}')
         .should('have.value', '');
     });
+    describe('With object data', () => {
+      it('Should add and delete correctly on item click', () => {
+        cy.get('#MSCheckboxesWithDataObject')
+          .click()
+          .parent()
+          .parent()
+          .find('.suggestion-list')
+          .find('.suggestion-item')
+          .eq(1)
+          .click()
+          .next()
+          .click()
+          .parent()
+          .parent()
+          .parent()
+          .find('.multiselect-tags-container')
+          .find('.tags-item')
+          .should('have.length', 1)
+          .should('have.text', 'Islamabad')
+      });
+    });
   });
 });
