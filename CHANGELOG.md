@@ -4,12 +4,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.36.1] - 2020-12-04
-
-### Fixed
-- MaskedInput: Fixed cursor position
-
-
 ## [0.36.0] - 2020-12-07
 
 ### Added
@@ -22,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Input: Fixed paste event handler for Input with maxLength prop
 - Tooltip: Fixed displaying in IE
 - MultiSelect: Fixed working with object data
+- MaskedInput: Fixed cursor position
 
 
 ## [0.35.0] - 2020-11-23
