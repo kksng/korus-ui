@@ -7,6 +7,7 @@ import {
   Button,
   ButtonGroup,
   CheckBox,
+  Currency,
   Collapse,
   DatePicker,
   DateRange,
@@ -20,10 +21,11 @@ import {
   Modal,
   MultiSelect,
   NumericRange,
+  ProgressBar,
+  RadioGroup,
   ToolTip,
   TimePicker,
   Tour,
-  RadioGroup,
   Validation,
   VStepper,
   Wizard,
@@ -45,6 +47,21 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
+        </Route>
+        <Route path="/cypress/currency">
+          <Currency />
+        </Route>
+        <Route path="/cypress/filedrop">
+          <FileDrop />
+        </Route>
+        <Route path="/cypress/input">
+          <Input />
+        </Route>
+        <Route path="/cypress/modal">
+          <Modal />
+        </Route>
+        <Route path="/cypress/numericrange">
+          <NumericRange />
         </Route>
         <Route path="/cypress/collapse">
           <Collapse />
@@ -84,6 +101,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/numericrange">
           <NumericRange />
+        </Route>
+        <Route path="/cypress/progressbar">
+          <ProgressBar />
         </Route>
         <Route path="/cypress/radio-group">
           <RadioGroup />
