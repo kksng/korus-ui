@@ -140,6 +140,24 @@ describe('MaskedInput', () => {
           .eq(2)
           .should('have.value', '+7 (981)-886-27-98');
       });
+      it('should clear mask value', () => {
+        cy.name('clearValue')
+          .click()
+          .name('MIControlledPhone')
+          .type('{enter}')
+          .name('InputValue')
+          .should('have.text', 'InputValue: +7 (___)-___-__-__')
+          .name('MIControlledPhone')
+          .type('8888')
+          .name('InputValue')
+          .should('have.text', 'InputValue: +7 (888)-8__-__-__')
+          .name('clearValue')
+          .click()
+          .name('MIControlledPhone')
+          .type('{enter}')
+          .name('InputValue')
+          .should('have.text', 'InputValue: +7 (___)-___-__-__')
+      });
     });
   });
 });

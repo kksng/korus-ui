@@ -11,6 +11,8 @@ import {
 } from './handlers';
 import { useCustomElements } from './hooks';
 import { getValue, getValueToValidate } from './helpers';
+import { maskValue } from '../../src/MaskedInputBase/helpers';
+import { InputValueType } from '../../src/MaskedInputBase/types';
 
 export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React.Ref<MaskedInputRefCurrent>) => {
   const {
@@ -50,7 +52,15 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
   const maskedInputRef = React.useRef<HTMLInputElement | null>(null);
   const valuePropRef = React.useRef(valueProp);
 
+  const [inputValue, setInputValue] = React.useState<InputValueType>(null);
+
   const value = getValue(valueProp, valueState);
+
+  React.useEffect(() => {
+    if (valueProp === null) {
+      setInputValue(maskValue(value, mask, placeholderChar));
+    }
+  }, [valueProp]);
 
   const valueToValidate = getValueToValidate({
     maskedInputRef, placeholderChar, value,
@@ -64,7 +74,7 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
     value: valueState,
   }, {
     reset: createResetHandler({
-      props, setValue, value: toStringOrEmpty(defaultValue || ''),
+      props, setInputValue, setValue, value: toStringOrEmpty(defaultValue || ''),
     }),
   });
 
@@ -98,6 +108,7 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
   });
 
   const handleChange = createChangeHandler(props, state, {
+    setInputValue,
     setValue,
   });
 
@@ -152,6 +163,7 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
           placeholder={placeholder}
           placeholderChar={placeholderChar}
           value={value}
+          inputValue={inputValue}
           ref={maskedInputRef}
         />
       </Div>

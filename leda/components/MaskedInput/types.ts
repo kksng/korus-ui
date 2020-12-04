@@ -5,22 +5,37 @@ import { COMPONENTS_NAMESPACES } from '../../constants';
 import { CustomRender, SetState } from '../../commonTypes';
 import { DivProps } from '../Div';
 import {
-  ChangeEvent as BaseChangeEvent, BlurEvent, EnterPressEvent, FocusEvent, MaskedInputBaseProps,
+  ChangeEvent as BaseChangeEvent, BlurEvent, EnterPressEvent, FocusEvent, MaskedInputBaseProps, InputValueType,
 } from '../../src/MaskedInputBase/types';
 
 export {
   BlurEvent, EnterPressEvent, FocusEvent,
 };
 
-export interface ResetEvent {
-  component: {
-    inputValue: string,
-    name?: string,
-    value: string,
-  },
+export interface BlurData {
+  maskedInputRef: React.RefObject<HTMLInputElement>,
+  placeholderChar?: string,
+  setFocused: SetState<boolean>,
+  validateCurrent: (value?: string) => boolean,
+  value: string,
+}
+
+export interface ChangeData {
+  setInputValue: SetState<InputValueType>,
+  setValue: SetState<string>,
 }
 
 export type ChangeEvent = BaseChangeEvent | ResetEvent;
+
+export interface CustomElements {
+  Input: React.FC<MaskedInputBaseProps>,
+  Wrapper: React.FC<DivProps>,
+}
+
+export interface FocusData {
+  setFocused: SetState<boolean>,
+  value: string,
+}
 
 export interface MaskedInputProps extends ValidationProps {
   /** Классы переданные через _ */
@@ -35,13 +50,13 @@ export interface MaskedInputProps extends ValidationProps {
   mask: string,
   /** имя компонента для использования в формах */
   name?: string,
-  /** Обработчик изменения значения */
+  /** Обработчик потери фокуса */
   onBlur?: (event: BlurEvent) => void,
   /** Обработчик изменения значения */
   onChange?: (event: ChangeEvent) => void,
   /** Обработчик нажатия Enter */
   onEnterPress?: (ev: EnterPressEvent) => void,
-  /** Обработчик изменения значения */
+  /** Обработчик получения фокуса */
   onFocus?: (event: FocusEvent) => void,
   /** Значение, отображаемое при пустом инпуте */
   placeholder?: string,
@@ -68,26 +83,12 @@ export interface MaskedInputState {
   value: string,
 }
 
-export interface ChangeData {
-  setValue: SetState<string>,
-}
-
-export interface BlurData {
-  maskedInputRef: React.RefObject<HTMLInputElement>,
-  placeholderChar?: string,
-  setFocused: SetState<boolean>,
-  validateCurrent: (value?: string) => boolean,
-  value: string,
-}
-
-export interface FocusData {
-  setFocused: SetState<boolean>,
-  value: string,
-}
-
-export interface CustomElements {
-  Input: React.FC<MaskedInputBaseProps>,
-  Wrapper: React.FC<DivProps>,
+export interface ResetEvent {
+  component: {
+    inputValue: string,
+    name?: string,
+    value: string,
+  },
 }
 
 export interface ValueToValidateData {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { isFunction, isObject } from 'lodash';
+import { isFunction, isNil, isObject } from 'lodash';
 import { MaskedInputBaseProps } from './types';
 import { useProps } from '../../utils';
 import {
@@ -23,6 +23,7 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
     placeholderChar = DEFAULT_PLACEHOLDER_CHAR,
     placeholder,
     isDisabled = false,
+    inputValue: inputValueProp,
     onChange,
     onBlur,
     onFocus,
@@ -35,7 +36,13 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
 
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
-  const [inputValue, setInputValue] = React.useState<string>('');
+  const [inputValue, setInputValue] = React.useState<string>(isNil(inputValueProp) ? '' : inputValueProp);
+
+  React.useEffect(() => {
+    if (!isNil(inputValueProp)) {
+      setInputValue(inputValueProp);
+    }
+  }, [inputValueProp]);
 
   const adjustCursor = useAdjustCursor();
 
