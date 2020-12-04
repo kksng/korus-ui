@@ -6,13 +6,6 @@ import { predefinedAllowedSymbols, predefinedForbiddenSymbols } from './constant
 import { CustomRender } from '../../commonTypes';
 import { DivProps } from '../Div';
 
-export interface AdjustCursor {
-  (
-    event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>,
-    position?: number
-  ): void,
-}
-
 export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
   component: {
     isValid: boolean,

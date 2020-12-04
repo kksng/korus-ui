@@ -13,7 +13,7 @@ import {
   getValue, maskValue,
 } from './helpers';
 import { DEFAULT_PLACEHOLDER_CHAR } from './constants';
-import { useSetCursorToPrevPosition } from '../../components/Input/hooks';
+import { useAdjustCursor } from '../../utils/useAdjustCursor';
 
 export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, ref?: React.Ref<HTMLInputElement | null>) => {
   const {
@@ -37,7 +37,7 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
 
   const [inputValue, setInputValue] = React.useState<string>('');
 
-  const adjustCursor = useSetCursorToPrevPosition();
+  const adjustCursor = useAdjustCursor();
 
   const handleKeyDown = createKeyDownHandler(props, {
     inputRef,

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { SetState } from '../../commonTypes';
-import { AdjustCursor } from '../../components/Input/types';
+import { SetState, AdjustCursor } from '../../commonTypes';
 
 export interface MaskRules {
   [x: string]: {

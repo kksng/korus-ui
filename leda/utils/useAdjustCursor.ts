@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import {
   useRunAfterUpdate,
-} from '../../utils';
-import { AdjustCursor } from './types';
+} from './useRunAfterUpdate';
+import { AdjustCursor } from '../commonTypes';
 
 /**
  * Hook provides function that returns cursor to specified or initial position after paste or change event
  *
  * @returns {AdjustCursor}
  */
-export const useSetCursorToPrevPosition = (): AdjustCursor => {
+export const useAdjustCursor = (): AdjustCursor => {
   const [isPasteEvent, setIsPasteEvent] = React.useState(false);
   const [pasteSelectionStart, setPasteSelectionStart] = React.useState<number | null>(null);
 

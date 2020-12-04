@@ -1,5 +1,5 @@
 import React from 'react';
-import { delay, isFunction } from 'lodash';
+import { isFunction } from 'lodash';
 import {
   BlurData, ChangeData, ExtendedEvent, FocusData, KeyDownData, MaskedInputBaseProps,
 } from './types';
@@ -32,8 +32,6 @@ export const createChangeHandler = (
 
   const compareResult = compareText(inputValue, ev.target.value);
 
-  const [difStart, added] = compareResult;
-
   const inputMethod = (() => {
     if (compareResult[1] && compareResult[2]) {
       return INPUT_METHODS.replace;
@@ -55,56 +53,57 @@ export const createChangeHandler = (
   const selection = getSelection(input);
 
   const position = selection[0] <= 0 ? Number(compareResult[0]) : Number([selection[0] - 1]);
+  const setCursor = (newPosition: number) => adjustCursor(ev, newPosition);
 
   const newValue = (() => {
     if (inputMethod === INPUT_METHODS.replace) {
       const hurtValue = removeChar({
-        adjustCursor: (newPosition) => adjustCursor(ev, newPosition),
         input,
         mask,
         placeholderChar,
         position: compareResult[0],
         removed: compareResult[2],
         selection,
+        setCursor,
         value: inputValue,
       });
 
       return addChar({
-        adjustCursor: (newPosition) => adjustCursor(ev, newPosition),
         char,
         input,
         mask,
         placeholderChar,
         selection: [position, position],
+        setCursor,
         value: hurtValue,
       });
     }
 
     if (inputMethod === INPUT_METHODS.add) {
       return addChar({
-        adjustCursor: (newPosition) => adjustCursor(ev, newPosition),
         char,
         input,
         mask,
         placeholderChar,
         selection: [position, position],
+        setCursor,
         value: inputValue,
       });
     }
 
     if (inputMethod === INPUT_METHODS.remove) {
       return removeChar({
-        adjustCursor: (newPosition) => adjustCursor(ev, newPosition),
         input,
         mask,
         placeholderChar,
         position: compareResult[0],
         removed: compareResult[2],
         selection,
+        setCursor,
         value: inputValue,
       });
     }
-    // это inputMethod === 'nothing'
+    // inputMethod === 'nothing'
     return inputValue;
   })();
 

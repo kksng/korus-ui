@@ -16,7 +16,7 @@ import {
   createPasteHandler,
 } from './handlers';
 import { getValue } from './helpers';
-import { useSetCursorToPrevPosition } from './hooks';
+import { useAdjustCursor } from '../../utils/useAdjustCursor';
 
 export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRefCurrent>): React.ReactElement => {
   const {
@@ -55,7 +55,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.Ref<InputRe
 
   const value = getValue(valueProp, valueState);
 
-  const adjustCursor = useSetCursorToPrevPosition();
+  const adjustCursor = useAdjustCursor();
 
   const {
     isValid, validateCurrent, InvalidMessage,
