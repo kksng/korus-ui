@@ -1,6 +1,7 @@
 .dropdown-wrapper {
   display: inline-block;
   position: relative;
+  overflow: visible; // fix IE11 <button/> overflow: hidden
 
   & > ul {
     background-color: $white;
