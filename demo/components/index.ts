@@ -38,6 +38,7 @@ export { Slider } from './Slider';
 export { StateButtonGroup } from './StateButtonGroup';
 export { StatusBar } from './StatusBar';
 export { StickyPanel } from './StickyPanel';
+export { Svg } from './Svg';
 export { Switcher } from './Switcher';
 export { Table } from './Table';
 export { Tabs } from './Tabs';

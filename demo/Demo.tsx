@@ -6,7 +6,7 @@ import {
   AutoComplete, ButtonGroup, CheckBox, DatePicker, DateRange,
   DropDown, DropDownSelect, Input, A, LedaProvider, Loader, MaskedInput, Modal,
   MultiSelect, Notifications, NumericRange, NumericTextBox, Password,
-  Pagination, RadioGroup, ProgressBar, Slider, StatusBar, StickyPanel, Switcher,
+  Pagination, RadioGroup, ProgressBar, Slider, StatusBar, StickyPanel, Svg, Switcher,
   Tabs, Tags, DropZone, Textarea, DateTimePicker, TimePicker,
   DateTimeRange, TimeRange, DropDownLink, Currency, Rating,
   Div, Table, Dl, FileUpload, HTMLTags, Validation,
@@ -62,6 +62,7 @@ export const Demo = hot(() => (
       <Slider />
       <StatusBar />
       <StickyPanel />
+      <Svg />
       <Switcher />
       <Table />
       <Tabs />
