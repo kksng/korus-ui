@@ -76,13 +76,13 @@ import * as L from 'korus-ui';
 
 ### Available NPM scripts
 
-| script | description | 
+| script | description |
 |----------------|----------------|
-| npm start | runs project in development mode | 
-| npm run build | builds project | 
-| npm run check | checks eslint and typescript errors, runs jest tests | 
-| npm run cypress | runs cypress tests | 
-| npm run coverage | shows coverage after running cypress tests | 
+| npm start | runs project in development mode |
+| npm run build | builds project |
+| npm run check | checks eslint and typescript errors, runs jest tests |
+| npm run cypress | runs cypress tests |
+| npm run coverage | shows coverage after running cypress tests |
 
 
 ## File Structure
@@ -101,41 +101,41 @@ import * as L from 'korus-ui';
 │
 ├── leda                         : library
 │   ├── commonTypes                  : common types
-│   │   └── index.ts              
+│   │   └── index.ts
 │   ├── components                   : exported library components
 │   │   └── DropZone                    : component
-│   │       ├── constants.ts                : constants   
-│   │       ├── DropZone.test.tsx           : tests for component  
-│   │       ├── DropZone.tsx                : main component's features 
-│   │       ├── DropZoneFiles.tsx           : additional component's features       
-│   │       ├── handlers.ts                 : event handlers   
-│   │       ├── helpers.test.tsx            : tests for helper functions 
-│   │       ├── helpers.ts                  : helper functions 
-│   │       ├── hooks.ts                    : hooks   
-│   │       ├── index.tsx                   : export of component 
+│   │       ├── constants.ts                : constants
+│   │       ├── DropZone.test.tsx           : tests for component
+│   │       ├── DropZone.tsx                : main component's features
+│   │       ├── DropZoneFiles.tsx           : additional component's features
+│   │       ├── handlers.ts                 : event handlers
+│   │       ├── helpers.test.tsx            : tests for helper functions
+│   │       ├── helpers.ts                  : helper functions
+│   │       ├── hooks.ts                    : hooks
+│   │       ├── index.tsx                   : export of component
 │   │       ├── theme.ts                    : component's theme
 │   │       └── types.ts                    : component's types
 │   │
 │   ├── form                         : form helpers
-│   │   ├── form.test.tsx               : tests for form helpers         
-│   │   ├── form.ts                     : form validation helpers   
-│   │   ├── helpers.ts                  : helper functions   
-│   │   ├── index.ts                    : export form helpers 
+│   │   ├── form.test.tsx               : tests for form helpers
+│   │   ├── form.ts                     : form validation helpers
+│   │   ├── helpers.ts                  : helper functions
+│   │   ├── index.ts                    : export form helpers
 │   │   └── types.ts                    : types
-│   │ 
+│   │
 │   ├── src                          : internal reusable components
-│   │   └── DateTimeInputRange          : reusable component         
-│   │       ├── handlers.ts                 : event handlers   
-│   │       ├── helpers.ts                  : helper functions   
-│   │       ├── hooks.ts                    : hooks 
-│   │       ├── index.tsx                   : export of component 
-│   │       ├── theme.ts                    : component's theme 
+│   │   └── DateTimeInputRange          : reusable component
+│   │       ├── handlers.ts                 : event handlers
+│   │       ├── helpers.ts                  : helper functions
+│   │       ├── hooks.ts                    : hooks
+│   │       ├── index.tsx                   : export of component
+│   │       ├── theme.ts                    : component's theme
 │   │       └── types.ts                    : component's types
-│   │ 
+│   │
 │   ├── utils                        : helpers
-│   │   ├── getWordEnding.ts            : helper function 
+│   │   ├── getWordEnding.ts            : helper function
 │   │   └── index.ts                    : export of helper functions
-│   │ 
+│   │
 │   ├── validators                   : constants and helpers for form validation
 │   │   ├── email.ts                    : constant and helper function for email validation
 │   │   └── index.ts                    : export of validators
@@ -144,7 +144,7 @@ import * as L from 'korus-ui';
 │   ├── index.ts                     : export of library's components
 │   └── messages.ts                  : constants for messages
 │
-├── storybook                 
+├── storybook
 └── styles
 ```
 
@@ -257,16 +257,17 @@ The commit message begins with the task code followed by name of component in br
 ## Contributing
 
 If you want to propose any changes to the library check out our [Contributing guidelines][14].
+Feel free to propose new feature or report a bug: [New issue][19]
 
 ## Browsers support
 
-| Browsers | version | 
+| Browsers | version |
 |----------------|----------------|
-| Google Chrome | 85.0.4183.121 | 
-| Internet Explorer | 11 | 
-| Microsoft Edge | 85.0.564.44 | 
-| Mozilla Firefox | 81.0.1 | 
-| Safari | 14 | 
+| Google Chrome | 85.0.4183.121 |
+| Internet Explorer | 11 |
+| Microsoft Edge | 85.0.564.44 |
+| Mozilla Firefox | 81.0.1 |
+| Safari | 14 |
 
 ## License
 
@@ -313,3 +314,5 @@ Made by [Artem Povolskikh][2] and [Andrew Dimitrov][3] for their company with in
 
 [17]: https://github.com/airbnb/javascript#airbnb-javascript-style-guide-
 [18]: https://nvie.com/posts/a-successful-git-branching-model/
+
+[19]: https://github.com/kksng/korus-ui/issues/new/choose
