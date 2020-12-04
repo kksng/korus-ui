@@ -1,8 +1,8 @@
-
 import * as React from 'react';
-import * as L from '../../leda';
+import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Tags = () => (
+export const Basic = (storyProps: StoryProps) => (
   <L.Div _demoStory>
     <L.H4 _title>Tags</L.H4>
     <br />
