@@ -17,7 +17,8 @@ import {
 import { INPUT_METHODS } from './constants';
 
 export const createChangeHandler = (
-  props: MaskedInputBaseProps, extraData: ChangeData,
+  props: MaskedInputBaseProps,
+  extraData: ChangeData,
 ): React.ChangeEventHandler<HTMLInputElement> => (ev) => {
   ev.preventDefault();
 
@@ -25,11 +26,13 @@ export const createChangeHandler = (
     onChange, mask, placeholderChar = '_',
   } = props;
 
-  const { inputValue, setInputValue } = extraData;
+  const { inputValue, setInputValue, adjustCursor } = extraData;
 
   const input = ev.currentTarget;
 
   const compareResult = compareText(inputValue, ev.target.value);
+
+  const [difStart, added] = compareResult;
 
   const inputMethod = (() => {
     if (compareResult[1] && compareResult[2]) {
@@ -56,6 +59,7 @@ export const createChangeHandler = (
   const newValue = (() => {
     if (inputMethod === INPUT_METHODS.replace) {
       const hurtValue = removeChar({
+        adjustCursor: (newPosition) => adjustCursor(ev, newPosition),
         input,
         mask,
         placeholderChar,
@@ -66,6 +70,7 @@ export const createChangeHandler = (
       });
 
       return addChar({
+        adjustCursor: (newPosition) => adjustCursor(ev, newPosition),
         char,
         input,
         mask,
@@ -77,6 +82,7 @@ export const createChangeHandler = (
 
     if (inputMethod === INPUT_METHODS.add) {
       return addChar({
+        adjustCursor: (newPosition) => adjustCursor(ev, newPosition),
         char,
         input,
         mask,
@@ -88,6 +94,7 @@ export const createChangeHandler = (
 
     if (inputMethod === INPUT_METHODS.remove) {
       return removeChar({
+        adjustCursor: (newPosition) => adjustCursor(ev, newPosition),
         input,
         mask,
         placeholderChar,

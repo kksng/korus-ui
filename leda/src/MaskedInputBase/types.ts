@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SetState } from '../../commonTypes';
+import { AdjustCursor } from '../../components/Input/types';
 
 export interface MaskRules {
   [x: string]: {
@@ -82,6 +83,7 @@ export interface MaskedInputBaseProps {
 }
 
 export interface ChangeData {
+  adjustCursor: AdjustCursor,
   inputValue: string,
   setInputValue: SetState<string>,
 }
