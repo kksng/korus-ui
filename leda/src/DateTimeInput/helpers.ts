@@ -6,7 +6,9 @@ import {
 import { Values } from '../../commonTypes';
 import { getClassNames, getIsEmptyAndRequired } from '../../utils';
 import { GlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENT_TYPES, HOURS_LIMITS, MINUTES_LIMITS } from './constants';
+import {
+  COMPONENT_TYPES, DEFAULT_FORMAT, HOURS_LIMITS, MINUTES_LIMITS,
+} from './constants';
 import {
   DateWithToDateMethod, DateTimeInputProps, DateTimeInputState, NormalizeValueArgs, TimeLimits,
 } from './types';
@@ -73,7 +75,7 @@ export const stringToDate = (string: string | undefined, format: string | undefi
     );
 };
 
-export const formatDateTime = (date: Date | null, format: string): string => {
+export const formatDateTime = (date: Date | null, format = DEFAULT_FORMAT): string => {
   if (!date) return '';
 
   const dateTable = {

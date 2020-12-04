@@ -29,6 +29,7 @@ export const MultiSelect = (): React.ReactElement => {
   const [value, setValue] = React.useState<string[]>(['London', 'Paris']);
   const [value1, setValue1] = React.useState<{label: string}[]>();
   const [value2, setValue2] = React.useState<string[]>();
+  const [value3, setValue3] = React.useState<{label: string}[]>();
 
   return(
     <L.Div _demoStory>
@@ -99,6 +100,26 @@ export const MultiSelect = (): React.ReactElement => {
           setValue2(ev.component.value as string[]);
         }}
         value={value2}
+      >
+      </L.MultiSelect>
+      <br />
+      <br />
+      <L.P>MultiSelect dataObject with checkboxes</L.P>
+      <L.MultiSelect
+        id="MSCheckboxesWithDataObject"
+        compareObjectsBy="label"
+        data={dataObject}
+        textField="label"
+        defaultValue={[{label: 'London'}]}
+        _width40
+        canSelectAll
+        shouldKeepSuggestions
+        hasCheckBoxes
+        selectAllItemRender={() => 'Select all'}
+        onChange={ev => {
+          setValue3(ev.component.value as {label: string}[]);
+        }}
+        value={value3}
       >
       </L.MultiSelect>
     </L.Div>
