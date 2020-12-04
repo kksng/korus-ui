@@ -14,7 +14,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Input: Fixed paste event handler for Input with maxLength prop
+- Tooltip: Fixed displaying in IE
 - MultiSelect: Fixed working with object data
+
 
 ## [0.35.0] - 2020-11-23
 
