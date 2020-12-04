@@ -7,6 +7,7 @@ import {
   Button,
   ButtonGroup,
   CheckBox,
+  Currency,
   Collapse,
   DatePicker,
   DateRange,
@@ -46,6 +47,21 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
+        </Route>
+        <Route path="/cypress/currency">
+          <Currency />
+        </Route>
+        <Route path="/cypress/filedrop">
+          <FileDrop />
+        </Route>
+        <Route path="/cypress/input">
+          <Input />
+        </Route>
+        <Route path="/cypress/modal">
+          <Modal />
+        </Route>
+        <Route path="/cypress/numericrange">
+          <NumericRange />
         </Route>
         <Route path="/cypress/collapse">
           <Collapse />
