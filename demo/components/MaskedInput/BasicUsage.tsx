@@ -3,7 +3,7 @@ import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
 export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState<string | null>('');
 
   return (
     <L.Div _demoStory>
@@ -34,6 +34,20 @@ export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
         }}
       >
         Reset
+      </L.Button>
+      <L.Button
+        onClick={() => {
+          setValue(null);
+        }}
+      >
+        Set null
+      </L.Button>
+      <L.Button
+        onClick={() => {
+          setValue('8888');
+        }}
+      >
+        Set value "8888"
       </L.Button>
     </L.Div>
   );
