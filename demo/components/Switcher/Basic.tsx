@@ -1,8 +1,9 @@
 import * as React from 'react';
-import * as L from '../../leda';
-import { StateButtonGroup } from './StateButtonGroup';
+import * as L from '../../../leda';
+import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
-export const Switcher = () => {
+export const Basic = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState(true);
 
