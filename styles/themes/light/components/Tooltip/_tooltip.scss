@@ -120,11 +120,14 @@
   text-transform: none;
   white-space: normal;
   letter-spacing: normal;
-  padding: 6px 9px;
   color: $white;
   background-color: $black-02;
   border-radius: $border-radius;
   transition: opacity .2s;
+  box-sizing: content-box;
+  padding-top: 6px;
+  padding-left: 9px;
+  padding-right: 9px;
 
   div:last-child {
     word-wrap: break-word;
