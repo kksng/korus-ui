@@ -259,6 +259,34 @@ The commit message begins with the task code followed by name of component in br
 If you want to propose any changes to the library check out our [Contributing guidelines][14].
 Feel free to propose new feature or report a bug: [New issue][19]
 
+
+## Release policy
+
+The main principles of the Korus-UI release policy are to ensure the stability and compatibility of the library versions.
+At the same time, the process of releasing new versions should provide the ability to quickly make changes: fix emerging errors, improve functionality and develop new features.
+
+### Release schedule
+A regular release schedule allows to plan future updates and predict the release date for necessary changes.
+The development of the library is carried out in accordance with the agile methodologies. The duration of one sprint is 2 weeks (10 working days). The result of a sprint is a minor release (0.34.0 -> 0.35.0).
+During a sprint, a patch version (0.34.0 -> 0.34.1) may be released if it becomes necessary to make minor changes that do not affect backward compatibility.
+
+### Scope of release
+The scope of future release is approved at the beginning of each sprint. The amount of changes planned for release is determined based on the urgency of the tasks and the severity of the identified errors. In the course of the sprint, it is possible to revise the planned updates, if the newly received tasks are assessed as of higher priority.
+Third-party developers are also encouraged to make changes if they comply with the Korus-UI library [regulations][20]. Such changes will also be released after the review by the Korus-UI team.
+Changes are considered ready for release if:
+
+1. A code review was performed by at least one of the developers of the Korus-UI team;
+2. The code has been covered with [autotests][21] that run successfully;
+3. The changes were verified by the testing specialist of the Korus-UI team.
+
+### Versioning
+Korus-UI uses [Semantic Versioning 2.0.0][22]. Korus-UI version numbers have three parts: major.minor.patch. The version number is incremented based on the level of change included in the release and it’s impact on the library's backward compatibility. 
+
+1. The release of the major version contains significant new features, including backward incompatible API changes. The upgrade process to a new version may require refactoring of the code, writing additional tests, and studying the documentation for the new APIs.
+2. The release of the minor version contains new important features while maintaining the backward compatibility of the version.
+3. The patch version release contains minor changes that do not affect backward compatibility. As a rule, patch versions are needed to fix small bugs in between planned releases.
+
+
 ## Browsers support
 
 | Browsers | version |
@@ -316,3 +344,7 @@ Made by [Artem Povolskikh][2] and [Andrew Dimitrov][3] for their company with in
 [18]: https://nvie.com/posts/a-successful-git-branching-model/
 
 [19]: https://github.com/kksng/korus-ui/issues/new/choose
+
+[20]: https://github.com/kksng/korus-ui/blob/master/CONTRIBUTING.md
+[21]: https://confluence.esphere.ru/pages/viewpage.action?pageId=145694698
+[22]: https://semver.org/
