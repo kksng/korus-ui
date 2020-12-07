@@ -188,12 +188,14 @@ export const addChar = ({
   char,
   selection,
   input,
+  setCursor,
 }: {
   char: string,
   input: HTMLInputElement,
   mask: string,
   placeholderChar?: string,
   selection: SelectionType,
+  setCursor: (newPosition: number) => void,
   value: string,
 }): string => {
   const editableCharsIndex = getEditableCharsIndex(mask);
@@ -228,12 +230,14 @@ export const addChar = ({
 
   const newSelection: [number, number] = isValidChar ? [nextEditableIndex + 1, nextEditableIndex + 1] : selection;
 
+  setCursor(newSelection[1]);
   setSelection(input, newSelection);
 
   return newValue;
 };
 
 export const removeChar = ({
+  setCursor,
   value,
   mask,
   position,
@@ -248,6 +252,7 @@ export const removeChar = ({
   position: number,
   removed: string,
   selection: SelectionType,
+  setCursor: (newPosition: number) => void,
   value: string,
 }): string => {
   const editableCharsIndex = getEditableCharsIndex(mask);
@@ -270,6 +275,7 @@ export const removeChar = ({
   input.value = newValue;
 
   setSelection(input, selection);
+  setCursor(position);
 
   return newValue;
 };

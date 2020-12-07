@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - MultiSelect: Fixed styles for IE
 - Tooltip: Fixed displaying in IE
 - MultiSelect: Fixed working with object data
+- MaskedInput: Fixed cursor position
 
 
 ## [0.35.0] - 2020-11-23

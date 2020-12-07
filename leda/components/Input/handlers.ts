@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { isFunction, isNil } from 'lodash';
-import { CustomEventHandler, SetState } from '../../commonTypes';
-import { AdjustCursor, InputProps } from './types';
+import { CustomEventHandler, SetState, AdjustCursor } from '../../commonTypes';
+import { InputProps } from './types';
 import {
   isSymbolAllowed, isSymbolForbidden, transformToCase, getSelection, getNewValueLength, getMaxPastedLength, getNewPastedValue,
 } from './helpers';

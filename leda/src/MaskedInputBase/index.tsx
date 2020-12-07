@@ -13,6 +13,7 @@ import {
   getValue, maskValue,
 } from './helpers';
 import { DEFAULT_PLACEHOLDER_CHAR } from './constants';
+import { useAdjustCursor } from '../../utils/useAdjustCursor';
 
 export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, ref?: React.Ref<HTMLInputElement | null>) => {
   const {
@@ -43,6 +44,8 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
     }
   }, [inputValueProp]);
 
+  const adjustCursor = useAdjustCursor();
+
   const handleKeyDown = createKeyDownHandler(props, {
     inputRef,
     isFocused,
@@ -67,6 +70,7 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
   });
 
   const handleChange = createChangeHandler(props, {
+    adjustCursor,
     inputValue,
     setInputValue,
   });

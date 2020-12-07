@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SetState } from '../../commonTypes';
+import { SetState, AdjustCursor } from '../../commonTypes';
 
 export interface BlurData {
   inputValue: string,
@@ -19,6 +19,7 @@ export interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
 }
 
 export interface ChangeData {
+  adjustCursor: AdjustCursor,
   inputValue: string,
   setInputValue: SetState<string>,
 }
