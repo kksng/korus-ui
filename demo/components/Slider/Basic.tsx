@@ -1,8 +1,9 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../leda';
+import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-export const Slider = () => {
+export const Basic = (storyProps: StoryProps) => {
   const [firstSliderValue, setFirstSliderValue] = React.useState<number | number[] | null | undefined>(10);
   const [secondSliderValue, setSecondSliderValue] = React.useState<number | number[] | null | undefined>([2, 10, 15]);
   return (
