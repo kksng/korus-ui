@@ -22,12 +22,15 @@ import { COMPONENT_TYPES } from '../DateTimeInput/constants';
 
 export type DateTimeInputValueType = undefined | null | string | Date;
 
+export type DateValueType = [Date | null, Date | null];
+
 export interface DateTimeInputRangeProps {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
   /** Кастомный заголовок календаря */
   calendarHeaderRender?: CustomRender<DateViewProps, {}, CalendarHeaderProps>,
   /** Кастомный рендер враппера календаря */
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
+  /** Кастомный класс */
   className?: string,
   /** Кастомная ячейка с датой */
   dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
@@ -35,36 +38,53 @@ export interface DateTimeInputRangeProps {
   dateViewRender?: CustomRender<DateViewProps, {}, DateViewProps>,
   /** Кастомный разделитель инпутов */
   delimiterRender?: CustomRender<DateTimeInputRangeProps, DateTimeInputRangeState, DelimiterProps>,
-  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  /* Даты, которые отключены для выбора. Массив дат или диапазонов дат. */
   disabledDates?: (Date | [Date, Date])[],
+  /** Название формы */
   form?: string,
+  /** Формат выводимого значения */
   format?: string,
   /** Кастомная иконка календаря */
   iconRender?: CustomRender<DateTimeInputProps, DateTimeInputState, IconProps>,
   /** Рендеры для инпутов, [render, render] */
   inputsRender?: [DateTimeInputProps['inputRender'] | null, DateTimeInputProps['inputRender'] | null],
+  /** Признак отключения инпута */
   isDisabled?: boolean | [boolean, boolean],
+  /** Признак принудительного открытия календаря */
   isOpen?: boolean | [boolean, boolean],
+  /** Признак обязательного поля */
   isRequired?: boolean | [boolean, boolean],
+  /** Максимально доступная дата для выбора */
   max?: Date,
+  /** Минимально доступная дата для выбора */
   min?: Date,
   /** Массив кастомных названий месяцев */
   monthNames?: MonthsNames,
   /** Кастомный вид выбора месяца */
   monthViewRender?: CustomRender<DateViewProps, {}, MonthViewProps>,
+  /** Имя поля */
   name?: string | [string | undefined, string | undefined],
+  /** Обработчик события потери фокуса */
   onBlur?: (ev: BlurEvent) => void,
+  /** Обработчик события изменения значения в инпуте */
   onChange?: (ev: CustomRangeEvent) => void,
+  /** Обработчик нажатия на enter */
   onEnterPress?: (ev: ChangeEvent) => void,
+  /** Обработчик события фокуса */
   onFocus?: (ev: FocusEvent) => void,
+  /** Плейсхолдер */
   placeholder?: string | [string | undefined, string | undefined],
+  /** Сообщение, которое выводится, когда инпут обязательный и не заполнен */
   requiredMessage?: string | [string, string],
   /** Массив сокращенных кастомных названий месяцев */
   shortMonthNames?: MonthsNames,
   /** Массив сокращенных кастомных названий дней недели */
   shortWeekDayNames?: WeekDayNames,
+  /** Тема */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInputRange],
+  /** Тип */
   type?: Values<typeof COMPONENT_TYPES>,
+  /** Значение */
   value?: [DateTimeInputValueType, DateTimeInputValueType] | null,
   /** Массив кастомных названий дней недели */
   weekDayNames?: WeekDayNames,
@@ -79,8 +99,9 @@ export interface DateTimeInputRangeProps {
 }
 
 export interface DateTimeInputRangeState {
-  date: [Date | null, Date | null],
-  setDate: (date: [Date | null, Date | null]) => void,
+  date: DateValueType,
+  setDate: (date: DateValueType) => void,
+  setValue: (value: [string, string]) => void,
   setValueFrom: (value: string) => void,
   setValueTo: (value: string) => void,
   value: [string, string],
@@ -94,7 +115,7 @@ export interface DateTimeInputRangeRefCurrent {
 
 export interface CustomRangeEvent {
   component: {
-    date: [Date | null, Date | null],
+    date: DateValueType,
     name?: string | [string | undefined, string | undefined],
     value: [string, string],
   },

@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
-export const Form = (props: StoryProps) => {
+export const Form = (storyProps: StoryProps) => {
   const [value, setValue] = React.useState<string | number>(0);
 
   return (

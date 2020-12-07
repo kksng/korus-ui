@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { isFunction } from 'lodash';
+import {
+  isFunction, isNumber, isString,
+} from 'lodash';
 
 import {
   BlurData,
@@ -13,8 +15,11 @@ import {
 } from './types';
 import { CustomEventHandler, SetState, SomeObject } from '../../commonTypes';
 import { SuggestionTarget } from '../../src/SuggestionList/types';
-import { filterData, getShouldUniteTags } from './helpers';
+import {
+  filterData, getShouldUniteTags,
+} from './helpers';
 import { selectAllSuggestion } from './constants';
+import { checkIsTheSameObject } from '../../utils';
 
 /**
  * Function creates focus handler
@@ -92,7 +97,7 @@ export const createSelectHandler = (
   props: MultiSelectProps, extraData: SelectData,
 ): CustomEventHandler<React.MouseEvent<HTMLElement> & SuggestionTarget> => (ev) => {
   const {
-    data, onChange, name, value: valueProp, isDisabled,
+    data, onChange, name, value: valueProp, isDisabled, compareObjectsBy,
   } = props;
 
   if (isDisabled) return;
@@ -101,9 +106,15 @@ export const createSelectHandler = (
     setValue, value, setFilterValue,
   } = extraData;
 
-  const shouldRemoveValue = (value as (string | number | SomeObject)[]).includes(ev.target.value);
+  const currentValue = ev.target.value;
 
-  const isSelectAllClicked = ev.target.value === selectAllSuggestion;
+  const shouldRemoveValue = (() => {
+    if (isString(currentValue) || isNumber(currentValue)) return value.includes(currentValue);
+
+    return value.some((item) => checkIsTheSameObject({ compareObjectsBy, obj1: item, obj2: currentValue }));
+  })();
+
+  const isSelectAllClicked = currentValue === selectAllSuggestion;
 
   const newValue = (() => {
     if (isSelectAllClicked) {
@@ -112,22 +123,27 @@ export const createSelectHandler = (
     }
 
     if (shouldRemoveValue) {
-      return (value as (string | number | SomeObject)[]).filter((item) => (item !== ev.target.value));
+      if (isString(currentValue) || isNumber(currentValue)) return value.filter((item) => (item !== currentValue));
+
+      return value.filter((item) => !checkIsTheSameObject({ compareObjectsBy, obj1: item, obj2: currentValue }));
     }
 
-    return [...value, ev.target.value];
+    return [...value, currentValue];
   })() as (string[] | number[] | SomeObject[]);
 
   const selectedValue = (() => {
-    if (isSelectAllClicked) return undefined; // todo: return correct selected value
-    return shouldRemoveValue ? undefined : ev.target.value;
+    if (isSelectAllClicked) {
+      if (Array.isArray(data)) return value.length < data.length ? data : [];
+      return undefined;
+    }
+    return shouldRemoveValue ? undefined : currentValue;
   })();
 
   const deselectedValues = (() => {
     if (isSelectAllClicked) {
       return value.length === data?.length ? data : [];
     }
-    return shouldRemoveValue ? [ev.target.value] as string[] | number[] | SomeObject[] : undefined;
+    return shouldRemoveValue ? [currentValue] : undefined;
   })();
 
   setFilterValue('');

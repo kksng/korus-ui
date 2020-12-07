@@ -3,8 +3,9 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 import { validate } from '../../../leda/components/Validation';
+import { StoryProps } from '../../types';
 
-export const Customization = (attrs: any) => {
+export const Customization = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
   const [count, setCount] = React.useState<number>(0);

@@ -3,6 +3,7 @@ import * as React from 'react';
 import shortId from 'shortid';
 import * as L from '../../leda';
 import { Item } from '../../leda/components/Notifications/types';
+import { StoryProps } from '../types';
 
 const hooks1 = {
   text: `
@@ -61,7 +62,7 @@ const ActionButton = (props: { item: L.NotificationsTypes.Item, onClose: (id: st
   }
 };
 
-export const Notifications = () => {
+export const Notifications = (storyProps: StoryProps) => {
   const [items, setItems] = React.useState<Item[]>([]);
 
   const handleClose = (id: string | number) => {

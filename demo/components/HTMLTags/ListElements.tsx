@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const BlockElements = () => (
@@ -43,7 +44,7 @@ export const BlockElements = () => (
 );
 `;
 
-export const ListElements = ({ ...restProps }) => (
+export const ListElements = (storyProps: StoryProps) => (
   <L.Div _box _inner>
     <L.Div style={{ padding: '10px' }} _row _noGutters>
       <L.Ul _listItem _box _colMd4>

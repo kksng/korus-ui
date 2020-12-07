@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as L from '../../leda';
+import { StoryProps } from '../types';
 
-export const ProgressBar = () => {
+export const ProgressBar = (storyProps: StoryProps) => {
   // Ref используется для хранения данных вне контекста компонента.
   // Это нужно для правильной работы setInterval.
   const state = React.useRef<{ value: number, interval: number | null }>({ value: 25, interval: null }).current;

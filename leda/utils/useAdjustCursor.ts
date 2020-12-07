@@ -2,20 +2,21 @@ import * as React from 'react';
 
 import {
   useRunAfterUpdate,
-} from '../../utils';
+} from './useRunAfterUpdate';
+import { AdjustCursor } from '../commonTypes';
 
 /**
- * Hook provides function that returns cursor to initial position after cancelled paste or change event
+ * Hook provides function that returns cursor to specified or initial position after paste or change event
  *
- * @returns {(event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>) => void}
+ * @returns {AdjustCursor}
  */
-export const useSetCursorToPrevPosition = (): (event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>) => void => {
+export const useAdjustCursor = (): AdjustCursor => {
   const [isPasteEvent, setIsPasteEvent] = React.useState(false);
   const [pasteSelectionStart, setPasteSelectionStart] = React.useState<number | null>(null);
 
   const runAfterUpdate = useRunAfterUpdate();
 
-  return (event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>) => {
+  return (event, position) => {
     const inputElement = event.target as HTMLInputElement;
 
     if (event.type === 'paste') {
@@ -32,9 +33,11 @@ export const useSetCursorToPrevPosition = (): (event: React.ChangeEvent<HTMLInpu
 
     const prevCursorPosition = isPasteEvent ? prevCursorPositionForPaste : prevCursorPositionForChange;
 
+    const adjustedPosition = position || prevCursorPosition;
+
     runAfterUpdate(() => {
-      inputElement.selectionStart = prevCursorPosition;
-      inputElement.selectionEnd = prevCursorPosition;
+      inputElement.selectionStart = adjustedPosition;
+      inputElement.selectionEnd = adjustedPosition;
     });
   };
 };

@@ -4,6 +4,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Input } from './index';
+import * as helpers from './helpers';
 
 describe('Input SNAPSHOTS', () => {
   it('should render basic usage', () => {
@@ -170,5 +171,134 @@ describe('Input VALIDATION', () => {
     screen.getByRole('textbox').blur();
 
     expect(document.querySelector('div.input-element-wrapper')).toHaveClass('danger');
+  });
+});
+
+describe('Input getNewValueLength', () => {
+  it('should return length of new value correctly, if old value is replaced completely', () => {
+    const oldValue = '123456';
+    const pastedValue = '12345678';
+    const selectedRange = oldValue.length;
+    const expected = pastedValue.length;
+
+    expect(helpers.getNewValueLength(oldValue, pastedValue, selectedRange)).toEqual(expected);
+  });
+
+  it('should return length of new value correctly, if old value is replaced partly', () => {
+    const oldValue = '123456';
+    const pastedValue = '12345678';
+    const selectedRange = 3;
+    const expected = oldValue.length - selectedRange + pastedValue.length;
+
+    expect(helpers.getNewValueLength(oldValue, pastedValue, selectedRange)).toEqual(expected);
+  });
+
+  it('should return length of new value correctly, if no range was selected on paste', () => {
+    const oldValue = '123456';
+    const pastedValue = '12345678';
+    const selectedRange = null;
+    const expected = oldValue.length + pastedValue.length;
+
+    expect(helpers.getNewValueLength(oldValue, pastedValue, selectedRange)).toEqual(expected);
+  });
+});
+
+describe('Input getMaxPastedLength', () => {
+  it('should return maximum allowed length of pasted value correctly, if old value is replaced completely', () => {
+    const oldValue = '123456';
+    const maxLength = 8;
+    const selectedRange = oldValue.length;
+    const expected = maxLength;
+
+    expect(helpers.getMaxPastedLength(oldValue, maxLength, selectedRange)).toEqual(expected);
+  });
+
+  it('should return maximum allowed length of pasted value correctly, if old value is empty string', () => {
+    const oldValue = '';
+    const maxLength = 8;
+    const selectedRange = null;
+    const expected = maxLength;
+
+    expect(helpers.getMaxPastedLength(oldValue, maxLength, selectedRange)).toEqual(expected);
+  });
+
+  it('should return maximum allowed length of pasted value correctly, if old value is replaced partly', () => {
+    const oldValue = '123456';
+    const maxLength = 8;
+    const selectedRange = 4;
+    const expected = maxLength - (oldValue.length - selectedRange);
+
+    expect(helpers.getMaxPastedLength(oldValue, maxLength, selectedRange)).toEqual(expected);
+  });
+
+  it('should return maximum allowed length of pasted value correctly, if no range was selected on paste', () => {
+    const oldValue = '123456';
+    const maxLength = 8;
+    const selectedRange = null;
+    const expected = maxLength - oldValue.length;
+
+    expect(helpers.getMaxPastedLength(oldValue, maxLength, selectedRange)).toEqual(expected);
+  });
+});
+
+describe('Input getNewPastedValue', () => {
+  it('should return new value after paste correctly, if old value is replaced completely', () => {
+    const data = {
+      adjustedPastedValue: '666666',
+      maxLength: 6,
+      oldValue: '123456',
+      selectedRange: 6,
+      selectionEnd: 6,
+      selectionStart: 0,
+    };
+
+    const expected = data.adjustedPastedValue;
+
+    expect(helpers.getNewPastedValue(data)).toEqual(expected);
+  });
+
+  it('should return new value after paste correctly, if old value is empty string', () => {
+    const data = {
+      adjustedPastedValue: '666666',
+      maxLength: 6,
+      oldValue: '',
+      selectedRange: null,
+      selectionEnd: null,
+      selectionStart: null,
+    };
+
+    const expected = data.adjustedPastedValue;
+
+    expect(helpers.getNewPastedValue(data)).toEqual(expected);
+  });
+
+  it('should return new value after paste correctly, if old value is replaced partly', () => {
+    const data = {
+      adjustedPastedValue: '6666',
+      maxLength: 6,
+      oldValue: '12345',
+      selectedRange: 3,
+      selectionEnd: 4,
+      selectionStart: 1,
+    };
+
+    const expected = '166665';
+
+    expect(helpers.getNewPastedValue(data)).toEqual(expected);
+  });
+
+  it('should return new value after paste correctly, if no range was selected on paste', () => {
+    const data = {
+      adjustedPastedValue: '6',
+      maxLength: 6,
+      oldValue: '12345',
+      selectedRange: null,
+      selectionEnd: 2,
+      selectionStart: 2,
+    };
+
+    const expected = '126345';
+
+    expect(helpers.getNewPastedValue(data)).toEqual(expected);
   });
 });
