@@ -6,10 +6,10 @@ import { linkTo } from '@storybook/addon-links';
 export const Concept = () => (
   <L.Div _article>
     <L.H1 _header>
-      Reactive Leda
+      Korus-ui
     </L.H1>
     <L.P>
-      Reactive Leda - библиотека компонентов для создания интерактивных интерфейсов и вёрстки в приложениях на React.
+      Korus-ui - библиотека компонентов для создания интерактивных интерфейсов и вёрстки в приложениях на React.
     </L.P>
     <L.Section _block>
       <L.H2 _block-header>
@@ -61,7 +61,7 @@ export const Concept = () => (
       <L.Div _block>
         <pre>
           {`
-            npm i leda
+            npm i korus-ui
           `}
         </pre>
       </L.Div>
@@ -74,7 +74,7 @@ export const Concept = () => (
       <L.Div _block>
         <pre>
           {`
-            import * as L from 'leda';
+            import * as L from 'korus-ui';
           `}
         </pre>
       </L.Div>

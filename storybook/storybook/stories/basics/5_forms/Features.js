@@ -39,7 +39,7 @@ const liveDemo = `
 export const Features = () => (
   <L.Div _article>
     <L.H1 _header>
-      Формы в Leda
+      Формы в Korus-ui
     </L.H1>
 
     <L.Ul _txt-list>
@@ -66,10 +66,10 @@ export const Features = () => (
           Прокрутка к невалидному полю
         </li>
         <li>
-          Обработчик сабмита валидной формы
+          Обработчик отправки валидной формы
         </li>
         <li>
-          Обработчик сабмита невалидной формы
+          Обработчик отправки невалидной формы
         </li>
       </L.Ul>
     </L.Section>
