@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as L from '../../leda';
+import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
 const bodyWrapper = ({ elementProps }: any) => (
   <L.Tr _block {...elementProps} />
@@ -7,7 +8,7 @@ const bodyWrapper = ({ elementProps }: any) => (
 
 const headingRender = ({ elementProps }: any) => <L.Tr {...elementProps} />;
 
-export const Table = () => {
+export const Basic = (storyProps: StoryProps) => {
   const [activeKey, setActiveKey] = React.useState<string | string[] | null>('1');
 
   return (
