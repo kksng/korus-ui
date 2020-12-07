@@ -287,7 +287,6 @@ Korus-UI uses [Semantic Versioning 2.0.0][22]. Korus-UI version numbers have thr
 3. The patch version release contains minor changes that do not affect backward compatibility. As a rule, patch versions are needed to fix small bugs in between planned releases.
 
 
-
 ## Browsers support
 
 | Browsers | version |
