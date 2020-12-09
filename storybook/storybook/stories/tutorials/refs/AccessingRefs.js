@@ -273,11 +273,11 @@ export const AccessingRefs = () => (
         </LiveProvider>
       </L.Div>
       <br />
-      <L.H3 _txtGray>Рефы и компоненты библиотеки Leda</L.H3>
+      <L.H3 _txtGray>Рефы и компоненты библиотеки Korus-ui</L.H3>
       <br />
       <L.P>
         Возможны такие случаи, когда вам понадобится получить доступ к DOM-элементам компонентов
-        данной библиотеки. Библиотека <L.Span _colored>Leda</L.Span> предоставляет такую возможность:
+        данной библиотеки. Библиотека <L.Span _colored>Korus-ui</L.Span> предоставляет такую возможность:
       </L.P>
       <L.Div _live-style>
         <LiveProvider code={creatingLedaRef} scope={{ L }} theme={editorTheme} disabled>
@@ -289,7 +289,7 @@ export const AccessingRefs = () => (
       <br />
       <Remark>
         <L.P>
-          <b>Важно понмнить</b>, что компоненты библиотеки <b>Leda</b> возвращают в <b>current</b> объект,
+          <b>Важно понмнить</b>, что компоненты библиотеки <b>Korus-ui</b> возвращают в <b>current</b> объект,
           а не DOM-элемент.
         </L.P>
       </Remark>

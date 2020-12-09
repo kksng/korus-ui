@@ -112,7 +112,7 @@ export const Themes = () => (
       <L.Div _block>
         <pre>
           {`
-            import { Leda } from 'leda';
+            import { Leda } from 'korus-ui';
             import { theme } from 'myThemes';
             ...
 
