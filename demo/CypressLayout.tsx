@@ -20,6 +20,7 @@ import {
   MaskedInput,
   Modal,
   MultiSelect,
+  Notifications,
   NumericRange,
   ProgressBar,
   RadioGroup,
@@ -59,6 +60,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/modal">
           <Modal />
+        </Route>
+        <Route path="/cypress/notifications">
+          <Notifications />
         </Route>
         <Route path="/cypress/numericrange">
           <NumericRange />
