@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Storybook: Changed library name to Korus-ui
 
+### Fixed
+- ToolTip: Fixed tooltip display
+
 
 ## [0.36.0] - 2020-12-07
 
