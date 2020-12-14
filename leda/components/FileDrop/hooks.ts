@@ -80,6 +80,7 @@ export const useFileDropRestProps = (props: FileDropProps): {} => {
     isValid,
     loadingData,
     loadingProgress,
+    loadingText,
     loadingViewRender,
     maxFileNameLength,
     maxFileSize,

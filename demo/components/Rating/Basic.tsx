@@ -33,7 +33,7 @@ export const Basic = (args: any): React.ReactElement => {
       <StateButtonGroup
         data={[
           { text: 'Default', props: {} },
-          { text: 'Disabled', props: { isDisabled: true } },
+          { text: 'ReadOnly', props: { isReadOnly: true } },
         ]}
         setProps={setProps}
       />

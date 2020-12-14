@@ -1,6 +1,6 @@
-# Storybook for Reactive Leda
+# Storybook for Korus-ui
 
-Витрина для библиотеки компонентов Reactive Leda - @korus/leda
+Витрина для библиотеки компонентов Korus-ui - @korus/leda
 
 ## Запуск
 

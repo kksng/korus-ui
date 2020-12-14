@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
 const data = [
   { id: 0, city: 'Moscow' },
@@ -13,15 +13,16 @@ const data = [
   { id: 5, city: 'Madrid' },
 ];
 
-// eslint-disable-next-line
-export const CompareObjectsBy = (args: SomeObject): React.ReactElement => {
-  const [value, setValue] = React.useState<any>([data[0]]);
+export const CompareObjectsBy = (storyProps: StoryProps): React.ReactElement => {
+  const [value, setValue] = React.useState<L.MultiSelectTypes.MultiSelectValue>([data[0]]);
+  const [value2, setValue2] = React.useState<L.MultiSelectTypes.MultiSelectValue>([]);
 
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const { update, EventInfo } = useEventSpy(['selectedValue', 'deselectedValues']);
+
 
   return (
     <L.Div _box _inner _demoBg>
@@ -36,7 +37,7 @@ export const CompareObjectsBy = (args: SomeObject): React.ReactElement => {
         maxSelected={3}
         onChange={(ev) => {
           console.log('ev.component.value', ev.component.value);
-          setValue(ev.component.value);
+          setValue(ev.component.value as L.MultiSelectTypes.MultiSelectValue);
           update('Change', ev);
         }}
         onBlur={(ev) => update('Blur', ev)}
@@ -51,6 +52,25 @@ export const CompareObjectsBy = (args: SomeObject): React.ReactElement => {
         hasClearButton
         isDisabled={isDisabled}
       />
+      <br />
+      <br />
+      <L.MultiSelect
+        _width40
+        data={[{ id: 1, name: 'name' }, { id: 2, name: 'surname' }]}
+        compareObjectsBy="id"
+        value={value2}
+        name="name"
+        textField="name"
+        hasCheckBoxes
+        canSelectAll
+        shouldKeepSuggestions
+        onChange={(ev) => {
+          console.log(ev.component);
+          setValue2(ev.component.value as L.MultiSelectTypes.MultiSelectValue);
+          update('Change', ev);
+        }}
+        placeholder="Click me!"
+       />
       <br />
       <br />
       <L.Button _warning={isDisabled} onClick={() => setIsDisabled(!isDisabled)}>Toggle isDisabled</L.Button>

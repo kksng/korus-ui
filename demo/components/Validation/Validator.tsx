@@ -3,8 +3,7 @@ import * as React from 'react';
 import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
-
-export const Validator = (props: StoryProps) => (
+export const Validator = (storyProps: StoryProps) => (
   <L.Div _box _inner>
     <L.Div>
       <L.Div _inner>

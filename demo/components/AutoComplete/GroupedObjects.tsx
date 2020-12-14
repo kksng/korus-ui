@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
 /* eslint-disable object-curly-newline */
@@ -16,8 +17,7 @@ const ACData = [
   { id: 9, attr: 'value9', city: 'Paris' },
 ];
 
-// eslint-disable-next-line
-export const GroupedObjects = (componentProps: any) => {
+export const GroupedObjects = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState('');
 

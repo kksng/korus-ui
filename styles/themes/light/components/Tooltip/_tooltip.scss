@@ -52,7 +52,7 @@
 
   @if $position == 'top-left' {
     margin-top: -7px;
-    margin-left: 21px;
+    margin-left: 56px;
     transform: translate(-100%, -100%);
 
     &::after {
@@ -66,7 +66,7 @@
 
   @if $position == 'top-right' {
     margin-top: -7px;
-    margin-left: -21px;
+    margin-left: -56px;
     transform: translateY(-100%);
 
     &::after {
@@ -80,7 +80,7 @@
 
   @if $position == 'bottom-left' {
     margin-top: 7px;
-    margin-left: 21px;
+    margin-left: 56px;
     transform: translateX(-100%);
 
     &::after {
@@ -94,7 +94,7 @@
 
   @if $position == 'bottom-right' {
     margin-top: 7px;
-    margin-left: -21px;
+    margin-left: -56px;
 
     &::after {
       bottom: 100%;
@@ -120,11 +120,14 @@
   text-transform: none;
   white-space: normal;
   letter-spacing: normal;
-  padding: 6px 9px;
   color: $white;
   background-color: $black-02;
   border-radius: $border-radius;
   transition: opacity .2s;
+  box-sizing: content-box;
+  padding-top: 6px;
+  padding-left: 9px;
+  padding-right: 9px;
 
   div:last-child {
     word-wrap: break-word;

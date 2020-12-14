@@ -5,6 +5,7 @@ import {
 import {
   CustomRangeEvent, DateTimeInputRangeProps,
   DateTimeInputRangeRefCurrent,
+  DateValueType,
 } from '../../src/DateTimeInputRange/types';
 
 export interface DateTimeRangeProps extends DateTimeInputRangeProps {
@@ -39,5 +40,5 @@ export interface DateTimeRangeProps extends DateTimeInputRangeProps {
   /** Реф */
   ref?: React.Ref<DateTimeInputRangeRefCurrent>,
   /** Значение полей "от" и "до" */
-  value?: [string, string] | [Date | null, Date | null],
+  value?: [string, string] | DateValueType,
 }

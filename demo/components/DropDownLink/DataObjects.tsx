@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SomeObject } from '../../../leda/commonTypes';
 import * as L from '../../../leda';
 import { useEventSpy } from '../../useEventSpy';
+import { StoryProps } from '../../types';
 
 const exampleCode = `
 export const DataObjects = (args: SomeObject): React.ReactElement => {
@@ -33,7 +33,7 @@ export const DataObjects = (args: SomeObject): React.ReactElement => {
 };
 `;
 
-export const DataObjects = (args: SomeObject): React.ReactElement => {
+export const DataObjects = (storyProps: StoryProps): React.ReactElement => {
   const { update, EventInfo } = useEventSpy();
   const [value, setValue] = React.useState({ txt: 'Saint Petersburg', val: 7 });
 

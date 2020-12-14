@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
-// eslint-disable-next-line
-export const AllSuggestions = (componentProps: any) => {
+export const AllSuggestions = (storyProps: StoryProps) => {
   const [value, setValue] = React.useState('');
 
   return (

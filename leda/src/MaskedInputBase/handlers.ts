@@ -1,5 +1,5 @@
 import React from 'react';
-import { delay, isFunction } from 'lodash';
+import { isFunction } from 'lodash';
 import {
   BlurData, ChangeData, ExtendedEvent, FocusData, KeyDownData, MaskedInputBaseProps,
 } from './types';
@@ -17,7 +17,8 @@ import {
 import { INPUT_METHODS } from './constants';
 
 export const createChangeHandler = (
-  props: MaskedInputBaseProps, extraData: ChangeData,
+  props: MaskedInputBaseProps,
+  extraData: ChangeData,
 ): React.ChangeEventHandler<HTMLInputElement> => (ev) => {
   ev.preventDefault();
 
@@ -25,7 +26,7 @@ export const createChangeHandler = (
     onChange, mask, placeholderChar = '_',
   } = props;
 
-  const { inputValue, setInputValue } = extraData;
+  const { inputValue, setInputValue, adjustCursor } = extraData;
 
   const input = ev.currentTarget;
 
@@ -52,6 +53,7 @@ export const createChangeHandler = (
   const selection = getSelection(input);
 
   const position = selection[0] <= 0 ? Number(compareResult[0]) : Number([selection[0] - 1]);
+  const setCursor = (newPosition: number) => adjustCursor(ev, newPosition);
 
   const newValue = (() => {
     if (inputMethod === INPUT_METHODS.replace) {
@@ -62,6 +64,7 @@ export const createChangeHandler = (
         position: compareResult[0],
         removed: compareResult[2],
         selection,
+        setCursor,
         value: inputValue,
       });
 
@@ -71,6 +74,7 @@ export const createChangeHandler = (
         mask,
         placeholderChar,
         selection: [position, position],
+        setCursor,
         value: hurtValue,
       });
     }
@@ -82,6 +86,7 @@ export const createChangeHandler = (
         mask,
         placeholderChar,
         selection: [position, position],
+        setCursor,
         value: inputValue,
       });
     }
@@ -94,10 +99,11 @@ export const createChangeHandler = (
         position: compareResult[0],
         removed: compareResult[2],
         selection,
+        setCursor,
         value: inputValue,
       });
     }
-    // это inputMethod === 'nothing'
+    // inputMethod === 'nothing'
     return inputValue;
   })();
 

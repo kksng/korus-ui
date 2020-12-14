@@ -63,7 +63,7 @@ export const Api = () => (
           <L.P>
             Если обработчик указан в API, значит поведение и/или структура его события
             {' '}
-            <L.A onClick={linkTo('Basics|API', 'Events')} target="_self">изменены по стандарту Leda</L.A>
+            <L.A onClick={linkTo('Basics|API', 'Events')} target="_self">изменены по стандарту Korus-ui</L.A>
           </L.P>
         </li>
         <li>
@@ -135,7 +135,7 @@ export const Api = () => (
         Все компоненты поддерживают атрибут ref.
       </L.P>
       <L.P>
-        <L.A onClick={linkTo('Basics|Рефы и DOM', 'Использование рефов')} target="_self">Leda расширяет механизм ref</L.A>, принятый в React.
+        <L.A onClick={linkTo('Basics|Рефы и DOM', 'Использование рефов')} target="_self">Korus-ui расширяет механизм ref</L.A>, принятый в React.
       </L.P>
       <L.P>
         Вместо ссылки на узел компоненты отдают объект со ссылками на враппер и основные элементы компонента.

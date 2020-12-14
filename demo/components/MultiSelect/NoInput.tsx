@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
-import { SomeObject } from '../../../leda/commonTypes';
+import { StoryProps } from '../../types';
 
-export const NoInput = (args: SomeObject): React.ReactElement => {
+export const NoInput = (storyProps: StoryProps): React.ReactElement => {
   const [value, setValue] = React.useState<L.MultiSelectTypes.Value[] | null>(['London', 'Paris']);
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
 

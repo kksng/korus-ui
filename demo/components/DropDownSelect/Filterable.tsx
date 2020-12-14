@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as L from '../../../leda';
-import { SomeObject } from '../../../leda/commonTypes';
 import { StateButtonGroup } from '../StateButtonGroup';
+import { StoryProps } from '../../types';
 
 interface DataItem {
   region: string,
@@ -22,7 +22,7 @@ const data: DataItem[] = [
   { region: 'America', city: 'Costa Ricco' },
 ]
 
-export const Filterable = (args: SomeObject): React.ReactElement => {
+export const Filterable = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<DataItem | null>(data[0]);
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { Position } from './constants';
 
 /**
  * Change event
@@ -28,6 +29,11 @@ export interface ContentProps {
   stopTour: () => void,
 }
 
+/**
+ * Type of possible positions
+ */
+export type PositionType = (typeof Position)[keyof typeof Position];
+
 export interface TourProps {
   /** Идентификатор активного шага, если null - гайд-тур закрыт */
   activeStepKey?: number | string | null,
@@ -35,6 +41,8 @@ export interface TourProps {
   data: TourStepItem[],
   /** Обработчик изменения */
   onChange: (ev: ChangeEvent) => void,
+  /** Пауза перед отрисовкой шага гайд-тура. Передается в миллисекундах */
+  stepDelay?: number,
   /** Тема компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.tour],
 }
@@ -51,7 +59,7 @@ export interface TourStepItem {
   /** Отступы выделенной области в px, по-умолчанию 0px */
   padding?: number,
   /** Положение модалки */
-  position: 'top' | 'right' | 'bottom' | 'left',
+  position: PositionType,
   /** Идентификатор шага */
   stepKey: string | number,
 }

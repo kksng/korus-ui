@@ -143,5 +143,20 @@ describe('Input', () => {
         .click()
       cy.focused().should('have.attr', 'id', 'hasClearButton')
     });
+    describe('Paste event + maxLength attribute', () => {
+      it('Should paste value adjusted to maxLength, if input is empty', () => {
+        cy.get('input#only5Characters')
+          .paste('test text')
+          .should('have.value', 'test ');
+      });
+      it('Should paste value adjusted to maxLength, if old value is replaced completely', () => {
+        cy.get('input#only5Characters')
+          .paste('test text')
+          .should('have.value', 'test ')
+          .type('{selectall}')
+          .paste('888888888888')
+          .should('have.value', '88888')
+      });
+    });
   });
 });

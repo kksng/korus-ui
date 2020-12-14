@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+export interface AdjustCursor {
+  (
+    event: React.ChangeEvent<HTMLInputElement> | React.ClipboardEvent<HTMLInputElement>,
+    position?: number
+  ): void,
+}
+
 export interface AttributesType {
   active?: boolean,
   box?: boolean,

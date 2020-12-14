@@ -72,8 +72,8 @@ export const storybookTheme = create({
   textColor: 'white',
   barTextColor: 'rgb(87,194,224)',
   appBorderColor: 'rgb(87,194,224)',
-  brandTitle: 'Leda',
-  brandUrl: 'https://leda.esphere.ru',
+  brandTitle: 'Korus-ui',
+  brandUrl: 'https://opensource.esphere.ru/korus-ui',
   brandImage: '/favicon.ico',
 });
 

@@ -1,12 +1,14 @@
 # Korus-UI
 
+Project's repository: [GitHub][16]
+
 Korus-UI is a customizable UI component library with built-in forms handling and some other niceties.
 
-Supports TypeScript and React@^16.8.0 (the one with hooks).
+Supports TypeScript@^3.8.3 and React@^16.8.0 (the one with hooks).
 
 ![](https://github.com/kksng/leda/workflows/.github/workflows/ci.yml/badge.svg)
 
-Key Features
+## Key Features
 
 - Full customization of library components for your project in [3 different ways][7]
 - Concise and functional forms with validation (significantly less code than in popular solutions, with more flexibility and functionality)
@@ -14,7 +16,7 @@ Key Features
 - Uniform API (if you worked with one component you know how to work with the rest)
 - About 70 components for building forms and layout
 
-Everything that you wanted from validation you can find in Korus-UI
+### Everything that you wanted from validation you can find in Korus-UI
 
 - Simplicity
 - Field validation by function or RegExp
@@ -28,6 +30,32 @@ Everything that you wanted from validation you can find in Korus-UI
 - One-click validation of multiple forms
 - Helper functions for validation of passed values
 
+
+## Technologies
+
+- React@^16.8.0
+- TypeScript@^3.8.3
+
+
+## Documentation
+
+The Korus-UI docs are located at [https://opensource.esphere.ru/korus-ui/][1].
+
+All available features are documented in Russian. English version is on it's way.
+
+- [Introduction][8]
+- [API Reference][9]
+- [CSS classes][10]
+- [Forms][11]
+- [Validation][12]
+- [Refs and DOM][13]
+
+
+## Code Style
+
+We use [Airbnb JavaScript Style Guide][17]
+
+
 ## Installation
 
 ```
@@ -39,18 +67,86 @@ Use the `L` namespace to distinguish library components from other components in
 import * as L from 'korus-ui';
 ```
 
-## Documentation
+## Development mode
 
-The Korus-UI docs are located at [https://leda.esphere.ru][1].
+- Clone or download the repo
+- Run `npm i` to install dependencies
+- Run `npm start` to launch dev-server with demo examples on `http://localhost:9000/`
 
-All available features are documented in Russian. English version is on it's way.
 
-- [Introduction][8]
-- [API Reference][9]
-- [CSS classes][10]
-- [Forms][11]
-- [Validation][12]
-- [Refs and DOM][13]
+### Available NPM scripts
+
+| script | description |
+|----------------|----------------|
+| npm start | runs project in development mode |
+| npm run build | builds project |
+| npm run check | checks eslint and typescript errors, runs jest tests |
+| npm run cypress | runs cypress tests |
+| npm run coverage | shows coverage after running cypress tests |
+
+
+## File Structure
+
+```
+├── demo                         : demo examples
+│   ├── components                   : demo examples for dev mode
+│   │   └── AutoComplete                : demo examples of component
+│   │       ├── Minimal.tsx                 : example of usage with minimal required props
+│   │       ├── Customization.tsx           : some other examples of important component's features
+│   │       └── index.tsx                   : export of component's examples
+│   │
+│   └── cypress                      : demo examples for cypress tests
+│       └── AutoComplete                : demo examples of component for cypress tests
+│           └── index.tsx                   : component's usage examples
+│
+├── leda                         : library
+│   ├── commonTypes                  : common types
+│   │   └── index.ts
+│   ├── components                   : exported library components
+│   │   └── DropZone                    : component
+│   │       ├── constants.ts                : constants
+│   │       ├── DropZone.test.tsx           : tests for component
+│   │       ├── DropZone.tsx                : main component's features
+│   │       ├── DropZoneFiles.tsx           : additional component's features
+│   │       ├── handlers.ts                 : event handlers
+│   │       ├── helpers.test.tsx            : tests for helper functions
+│   │       ├── helpers.ts                  : helper functions
+│   │       ├── hooks.ts                    : hooks
+│   │       ├── index.tsx                   : export of component
+│   │       ├── theme.ts                    : component's theme
+│   │       └── types.ts                    : component's types
+│   │
+│   ├── form                         : form helpers
+│   │   ├── form.test.tsx               : tests for form helpers
+│   │   ├── form.ts                     : form validation helpers
+│   │   ├── helpers.ts                  : helper functions
+│   │   ├── index.ts                    : export form helpers
+│   │   └── types.ts                    : types
+│   │
+│   ├── src                          : internal reusable components
+│   │   └── DateTimeInputRange          : reusable component
+│   │       ├── handlers.ts                 : event handlers
+│   │       ├── helpers.ts                  : helper functions
+│   │       ├── hooks.ts                    : hooks
+│   │       ├── index.tsx                   : export of component
+│   │       ├── theme.ts                    : component's theme
+│   │       └── types.ts                    : component's types
+│   │
+│   ├── utils                        : helpers
+│   │   ├── getWordEnding.ts            : helper function
+│   │   └── index.ts                    : export of helper functions
+│   │
+│   ├── validators                   : constants and helpers for form validation
+│   │   ├── email.ts                    : constant and helper function for email validation
+│   │   └── index.ts                    : export of validators
+│   │
+│   ├── constants.ts                 : common constants
+│   ├── index.ts                     : export of library's components
+│   └── messages.ts                  : constants for messages
+│
+├── storybook
+└── styles
+```
 
 
 ## Examples
@@ -114,8 +210,8 @@ const MultipleForms = () => (
 Possibility to display custom validation messages:
 
 ```jsx
-import * as React from 'react';
-import * as L from '../../../leda';
+import React from 'react';
+import * as L from 'korus-ui';
 
 export const ValidationMessageRender = () => (
   <L.Div _box _inner>
@@ -144,19 +240,62 @@ export const ValidationMessageRender = () => (
 );
 ```
 
+## Git Workflow
+
+We use a simplified approach based on [Gitflow][18].
+
+Branch `master` reflects the release history and is updated at the end of each Sprint. Branch `develop` reflects actual state of development. Feature branches are used to accomplish particular tasks and are merged into branch `develop` after task is completed.
+
+### Branch names
+Feature branch names are formed from the `feature/bugfix` name and the code of task in Jira.
+For example: `feature/FEND-500`, `bugfix/FEND-1122`
+
+### Commit messages
+The commit message begins with the task code followed by name of component in brackets `[]` and short description of changes that were made. For example: `FEND-500 [DropZone] added isLoading prop to DropZone`.
+
+
 ## Contributing
 
 If you want to propose any changes to the library check out our [Contributing guidelines][14].
+Feel free to propose new feature or report a bug: [New issue][19]
+
+
+## Release policy
+
+The main principles of the Korus-UI release policy are to ensure the stability and compatibility of the library versions.
+At the same time, the process of releasing new versions should provide the ability to quickly make changes: fix emerging errors, improve functionality and develop new features.
+
+### Release schedule
+A regular release schedule allows to plan future updates and predict the release date for necessary changes.
+The development of the library is carried out in accordance with the agile methodologies. The duration of one sprint is 2 weeks (10 working days). The result of a sprint is a minor release (0.34.0 -> 0.35.0).
+During a sprint, a patch version (0.34.0 -> 0.34.1) may be released if it becomes necessary to make minor changes that do not affect backward compatibility.
+
+### Scope of release
+The scope of future release is approved at the beginning of each sprint. The amount of changes planned for release is determined based on the urgency of the tasks and the severity of the identified errors. In the course of the sprint, it is possible to revise the planned updates, if the newly received tasks are assessed as of higher priority.
+Third-party developers are also encouraged to make changes if they comply with the Korus-UI library [regulations][20]. Such changes will also be released after the review by the Korus-UI team.
+Changes are considered ready for release if:
+
+1. A code review was performed by at least one of the developers of the Korus-UI team;
+2. The code has been covered with [autotests][21] that run successfully;
+3. The changes were verified by the testing specialist of the Korus-UI team.
+
+### Versioning
+Korus-UI uses [Semantic Versioning 2.0.0][22]. Korus-UI version numbers have three parts: major.minor.patch. The version number is incremented based on the level of change included in the release and it’s impact on the library's backward compatibility. 
+
+1. The release of the major version contains significant new features, including backward incompatible API changes. The upgrade process to a new version may require refactoring of the code, writing additional tests, and studying the documentation for the new APIs.
+2. The release of the minor version contains new important features while maintaining the backward compatibility of the version.
+3. The patch version release contains minor changes that do not affect backward compatibility. As a rule, patch versions are needed to fix small bugs in between planned releases.
+
 
 ## Browsers support
 
-| Browsers | version | 
+| Browsers | version |
 |----------------|----------------|
-| Google Chrome | 85.0.4183.121 | 
-| Internet Explorer | 11 | 
-| Microsoft Edge | 85.0.564.44 | 
-| Mozilla Firefox | 81.0.1 | 
-| Safari | 14 | 
+| Google Chrome | 85.0.4183.121 |
+| Internet Explorer | 11 |
+| Microsoft Edge | 85.0.564.44 |
+| Mozilla Firefox | 81.0.1 |
+| Safari | 14 |
 
 ## License
 
@@ -179,22 +318,33 @@ Made by [Artem Povolskikh][2] and [Andrew Dimitrov][3] for their company with in
 - Maxim Fomin
 - [Oksana Kukushkina][5]
 - Vyacheslav Semyonov
+- Ilya Shevchuck
+- Ksenia Lugovaya
 
-
-[1]: https://leda.esphere.ru
+[1]: https://opensource.esphere.ru/korus-ui/
 [2]: https://github.com/Apollo-11
 [3]: https://github.com/777PolarFox777
 [4]: https://github.com/roshal
 [5]: https://github.com/JustOxxy
 [6]: https://github.com/Binetsky
 
-[7]: https://leda.esphere.ru/?path=/story/basics-кастомизация--кастомизация
-[8]: https://leda.esphere.ru/?path=/story/basics-начало-работы--введение
-[9]: https://leda.esphere.ru/?path=/story/basics-api--api
-[10]: https://leda.esphere.ru/?path=/story/basics-вёрстка--css-классы
-[11]: https://leda.esphere.ru/?path=/story/basics-формы--особенности
-[12]: https://leda.esphere.ru/?path=/story/basics-валидация-форм--api
-[13]: https://leda.esphere.ru/?path=/story/basics-рефы-и-dom--использование-рефов
+[7]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-кастомизация--кастомизация
+[8]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-начало-работы--введение
+[9]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-api--api
+[10]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-вёрстка--css-классы
+[11]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-формы--особенности
+[12]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-валидация-форм--api
+[13]: https://opensource.esphere.ru/korus-ui/?path=/story/basics-рефы-и-dom--использование-рефов
 
 [14]: https://github.com/kksng/korus-ui/blob/master/CONTRIBUTING.md
 [15]: https://github.com/kksng/korus-ui/blob/master/LICENSE.md
+[16]: https://github.com/kksng/korus-ui
+
+[17]: https://github.com/airbnb/javascript#airbnb-javascript-style-guide-
+[18]: https://nvie.com/posts/a-successful-git-branching-model/
+
+[19]: https://github.com/kksng/korus-ui/issues/new/choose
+
+[20]: https://github.com/kksng/korus-ui/blob/master/CONTRIBUTING.md
+[21]: https://confluence.esphere.ru/pages/viewpage.action?pageId=145694698
+[22]: https://semver.org/
