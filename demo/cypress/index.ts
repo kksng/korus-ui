@@ -19,6 +19,7 @@ export { MultiSelect } from './MultiSelect';
 export { NumericRange } from './NumericRange';
 export { ProgressBar } from './ProgressBar';
 export { RadioGroup } from './RadioGroup';
+export { StatusBar } from './StatusBar';
 export { ToolTip } from './ToolTip';
 export { Tour } from './Tour';
 export { TimePicker } from './TimePicker';
