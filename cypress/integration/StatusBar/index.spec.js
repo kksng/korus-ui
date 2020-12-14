@@ -30,8 +30,18 @@ describe('Statusbar', () => {
         .should('contain', 'progress')
     })
 
-    it.only('Start animation progress', () => {
-      cy.get('button').contains('Начать')
+    it('Start animation progress', () => {
+      cy.get('button')
+        .contains('Начать')
+        .click()
+        .parent()
+        .find('.animate')
+        .get('.statusbar-line')
+        .eq(2)
+        .trigger('start')
+        .wait(2000)
+        .invoke('attr', 'style')
+        .should('contains', '100%')
     })
   })
 })
