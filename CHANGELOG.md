@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.37.0] - 2020-12-21
 
+### Added
+- VStepper: Added type warning, new props footerContent and nextStepType to VStepperItem
+
 ### Changed
 - Storybook: Changed library name to Korus-ui
 

@@ -14,6 +14,7 @@ import { useCustomElements } from './hooks';
 export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemProps): React.ReactElement => {
   const {
     children,
+    footerContent,
     titleTextField,
     statusTextField,
     className,
@@ -41,6 +42,7 @@ export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemPro
     wrapperClassName,
     iconClassName,
     headingIconClassName,
+    lineClassName,
   } = getItemClassNames({ ...props, className, isOpen }, theme, type);
 
   const {
@@ -56,7 +58,7 @@ export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemPro
     <Wrapper className={wrapperClassName}>
       <Div className={theme.itemSign}>
         <Icon type={type} className={iconClassName} />
-        <Div className={theme.itemLine} />
+        <Div className={lineClassName} />
       </Div>
       <Content className={theme.itemContentWrapper}>
         <Heading
@@ -75,6 +77,9 @@ export const VStepperItem: React.FC<VStepperItemProps> = (props: VStepperItemPro
           <Collapsible isOpen={!isDisabled && isOpen}>
             <Div className={theme.itemContent}>
               {children}
+            </Div>
+            <Div className={theme.itemEnding} shouldRender={footerContent !== undefined}>
+              {footerContent}
             </Div>
           </Collapsible>
         </Body>
