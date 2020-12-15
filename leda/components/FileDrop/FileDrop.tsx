@@ -46,6 +46,10 @@ export const FileDrop = React.forwardRef((props: FileDropProps, ref: React.Ref<F
     maxSize: maxFileSize,
     multiple: false,
     onDrop: (acceptedFiles, rejectedFiles, event) => {
+      // Prevents firing change event in IE before file upload
+      if (acceptedFiles.length === 0 && rejectedFiles.length === 0) {
+        return;
+      }
       const newValue = handleChange(acceptedFiles, rejectedFiles, event as React.DragEvent<HTMLDivElement>);
       validateCurrent(error ? null : newValue);
     },
