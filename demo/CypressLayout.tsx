@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
-import * as React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import * as L from '../leda'
+import * as React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import * as L from '../leda';
 import {
   AutoComplete,
   Button,
@@ -30,8 +30,8 @@ import {
   Validation,
   VStepper,
   Wizard,
-} from './cypress'
-import { Styles } from './components/Styles'
+} from './cypress';
+import { Styles } from './components/Styles';
 
 export const CypressLayout = () => (
   <>
@@ -133,4 +133,4 @@ export const CypressLayout = () => (
       </Switch>
     </L.Div>
   </>
-)
+);
