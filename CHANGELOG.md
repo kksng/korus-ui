@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Storybook: Changed library name to Korus-ui
 
 ### Fixed
+- Tabs: Fixed tabs display and scroll in IE
 - Modal, DemoPage: validate DemoPage Modal name field.
 - FileDrop: Prevented firing change event before file upload
 
