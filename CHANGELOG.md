@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.37.0] - 2020-12-21
 
+### Added:
+- Tour: Added step changing animation. Block page while step loading.
+
 ### Changed
 - Storybook: Changed library name to Korus-ui
 
