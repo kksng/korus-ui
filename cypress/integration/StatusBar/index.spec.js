@@ -1,7 +1,7 @@
 describe('Statusbar', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/statusbar')
-  })
+    cy.visit('http://localhost:9000/cypress/statusbar');
+  });
 
   describe('Interaction', () => {
     it('Previous step', () => {
@@ -13,9 +13,8 @@ describe('Statusbar', () => {
         .contains('Оформление')
         .parent()
         .find('.statusbar-icon')
-        .invoke('attr', 'class')
-        .should('contain', 'progress')
-    })
+        .should('have.class', 'progress');
+    });
 
     it('Next step', () => {
       cy.get('button')
@@ -26,9 +25,8 @@ describe('Statusbar', () => {
         .contains('Подписание')
         .parent()
         .find('.statusbar-icon')
-        .invoke('attr', 'class')
-        .should('contain', 'progress')
-    })
+        .should('have.class', 'progress');
+    });
 
     it('Start animation progress', () => {
       cy.get('button')
@@ -41,7 +39,7 @@ describe('Statusbar', () => {
         .trigger('start')
         .wait(2000)
         .invoke('attr', 'style')
-        .should('contains', '100%')
-    })
-  })
-})
+        .should('contains', '100%');
+    });
+  });
+});
