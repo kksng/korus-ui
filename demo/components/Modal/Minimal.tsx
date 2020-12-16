@@ -32,7 +32,7 @@ export const MinimalModal = (props: { title: string }): React.ReactElement => {
           </L.Div>
         </L.ModalBody>
         <L.ModalFooter>
-          Modal Footer
+          <L.Button onClick={() => { setOpen(false) }}>Закрыть</L.Button>
         </L.ModalFooter>
       </L.Modal>
       <L.Button _warning onClick={() => setOpen(true)}>Open</L.Button>
