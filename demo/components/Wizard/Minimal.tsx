@@ -1,8 +1,7 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../leda';
-import { useInterval } from '../../leda/utils';
-import { StoryProps } from '../types';
+import * as L from '../../../leda';
+import { StoryProps } from '../../types';
 
 const data = [
     { labelText: 'Согласование' },
@@ -13,20 +12,14 @@ const data = [
     { labelText: 'Оплата' },
   ];
 
-export const Wizard = (storyProps: StoryProps) => {
+export const Minimal = (storyProps: StoryProps) => {
     const [index, setIndex] = React.useState(2);
     const [value, setValue] = React.useState(data[index]);
-    const [progress, setProgress] = React.useState(0);
-
-    useInterval(() => {
-      setProgress(progress + 10);
-    }, progress < 100 ? 500 : null);
 
     const handleClick = (newIndex: number) => {
       if (newIndex <= data.length - 1 && newIndex >= 0) {
         setValue(data[newIndex]);
         setIndex(newIndex);
-        setProgress(0);
       }
     };
  
@@ -36,8 +29,6 @@ export const Wizard = (storyProps: StoryProps) => {
         <L.Wizard
           data={data}
           value={value}
-          textField="labelText"
-          currentStepProgress={progress}
         />
         <br/>
         <br/>
@@ -53,13 +44,6 @@ export const Wizard = (storyProps: StoryProps) => {
         onClick={() => handleClick(index + 1)}
       >
         Следующий Шаг
-      </L.Button>
-      {' '}
-      <L.Button
-        _warning
-        onClick={() => setProgress(0)}
-      >
-        Начать анимацию
       </L.Button>
       </L.Div>
     );
