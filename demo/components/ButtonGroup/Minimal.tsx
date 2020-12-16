@@ -4,8 +4,8 @@ import { StoryProps } from '../../types';
 
 export const Minimal = (storyProps: StoryProps) => {
   return (
-    <L.Div>
-      <L.ButtonGroup />
+    <L.Div _box _inner _demoBg>
+      <L.ButtonGroup data={['one', 'two', 'three']}/>
     </L.Div>
   );
 };
