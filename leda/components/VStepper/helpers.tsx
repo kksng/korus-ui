@@ -6,18 +6,14 @@ import {
   ItemClassNames, VStepperItemProps, VStepperProps,
 } from './types';
 import { SomeObject } from '../../commonTypes';
+import { VSTEPPER_STATUS_TYPES } from './constants';
 
-export const VSTEPPER_STATUS_TYPES = {
-  DANGER: 'danger',
-  PROGRESS: 'progress',
-  SUCCESS: 'success',
-} as const;
 
 export type StepTypes = typeof VSTEPPER_STATUS_TYPES[keyof typeof VSTEPPER_STATUS_TYPES];
 
 export const getItemClassNames = (props: VStepperItemProps, theme: NonNullable<Required<VStepperProps['theme']>>, type: StepTypes): ItemClassNames => {
   const {
-    className, isOpen, hasSignIcon, isDisabled,
+    className, isOpen, hasSignIcon, isDisabled, nextStepType,
   } = props;
 
   const isItemAvailable = !isDisabled && isOpen;
@@ -37,6 +33,7 @@ export const getItemClassNames = (props: VStepperItemProps, theme: NonNullable<R
       [theme.statusSuccess]: type === VSTEPPER_STATUS_TYPES.SUCCESS && !isDisabled,
       [theme.statusDanger]: type === VSTEPPER_STATUS_TYPES.DANGER && !isDisabled,
       [theme.statusProgress]: type === VSTEPPER_STATUS_TYPES.PROGRESS && !isDisabled,
+      [theme.statusWarning]: type === VSTEPPER_STATUS_TYPES.WARNING && !isDisabled,
       [theme.itemActive]: isItemAvailable,
       [theme.itemWrapperDisabled]: isDisabled,
     },
@@ -47,9 +44,20 @@ export const getItemClassNames = (props: VStepperItemProps, theme: NonNullable<R
     { [theme.itemHeadingIconOpen]: isItemAvailable },
   );
 
+  const lineClassName = getClassNames(
+    theme.itemLine,
+    {
+      [theme.statusSuccess]: nextStepType === VSTEPPER_STATUS_TYPES.SUCCESS,
+      [theme.statusDanger]: nextStepType === VSTEPPER_STATUS_TYPES.DANGER,
+      [theme.statusProgress]: nextStepType === VSTEPPER_STATUS_TYPES.PROGRESS,
+      [theme.statusWarning]: nextStepType === VSTEPPER_STATUS_TYPES.WARNING,
+    },
+  );
+
   return {
     headingIconClassName,
     iconClassName,
+    lineClassName,
     wrapperClassName,
   };
 };
