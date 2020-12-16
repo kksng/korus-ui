@@ -21,6 +21,7 @@ import {
   Modal,
   MultiSelect,
   NumericRange,
+  Password,
   ProgressBar,
   RadioGroup,
   StatusBar,
@@ -102,6 +103,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/numericrange">
           <NumericRange />
+        </Route>
+        <Route path="/cypress/password">
+          <Password />
         </Route>
         <Route path="/cypress/progressbar">
           <ProgressBar />

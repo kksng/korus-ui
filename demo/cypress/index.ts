@@ -18,6 +18,7 @@ export { Modal } from './Modal';
 export { MultiSelect } from './MultiSelect';
 export { NumericRange } from './NumericRange';
 export { ProgressBar } from './ProgressBar';
+export { Password } from './Password';
 export { RadioGroup } from './RadioGroup';
 export { StatusBar } from './StatusBar';
 export { ToolTip } from './ToolTip';
