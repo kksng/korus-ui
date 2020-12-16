@@ -3,11 +3,13 @@ import { Story } from '../Story';
 import { StaticItems } from './StaticItems';
 import { DynamicItems } from './DynamicItems';
 import { Customization } from './Customization';
+import { Minimal } from './Minimal';
 
 export const VStepper = () => (
   <Story title="VStepper">
-    <StaticItems title="Статические шаги" />
-    <DynamicItems title="Динамичекие шаги" />
-    <Customization title="Кастомизация" />
+    <Minimal title="Minimal example"/>
+    <StaticItems title="Static steps" />
+    <DynamicItems title="Dynamic steps" />
+    <Customization title="Customization" />
   </Story>
 );
