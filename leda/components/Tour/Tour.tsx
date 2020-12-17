@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { debounce, isNil } from 'lodash';
 import ReactDOM from 'react-dom';
+import cx from 'classnames';
 
 import { Div } from '../Div';
 import {
@@ -153,7 +154,7 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, activeItem, onChange]);
 
-  if (!activeItem || !activeItem.element || isLoading) {
+  if (!activeItem || !activeItem.element) {
     return null;
   }
 
@@ -161,14 +162,22 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   const content = (
     <>
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className={theme.overlay}>
+      <svg
+        className={cx(theme.overlay, { [theme.overlayLoading]: isLoading })}
+        height="100%"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
           d={svgPath}
         />
       </svg>
-      <Div className={`${theme.modal} ${activeItem.position}`} style={style}>
-        {activeItem.content(contentProps)}
-      </Div>
+      {!isLoading
+        && (
+          <Div className={`${theme.modal} ${activeItem.position}`} style={style}>
+            {activeItem.content(contentProps)}
+          </Div>
+        )}
     </>
   );
   return ReactDOM.createPortal(content, document.body);
