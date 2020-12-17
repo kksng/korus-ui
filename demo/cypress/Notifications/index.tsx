@@ -46,7 +46,7 @@ const notifications = [
 const ActionButton = (props: {
   item: L.NotificationsTypes.Item
   onClose: (id: string | number) => void
-}) => {
+}): JSX.Element => {
   switch (props.item.type) {
     case 'accept': {
       return (
@@ -63,10 +63,10 @@ const ActionButton = (props: {
   }
 }
 
-export const Notifications = (StoryProps) => {
+export const Notifications = (storyProps: StoryProps): JSX.Element => {
   const [items, setItems] = React.useState<Item[]>([])
 
-  const handleClose = (id: string | number) => {
+  const handleClose = (id: string | number): void => {
     const newItems = items.filter((item) => item.id !== id)
 
     setItems(newItems)
