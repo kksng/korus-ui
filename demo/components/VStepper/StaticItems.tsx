@@ -30,13 +30,13 @@ export const StaticItems = (props: { title: string }) => (
 export const StaticItems = (storyProps: StoryProps) => (
   <L.Div _box _inner _demoBg>
     <L.VStepper>
-      <L.VStepper.Item hasSignIcon titleText="Добавление расходов" statusText="Заполнено" type="success">
+      <L.VStepper.Item hasSignIcon titleText="Добавление расходов" statusText="Заполнено" type="success" nextStepType="warning" footerContent={<L.Button>Далее</L.Button>}>
         {stepContent[0]}
       </L.VStepper.Item>
-      <L.VStepper.Item titleText="Персональные данные" statusText="Заполнено" type="success">
+      <L.VStepper.Item titleText="Персональные данные" statusText="Заполнено" type="warning" nextStepType="progress">
         {stepContent[1]}
       </L.VStepper.Item>
-      <L.VStepper.Item titleText="Подтверждение командировки" statusText="В процессе" type="progress">
+      <L.VStepper.Item titleText="Подтверждение командировки" statusText="В процессе" type="progress" nextStepType="danger">
         {stepContent[2]}
       </L.VStepper.Item>
       <L.VStepper.Item hasSignIcon titleText="Печать закрывающих документов" statusText="Не заполнено" type="danger">

@@ -3,6 +3,7 @@ export const defaultVStepperTheme = {
   itemActive:               'active',
   itemContent:              'v-stepper-content',
   itemContentWrapper:       'v-stepper-content-wrapper',
+  itemEnding:               'v-stepper-ending',
   itemHeading:              'v-stepper-heading',
   itemHeadingIcon:          'v-stepper-heading-icon',
   itemHeadingIconOpen:      'open',
@@ -18,6 +19,7 @@ export const defaultVStepperTheme = {
   statusDanger:             'danger',
   statusProgress:           'progress',
   statusSuccess:            'success',
+  statusWarning:            'warning',
   wrapper:                  'v-stepper-wrapper',
 };
 /* eslint-enable key-spacing */
