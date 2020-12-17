@@ -19,7 +19,6 @@ export const BasicUsage = (storyProps: StoryProps) => {
         max={20000000000000}
         min={-100000000000}
         step={1}
-        invalidMessage="Число не должно быть отрицательным!"
         requiredMessage="Обязательное поле!"
         onChange={ev => {
           update('Change', ev);
