@@ -16,6 +16,7 @@ export { Input } from './Input';
 export { MaskedInput } from './MaskedInput';
 export { Modal } from './Modal';
 export { MultiSelect } from './MultiSelect';
+export { Notifications } from './Notifications';
 export { NumericRange } from './NumericRange';
 export { ProgressBar } from './ProgressBar';
 export { Password } from './Password';
