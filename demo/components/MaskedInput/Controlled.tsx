@@ -4,7 +4,7 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 import { StoryProps } from '../../types';
-import { SomeObject } from '../../../leda/commonTypes';
+import { RenderEvent, SomeObject } from '../../../leda/commonTypes';
 
 export const Controlled = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState<SomeObject>({});
@@ -100,7 +100,7 @@ export const Controlled = (storyProps: StoryProps): React.ReactElement => {
             text: 'Icon left',
             props: {
               ...props,
-              inputRender: ({ Element, elementProps }) => (
+              inputRender: ({ Element, elementProps }: RenderEvent) => (
                 <>
                   <L.I _icon20 _passwordIsHidden />
                   <Element {...elementProps} />
@@ -112,7 +112,7 @@ export const Controlled = (storyProps: StoryProps): React.ReactElement => {
             text: 'Text left',
             props: {
               ...props,
-              inputRender: ({ Element, elementProps }) => (
+              inputRender: ({ Element, elementProps }: RenderEvent) => (
                 <>
                   <L.Span>from</L.Span>
                   <Element {...elementProps} />
@@ -134,7 +134,7 @@ export const Controlled = (storyProps: StoryProps): React.ReactElement => {
             text: 'Icon right',
             props: {
               ...props,
-              inputRender: ({ Element, elementProps }) => (
+              inputRender: ({ Element, elementProps }: RenderEvent) => (
                 <>
                   <Element {...elementProps} />
                   <L.I _icon20 _passwordIsHidden />
@@ -146,7 +146,7 @@ export const Controlled = (storyProps: StoryProps): React.ReactElement => {
             text: 'Text right',
             props: {
               ...props,
-              inputRender: ({ Element, elementProps }) => (
+              inputRender: ({ Element, elementProps }: RenderEvent) => (
                 <>
                   <Element {...elementProps} />
                   <L.Span>RUB</L.Span>

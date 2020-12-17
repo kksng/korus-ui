@@ -4,7 +4,7 @@ import * as L from '../../../leda';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 import { StoryProps } from '../../types';
-import { SomeObject } from '../../../leda/commonTypes';
+import { RenderEvent, SomeObject } from '../../../leda/commonTypes';
 
 export const BasicUsage = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState<SomeObject>({});
@@ -70,7 +70,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
             text: 'Text left',
             props: {
               ...props,
-              inputRender: ({ Element, elementProps }: any) => (
+              inputRender: ({ Element, elementProps }: RenderEvent) => (
                 <>
                   <L.Span _numericTextBoxPrefix>from</L.Span>
                   <Element {...elementProps} />
@@ -82,7 +82,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
             text: 'Icon left',
             props: {
               ...props,
-              inputRender: ({ Element, elementProps }: any) => (
+              inputRender: ({ Element, elementProps }: RenderEvent) => (
                 <>
                   <L.I _numericTextBoxPrefix _passwordIsHidden />
                   <Element {...elementProps} />
@@ -104,7 +104,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
             text: 'Text right',
             props: {
               ...props,
-              inputRender: ({ Element, elementProps }: any) => (
+              inputRender: ({ Element, elementProps }: RenderEvent) => (
                 <>
                   <Element {...elementProps} />
                   <L.Span _numericTextBoxSuffix>RUB</L.Span>
@@ -116,7 +116,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
             text: 'Icon right',
             props: {
               ...props,
-              inputRender: ({ Element, elementProps }: any) => (
+              inputRender: ({ Element, elementProps }: RenderEvent) => (
                 <>
                   <Element {...elementProps} />
                   <L.I _numericTextBoxSuffix _passwordIsHidden />
