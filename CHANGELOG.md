@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Tour: Added step changing animation. Block page while step loading
 - VStepper: Added type warning, new props footerContent and nextStepType to VStepperItem
+- Refactoring: Added changelog generator
 
 ### Changed
 - Storybook: Changed library name to Korus-ui
