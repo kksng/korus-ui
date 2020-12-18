@@ -63,7 +63,7 @@ const ActionButton = (props: {
   }
 };
 
-export const Notifications = (storyProps: StoryProps): JSX.Element => {
+export const Notifications = (): JSX.Element => {
   const [items, setItems] = React.useState<Item[]>([]);
 
   const handleClose = (id: string | number): void => {
