@@ -22,8 +22,10 @@ import {
   MultiSelect,
   Notifications,
   NumericRange,
+  Password,
   ProgressBar,
   RadioGroup,
+  StatusBar,
   ToolTip,
   TimePicker,
   Tour,
@@ -106,11 +108,17 @@ export const CypressLayout = () => (
         <Route path="/cypress/numericrange">
           <NumericRange />
         </Route>
+        <Route path="/cypress/password">
+          <Password />
+        </Route>
         <Route path="/cypress/progressbar">
           <ProgressBar />
         </Route>
         <Route path="/cypress/radio-group">
           <RadioGroup />
+        </Route>
+        <Route path="/cypress/statusbar">
+          <StatusBar />
         </Route>
         <Route path="/cypress/tooltip">
           <ToolTip />

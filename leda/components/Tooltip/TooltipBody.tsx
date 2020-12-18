@@ -10,9 +10,6 @@ export const TooltipBody = React.forwardRef((props: TooltipBodyProps, ref?: Reac
     title,
   } = props;
 
-  // Width should be set explicitly for correct displaying in IE
-  const { width } = style;
-
   const tooltip = (
     <div
       className={className}
@@ -20,7 +17,7 @@ export const TooltipBody = React.forwardRef((props: TooltipBodyProps, ref?: Reac
       style={style}
       onTransitionEnd={handleTransitionEnd}
     >
-      <div style={{ width }}>
+      <div>
         {title}
       </div>
     </div>

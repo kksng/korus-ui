@@ -211,7 +211,7 @@ export const Tour = (storyProps: StoryProps): React.ReactElement => {
   const [element7, ref7] = useElementRef();
 
   const [activeStep, setActiveStep] = React.useState<string | number | null>(null);
-  const [stepDelay, setStepDelay] = React.useState<number | undefined>(undefined); 
+  const [stepDelay, setStepDelay] = React.useState<number | undefined>(500);
 
   const data = getData([element1, element2, element3, element4, element5, element6, element7]);
 
@@ -265,11 +265,11 @@ export const Tour = (storyProps: StoryProps): React.ReactElement => {
           onChange={(ev) => setActiveStep(ev.component.value)}
           stepDelay={stepDelay}
         />
-        <L.Button 
+        <L.Button
           _warning
-          onClick={() => setStepDelay((stepDelay) => isNil(stepDelay) ? 2000 : undefined)}
+          onClick={() => setStepDelay((stepDelay) => isNil(stepDelay) ? 500 : undefined)}
         >
-          Set/remove stepDelay 2 sec
+          {isNil(stepDelay) ? 'Set stepDelay 500ms' : 'Remove stepDelay'}
         </L.Button>
       </L.Div>
     </L.Div>
