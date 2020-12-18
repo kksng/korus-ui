@@ -21,14 +21,14 @@ describe('Notifications', () => {
         .should('not.be.visible');
     });
 
-    it('Open and close with delay 1200ms', () => {
+    it('Open and close with delay 1500ms', () => {
       cy.get('.demo-story')
         .find('button.button-wrapper')
         .click()
         .parent()
         .find('.notifications-wrapper')
         .should('be.visible')
-        .wait(1200)
+        .wait(1500)
         .get('.notifications-wrapper')
         .should('not.be.visible');
     });
