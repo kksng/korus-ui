@@ -1,9 +1,9 @@
 /* eslint-disable no-alert, no-console,import/no-extraneous-dependencies */
-import * as React from 'react'
-import shortId from 'shortid'
-import * as L from '../../../leda'
-import { Item } from '../../../leda/components/Notifications/types'
-import { StoryProps } from '../../types'
+import * as React from 'react';
+import shortId from 'shortid';
+import * as L from '../../../leda';
+import { Item } from '../../../leda/components/Notifications/types';
+import { StoryProps } from '../../types';
 
 const notifications = [
   {
@@ -41,11 +41,11 @@ const notifications = [
     type: 'accept',
     delay: -1,
   },
-]
+];
 
 const ActionButton = (props: {
-  item: L.NotificationsTypes.Item
-  onClose: (id: string | number) => void
+  item: L.NotificationsTypes.Item;
+  onClose: (id: string | number) => void;
 }): JSX.Element => {
   switch (props.item.type) {
     case 'accept': {
@@ -53,29 +53,29 @@ const ActionButton = (props: {
         <L.Button _success onClick={() => props.onClose(props.item.id)}>
           Принять
         </L.Button>
-      )
+      );
     }
     case 'reject': {
-      return <L.Button _warning>Отклонить</L.Button>
+      return <L.Button _warning>Отклонить</L.Button>;
     }
     default:
-      return null
+      return null;
   }
-}
+};
 
-export const Notifications = (storyProps: StoryProps): JSX.Element => {
-  const [items, setItems] = React.useState<Item[]>([])
+export const Notifications = (): JSX.Element => {
+  const [items, setItems] = React.useState<Item[]>([]);
 
   const handleClose = (id: string | number): void => {
-    const newItems = items.filter((item) => item.id !== id)
+    const newItems = items.filter((item) => item.id !== id);
 
-    setItems(newItems)
-  }
+    setItems(newItems);
+  };
 
   const handleNotificationsOnChange = (ev) => {
-    console.log('change', ev.component)
-    setItems(ev.component.value)
-  }
+    console.log('change', ev.component);
+    setItems(ev.component.value);
+  };
 
   const handleButtonOnClick = () =>
     setItems([
@@ -84,7 +84,7 @@ export const Notifications = (storyProps: StoryProps): JSX.Element => {
         ...notifications[Math.floor(Math.random() * 3)],
         id: shortId.generate(),
       },
-    ])
+    ]);
 
   return (
     <L.Div _demoStory>
@@ -107,5 +107,5 @@ export const Notifications = (storyProps: StoryProps): JSX.Element => {
         Добавить уведомление
       </L.Button>
     </L.Div>
-  )
-}
+  );
+};
