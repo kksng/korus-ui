@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Tabs: Fixed tabs display and scroll in IE
 - Modal, DemoPage: validate DemoPage Modal name field
 - FileDrop: Prevented firing change event before file upload
+- FileDrop: Fixed reset handler
 - Storybook: Fixed bug that prevented assets folder from being copied to build
 - NumericTextBox, MaskedInput: Fixed demo examples, removed unused props prefixRender and suffixRender
 

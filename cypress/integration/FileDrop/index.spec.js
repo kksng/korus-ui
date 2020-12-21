@@ -30,12 +30,26 @@ describe('FileDrop', () => {
 
   describe('Interaction', () => {
     it('Should has invalid class on attach file', () => {
-      cy.get(contentClassName)
-        .first()
+      cy.name('FDwithError')
         .attachFile('example.json', { subjectType: 'drag-n-drop' })
+        .parent()
         .parent()
         .should('have.class', theme.wrapper)
         .should('have.class', theme.invalid)
+    });
+    it('Reset should work properly', () => {
+      cy.name('FDwithLoader')
+        .attachFile('example.json', { subjectType: 'drag-n-drop' })
+        .next()
+        .should('contain', 'Файл example.json успешно загружен')
+        .name('reset')
+        .click()
+        .name('FDwithLoader')
+        .next()
+        .should('contain', 'Перетащите сюда файл для загрузки')
+        .name('FDwithError')
+        .next()
+        .should('contain', 'Перетащите сюда файл для загрузки')
     });
   });
 
