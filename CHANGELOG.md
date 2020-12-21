@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - FileDrop: Prevented firing change event before file upload
 - FileDrop: Fixed reset handler
 - Storybook: Fixed bug that prevented assets folder from being copied to build
+- Tour: Fixed IE component behavior.
 - NumericTextBox, MaskedInput: Fixed demo examples, removed unused props prefixRender and suffixRender
 
 
