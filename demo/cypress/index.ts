@@ -20,6 +20,7 @@ export { Notifications } from './Notifications';
 export { NumericRange } from './NumericRange';
 export { ProgressBar } from './ProgressBar';
 export { Password } from './Password';
+export { Rating } from './Rating';
 export { RadioGroup } from './RadioGroup';
 export { StatusBar } from './StatusBar';
 export { ToolTip } from './ToolTip';
