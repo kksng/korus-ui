@@ -40,3 +40,20 @@ export const createChangeHandler = (
 
   return { error, file };
 };
+
+
+export const createResetHandler = (
+  props: FileDropProps,
+) => () => {
+  const { name, onChange } = props;
+
+  const customEvent = {
+    component: {
+      error: null,
+      name,
+      value: null,
+    },
+  };
+
+  onChange?.(customEvent);
+};

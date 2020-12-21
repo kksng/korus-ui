@@ -165,7 +165,12 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     return null;
   }
 
-  const style = getModalPositionStyles(activeItem.position, activeItem.element.getBoundingClientRect(), isScrolling);
+  const style = getModalPositionStyles({
+    isScrolling,
+    padding,
+    position: activeItem.position,
+    rect: activeItem.element.getBoundingClientRect(),
+  });
 
   const content = (
     <>

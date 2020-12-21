@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Tour: Added step changing animation. Block page while step loading
 - VStepper: Added type warning, new props footerContent and nextStepType to VStepperItem
+- Refactoring: Added changelog generator
 
 ### Changed
 - Storybook: Changed library name to Korus-ui
@@ -18,8 +19,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Tabs: Fixed tabs display and scroll in IE
 - Modal, DemoPage: validate DemoPage Modal name field
 - FileDrop: Prevented firing change event before file upload
+- FileDrop: Fixed reset handler
 - Storybook: Fixed bug that prevented assets folder from being copied to build
 - Tour: Fixed IE component behavior.
+- NumericTextBox, MaskedInput: Fixed demo examples, removed unused props prefixRender and suffixRender
 
 
 ## [0.36.0] - 2020-12-07

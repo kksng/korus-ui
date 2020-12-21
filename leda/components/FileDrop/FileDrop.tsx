@@ -5,7 +5,7 @@ import {
 } from '../../utils';
 import { MAX_FILE_SIZE } from '../../constants';
 import { Div } from '../Div';
-import { createChangeHandler, createClickHandler } from './handlers';
+import { createChangeHandler, createClickHandler, createResetHandler } from './handlers';
 import {
   FileDropProps, FileDropRefCurrent,
 } from './types';
@@ -30,9 +30,11 @@ export const FileDrop = React.forwardRef((props: FileDropProps, ref: React.Ref<F
 
   const handleChange = createChangeHandler(props);
 
+  const handleReset = createResetHandler(props);
+
   const state = React.useMemo(() => ({ }), []);
 
-  const extra = React.useMemo(() => ({ reset: () => handleChange([], []) }), [handleChange]);
+  const extra = React.useMemo(() => ({ reset: () => handleReset() }), [handleReset]);
 
   const { isValid, InvalidMessage, validateCurrent } = useValidation(props, state, extra);
 
