@@ -7,15 +7,17 @@ import { GroupedObjectsData } from './GroupedObjectsData';
 import { BoundingElementRef } from './BoundingElementRef';
 import { CompareObjectsBy } from './CompareObjectsBy';
 import { SearchFields } from './SearchFields';
+import { Minimal } from './Minimal';
 
 export const DropDownSelect = () => (
   <Story title="DropDownSelect">
-    <DataTypes title="Разные типы data" />
-    <Filterable title="Режим фильтрации" />
-    <EmptyValues title="Выбор пустого значения" />
-    <GroupedObjectsData title="Сгруппированные списки" />
-    <BoundingElementRef title="Позиционирование" />
-    <CompareObjectsBy title="Сравнение" />
-    <SearchFields title="Поиск по полям объекта" />
+    <DataTypes title="Different types data" />
+    <Filterable title="Filtration mode" />
+    <EmptyValues title="Selecting an empty value" />
+    <GroupedObjectsData title="Grouped lists" />
+    <BoundingElementRef title="Positioning" />
+    <CompareObjectsBy title="Comparison" />
+    <SearchFields title="Search by object fields" />
+    <Minimal title="Minimal example" />
   </Story>
 );
