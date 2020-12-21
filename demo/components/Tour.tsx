@@ -8,7 +8,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '1',
     borderRadius: 4,
-    padding: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 1</L.H1>
@@ -33,6 +33,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '2',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 2</L.H1>
@@ -62,6 +63,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '3',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 3</L.H1>
@@ -91,6 +93,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '4',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 4</L.H1>
@@ -120,6 +123,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '5',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 5</L.H1>
@@ -149,6 +153,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '6',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 6</L.H1>
@@ -178,6 +183,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '7',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 7</L.H1>
@@ -211,7 +217,7 @@ export const Tour = (storyProps: StoryProps): React.ReactElement => {
   const [element7, ref7] = useElementRef();
 
   const [activeStep, setActiveStep] = React.useState<string | number | null>(null);
-  const [stepDelay, setStepDelay] = React.useState<number | undefined>(undefined); 
+  const [stepDelay, setStepDelay] = React.useState<number | undefined>(500);
 
   const data = getData([element1, element2, element3, element4, element5, element6, element7]);
 
@@ -265,11 +271,11 @@ export const Tour = (storyProps: StoryProps): React.ReactElement => {
           onChange={(ev) => setActiveStep(ev.component.value)}
           stepDelay={stepDelay}
         />
-        <L.Button 
+        <L.Button
           _warning
-          onClick={() => setStepDelay((stepDelay) => isNil(stepDelay) ? 2000 : undefined)}
+          onClick={() => setStepDelay((stepDelay) => isNil(stepDelay) ? 500 : undefined)}
         >
-          Set/remove stepDelay 2 sec
+          {isNil(stepDelay) ? 'Set stepDelay 500ms' : 'Remove stepDelay'}
         </L.Button>
       </L.Div>
     </L.Div>
