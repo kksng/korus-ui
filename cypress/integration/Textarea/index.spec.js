@@ -35,7 +35,7 @@ describe('Textarea', () => {
         .clear();
     });
     it('Should be disabled', () => {
-      cy.get('textarea[aria-required="false"]')
+      cy.get('textarea[data-test="textarea-disabled"]')
         .should('have.class', 'disabled')
         .should('be.disabled');
     });

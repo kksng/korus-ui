@@ -51,7 +51,7 @@ export const Textarea = () => {
       <br />
       <L.Textarea
         placeholder="Tell me your secrets..."
-        isRequired={false}
+        data-test="textarea-disabled"
         isDisabled={true}
         style={{ height: '200px' }}
         _width50
