@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Modal, DemoPage: validate DemoPage Modal name field
 - FileDrop: Prevented firing change event before file upload
 - Storybook: Fixed bug that prevented assets folder from being copied to build
+- Tour: Fixed IE component behavior.
 
 
 ## [0.36.0] - 2020-12-07

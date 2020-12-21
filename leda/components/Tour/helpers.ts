@@ -14,6 +14,20 @@ const createPoint = (x: number, y: number) => ({
 });
 
 /**
+ * Scrolls to position
+ * @param {number} top - where to scroll
+ */
+export const scrollToPosition = (top: number) => {
+  // TODO: Implement smooth scroll IE polyfill https://www.npmjs.com/package/smoothscroll-polyfill
+  const isNativeSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style; // IE does not support scroll behavior
+  if (isNativeSmoothScrollSupported) {
+    window.scrollTo({ behavior: 'smooth', left: 0, top });
+  } else {
+    window.scrollTo(0, top);
+  }
+};
+
+/**
  * Helper sets default tour element styles
  * @param {HTMLElement | null | undefined} element - tour element
  */

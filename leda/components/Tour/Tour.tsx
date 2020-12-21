@@ -5,7 +5,11 @@ import cx from 'classnames';
 
 import { Div } from '../Div';
 import {
-  createOverlaySvgPath, getModalPositionStyles, removeActiveClass, setActiveClass,
+  createOverlaySvgPath,
+  getModalPositionStyles,
+  removeActiveClass,
+  scrollToPosition,
+  setActiveClass,
 } from './helpers';
 import { TourProps, TourStepItem } from './types';
 import { useTheme } from '../../utils';
@@ -65,21 +69,22 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
   React.useEffect((): () => void => {
     const prevOverflow = document.body.style.overflow; // implementation as in Modal
+    const windowScrollY = document.documentElement.scrollTop; // window.scrollY ?? 0; // IE window.scrollY may be undefined
 
     if (activeItem?.element) {
       const scrollOffsetTop = activeItem.offsetTop ?? 200;
       const viewportOffsetTop = Math.ceil(activeItem.element.getBoundingClientRect().top);
-      const documentOffsetTop = viewportOffsetTop + window.scrollY;
+      const documentOffsetTop = viewportOffsetTop + windowScrollY;
       const shiftedDocumentOffsetTop = documentOffsetTop > scrollOffsetTop ? documentOffsetTop - scrollOffsetTop : documentOffsetTop; // позиция элемента со смещением
       const bodyScrollHeight = document.body.scrollHeight;
-      const availableScrollLength = bodyScrollHeight - (window.scrollY + window.innerHeight);
-      const neededToScrollAmount = shiftedDocumentOffsetTop - window.scrollY;
+      const availableScrollLength = bodyScrollHeight - (windowScrollY + window.innerHeight);
+      const neededToScrollAmount = shiftedDocumentOffsetTop - windowScrollY;
 
       document.body.style.overflow = 'hidden';
 
       if (
         bodyScrollHeight <= window.innerHeight // if body height is less than screen height, there is no scroll
-        || window.scrollY === shiftedDocumentOffsetTop // the page is already scrolled to the element
+        || windowScrollY === shiftedDocumentOffsetTop // the page is already scrolled to the element
         || neededToScrollAmount >= availableScrollLength // the page is scrolled to the end and cannot be scrolled further
       ) { // no need to scroll - display the tour immediately
         setSvgPath(createOverlaySvgPath(activeItem?.element, borderRadius, padding));
@@ -100,9 +105,11 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
         window.addEventListener('scroll', scrollHandler);
 
         if (stepDelay) {
-          setTimeout(() => window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop }), stepDelay);
+          setTimeout(() => {
+            scrollToPosition(shiftedDocumentOffsetTop);
+          }, stepDelay);
         } else {
-          window.scrollTo({ behavior: 'smooth', left: 0, top: shiftedDocumentOffsetTop });
+          scrollToPosition(shiftedDocumentOffsetTop);
         }
       }
     } else {
