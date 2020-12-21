@@ -1,3 +1,3 @@
 export interface StoryProps {
-  title: string
+  title?: string
 }

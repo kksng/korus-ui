@@ -2,6 +2,8 @@
 import * as React from 'react';
 import * as L from '../../../leda';
 
+const nameRegExp = /^[a-zA-Zа-яёА-ЯЁ]+$/u
+
 const Alerts = ({ setActiveAlertKey }: any) => (
   <>
     <L.ModalAlert
@@ -65,17 +67,35 @@ export const Basic = (props: any) => {
           <L.Div _inner _demoModalForm _container>
             <L.Div _demoModalLine _row _noGutters>
               <L.Span _colMd2>Фамилия</L.Span>
-              <L.Input _colMd10 form="modal-form" name="first-name" isRequired />
+              <L.Input
+                _colMd10
+                form="modal-form"
+                isRequired
+                name="first-name"
+                validator={nameRegExp}
+              />
             </L.Div>
             <br />
             <L.Div _demoModalLine _row _noGutters>
               <L.Span _colMd2>Имя</L.Span>
-              <L.Input _colMd10 form="modal-form" name="last-name" isRequired />
+              <L.Input
+                _colMd10
+                form="modal-form"
+                isRequired
+                name="last-name"
+                validator={nameRegExp}
+              />
             </L.Div>
             <br />
             <L.Div _demoModalLine _row _noGutters>
               <L.Span _colMd2>Отчество</L.Span>
-              <L.Input _colMd10 form="modal-form" name="middle-name" isRequired />
+              <L.Input
+                _colMd10
+                form="modal-form"
+                isRequired
+                name="middle-name"
+                validator={nameRegExp}
+              />
             </L.Div>
             <br />
             <L.Div _demoModalLine _row _noGutters>

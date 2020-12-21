@@ -5,10 +5,10 @@ import { stepContent } from '../../components/VStepper/constants';
 export const VStepper = (): React.ReactElement => (
   <L.Div _demoStory>
     <L.VStepper>
-      <L.VStepper.Item hasSignIcon titleText="Добавление расходов" statusText="Заполнено" type="success">
+      <L.VStepper.Item hasSignIcon titleText="Добавление расходов" statusText="Заполнено" type="success" footerContent={<L.Button name="btnNext">Далее</L.Button>}>
         {stepContent[0]}
       </L.VStepper.Item>
-      <L.VStepper.Item titleText="Персональные данные" statusText="Заполнено" type="success">
+      <L.VStepper.Item titleText="Персональные данные" statusText="Заполнено" type="success" nextStepType="progress">
         {stepContent[1]}
       </L.VStepper.Item>
       <L.VStepper.Item titleText="Подтверждение командировки" statusText="В процессе" type="progress">
@@ -19,6 +19,9 @@ export const VStepper = (): React.ReactElement => (
       </L.VStepper.Item>
       <L.VStepper.Item titleText="Дополнительная информация" statusText="Не заполнено">
         {stepContent[4]}
+      </L.VStepper.Item>
+      <L.VStepper.Item hasSignIcon titleText="Предупреждение" statusText="Не заполнено" type="warning">
+        Предупреждение
       </L.VStepper.Item>
     </L.VStepper>
   </L.Div>
