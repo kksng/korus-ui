@@ -82,13 +82,24 @@ export const createOverlaySvgPath = (element: HTMLElement | null, borderRadius: 
 
 /**
  * Helper calculates modal window position
- * @param {string} position - position of modal window against tour element
- * @param {DOMRect} rect - DOMRect of tour element
- * @param {boolean} isScrolling - flag defines if document is scrolling
+ * @param {string} props.position - position of modal window against tour element
+ * @param {DOMRect} props.rect - DOMRect of tour element
+ * @param {boolean} props.isScrolling - flag defines if document is scrolling
+ * @param {number} props.padding - padding of highlighted space
  *
  * @returns {React.CSSProperties} - styles of modal window
  */
-export const getModalPositionStyles = (position: PositionType, rect: DOMRect, isScrolling: boolean): React.CSSProperties => {
+export const getModalPositionStyles = ({
+  isScrolling,
+  padding,
+  position,
+  rect,
+}: {
+  isScrolling: boolean,
+  padding: number,
+  position: PositionType,
+  rect: DOMRect,
+}): React.CSSProperties => {
   if (isScrolling) {
     return {
       display: 'none',
@@ -99,48 +110,48 @@ export const getModalPositionStyles = (position: PositionType, rect: DOMRect, is
     case Position.Top:
       return {
         left: `${(rect.right + rect.left) / 2}px`,
-        top: `${rect.top - 20}px`,
+        top: `${(rect.top - 20) - padding}px`,
         transform: 'translate(-50%, -100%)',
       };
     case Position.Bottom:
       return {
         left: `${(rect.right + rect.left) / 2}px`,
-        top: `${rect.bottom + 20}px`,
+        top: `${(rect.bottom + 20) + padding}px`,
         transform: 'translateX(-50%)',
       };
     case Position.Right:
       return {
-        left: `${rect.right + 20}px`,
+        left: `${(rect.right + 20) + padding}px`,
         top: `${rect.top}px`,
       };
     case Position.Left:
       return {
-        left: `${rect.left - 20}px`,
+        left: `${(rect.left - 20) - padding}px`,
         top: `${rect.top}px`,
         transform: 'translateX(-100%)',
       };
     case Position.TopLeft:
       return {
         left: `${rect.right}px`,
-        top: `${rect.top - 20}px`,
+        top: `${(rect.top - 20) - padding}px`,
         transform: 'translate(-100%, -100%)',
       };
     case Position.TopRight:
       return {
         left: `${rect.left}px`,
-        top: `${rect.top - 20}px`,
+        top: `${(rect.top - 20) - padding}px`,
         transform: 'translateY(-100%)',
       };
     case Position.BottomLeft:
       return {
         left: `${rect.right}px`,
-        top: `${rect.bottom + 20}px`,
+        top: `${(rect.bottom + 20) + padding}px`,
         transform: 'translateX(-100%)',
       };
     case Position.BottomRight:
       return {
         left: `${rect.left}px`,
-        top: `${rect.bottom + 20}px`,
+        top: `${(rect.bottom + 20) + padding}px`,
       };
     default:
       return {

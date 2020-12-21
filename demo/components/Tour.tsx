@@ -8,7 +8,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '1',
     borderRadius: 4,
-    padding: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 1</L.H1>
@@ -33,6 +33,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '2',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 2</L.H1>
@@ -62,6 +63,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '3',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 3</L.H1>
@@ -91,6 +93,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '4',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 4</L.H1>
@@ -120,6 +123,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '5',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 5</L.H1>
@@ -149,6 +153,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '6',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 6</L.H1>
@@ -178,6 +183,7 @@ const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] =
   {
     stepKey: '7',
     borderRadius: 4,
+    padding: 14,
     content: (props) => (
       <L.Div _inner>
         <L.H1>Заголовок 7</L.H1>
