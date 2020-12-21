@@ -27,6 +27,7 @@ import {
   RadioGroup,
   Rating,
   StatusBar,
+  Textarea,
   ToolTip,
   TimePicker,
   Tour,
@@ -123,6 +124,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/statusbar">
           <StatusBar />
+        </Route>
+        <Route path="/cypress/textarea">
+          <Textarea />
         </Route>
         <Route path="/cypress/tooltip">
           <ToolTip />
