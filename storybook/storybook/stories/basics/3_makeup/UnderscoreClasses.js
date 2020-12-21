@@ -37,7 +37,7 @@ export const UnderscoreClasses = () => (
     </L.H1>
     <L.Div _block>
       <L.P>
-        В Leda есть инструменты для упрощения работы с CSS-классами:
+        В Korus-ui есть инструменты для упрощения работы с CSS-классами:
       </L.P>
       <ul className="txt-list">
         <li>
@@ -109,7 +109,7 @@ export const UnderscoreClasses = () => (
 
       <L.Div _block>
         <L.P>
-          или <b>теги Leda</b>:
+          или <b>теги Korus-ui</b>:
         </L.P>
         <pre>
           {`

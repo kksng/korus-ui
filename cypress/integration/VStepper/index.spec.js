@@ -45,7 +45,25 @@ describe('VStepper tests', () => {
       .eq(4)
       .should('not.have.attr', 'type')
       .and('not.have.class', 'sign-check')
-      .and('not.have.class', 'sign-stop'));
+      .and('not.have.class', 'sign-stop')
+      .get('.v-stepper-icon')
+      .eq(5)
+      .should('have.attr', 'type', 'warning'));
+
+    it('Should display footer content', () => cy
+      .get('.v-stepper-content-wrapper')
+      .first()
+      .get('.v-stepper-content')
+      .next()
+      .should('have.class', 'v-stepper-ending')
+      .name('btnNext')
+      .should('exist'));
+
+    it('Should be able to pass next step type to current step lina as className', () => cy
+      .get('.v-stepper-content-wrapper')
+      .eq(1)
+      .get('.v-stepper-line')
+      .should('have.class', 'progress'));
   });
 
   describe('Interaction', () => {

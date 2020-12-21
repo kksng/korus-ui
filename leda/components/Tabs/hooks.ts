@@ -61,11 +61,11 @@ export const useTabsScroll = ({ shouldScrollTabs, theme }: TabsScrollProps): Tab
     if (shouldScrollTabs && Element && elementRect && tabsContainer) {
       const tabsContainerRect = tabsContainer.getBoundingClientRect();
 
-      if (tabsContainerRect.width > elementRect.width) {
+      if (tabsContainer.scrollWidth > elementRect.width) {
         setHasScroll(true);
 
         setHasLeftArrow(tabsContainerRect.left < elementRect.left);
-        setHasRightArrow(Math.round(tabsContainerRect.right) > elementRect.right);
+        setHasRightArrow(Math.round(tabsContainer.scrollWidth + tabsContainerRect.left) > elementRect.right);
       }
     }
   };

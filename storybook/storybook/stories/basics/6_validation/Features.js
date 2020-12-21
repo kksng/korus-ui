@@ -6,7 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 export const Features = () => (
   <L.Div _article>
     <L.H1 _header>
-      Всё, что вы хотели от валидации, есть в Leda
+      Всё, что вы хотели от валидации, есть в Korus-ui
     </L.H1>
     <L.Div _block>
       <L.Ul _txt-list>

@@ -7,15 +7,17 @@ import { MinMax } from './MinMax';
 import { Customization } from './Customization';
 import { Positioned } from './Positioned';
 import { Controlled } from './Controlled';
+import { Minimal } from './Minimal';
 
 export const DatePicker = () => (
   <Story title="DatePicker">
-    <BasicUsage title="Простейшее использование" />
-    <Controlled title="Контролируемый компонент" />
-    <ControlledDate title="Контролирование только date" />
-    <MinMax title="Ограничение даты min-max" />
-    <Customization title="Кастомизация" />
+    <BasicUsage title="Basic example" />
+    <Controlled title="Controlled component" />
+    <ControlledDate title="Controlled only date" />
+    <MinMax title="Date constraint min-max" />
+    <Customization title="Customization" />
     <DisabledDates title="Disabled dates" />
-    <Positioned title="Позиционирование" />
+    <Positioned title="Positioning" />
+    <Minimal title="Minimal example" />
   </Story>
 );
