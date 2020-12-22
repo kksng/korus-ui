@@ -74,7 +74,7 @@ export const storybookTheme = create({
   appBorderColor: 'rgb(87,194,224)',
   brandTitle: 'Korus-ui',
   brandUrl: 'https://opensource.esphere.ru/korus-ui',
-  brandImage: '/favicon.ico',
+  brandImage: 'favicon.ico',
 });
 
 
