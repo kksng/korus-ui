@@ -376,48 +376,7 @@ export const Tour = (): React.ReactElement => {
             </L.ModalBody>
             <L.ModalFooter>
               <L.Button onClick={() => setOpen(false)}>Cancel</L.Button>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
+              <div style={{height: '600px'}}></div>
               <L.Button
                 _inner
                 ref={ref8}
@@ -425,18 +384,7 @@ export const Tour = (): React.ReactElement => {
               >
                 Tour element 8
               </L.Button>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
+              <div style={{height: '200px'}}></div>
             </L.ModalFooter>
           </L.Modal>
         </L.Div>
