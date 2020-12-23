@@ -16,6 +16,7 @@ export const Slider = () => {
       <br />
       <L.Div>Basic</L.Div>
       <L.Slider
+        _basic
         max={20}
         value={firstSliderValue}
         onChange={(ev) => {
@@ -45,8 +46,10 @@ export const Slider = () => {
       <br />
       <br />
       <br />
-      <L.Div>Disable</L.Div>
+      <L.Div>Disabled</L.Div>
       <L.Slider
+        _disable
+        isDisabled
         max={20}
         value={firstSliderValue}
         onChange={(ev) => {
@@ -68,6 +71,7 @@ export const Slider = () => {
       <br />
       <L.Div>Измененный тип value</L.Div>
       <L.Slider
+        _multi
         max={20}
         value={secondSliderValue}
         onChange={(ev) => {
