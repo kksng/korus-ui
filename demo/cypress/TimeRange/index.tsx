@@ -1,9 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 
-import * as L from "../../../leda";
+import * as L from '../../../leda';
 
 export const TimeRange = () => {
-  const [value, setValue] = React.useState<[string, string]>(["13:30", "15:00"]);
+  const [value, setValue] = React.useState<[string, string]>(['13:30', '15:00']);
 
   return (
     <L.Div _demoStory>
