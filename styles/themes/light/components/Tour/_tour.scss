@@ -90,6 +90,7 @@
 
 .tour {
   &-overlay {
+    opacity: 0.5;
     z-index: 10001;
     position: fixed;
     top: 0;

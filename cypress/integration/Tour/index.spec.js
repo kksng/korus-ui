@@ -54,6 +54,12 @@ describe('Tour tests', () => {
         .name('Close')
         .click()
     });
+    it('Tour element on Modal should scroll to viewport', () => {
+      cy.name('startModalTour')
+        .click()
+        .isInViewport('.tour-active-element')
+    });
+
   });
   describe('Interaction', () => {
     it('Should be able to interact with tour elements during tour', () => {

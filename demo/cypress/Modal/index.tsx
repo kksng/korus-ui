@@ -60,6 +60,46 @@ export const Modal = () => {
         <L.ModalFooter>
           <L.Button onClick={() => setOpen(false)}>Cancel</L.Button>
           <L.Button _warning form="modal-form" onClick={() => setOpen(false)} onValidationFail={() => alert('Заполните все поля, пожалуйста!')}>Submit</L.Button>
+          <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />       
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />        
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />       
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />        
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         </L.ModalFooter>
         <Alerts setActiveAlertKey={setActiveAlertKey} />
       </L.Modal>

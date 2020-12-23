@@ -16,8 +16,14 @@ const createPoint = (x: number, y: number) => ({
 /**
  * Scrolls to position
  * @param {number} top - where to scroll
+ * @param {boolean | undefined} isInsideModal - defines if element is inside modal window
+ * @param {HTMLElement | undefined} parentWithMaxScrollHeight - parent element with max scroll height
  */
-export const scrollToPosition = (top: number) => {
+export const scrollToPosition = (top: number, isInsideModal?: boolean, parentWithMaxScrollHeight?: HTMLElement) => {
+  if (isInsideModal && parentWithMaxScrollHeight) {
+    parentWithMaxScrollHeight.scrollTop = top;
+    return;
+  }
   // TODO: Implement smooth scroll IE polyfill https://www.npmjs.com/package/smoothscroll-polyfill
   const isNativeSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style; // IE does not support scroll behavior
   if (isNativeSmoothScrollSupported) {
@@ -173,4 +179,21 @@ export const getModalPositionStyles = ({
         top: '',
       };
   }
+};
+
+/**
+ * Helper gets all parent elements of target element
+ * @param {HTMLElement} element - target element
+ *
+ * @returns {HTMLElement[]} - array of parent elements
+ */
+export const getParents = (element: HTMLElement): HTMLElement[] => {
+  const parents: HTMLElement[] = [];
+  let current: HTMLElement = element;
+  while (current.parentNode) {
+    if (current.parentNode.nodeName.toLowerCase() === 'body') break;
+    current = current.parentNode as HTMLElement;
+    parents.push(current);
+  }
+  return parents;
 };
