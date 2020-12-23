@@ -24,6 +24,7 @@ export { Rating } from './Rating';
 export { RadioGroup } from './RadioGroup';
 export { StatusBar } from './StatusBar';
 export { Textarea } from './Textarea';
+export { TimeRange } from './TimeRange';
 export { ToolTip } from './ToolTip';
 export { Tour } from './Tour';
 export { TimePicker } from './TimePicker';

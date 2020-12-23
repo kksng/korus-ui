@@ -30,6 +30,7 @@ import {
   Textarea,
   ToolTip,
   TimePicker,
+  TimeRange,
   Tour,
   Validation,
   VStepper,
@@ -133,6 +134,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/timepicker">
           <TimePicker />
+        </Route>
+        <Route path="/cypress/timerange">
+          <TimeRange />
         </Route>
         <Route path="/cypress/tour">
           <Tour />
