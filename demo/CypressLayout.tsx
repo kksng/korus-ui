@@ -26,6 +26,7 @@ import {
   ProgressBar,
   RadioGroup,
   Rating,
+  Slider,
   StatusBar,
   Tabs,
   Textarea,
@@ -122,6 +123,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/rating">
           <Rating />
+        </Route>
+        <Route path="/cypress/slider">
+          <Slider />
         </Route>
         <Route path="/cypress/statusbar">
           <StatusBar />
