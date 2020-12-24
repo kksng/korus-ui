@@ -27,7 +27,7 @@ describe('Tabs', () => {
         .click()
         .should('have.class', 'disabled');
     });
-    it('Create a new tab', () => {
+    it('Create a custom tab', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
@@ -39,8 +39,40 @@ describe('Tabs', () => {
           expect(stub.getCall(0)).to.be.calledWith('Good!');
         });
     });
-    it.only('Scrolling through tabs', () => {
-      cy.get('.scroll').each();
+    it('Scrolling through tabs', () => {
+      cy.get('.scrol')
+        .find('.tabs-item')
+        .each((scrollTab) => {
+          cy.wrap(scrollTab)
+            .click()
+            .should('have.class', 'active')
+            .parents('.scrol')
+            .find('.tabs-content')
+            .should('be.visible');
+        })
+        .parents('.scrol')
+        .find('.tabs-arrow-left')
+        .click()
+        .parent()
+        .trigger('scroll')
+        .find('.tabs-item')
+        .first()
+        .should('be.visible');
+    });
+    it('Using content node', () => {
+      cy.get('.node')
+        .find('.tabs-item')
+        .each((nodeTab) => {
+          cy.wrap(nodeTab)
+            .click()
+            .should('have.class', 'active')
+            .parents()
+            .find('.txt-success')
+            .should('be.visible')
+            .parent()
+            .find('.box')
+            .should('be.visible');
+        });
     });
   });
 });

@@ -86,7 +86,7 @@ export const Tabs = () => {
       <br />
       <L.Div>Tabs to scroll</L.Div>
       <L.Tabs
-        _scroll
+        _scrol
         activeTabKey={selected}
         onChange={(ev) => setSelected(ev.component.value)}
         shouldScrollTabs
