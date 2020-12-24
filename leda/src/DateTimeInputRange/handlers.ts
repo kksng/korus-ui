@@ -7,7 +7,7 @@ import { ChangeEvent, DateTimeInputRefCurrent } from '../DateTimeInput/types';
 import {
   DateTimeInputRangeProps, DateTimeInputRangeState, DateTimeInputValueType, DateValueType,
 } from './types';
-import { isDateValue } from './helpers';
+import { isDateValue, normalizeTime } from './helpers';
 import { formatDateTime, stringToDate } from '../DateTimeInput/helpers';
 import { COMPONENT_TYPES } from '../DateTimeInput/constants';
 import { isDateGreater, isDateLess } from '../Calendar/helpers';
@@ -72,7 +72,7 @@ export const createChangeHandler = (
   state: DateTimeInputRangeState,
 ) => (caller: 'from' | 'to') => (ev: ChangeEvent): void => {
   const {
-    value: valueProp, onChange, name, format = 'dd.MM.yyyy',
+    value: valueProp, onChange, name, format = 'dd.MM.yyyy', type,
   } = props;
 
   const {
@@ -91,17 +91,21 @@ export const createChangeHandler = (
 
   const prevValue = valueProp && !isDateValue(valueProp) ? [mainStringToDate(valueProp[0], format), mainStringToDate(valueProp[1], format)] : date;
 
-  const newDate: DateValueType = caller === 'from' ? [ev.component.date, prevValue[1]] : [prevValue[0], ev.component.date];
+  const prevValueNormalized = type === COMPONENT_TYPES.DATE_ONLY ? prevValue.map(normalizeTime) : prevValue;
+
+  const newDate: DateValueType = caller === 'from' ? [ev.component.date, prevValueNormalized[1]] : [prevValueNormalized[0], ev.component.date];
+
+  const newDateNormalized: DateValueType = type === COMPONENT_TYPES.DATE_ONLY ? newDate.map(normalizeTime) as DateValueType : newDate;
 
   const newValue: [string, string] = [formatDateTime(newDate[0], format), formatDateTime(newDate[1], format)];
 
-  setDate(newDate);
+  setDate(newDateNormalized);
 
   if (isFunction(onChange)) {
     const customEvent = {
       ...ev,
       component: {
-        date: newDate,
+        date: newDateNormalized,
         name,
         value: newValue,
       },

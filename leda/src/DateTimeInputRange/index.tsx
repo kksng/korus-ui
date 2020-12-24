@@ -13,7 +13,9 @@ import { useCustomElements, useDateRange } from './hooks';
 import {
   createChangeHandler, createEnterPressHandler, handleErrors,
 } from './handlers';
-import { DateTimeInputRangeProps, DateTimeInputRangeRefCurrent, DateTimeInputRangeState } from './types';
+import {
+  DateTimeInputRangeProps, DateTimeInputRangeRefCurrent, DateTimeInputRangeState, DateTimeInputValueType,
+} from './types';
 
 export const DateTimeInputRange = React.forwardRef((props: DateTimeInputRangeProps, ref: React.Ref<DateTimeInputRangeRefCurrent>) => {
   const {
