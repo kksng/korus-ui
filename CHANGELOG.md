@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.38.0] - 2020-12-31
 
+### Fixed
+- DateRange: Fixed time for date values
 
 
 ## [0.37.0] - 2020-12-21

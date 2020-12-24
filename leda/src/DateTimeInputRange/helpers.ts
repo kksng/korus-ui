@@ -163,3 +163,15 @@ export const getRequiredMessage = (message?: string | [string | undefined, strin
 
   return [undefined, undefined];
 };
+
+/**
+ * Helper normalizes time for DateRange component
+ * @param {Date | null} dateValue - date value of component
+ * @param {number} index - index of date value
+ *
+ * @returns {Date | null} - date value with normalized time
+ */
+export const normalizeTime = (dateValue: Date | null, index: number): Date | null => {
+  if (!dateValue) return null;
+  return index === 0 ? new Date(dateValue.setHours(0, 0, 0, 0)) : new Date(dateValue.setHours(23, 59, 59, 59));
+};
