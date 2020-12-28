@@ -14,9 +14,8 @@ const createPoint = (x: number, y: number) => ({
 });
 
 /**
- * Scrolls to position
+ * Helper checks for modal window scroll and for scroll-behavior
  * @param {number} top - where to scroll
- * @param {boolean | undefined} isInsideModal - defines if element is inside modal window
  * @param {HTMLElement | undefined} parentWithMaxScrollHeight - parent element with max scroll height
  */
 export const scrollToPosition = (top: number, parentWithMaxScrollHeight?: HTMLElement) => {
@@ -196,4 +195,28 @@ export const getParentNodes = (element: HTMLElement): HTMLElement[] => {
     parentNodes.push(current);
   }
   return parentNodes;
+};
+
+/**
+ * Helper gets max scroll height
+ * @param {HTMLElement} element - target element
+ *
+ * @return {number} - scroll height
+ */
+export const getScrollHeight = (element: HTMLElement): number => {
+  const parentNodes = getParentNodes(element);
+  const maxParentScrollHeight = Math.max.apply(null, parentNodes.map((parentNode) => parentNode.scrollHeight));
+  return maxParentScrollHeight > document.body.scrollHeight ? maxParentScrollHeight : document.body.scrollHeight;
+};
+
+/**
+ * Helper get parent node with max scroll height
+ * @param {HTMLElement} element - target element
+ *
+ * @returns {HTMLElement | undefined} - parent node with max scroll height
+ */
+export const getParentWithMaxScrollHeight = (element: HTMLElement): HTMLElement | undefined => {
+  const parentNodes = getParentNodes(element);
+  const scrollHeight = getScrollHeight(element);
+  return parentNodes.find((parentNode) => parentNode.scrollHeight === scrollHeight);
 };
