@@ -61,7 +61,7 @@
       background-color: $black-02;
       color: $white;
       padding: 12px 8px 12px 12px;
-      align-items: unset;
+      align-items: baseline;
       box-shadow: none;
       margin-bottom: 8px;
     }
@@ -72,7 +72,7 @@
 
     .notifications-content {
       border-left: none;
-      width: auto;
+      width: 100%;
       padding: 0 12px 0 0;
       min-width: 334px;
     }
