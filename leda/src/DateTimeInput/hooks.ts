@@ -38,13 +38,13 @@ export const useDateTimeInputEffects = ({
   }, [valueProp, dispatch, isFocused]);
 
   React.useEffect(() => {
-    // синхронизируем отображение календаря с value
+    // synchronizing the calendar display with value
     if (dateState && conditions.isValueInRange) dispatch(setViewDate(dateState));
-
+    // if value is empty reset calendar to today date
     if (dateState === null) {
       const today = new Date();
-      const IsTodayInRange = !(min && today < min) && !(max && today > max);
-      if (IsTodayInRange) dispatch(setViewDate(today));
+      const isTodayInRange = !(min && today < min) && !(max && today > max);
+      if (isTodayInRange) dispatch(setViewDate(today));
     }
   }, [conditions.isValueInRange, dispatch, dateState, min, max]);
 
