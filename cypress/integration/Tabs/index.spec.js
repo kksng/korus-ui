@@ -4,7 +4,7 @@ describe('Tabs', () => {
   });
 
   describe('Interaction', () => {
-    it('Basic usage', () => {
+    it.only('Basic usage', () => {
       cy.get('.basic')
         .find('.tabs-item')
         .first()
@@ -23,6 +23,10 @@ describe('Tabs', () => {
         .find('.tabs-content')
         .contains('2nd tab content')
         .should('be.visible')
+        .parents('.basic')
+        .find('.tabs-content')
+        .first()
+        .should('not.have.class', 'active')
         .parents('.basic')
         .find('.tabs-item')
         .eq(2)
