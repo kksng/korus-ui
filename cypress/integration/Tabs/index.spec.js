@@ -4,7 +4,7 @@ describe('Tabs', () => {
   });
 
   describe('Interaction', () => {
-    it.only('Basic usage', () => {
+    it('Basic usage', () => {
       cy.get('.basic')
         .find('.tabs-item')
         .first()
