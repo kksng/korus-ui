@@ -35,7 +35,6 @@ export const Basic = (storyProps: StoryProps) => {
       <StateButtonGroup
         data={[
           { text: 'Default', props: {} },
-          { text: 'Opened', props: { isOpen: true } },
           { text: 'Disabled', props: { isDisabled: true } },
         ]}
         setProps={setProps}
