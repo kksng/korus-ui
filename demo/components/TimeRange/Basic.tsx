@@ -3,7 +3,7 @@ import * as L from '../../../leda';
 import { StoryProps } from '../../types';
 
 export const Basic = (storyProps: StoryProps) => {
-  const [props, setProps] = React.useState({ isDisabled: false, isOpen: false });
+  const [props, setProps] = React.useState({ isDisabled: false });
   const [value, setValue] = React.useState<[string, string]>(['13:30', '15:00']);
 
   return (
@@ -21,9 +21,6 @@ export const Basic = (storyProps: StoryProps) => {
           {...props}
         />
         <L.Div style={{ marginLeft: '50px' }}>
-          <L.Switcher onChange={() => setProps(prevProps => ({ ...prevProps, isOpen: !prevProps.isOpen }))}>isOpen</L.Switcher>
-          <br />
-          <br />
           <L.Switcher onChange={() => setProps(prevProps => ({ ...prevProps, isDisabled: !prevProps.isDisabled }))}>isDisabled</L.Switcher>
         </L.Div>
       </L.Div>
