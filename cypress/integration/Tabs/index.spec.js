@@ -12,6 +12,7 @@ describe('Tabs', () => {
         .should('have.class', 'active')
         .parents('.basic')
         .find('.tabs-content')
+        .contains('1st tab content')
         .should('be.visible')
         .parents('.basic')
         .find('.tabs-item')
@@ -20,6 +21,7 @@ describe('Tabs', () => {
         .should('have.class', 'active')
         .parents('.basic')
         .find('.tabs-content')
+        .contains('2nd tab content')
         .should('be.visible')
         .parents('.basic')
         .find('.tabs-item')
@@ -60,7 +62,7 @@ describe('Tabs', () => {
         .should('be.visible');
     });
     it('Using content node', () => {
-      cy.get('.node')
+      cy.get('.tabs-node')
         .find('.tabs-item')
         .each((nodeTab) => {
           cy.wrap(nodeTab)
