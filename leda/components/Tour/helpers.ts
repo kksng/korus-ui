@@ -19,8 +19,8 @@ const createPoint = (x: number, y: number) => ({
  * @param {boolean | undefined} isInsideModal - defines if element is inside modal window
  * @param {HTMLElement | undefined} parentWithMaxScrollHeight - parent element with max scroll height
  */
-export const scrollToPosition = (top: number, isInsideModal?: boolean, parentWithMaxScrollHeight?: HTMLElement) => {
-  if (isInsideModal && parentWithMaxScrollHeight) {
+export const scrollToPosition = (top: number, parentWithMaxScrollHeight?: HTMLElement) => {
+  if (parentWithMaxScrollHeight) {
     parentWithMaxScrollHeight.scrollTop = top;
     return;
   }
@@ -187,13 +187,13 @@ export const getModalPositionStyles = ({
  *
  * @returns {HTMLElement[]} - array of parent elements
  */
-export const getParents = (element: HTMLElement): HTMLElement[] => {
-  const parents: HTMLElement[] = [];
+export const getParentNodes = (element: HTMLElement): HTMLElement[] => {
+  const parentNodes: HTMLElement[] = [];
   let current: HTMLElement = element;
   while (current.parentNode) {
     if (current.parentNode.nodeName.toLowerCase() === 'body') break;
     current = current.parentNode as HTMLElement;
-    parents.push(current);
+    parentNodes.push(current);
   }
-  return parents;
+  return parentNodes;
 };

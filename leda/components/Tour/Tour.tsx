@@ -7,7 +7,7 @@ import { Div } from '../Div';
 import {
   createOverlaySvgPath,
   getModalPositionStyles,
-  getParents,
+  getParentNodes,
   removeActiveClass,
   scrollToPosition,
   setActiveClass,
@@ -73,9 +73,9 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     const windowScrollY = document.documentElement.scrollTop; // window.scrollY ?? 0; // IE window.scrollY may be undefined
 
     if (activeItem?.element) {
-      const parents = getParents(activeItem.element);
-      const maxParentScrollHeight = Math.max.apply(null, parents.map((parent) => parent.scrollHeight));
-      const parentWithMaxScrollHeight = parents.find((el) => el.scrollHeight === maxParentScrollHeight);
+      const parentNodes = getParentNodes(activeItem.element);
+      const maxParentScrollHeight = Math.max.apply(null, parentNodes.map((parentNdoe) => parentNdoe.scrollHeight));
+      const parentWithMaxScrollHeight = parentNodes.find((parentNdoe) => parentNdoe.scrollHeight === maxParentScrollHeight);
       const isInsideModal = maxParentScrollHeight > document.body.scrollHeight;
       const scrollHeight = isInsideModal ? maxParentScrollHeight : document.body.scrollHeight;
 
@@ -114,10 +114,10 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
 
         if (stepDelay) {
           setTimeout(() => {
-            scrollToPosition(shiftedDocumentOffsetTop, isInsideModal, parentWithMaxScrollHeight);
+            scrollToPosition(shiftedDocumentOffsetTop, parentWithMaxScrollHeight);
           }, stepDelay);
         } else {
-          scrollToPosition(shiftedDocumentOffsetTop, isInsideModal, parentWithMaxScrollHeight);
+          scrollToPosition(shiftedDocumentOffsetTop, parentWithMaxScrollHeight);
         }
       }
     } else {
