@@ -25,9 +25,9 @@ const handleLeftKeyPress = (payload: LeftRightKeyPressPayload): void => {
   const {
     year, month, dateVal, hours, minutes,
   } = dateShorthand;
-  // не перемещать курсор в инпуте, если календарь открыт
+  // do not move the cursor in the input if the calendar is open
   if (isOpen) ev.preventDefault();
-  // переместить выбранную дату влево
+  // move the selected date to the left
   if (viewType === VIEW_TYPES.DATES) {
     const newDate = new Date(year, month, dateVal - 1, hours, minutes);
 
@@ -75,12 +75,12 @@ const handleRightKeyPress = (payload: LeftRightKeyPressPayload): void => {
   const {
     year, month, dateVal, hours, minutes,
   } = dateShorthand;
-  // не перемещать курсор в инпуте, если календарь открыт
+  // do not move the cursor in the input if the calendar is open
   if (isOpen) ev.preventDefault();
-  // переместить выбранную дату вправо
+  // move the selected date to the left
   if (viewType === VIEW_TYPES.DATES) {
     const newDate = new Date(year, month, dateVal + 1, hours, minutes);
-    // Дату передают без времени, поэтому время равно 00:00, нужно указать текущее время
+    // The date is passed without time, so the time is 00:00, you need to specify the current time
     const monthWithoutTime = max
           && new Date(max.getFullYear(), max.getMonth(), max.getDate(), hours, minutes);
 
@@ -129,10 +129,10 @@ const handleUpKeyPress = (payload: UpDownKeyPressPayload): void => {
   const {
     year, month, dateVal, hours, minutes,
   } = dateShorthand;
-  // не прокручивать страницу, если календарь открыт
+  // do not scroll the page if the calendar is open
   if (isOpen) ev.preventDefault();
 
-  // переместить выбранную дату вверх
+  // move the selected date up
   if (viewType === VIEW_TYPES.DATES) {
     const newDate = new Date(year, month, dateVal - DAYS_IN_WEEK, hours, minutes);
 
@@ -180,10 +180,10 @@ const handleDownKeyPress = (payload: UpDownKeyPressPayload): void => {
   const {
     year, month, dateVal, hours, minutes,
   } = dateShorthand;
-  // не прокручивать страницу, если календарь открыт
+  // do not scroll the page if the calendar is open
   if (isOpen) ev.preventDefault();
 
-  // переместить выбранную дату вниз
+  // move the selected date down
   if (viewType === VIEW_TYPES.DATES) {
     const newDate = new Date(year, month, dateVal + DAYS_IN_WEEK, hours, minutes);
     const monthWithoutTime = max
@@ -219,17 +219,17 @@ const handleDownKeyPress = (payload: UpDownKeyPressPayload): void => {
 
     const isGreaterThanMax = max && newDate.getFullYear() > max.getFullYear();
 
-    // если год за пределами min-max - ничего не делать
+    // if the year is outside the min-max do nothing
     if (isLessThanMin || isGreaterThanMax) return;
 
-    // перейти на новый год
+    // move to the new year
     dispatch(setViewDate(newDate));
   }
 };
 
 const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
   const {
-    isOpen, onEnterPress, ev, name, date, value, viewType,
+    isOpen, onEnterPress, ev, name, date, viewType,
     viewDate, type, dateShorthand, min, max, format = 'dd.MM.yyyy', dispatch, onChange, maskedInputRef, timeMin, timeMax,
   } = payload;
 
@@ -239,7 +239,7 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
 
   const normalizedDateValue = getNormalizedValue(date, min, max, type, timeMin, timeMax);
 
-  // если календарь закрыт - вызывать onEnterPress
+  // if the calendar is closed, call onEnterPress
   if (!isOpen) {
     dispatch(setDate(normalizedDateValue));
 
@@ -267,10 +267,10 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
   }
 
   const updateDate = (newDate: Date): void => {
-    // неконтролируемый режим
+    // uncontrolled mode
     dispatch(setDate(newDate));
 
-    // контролируемый режим
+    // controlled mode
     if (isFunction(onChange)) {
       onChange({
         ...ev,
@@ -282,22 +282,22 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
       });
     }
   };
-  // не посылать событие дальше, если календарь открыт (например, чтобы не происходил переход к следующему полю)
+  // do not send the event further if the calendar is open (for example, so that the transition to the next field does not occur)
   ev.preventDefault();
 
   if (viewType === VIEW_TYPES.DATES && type === COMPONENT_TYPES.DATE_ONLY) {
-    // установить новую дату
+    // set a new date
     updateDate(viewDate);
-    // закрыть календарь
+    // close the calendar
     dispatch(setOpen(false));
   }
 
   if (viewType === VIEW_TYPES.DATES && type === COMPONENT_TYPES.DATE_TIME) {
-    // установить новую дату
+    // set a new date
     updateDate(viewDate);
-    // закрыть календарь
+    // close the calendar
     dispatch(setOpen(false));
-    // обновить выделение инпута
+    // update input selection
     updateInputSelection(maskedInputRef, format);
   }
 
@@ -325,7 +325,7 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
         ),
       );
     }
-    // открыть вид дат
+    // open date view
     dispatch(setViewType(VIEW_TYPES.DATES));
   }
 
@@ -351,7 +351,7 @@ const handleEnterKeyPress = (payload: EnterKeyPressPayload): void => {
         ),
       );
     }
-    // открыть вид месяцев
+    // open months view
     dispatch(setViewType(VIEW_TYPES.MONTHS));
   }
 };
@@ -363,13 +363,15 @@ const handleEscKeyPress = (payload: EscKeyPressPayload): void => {
 
 const handleTabKeyPress = (payload: TabKeyPressPayload): void => {
   const {
-    isOpen, ev, dispatch, viewType, isOneMonthInRange, isOneYearInRange,
+    isOpen, ev, dispatch, viewType, isOneMonthInRange, isOneYearInRange, type,
   } = payload;
 
-  // не переключаться на следующий компонент, если календарь закрыт
+  if (type === COMPONENT_TYPES.TIME_ONLY) return;
+
+  // do not switch to the next component if the calendar is closed
   if (!isOpen) {
     ev.preventDefault();
-    // открыть календарь
+    // open the calendar
     dispatch(setOpen(true));
 
     dispatch(setViewType(VIEW_TYPES.DATES));
@@ -378,16 +380,16 @@ const handleTabKeyPress = (payload: TabKeyPressPayload): void => {
   }
 
   if (viewType === VIEW_TYPES.DATES && !isOneMonthInRange) {
-    // не переключаться на следующий компонент, если открыт вид дат
+    // do not switch to the next component if the date view is open
     ev.preventDefault();
-    // открыть вид месяцев
+    // open the months view
     dispatch(setViewType(VIEW_TYPES.MONTHS));
   }
 
   if (viewType === VIEW_TYPES.MONTHS && !isOneYearInRange) {
-    // не переключаться на следующий компонент, если открыт вид месяцев
+    // do not switch to the next component if the months view is open
     ev.preventDefault();
-    // открыть вид годов
+    // open the years view
     dispatch(setViewType(VIEW_TYPES.YEARS));
   }
 };
@@ -419,7 +421,7 @@ export const createKeyDownHandler = ({
     month: viewDate.getMonth(),
     year: viewDate.getFullYear(),
   };
-  // пишем атрибуты в две строки
+  // writing attributes in two lines
   /* eslint-disable object-property-newline */
   switch (ev.key) {
     case KEYS.LEFT_IE:
@@ -466,7 +468,7 @@ export const createKeyDownHandler = ({
     }
     case KEYS.TAB: {
       handleTabKeyPress({
-        dispatch, ev, isOneMonthInRange, isOneYearInRange, isOpen, viewType,
+        dispatch, ev, isOneMonthInRange, isOneYearInRange, isOpen, type, viewType,
       });
       break;
     }

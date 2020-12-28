@@ -204,6 +204,7 @@ export interface TabKeyPressPayload {
   isOneMonthInRange: boolean,
   isOneYearInRange: boolean,
   isOpen: DateTimeInputProps['isOpen'],
+  type?: Values<typeof COMPONENT_TYPES>,
   viewType: DateTimeInputState['viewType'],
 }
 

@@ -18,6 +18,8 @@ export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
         onChange={ev => {
           update('Change', ev);
           setValue(ev.component.value);
+          console.log('value', ev.component.value);
+          console.log('date', ev.component.date);
         }}
         onBlur={ev => {
           update('Blur', ev);

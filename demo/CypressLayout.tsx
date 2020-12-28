@@ -26,10 +26,12 @@ import {
   ProgressBar,
   RadioGroup,
   Rating,
+  Slider,
   StatusBar,
   Textarea,
   ToolTip,
   TimePicker,
+  TimeRange,
   Tour,
   Validation,
   VStepper,
@@ -122,6 +124,9 @@ export const CypressLayout = () => (
         <Route path="/cypress/rating">
           <Rating />
         </Route>
+        <Route path="/cypress/slider">
+          <Slider />
+        </Route>
         <Route path="/cypress/statusbar">
           <StatusBar />
         </Route>
@@ -133,6 +138,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/timepicker">
           <TimePicker />
+        </Route>
+        <Route path="/cypress/timerange">
+          <TimeRange />
         </Route>
         <Route path="/cypress/tour">
           <Tour />
