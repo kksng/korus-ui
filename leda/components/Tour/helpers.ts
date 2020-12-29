@@ -14,10 +14,15 @@ const createPoint = (x: number, y: number) => ({
 });
 
 /**
- * Scrolls to position
+ * Helper checks for modal window scroll and for scroll-behavior
  * @param {number} top - where to scroll
+ * @param {HTMLElement | undefined} parentWithMaxScrollHeight - parent element with max scroll height
  */
-export const scrollToPosition = (top: number) => {
+export const scrollToPosition = (top: number, parentWithMaxScrollHeight?: HTMLElement) => {
+  if (parentWithMaxScrollHeight) {
+    parentWithMaxScrollHeight.scrollTop = top;
+    return;
+  }
   // TODO: Implement smooth scroll IE polyfill https://www.npmjs.com/package/smoothscroll-polyfill
   const isNativeSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style; // IE does not support scroll behavior
   if (isNativeSmoothScrollSupported) {
@@ -173,4 +178,45 @@ export const getModalPositionStyles = ({
         top: '',
       };
   }
+};
+
+/**
+ * Helper gets all parent elements of target element
+ * @param {HTMLElement} element - target element
+ *
+ * @returns {HTMLElement[]} - array of parent elements
+ */
+export const getParentNodes = (element: HTMLElement): HTMLElement[] => {
+  const parentNodes: HTMLElement[] = [];
+  let current: HTMLElement = element;
+  while (current.parentNode) {
+    if (current.parentNode.nodeName.toLowerCase() === 'body') break;
+    current = current.parentNode as HTMLElement;
+    parentNodes.push(current);
+  }
+  return parentNodes;
+};
+
+/**
+ * Helper gets max scroll height
+ * @param {HTMLElement} element - target element
+ *
+ * @return {number} - scroll height
+ */
+export const getScrollHeight = (element: HTMLElement): number => {
+  const parentNodes = getParentNodes(element);
+  const maxParentScrollHeight = Math.max.apply(null, parentNodes.map((parentNode) => parentNode.scrollHeight));
+  return maxParentScrollHeight > document.body.scrollHeight ? maxParentScrollHeight : document.body.scrollHeight;
+};
+
+/**
+ * Helper get parent node with max scroll height
+ * @param {HTMLElement} element - target element
+ *
+ * @returns {HTMLElement | undefined} - parent node with max scroll height
+ */
+export const getParentWithMaxScrollHeight = (element: HTMLElement): HTMLElement | undefined => {
+  const parentNodes = getParentNodes(element);
+  const scrollHeight = getScrollHeight(element);
+  return parentNodes.find((parentNode) => parentNode.scrollHeight === scrollHeight);
 };
