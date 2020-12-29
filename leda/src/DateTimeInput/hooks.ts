@@ -38,9 +38,15 @@ export const useDateTimeInputEffects = ({
   }, [valueProp, dispatch, isFocused]);
 
   React.useEffect(() => {
-    // синхронизируем отображение календаря с value
+    // synchronizing the calendar display with value
     if (dateState && conditions.isValueInRange) dispatch(setViewDate(dateState));
-  }, [conditions.isValueInRange, dispatch, dateState]);
+    // if value is empty reset calendar to today date
+    if (dateState === null) {
+      const today = new Date();
+      const isTodayInRange = !(min && today < min) && !(max && today > max);
+      if (isTodayInRange) dispatch(setViewDate(today));
+    }
+  }, [conditions.isValueInRange, dispatch, dateState, min, max]);
 
   React.useEffect(() => {
     // если в value пустая строка - нужно обнулить date для валидации
