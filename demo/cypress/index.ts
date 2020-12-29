@@ -18,6 +18,7 @@ export { Modal } from './Modal';
 export { MultiSelect } from './MultiSelect';
 export { Notifications } from './Notifications';
 export { NumericRange } from './NumericRange';
+export { NumericTextBox } from './NumericTextBox';
 export { ProgressBar } from './ProgressBar';
 export { Password } from './Password';
 export { Rating } from './Rating';
