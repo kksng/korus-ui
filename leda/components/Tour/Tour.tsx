@@ -7,6 +7,9 @@ import { Div } from '../Div';
 import {
   createOverlaySvgPath,
   getModalPositionStyles,
+  getParentNodes,
+  getParentWithMaxScrollHeight,
+  getScrollHeight,
   removeActiveClass,
   scrollToPosition,
   setActiveClass,
@@ -72,18 +75,23 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
     const windowScrollY = document.documentElement.scrollTop; // window.scrollY ?? 0; // IE window.scrollY may be undefined
 
     if (activeItem?.element) {
+      const scrollHeight = getScrollHeight(activeItem.element);
+
+      // If active element is inside modal window, get parent node (modal window) that should be scrolled
+      const isInsideModal = scrollHeight > document.body.scrollHeight;
+      const parentToScroll = isInsideModal ? getParentWithMaxScrollHeight(activeItem.element) : undefined;
+
       const scrollOffsetTop = activeItem.offsetTop ?? 200;
       const viewportOffsetTop = Math.ceil(activeItem.element.getBoundingClientRect().top);
       const documentOffsetTop = viewportOffsetTop + windowScrollY;
-      const shiftedDocumentOffsetTop = documentOffsetTop > scrollOffsetTop ? documentOffsetTop - scrollOffsetTop : documentOffsetTop; // позиция элемента со смещением
-      const bodyScrollHeight = document.body.scrollHeight;
-      const availableScrollLength = bodyScrollHeight - (windowScrollY + window.innerHeight);
-      const neededToScrollAmount = shiftedDocumentOffsetTop - windowScrollY;
+      const shiftedDocumentOffsetTop = documentOffsetTop > scrollOffsetTop ? documentOffsetTop - scrollOffsetTop : documentOffsetTop; // position with shift
+      const availableScrollLength = scrollHeight - (windowScrollY + window.innerHeight);
+      const neededToScrollAmount = parentToScroll ? shiftedDocumentOffsetTop - windowScrollY - parentToScroll.clientHeight : shiftedDocumentOffsetTop - windowScrollY;
 
       document.body.style.overflow = 'hidden';
 
       if (
-        bodyScrollHeight <= window.innerHeight // if body height is less than screen height, there is no scroll
+        scrollHeight <= window.innerHeight // if body height is less than screen height, there is no scroll
         || windowScrollY === shiftedDocumentOffsetTop // the page is already scrolled to the element
         || neededToScrollAmount >= availableScrollLength // the page is scrolled to the end and cannot be scrolled further
       ) { // no need to scroll - display the tour immediately
@@ -100,16 +108,18 @@ export const Tour = (props: TourProps): React.ReactElement | null => {
           setIsScrolling(false);
 
           window.removeEventListener('scroll', scrollHandler); // remove listener
+          if (parentToScroll) parentToScroll.removeEventListener('scroll', scrollHandler);
         }, 100);
 
         window.addEventListener('scroll', scrollHandler);
+        if (parentToScroll) parentToScroll.addEventListener('scroll', scrollHandler);
 
         if (stepDelay) {
           setTimeout(() => {
-            scrollToPosition(shiftedDocumentOffsetTop);
+            scrollToPosition(shiftedDocumentOffsetTop, parentToScroll);
           }, stepDelay);
         } else {
-          scrollToPosition(shiftedDocumentOffsetTop);
+          scrollToPosition(shiftedDocumentOffsetTop, parentToScroll);
         }
       }
     } else {

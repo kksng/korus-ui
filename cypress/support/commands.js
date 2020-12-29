@@ -102,3 +102,4 @@ Cypress.Commands.add('windowFocus', {prevSubject: true}, (element) => {
       return element;
     })
 })
+

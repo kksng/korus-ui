@@ -23,12 +23,14 @@ import {
   Notifications,
   NumericRange,
   NumericTextBox,
+  Pagination,
   Password,
   ProgressBar,
   RadioGroup,
   Rating,
   Slider,
   StatusBar,
+  Tabs,
   Textarea,
   ToolTip,
   TimePicker,
@@ -116,6 +118,9 @@ export const CypressLayout = () => (
         <Route path="/cypress/numerictextbox">
           <NumericTextBox />
         </Route>
+        <Route path="/cypress/pagination">
+          <Pagination />
+        </Route>
         <Route path="/cypress/password">
           <Password />
         </Route>
@@ -133,6 +138,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/statusbar">
           <StatusBar />
+        </Route>
+        <Route path="/cypress/tabs">
+          <Tabs />
         </Route>
         <Route path="/cypress/textarea">
           <Textarea />
