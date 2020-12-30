@@ -22,24 +22,24 @@ export const Tabs = (storyProps: StoryProps) => {
         </L.Tab>
         <L.Tab title={<div>Tab 2</div>} tabKey={1}>
           <L.Div _inner>
-             Volutpat blandit aliquam etiam erat. Diam maecenas sed enim ut. Ornare massa eget egestas purus viverra accumsan in nisl nisi. Vitae auctor eu
-             augue ut lectus. Consectetur adipiscing elit pellentesque habitant morbi tristique. Neque egestas congue quisque egestas diam. Aliquet enim
-             tortor at auctor urna nunc id cursus metus. Ut enim blandit volutpat maecenas volutpat. Ac turpis egestas maecenas pharetra convallis. Varius
-             morbi enim nunc faucibus a pellentesque sit. Pellentesque habitant morbi tristique senectus et. Porta non pulvinar neque laoreet suspendisse
-             interdum consectetur libero id. Molestie at elementum eu facilisis sed odio. Consequat semper viverra nam libero justo laoreet sit. Sit amet
-             luctus venenatis lectus magna fringilla urna porttitor. Mattis ullamcorper velit sed ullamcorper morbi. Ultrices vitae auctor eu augue ut lectus
-             arcu bibendum. Ut tellus elementum sagittis vitae et leo duis ut diam. Aliquam etiam erat velit scelerisque in dictum non consectetur a.
+            Volutpat blandit aliquam etiam erat. Diam maecenas sed enim ut. Ornare massa eget egestas purus viverra accumsan in nisl nisi. Vitae auctor eu
+            augue ut lectus. Consectetur adipiscing elit pellentesque habitant morbi tristique. Neque egestas congue quisque egestas diam. Aliquet enim
+            tortor at auctor urna nunc id cursus metus. Ut enim blandit volutpat maecenas volutpat. Ac turpis egestas maecenas pharetra convallis. Varius
+            morbi enim nunc faucibus a pellentesque sit. Pellentesque habitant morbi tristique senectus et. Porta non pulvinar neque laoreet suspendisse
+            interdum consectetur libero id. Molestie at elementum eu facilisis sed odio. Consequat semper viverra nam libero justo laoreet sit. Sit amet
+            luctus venenatis lectus magna fringilla urna porttitor. Mattis ullamcorper velit sed ullamcorper morbi. Ultrices vitae auctor eu augue ut lectus
+            arcu bibendum. Ut tellus elementum sagittis vitae et leo duis ut diam. Aliquam etiam erat velit scelerisque in dictum non consectetur a.
           </L.Div>
         </L.Tab>
         <L.Tab title="Tab 3" isDisabled tabKey={2}>
           <L.Div _inner>
-             Volutpat blandit aliquam etiam erat. Diam maecenas sed enim ut. Ornare massa eget egestas purus viverra accumsan in nisl nisi. Vitae auctor eu
-             augue ut lectus. Consectetur adipiscing elit pellentesque habitant morbi tristique. Neque egestas congue quisque egestas diam. Aliquet enim
-             tortor at auctor urna nunc id cursus metus. Ut enim blandit volutpat maecenas volutpat. Ac turpis egestas maecenas pharetra convallis. Varius
-             morbi enim nunc faucibus a pellentesque sit. Pellentesque habitant morbi tristique senectus et. Porta non pulvinar neque laoreet suspendisse
-             interdum consectetur libero id. Molestie at elementum eu facilisis sed odio. Consequat semper viverra nam libero justo laoreet sit. Sit amet
-             luctus venenatis lectus magna fringilla urna porttitor. Mattis ullamcorper velit sed ullamcorper morbi. Ultrices vitae auctor eu augue ut lectus
-             arcu bibendum. Ut tellus elementum sagittis vitae et leo duis ut diam. Aliquam etiam erat velit scelerisque in dictum non consectetur a.
+            Volutpat blandit aliquam etiam erat. Diam maecenas sed enim ut. Ornare massa eget egestas purus viverra accumsan in nisl nisi. Vitae auctor eu
+            augue ut lectus. Consectetur adipiscing elit pellentesque habitant morbi tristique. Neque egestas congue quisque egestas diam. Aliquet enim
+            tortor at auctor urna nunc id cursus metus. Ut enim blandit volutpat maecenas volutpat. Ac turpis egestas maecenas pharetra convallis. Varius
+            morbi enim nunc faucibus a pellentesque sit. Pellentesque habitant morbi tristique senectus et. Porta non pulvinar neque laoreet suspendisse
+            interdum consectetur libero id. Molestie at elementum eu facilisis sed odio. Consequat semper viverra nam libero justo laoreet sit. Sit amet
+            luctus venenatis lectus magna fringilla urna porttitor. Mattis ullamcorper velit sed ullamcorper morbi. Ultrices vitae auctor eu augue ut lectus
+            arcu bibendum. Ut tellus elementum sagittis vitae et leo duis ut diam. Aliquam etiam erat velit scelerisque in dictum non consectetur a.
           </L.Div>
         </L.Tab>
         <L.Tab
@@ -52,7 +52,12 @@ export const Tabs = (storyProps: StoryProps) => {
                 alert('Good!');
               }}
             >
-              <L.I _noviconPlusInCircle />
+              <img
+                alt=""
+                height="20"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAFKADAAQAAAABAAAAFAAAAACRFdLHAAABqElEQVQ4Ea2VO07DQBCGHZ4Vr4IKkDgAEhRRyigVQiDRcAAiGu7AAVJwAig5AhTUUUreQhwgBYiGAkGHxOP7zBhsA0Kg/NK3O7OeGe96HKeS/KxBLs3DAqxG2AHzBVzCU6z9Og0QsQHH8PoDJxFjbEGVgpck0/i7sBzrR8wd6IY/y1yHWviHzJtwHX5hmsI7B3d1CkvwZQex5jVjjDXH3IKG8LybAfswAb/JGGPNMdcaH2pieeEMxiGvfpxWoJ2XseaY24RUw4wuPsNiulIcRnHvAu2yzDHXGtZKqvACNqC8A5aSEbgJtMsyx1xrVPsY5sBut8E7ZXI3Y+CxjBNt1/I7NacN1pizi2uguun4PrSY1sO30GTY2U5092Ar1rsxrxncczWpaJe2S5WzI8+wfhtol49smrlppz3yVTgNZh9w9hwfsJUPW9Q9PKbW52BOAyxorbTVttxCvgJludM/vTYWaIJ3sLCdzMsd2CTRzstYc9Lj5i8M4fT0p2fxnnwcvvt87VB8xTsg37sOdEHNQh1qoDzVJnz7+TJA2fkN6MkH1oKZ/vUX8AZKZHKOVNf5OQAAAABJRU5ErkJggg=="
+                width="20"
+              />
             </Element>
           )}
         />

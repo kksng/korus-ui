@@ -58,7 +58,6 @@
 
     &:before {
       content: "";
-      font-family: "novicon" !important;
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -110,7 +109,7 @@
       color: $black-01;
     }
   }
-  
+
   .line {
     @include line-position(2.9rem, 1rem, 0);
     width: calc(100% - 2rem);
@@ -126,10 +125,13 @@
 
   .success {
     &:before {
-      content: "\e96c";
       background-color: $brand-primary;
-      color: $white;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAADqADAAQAAAABAAAACwAAAABW2JSwAAAAqklEQVQoFZWOzQnCQBBGXfCk8Q/LiQVZgb0oluBZj9EQEEVIBVaQowWMb3RG4w9xHXjMZPZ7uwmtP0pExsRXUEVrSCMoQWsdJRIcwkkNagfdnyKhARxBawt3iWEKMwjvt7DrwwG0npIGWZxva5E5/SEz92BvZ6+SiRMOLxZY0AMkUNjuU/JfI1CXl3znJmX0jue+dgIp+MuMkkGz5DcRVLmCTbRUk9s+N/UrFavY/03pVXsAAAAASUVORK5CYII=");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: auto;
       border: none;
+      color: $white;
     }
 
     .line {

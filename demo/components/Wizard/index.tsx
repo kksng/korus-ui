@@ -5,7 +5,7 @@ import { Minimal } from './Minimal';
 
 export const Wizard = () => (
   <Story title="Wizard">
-    <Minimal title="Minimal example" />
     <Basic title="Basic example" />
+    <Minimal title="Minimal example" />
   </Story>
 );
