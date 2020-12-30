@@ -6,6 +6,7 @@ export const stateActionTypes = {
   SET_DATE: 'SET_DATE',
   SET_FOCUSED: 'SET_FOCUSED',
   SET_OPEN: 'SET_OPEN',
+  SET_PREV_DATE: 'SET_PREV_DATE',
   SET_VALUE: 'SET_VALUE',
   SET_VIEW_DATE: 'SET_VIEW_DATE',
   SET_VIEW_TYPE: 'SET_VIEW_TYPE',
@@ -14,6 +15,12 @@ export const stateActionTypes = {
 export const setDate = (newDate: Date | null): Action<StateActionTypes['SET_DATE'], StateActionPayloads['SET_DATE']> => ({
   payload: newDate,
   type: stateActionTypes.SET_DATE,
+});
+
+
+export const setPrevDate = (prevDate: Date | null): Action<StateActionTypes['SET_PREV_DATE'], StateActionPayloads['SET_PREV_DATE']> => ({
+  payload: prevDate,
+  type: stateActionTypes.SET_PREV_DATE,
 });
 
 export const setValue = (newValue: string): Action<StateActionTypes['SET_VALUE'], StateActionPayloads['SET_VALUE']> => ({

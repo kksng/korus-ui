@@ -246,3 +246,22 @@ export const getValue = ({
 
   return '';
 };
+
+/**
+ * Helper checks if hours, minutes or seconds exceed limits
+ * @param {string} mask - mask for time input
+ * @param {maskedValue} maskedValue - actual masked value
+ *
+ * @return {boolean}
+ */
+export const isTimeWithinLimits = (mask: string, maskedValue: string): boolean => {
+  const maskDivider = mask.split('').find((element) => element !== '#');
+
+  const hours = maskedValue.split(maskDivider || ':')[0];
+  const minutes = maskedValue.split(maskDivider || ':')[1];
+  const seconds = maskedValue.split(maskDivider || ':')[2];
+
+  return Number(hours) <= HOURS_LIMITS[1]
+  && (minutes === undefined || Number(minutes) <= MINUTES_LIMITS[1])
+  && (seconds === undefined || Number(seconds) <= MINUTES_LIMITS[1]);
+};

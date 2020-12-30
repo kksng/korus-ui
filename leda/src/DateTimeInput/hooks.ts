@@ -6,7 +6,7 @@ import { Span } from '../../components/Span';
 import { useElement } from '../../utils';
 import { VIEW_TYPES } from '../Calendar/constants';
 import { MaskedInputBase } from '../MaskedInputBase';
-import { setDate, setViewDate } from './actions';
+import { setDate, setPrevDate, setViewDate } from './actions';
 import {
   stringToDate,
 } from './helpers';
@@ -40,6 +40,8 @@ export const useDateTimeInputEffects = ({
   React.useEffect(() => {
     // synchronizing the calendar display with value
     if (dateState && conditions.isValueInRange) dispatch(setViewDate(dateState));
+    // memorizing date state
+    if (dateState) dispatch(setPrevDate(dateState));
     // if value is empty reset calendar to today date
     if (dateState === null) {
       const today = new Date();
@@ -82,6 +84,7 @@ export const useDateTimeInputState = (props: DateTimeInputProps): [DateTimeInput
     isFocused: false,
     isOpen: false,
     isValid: true,
+    prevDate: null,
     value: '',
     viewDate: todayIsMin
     || todayIsMax
@@ -128,4 +131,15 @@ export const useCustomElements = (props: DateTimeInputProps, state: DateTimeInpu
     Input,
     Wrapper,
   };
+};
+
+export const useClearMask = (): [string | undefined, () => () => void] => {
+  const [maskedInputValue, setMaskedInputValue] = React.useState<undefined | string>(undefined);
+
+  const clearMaskValue = () => {
+    setMaskedInputValue(undefined);
+    return () => setMaskedInputValue('');
+  };
+
+  return [maskedInputValue, clearMaskValue];
 };
