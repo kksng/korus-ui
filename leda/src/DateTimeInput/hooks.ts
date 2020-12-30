@@ -51,7 +51,7 @@ export const useDateTimeInputEffects = ({
   }, [conditions.isValueInRange, dispatch, dateState, min, max]);
 
   React.useEffect(() => {
-    // если в value пустая строка - нужно обнулить date для валидации
+    // if the value is an empty string, the date should be reset for validation
     if (isDate(valueProp) || isNil(valueProp) || isFocused) return;
 
     if (valueProp.length === 0) {
@@ -59,7 +59,7 @@ export const useDateTimeInputEffects = ({
     }
 
     const newDate = stringToDate(valueProp, format);
-    // если в инпуте валидная дата - записываем в date, иначе - запиываем null
+    // if the input contains a valid date set this date to state, otherwise set null
     if (newDate && newDate.getDate()) dispatch(setDate(newDate));
     else dispatch(setDate(null));
   }, [dispatch, format, isFocused, max, min, valueProp]);
@@ -70,11 +70,11 @@ export const useDateTimeInputState = (props: DateTimeInputProps): [DateTimeInput
     value: valueProp, format, min, max, isOpen,
   } = props;
 
-  // если сегодняшняя дата за пределами min/max - открываем календарь с датой min или max
+  // if today's date is outside of min/max open the calendar with the date min or max
   const todayIsMin = (min && new Date() < min) ? min : null;
 
   const todayIsMax = (max && new Date() > max) ? max : null;
-  // сегодня, время берется равно 00:00
+  // today, time is 00:00
   const today = new Date();
 
   const stringValue = isDate(valueProp) || isNil(valueProp) ? '' : valueProp;

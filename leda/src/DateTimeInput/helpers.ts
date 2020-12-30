@@ -13,7 +13,7 @@ import {
   DateWithToDateMethod, DateTimeInputProps, DateTimeInputState, NormalizeValueArgs, TimeLimits,
 } from './types';
 
-// извлекает число по паттерну и формату. Пример: ("dd.MM.yy", "dd", "18.05.19") => 18
+// retrieves a number according to pattern and format. Example: ("dd.MM.yy", "dd", "18.05.19") => 18
 const extractFromFormat = (format: string, pattern: string, string: string): number | null => {
   const formatStartIndex = format.indexOf(pattern);
 
@@ -32,7 +32,7 @@ export const stringToDate = (string: string | undefined, format: string | undefi
   || string.includes('_')) return null;
 
   if (!format) {
-    // по-умолчанию формат dd.MM.yyyy hh:mm
+    // default format dd.MM.yyyy hh:mm
     return new Date(+string.slice(6, 10),
       +string.slice(3, 5) - 1,
       +string.slice(0, 2),
@@ -175,7 +175,7 @@ const normilizeNumber = (value: number, rules: TimeLimits): number => {
   return value;
 };
 
-/* Нормализуем ограничители, приводим к минимальному или максимальному значению, или оставляем как есть */
+/* Normalize the limiters, bring them to the minimum or maximum value, or leave them as they are */
 export const normalizeTimeLimits = (timeLimits: TimeLimits | undefined): TimeLimits | undefined => {
   if (!timeLimits) return undefined;
   const [hours, minutes] = timeLimits;

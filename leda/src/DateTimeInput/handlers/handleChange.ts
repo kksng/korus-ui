@@ -1,6 +1,6 @@
 import { isFunction } from 'lodash';
 import {
-  setDate, setPrevDate, setValue, setViewDate,
+  setDate, setPrevDate, setValue,
 } from '../actions';
 import {
   createMask, formatDateTime, isTimeWithinLimits, stringToDate,
