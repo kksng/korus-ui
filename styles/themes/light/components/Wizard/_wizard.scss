@@ -126,10 +126,6 @@
   .success {
     &:before {
       background-color: $brand-primary;
-      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAADqADAAQAAAABAAAACwAAAABW2JSwAAAAqklEQVQoFZWOzQnCQBBGXfCk8Q/LiQVZgb0oluBZj9EQEEVIBVaQowWMb3RG4w9xHXjMZPZ7uwmtP0pExsRXUEVrSCMoQWsdJRIcwkkNagfdnyKhARxBawt3iWEKMwjvt7DrwwG0npIGWZxva5E5/SEz92BvZ6+SiRMOLxZY0AMkUNjuU/JfI1CXl3znJmX0jue+dgIp+MuMkkGz5DcRVLmCTbRUk9s+N/UrFavY/03pVXsAAAAASUVORK5CYII=");
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: auto;
       border: none;
       color: $white;
     }

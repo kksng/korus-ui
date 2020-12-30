@@ -42,25 +42,6 @@ export const Tabs = (storyProps: StoryProps) => {
             arcu bibendum. Ut tellus elementum sagittis vitae et leo duis ut diam. Aliquam etiam erat velit scelerisque in dictum non consectetur a.
           </L.Div>
         </L.Tab>
-        <L.Tab
-          title=""
-          tabKey={3}
-          tabRender={({ Element, elementProps }) => (
-            <Element
-              {...elementProps}
-              onClick={() => {
-                alert('Good!');
-              }}
-            >
-              <img
-                alt=""
-                height="20"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAFKADAAQAAAABAAAAFAAAAACRFdLHAAABqElEQVQ4Ea2VO07DQBCGHZ4Vr4IKkDgAEhRRyigVQiDRcAAiGu7AAVJwAig5AhTUUUreQhwgBYiGAkGHxOP7zBhsA0Kg/NK3O7OeGe96HKeS/KxBLs3DAqxG2AHzBVzCU6z9Og0QsQHH8PoDJxFjbEGVgpck0/i7sBzrR8wd6IY/y1yHWviHzJtwHX5hmsI7B3d1CkvwZQex5jVjjDXH3IKG8LybAfswAb/JGGPNMdcaH2pieeEMxiGvfpxWoJ2XseaY24RUw4wuPsNiulIcRnHvAu2yzDHXGtZKqvACNqC8A5aSEbgJtMsyx1xrVPsY5sBut8E7ZXI3Y+CxjBNt1/I7NacN1pizi2uguun4PrSY1sO30GTY2U5092Ar1rsxrxncczWpaJe2S5WzI8+wfhtol49smrlppz3yVTgNZh9w9hwfsJUPW9Q9PKbW52BOAyxorbTVttxCvgJludM/vTYWaIJ3sLCdzMsd2CTRzstYc9Lj5i8M4fT0p2fxnnwcvvt87VB8xTsg37sOdEHNQh1qoDzVJnz7+TJA2fkN6MkH1oKZ/vUX8AZKZHKOVNf5OQAAAABJRU5ErkJggg=="
-                width="20"
-              />
-            </Element>
-          )}
-        />
       </L.Tabs>
     </L.Div>
   );
