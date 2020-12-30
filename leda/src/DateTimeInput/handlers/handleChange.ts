@@ -27,7 +27,7 @@ export const createChangeHandler = ({
   const maskedValue = maskValue(ev.component.value, mask);
 
   // for time only components prohibit entry of values that exceed max limits
-  // for hours max limit is 23, for minutes and seconds - 60
+  // for hours max limit is 23, for minutes and seconds - 59
   if (type === COMPONENT_TYPES.TIME_ONLY) {
     // function clears input with masked value
     const resetMaskValue = clearMaskValue();
