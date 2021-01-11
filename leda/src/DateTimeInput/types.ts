@@ -131,6 +131,7 @@ export interface DateTimeInputState {
   isFocused: boolean,
   isOpen: boolean,
   isValid: boolean,
+  prevDate: Date | null,
   value: string,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
@@ -222,6 +223,7 @@ export interface StateActionPayloads {
   SET_DATE: Date | null,
   SET_FOCUSED: boolean,
   SET_OPEN: boolean,
+  SET_PREV_DATE: Date | null,
   SET_VALID: boolean,
   SET_VALUE: string,
   SET_VIEW_DATE: Date,
@@ -342,6 +344,7 @@ export interface CustomElements {
 }
 
 export interface HandlersData {
+  clearMaskValue: () => () => void,
   conditions: CalendarConditions,
   dispatch: React.Dispatch<AllActions>,
   maskedInputRef: React.MutableRefObject<HTMLInputElement | null>,

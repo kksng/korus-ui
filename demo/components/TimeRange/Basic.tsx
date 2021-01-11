@@ -12,10 +12,13 @@ export const Basic = (storyProps: StoryProps) => {
       <br />
       <L.Div style={{ display: 'flex' }}>
         <L.TimeRange
-          min={new Date(2019, 9, 5, 12, 30)}
-          max={new Date(2019, 9, 7, 17, 0)}
+          timeMin={[12, 30]}
+          timeMax={[17, 0]}
           value={value}
-          onChange={ev => setValue(ev.component.value)}
+          onChange={ev => {
+            setValue(ev.component.value)
+            console.log(ev.component);
+          }}
           isRequired={[true, false]}
           _width50
           {...props}

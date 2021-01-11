@@ -13,7 +13,7 @@ import {
   DateWithToDateMethod, DateTimeInputProps, DateTimeInputState, NormalizeValueArgs, TimeLimits,
 } from './types';
 
-// извлекает число по паттерну и формату. Пример: ("dd.MM.yy", "dd", "18.05.19") => 18
+// retrieves a number according to pattern and format. Example: ("dd.MM.yy", "dd", "18.05.19") => 18
 const extractFromFormat = (format: string, pattern: string, string: string): number | null => {
   const formatStartIndex = format.indexOf(pattern);
 
@@ -32,7 +32,7 @@ export const stringToDate = (string: string | undefined, format: string | undefi
   || string.includes('_')) return null;
 
   if (!format) {
-    // по-умолчанию формат dd.MM.yyyy hh:mm
+    // default format dd.MM.yyyy hh:mm
     return new Date(+string.slice(6, 10),
       +string.slice(3, 5) - 1,
       +string.slice(0, 2),
@@ -175,7 +175,7 @@ const normilizeNumber = (value: number, rules: TimeLimits): number => {
   return value;
 };
 
-/* Нормализуем ограничители, приводим к минимальному или максимальному значению, или оставляем как есть */
+/* Normalize the limiters, bring them to the minimum or maximum value, or leave them as they are */
 export const normalizeTimeLimits = (timeLimits: TimeLimits | undefined): TimeLimits | undefined => {
   if (!timeLimits) return undefined;
   const [hours, minutes] = timeLimits;
@@ -245,4 +245,23 @@ export const getValue = ({
   if (isString(valueProp)) return valueProp;
 
   return '';
+};
+
+/**
+ * Helper checks if hours, minutes or seconds exceed limits
+ * @param {string} mask - mask for time input
+ * @param {maskedValue} maskedValue - actual masked value
+ *
+ * @return {boolean}
+ */
+export const isTimeWithinLimits = (mask: string, maskedValue: string): boolean => {
+  const maskDivider = mask.split('').find((element) => element !== '#');
+
+  const hours = maskedValue.split(maskDivider || ':')[0];
+  const minutes = maskedValue.split(maskDivider || ':')[1];
+  const seconds = maskedValue.split(maskDivider || ':')[2];
+
+  return Number(hours) <= HOURS_LIMITS[1]
+  && (minutes === undefined || Number(minutes) <= MINUTES_LIMITS[1])
+  && (seconds === undefined || Number(seconds) <= MINUTES_LIMITS[1]);
 };
