@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { useEventSpy } from '../../useEventSpy';
-import { RenderEvent, SomeObject } from '../../../leda/commonTypes';
+import { RenderEvent, SomeObject } from '../../../korus-ui/commonTypes';
 
 export const NumericTextBox = () => {
   const [props, setProps] = React.useState<SomeObject>({});
