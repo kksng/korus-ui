@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useElementRef } from '../../../leda/utils';
+import * as L from '../../../korus-ui';
+import { useElementRef } from '../../../korus-ui/utils';
 import { StoryProps } from '../../types';
 
 const getData = (elements: (HTMLElement | null)[]): L.TourTypes.TourStepItem[] => [

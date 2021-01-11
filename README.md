@@ -99,7 +99,7 @@ import * as L from 'korus-ui';
 │       └── AutoComplete                : demo examples of component for cypress tests
 │           └── index.tsx                   : component's usage examples
 │
-├── leda                         : library
+├── korus-ui                     : library
 │   ├── commonTypes                  : common types
 │   │   └── index.ts
 │   ├── components                   : exported library components

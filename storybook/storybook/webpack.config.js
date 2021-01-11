@@ -17,7 +17,7 @@ module.exports = ({ config }) => {
         to: 'assets',
       },
       {
-        from: 'node_modules/@korus/leda/dist/styles/leda',
+        from: 'node_modules/@korus/leda/dist/styles/korus-ui',
         to: 'assets',
       },
     ]),

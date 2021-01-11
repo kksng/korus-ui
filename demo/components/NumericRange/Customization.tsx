@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/accessible-emoji,react/prop-types,no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 
 export const Customization = (storyProps: StoryProps) => {

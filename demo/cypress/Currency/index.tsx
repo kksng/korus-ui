@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Story } from '../../components/Story';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 
 export const Currency = () => (

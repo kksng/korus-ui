@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
-import { validate } from '../../../leda/components/Validation';
+import { validate } from '../../../korus-ui/components/Validation';
 import { StoryProps } from '../../types';
 
 export const Customization = (storyProps: StoryProps) => {

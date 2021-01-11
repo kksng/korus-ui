@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { getWordEnding } from '../../../leda/utils';
+import * as L from '../../../korus-ui';
+import { getWordEnding } from '../../../korus-ui/utils';
 import { StoryProps } from '../../types';
 
 export const CheckBoxes = (storyProps: StoryProps): React.ReactElement => {

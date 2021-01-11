@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { StoryProps } from '../../types';
-import { DateValueType } from '../../../leda/src/DateTimeInputRange/types';
+import { DateValueType } from '../../../korus-ui/src/DateTimeInputRange/types';
 
 const exampleCode = `
 export const ControlledDate = (args: SomeObject): React.ReactElement => {

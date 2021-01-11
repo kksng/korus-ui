@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
-import { defaultAutoCompleteTheme as theme } from '../../../leda/components/AutoComplete/theme';
+import { defaultAutoCompleteTheme as theme } from '../../../korus-ui/components/AutoComplete/theme';
 
 describe('DateRange', () => {
   let lastConsole

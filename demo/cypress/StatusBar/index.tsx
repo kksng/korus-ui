@@ -1,8 +1,8 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react'
-import * as L from '../../../leda'
-import { SetState } from '../../../leda/commonTypes'
-import { useInterval } from '../../../leda/utils'
+import * as L from '../../../korus-ui'
+import { SetState } from '../../../korus-ui/commonTypes'
+import { useInterval } from '../../../korus-ui/utils'
 
 const data = [
   { labelText: 'Согласование' },

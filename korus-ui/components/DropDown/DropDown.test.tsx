@@ -5,7 +5,7 @@ import {
 
 import { DropDown } from './index';
 // eslint-disable-next-line import/no-useless-path-segments
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 describe('DropDown SNAPSHOTS', () => {
   it('should render', () => {

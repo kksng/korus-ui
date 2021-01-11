@@ -1,6 +1,6 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 const nameRegExp = /^[a-zA-Zа-яёА-ЯЁ]+$/u
 

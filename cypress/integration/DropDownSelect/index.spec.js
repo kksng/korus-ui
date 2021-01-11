@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
-import { defaultDropDownSelectTheme as theme } from '../../../leda/components/DropDownSelect/theme';
+import { defaultDropDownSelectTheme as theme } from '../../../korus-ui/components/DropDownSelect/theme';
 
 describe('DropDownSelect', () => {
   let lastConsole;

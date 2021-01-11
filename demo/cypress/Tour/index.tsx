@@ -1,7 +1,7 @@
 import { isNil } from 'lodash';
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useElementRef } from '../../../leda/utils';
+import * as L from '../../../korus-ui';
+import { useElementRef } from '../../../korus-ui/utils';
 
 const getData = (
   elements: (HTMLElement | null)[]

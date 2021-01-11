@@ -1,7 +1,7 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useInterval } from '../../../leda/utils';
+import * as L from '../../../korus-ui';
+import { useInterval } from '../../../korus-ui/utils';
 import { StoryProps } from '../../types';
 
 const data = [

@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types, no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
-import { MaskedInputRefCurrent } from '../../../leda/components/MaskedInput/types';
-import { AutoCompleteRefCurrent } from '../../../leda/components/AutoComplete/types';
+import * as L from '../../../korus-ui';
+import { MaskedInputRefCurrent } from '../../../korus-ui/components/MaskedInput/types';
+import { AutoCompleteRefCurrent } from '../../../korus-ui/components/AutoComplete/types';
 import { StoryProps } from '../../types';
 
 const validate = (ref: any) => {

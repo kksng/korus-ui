@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { MainContext } from '../components/MainContext';
 import { Langs } from '../../lang/types';
 import { getIsSidebarOpen, setIsSidebarOpen } from '../helpers';

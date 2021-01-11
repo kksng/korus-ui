@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { Value } from '../../../leda/components/DropDownLink/types';
+import * as L from '../../../korus-ui';
+import { Value } from '../../../korus-ui/components/DropDownLink/types';
 import { StoryProps } from '../../types';
 
 const data = [

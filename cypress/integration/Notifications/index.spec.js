@@ -1,5 +1,5 @@
 const { find } = require('lodash');
-const { contains } = require('../../../leda/components/StatusBar/helpers');
+const { contains } = require('../../../korus-ui/components/StatusBar/helpers');
 
 describe('Notifications', () => {
   before(() => {

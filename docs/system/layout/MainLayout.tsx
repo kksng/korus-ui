@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { Content } from './Content';
 import { SideNavigation } from './SideNavigation';
 

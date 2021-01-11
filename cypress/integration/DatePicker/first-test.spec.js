@@ -1,4 +1,4 @@
-import { defaultAutoCompleteTheme as theme } from '../../../leda/components/AutoComplete/theme';
+import { defaultAutoCompleteTheme as theme } from '../../../korus-ui/components/AutoComplete/theme';
 describe('DatePicker', () => {
   before(() => {
     cy.visit('http://localhost:9000/cypress/datepicker')

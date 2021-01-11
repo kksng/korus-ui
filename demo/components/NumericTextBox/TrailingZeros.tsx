@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types, no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 import { useEventSpy } from '../../useEventSpy';
 
