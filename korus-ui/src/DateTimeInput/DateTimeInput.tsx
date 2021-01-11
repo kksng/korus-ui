@@ -25,7 +25,9 @@ import {
   createMask,
   getInputWrapperClassNames, getValue, stringToDate, normalizeTimeLimits,
 } from './helpers';
-import { useCustomElements, useDateTimeInputEffects, useDateTimeInputState } from './hooks';
+import {
+  useClearMask, useCustomElements, useDateTimeInputEffects, useDateTimeInputState,
+} from './hooks';
 import { Span } from '../../components/Span';
 import { DateTimeInputProps, DateTimeInputRefCurrent } from './types';
 
@@ -74,7 +76,7 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
 
   handleErrors(props);
 
-  // Преоброзвание moment в Date, если передан moment
+  // Converting moment to Date if moment is passed
   const min = React.useMemo(() => convertToDate(minProp), [minProp]);
 
   const max = React.useMemo(() => convertToDate(maxProp), [maxProp]);
@@ -89,14 +91,14 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
 
   const [state, dispatch] = useDateTimeInputState(newProps);
 
-  // реф у maskedInput, используется в валидации и для focus/blur
+  // ref of maskedInput, used for validation and for focus / blur
   const maskedInputRef = React.useRef<HTMLInputElement | null>(null);
 
   // набор условий для обработки событий календаря (отключенные даты, неактивные стрелочки и тд)
   const conditions = getCalendarConditions({
     max, min, value: state.date, viewDate: state.viewDate, viewType: state.viewType,
   });
-  // валидируем по Date, а не по строке. Т.к. 12.__.____ - невалидная дата
+  // validation by Date, not by string. Because 12.__.____ is not a valid date
   const validationValue = isDate(valueProp) || isNil(valueProp) ? valueProp : stringToDate(valueProp, format);
 
   const validationProps = React.useMemo(() => ({
@@ -126,8 +128,10 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
 
   const isOpen = isNil(isOpenProp) ? state.isOpen : isOpenProp;
 
+  const [maskedInputValue, clearMaskValue] = useClearMask();
+
   const handlersData = {
-    conditions, dispatch, maskedInputRef, props: newProps, state, validate: validateCurrent,
+    clearMaskValue, conditions, dispatch, maskedInputRef, props: newProps, state, validate: validateCurrent,
   };
 
   const handleBlur = createBlurHandler(handlersData);
@@ -182,6 +186,7 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
           placeholder={placeholder}
           ref={maskedInputRef}
           value={inputValue}
+          inputValue={maskedInputValue}
         />
         <Span className={theme.iconsWrapper}>
           {type !== COMPONENT_TYPES.TIME_ONLY && (

@@ -13,7 +13,7 @@ import {
   WeekDayNames,
 } from '../Calendar/types';
 import {
-  BlurEvent, ChangeEvent, FocusEvent, DateTimeInputProps, DateTimeInputState, IconProps, WrapperProps,
+  BlurEvent, ChangeEvent, FocusEvent, DateTimeInputProps, DateTimeInputState, IconProps, WrapperProps, TimeLimits,
 } from '../DateTimeInput/types';
 import { CustomRender, Values } from '../../commonTypes';
 import { COMPONENTS_NAMESPACES } from '../../constants';
@@ -82,6 +82,10 @@ export interface DateTimeInputRangeProps {
   shortWeekDayNames?: WeekDayNames,
   /** Тема */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInputRange],
+  /** Минимальное время, применяется к обоим полям */
+  timeMax?: TimeLimits,
+  /** Минимальное время, применяется к обоим полям */
+  timeMin?: TimeLimits,
   /** Тип */
   type?: Values<typeof COMPONENT_TYPES>,
   /** Значение */

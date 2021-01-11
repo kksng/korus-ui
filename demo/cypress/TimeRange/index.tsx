@@ -13,8 +13,8 @@ export const TimeRange = () => {
       <L.TimeRange
         _active
         name="TimeRange"
-        min={new Date(2019, 9, 5, 12, 30)}
-        max={new Date(2019, 9, 7, 17, 0)}
+        timeMin={[12, 30]}
+        timeMax={[17, 0]}
         value={value}
         onChange={(ev) => setValue(ev.component.value)}
         isRequired={[true, false]}
@@ -22,9 +22,9 @@ export const TimeRange = () => {
       />
       <br />
       <L.TimeRange
-        name="TimeRange"
-        min={new Date(2019, 9, 5, 12, 30)}
-        max={new Date(2019, 9, 7, 17, 0)}
+        name="TimeRangeDisabled"
+        timeMin={[12, 30]}
+        timeMax={[17, 0]}
         value={value}
         onChange={(ev) => setValue(ev.component.value)}
         isRequired={[true, false]}

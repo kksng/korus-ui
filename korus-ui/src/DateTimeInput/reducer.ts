@@ -6,6 +6,9 @@ export const stateReducer = (state: DateTimeInputState, action: AllActions): Dat
     case stateActionTypes.SET_DATE: {
       return { ...state, date: action.payload };
     }
+    case stateActionTypes.SET_PREV_DATE: {
+      return { ...state, prevDate: action.payload };
+    }
     case stateActionTypes.SET_VALUE: {
       return { ...state, value: action.payload };
     }

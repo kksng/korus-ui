@@ -1,13 +1,19 @@
 import { isFunction } from 'lodash';
-import { setDate, setValue } from '../actions';
-import { createMask, formatDateTime, stringToDate } from '../helpers';
+import {
+  setDate, setPrevDate, setValue,
+} from '../actions';
+import {
+  createMask, formatDateTime, isTimeWithinLimits, stringToDate,
+} from '../helpers';
 import { HandlersData } from '../types';
 import { ChangeEvent } from '../../MaskedInputBase/types';
 import { maskValue } from '../../MaskedInputBase/helpers';
 import { getIsDateDisabled } from '../../Calendar/helpers';
 import { COMPONENT_TYPES } from '../constants';
 
-export const createChangeHandler = ({ props, dispatch }: HandlersData) => (ev: ChangeEvent): void => {
+export const createChangeHandler = ({
+  props, dispatch, state, clearMaskValue, maskedInputRef,
+}: HandlersData) => (ev: ChangeEvent): void => {
   const {
     disabledDates,
     format = 'dd.MM.yyyy',
@@ -20,13 +26,37 @@ export const createChangeHandler = ({ props, dispatch }: HandlersData) => (ev: C
 
   const maskedValue = maskValue(ev.component.value, mask);
 
+  // for time only components prohibit entry of values that exceed max limits
+  // for hours max limit is 23, for minutes and seconds - 59
+  if (type === COMPONENT_TYPES.TIME_ONLY) {
+    // function clears input with masked value
+    const resetMaskValue = clearMaskValue();
+    // check if time value was entered completely
+    if (ev.component.value) {
+      // check if hours, minutes, seconds are in allowed range
+      if (!isTimeWithinLimits(mask, maskedValue)) {
+        // set previous value if limits were exceeded
+        const prevValue = formatDateTime(state.prevDate, format);
+        dispatch(setValue(prevValue));
+        dispatch(setDate(state.prevDate));
+        // clear masked value in input if previous value was null
+        if (!state.prevDate) resetMaskValue();
+        return;
+      }
+    } else if (maskedInputRef?.current?.value === maskedValue) {
+      // set previous value to null if masked value is empty
+      dispatch(setPrevDate(null));
+    }
+  }
+
   const newDate = stringToDate(maskedValue, format);
 
   const newValue: string = newDate ? formatDateTime(newDate, format) : ev.component.value;
-  // неконтролируемый режим
+
+  // uncontrolled mode
   dispatch(setValue(newValue));
 
-  // если в инпуте валидная дата - записываем в date, иначе - запиываем null
+  // if the input contains a valid date set this date to state, otherwise set null
   if (
     newDate
     && newDate.getDate()
@@ -37,7 +67,7 @@ export const createChangeHandler = ({ props, dispatch }: HandlersData) => (ev: C
     dispatch(setDate(null));
   }
 
-  // контролируемый режим
+  // controlled mode
   if (isFunction(onChange)) {
     onChange({
       ...ev,

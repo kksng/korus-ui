@@ -87,5 +87,24 @@ describe('TimeRange tests', () => {
             .and('have.attr', 'disabled');
         });
     });
+    it('Should not be able to enter more than 23 hours', () => {
+      cy.name('TimeRange-from')
+        .clear()
+        .type('1230{enter}')
+        .type('{leftArrow}{leftArrow}{leftArrow}{backspace}{backspace}')
+        .type('65{enter}')
+        .should('have.value', '12:30')
+        .clear()
+        .type('6000{enter}')
+        .should('have.value', '')
+    });
+    it('Should not be able to enter more than 59 minutes', () => {
+      cy.name('TimeRange-from')
+        .clear()
+        .type('1230{enter}')
+        .type('{backspace}{backspace}')
+        .type('65{enter}')
+        .should('have.value', '12:30')
+    });
   });
 });
