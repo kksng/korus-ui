@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - TimeRange: Fixed behaviour on Tab click
 - DateRange: Fixed time for date values
 - TimeRange, TimePicker: Added max limits for hours, minutes seconds
+- Changed file structure in README
 
 
 ## [0.37.0] - 2020-12-21
