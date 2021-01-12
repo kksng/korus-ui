@@ -33,18 +33,6 @@ describe('Tabs', () => {
         .click()
         .should('have.class', 'disabled');
     });
-    it('Create a custom tab', () => {
-      const stub = cy.stub();
-      cy.on('window:alert', stub);
-
-      cy.get('.basic')
-        .find('.tabs-item')
-        .eq(3)
-        .click()
-        .then(() => {
-          expect(stub.getCall(0)).to.be.calledWith('Good!');
-        });
-    });
     it('Scrolling through tabs', () => {
       cy.get('.scrol')
         .find('.tabs-item')
