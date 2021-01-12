@@ -1,4 +1,4 @@
-import { globalDefaultTheme } from '../../../leda/components/LedaProvider';
+import { globalDefaultTheme } from '../../../korus-ui/components/LedaProvider';
 
 const theme = globalDefaultTheme.input;
 

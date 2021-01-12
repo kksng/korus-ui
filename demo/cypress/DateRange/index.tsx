@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { DateValueType } from '../../../leda/src/DateTimeInputRange/types';
+import * as L from '../../../korus-ui';
+import { DateValueType } from '../../../korus-ui/src/DateTimeInputRange/types';
 
 export const DateRange = (): React.ReactElement => {
   const [value1, setValue1] = React.useState<[string, string]>(['', '']);

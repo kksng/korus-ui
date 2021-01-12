@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { FileDropError } from '../../../leda/components/FileDrop/types';
-import { useInterval } from '../../../leda/utils';
+import * as L from '../../../korus-ui';
+import { FileDropError } from '../../../korus-ui/components/FileDrop/types';
+import { useInterval } from '../../../korus-ui/utils';
 
 export const FileDrop = () => {
   const [file1, setFile1] = React.useState<File | null>(null);

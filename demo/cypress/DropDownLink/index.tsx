@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const DropDownLink = (): React.ReactElement => {
   const [ value, setValue ] = React.useState('Saint Petersburg');

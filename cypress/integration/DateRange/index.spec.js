@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
-import { defaultAutoCompleteTheme as theme } from '../../../leda/components/AutoComplete/theme';
+import { defaultAutoCompleteTheme as theme } from '../../../korus-ui/components/AutoComplete/theme';
 
 describe('DateRange', () => {
   let lastConsole
@@ -129,6 +129,20 @@ describe('DateRange', () => {
         .name('toInitialStateButton')
         .click()
     })
+    it('Calendar should display today date if value is empty', () => {
+      cy.name('resetButton')
+        .click()
+        .name('DatePickerNullReset-from')
+        .parent()
+        .find('.datepicker-calendar-icon')
+        .click()
+        .parent()
+        .parent()
+        .next()
+        .should('have.class', 'calendar-wrapper')
+        .find('.calendar-date-cell.today')
+        .should('have.class', 'active')
+    });
   })
 
   describe('Display', () => {

@@ -1,7 +1,7 @@
 import { isNil } from 'lodash';
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useInterval } from '../../../leda/utils';
+import * as L from '../../../korus-ui';
+import { useInterval } from '../../../korus-ui/utils';
 
 export const DropZone = (): React.ReactElement => {
   const [value, setValue] = React.useState<L.DropZoneTypes.DropZoneFiles | null>({

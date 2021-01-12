@@ -1,7 +1,7 @@
 import { isNil } from 'lodash';
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useElementRef } from '../../../leda/utils';
+import * as L from '../../../korus-ui';
+import { useElementRef } from '../../../korus-ui/utils';
 
 const getData = (
   elements: (HTMLElement | null)[]
@@ -194,11 +194,40 @@ const getData = (
               Back
             </L.Button>
           </L.Li>
+          <L.Li>
+            <L.Button name="Next" _success onClick={props.next}>
+              Next
+            </L.Button>
+          </L.Li>
         </L.Ul>
       </L.Div>
     ),
     position: 'bottom-left',
     element: elements[6],
+  },
+  {
+    stepKey: '8',
+    borderRadius: 4,
+    content: (props) => (
+      <L.Div name="Modal8" _inner>
+        <L.H1>Header 8</L.H1>
+        some text
+        <L.Ul _list-h>
+          <L.Li>
+            <L.Button name="Close" onClick={props.stopTour}>
+              Close
+            </L.Button>
+          </L.Li>
+          <L.Li>
+            <L.Button _success onClick={props.prev}>
+              Back
+            </L.Button>
+          </L.Li>
+        </L.Ul>
+      </L.Div>
+    ),
+    position: 'top-left',
+    element: elements[7],
   },
 ];
 
@@ -210,19 +239,40 @@ export const Tour = (): React.ReactElement => {
   const [element5, ref5] = useElementRef();
   const [element6, ref6] = useElementRef();
   const [element7, ref7] = useElementRef();
+  const [element8, ref8] = useElementRef();
 
   const [activeStep, setActiveStep] = React.useState<string | number | null>(
     null
   );
   const [message, setMessage] = React.useState('');
-  const [stepDelay, setStepDelay] = React.useState<number | undefined>(undefined);
+  const [stepDelay, setStepDelay] = React.useState<number | undefined>(
+    undefined
+  );
+  const [isOpen, setOpen] = React.useState(false);
 
-  const data = getData([element1, element2, element3, element4, element5, element6, element7]);
+  const data = getData([
+    element1,
+    element2,
+    element3,
+    element4,
+    element5,
+    element6,
+    element7,
+    element8,
+  ]);
 
   const handleClick3 = () => {
     setMessage('Clicked 3!');
     setActiveStep('1');
-  }
+  };
+
+  React.useEffect(() => {
+    if (activeStep === '8') {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  }, [activeStep]);
 
   return (
     <L.Div _demo-story>
@@ -230,6 +280,16 @@ export const Tour = (): React.ReactElement => {
       <L.Div _inner>
         <L.Button name="startTour" _warning onClick={() => setActiveStep('1')}>
           Start tour
+        </L.Button>
+        <L.Button
+          name="startModalTour"
+          _warning
+          onClick={() => setActiveStep('8')}
+        >
+          Open Modal with tour element
+        </L.Button>
+        <L.Button _warning onClick={() => setOpen(true)}>
+          Open Modal with tour element
         </L.Button>
         <br />
         <br />
@@ -275,19 +335,58 @@ export const Tour = (): React.ReactElement => {
           </L.Button>
           <br />
           <br />
-          <L.Button _inner ref={ref5} style={{ marginLeft: '250px' }} onClick={() => console.log('Clicked 5!')}>
+          <L.Button
+            _inner
+            ref={ref5}
+            style={{ marginLeft: '250px' }}
+            onClick={() => console.log('Clicked 5!')}
+          >
             Tour element 5
           </L.Button>
           <br />
           <br />
-          <L.Button _inner ref={ref6} style={{ marginLeft: '250px' }} onClick={() => console.log('Clicked 6!')}>
+          <L.Button
+            _inner
+            ref={ref6}
+            style={{ marginLeft: '250px' }}
+            onClick={() => console.log('Clicked 6!')}
+          >
             Tour element 6
           </L.Button>
           <br />
           <br />
-          <L.Button _inner ref={ref7} style={{ marginLeft: '500px' }} onClick={() => console.log('Clicked 7!')}>
+          <L.Button
+            _inner
+            ref={ref7}
+            style={{ marginLeft: '500px' }}
+            onClick={() => console.log('Clicked 7!')}
+          >
             Tour element 7
           </L.Button>
+          <L.Modal
+            isOpen={isOpen}
+            onClose={() => {
+              setOpen(false);
+            }}
+            size="md"
+          >
+            <L.ModalHeader>Modal header</L.ModalHeader>
+            <L.ModalBody _myClassName>
+              Test scroll to Tour element inside Modal
+            </L.ModalBody>
+            <L.ModalFooter>
+              <L.Button onClick={() => setOpen(false)}>Cancel</L.Button>
+              <div style={{height: '600px'}}></div>
+              <L.Button
+                _inner
+                ref={ref8}
+                onClick={() => console.log('Clicked 8!')}
+              >
+                Tour element 8
+              </L.Button>
+              <div style={{height: '200px'}}></div>
+            </L.ModalFooter>
+          </L.Modal>
         </L.Div>
         <L.Tour
           data={data}
@@ -296,10 +395,12 @@ export const Tour = (): React.ReactElement => {
           stepDelay={stepDelay}
         />
       </L.Div>
-      <L.Button 
+      <L.Button
         _warning
-        name="stepDelay" 
-        onClick={()=> setStepDelay((stepDelay) => isNil(stepDelay) ? 5000 : undefined)}
+        name="stepDelay"
+        onClick={() =>
+          setStepDelay((stepDelay) => (isNil(stepDelay) ? 5000 : undefined))
+        }
       >
         Set/remove stepDelay 5 sec
       </L.Button>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 import { StoryProps } from '../../types';
@@ -18,6 +18,8 @@ export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
         onChange={ev => {
           update('Change', ev);
           setValue(ev.component.value);
+          console.log('value', ev.component.value);
+          console.log('date', ev.component.date);
         }}
         onBlur={ev => {
           update('Blur', ev);

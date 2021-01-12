@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const DateTimePicker = (): React.ReactElement => (
   <L.Div _demoStory>

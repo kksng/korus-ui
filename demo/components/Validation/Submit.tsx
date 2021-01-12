@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
-import { Form } from '../../../leda/components/Validation/types';
+import * as L from '../../../korus-ui';
+import { Form } from '../../../korus-ui/components/Validation/types';
 import { StoryProps } from '../../types';
 
 export const Submit = (storyProps: StoryProps) => {

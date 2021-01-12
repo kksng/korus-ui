@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import * as L from '../leda';
+import * as L from '../korus-ui';
 import {
   AutoComplete,
   Button,
@@ -22,14 +22,19 @@ import {
   MultiSelect,
   Notifications,
   NumericRange,
+  NumericTextBox,
+  Pagination,
   Password,
   ProgressBar,
   RadioGroup,
   Rating,
+  Slider,
   StatusBar,
+  Tabs,
   Textarea,
   ToolTip,
   TimePicker,
+  TimeRange,
   Tour,
   Validation,
   VStepper,
@@ -110,6 +115,12 @@ export const CypressLayout = () => (
         <Route path="/cypress/numericrange">
           <NumericRange />
         </Route>
+        <Route path="/cypress/numerictextbox">
+          <NumericTextBox />
+        </Route>
+        <Route path="/cypress/pagination">
+          <Pagination />
+        </Route>
         <Route path="/cypress/password">
           <Password />
         </Route>
@@ -122,8 +133,14 @@ export const CypressLayout = () => (
         <Route path="/cypress/rating">
           <Rating />
         </Route>
+        <Route path="/cypress/slider">
+          <Slider />
+        </Route>
         <Route path="/cypress/statusbar">
           <StatusBar />
+        </Route>
+        <Route path="/cypress/tabs">
+          <Tabs />
         </Route>
         <Route path="/cypress/textarea">
           <Textarea />
@@ -133,6 +150,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/timepicker">
           <TimePicker />
+        </Route>
+        <Route path="/cypress/timerange">
+          <TimeRange />
         </Route>
         <Route path="/cypress/tour">
           <Tour />

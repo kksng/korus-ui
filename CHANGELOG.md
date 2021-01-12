@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.38.0] - 2020-12-31
+
+### Changed
+- Refactoring: Renamed leda folder to korus-ui
+
+### Fixed
+- Tour: Fixed scroll behaviour when active element is inside modal window
+- TimeRange: Fixed behaviour on Tab click
+- DateRange: Fixed time for date values
+- TimeRange, TimePicker: Added max limits for hours, minutes seconds
+- Changed file structure in README
+
+
 ## [0.37.0] - 2020-12-21
 
 ### Added

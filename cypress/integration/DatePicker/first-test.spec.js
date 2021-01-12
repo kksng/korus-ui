@@ -1,4 +1,4 @@
-import { defaultAutoCompleteTheme as theme } from '../../../leda/components/AutoComplete/theme';
+import { defaultAutoCompleteTheme as theme } from '../../../korus-ui/components/AutoComplete/theme';
 describe('DatePicker', () => {
   before(() => {
     cy.visit('http://localhost:9000/cypress/datepicker')
@@ -93,7 +93,9 @@ describe('DatePicker', () => {
       .should('be.visible')
   });
   it('Pressing "Backspace" will delete characters in "Input"', () => {
-    cy.name('firstDatePicker') //from the last test in Input date 02.08.2020
+    cy.name('firstDatePicker')
+      .clear()
+      .type('02.08.2020')
       .type('{backspace}')
       .name('firstDatePicker')
       .should('have.attr', 'value', '02.08.202_')
@@ -119,16 +121,29 @@ describe('DatePicker', () => {
   });
   it('If the calendar is open and the current view is dates, pressing "Enter" selects the date and closes the calendar', () => {
     cy.name('firstDatePicker')
+      .clear()
       .parent()
       .find('span.datepicker-calendar-icon')
+  	  .click()
+      .parents('div.datepicker-wrapper')
+      .find('span.calendar-title')
       .click()
       .parents('div.datepicker-wrapper')
-      .find('div.calendar-wrapper')
-      .should('be.visible')
+      .find('span.calendar-title')
+      .click()
+      .parents('div.datepicker-wrapper')
+      .find('.calendar-month-year-cell[title="2021"]')
+      .click()
+      .name('firstDatePicker')
+      .parents('div.datepicker-wrapper')
+      .find('.calendar-month-year-cell[title="Август"]')
+      .click()
+  	  .name('firstDatePicker')
+      .parents('div.datepicker-wrapper')
+      .find('div.calendar-date-cell[title="2 августа 2021"]')
       .type('{enter}')
       .name('firstDatePicker')
-      .should('have.attr', 'value', '05.08.2021')
-      .should('have.attr', 'value', '05.08.2021')//random selection
+      .should('have.attr', 'value', '02.08.2021')
       .name('firstDatePicker')
       .parents('div.datepicker-wrapper')
       .find('div.calendar-wrapper')

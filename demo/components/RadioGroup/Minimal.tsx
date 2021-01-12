@@ -1,5 +1,5 @@
 import React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const RadioGroupMinimal = (props: any): React.ReactElement => {
   return (

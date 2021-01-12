@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { SetState } from '../../../leda/commonTypes';
+import * as L from '../../../korus-ui';
+import { SetState } from '../../../korus-ui/commonTypes';
 
 const data = [
     { labelText: 'Согласование' },

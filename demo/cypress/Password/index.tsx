@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StateButtonGroup } from '../../components/StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
-import { PasswordStrength } from '../../../leda/components/Password/constants';
+import { PasswordStrength } from '../../../korus-ui/components/Password/constants';
 
 export const Password = () => {
   const [props, setProps] = React.useState({});

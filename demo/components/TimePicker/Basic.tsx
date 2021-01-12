@@ -1,6 +1,6 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 import { StateButtonGroup } from '../StateButtonGroup';
 
@@ -35,7 +35,6 @@ export const Basic = (storyProps: StoryProps) => {
       <StateButtonGroup
         data={[
           { text: 'Default', props: {} },
-          { text: 'Opened', props: { isOpen: true } },
           { text: 'Disabled', props: { isDisabled: true } },
         ]}
         setProps={setProps}
