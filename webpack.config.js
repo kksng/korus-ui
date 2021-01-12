@@ -44,7 +44,7 @@ module.exports = {
       // exclude detection of files based on a RegExp
       exclude: new RegExp('^' + path.resolve('node_modules')),
       // include specific files based on a RegExp
-      include: new RegExp('^' + path.resolve('leda')),
+      include: new RegExp('^' + path.resolve('korus-ui')),
       // add errors to webpack instead of warnings
       failOnError: false,
       // allow import cycles that include an asyncronous import,
@@ -54,7 +54,7 @@ module.exports = {
       cwd: process.cwd(),
     }),
     new HtmlWebpackPlugin({
-      title: 'Leda Demo',
+      title: 'Korus UI Demo',
       template: 'public/index.html',
       inject: 'head',
       hash: true,

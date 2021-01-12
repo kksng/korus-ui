@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useElementRef } from '../../../leda/utils';
+import * as L from '../../../korus-ui';
+import { useElementRef } from '../../../korus-ui/utils';
 
 export const Tabs = () => {
   const [selected, setSelected] = React.useState<string | number>(0);

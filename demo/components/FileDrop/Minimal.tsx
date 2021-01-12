@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { FileDropError } from '../../../leda/components/FileDrop/types';
+import * as L from '../../../korus-ui';
+import { FileDropError } from '../../../korus-ui/components/FileDrop/types';
 import { StoryProps } from '../../types';
 
 export const MinimalFileDrop = (storyProps: StoryProps) => {

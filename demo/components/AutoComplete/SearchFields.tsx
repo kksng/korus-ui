@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isObject } from 'lodash';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { StoryProps } from '../../types';
 

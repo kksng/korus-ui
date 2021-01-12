@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../../../leda';
+import * as L from '../../../../../korus-ui';
 import { Props } from '../../../../system/components/Props';
 import { PropRow } from '../../../../system/components/PropRow';
 import { StatusItemType } from './StatusItemType';

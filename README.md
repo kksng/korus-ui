@@ -193,7 +193,7 @@ import * as L from 'korus-ui';
 │
 ├── docs                         : docs
 │
-├── leda                         : library
+├── korus-ui                     : library
 │   ├── commonTypes                  : common types
 │   ├── components                   : exported library components
 │   │   ├── A                           : A component

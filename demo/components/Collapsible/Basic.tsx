@@ -1,5 +1,5 @@
 import React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const Basic = (props: any) => {
   const [isOpen, setIsOpen] = React.useState(false);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 const Accepted = ({ value, onChange }: { onChange?: Function, value: { acceptedFiles: File[], rejectedFiles: File[]}}) => (
   <L.Ul _listItem>

@@ -25,6 +25,6 @@
     "dist"
   ],
   "include": [
-    "./leda/"
+    "./korus-ui/"
   ]
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import * as L from '../../../../leda';
+import * as L from '../../../../korus-ui';
 import { Urls } from '../../../constants';
 
 export const En = (): React.ReactElement => (
@@ -60,7 +60,7 @@ export const En = (): React.ReactElement => (
       <L.Div _block>
         <pre>
           {`
-  npm i leda
+  npm i korus-ui
           `}
         </pre>
       </L.Div>
@@ -72,7 +72,7 @@ export const En = (): React.ReactElement => (
       <L.Div _block>
         <pre>
           {`
-  import * as L from 'leda';
+  import * as L from 'korus-ui';
           `}
         </pre>
       </L.Div>

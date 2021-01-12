@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.38.0] - 2020-12-31
 
+### Changed
+- Refactoring: Renamed leda folder to korus-ui
+
 ### Fixed
 - Tour: Fixed scroll behaviour when active element is inside modal window
 - TimeRange: Fixed behaviour on Tab click

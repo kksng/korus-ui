@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const ProgressBar = () => {
   // Ref is used to store data outside the component context.

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { useInterval } from '../../../leda/utils';
-import { FileDropError } from '../../../leda/components/FileDrop/types';
-import { DescriptionMessage } from '../../../leda/components/FileDrop/helpers';
-import * as messages from '../../../leda/messages';
+import * as L from '../../../korus-ui';
+import { useInterval } from '../../../korus-ui/utils';
+import { FileDropError } from '../../../korus-ui/components/FileDrop/types';
+import { DescriptionMessage } from '../../../korus-ui/components/FileDrop/helpers';
+import * as messages from '../../../korus-ui/messages';
 import { StoryProps } from '../../types';
 
 export const Customization = (storyProps: StoryProps) => {

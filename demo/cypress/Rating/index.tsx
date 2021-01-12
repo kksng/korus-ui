@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { Span } from '../../../leda/components/Span';
+import * as L from '../../../korus-ui';
+import { Span } from '../../../korus-ui/components/Span';
 
 export const Rating = () => {
   const [value, setValue] = React.useState(1);

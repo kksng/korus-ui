@@ -1,6 +1,6 @@
 /* eslint-disable no-alert, no-console */
 import React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const Radio = (props: any): React.ReactElement => {
  const [value, setValue] = React.useState<string | number>(0);

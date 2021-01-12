@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types, no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { StateButtonGroup } from '../StateButtonGroup';
 import { useEventSpy } from '../../useEventSpy';
 import { StoryProps } from '../../types';
-import { RenderEvent, SomeObject } from '../../../leda/commonTypes';
+import { RenderEvent, SomeObject } from '../../../korus-ui/commonTypes';
 
 export const BasicUsage = (storyProps: StoryProps) => {
   const [props, setProps] = React.useState<SomeObject>({});
