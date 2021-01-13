@@ -3,7 +3,6 @@ import * as React from 'react';
 import shortId from 'shortid';
 import * as L from '../../../korus-ui';
 import { Item } from '../../../korus-ui/components/Notifications/types';
-import { StoryProps } from '../../types';
 
 const notifications = [
   {
@@ -26,7 +25,33 @@ const notifications = [
 `,
     iconClassName: 'fas fa-exclamation-circle fa-lg',
     type: 'reject',
-    delay: 1000,
+    delay: 1200,
+  },
+  {
+    text: `
+Перед тем, как мы продолжим, обратите внимание, что хуки:
+<ul>
+  <li><b>Полностью на ваше усмотрение.</b> Вы можете попробовать хуки в одних компонентах, не изменяя код в других. Хуки не обязательно использовать или изучать прямо сейчас.</li>
+  <li><b>100% обратно совместимы.</b> Хуки не содержат изменений, которые могут поломать ваш существующий код.</li>
+  <li><b>Доступны прямо сейчас.</b> Хуки доступны с выходом версии 16.8.0.</li>
+</ul>
+`,
+    iconClassName: 'fas fa-check fa-lg',
+    type: 'accept',
+    delay: 1200,
+  },
+];
+const notificationsWithoutDelay = [
+  {
+    text: `
+С помощью хуков вы можете извлечь логику состояния из компонента,
+чтобы её протестировать или повторно использовать. <b>Хуки позволяют вам
+переиспользовать логику состояния, не затрагивая дерево компонентов.</b>
+Благодаря этому, хуки легко использовать в разных компонентах и делиться ими с сообществом.
+`,
+    iconClassName: 'fas fa-exclamation-circle fa-lg',
+    type: 'reject',
+    delay: -1,
   },
   {
     text: `
@@ -85,6 +110,22 @@ export const Notifications = (): JSX.Element => {
         id: shortId.generate(),
       },
     ]);
+  const acceptType = () =>
+    setItems([
+      ...items,
+      {
+        ...notificationsWithoutDelay[1],
+        id: shortId.generate(),
+      },
+    ]);
+  const rejectType = () =>
+    setItems([
+      ...items,
+      {
+        ...notificationsWithoutDelay[0],
+        id: shortId.generate(),
+      },
+    ]);
 
   return (
     <L.Div _demoStory>
@@ -103,8 +144,18 @@ export const Notifications = (): JSX.Element => {
         _notificationsTop
       />
       <br />
-      <L.Button _warning onClick={handleButtonOnClick}>
+      <L.Button _warning _default onClick={handleButtonOnClick}>
         Добавить уведомление
+      </L.Button>
+      <br />
+      <br />
+      <L.Button _warning _accept onClick={acceptType}>
+        Type 'accept'
+      </L.Button>
+      <br />
+      <br />
+      <L.Button _warning _reject onClick={rejectType}>
+        Type 'reject'
       </L.Button>
     </L.Div>
   );

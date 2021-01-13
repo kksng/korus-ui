@@ -7,9 +7,22 @@ describe('Notifications', () => {
   });
 
   describe('Interactions', () => {
+    it('Closing by clicking on the button', () => {
+      cy.get('.demo-story')
+        .find('button.accept')
+        .click()
+        .parent()
+        .find('.notifications-item')
+        .contains('Принять')
+        .should('be.visible')
+        .click()
+        .get('.notifications-item')
+        .should('not.be.visible');
+    });
+
     it('Open and close on click', () => {
       cy.get('.demo-story')
-        .find('button.button-wrapper')
+        .find('button.default')
         .click()
         .parent()
         .find('.notifications-wrapper')
@@ -20,36 +33,35 @@ describe('Notifications', () => {
         .get('.notifications-wrapper')
         .should('not.be.visible');
     });
-    //Исправить тест после фикса бага с закрытием окна с задержкой
 
-    // it('Open and close with delay 1500ms', () => {
-    //   cy.get('.demo-story')
-    //     .find('button.button-wrapper')
-    //     .click()
-    //     .parent()
-    //     .find('.notifications-wrapper')
-    //     .should('be.visible')
-    //     .wait(1500)
-    //     .get('.notifications-wrapper')
-    //     .should('not.be.visible');
-    // });
+    it('Open and close with delay 1200ms', () => {
+      cy.get('.demo-story')
+        .find('button.default')
+        .click()
+        .parent()
+        .find('.notifications-wrapper')
+        .should('be.visible')
+        .wait(1200)
+        .get('.notifications-wrapper')
+        .should('not.be.visible');
+    });
 
     it('Opening the maximum number of notifications (max={3})', () => {
       cy.get('.demo-story')
-        .find('button.button-wrapper')
+        .find('button.default')
         .click()
         .parent()
         .find('.notifications-wrapper')
         .should('be.visible')
         .parent()
-        .find('button.button-wrapper')
+        .find('button.default')
         .contains('Добавить')
         .click()
         .parent()
         .find('.notifications-wrapper')
         .should('be.visible')
         .parent()
-        .find('button.button-wrapper')
+        .find('button.default')
         .contains('Добавить')
         .click()
         .parent()
