@@ -13,7 +13,7 @@ describe('StickyPanel', () => {
         .get('.stickypanel-wrapper')
         .should('not.have.class', 'fixed');
     });
-    it.only('Use elements', () => {
+    it('Use elements', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       cy.get('.demo-story')
