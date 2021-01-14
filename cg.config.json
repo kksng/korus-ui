@@ -1,0 +1,13 @@
+{
+  "changelogBranch": "master",
+  "changelogFileName": "CHANGELOG.md",
+  "jiraLink": "https://jira.com/browse/",
+  "templateRowPrefix": "- ",
+  "commitPrefix": "^(FEND\\-\\d+)",
+  "taskPrefix": "^(FEND\\-\\d+)",
+  "withoutTaskPrefix": "",
+  "escapeTasksPrefix": "",
+  "fixTaskKeyword": "Fixed",
+  "changeTaskKeyword": "Changed, Updated",
+  "addedTaskKeyword": "Added"
+}

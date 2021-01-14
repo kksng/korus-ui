@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const AutoComplete = (): React.ReactElement => {
   const [objectValue1, setObjectValue1] = React.useState<string | null>(null);

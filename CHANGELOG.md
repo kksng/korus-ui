@@ -4,10 +4,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.39.0] - 2020-01-25
+
+
+## [0.38.0] - 2020-01-12
+
+### Changed
+- Refactoring: Renamed leda folder to korus-ui
+
+### Fixed
+- Tour: Fixed scroll behaviour when active element is inside modal window
+- TimeRange: Fixed behaviour on Tab click
+- DateRange: Fixed time for date values
+- TimeRange, TimePicker: Added max limits for hours, minutes seconds
+- Changed file structure in README
+
+
 ## [0.37.0] - 2020-12-21
+
+### Added
+- Tour: Added step changing animation. Block page while step loading
+- VStepper: Added type warning, new props footerContent and nextStepType to VStepperItem
+- Refactoring: Added changelog generator
 
 ### Changed
 - Storybook: Changed library name to Korus-ui
+
+### Fixed
+- ToolTip: Fixed tooltip display
+- Tabs: Fixed tabs display and scroll in IE
+- Modal, DemoPage: validate DemoPage Modal name field
+- FileDrop: Prevented firing change event before file upload
+- FileDrop: Fixed reset handler
+- Storybook: Fixed bug that prevented assets folder from being copied to build
+- Tour: Fixed IE component behavior.
+- NumericTextBox, MaskedInput: Fixed demo examples, removed unused props prefixRender and suffixRender
 
 
 ## [0.36.0] - 2020-12-07

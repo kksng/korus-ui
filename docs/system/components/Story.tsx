@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import { GroupContext } from './GroupContext';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { MainContext } from './MainContext';
 
 export interface StoryProps {

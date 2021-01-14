@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MainContext } from './MainContext';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { Langs } from '../../lang/types';
 
 export const LangSwitcher = (): React.ReactElement => {

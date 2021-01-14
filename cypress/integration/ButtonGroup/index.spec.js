@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
-import { defaultButtonGroupTheme as theme } from '../../../leda/components/ButtonGroup/theme';
+import { defaultButtonGroupTheme as theme } from '../../../korus-ui/components/ButtonGroup/theme';
 
 describe('ButtonGroup', () => {
   beforeEach(() => {

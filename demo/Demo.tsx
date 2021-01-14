@@ -1,18 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies,jsx-a11y/label-has-for */
 import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import * as L from '../leda';
+import * as L from '../korus-ui';
 import {
   AutoComplete, ButtonGroup, CheckBox, DatePicker, DateRange,
   DropDown, DropDownSelect, Input, A, LedaProvider, Loader, MaskedInput, Modal,
   MultiSelect, Notifications, NumericRange, NumericTextBox, Password,
-  Pagination, Radio, ProgressBar, Slider, StatusBar, StickyPanel, Switcher,
+  Pagination, RadioGroup, ProgressBar, Slider, StatusBar, StickyPanel, Svg, Switcher,
   Tabs, Tags, DropZone, Textarea, DateTimePicker, TimePicker,
   DateTimeRange, TimeRange, DropDownLink, Currency, Rating,
   Div, Table, Dl, FileUpload, HTMLTags, Validation,
   Collapsible, Collapse, VStepper, Button, Tooltip, FileDrop, Tour, Wizard
 } from './components';
-import { useElementRef } from '../leda/utils';
+import { useElementRef } from '../korus-ui/utils';
 
 export const Demo = hot(() => (
   <L.Div style={{ color: 'black' }} _wrapper>
@@ -57,11 +57,12 @@ export const Demo = hot(() => (
       <Pagination />
       <Password />
       <ProgressBar />
-      <Radio />
+      <RadioGroup />
       <Rating />
       <Slider />
       <StatusBar />
       <StickyPanel />
+      <Svg />
       <Switcher />
       <Table />
       <Tabs />

@@ -1,6 +1,6 @@
 /* eslint-disable no-alert, no-console */
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const NumericRange = () => {
   const [value, setValue] = React.useState<[number | null, number | null] | null>([null, null]);

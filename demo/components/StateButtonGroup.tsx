@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../leda';
-import { SomeObject, SetState } from '../../leda/commonTypes';
+import * as L from '../../korus-ui';
+import { SomeObject, SetState } from '../../korus-ui/commonTypes';
 
 
 export const StateButtonGroup = (props: {

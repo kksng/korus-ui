@@ -79,8 +79,18 @@
   }
 }
 
+@keyframes tourStepLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
 .tour {
   &-overlay {
+    opacity: 0.5;
     z-index: 10001;
     position: fixed;
     top: 0;
@@ -88,6 +98,9 @@
     right: 0;
     bottom: 0;
     fill: #333333;
+    &--loading {
+      animation: tourStepLoading 500ms linear;
+    }
   }
 
   &-modal {

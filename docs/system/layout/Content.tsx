@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { Group, Story } from '../components';
 import { StoryProps } from '../components/Story';
-import { Main } from '../../../leda';
+import { Main } from '../../../korus-ui';
 import { MainContext } from '../components/MainContext';
 
 export interface ContentProps {

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as L from '../../../leda';
-import { SomeObject } from '../../../leda/commonTypes';
+import * as L from '../../../korus-ui';
+import { SomeObject } from '../../../korus-ui/commonTypes';
 import { StoryProps } from '../../types';
 
 const DDSData = [

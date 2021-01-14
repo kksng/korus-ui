@@ -1,5 +1,5 @@
 import React from 'react';
-import * as L from '../../leda';
+import * as L from '../../korus-ui';
 import { StoryProps } from '../types';
 import { Styles } from './Styles';
 

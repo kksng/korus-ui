@@ -1,5 +1,5 @@
 import React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 
 export const Collapse = () => {
   const [activeKey1, setActiveKey1] = React.useState<string | string[] | null>(['1']);
