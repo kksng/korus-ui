@@ -8,7 +8,7 @@ describe('Notifications', () => {
 
   describe('Interactions', () => {
     it('Closing by clicking on the button', () => {
-      cy.get('.demo-story')
+      cy.get('#notificationTest')
         .find('button.accept')
         .click()
         .parent()
@@ -21,7 +21,7 @@ describe('Notifications', () => {
     });
 
     it('Open and close on click', () => {
-      cy.get('.demo-story')
+      cy.get('#notificationTest')
         .find('button.default')
         .click()
         .parent()
@@ -35,7 +35,7 @@ describe('Notifications', () => {
     });
 
     it('Open and close with delay 1200ms', () => {
-      cy.get('.demo-story')
+      cy.get('#notificationTest')
         .find('button.default')
         .click()
         .parent()
@@ -47,7 +47,7 @@ describe('Notifications', () => {
     });
 
     it('Opening the maximum number of notifications (max={3})', () => {
-      cy.get('.demo-story')
+      cy.get('#notificationTest')
         .find('button.default')
         .click()
         .parent()

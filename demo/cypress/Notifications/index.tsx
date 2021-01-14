@@ -128,7 +128,7 @@ export const Notifications = (): JSX.Element => {
     ]);
 
   return (
-    <L.Div _demoStory>
+    <L.Div _demoStory id="notificationTest">
       <L.H4 _title>Notifications</L.H4>
       <L.Notifications
         value={items}
