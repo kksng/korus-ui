@@ -4,11 +4,11 @@ describe('StickyPanel', () => {
   });
   describe('Interaction', () => {
     it('Basic use', () => {
-      cy.get('.demo-story')
+      cy.get('#stickyTest')
         .scrollIntoView()
         .find('.stickypanel-wrapper')
         .should('have.class', 'fixed')
-        .get('.demo-story');
+        .get('#stickyTest');
       cy.scrollTo('bottom')
         .get('.stickypanel-wrapper')
         .should('not.have.class', 'fixed');
@@ -16,7 +16,7 @@ describe('StickyPanel', () => {
     it('Use elements', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
-      cy.get('.demo-story')
+      cy.get('#stickyTest')
         .find('.switcher-wrapper')
         .should('have.class', 'active')
         .get('.switcher-handle')

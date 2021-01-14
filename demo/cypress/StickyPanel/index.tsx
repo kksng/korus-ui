@@ -6,7 +6,7 @@ export const StickyPanel = () => {
   const [isFull, setIsFull] = React.useState(true);
 
   return (
-    <L.Div _demoStory _width50={!isFull}>
+    <L.Div _demoStory _width50={!isFull} id="stickyTest">
       <L.H4 _title>StickyPanel</L.H4>
       <L.Switcher onChange={() => setIsFull(!isFull)} value={isFull} />
       <textarea
