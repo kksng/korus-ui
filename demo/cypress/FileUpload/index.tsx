@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as L from '../../../leda';
+import * as L from '../../../korus-ui';
 import { Story } from '../../components/Story';
 import { StoryProps } from '../../types';
-import { RenderEvent } from '../../../leda/commonTypes';
+import { RenderEvent } from '../../../korus-ui/commonTypes';
 import { FileLoadEvent } from '../../../leda/components/FileUpload/types';
 import { StateButtonGroup } from '../../components/StateButtonGroup';
 

@@ -5,13 +5,21 @@ describe('FileUpload', () => {
 
   describe('Interaction', () => {
     it.only('Controlled mode', () => {
-      cy.server();
-      cy.route(
-        'GET',
-        'http://localhost:9000/cypress/fileupload',
-        'fixtures: test.png'
-      );
+      const stub = cy.stub();
+      cy.on('window:alert', stub);
+      const fileName = 'test.png';
       cy.contains('Загрузить').click();
+      cy.fixture('test.png').then((uploadFile) => {
+        cy.get('input[type="file"]')
+          .first()
+          .attachFile(fileName, uploadFile, 'image/png')
+          .get('.controlled')
+          .should('contain', 'Загрузка')
+          .wait(3000)
+          .then(() => {
+            expect(stub.getCall(0)).to.be.calledWith('Файл загружен!');
+          });
+      });
     });
 
     it('Customization mode', () => {
@@ -23,7 +31,7 @@ describe('FileUpload', () => {
         .then((upload) => {
           cy.wrap(upload)
             .click()
-            .attachFile('test.png', { subjectType: 'input' })
+            .attachFile('test.png', { subjectType: 'drag-n-drop' })
             .then(() => {
               expect(stub.getCall(0)).to.be.calledWith('Alert!');
             });
