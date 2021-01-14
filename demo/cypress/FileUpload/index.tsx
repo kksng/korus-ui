@@ -3,7 +3,7 @@ import * as L from '../../../korus-ui';
 import { Story } from '../../components/Story';
 import { StoryProps } from '../../types';
 import { RenderEvent } from '../../../korus-ui/commonTypes';
-import { FileLoadEvent } from '../../../leda/components/FileUpload/types';
+import { FileLoadEvent } from '../../../korus-ui/components/FileUpload/types';
 import { StateButtonGroup } from '../../components/StateButtonGroup';
 
 export const FileUpload = () => (
@@ -35,7 +35,7 @@ export const Controlled = (storyProps: StoryProps) => {
       <L.Div _controlled>
         <L.FileUpload
           allowedFiles=".jpg, .gif, .png"
-          maxFileSize={1500000000}
+          maxFileSize={1500}
           onChange={(ev) => {
             console.log('ev.component', ev.component);
             setProps({ isLoading: true });
@@ -121,7 +121,8 @@ export const Controlled = (storyProps: StoryProps) => {
             </>
           )}
           infoRender={infoRender}
-          maxFileSize={1500}
+          minFileSize={1.5}
+          maxFileSize={2}
           onFileLoad={(ev: FileLoadEvent) => {
             console.log(
               'Вы загрузили файл!',
