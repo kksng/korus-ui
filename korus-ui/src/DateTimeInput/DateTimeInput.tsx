@@ -26,7 +26,7 @@ import {
   getInputWrapperClassNames, getValue, stringToDate, normalizeTimeLimits,
 } from './helpers';
 import {
-  useClearMask, useCustomElements, useDateTimeInputEffects, useDateTimeInputState,
+  useCustomElements, useDateTimeInputEffects, useDateTimeInputState,
 } from './hooks';
 import { Span } from '../../components/Span';
 import { DateTimeInputProps, DateTimeInputRefCurrent } from './types';
@@ -128,10 +128,14 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
 
   const isOpen = isNil(isOpenProp) ? state.isOpen : isOpenProp;
 
-  const [maskedInputValue, clearMaskValue] = useClearMask();
 
   const handlersData = {
-    clearMaskValue, conditions, dispatch, maskedInputRef, props: newProps, state, validate: validateCurrent,
+    conditions,
+    dispatch,
+    maskedInputRef,
+    props: newProps,
+    state,
+    validate: validateCurrent,
   };
 
   const handleBlur = createBlurHandler(handlersData);
@@ -186,7 +190,6 @@ export const DateTimeInput = React.forwardRef((props: DateTimeInputProps, ref: R
           placeholder={placeholder}
           ref={maskedInputRef}
           value={inputValue}
-          inputValue={maskedInputValue}
         />
         <Span className={theme.iconsWrapper}>
           {type !== COMPONENT_TYPES.TIME_ONLY && (
