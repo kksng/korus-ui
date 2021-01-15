@@ -9,8 +9,6 @@ import { StateButtonGroup } from '../../components/StateButtonGroup';
 export const FileUpload = () => (
   <Story title="FileUpload">
     <Controlled title="Usage" />
-    {/* <FullCustomized title="Кастомизация - полная замена" />
-    <PartialCustomized title="Кастомизация - дополнение" /> */}
   </Story>
 );
 
