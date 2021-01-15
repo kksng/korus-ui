@@ -12,7 +12,7 @@ import { getIsDateDisabled } from '../../Calendar/helpers';
 import { COMPONENT_TYPES } from '../constants';
 
 export const createChangeHandler = ({
-  props, dispatch, state, clearMaskValue, maskedInputRef,
+  props, dispatch, state, maskedInputRef,
 }: HandlersData) => (ev: ChangeEvent): void => {
   const {
     disabledDates,
@@ -26,30 +26,26 @@ export const createChangeHandler = ({
 
   const maskedValue = maskValue(ev.component.value, mask);
 
-  // for time only components prohibit entry of values that exceed max limits
-  // for hours max limit is 23, for minutes and seconds - 59
-  if (type === COMPONENT_TYPES.TIME_ONLY) {
-    // function clears input with masked value
-    const resetMaskValue = clearMaskValue();
-    // check if time value was entered completely
-    if (ev.component.value) {
-      // check if hours, minutes, seconds are in allowed range
-      if (!isTimeWithinLimits(mask, maskedValue)) {
-        // set previous value if limits were exceeded
-        const prevValue = formatDateTime(state.prevDate, format);
-        dispatch(setValue(prevValue));
-        dispatch(setDate(state.prevDate));
-        // clear masked value in input if previous value was null
-        if (!state.prevDate) resetMaskValue();
-        return;
-      }
-    } else if (maskedInputRef?.current?.value === maskedValue) {
-      // set previous value to null if masked value is empty
-      dispatch(setPrevDate(null));
-    }
-  }
+  const isEmptyMask = maskedInputRef?.current?.value === maskedValue && !ev.component.value;
 
-  const newDate = stringToDate(maskedValue, format);
+  const isTimeType = type === COMPONENT_TYPES.TIME_ONLY;
+
+  const newDate = (() => {
+    if (isTimeType) {
+      // Replace "_" with "0" for time only components
+      const adjustedValue = !isEmptyMask ? maskedInputRef?.current?.value.replace(/_/g, '0') : maskedValue;
+
+      // for time only components prohibit entry of values that exceed max limits
+      // for hours max limit is 23, for minutes and seconds - 59
+      if (!isEmptyMask && !isTimeWithinLimits(mask, adjustedValue || maskedValue)) {
+        // if limits were exceeded set previous value or 00:00
+        return state.prevDate ?? stringToDate(maskedValue.replace(/_/g, '0'), format);
+      }
+      return stringToDate(adjustedValue, format);
+    }
+
+    return stringToDate(maskedValue, format);
+  })();
 
   const newValue: string = newDate ? formatDateTime(newDate, format) : ev.component.value;
 
@@ -67,6 +63,9 @@ export const createChangeHandler = ({
     dispatch(setDate(null));
   }
 
+  // set previous value to null if masked value is empty
+  if (isEmptyMask) dispatch(setPrevDate(null));
+
   // controlled mode
   if (isFunction(onChange)) {
     onChange({
@@ -74,7 +73,7 @@ export const createChangeHandler = ({
       component: {
         date: newDate,
         name,
-        value: ev.component.value,
+        value: isTimeType ? newValue : ev.component.value,
       },
     });
   }

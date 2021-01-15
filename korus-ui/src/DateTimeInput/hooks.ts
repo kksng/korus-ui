@@ -132,14 +132,3 @@ export const useCustomElements = (props: DateTimeInputProps, state: DateTimeInpu
     Wrapper,
   };
 };
-
-export const useClearMask = (): [string | undefined, () => () => void] => {
-  const [maskedInputValue, setMaskedInputValue] = React.useState<undefined | string>(undefined);
-
-  const clearMaskValue = () => {
-    setMaskedInputValue(undefined);
-    return () => setMaskedInputValue('');
-  };
-
-  return [maskedInputValue, clearMaskValue];
-};

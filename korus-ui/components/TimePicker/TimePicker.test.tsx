@@ -126,13 +126,13 @@ describe('TimePicker event listeners test collection', () => {
     userEvent.type(input, validValue);
 
     expect(onChange)
-      .toHaveBeenCalledTimes(validValue.length);
+      .toHaveBeenCalledTimes(validValue.length - 1);
 
     expect(onChange)
       .lastCalledWith(expect.objectContaining({
         component: expect.objectContaining({
           name: validName,
-          value: '', // Ошибка компоненты. Приходит  value="__:__"
+          value: '10:10',
         }),
       }));
   });
