@@ -1,87 +1,83 @@
-import * as React from 'react';
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { COMPONENTS_NAMESPACES } from '../../constants';
+import * as React from 'react'
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme'
+import { COMPONENTS_NAMESPACES } from '../../constants'
 import {
   ArrayElement,
   CustomEventHandler,
   CustomRender,
   SetState,
   SomeObject,
-} from '../../commonTypes';
-import { ButtonProps } from '../Button/types';
-import { ValidationProps } from '../Validation/types';
+} from '../../commonTypes'
+import { ButtonProps } from '../Button/types'
+import { ValidationProps } from '../Validation/types'
 
-export type Value = string | SomeObject | number | null;
+export type Value = string | SomeObject | number | null
 
 export interface ResetEvent<T = Value | Value[]> {
   component: {
-    name?: string;
+    name?: string,
     /** Значение - элемент из data */
-    value?: T;
-  };
+    value?: T,
+  }
 }
 
 export interface ButtonClickEvent<T = Value | Value[]>
   extends React.MouseEvent {
   component: {
-    name?: string;
+    name?: string,
     /** Значение - элемент из data */
-    value: T;
-  };
+    value: T,
+  }
 }
 
-export type ChangeEvent<T> = ButtonClickEvent<T> | ResetEvent<T>;
+export type ChangeEvent<T> = ButtonClickEvent<T> | ResetEvent<T>
 
 export interface ButtonGroupProps<T extends Value | Value[] = Value | Value[]>
   extends ValidationProps {
   /** Классы переданные через _ */
-  [x: string]: unknown;
+  [x: string]: unknown,
   /** Кастомизация кнопки при передачи data. По дефолту используется L.Button */
-  buttonRender?: CustomRender<ButtonGroupProps, ButtonGroupState, ButtonProps>;
+  buttonRender?: CustomRender<ButtonGroupProps, ButtonGroupState, ButtonProps>,
   /** Данные для элементов. Массив обьектов или строк или чисел. ВАЖНО! В компоненте не может быть двух кнопок с одинаковым текстом */
-  data?: ArrayElement<T>[];
+  data?: ArrayElement<T>[],
   /** Значение по-умолчанию */
-  defaultValue?: Value | Value[];
+  defaultValue?: Value | Value[],
   /** Выключенное состояние компонента */
-  isDisabled?: boolean;
+  isDisabled?: boolean,
   /** Обработчик события изменения активного айтема. Отдает value и index */
-  onChange?: (ev: ChangeEvent<T>) => void;
+  onChange?: (ev: ChangeEvent<T>) => void,
   /** Обработчик клика */
-  onClick?: React.MouseEventHandler<HTMLElement>;
+  onClick?: React.MouseEventHandler<HTMLElement>,
   /** Реф */
-  ref?: React.Ref<ButtonGroupRefCurrent>;
+  ref?: React.Ref<ButtonGroupRefCurrent>,
   /** При передаче массива обьектов указать текстовое поле из которого брать значение */
-  textField?: string;
+  textField?: string,
   /** Тема компонента */
-  theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.buttonGroup];
+  theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.buttonGroup],
   /** Тип компонента, если radio - может выбрана только одна кнопка, иначе - несколько. По-умолчанию radio */
-  type?: 'radio' | 'checkbox';
+  type?: 'radio' | 'checkbox',
   /** Значение активного элемента. Использовать при контролируемом режиме */
-  value?: T;
+  value?: T,
   /** Кастомный рендер для враппера */
-  wrapperRender?: CustomRender<
-    ButtonGroupProps,
-    ButtonGroupState,
-    WrapperProps
-  >;
+  wrapperRender?: CustomRender<ButtonGroupProps, ButtonGroupState, WrapperProps>,
   /** Имя компонента */
-  name?: string;
+  name?: string,
 }
 
 export interface ButtonGroupState {
-  value: Value | Value[];
+  value: Value | Value[],
 }
 
 export interface ButtonGroupRefCurrent {
-  wrapper: HTMLElement | null;
+  wrapper: HTMLElement | null,
 }
 
 export interface WrapperProps extends React.HTMLAttributes<HTMLElement> {
-  ref?: React.Ref<ButtonGroupRefCurrent | null>;
+  ref?: React.Ref<ButtonGroupRefCurrent | null>,
 }
 
 export interface ChangeData {
-  setUncontrolledValue: SetState<ButtonGroupProps['value']>;
-  validateCurrent: (value: ButtonGroupProps['value']) => boolean;
-  value: ButtonGroupProps['value'];
+  setUncontrolledValue: SetState<ButtonGroupProps['value']>,
+  validateCurrent: (value: ButtonGroupProps['value']) => boolean,
+  value: ButtonGroupProps['value'],
 }
