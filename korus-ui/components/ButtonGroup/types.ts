@@ -1,39 +1,33 @@
-import * as React from 'react'
-import { PartialGlobalDefaultTheme } from '../../utils/useTheme'
-import { COMPONENTS_NAMESPACES } from '../../constants'
+import * as React from 'react';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
-  ArrayElement,
-  CustomEventHandler,
-  CustomRender,
-  SetState,
-  SomeObject,
-} from '../../commonTypes'
-import { ButtonProps } from '../Button/types'
-import { ValidationProps } from '../Validation/types'
+  ArrayElement, CustomEventHandler, CustomRender, SetState, SomeObject,
+} from '../../commonTypes';
+import { ButtonProps } from '../Button/types';
+import { ValidationProps } from '../Validation/types';
 
-export type Value = string | SomeObject | number | null
+export type Value = string | SomeObject | number | null;
 
 export interface ResetEvent<T = Value | Value[]> {
   component: {
     name?: string,
     /** Значение - элемент из data */
     value?: T,
-  }
+  },
 }
 
-export interface ButtonClickEvent<T = Value | Value[]>
-  extends React.MouseEvent {
+export interface ButtonClickEvent<T = Value | Value[]> extends React.MouseEvent {
   component: {
     name?: string,
     /** Значение - элемент из data */
     value: T,
-  }
+  },
 }
 
-export type ChangeEvent<T> = ButtonClickEvent<T> | ResetEvent<T>
+export type ChangeEvent<T> = ButtonClickEvent<T> | ResetEvent<T>;
 
-export interface ButtonGroupProps<T extends Value | Value[] = Value | Value[]>
-  extends ValidationProps {
+export interface ButtonGroupProps<T extends Value | Value[] = Value | Value[]> extends ValidationProps {
   /** Классы переданные через _ */
   [x: string]: unknown,
   /** Кастомизация кнопки при передачи data. По дефолту используется L.Button */
