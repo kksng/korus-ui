@@ -16,6 +16,7 @@ import {
   DropDownSelect,
   DropZone,
   FileDrop,
+  FileUpload,
   Input,
   MaskedInput,
   Modal,
@@ -64,6 +65,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/filedrop">
           <FileDrop />
+        </Route>
+        <Route path="/cypress/fileupload">
+          <FileUpload />
         </Route>
         <Route path="/cypress/input">
           <Input />
