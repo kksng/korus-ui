@@ -12,7 +12,7 @@ const Semi = () => {
     <>
       <L.P>
         <L.CheckBox
-          _semi={isSemi} // className
+          isSemi={isSemi} // className
           value={value}
           onChange={ev => setValue(ev.component.value)}
         >
