@@ -6,7 +6,10 @@ import { linkTo } from '@storybook/addon-links';
 export const propsDesc = [
   {
     name: (
-      <L.A onClick={linkTo('Form|Button', 'Обработка форм')} target="_self">
+      <L.A
+        onClick={linkTo('Form|Button', 'Обработка форм')}
+        target="_self"
+      >
         form
       </L.A>
     ),
@@ -14,14 +17,16 @@ export const propsDesc = [
     required: false,
     description: (
       <span>
-        Имя формы, которую сабмитит и валидирует кнопка. Кнопка может
-        обрабатывать несколько форм, для этого передайте имена форм в массиве.
+        Имя формы, которую сабмитит и валидирует кнопка. Кнопка может обрабатывать несколько форм, для этого передайте имена форм в массиве.
       </span>
     ),
   },
   {
     name: (
-      <L.A onClick={linkTo('Form|Button', 'Состояния кнопки')} target="_self">
+      <L.A
+        onClick={linkTo('Form|Button', 'Состояния кнопки')}
+        target="_self"
+      >
         isDisabled
       </L.A>
     ),
@@ -31,24 +36,26 @@ export const propsDesc = [
   },
   {
     name: (
-      <L.A onClick={linkTo('Form|Button', 'Состояния кнопки')} target="_self">
+      <L.A
+        onClick={linkTo('Form|Button', 'Состояния кнопки')}
+        target="_self"
+      >
         isLoading
       </L.A>
     ),
 
     type: 'boolean',
     required: false,
-    description:
-      'Перевести компонент в состояние loading. Клики по кнопке не будут обрабатываться',
+    description: 'Перевести компонент в состояние loading. Клики по кнопке не будут обрабатываться',
   },
   {
     name: 'onClick',
     type: (
-      <L.Span>
-        (event:{' '}
+      <L.Span>(event:
+        {' '}
         <L.Tooltip
           position="bottom"
-          title={
+          title={(
             <pre>
               {`
 interface SubmitEvent extends React.MouseEvent<HTMLButtonElement> {
@@ -57,7 +64,7 @@ interface SubmitEvent extends React.MouseEvent<HTMLButtonElement> {
 }
               `}
             </pre>
-          }
+          )}
         >
           <L.Span _txt-success>L.ButtonTypes.SubmitEvent</L.Span>
         </L.Tooltip>
@@ -67,30 +74,33 @@ interface SubmitEvent extends React.MouseEvent<HTMLButtonElement> {
     required: false,
     description: (
       <div>
-        <p>Клик по кнопке сабмитит привязанную к ней форму.</p>
         <p>
-          Если все привязанные к ней формы валидны, в событии придут данные
-          полей форм.
+          Клик по кнопке сабмитит привязанную к ней форму.
         </p>
         <p>
-          Обработчик клика не срабатывает, если хотя бы одно поле в привязанных
-          формах невалидно.
+          Если все привязанные к ней формы валидны, в событии придут данные полей форм.
+        </p>
+        <p>
+          Обработчик клика не срабатывает, если хотя бы одно поле в привязанных формах невалидно.
         </p>
       </div>
     ),
   },
   {
     name: (
-      <L.A onClick={linkTo('Form|Button', 'Обработка форм')} target="_self">
+      <L.A
+        onClick={linkTo('Form|Button', 'Обработка форм')}
+        target="_self"
+      >
         onValidationFail
       </L.A>
     ),
     type: (
-      <L.Span>
-        (event:{' '}
+      <L.Span>(event:
+        {' '}
         <L.Tooltip
           position="bottom"
-          title={
+          title={(
             <pre>
               {`
 type ValidationFailEvent =
@@ -98,7 +108,7 @@ type ValidationFailEvent =
   & { invalidForms: Form[] }
               `}
             </pre>
-          }
+          )}
         >
           <L.Span _txt-success>ValidationFailEvent</L.Span>
         </L.Tooltip>
@@ -109,12 +119,10 @@ type ValidationFailEvent =
     description: (
       <div>
         <p>
-          Если в привязанных к кнопке формах есть невалидные поля, то{' '}
-          <b>onClick</b> не сработает.
+          Если в привязанных к кнопке формах есть невалидные поля, то <b>onClick</b> не сработает.
         </p>
         <p>
-          Вместо этого сработает <b>onValidationFail</b>, в событии которого
-          будет содержаться информация о невалидных полях.
+          Вместо этого сработает <b>onValidationFail</b>, в событии которого будет содержаться информация о невалидных полях.
         </p>
       </div>
     ),
@@ -126,15 +134,17 @@ type ValidationFailEvent =
         {'React.Ref<'}
         <L.Tooltip
           position="bottom"
-          title={
+          title={(
             <pre>
-              {`
+              {
+                `
 interface ButtonRefCurrent {
   wrapper: HTMLButtonElement | null,
 }
-                `}
+                `
+              }
             </pre>
-          }
+          )}
         >
           <L.Span _txt-success>ButtonRefCurrent</L.Span>
         </L.Tooltip>
@@ -151,8 +161,7 @@ interface ButtonRefCurrent {
     description: (
       <L.Div>
         <L.P>
-          Задержка перед скроллом к невалидным полям, ms (работает вместе с{' '}
-          <b>shouldScrollToInvalidFields</b>).
+          Задержка перед скроллом к невалидным полям, ms (работает вместе с <b>shouldScrollToInvalidFields</b>).
         </L.P>
       </L.Div>
     ),
@@ -164,8 +173,7 @@ interface ButtonRefCurrent {
     description: (
       <L.Div>
         <L.P>
-          Дополнительный сдвиг в px при скролинге к кнопке (работает вместе с{' '}
-          <b>shouldScrollToInvalidFields</b>).
+          Дополнительный сдвиг в px при скролинге к кнопке (работает вместе с <b>shouldScrollToInvalidFields</b>).
         </L.P>
       </L.Div>
     ),
@@ -176,37 +184,42 @@ interface ButtonRefCurrent {
     required: false,
     description: (
       <L.Div>
-        <L.P>Должен ли рендериться компонент.</L.P>
+        <L.P>
+          Должен ли рендериться компонент.
+        </L.P>
       </L.Div>
     ),
   },
   {
     name: (
-      <L.A onClick={linkTo('Form|Button', 'Обработка форм')} target="_self">
+      <L.A
+        onClick={linkTo('Form|Button', 'Обработка форм')}
+        target="_self"
+      >
         shouldScrollToInvalidFields
       </L.A>
     ),
     type: 'boolean',
     required: false,
     description: (
-      <span>Включает прокрутку к невалидным полям при нажатии на кнопку.</span>
+      <span>
+        Включает прокрутку к невалидным полям при нажатии на кнопку.
+      </span>
     ),
   },
   {
     name: 'theme',
     type: (
-      <L.Tooltip
-        title={
-          <pre>
-            {`
+      <L.Tooltip title={(
+        <pre>{`
 {
   disabled:         string,
   loading:          string,
   wrapper:          string,
 }
         `}
-          </pre>
-        }
+        </pre>
+      )}
       >
         <L.Span _txt-success>DefaultButtonTheme</L.Span>
       </L.Tooltip>
