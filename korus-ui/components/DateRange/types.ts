@@ -5,9 +5,13 @@ import {
 import {
   CustomRangeEvent,
   DateTimeInputRangeProps,
+  DateTimeInputRangeState,
   DateTimeInputRangeRefCurrent,
   DateTimeInputValueType,
 } from '../../src/DateTimeInputRange/types';
+import { CustomRender } from '../../commonTypes';
+import { MaskedInputBaseProps } from '../../src/MaskedInputBase/types';
+
 
 export interface DateRangeProps extends DateTimeInputRangeProps {
   /** Классы переданные через _ */
@@ -16,6 +20,8 @@ export interface DateRangeProps extends DateTimeInputRangeProps {
   disabledDates?: (Date | [Date, Date])[],
   /** Формат отображаемой и вводимой даты. По-умолчанию "dd.MM.yyyy" */
   format?: string,
+  /** Кастомизация полей ввода */
+  inputRender?: CustomRender<DateRangeProps, DateTimeInputRangeState, MaskedInputBaseProps>,
   /** Признак отключения инпута */
   isDisabled?: boolean | [boolean, boolean],
   /** Открытое состояние компонента */
