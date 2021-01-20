@@ -112,6 +112,12 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
     description: 'Обработчик события потери фокуса.',
   },
   {
+    name: 'onClick',
+    type: '(event: React.MouseEvent) => void',
+    required: false,
+    description: 'Обработчик кликов',
+  },
+  {
     name: 'onChange',
     type: (
       <L.Span>(event:
