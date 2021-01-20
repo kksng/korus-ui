@@ -37,6 +37,17 @@ describe('AutoComplete', () => {
         .should('have.length', 2);
     });
 
+    it('should appear css-class "danger" and render requiredMessage when the focus is lost', () => {
+      cy.get('[name=AutoComplete2]')
+        .focus()
+        .blur()
+        .parent()
+        .should('have.class', 'danger')
+        .parent()
+        .find('.invalid-message-list')
+        .should('have.text', 'Поле обязательно!');
+    });
+
     describe('noSuggestionsRender', () => {
       it('defaultMessage', () => {
         cy.get('[name=AutoComplete2]')

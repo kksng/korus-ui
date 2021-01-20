@@ -59,6 +59,9 @@ export const AutoComplete = (): React.ReactElement => {
           minSearchLength={0}
           onBlur={(event) => setStringValue2(event.component.value)}
           placeholder="Type your city..."
+          isRequired
+          form='myForm'
+          requiredMessage="Поле обязательно!"
           _width30
         />
         <L.AutoComplete
