@@ -17,9 +17,9 @@ export const Api = () => (
         Вёрстка
       </L.H2>
       <L.P>
-        Атрибуты, начинающиеся с _ будут преобразованы в имена css-классов. См.
+        Атрибуты, начинающиеся с _ будут преобразованы в имена css-классов. (cм.
         {' '}
-        <L.A onClick={linkTo('Basics|Вёрстка', 'Вёрстка')} target="_self">Вёрстка</L.A>
+        <L.A onClick={linkTo('Basics|Вёрстка', 'CSS-классы')} target="_self">Вёрстка</L.A>)
       </L.P>
     </section>
 
@@ -30,7 +30,7 @@ export const Api = () => (
       <L.P>
         В каждый компонент можно передать атрибут theme, который содержит набор css-классов для элементов компонента.
         {' '}
-        См. <L.A onClick={linkTo('Basics|Кастомизация', 'Переопределение css-классов')} target="_self">Переопределение css-классов</L.A>
+        (cм. <L.A onClick={linkTo('Basics|Кастомизация', 'Переопределение css-классов')} target="_self">Переопределение css-классов</L.A>)
       </L.P>
     </section>
 
@@ -46,7 +46,7 @@ export const Api = () => (
         Название элемента можно узнать в React Developer Tools или в разделе Customization компонента.
       </L.P>
       <L.P>
-        См. <L.A onClick={linkTo('Basics|Кастомизация', 'Изменение элемента')} target="_self">Изменение элемента</L.A>
+        (см. <L.A onClick={linkTo('Basics|Кастомизация', 'Изменение элемента')} target="_self">Изменение элемента</L.A>)
       </L.P>
     </section>
 
@@ -57,13 +57,13 @@ export const Api = () => (
       <ul className="txt-list">
         <li>
           <L.P>Все компоненты Form имеют атрибуты value и onChange.</L.P>
-          <L.P>В компоненте могут быть и другие обработчики (onSelect, onEnter и т.п., см. API компонента).</L.P>
+          <L.P>В компоненте могут быть и другие обработчики (onSelect, onEnter и т.п, (см. API компонента)).</L.P>
         </li>
         <li>
           <L.P>
             Если обработчик указан в API, значит поведение и/или структура его события
             {' '}
-            <L.A onClick={linkTo('Basics|API', 'Events')} target="_self">изменены по стандарту Korus-ui</L.A>
+            <L.A onClick={linkTo('Basics|API', 'Events')} target="_self">изменены по стандарту Korus-ui</L.A>.
           </L.P>
         </li>
         <li>
@@ -81,14 +81,14 @@ export const Api = () => (
       </L.H2>
       <ul className="txt-list block">
         <li>
-          <L.P>Все компоненты поддерживают стандартные атрибуты className, style итд.</L.P>
+          <L.P>Все компоненты поддерживают стандартные атрибуты className, style и т.д.</L.P>
         </li>
         <li>
           <L.P>
-            В компоненты можно передать любые стандартные обработчики React, например, onClick, onMouseEnter и т.д.
+            В компоненты можно передать любые стандартные обработчики React, например: onClick, onMouseEnter и т.д.
           </L.P>
           <L.P>
-            Обработчики и атрибуты, переданные компоненту, будут применены к врапперу - самому внешнему HTML-элементу компонента.
+            Обработчики и атрибуты, переданные компоненту, будут применены к врапперу - самому внешнему DOM-элементу компонента.
           </L.P>
         </li>
       </ul>
@@ -98,7 +98,7 @@ export const Api = () => (
       <L.H2 _block-header>
         Флаги
       </L.H2>
-      <p>Названия атрибутов с булевыми значениями начинаются с</p>
+      <p>Названия атрибутов с булевыми значениями начинаются с:</p>
       <ul className="txt-list">
         <li>
           <p><b>is</b>: isOpen, isValid, isRequired, isDisabled</p>
