@@ -227,4 +227,34 @@ interface ButtonRefCurrent {
     required: false,
     description: 'Тема компонента.',
   },
+  {
+    name: 'type',
+    type: (
+      <L.Tooltip
+        title={
+          <pre>
+            {`
+{
+  button,
+  submit,
+  reset, 
+}
+        `}
+          </pre>
+        }
+      >
+        <L.Span _txt-success>ButtonHTMLAttributes</L.Span>
+      </L.Tooltip>
+    ),
+    required: false,
+    description: (
+      <L.Div>
+        <L.P>
+          Тип кнопки. Обычная, кнопка для отправки данных формы на сервер,
+          кнопка для очистки введенных данных формы и возвращения значений в
+          первоначальное состояние.{' '}
+        </L.P>
+      </L.Div>
+    ),
+  },
 ];
