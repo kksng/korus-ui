@@ -59,7 +59,19 @@ render(<Customization />);
       </L.P>
       <L.Ul _txt-list>
         <li>
+          <strong>footerRender</strong> - футер под значениями в выпадающем списке
+        </li>
+        <li>
+          <strong>headerRender</strong> - хедер над значениями в выпадающем списке
+        </li>
+        <li>
+          <strong>inputRender</strong> - поле ввода
+        </li>
+        <li>
           <strong>itemRender</strong> - элемент выпадающего списка
+        </li>
+        <li>
+          <strong>listRender</strong> - внешний вид выпадающего списка
         </li>
         <li>
           <L.P><strong>noSuggestionsRender</strong> - уведомление о том, что подходящих совпадений в выпадающем списке

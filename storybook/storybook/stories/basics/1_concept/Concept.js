@@ -37,7 +37,7 @@ export const Concept = () => (
         <li>
           Усовершенствованная
           {' '}
-          <L.A onClick={linkTo('Basics|Вёрстка', 'Вёрстка')} target="_self">вёрстка</L.A>
+          <L.A onClick={linkTo('Basics|Вёрстка', 'CSS-классы')} target="_self">вёрстка</L.A>
           {' '}
           (меньше кода, удобная работа с css-классами)
         </li>
