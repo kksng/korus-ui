@@ -12,9 +12,15 @@ import { Story } from '../../../components/Story';
 import { propsDesc } from './propsDescription';
 import { ApiStory } from '../../../components/ApiStory';
 import { ControlledDate } from './Examples/ControlledDate';
+import {calendarPropsDesc} from '../../../commonProps/CalendarProps';
+
+const compoundProps = [
+  { componentName: 'DateRange', props: propsDesc },
+  { componentName: 'Calendar', props: calendarPropsDesc },
+];
 
 storiesOf('Form| DateRange', module)
-  .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
+  .add('API', context => (<ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />))
   .add('Basic usage', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
   .add('Limits', context => (<Story {...MinMax} customProps={propsDesc} context={context} />))
   .add('Controlled Date', context => (<Story {...ControlledDate} customProps={propsDesc} context={context} />))

@@ -1,16 +1,7 @@
 import * as React from 'react';
-import { DivProps, DivRefCurrent } from '../../components/Div';
+import { DivRefCurrent } from '../../components/Div';
 import {
-  CalendarHeaderProps,
-  CalendarProps,
-  DateCellItemProps,
-  DateCellProps,
-  DateViewProps,
-  MonthViewProps,
-  WeekRowProps,
-  YearViewProps,
-  MonthsNames,
-  WeekDayNames,
+  CalendarBaseProps,
 } from '../Calendar/types';
 import {
   BlurEvent, ChangeEvent, FocusEvent, DateTimeInputProps, DateTimeInputState, IconProps, WrapperProps, TimeLimits,
@@ -24,22 +15,11 @@ export type DateTimeInputValueType = undefined | null | string | Date;
 
 export type DateValueType = [Date | null, Date | null];
 
-export interface DateTimeInputRangeProps {
-  boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
-  /** Кастомный заголовок календаря */
-  calendarHeaderRender?: CustomRender<DateViewProps, {}, CalendarHeaderProps>,
-  /** Кастомный рендер враппера календаря */
-  calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
+export interface DateTimeInputRangeProps extends CalendarBaseProps {
   /** Кастомный класс */
   className?: string,
-  /** Кастомная ячейка с датой */
-  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
-  /** Кастомный вид выбора даты */
-  dateViewRender?: CustomRender<DateViewProps, {}, DateViewProps>,
   /** Кастомный разделитель инпутов */
   delimiterRender?: CustomRender<DateTimeInputRangeProps, DateTimeInputRangeState, DelimiterProps>,
-  /* Даты, которые отключены для выбора. Массив дат или диапазонов дат. */
-  disabledDates?: (Date | [Date, Date])[],
   /** Название формы */
   form?: string,
   /** Формат выводимого значения */
@@ -54,14 +34,10 @@ export interface DateTimeInputRangeProps {
   isOpen?: boolean | [boolean, boolean],
   /** Признак обязательного поля */
   isRequired?: boolean | [boolean, boolean],
-  /** Максимально доступная дата для выбора */
+  /** Максимальная дата */
   max?: Date,
-  /** Минимально доступная дата для выбора */
+  /** Минимальная дата */
   min?: Date,
-  /** Массив кастомных названий месяцев */
-  monthNames?: MonthsNames,
-  /** Кастомный вид выбора месяца */
-  monthViewRender?: CustomRender<DateViewProps, {}, MonthViewProps>,
   /** Имя поля */
   name?: string | [string | undefined, string | undefined],
   /** Обработчик события потери фокуса */
@@ -76,10 +52,6 @@ export interface DateTimeInputRangeProps {
   placeholder?: string | [string | undefined, string | undefined],
   /** Сообщение, которое выводится, когда инпут обязательный и не заполнен */
   requiredMessage?: string | [string, string],
-  /** Массив сокращенных кастомных названий месяцев */
-  shortMonthNames?: MonthsNames,
-  /** Массив сокращенных кастомных названий дней недели */
-  shortWeekDayNames?: WeekDayNames,
   /** Тема */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInputRange],
   /** Минимальное время, применяется к обоим полям */
@@ -90,16 +62,10 @@ export interface DateTimeInputRangeProps {
   type?: Values<typeof COMPONENT_TYPES>,
   /** Значение */
   value?: [DateTimeInputValueType, DateTimeInputValueType] | null,
-  /** Массив кастомных названий дней недели */
-  weekDayNames?: WeekDayNames,
-  /** Кастомный список дней недели (строка "Пн Вт Ср Чт Пт Сб Вс") */
-  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
   /** Кастомный враппер */
   wrapperRangeRender?: CustomRender<DateTimeInputRangeProps, DateTimeInputRangeState, WrapperRangeProps>,
   /** Кастомный враппер DateTimeInput */
   wrapperRender?: CustomRender<DateTimeInputProps, DateTimeInputState, WrapperProps>,
-  /** Кастомный вид выбора года */
-  yearViewRender?: CustomRender<DateViewProps, {}, YearViewProps>,
 }
 
 export interface DateTimeInputRangeState {

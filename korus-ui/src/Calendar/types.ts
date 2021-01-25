@@ -13,34 +13,54 @@ export interface CalendarClickHandler {
   (type: Values<typeof CALENDAR_CLICK_ACTION>, ev: React.MouseEvent<HTMLElement>, payload?: { dateCell?: number, monthCell?: number, yearCell?: number }): void,
 }
 
-export interface CalendarProps {
+export interface CalendarBaseProps {
+  /** Ссылка на контейнер, относительно которого нужно позиционировать календарь */
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
+  /** Кастомный заголовок календаря */
   calendarHeaderRender?: CustomRender<CalendarProps, {}, CalendarHeaderProps>,
+  /** Кастомный рендер враппера календаря */
   calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
+  /** Кастомная ячейка с датой */
   dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
+  /** Кастомный вид выбора даты */
   dateViewRender?: CustomRender<CalendarProps, {}, DateViewProps>,
-  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
+  /* Даты, которые отключены для выбора. Массив дат или диапазонов дат. */
   disabledDates?: (Date | [Date, Date])[],
+  /** Кнопка "Сегодня" под календарем */
+  hasTodayButton?: boolean,
+  /** Массив кастомных названий месяцев */
+  monthNames?: MonthsNames,
+  /** Кастомный вид выбора месяца */
+  monthViewRender?: CustomRender<CalendarProps, {}, MonthViewProps>,
+  /** Массив сокращенных кастомных названий месяцев */
+  shortMonthNames?: MonthsNames,
+  /** Массив сокращенных кастомных названий дней недели */
+  shortWeekDayNames?: WeekDayNames,
+  /** Массив кастомных названий дней недели */
+  weekDayNames?: WeekDayNames,
+  /** Кастомизация списка дней недели (строка "Пн Вт Ср Чт Пт Сб Вс") */
+  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
+  /** Кастомный вид выбора года */
+  yearViewRender?: CustomRender<CalendarProps, {}, YearViewProps>,
+}
+
+export interface CalendarProps extends CalendarBaseProps {
   dispatch: React.Dispatch<AllActions>,
   format: string,
-  hasTodayButton?: boolean,
+  /** Выключенное состояние */
   isDisabled?: boolean,
+  /** Открытый календарь */
   isOpen?: boolean,
+  /** Максимальная дата */
   max?: Date,
+  /** Минимальная дата */
   min?: Date,
-  monthNames?: MonthsNames,
-  monthViewRender?: CustomRender<CalendarProps, {}, MonthViewProps>,
   onClick: CalendarClickHandler,
   onMouseDown: React.MouseEventHandler<HTMLDivElement>,
-  shortMonthNames?: MonthsNames,
-  shortWeekDayNames?: WeekDayNames,
   theme: typeof defaultTheme,
   value: Date | null,
   viewDate: Date,
   viewType: Values<typeof VIEW_TYPES>,
-  weekDayNames?: WeekDayNames,
-  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
-  yearViewRender?: CustomRender<CalendarProps, {}, YearViewProps>,
 }
 
 export interface DateCellProps {
