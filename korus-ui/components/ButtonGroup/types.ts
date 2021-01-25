@@ -38,8 +38,6 @@ export interface ButtonGroupProps<T extends Value | Value[] = Value | Value[]> e
   defaultValue?: Value | Value[],
   /** Выключенное состояние компонента */
   isDisabled?: boolean,
-  /** Имя компонента */
-  name?: string,
   /** Обработчик события изменения активного айтема. Отдает value и index */
   onChange?: (ev: ChangeEvent<T>) => void,
   /** Обработчик клика */

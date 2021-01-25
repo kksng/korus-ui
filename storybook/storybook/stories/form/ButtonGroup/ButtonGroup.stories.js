@@ -7,12 +7,16 @@ import {
   CustomizationWrapper,
   WorkTypes,
 } from './Examples';
-import { propsDesc } from './propsDescription';
+import { propsDesc, validationPropsDesc } from './propsDescription';
 import { Story } from '../../../components/Story';
 
+const compoundProps = [
+  { componentName: 'ButtonGroup', props: propsDesc },
+  { componentName: 'Validation', props: validationPropsDesc },
+];
 
 storiesOf('Form|ButtonGroup', module)
-  .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
+  .add('API', context => (<ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />))
   .add('Режимы работы', context => (<Story {...WorkTypes} customProps={propsDesc} context={context} />));
 
 storiesOf('Form|ButtonGroup.Customization', module)

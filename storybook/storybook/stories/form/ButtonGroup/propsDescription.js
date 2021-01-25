@@ -1,5 +1,16 @@
 import * as React from 'react';
 import * as L from '@korus/leda';
+import {
+  form,
+  invalidMessage,
+  isRequired,
+  isValid,
+  name,
+  requiredMessage,
+  shouldValidateUnmounted,
+  validator,
+  invalidMessageRender,
+} from '../../basics/6_validation/propsDescription';
 import { linkTo } from '@storybook/addon-links';
 import { DataObject, RenderEvent } from '../../../propsHelpers';
 
@@ -206,4 +217,16 @@ interface ChangeEvent<T = any> extends React.ChangeEvent<T> {
     required: false,
     description: 'Кастомизация общего контейнера для кнопок',
   },
+];
+
+export const validationPropsDesc = [
+  isRequired,
+  form,
+  invalidMessage,
+  isValid,
+  name,
+  requiredMessage,
+  shouldValidateUnmounted,
+  invalidMessageRender,
+  validator,
 ];
