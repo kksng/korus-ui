@@ -16,6 +16,7 @@ import {
   DropDownSelect,
   DropZone,
   FileDrop,
+  FileUpload,
   Input,
   MaskedInput,
   Modal,
@@ -30,6 +31,7 @@ import {
   Rating,
   Slider,
   StatusBar,
+  StickyPanel,
   Tabs,
   Textarea,
   ToolTip,
@@ -63,6 +65,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/filedrop">
           <FileDrop />
+        </Route>
+        <Route path="/cypress/fileupload">
+          <FileUpload />
         </Route>
         <Route path="/cypress/input">
           <Input />
@@ -138,6 +143,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/statusbar">
           <StatusBar />
+        </Route>
+        <Route path="/cypress/stickypanel">
+          <StickyPanel />
         </Route>
         <Route path="/cypress/tabs">
           <Tabs />

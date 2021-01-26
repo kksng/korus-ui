@@ -15,16 +15,10 @@ describe('TimeRange tests', () => {
             .type('12:30{enter}')
             .should('have.value', '12:30')
             .clear()
-            .paste('12:30{enter}')
-            .should('have.value', '12:30')
-            .clear()
             .type('12:31{enter}')
             .should('have.value', '12:31')
             .clear()
             .type('14:08{enter}')
-            .should('have.value', '14:08')
-            .clear()
-            .paste('14:08{enter}')
             .should('have.value', '14:08')
             .clear()
             .type('16:59{enter}')
@@ -33,9 +27,6 @@ describe('TimeRange tests', () => {
             .type('17:00{enter}')
             .should('have.value', '17:00')
             .clear()
-            .paste('17:00{enter}')
-            .should('have.value', '17:00')
-            .clear();
         });
     });
     it('Entering invalid values', () => {
@@ -73,9 +64,6 @@ describe('TimeRange tests', () => {
             .type('17:01{enter}')
             .should('have.value', '17:00')
             .clear()
-            .paste('17:01{enter}')
-            .should('have.value', '17:00')
-            .clear();
         });
     });
     it('Should be disabled', () => {
@@ -87,24 +75,42 @@ describe('TimeRange tests', () => {
             .and('have.attr', 'disabled');
         });
     });
+    it('Should autocomplete time with 0', () => {
+      cy.name('TimeRange-from')
+        .clear()
+        .type('1')
+        .should('have.value', '10:00')
+        .type('{enter}')
+        .should('have.value', '12:30')
+        .clear()
+        .type('{rightArrow}9')
+        .should('have.value', '09:00')
+        .type('{enter}')
+        .should('have.value', '12:30')
+        .clear()
+    });
     it('Should not be able to enter more than 23 hours', () => {
       cy.name('TimeRange-from')
         .clear()
-        .type('1230{enter}')
-        .type('{leftArrow}{leftArrow}{leftArrow}{backspace}{backspace}')
-        .type('65{enter}')
+        .type('1330{enter}')
+        .type('{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}')
+        .type('6{enter}')
+        .should('have.value', '13:30')
+        .clear()
+        .type('6')
+        .should('have.value', '00:00')
+        .type('{enter}')
         .should('have.value', '12:30')
         .clear()
-        .type('6000{enter}')
-        .should('have.value', '')
     });
     it('Should not be able to enter more than 59 minutes', () => {
       cy.name('TimeRange-from')
         .clear()
         .type('1230{enter}')
-        .type('{backspace}{backspace}')
-        .type('65{enter}')
+        .type('{leftArrow}{leftArrow}')
+        .type('6{enter}')
         .should('have.value', '12:30')
+        .clear()
     });
   });
 });

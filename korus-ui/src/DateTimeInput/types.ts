@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  Action, CustomRender, CustomEventHandler, Values,
+  Action, CustomRender, CustomEventHandler, Values, AdjustCursor,
 } from '../../commonTypes';
 import { DivProps, DivRefCurrent } from '../../components/Div';
 import { COMPONENTS_NAMESPACES } from '../../constants';
@@ -344,7 +344,6 @@ export interface CustomElements {
 }
 
 export interface HandlersData {
-  clearMaskValue: () => () => void,
   conditions: CalendarConditions,
   dispatch: React.Dispatch<AllActions>,
   maskedInputRef: React.MutableRefObject<HTMLInputElement | null>,

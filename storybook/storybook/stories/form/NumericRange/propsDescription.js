@@ -7,6 +7,12 @@ import { RenderEvent } from '../../../propsHelpers';
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
   {
+    name: 'className',
+    type: 'string',
+    required: false,
+    description: 'Классы для компонента',
+  },
+  {
     name: (
       <L.A
         onClick={linkTo('Form|NumericTextBox|Props', 'format')}
@@ -152,6 +158,34 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
     description: 'Обработчик события фокуса',
   },
   {
+    name: 'onEnterPress',
+    type: (
+      <L.Span>(event:
+        {' '}
+        <L.Tooltip
+          position="bottom"
+          title={(
+            <pre>
+              {`
+interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
+  component: {
+    name?: string,
+    value: number | null,
+  },
+}            
+              `}
+            </pre>
+          )}
+        >
+          <L.Span _txt-success>L.NumericRangeTypes.EnterPressEvent</L.Span>
+        </L.Tooltip>
+        ) => void
+      </L.Span>
+    ),
+    required: false,
+    description: 'Функция обратного вызова при нажатии Enter',
+  },
+  {
     name: 'placeholder',
     type: '[string | undefined, string | undefined] | string',
     required: false,
@@ -180,7 +214,7 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
       </>
     ),
     required: false,
-    description: 'Реф',
+    description: 'Реф для компонента',
   },
   {
     name: 'shouldTrimTrailingZeros',

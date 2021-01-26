@@ -54,6 +54,12 @@ export const propsDesc = [
     description: 'Перевести компонент в состояние disabled.',
   },
   {
+    name: 'isSemi',
+    type: 'boolean',
+    required: false,
+    description: '"Получекбокс" (минус вместо галочки). "Полувыбранное" состояние можно реализовать с помощью соответствующего css-класса.',
+  },
+  {
     name: 'labelRender',
     type: (
       <L.Span>

@@ -23,6 +23,12 @@ export const propsDesc = [
     description: 'Браузерное автозаполнение поля ввода, по умолчанию "off".',
   },
   {
+    name: 'compareObjectsBy',
+    type: '((suggestionListItem: T) => any) | string : never',
+    required: false,
+    description: 'Сравнение объектов по произвольному полю, а не по ссылке.',
+  },
+  {
     name: (
       <L.A
         onClick={linkTo('Form|AutoComplete|Props', 'data: string[]')}
@@ -47,12 +53,6 @@ export const propsDesc = [
     description: 'Данные для отображения в выпадающем списке.',
   },
   {
-    name: 'isDisabled',
-    type: 'boolean',
-    required: false,
-    description: 'Перевести компонент в состояние disabled.',
-  },
-  {
     name: (
       <L.A
         onClick={linkTo('Form|AutoComplete|Props', 'filterRule')}
@@ -65,44 +65,62 @@ export const propsDesc = [
     required: false,
     description: 'Правило фильтрации выпадающего списка. Дефолтное значение - smart, "умный" поиск ищет в строке вхождения всех слов из инпута, не зависимо от их порядка, startsWith - фильтр по началу строку в инпуте, includes - поиск по вхождению строки.',
   },
-  // {
-  //   name: 'groupBy',
-  //   type: (
-  //     <L.Span>
-  //       {'('}
-  //       <L.Tooltip
-  //         position="bottom"
-  //         title={'{ [string]: string | number }'}
-  //       >
-  //         <L.Span _txt-success>DataObject</L.Span>
-  //       </L.Tooltip>
-  //       {') => string | undefined'}
-  //     </L.Span>
-  //   ),
-  //   required: false,
-  //   description: (
-  //     <div>
-  //       <p>
-  //         Элементы в выпадающем списке можно группировать. Для этого каждый элемент в <b>data</b> должен иметь поле, которое позволяет его отнести к какой-либо группе.
-  //       </p>
-  //       <p>
-  //         Например: <i>data={`{[{ city: 'Berlin', country: 'Germany' }, { city: 'Paris', country: 'France' }]}`}</i>
-  //       </p>
-  //       <p>
-  //         Атрибут <b>groupBy</b> принимает функцию, которая будет выполнена для каждого элемента из <b>data</b>. Аргументом этой функции будет сам элемент.
-  //         Верните из функции то поле элемента, которое должно использоваться для группировки: <i>groupBy={'{item => item.country}'}</i>.
-  //       </p>
-  //       <p>
-  //         Если какие-то элементы <b>data</b> не содержат поле для группировки, они окажутся несгруппированными внизу выпадающего списка.
-  //       </p>
-  //     </div>
-  //   ),
-  // },
+  {
+    name: 'footerRender',
+    type: '() => React.ReactNode',
+    required: false,
+    description: 'Футер под значениями в выпадающем списке.',
+  },
+  {
+    name: 'groupBy',
+    type: (
+      <L.Span>
+        {'('}
+        <L.Tooltip
+          position="bottom"
+          title={'{ [string]: string | number }'}
+        >
+          <L.Span _txt-success>DataObject</L.Span>
+        </L.Tooltip>
+        {') => string | undefined'}
+      </L.Span>
+    ),
+    required: false,
+    description: (
+      <div>
+        <p>
+          Элементы в выпадающем списке можно группировать. Для этого каждый элемент в <b>data</b> должен иметь поле, которое позволяет его отнести к какой-либо группе.
+        </p>
+        <p>
+          Например: <i>data={`{[{ city: 'Berlin', country: 'Germany' }, { city: 'Paris', country: 'France' }]}`}</i>
+        </p>
+        <p>
+          Атрибут <b>groupBy</b> принимает функцию, которая будет выполнена для каждого элемента из <b>data</b>. Аргументом этой функции будет сам элемент.
+          Верните из функции то поле элемента, которое должно использоваться для группировки: <i>groupBy={'{item => item.country}'}</i>.
+        </p>
+        <p>
+          Если какие-то элементы <b>data</b> не содержат поле для группировки, они окажутся несгруппированными внизу выпадающего списка.
+        </p>
+      </div>
+    ),
+  },
   {
     name: 'hasClearButton',
     type: 'boolean',
     required: false,
     description: 'Отображение кнопки для очистки значения в поле ввода.',
+  },
+  {
+    name: 'headerRender',
+    type: '() => React.ReactNode',
+    required: false,
+    description: 'Хедер над значениями в выпадающем списке.',
+  },
+  {
+    name: 'isDisabled',
+    type: 'boolean',
+    required: false,
+    description: 'Перевести компонент в состояние disabled.',
   },
   {
     name: 'isLoading',
@@ -115,6 +133,23 @@ export const propsDesc = [
     type: 'boolean',
     required: false,
     description: 'Рендерить компонент с открытым выпадающим списком.',
+  },
+  {
+    name: (
+      <L.A
+        onClick={linkTo('Form|AutoComplete', 'Customization')}
+        target="_self"
+      >
+        inputRender
+      </L.A>
+    ),
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Настройка внешнего вида поля ввода.',
   },
   {
     name: (
@@ -235,6 +270,34 @@ interface ChangeEvent<T extends Suggestion> extends React.ChangeEvent<T> {
     description: 'Обработчик события изменения значения в поле ввода.',
   },
   {
+    name: 'onEnterPress',
+    type: (
+      <L.Span>(event:
+        {' '}
+        <L.Tooltip
+          position="bottom"
+          title={(
+            <pre>
+              {`
+interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
+  component: {
+    name?: string,
+    value: string,
+  },
+}              
+              `}
+            </pre>
+          )}
+        >
+          <L.Span _txt-success>L.AutoCompleteTypes.EnterPressEvent</L.Span>
+        </L.Tooltip>
+        ) => void
+      </L.Span>
+    ),
+    required: false,
+    description: 'Обработчик нажатия на enter.',
+  },
+  {
     name: 'onFocus',
     type: (
       <L.Span>(event:
@@ -321,80 +384,80 @@ interface AutoCompleteRefCurrent {
     required: false,
     description: 'Кроме поля, указанного в textField, можно искать вхождения и в других полях объекта data, перечислите в массиве имена этих полей.',
   },
-//   {
-//     name: 'sortSuggestions',
-//     type: (
-//       <L.Span>
-//         {'(a: '}
-//         <L.Tooltip
-//           position="bottom"
-//           title={(
-//             <pre>
-//               {
-//                 `
-// interface Item {
-//   isScrollTarget: boolean,
-//   isPlaceholder: boolean,
-//   isHighlighted?: boolean,
-//   isSelected?: boolean,
-//   item: string | number | SomeObject | null,
-//   key: string,
-//   text: string | number,
-// }                `
-//               }
-//             </pre>
-//           )}
-//         >
-//           <L.Span _txt-success>Item</L.Span>
-//         </L.Tooltip>
-//         {', b: '}
-//         <L.Tooltip
-//           position="bottom"
-//           title={(
-//             <pre>
-//               {
-//                 `
-// interface Item {
-//   isScrollTarget: boolean,
-//   isPlaceholder: boolean,
-//   isHighlighted?: boolean,
-//   isSelected?: boolean,
-//   item: string | number | SomeObject | null,
-//   key: string,
-//   text: string | number,
-// }                `
-//               }
-//             </pre>
-//           )}
-//         >
-//           <L.Span _txt-success>Item</L.Span>
-//         </L.Tooltip>
-//         {') => number'}
-//       </L.Span>
-//     ),
-//     required: false,
-//     description: (
-//       <div>
-//         <p>
-//           Сортировка выпадающего списка.
-//         </p>
-//         <p>
-//           Для сортировки используйте функцию в формате
-//           {' '}
-//           <a
-//             href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             compareFunction
-//           </a>.
-//         </p>
-//         <p>
-//           Например: <i>sortSuggestions=&#123;(a, b) => (a.text > b.text ? 1 : -1)&#125;</i>.
-//         </p>
-//       </div>
-//     ),
-//   },
+  {
+    name: 'sortSuggestions',
+    type: (
+      <L.Span>
+        {'(a: '}
+        <L.Tooltip
+          position="bottom"
+          title={(
+            <pre>
+              {
+                `
+interface Item {
+  isScrollTarget: boolean,
+  isPlaceholder: boolean,
+  isHighlighted?: boolean,
+  isSelected?: boolean,
+  item: string | number | SomeObject | null,
+  key: string,
+  text: string | number,
+}                `
+              }
+            </pre>
+          )}
+        >
+          <L.Span _txt-success>Item</L.Span>
+        </L.Tooltip>
+        {', b: '}
+        <L.Tooltip
+          position="bottom"
+          title={(
+            <pre>
+              {
+                `
+interface Item {
+  isScrollTarget: boolean,
+  isPlaceholder: boolean,
+  isHighlighted?: boolean,
+  isSelected?: boolean,
+  item: string | number | SomeObject | null,
+  key: string,
+  text: string | number,
+}                `
+              }
+            </pre>
+          )}
+        >
+          <L.Span _txt-success>Item</L.Span>
+        </L.Tooltip>
+        {') => number'}
+      </L.Span>
+    ),
+    required: false,
+    description: (
+      <div>
+        <p>
+          Сортировка выпадающего списка.
+        </p>
+        <p>
+          Для сортировки используйте функцию в формате
+          {' '}
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            compareFunction
+          </a>.
+        </p>
+        <p>
+          Например: <i>sortSuggestions=&#123;(a, b) => (a.text > b.text ? 1 : -1)&#125;</i>.
+        </p>
+      </div>
+    ),
+  },
   {
     name: (
       <L.A
