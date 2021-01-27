@@ -126,7 +126,7 @@ export interface MultiSelectProps<T extends MultiSelectValue | null | undefined 
    * Если передаётся массив обьектов, нужно указать textField - поле обьекта, которое содержит данные для вывода в списке
   */
   data?: MultiSelectValue,
-  /** Значение по-умолчанию */
+  /** Значение по умолчанию */
   defaultValue?: T,
   /** Фильтр данных по правилу. smart (дефолтное значение) - "умный" поиск, startsWith - поиск по первым символам, includes - поиск по вхождению. При больших обьемах данных(больше 1-2 тысяч значений) не желательно использовать "умный поиск". */
   filterRule?: FilterRules,
@@ -160,7 +160,7 @@ export interface MultiSelectProps<T extends MultiSelectValue | null | undefined 
   onBlur?: (event: FocusEvent) => void,
   /** Обработчик изменения данных в инпуте */
   onChange?: (event: ChangeEvent) => void,
-  /** Классы переданные через _ */
+  /** Обработчик события нажания на Enter */
   onEnterPress?: (ev: EnterPressEvent) => void,
   /** Обработчик фокуса элемента */
   onFocus?: (event: FocusEvent) => void,
