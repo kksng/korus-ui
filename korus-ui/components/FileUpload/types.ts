@@ -48,7 +48,7 @@ export interface FileUploadProps extends ValidationProps {
   infoRender?: (props: RenderEvent<FileUploadProps>) => React.ReactElement | React.FC,
   /** Состояние загрузки */
   isLoading?: boolean,
-  /** Максимальный размер файла в Мбайтах */
+  /** Максимальный размер файла в байтах */
   maxFileSize?: number,
   /** Минимальный размер файла в байтах */
   minFileSize?: number,
