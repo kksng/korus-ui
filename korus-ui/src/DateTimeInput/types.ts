@@ -19,6 +19,7 @@ import {
   YearViewProps,
   MonthsNames,
   WeekDayNames,
+  CalendarBaseProps,
 } from '../Calendar/types';
 import { MaskedInputBaseProps } from '../MaskedInputBase/types';
 import { stateActionTypes } from './actions';
@@ -53,25 +54,11 @@ export interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
 
 export type TimeLimits = [number, number];
 
-export interface DateTimeInputProps extends ValidationProps {
-  /** Ссылка на контейнер, относительно которого нужно позиционировать элемент */
-  boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement }>,
-  /** Кастомный заголовок календаря */
-  calendarHeaderRender?: CustomRender<DateViewProps, {}, CalendarHeaderProps>,
-  /** Кастомный рендер враппера календаря */
-  calendarWrapperRender?: CustomRender<CalendarProps, {}, DivProps>,
+export interface DateTimeInputProps extends ValidationProps, CalendarBaseProps {
   /** Классы для компонента */
   className?: string,
-  /** Кастомная ячейка с датой */
-  dateCellRender?: CustomRender<DateCellProps, {}, DateCellItemProps>,
-  /** Кастомный вид выбора даты */
-  dateViewRender?: CustomRender<DateViewProps, {}, DateViewProps>,
-  /* Dates that are disabled to be selected. Array of dates or dates ranges. */
-  disabledDates?: (Date | [Date, Date])[],
   /** Формат даты, по-умолчанию dd.MM.yyyy */
   format?: string,
-  /** Кнопка "Сегодня" под календарем */
-  hasTodayButton?: boolean,
   /** Кастомная иконка календаря */
   iconRender?: CustomRender<DateTimeInputProps, DateTimeInputState, IconProps>,
   /** Кастомный инпут */
@@ -86,10 +73,6 @@ export interface DateTimeInputProps extends ValidationProps {
   max?: Date,
   /** Минимальная дата */
   min?: Date,
-  /** Массив кастомных названий месяцев */
-  monthNames?: MonthsNames,
-  /** Кастомный вид выбора месяца */
-  monthViewRender?: CustomRender<DateViewProps, {}, MonthViewProps>,
   /** Имя компонента */
   name?: string,
   /** Обработчик блюра */
@@ -102,10 +85,6 @@ export interface DateTimeInputProps extends ValidationProps {
   onFocus?: (ev: FocusEvent) => void,
   /** Плейсхолдер инпута */
   placeholder?: string,
-  /** Массив сокращенных кастомных названий месяцев */
-  shortMonthNames?: MonthsNames,
-  /** Массив сокращенных кастомных названий дней недели */
-  shortWeekDayNames?: WeekDayNames,
   /** Тема для компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.dateTimeInput],
   /** Максимальное время */
@@ -116,14 +95,8 @@ export interface DateTimeInputProps extends ValidationProps {
   type?: Values<typeof COMPONENT_TYPES>,
   /** Значение в инпуте */
   value?: string | Date | null,
-  /** Массив кастомных названий дней недели */
-  weekDayNames?: WeekDayNames,
-  /** Кастомный список дней недели */
-  weeksRowRender?: CustomRender<DateViewProps, {}, WeekRowProps>,
   /** Кастомный враппер */
   wrapperRender?: CustomRender<DateTimeInputProps, DateTimeInputState, WrapperProps>,
-  /** Кастомный вид выбора года */
-  yearViewRender?: CustomRender<DateViewProps, {}, YearViewProps>,
 }
 
 export interface DateTimeInputState {
