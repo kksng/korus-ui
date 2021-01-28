@@ -34,8 +34,8 @@ export const createChangeHandler = (props: FileUploadProps): ChangeEventHandler 
   const { onChange } = props;
 
   const acceptedFile = acceptedFiles[0];
-  const rejectedFile = rejectedFiles[0] ? rejectedFiles[0].file : null;
-  const errorCode = rejectedFiles[0] ? rejectedFiles[0].errorCode : null;
+  const rejectedFile = rejectedFiles[0]?.file;
+  const errorCode = rejectedFiles[0]?.errorCode;
 
   const customEvent = (() => {
     const error: FileUploadError | null = (() => {
