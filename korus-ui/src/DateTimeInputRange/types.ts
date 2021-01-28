@@ -34,9 +34,9 @@ export interface DateTimeInputRangeProps extends CalendarBaseProps {
   isOpen?: boolean | [boolean, boolean],
   /** Признак обязательного поля */
   isRequired?: boolean | [boolean, boolean],
-  /** Максимальная дата */
+  /** Максимально доступная дата для выбора */
   max?: Date,
-  /** Минимальная дата */
+  /** Минимальнo доступная дата для выбора */
   min?: Date,
   /** Имя поля */
   name?: string | [string | undefined, string | undefined],

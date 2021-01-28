@@ -45,21 +45,29 @@ export interface CalendarBaseProps {
 }
 
 export interface CalendarProps extends CalendarBaseProps {
+  /** Изменение состояния календаря */
   dispatch: React.Dispatch<AllActions>,
+  /** Формат выводимого значения */
   format: string,
   /** Выключенное состояние */
   isDisabled?: boolean,
   /** Открытый календарь */
   isOpen?: boolean,
-  /** Максимальная дата */
+  /** Максимально доступная дата для выбора */
   max?: Date,
-  /** Минимальная дата */
+  /** Минимальнo доступная дата для выбора */
   min?: Date,
+  /** Обработчик события клика по календарю */
   onClick: CalendarClickHandler,
+  /** Обработчик нажатия на кнопку мыши */
   onMouseDown: React.MouseEventHandler<HTMLDivElement>,
+  /** Тема */
   theme: typeof defaultTheme,
+  /** Выбранное значение календаря */
   value: Date | null,
+  /** Текущая дата календаря */
   viewDate: Date,
+  /** Вид календаря (дни, месяцы, годы)*/
   viewType: Values<typeof VIEW_TYPES>,
 }
 
