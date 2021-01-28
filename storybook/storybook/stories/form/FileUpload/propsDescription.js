@@ -102,4 +102,53 @@ interface ChangeEvent {
     required: false,
     description: 'Обработчик события изменения значения компонента.',
   },
+  {
+    name: 'onClick',
+    type: '(event: React.MouseEvent) => void',
+    required: false,
+    description: 'Обработчик кликов.',
+  },
+  {
+    name: 'onFileLoad',
+    type: (
+      <L.Span>(event:
+        {' '}
+        <L.Tooltip
+          position="bottom"
+          title={(
+            <pre>
+              {`
+interface FileLoadEvent {
+  component: {
+    value: {
+      acceptedFiles: File[],
+      rejectedFiles: RejectedFileType[],
+    },
+  },
+}              `}
+            </pre>
+          )}
+        >
+          <L.Span _txt-success>FileLoadEvent</L.Span>
+        </L.Tooltip>
+        ) => void
+      </L.Span>
+    ),
+    required: false,
+    description: 'Функция обратного вызова. Получает в качстве аргументов принятые файлы и отклоненные файлы с кодом ошибки (1 - файл меньше минимального размера, 2 - больше максимального, 3 - не удовлетворяет типу, 0 - неизвестная ошибка).',
+  },
+  {
+    name: 'wrapperRender',
+    type: (
+      <L.Div>
+        <RenderEvent /> => React.ReactElement | React.FC
+      </L.Div>
+    ),
+    required: false,
+    description: (
+      <div>
+        Кастомизация контейнера компонента.
+      </div>
+    ),
+  },
 ];
