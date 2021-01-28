@@ -26,7 +26,7 @@ export const propsDesc = [
     ),
     type: 'React.ReactNode',
     required: false,
-    description: 'Дочерние элементы (рендерятся внутри <label>.',
+    description: 'Дочерние элементы (рендерятся внутри <label>).',
   },
   {
     name: 'iconRender',
@@ -94,6 +94,12 @@ interface ChangeEvent extends React.MouseEvent<HTMLDivElement> {
     ),
     required: true,
     description: 'Обработчик изменения значения.',
+  },
+  {
+    name: 'onClick',
+    type: '(ev: React.MouseEvent<HTMLDivElement>) => void',
+    required: false,
+    description: 'Обработчик клика.',
   },
   {
     name: 'ref',
