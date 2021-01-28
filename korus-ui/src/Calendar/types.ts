@@ -67,7 +67,7 @@ export interface CalendarProps extends CalendarBaseProps {
   value: Date | null,
   /** Текущая дата календаря */
   viewDate: Date,
-  /** Вид календаря (дни, месяцы, годы)*/
+  /** Вид календаря (дни, месяцы, годы) */
   viewType: Values<typeof VIEW_TYPES>,
 }
 
