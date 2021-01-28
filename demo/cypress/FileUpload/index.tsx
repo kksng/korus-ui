@@ -32,8 +32,9 @@ export const Controlled = (storyProps: StoryProps) => {
     <L.Div _box _inner _demoBg>
       <L.Div _controlled>
         <L.FileUpload
-          allowedFiles=".jpg, .gif, .png"
-          maxFileSize={1500}
+          allowedFiles=".jpg, .gif, .png, .txt, .jpeg"
+          maxFileNameLength={10}
+          name="controlledFileUpload"
           onChange={(ev) => {
             console.log('ev.component', ev.component);
             setProps({ isLoading: true });
@@ -42,7 +43,7 @@ export const Controlled = (storyProps: StoryProps) => {
               alert(
                 ev.component.error == null
                   ? 'Файл загружен!'
-                  : 'При загрузке возникла ошибка!'
+                  : ev.component.error.errorMessage
               );
             }, 2000);
           }}
@@ -55,6 +56,7 @@ export const Controlled = (storyProps: StoryProps) => {
       <L.Div _custom>
         <L.FileUpload
           allowedFiles=".jpg, .gif, .png"
+          name="customFileUpload"
           wrapperRender={({
             elementProps,
             componentProps: { isLoading },
@@ -74,19 +76,14 @@ export const Controlled = (storyProps: StoryProps) => {
             </MyOwnInfo>
           )}
           maxFileSize={1500}
-          onFileLoad={(ev) => {
-            console.log(
-              'Вы загрузили файл!',
-              ev.component.value.acceptedFiles,
-              ev.component.value.rejectedFiles
-            );
+          onChange={(ev) => {
             setProps({ isLoading: true });
             setTimeout(() => {
               setProps({ isLoading: false });
               alert(
-                ev.component.value.acceptedFiles.length !== 0
+                ev.component.error == null
                   ? 'Файл загружен!'
-                  : 'При загрузке возникла ошибка!'
+                  : ev.component.error.errorMessage
               );
             }, 2000);
           }}
@@ -98,7 +95,8 @@ export const Controlled = (storyProps: StoryProps) => {
       <br />
       <L.Div _partialcustom>
         <L.FileUpload
-          allowedFiles=".jpg, .gif, .png"
+          allowedFiles=".jpg, .gif, .png, .jpeg"
+          name="partialCustomFileUpload"
           wrapperRender={({ Element, elementProps }: any) => (
             <>
               <Element
@@ -119,21 +117,16 @@ export const Controlled = (storyProps: StoryProps) => {
             </>
           )}
           infoRender={infoRender}
-          minFileSize={1.5}
-          maxFileSize={2}
-          onFileLoad={(ev: FileLoadEvent) => {
-            console.log(
-              'Вы загрузили файл!',
-              ev.component.value.acceptedFiles,
-              ev.component.value.rejectedFiles
-            );
+          minFileSize={1500}
+          maxFileSize={2000}
+          onChange={(ev) => {
             setProps({ isLoading: true });
             setTimeout(() => {
               setProps({ isLoading: false });
               alert(
-                ev.component.value.acceptedFiles.length !== 0
+                ev.component.error == null
                   ? 'Файл загружен!'
-                  : 'При загрузке возникла ошибка!'
+                  : ev.component.error.errorMessage
               );
             }, 2000);
           }}
