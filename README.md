@@ -443,6 +443,8 @@ Korus-UI uses [Semantic Versioning 2.0.0][21]. Korus-UI version numbers have thr
 | Microsoft Edge | 85.0.564.44 |
 | Mozilla Firefox | 81.0.1 |
 | Safari | 14 |
+| Яндекс Браузер | 20.3.0.1223 |
+| Спутник | 4.5.4512.0 |
 
 ## License
 
