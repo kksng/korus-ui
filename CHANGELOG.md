@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.40.0] - 2020-02-09
 
+### Added
+- FileUpload: Added maxFileNameLength prop
+
 
 ## [0.39.0] - 2020-01-26
 
