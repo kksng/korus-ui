@@ -13,7 +13,7 @@ describe('Validation', () => {
     it('should add class danger if input is invalid', () => {
       cy.name('Toggle')
         .click()
-        .name('Input1')
+        .name('InputCV')
         .parent()
         .should(($element) => {
           expect($element).to.have.length(1);
@@ -43,10 +43,24 @@ describe('Validation', () => {
     it('submit should fail if input field is set as invalid', () => {
       cy.name('Toggle')
         .click()
-        .name('Submit')
+        .name('SubmitCV')
         .click()
         .name('Message')
         .should('have.text', 'Submit failed');
+    });
+    it('Should scroll to invalid fields', () => {
+      cy.name('SubmitScroll')
+        .click()
+        .name('Message')
+        .should('have.text', 'Submit failed')
+        .get('.filedrop-content')
+        .isAtTop()
+        .name('fileDropScroll')
+        .attachFile('example.json', { subjectType: 'drag-n-drop' })
+        .name('SubmitScroll')
+        .click()
+        .get('.dropzone-content')
+        .isAtTop()
     });
   });
 });

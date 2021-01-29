@@ -2,7 +2,7 @@ import * as React from 'react';
 import { isFunction, intersection } from 'lodash';
 import { getForms, validate } from '../Validation';
 import { ButtonProps } from './types';
-import { fromFormArraytoFormObject } from './helpers';
+import { fromFormArraytoFormObject, getElementRect } from './helpers';
 import { form as LedaForm } from '../../form';
 
 export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<HTMLButtonElement>): void => {
@@ -38,15 +38,23 @@ export const createClickHandler = (props: ButtonProps) => (ev: React.MouseEvent<
       }
 
       if (shouldScrollToInvalidFields && invalidForms.length > 0) {
-        const firstInvalidFormName = invalidForms[0].name;
-        // data-form для buttonGroup, использовать просто [from=""] нельзя, т.к. захватит кнопки тоже
-        const formElements = document.querySelectorAll(`input[form="${firstInvalidFormName}"], [data-form="${firstInvalidFormName}"`);
-        // ждем пока обновятся данные
-        setTimeout(() => {
-          const invalidElement = Array.from(formElements).find((element) => element.getAttribute('aria-invalid') === 'true');
+        const firstInvalidForm = invalidForms[0];
+        const firstInvalidField = firstInvalidForm.fields.find((field) => field.isValid === false);
 
+        // get all form elements
+        const formElementsArray = [
+          ...document.querySelectorAll(`[form=${firstInvalidForm.name}], [data-form=${firstInvalidForm.name}]`),
+        ] as HTMLElement[];
+
+        // find first invalid element by name attribute (unique for form elements)
+        const invalidElement = formElementsArray.find((fieldElement) => (
+          fieldElement.getAttribute('name') === firstInvalidField?.name
+        )) as HTMLElement;
+
+        // wait for data update
+        setTimeout(() => {
           if (invalidElement) {
-            const invalidElementRect = invalidElement.getBoundingClientRect();
+            const invalidElementRect = getElementRect(invalidElement);
             const isIE = !!(document as any).documentMode || /Edge/.test(navigator.userAgent);
             const offset = invalidElementRect.top - (scrollOffset ?? 0);
             if (isIE) {
