@@ -80,7 +80,6 @@ export const Scroll = (storyProps: StoryProps) => {
         <L.Div _inner>
           <L.Button
             shouldScrollToInvalidFields
-            // scrollOffset={64}
             form={['scroll', 'scroll2', 'scroll3']}
             onClick={() => console.log('submitted')}
             onValidationFail={ev => console.log('failed', ev.invalidForms)}
