@@ -239,16 +239,6 @@ export const Validation = () => {
           <L.Div _inner>
             <L.Input
               form='form1'
-              name='email'
-              validator='email'
-              placeholder='email'
-            />
-            <br />
-            <L.Span _txtGray>foo@example.com</L.Span>
-          </L.Div>
-          <L.Div _inner>
-            <L.Input
-              form='form1'
               name='inn'
               validator='inn'
               placeholder='inn'
