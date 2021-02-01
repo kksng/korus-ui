@@ -17,10 +17,7 @@ export const propsDesc = [
   },
   {
     name: (
-      <L.A
-        onClick={linkTo('Form|Switcher', 'Basic Usage')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|Switcher', 'Basic Usage')} target='_self'>
         children
       </L.A>
     ),
@@ -62,19 +59,16 @@ export const propsDesc = [
   },
   {
     name: (
-      <L.A
-        onClick={linkTo('Form|Switcher', 'Basic Usage')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|Switcher', 'Basic Usage')} target='_self'>
         onChange
       </L.A>
     ),
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface ChangeEvent extends React.MouseEvent<HTMLDivElement> {
@@ -85,7 +79,7 @@ interface ChangeEvent extends React.MouseEvent<HTMLDivElement> {
 }        
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.SwitcherTypes.ChangeEvent</L.Span>
         </L.Tooltip>
@@ -97,7 +91,7 @@ interface ChangeEvent extends React.MouseEvent<HTMLDivElement> {
   },
   {
     name: 'onClick',
-    type: '(ev: React.MouseEvent<HTMLDivElement>) => void',
+    type: '(event: React.MouseEvent<HTMLDivElement>) => void',
     required: false,
     description: 'Обработчик клика.',
   },
@@ -107,18 +101,16 @@ interface ChangeEvent extends React.MouseEvent<HTMLDivElement> {
       <L.Span>
         {'React.Ref<'}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
-              {
-                `
+              {`
 interface SwitcherRefCurrent {
   wrapper: HTMLElement | null,
 }
-                `
-              }
+                `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>SwitcherRefCurrent</L.Span>
         </L.Tooltip>
@@ -131,8 +123,10 @@ interface SwitcherRefCurrent {
   {
     name: 'theme',
     type: (
-      <L.Tooltip title={(
-        <pre>{`
+      <L.Tooltip
+        title={
+          <pre>
+            {`
 {
   element:         string,
   handle:          string,
@@ -140,8 +134,8 @@ interface SwitcherRefCurrent {
   wrapper:         string,
 }
         `}
-        </pre>
-      )}
+          </pre>
+        }
       >
         <L.Span _txt-success>DefaultSwitcherTheme</L.Span>
       </L.Tooltip>
@@ -151,10 +145,7 @@ interface SwitcherRefCurrent {
   },
   {
     name: (
-      <L.A
-        onClick={linkTo('Form|Switcher', 'Basic Usage')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|Switcher', 'Basic Usage')} target='_self'>
         value
       </L.A>
     ),
