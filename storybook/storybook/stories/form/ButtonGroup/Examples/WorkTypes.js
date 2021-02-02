@@ -5,23 +5,43 @@ import * as L from '@korus/leda';
 export const WorkTypes = {
   liveDemo: `
 const States = () => {
+  const [isDisabled, setIsDisabled] = React.useState(false);
+
   return (
     <>
       <L.H4>Radio type</L.H4>
       <L.ButtonGroup
+        _secondary
+        form="ButtonGroup"
+        name="radioType"
         data={["one", "two", "three", "four"]}
         defaultValue="one"
-        _secondary
+        isDisabled={isDisabled}
       />
       <br />
       <br />
       <L.H4>Checkbox type</L.H4>
       <L.ButtonGroup
+        _warning
+        form="ButtonGroup"
+        name="checkboxType"
         data={["one", "two", "three", "four"]}
         defaultValue={["one"]}
-        _warning
         type="checkbox"
+        isDisabled={isDisabled}
       />
+      <br />
+      <br />
+      <L.Switcher value={isDisabled} onChange={(ev) => setIsDisabled(ev.component.value)}>isDisabled</L.Switcher>
+      <br />
+      <br />
+      <L.Button
+        onClick={() => {
+          const result = L.form('ButtonGroup').reset();
+        }}
+      >
+        Reset
+      </L.Button>
     </>
   )
 };
