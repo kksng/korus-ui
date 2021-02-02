@@ -10,11 +10,43 @@ const Label = ({ children }: { children: string }) => (
 export const Validation = () => {
   const [ACValue, setACValue] = React.useState('');
   const [DDSValue, setDDSValue] = React.useState<string | null>(null);
+  const [isValid, setIsValid] = React.useState(true);
+  const [message, setMessage] = React.useState('');
 
   return (
     <L.Div _box _inner>
       <L.Div _basic>
-        <L.Div id='ValidationRequiredBlur'>
+
+        <L.Div>
+          <L.H2>Outer isValid</L.H2>
+          <L.Div _inner>
+            <L.Input
+              isValid={isValid}
+              invalidMessage="The app decides component to have invalid content"
+              form="formIsValid"
+              name="Input1"
+              placeholder="outer isValid"
+            />
+          </L.Div>
+          <L.Div _inner>
+            <L.Button name="Toggle" onClick={() => setIsValid(!isValid)} _warning>
+              Toggle isValid
+            </L.Button>
+            <L.Button
+              name="Submit"
+              form="formIsValid"
+              onClick={() => setMessage('Submitted')}
+              onValidationFail={() => setMessage('Submit failed')}
+            >
+              Submit
+            </L.Button>
+            <L.Div name="Message">{message}</L.Div>
+          </L.Div>
+        </L.Div>
+        <br />
+        <br />
+        <L.Div id='validationRequiredBlur'>
+        <L.H2>Basic Use</L.H2>
           <L.Div _inner _flexRow _alignItemsCenter>
             <Label>AutoComplete</Label>
             <L.AutoComplete
@@ -145,7 +177,7 @@ export const Validation = () => {
               console.log('Click failed! Invalid fields', ev.invalidForms)
             }
           >
-            Валидировать!
+            Validate
           </L.Button>
         </L.Div>
       </L.Div>
@@ -153,6 +185,7 @@ export const Validation = () => {
       <br />
       <L.Div _box id='propsValidator'>
         <L.Div>
+          <L.H2>Types Of Validators</L.H2>
           <L.Div _inner>
             <L.Input
               form='form1'
@@ -226,6 +259,7 @@ export const Validation = () => {
       <br />
       <L.Div _box id='predefinedValidators'>
         <L.Div>
+        <L.H2>Predefined Validators</L.H2>
           <L.Div _inner>
             <L.Input
               form='form1'
@@ -310,16 +344,21 @@ export const Validation = () => {
       </L.Div>
       <br />
       <br />
-      <L.Div _inner _flexRow _alignItemsCenter id='NumericRange'>
-        <Label>NumericRange</Label>
-        <L.NumericRange
-          isRequired
-          form='requiredForm'
-          name='NumericRange'
-          requiredMessage={'Field is required'}
-          _grow1
-        />
-      </L.Div>
+      <L.Div  id='numericRange'>
+        <L.Div>
+          <L.H2>NumericRange Validation</L.H2>
+            <L.Div _inner _flexRow _alignItemsCenter>
+              <Label>NumericRange</Label>
+                <L.NumericRange
+                  isRequired
+                  form='requiredForm'
+                  name='NumericRange'
+                  requiredMessage={'Field is required'}
+                  _grow1
+                />
+              </L.Div>       
+          </L.Div>       
+        </L.Div>
     </L.Div>
   );
 };
