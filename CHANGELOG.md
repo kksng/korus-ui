@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - README: Updated browsers list in README.md
 
+### Fixed
+- Fixed test coverage report for Windows
+
 
 ## [0.39.0] - 2020-01-26
 
