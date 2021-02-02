@@ -11,12 +11,13 @@ export const Controlled = (storyProps: StoryProps) => {
       <L.FileUpload
         allowedFiles=".jpg, .gif, .png"
         maxFileSize={1500000000}
+        maxFileNameLength={10}
         onChange={(ev) => {
           console.log('ev.component', ev.component);
           setProps({ isLoading: true });
           setTimeout(() => {
             setProps({ isLoading: false });
-            alert(ev.component.error == null ? 'Файл загружен!' : 'При загрузке возникла ошибка!');
+            alert(ev.component.error == null ? 'Файл загружен!' : ev.component.error.errorMessage);
           }, 2000);
         }}
         {...props}
