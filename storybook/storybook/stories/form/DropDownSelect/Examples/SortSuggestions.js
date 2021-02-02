@@ -7,7 +7,7 @@ export const SortSuggestions = {
   liveDemo: `
 const SortSuggestions = () => {
   const sort = (suggestion1, suggestion2) => {
-    return suggestion2.item.population - suggestion1.item.population
+    return suggestion2.population - suggestion1.population
   }
 
   return (
