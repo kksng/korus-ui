@@ -92,6 +92,13 @@ export const createChangeHandler = (
     }
 
     if (inputMethod === INPUT_METHODS.remove) {
+      // if Backspace is pressed on mask placeholder, set actual position after Backspace key down event
+      // return current input value
+      if (compareResult[2] === placeholderChar) {
+        setCursor(input.selectionStart ? input.selectionStart : 0);
+        return inputValue;
+      }
+
       return removeChar({
         input,
         mask,
