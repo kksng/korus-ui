@@ -231,7 +231,7 @@ export const Validation = () => {
                   invalidMessage: 'Должна быть хотя бы одна заглавная буква!',
                 },
                 {
-                  validator: (value: string) => value.length > 10,
+                  validator: (value: string): boolean => value.length > 10,
                   invalidMessage: 'Минимум 10 символов!',
                 },
               ]}
