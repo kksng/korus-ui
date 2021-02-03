@@ -212,7 +212,7 @@ export const Validation = () => {
               form='form1'
               name='function'
               validator={(value: string): boolean =>
-                value.toString().length > 10
+                value.length > 10
               }
               invalidMessage='Минимум 10 символов!'
               isRequired
@@ -231,7 +231,7 @@ export const Validation = () => {
                   invalidMessage: 'Должна быть хотя бы одна заглавная буква!',
                 },
                 {
-                  validator: (value: string) => value.toString().length > 10,
+                  validator: (value: string) => value.length > 10,
                   invalidMessage: 'Минимум 10 символов!',
                 },
               ]}
