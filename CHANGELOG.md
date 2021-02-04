@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - FileUpload: Added maxFileNameLength prop
+- MaskedInput: Added clear button
 
 ### Changed
 - README: Updated browsers list in README.md

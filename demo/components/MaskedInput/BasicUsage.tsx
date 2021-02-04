@@ -10,6 +10,7 @@ export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
       <L.MaskedInput
         form="MItest"
         name="test"
+        hasClearButton
         mask="+7 (###)-###-##-##"
         // defaultValue={'9992024059'}
         placeholder="+7 (___)-___-__-__"

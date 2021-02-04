@@ -34,21 +34,7 @@
   }
 
   &-clear-icon {
-    font-size: 18px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    color: $black-03;
-
-    &::before {
-      font-family: "Font Awesome 5 Free";
-      content: "\00D7";
-      position: absolute;
-      top: 45%;
-      right: 2px;
-      transform: translate(-50%, -50%);
-      font-style: normal;
-    }
+    @extend %input-clear-icon;
   }
 
   &-icon {

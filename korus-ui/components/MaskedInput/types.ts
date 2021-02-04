@@ -42,6 +42,8 @@ export interface MaskedInputProps extends ValidationProps {
   [x: string]: unknown,
   /** Значение по-умолчанию, для неконтролируемого режима */
   defaultValue?: string,
+  /** Отображение кнопки очистки в инпуте */
+  hasClearButton?: boolean,
   /** Кастомный рендер инпута (Заменяет MaskedInputBase!) */
   inputRender?: CustomRender<MaskedInputProps, MaskedInputState, MaskedInputBaseProps>,
   /** Отключить поле ввода */

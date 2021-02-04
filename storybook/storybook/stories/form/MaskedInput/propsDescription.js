@@ -29,6 +29,12 @@ export const propsDesc = [
     description: 'Настройка внешнего вида поля ввода.',
   },
   {
+    name: 'hasClearButton',
+    type: 'boolean',
+    required: false,
+    description: 'Наличие кнопки для очистки поля ввода.',
+  },
+  {
     name: 'isDisabled',
     type: 'boolean',
     required: false,

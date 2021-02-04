@@ -1,6 +1,9 @@
 .masked {
   &-input-wrapper {
     @extend %input-wrapper;
+    position: relative;
+    display: flex;
+    flex-direction: row;
 
     &:not(.disabled):not(.danger):hover {
       @extend %input-hovered;
@@ -17,5 +20,9 @@
     &.disabled {
       @extend %input-disabled;
     }
+  }
+
+  &-input-clear-icon {
+    @extend %input-clear-icon;
   }
 }
