@@ -4,8 +4,13 @@ import { FileUploadProps } from './types';
 
 export const getErrorCode = (file: File, props: FileUploadProps): number => {
   const {
-    allowedFiles, forbiddenFiles, minFileSize = MIN_FILE_SIZE, maxFileSize = MAX_FILE_SIZE,
+    allowedFiles,
+    forbiddenFiles,
+    minFileSize = MIN_FILE_SIZE,
+    maxFileSize = MAX_FILE_SIZE,
+    maxFileNameLength = 255,
   } = props;
+
   // проверка на тип передаваемого файла
   if (allowedFiles) {
     const isAccepted = accept({
@@ -27,6 +32,9 @@ export const getErrorCode = (file: File, props: FileUploadProps): number => {
 
   if (file.size < minFileSize) return FileErrorCodes.FileIsTooSmall;
   if (file.size > maxFileSize) return FileErrorCodes.FileIsTooBig;
+
+  // Ошибка по максимальной длине имени файла
+  if (file.name.length > maxFileNameLength) return FileErrorCodes.NameIsTooLong;
 
   return FileErrorCodes.None; // неизвестная ошибка
 };

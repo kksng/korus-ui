@@ -16,6 +16,7 @@ export const FileUpload = React.forwardRef((props: FileUploadProps, ref: React.R
     isLoading,
     maxFileSize = MAX_FILE_SIZE,
     minFileSize = MIN_FILE_SIZE,
+    maxFileNameLength,
     onChange,
     onClick,
     onFileLoad,
@@ -37,6 +38,7 @@ export const FileUpload = React.forwardRef((props: FileUploadProps, ref: React.R
   const handleClick = createClickHandler({ ...props, fileUploadRef });
 
   const handleLoad = createLoadHandler(props);
+
   const handleChange = createChangeHandler(props);
 
   const state = React.useMemo(() => ({ }), []);
@@ -53,7 +55,7 @@ export const FileUpload = React.forwardRef((props: FileUploadProps, ref: React.R
     onDrop: (acceptedFiles, rejectedFiles) => {
       const newValue = handleLoad(acceptedFiles, rejectedFiles);
       validateCurrent(newValue);
-      handleChange(acceptedFiles, rejectedFiles);
+      handleChange(newValue);
     },
   });
 

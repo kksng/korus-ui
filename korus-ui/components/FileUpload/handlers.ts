@@ -3,7 +3,13 @@ import { isFunction } from 'lodash';
 import { DropzoneRef } from 'react-dropzone';
 import { getErrorCode } from './helpers';
 import { CustomEventHandler } from '../../commonTypes';
-import { FileUploadProps } from './types';
+import {
+  ChangeEventHandler,
+  FileUploadError,
+  FileUploadProps,
+  RejectedFileType,
+  LoadHandler,
+} from './types';
 import { errorCodeToMessage } from '../FileDrop/helpers';
 
 export const createClickHandler = (props: FileUploadProps & { fileUploadRef: React.MutableRefObject<DropzoneRef | undefined>}): CustomEventHandler<React.MouseEvent<HTMLDivElement>> => (ev) => {
@@ -24,31 +30,26 @@ export const createClickHandler = (props: FileUploadProps & { fileUploadRef: Rea
   if (!isLoading && fileUploadRef.current) fileUploadRef.current.open();
 };
 
-interface LoadHandler {
-  (accepted: File[], rejected: File[]): void,
-}
-
-export const createChangeHandler = (props: FileUploadProps) => (accepted: File[], rejected: File[]) => {
+export const createChangeHandler = (props: FileUploadProps): ChangeEventHandler => ({ acceptedFiles, rejectedFiles }) => {
   const { onChange } = props;
 
-  const customEvent = (() => {
-    const value = accepted[0] || rejected[0];
+  const acceptedFile = acceptedFiles[0];
+  const rejectedFile = rejectedFiles[0]?.file;
+  const errorCode = rejectedFiles[0]?.errorCode;
 
-    const error = (() => {
-      if (rejected[0] != null) {
-        const errorCode = getErrorCode(rejected[0], props);
-        return ({
-          errorCode,
-          errorMessage: errorCodeToMessage(errorCode),
-        });
-      }
-      return null;
+  const customEvent = (() => {
+    const error: FileUploadError | null = (() => {
+      if (!errorCode) return null;
+      return ({
+        errorCode,
+        errorMessage: errorCodeToMessage(errorCode),
+      });
     })();
 
     return ({
       component: {
         error,
-        value,
+        value: acceptedFile || rejectedFile,
       },
     });
   })();
@@ -59,22 +60,22 @@ export const createChangeHandler = (props: FileUploadProps) => (accepted: File[]
 export const createLoadHandler = (props: FileUploadProps): LoadHandler => (accepted, rejected) => {
   const { onFileLoad } = props;
 
-  const rejectedWithErrors = rejected.map((item) => ({
-    ...item,
-    errorCode: getErrorCode(item, props),
+  const rejectedWithErrors: RejectedFileType[] = rejected.map((file) => ({
+    errorCode: getErrorCode(file, props),
+    file,
   }));
 
   // Обрабатываем файлы, принятые ядром.
   // Перенос файлов с ошибкой в rejected
   const acceptedFiles: File[] = accepted.filter((file) => {
     const errorCode = getErrorCode(file, props);
+
     // Если ошибки обнаружены (0 - отсутствие ошибок)
     if (errorCode !== 0) {
       rejectedWithErrors.push({
-        ...file,
         errorCode,
+        file,
       });
-
       return false;
       // Если файла еще нет то добавляем в acceptedFiles
     }
