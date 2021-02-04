@@ -17,12 +17,13 @@ export const MaskedInput = (): React.ReactElement => {
         placeholder="+7 (___)-___-__-__"
         isRequired
         requiredMessage="Обязательное поле!"
-        name="mamasekd"
+        name="MINotControlledPhone"
         form="my-form"
       />
       <L.Span>СНИЛС (контролируемый)</L.Span>
       <L.MaskedInput
         mask="###-###-### ##"
+        name="MIControlledInsurance"
         placeholder="___-___-___ __"
         value={cardValue}
         onChange={(event) => setCardValue(event.component.value)}
@@ -46,11 +47,13 @@ export const MaskedInput = (): React.ReactElement => {
       <L.Span>Номер машины (не контролируемый)</L.Span>
       <L.MaskedInput
         mask="LL##LL####"
+        name="MICarNumber"
         placeholder="Car number"
       />
       <L.Span>Номер кредитки (не контролируемый с начальным значением)</L.Span>
       <L.MaskedInput
         mask="####-####-####-####"
+        name="MICreditCardNumber"
         placeholder="####-####-####-####"
         defaultValue="6666777788889999"
       />
