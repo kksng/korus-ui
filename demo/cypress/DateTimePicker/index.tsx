@@ -49,21 +49,9 @@ export const DateTimePicker = () => {
         </L.Button>
       </L.Div>
       <br />
-      <L.Div data-test='dp2' timeMax={[23, 59]} timeMin={[0, 0]} _width30>
-        <L.DateTimePicker />
-      </L.Div>
-      <br />
-      <L.Div data-test='dp3' _width30>
-        <L.DateTimePicker />
-      </L.Div>
-      <br />
       <L.Div data-test='dp4' _width30>
         <L.DateTimePicker isDisabled />
       </L.Div>
-      <br />
-      {/* <L.Div data-test='dp5' _width30>
-        <L.DateTimePicker isOpen />
-      </L.Div> */}
     </L.Div>
   );
 };

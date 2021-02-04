@@ -147,7 +147,7 @@ describe('DateTimePicker', () => {
         .name('datetimepicker')
         .should('contain.value', '11.09.18');
     });
-    it('using the TAB button', () => {
+    xit('using the TAB button', () => {
       cy.name('datetimepicker')
         .clear()
         .tab()
@@ -162,21 +162,9 @@ describe('DateTimePicker', () => {
         .tab()
         .get('.calendar-month-year-cell')
         .contains('20')
-        .should('be.visible');
-
-      // .get('.calendar-wrapper')
-      // .contains('.calendar-date-cell')
-      // .should('be.visible')
-      // .name('datetimepicker')
-      // .type('{tab}')
-      // .get('.calendar-wrapper')
-      // .contains('.calendar-month-cell')
-      // .should('be.visible')
-      // .name('datetimepicker')
-      // .type('{tab}')
-      // .get('.calendar-wrapper')
-      // .contains('.calendar-year-cell')
-      // .should('be.visible');
+        .should('be.visible')
+        .name('datetimepicker')
+        .blur();
     });
   });
 });
