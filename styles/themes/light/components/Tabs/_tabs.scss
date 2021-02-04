@@ -36,7 +36,7 @@
   &-bar {
     padding-left: 0;
     background-color: inherit;
-    display: flex;
+    display: inline-flex;
     border-bottom: 1px solid $black-06;
     &.scroll {
       display: inline-flex;
