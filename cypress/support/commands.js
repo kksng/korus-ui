@@ -58,6 +58,13 @@ Cypress.Commands.add('isInViewport', { prevSubject: 'element' }, (element) => {
   });
 });
 
+Cypress.Commands.add('isAtTop', { prevSubject: 'element' }, (element) => {
+  cy.get(element).should((it) => {
+    const rect = it[0].getBoundingClientRect();
+    expect(rect.top).to.equal(0);
+  });
+});
+
 /**
  * Simulates a paste event.
  *

@@ -15,3 +15,14 @@ export const fromFormArraytoFormObject = (forms: Form[]): FormsObject => forms.r
   acc[currentForm.name] = fieldsObject;
   return acc;
 }, {});
+
+// Helper gets DOMRect of Element.
+// If Element's height is 0, helper searches for nearest parent with height > 0
+export const getElementRect = (element: HTMLElement): DOMRect => {
+  const rect = element.getBoundingClientRect();
+
+  if (rect.height === 0 && element.parentElement) {
+    return getElementRect(element.parentElement);
+  }
+  return rect;
+};

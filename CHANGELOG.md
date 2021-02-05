@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.40.0] - 2020-02-09
 
 ### Added
+- Validation: added scroll to invalid DropZone and FileDrop fields
 - FileUpload: Added maxFileNameLength prop
 
 ### Changed
@@ -16,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - MaskedInput: Fixed backspace
 - Fixed test coverage report for Windows
+
 
 
 ## [0.39.0] - 2020-01-26
