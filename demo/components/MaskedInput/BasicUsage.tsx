@@ -11,7 +11,6 @@ export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
         form="MItest"
         name="test"
         mask="+7 (###)-###-##-##"
-        // defaultValue={'9992024059'}
         placeholder="+7 (___)-___-__-__"
         onEnterPress={({ component }) => {
           console.log(component.name, component.name);

@@ -54,11 +54,15 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
 
   const value = getValue(valueProp, valueState);
 
+  const resetHandler = createResetHandler({
+    props, setInputValue, setValue,
+  });
+
   React.useEffect(() => {
     if (valueProp === null) {
-      setInputValue(maskValue(value, mask, placeholderChar));
+      resetHandler('');
     }
-  }, [valueProp]);
+  }, [valueProp, resetHandler]);
 
   const valueToValidate = getValueToValidate({
     maskedInputRef, placeholderChar, value,
@@ -71,9 +75,7 @@ export const MaskedInput = React.forwardRef((props: MaskedInputProps, ref: React
   }, {
     value: valueState,
   }, {
-    reset: createResetHandler({
-      props, setInputValue, setValue, value: toStringOrEmpty(defaultValue || ''),
-    }),
+    reset: () => resetHandler(toStringOrEmpty(defaultValue || '')),
   });
 
   const state = { isFocused, isValid, value: valueState };
