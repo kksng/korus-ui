@@ -147,18 +147,21 @@ describe('DateTimePicker', () => {
         .name('datetimepicker')
         .should('contain.value', '11.09.18');
     });
-    xit('using the TAB button', () => {
+    it('using the TAB button', () => {
       cy.name('datetimepicker')
         .clear()
+        .focus()
         .tab()
         .get('.calendar-date-cell')
         .should('be.visible')
         .name('datetimepicker')
+        .focus()
         .tab()
         .get('.calendar-month-year-cell')
         .contains('.')
         .should('be.visible')
         .name('datetimepicker')
+        .focus()
         .tab()
         .get('.calendar-month-year-cell')
         .contains('20')
