@@ -1,7 +1,7 @@
 import React from 'react';
 import { isFunction } from 'lodash';
 import {
-  BlurData, ChangeData, ClearData, ExtendedEvent, FocusData, KeyDownData, MaskedInputBaseProps,
+  BlurData, ChangeData, ClearData, ClearEventHandler, ExtendedEvent, FocusData, KeyDownData, MaskedInputBaseProps,
 } from './types';
 import {
   addChar,
@@ -134,8 +134,7 @@ export const createChangeHandler = (
 export const createClearHandler = (
   props: MaskedInputBaseProps,
   extraData: ClearData,
-): (
-  ) => void => () => {
+): ClearEventHandler => () => {
   const {
     onChange, mask, placeholderChar = DEFAULT_PLACEHOLDER_CHAR,
   } = props;

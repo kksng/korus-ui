@@ -39,6 +39,10 @@ export interface ClearData {
   setInputValue: SetState<string>,
 }
 
+export interface ClearEventHandler {
+  (): void,
+}
+
 export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
   component: {
     inputValue: string,
