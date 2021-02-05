@@ -58,8 +58,7 @@ export const MaskedInput = (): React.ReactElement => {
         value={cardNumberValue}
         onChange={(event) => {
           setCardNumberValue(event.component.value);
-          console.log((event as React.ChangeEvent<HTMLInputElement>).target.value);
-          //console.log(event.component.value);
+          console.log(event.component.inputValue);
         }}
       />
       <L.Button _warning name="clearCardValue" onClick={() => {setCardNumberValue(null)}}>Clear Value</L.Button>

@@ -164,10 +164,12 @@ export const createResetHandler = ({
 }) => (value: string) => {
   setValue(value);
 
+  const newInputValue = value ? maskValue(value, props.mask, props.placeholderChar) : '';
+
   if (isFunction(props.onChange)) {
     const customEvent = {
       component: {
-        inputValue: maskValue(value, props.mask, props.placeholderChar),
+        inputValue: newInputValue,
         name: props.name,
         value,
       },
@@ -175,9 +177,5 @@ export const createResetHandler = ({
     props.onChange(customEvent);
   }
 
-  if (value) {
-    setInputValue(maskValue(value, props.mask, props.placeholderChar));
-  } else {
-    setInputValue('');
-  }
+  setInputValue(newInputValue);
 };
