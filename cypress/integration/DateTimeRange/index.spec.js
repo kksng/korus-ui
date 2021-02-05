@@ -1,18 +1,13 @@
 describe('DateTimeRange', () => {
   beforeEach(() => {
     cy.visit('http://localhost:9000/cypress/datetimerange');
+    cy.window().then((win) => {
+      cy.spy(win.console, 'log').as('consoleLog');
+    });
   });
 
   describe('Events in console', () => {
-    before(() => {
-      cy.visit('http://localhost:9000/cypress/datetimerange', {
-        onBeforeLoad(win) {
-          cy.stub(win.console, 'log').as('consoleLog');
-        },
-      });
-    });
-
-    xit('name, value and date events', () => {
+    it('name, value and date events', () => {
       cy.name('DateTimeRange-from')
         .focus()
         .type('{enter}')
