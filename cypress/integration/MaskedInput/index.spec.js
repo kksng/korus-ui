@@ -53,6 +53,23 @@ describe('MaskedInput', () => {
           .should('have.value', '+7 (___)-___-__-__');
       });
 
+      it('should clear masked value on clear button click', () => {
+        cy.name('MINotControlledPhone')
+          .type('9818862798')
+          .should('have.value', '+7 (981)-886-27-98') 
+          .next(`.${theme.closeIcon}`)
+          .click()
+          .name('MINotControlledPhone')
+          .should('have.value', '+7 (___)-___-__-__')
+          .focusMasked()
+          .type('981')
+          .should('have.value', '+7 (981)-___-__-__')
+          .next(`.${theme.closeIcon}`)
+          .click()
+          .name('MINotControlledPhone')
+          .should('have.value', '+7 (___)-___-__-__');
+      });
+
       it('should fill different masks', () => {
         cy.name('MIControlledPhone')
           .should('have.value', '+7 (800)-200-06-00')

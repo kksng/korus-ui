@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Validation: added scroll to invalid DropZone and FileDrop fields
 - FileUpload: Added maxFileNameLength prop
+- MaskedInput: Added clear button
 
 ### Changed
 - README: Updated browsers list in README.md

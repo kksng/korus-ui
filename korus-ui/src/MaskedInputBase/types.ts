@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { SetState, AdjustCursor } from '../../commonTypes';
+import { COMPONENTS_NAMESPACES } from '../../constants';
+import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 
 export interface BlurData {
   inputValue: string,
@@ -30,6 +32,15 @@ export interface ChangeEvent extends React.ChangeEvent<HTMLInputElement> {
     name?: string,
     value: string,
   },
+}
+
+export interface ClearData {
+  inputValue: string,
+  setInputValue: SetState<string>,
+}
+
+export interface ClearEventHandler {
+  (): void,
 }
 
 export interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
@@ -77,6 +88,8 @@ export interface KeyEvent extends React.KeyboardEvent<HTMLInputElement> {
 export interface MaskedInputBaseProps {
   /** Кастомный класс */
   className?: string,
+  /** Отображение кнопки очистки в инпуте */
+  hasClearButton?: boolean,
   /** Текущее значение маски инпута */
   inputValue?: InputValueType,
   /** Признак неактивного инпута */
@@ -105,6 +118,8 @@ export interface MaskedInputBaseProps {
   placeholderChar?: string,
   /** Реф */
   ref?: React.Ref<HTMLInputElement | null>,
+  /** Тема компонента */
+  theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.maskedInput],
   /** Значение */
   value: string,
 }

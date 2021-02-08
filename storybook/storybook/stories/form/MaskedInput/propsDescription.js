@@ -29,6 +29,12 @@ export const propsDesc = [
     description: 'Настройка внешнего вида поля ввода.',
   },
   {
+    name: 'hasClearButton',
+    type: 'boolean',
+    required: false,
+    description: 'Наличие кнопки для очистки поля ввода.',
+  },
+  {
     name: 'isDisabled',
     type: 'boolean',
     required: false,
@@ -233,12 +239,14 @@ interface MaskedInputRefCurrent {
       <L.Tooltip title={(
         <pre>{`
 {
-  inputWrapperInvalid:      string,
-  inputWrapperDisabled:     string,
-  inputWrapperFocused:      string,
-  inputWrapper:             string,
-  input:                    string,
-  wrapper:                  string,
+  closeIcon:                'masked-input-clear-icon',
+  input:                    'masked-input-element',
+  inputWrapper:             'masked-input-wrapper',
+  inputWrapperDisabled:     'disabled',
+  inputWrapperFocused:      'focused',
+  inputWrapperInvalid:      'danger',
+  inputWrapperRequired:     'required',
+  wrapper:                  'masked-wrapper',
 }
         `}
         </pre>

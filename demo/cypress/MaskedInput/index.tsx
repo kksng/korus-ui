@@ -13,6 +13,7 @@ export const MaskedInput = (): React.ReactElement => {
       <L.Span>Номер телефона (не контролируемый с валидацией)</L.Span>
       <L.MaskedInput
         mask="+7 (###)-###-##-##"
+        hasClearButton
         isDisabled={isDisabled}
         placeholder="+7 (___)-___-__-__"
         isRequired
