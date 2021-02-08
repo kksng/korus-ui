@@ -150,27 +150,26 @@ export const createKeyDownHandler = (
  * @param {MaskedInputProps} params.props - properties of component
  * @param {SetState<InputValueType>} params.setInputValue - set state function for component's masked value
  * @param {SetState<string>} params.setValue - set state function for component's value
- * @param {string} params.value - component's value
  *
- * @returns {() => void} - reset handler
+ * @returns {(value: string) => void} - reset handler
  */
 export const createResetHandler = ({
   props,
   setInputValue,
   setValue,
-  value,
 }: {
   props: MaskedInputProps,
   setInputValue: SetState<InputValueType>,
   setValue: SetState<string>,
-  value: string,
-}) => () => {
+}) => (value: string) => {
   setValue(value);
+
+  const newInputValue = value ? maskValue(value, props.mask, props.placeholderChar) : '';
 
   if (isFunction(props.onChange)) {
     const customEvent = {
       component: {
-        inputValue: maskValue(value, props.mask, props.placeholderChar),
+        inputValue: newInputValue,
         name: props.name,
         value,
       },
@@ -178,5 +177,5 @@ export const createResetHandler = ({
     props.onChange(customEvent);
   }
 
-  setInputValue(maskValue(value, props.mask, props.placeholderChar));
+  setInputValue(newInputValue);
 };
