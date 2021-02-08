@@ -38,9 +38,6 @@
     background-color: inherit;
     display: flex;
     border-bottom: 1px solid $black-06;
-    &.scroll {
-      display: inline-flex;
-    }
   }
 
   &-container {
