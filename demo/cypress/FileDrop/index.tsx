@@ -4,10 +4,14 @@ import { FileDropError } from '../../../korus-ui/components/FileDrop/types';
 import { useInterval } from '../../../korus-ui/utils';
 
 export const FileDrop = () => {
+  const [file, setFile] = React.useState<File | null>(null);
+  const [error, setError] = React.useState<FileDropError>(null);
   const [file1, setFile1] = React.useState<File | null>(null);
   const [error1, setError1] = React.useState<FileDropError>(null);
   const [file2, setFile2] = React.useState<File | null>(null);
   const [error2, setError2] = React.useState<FileDropError>(null);
+  const [file3, setFile3] = React.useState<File | null>(null);
+  const [error3, setError3] = React.useState<FileDropError>(null);
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [loaded, setLoaded] = React.useState<number>(0);
@@ -60,6 +64,7 @@ export const FileDrop = () => {
           error={error2}
           isLoading={isLoading}
           loadingProgress={loaded}
+          maxFileNameLength={10}
           loadingText='Loading...'
           name='FDwithLoader'
           form='file-drop'
@@ -87,19 +92,61 @@ export const FileDrop = () => {
       <br />
       <L.Div>
         <L.FileDrop
-          onChange={handleChange2}
-          value={file2}
-          error={error2}
-          isLoading={isLoading}
-          loadingProgress={loaded}
-          loadingText='Loading...'
-          maxFileSize={2000}
+          value={file}
+          error={error}
+          maxFileNameLength={10}
           minFileSize={1500}
-          maxFileNameLength
-          name='FDwithSize'
-          form='file-drop'
-        />{' '}
+          maxFileSize={2000}
+          onChange={(ev) => {
+            console.log('droped', ev.component);
+            console.log('ev.component.value', ev.component.value);
+            if (!ev.component.error) {
+              setFile(ev.component.value);
+            }
+            setError(ev.component.error);
+          }}
+          form='FD_basic'
+          name='FD_basic'
+          isRequired
+        />
+        <L.Button
+          id='reset'
+          onClick={() => {
+            L.form('FD_basic').reset();
+            setError(null);
+          }}
+        >
+          Reset
+        </L.Button>
       </L.Div>
+      <br />
+      <br />
+      <L.FileDrop
+        value={file3}
+        error={error3}
+        maxFileNameLength={10}
+        allowedFiles='.json, .png, .jpeg'
+        onChange={(ev) => {
+          console.log('droped', ev.component);
+          console.log('ev.component.value', ev.component.value);
+          if (!ev.component.error) {
+            setFile3(ev.component.value);
+          }
+          setError3(ev.component.error);
+        }}
+        form='forLongName-form'
+        name='forLongNameFiles'
+        isRequired
+      />
+      <br />
+      <br />
+      <L.FileDrop
+        value={file3}
+        error={error3}
+        onChange={handleChange1}
+        isDisabled
+        name='disabledForm'
+      />
     </L.Div>
   );
 };
