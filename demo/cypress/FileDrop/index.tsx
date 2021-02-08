@@ -47,40 +47,59 @@ export const FileDrop = () => {
         value={file1}
         error={error1}
         isRequired
-        name="FDwithError"
-        form="file-drop"
+        name='FDwithError'
+        form='file-drop'
       />
       <br />
       <br />
       <br />
-      <L.FileDrop
-        onChange={handleChange2}
-        value={file2}
-        error={error2}
-        isLoading={isLoading}
-        loadingProgress={loaded}
-        loadingText="Loading..."
-        name="FDwithLoader"
-        form="file-drop"
-      />{' '}
-      <L.Button
-        name="loading"
-        _warning
-        onClick={() => {
-          setIsLoading(!isLoading);
-        }}
-      >
-        Loading
-      </L.Button>{' '}
-      <L.Button
-        name="reset"
-        onClick={() => {
-          L.form('file-drop').reset();
-          setError1(null);
-        }}
-      >
-        Reset
-      </L.Button>
+      <L.Div>
+        <L.FileDrop
+          onChange={handleChange2}
+          value={file2}
+          error={error2}
+          isLoading={isLoading}
+          loadingProgress={loaded}
+          loadingText='Loading...'
+          name='FDwithLoader'
+          form='file-drop'
+        />{' '}
+        <L.Button
+          name='loading'
+          _warning
+          onClick={() => {
+            setIsLoading(!isLoading);
+          }}
+        >
+          Loading
+        </L.Button>{' '}
+        <L.Button
+          name='reset'
+          onClick={() => {
+            L.form('file-drop').reset();
+            setError1(null);
+          }}
+        >
+          Reset
+        </L.Button>
+      </L.Div>
+      <br />
+      <br />
+      <L.Div>
+        <L.FileDrop
+          onChange={handleChange2}
+          value={file2}
+          error={error2}
+          isLoading={isLoading}
+          loadingProgress={loaded}
+          loadingText='Loading...'
+          maxFileSize={2000}
+          minFileSize={1500}
+          maxFileNameLength
+          name='FDwithSize'
+          form='file-drop'
+        />{' '}
+      </L.Div>
     </L.Div>
   );
 };
