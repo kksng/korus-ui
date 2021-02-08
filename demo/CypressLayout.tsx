@@ -10,6 +10,7 @@ import {
   Currency,
   Collapse,
   DatePicker,
+  DateTimePicker,
   DateRange,
   DropDown,
   DropDownLink,
@@ -48,130 +49,133 @@ export const CypressLayout = () => (
   <>
     <L.Div _wrapper>
       <Switch>
-        <Route path="/cypress/autocomplete">
+        <Route path='/cypress/autocomplete'>
           <AutoComplete />
         </Route>
-        <Route path="/cypress/button">
+        <Route path='/cypress/button'>
           <Button />
         </Route>
-        <Route path="/cypress/button-group">
+        <Route path='/cypress/button-group'>
           <ButtonGroup />
         </Route>
-        <Route path="/cypress/checkbox">
+        <Route path='/cypress/checkbox'>
           <CheckBox />
         </Route>
-        <Route path="/cypress/currency">
+        <Route path='/cypress/currency'>
           <Currency />
         </Route>
-        <Route path="/cypress/filedrop">
+        <Route path='/cypress/filedrop'>
           <FileDrop />
         </Route>
-        <Route path="/cypress/fileupload">
+        <Route path='/cypress/fileupload'>
           <FileUpload />
         </Route>
-        <Route path="/cypress/input">
+        <Route path='/cypress/input'>
           <Input />
         </Route>
-        <Route path="/cypress/modal">
+        <Route path='/cypress/modal'>
           <Modal />
         </Route>
-        <Route path="/cypress/notifications">
+        <Route path='/cypress/notifications'>
           <Notifications />
         </Route>
-        <Route path="/cypress/numericrange">
+        <Route path='/cypress/numericrange'>
           <NumericRange />
         </Route>
-        <Route path="/cypress/collapse">
+        <Route path='/cypress/collapse'>
           <Collapse />
         </Route>
-        <Route path="/cypress/datepicker">
+        <Route path='/cypress/datepicker'>
           <DatePicker />
         </Route>
-        <Route path="/cypress/daterange">
+        <Route path='/cypress/datetimepicker'>
+          <DateTimePicker />
+        </Route>
+        <Route path='/cypress/daterange'>
           <DateRange />
         </Route>
-        <Route path="/cypress/dropdown">
+        <Route path='/cypress/dropdown'>
           <DropDown />
         </Route>
-        <Route path="/cypress/dropdownlink">
+        <Route path='/cypress/dropdownlink'>
           <DropDownLink />
         </Route>
-        <Route path="/cypress/dropdownselect">
+        <Route path='/cypress/dropdownselect'>
           <DropDownSelect />
         </Route>
-        <Route path="/cypress/dropzone">
+        <Route path='/cypress/dropzone'>
           <DropZone />
         </Route>
-        <Route path="/cypress/filedrop">
+        <Route path='/cypress/filedrop'>
           <FileDrop />
         </Route>
-        <Route path="/cypress/input">
+        <Route path='/cypress/input'>
           <Input />
         </Route>
-        <Route path="/cypress/masked-input">
+        <Route path='/cypress/masked-input'>
           <MaskedInput />
         </Route>
-        <Route path="/cypress/modal">
+        <Route path='/cypress/modal'>
           <Modal />
         </Route>
-        <Route path="/cypress/multi-select">
+        <Route path='/cypress/multi-select'>
           <MultiSelect />
         </Route>
-        <Route path="/cypress/numericrange">
+        <Route path='/cypress/numericrange'>
           <NumericRange />
         </Route>
-        <Route path="/cypress/numerictextbox">
+        <Route path='/cypress/numerictextbox'>
           <NumericTextBox />
         </Route>
-        <Route path="/cypress/pagination">
+        <Route path='/cypress/pagination'>
           <Pagination />
         </Route>
-        <Route path="/cypress/password">
+        <Route path='/cypress/password'>
           <Password />
         </Route>
-        <Route path="/cypress/progressbar">
+        <Route path='/cypress/progressbar'>
           <ProgressBar />
         </Route>
-        <Route path="/cypress/radio-group">
+        <Route path='/cypress/radio-group'>
           <RadioGroup />
         </Route>
-        <Route path="/cypress/rating">
+        <Route path='/cypress/rating'>
           <Rating />
         </Route>
-        <Route path="/cypress/slider">
+        <Route path='/cypress/slider'>
           <Slider />
         </Route>
-        <Route path="/cypress/statusbar">
+        <Route path='/cypress/statusbar'>
           <StatusBar />
         </Route>
-        <Route path="/cypress/stickypanel">
+        <Route path='/cypress/stickypanel'>
           <StickyPanel />
         </Route>
-        <Route path="/cypress/tabs">
+        <Route path='/cypress/tabs'>
           <Tabs />
         </Route>
-        <Route path="/cypress/textarea">
+        <Route path='/cypress/textarea'>
           <Textarea />
         </Route>
-        <Route path="/cypress/tooltip">
+        <Route path='/cypress/tooltip'>
           <ToolTip />
         </Route>
-        <Route path="/cypress/timepicker">
+        <Route path='/cypress/timepicker'>
           <TimePicker />
         </Route>
-        <Route path="/cypress/timerange">
+        <Route path='/cypress/timerange'>
           <TimeRange />
         </Route>
-        <Route path="/cypress/tour">
+        <Route path='/cypress/tour'>
           <Tour />
         </Route>
-        <Route path="/cypress/validation">
+        <Route path='/cypress/validation'>
           <Validation />
         </Route>
-        <Route path="/cypress/vstepper">
+        <Route path='/cypress/vstepper'>
           <VStepper />
         </Route>
-        <Route path="/cypress/wizard">
+        <Route path='/cypress/wizard'>
           <Wizard />
         </Route>
       </Switch>
