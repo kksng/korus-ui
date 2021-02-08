@@ -23,7 +23,9 @@ describe('FileDrop', () => {
 
   describe('Display', () => {
     it('Should be displayed', () => {
-      cy.get(wrapperClassName).should('have.length', 5).should('be.visible');
+      cy.get(wrapperClassName)
+      .should('have.length', 5)
+      .and('be.visible');
     });
 
     it('isDisabled', () => {
@@ -52,7 +54,7 @@ describe('FileDrop', () => {
         .attachFile('example.json', { subjectType: 'drag-n-drop' })
         .parents('.filedrop-wrapper')
         .should('have.class', theme.wrapper)
-        .should('have.class', theme.invalid);
+        .and('have.class', theme.invalid);
     });
 
     it('Reset should work properly', () => {
@@ -96,7 +98,7 @@ describe('FileDrop', () => {
         )
         .parents('.filedrop-wrapper')
         .should('have.class', theme.wrapper)
-        .should('have.class', theme.invalid);
+        .and('have.class', theme.invalid);
     });
 
     it('Attaching files with too long name', () => {
@@ -111,7 +113,7 @@ describe('FileDrop', () => {
         )
         .parents('.filedrop-wrapper')
         .should('have.class', theme.wrapper)
-        .should('have.class', theme.invalid);
+        .and('have.class', theme.invalid);
     });
 
     it('Attaching invalid files', () => {
@@ -126,7 +128,7 @@ describe('FileDrop', () => {
         )
         .parents('.filedrop-wrapper')
         .should('have.class', theme.wrapper)
-        .should('have.class', theme.invalid);
+        .and('have.class', theme.invalid);
     });
 
     it('Replacement of attachments', () => {

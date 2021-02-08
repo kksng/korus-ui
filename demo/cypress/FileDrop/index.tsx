@@ -51,8 +51,8 @@ export const FileDrop = () => {
         value={file1}
         error={error1}
         isRequired
-        name='FDwithError'
-        form='file-drop'
+        name="FDwithError"
+        form="file-drop"
       />
       <br />
       <br />
@@ -66,11 +66,11 @@ export const FileDrop = () => {
           loadingProgress={loaded}
           maxFileNameLength={10}
           loadingText='Loading...'
-          name='FDwithLoader'
-          form='file-drop'
+          name="FDwithLoader"
+          form="file-drop"
         />{' '}
         <L.Button
-          name='loading'
+          name="loading"
           _warning
           onClick={() => {
             setIsLoading(!isLoading);
@@ -79,7 +79,7 @@ export const FileDrop = () => {
           Loading
         </L.Button>{' '}
         <L.Button
-          name='reset'
+          name="reset"
           onClick={() => {
             L.form('file-drop').reset();
             setError1(null);
@@ -110,7 +110,7 @@ export const FileDrop = () => {
           isRequired
         />
         <L.Button
-          id='reset'
+          id="reset"
           onClick={() => {
             L.form('FD_basic').reset();
             setError(null);
@@ -134,8 +134,8 @@ export const FileDrop = () => {
           }
           setError3(ev.component.error);
         }}
-        form='forLongName-form'
-        name='forLongNameFiles'
+        form="forLongName-form"
+        name="forLongNameFiles"
         isRequired
       />
       <br />
@@ -145,7 +145,7 @@ export const FileDrop = () => {
         error={error3}
         onChange={handleChange1}
         isDisabled
-        name='disabledForm'
+        name="disabledForm"
       />
     </L.Div>
   );
