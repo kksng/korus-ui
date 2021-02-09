@@ -1,23 +1,27 @@
 import React from 'react';
 import { isFunction, isNil, isObject } from 'lodash';
 import { MaskedInputBaseProps } from './types';
-import { useProps } from '../../utils';
+import { useProps, useTheme } from '../../utils';
 import {
   createBlurHandler,
   createChangeHandler,
+  createClearHandler,
   createFocusHandler,
   createKeyDownHandler,
   createPasteHandler,
 } from './handlers';
 import {
+  getEmptyValue,
   getValue, maskValue,
 } from './helpers';
 import { DEFAULT_PLACEHOLDER_CHAR } from './constants';
 import { useAdjustCursor } from '../../utils/useAdjustCursor';
+import { COMPONENTS_NAMESPACES } from '../../constants';
 
 export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, ref?: React.Ref<HTMLInputElement | null>) => {
   const {
     className,
+    hasClearButton,
     mask,
     value,
     placeholderChar = DEFAULT_PLACEHOLDER_CHAR,
@@ -29,6 +33,7 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
     onFocus,
     onKeyDown,
     onMouseDown,
+    theme: themeProp,
     ...restProps
   } = useProps(props);
 
@@ -37,6 +42,12 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const [inputValue, setInputValue] = React.useState<string>(isNil(inputValueProp) ? '' : inputValueProp);
+
+  const isEmptyMaskedInput = inputValue === getEmptyValue(mask, placeholderChar) || inputValue === '';
+
+  const shouldRenderClearButton = hasClearButton && !isDisabled && !isEmptyMaskedInput;
+
+  const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.maskedInput);
 
   React.useEffect(() => {
     if (!isNil(inputValueProp)) {
@@ -75,6 +86,11 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
     setInputValue,
   });
 
+  const handleClearValue = createClearHandler(props, {
+    inputValue,
+    setInputValue,
+  });
+
   React.useEffect(() => {
     // controlled value change
     if (!isFocused) {
@@ -97,34 +113,42 @@ export const MaskedInputBase = React.forwardRef((props: MaskedInputBaseProps, re
   }, [inputValue, isFocused, mask, placeholderChar, value]);
 
   return (
-    <input
-      disabled={isDisabled}
-      className={className}
-      maxLength={mask.length + 1}
-      onBlur={handleBlur}
-      onFocus={handleFocus}
-      onKeyDown={handleKeyDown}
-      onPaste={handlePaste}
-      onChange={handleChange}
-      placeholder={placeholder}
-      value={getValue({
-        inputValue,
-        isFocused,
-        mask,
-        placeholderChar,
-        valueProp: value,
-      })}
-      {...restProps}
-      ref={(component) => {
-        if (isFunction(ref)) ref(component);
-        else if (isObject(ref)) {
+    <>
+      <input
+        disabled={isDisabled}
+        className={className}
+        maxLength={mask.length + 1}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+        onKeyDown={handleKeyDown}
+        onPaste={handlePaste}
+        onChange={handleChange}
+        placeholder={placeholder}
+        value={getValue({
+          inputValue,
+          isFocused,
+          mask,
+          placeholderChar,
+          valueProp: value,
+        })}
+        {...restProps}
+        ref={(component) => {
+          if (isFunction(ref)) ref(component);
+          else if (isObject(ref)) {
           // @ts-ignore
-          ref.current = component;
-        }
+            ref.current = component;
+          }
 
-        inputRef.current = component;
-      }}
-    />
+          inputRef.current = component;
+        }}
+      />
+      {shouldRenderClearButton && (
+      <i
+        className={theme.closeIcon}
+        onMouseDown={handleClearValue}
+      />
+      )}
+    </>
   );
 }) as React.FC<MaskedInputBaseProps>;
 
