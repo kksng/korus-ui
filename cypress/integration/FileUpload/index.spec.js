@@ -60,7 +60,6 @@ describe('FileUpload', () => {
           });
       });
     });
-
     it('Upload big files', () => {
       const stub = cy.stub();
       const bigFile = 'bigFile.jpeg';
@@ -79,7 +78,6 @@ describe('FileUpload', () => {
           });
       });
     });
-
     it('Upload small files', () => {
       const stub = cy.stub();
       const smallFile = 'test.png';
