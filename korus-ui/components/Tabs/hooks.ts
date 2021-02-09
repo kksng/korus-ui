@@ -59,6 +59,9 @@ export const useTabsScroll = ({ shouldScrollTabs, theme }: TabsScrollProps): Tab
 
   const setScrollControls = () => {
     if (shouldScrollTabs && Element && elementRect && tabsContainer) {
+      // tabsContainer should be inline-flex, so that scrollWidth is computed correctly
+      // must be set in inline styles, since in some cases it is computed as a block element
+      (tabsContainer as HTMLElement).style.display = 'inline-flex';
       const tabsContainerRect = tabsContainer.getBoundingClientRect();
 
       if (tabsContainer.scrollWidth > elementRect.width) {

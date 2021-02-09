@@ -6,11 +6,25 @@ import { RenderEvent } from '../../../propsHelpers';
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
   {
+    name: 'delimiterRender',
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация разделителя инпутов',
+  },
+  {
+    name: 'form',
+    type: 'string',
+    required: false,
+    description:
+      'Имя формы. Обязательно для привязки компонента к форме и корректной работы валидации. Каждая новая форма должна иметь уникальное имя.',
+  },
+  {
     name: (
-      <L.A
-        onClick={linkTo('Form|DateRange|Props', 'format')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|DateRange|Props', 'format')} target='_self'>
         format
       </L.A>
     ),
@@ -19,10 +33,21 @@ export const propsDesc = [
     description: 'Формат даты. По-умолчанию dd.MM.yyyy',
   },
   {
+    name: 'iconRender',
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация иконки календаря',
+  },
+  {
     name: 'inputsRender',
     type: (
       <L.Span>
-        [ <RenderEvent /> => React.ReactNode | null, <RenderEvent /> => React.ReactNode | null ]
+        [ <RenderEvent /> => React.ReactNode | null, <RenderEvent /> =>
+        React.ReactNode | null ]
       </L.Span>
     ),
     required: false,
@@ -48,10 +73,7 @@ export const propsDesc = [
   },
   {
     name: (
-      <L.A
-        onClick={linkTo('Form|DateRange', 'Limits')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|DateRange', 'Limits')} target='_self'>
         max
       </L.A>
     ),
@@ -61,10 +83,7 @@ export const propsDesc = [
   },
   {
     name: (
-      <L.A
-        onClick={linkTo('Form|DateRange', 'Limits')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|DateRange', 'Limits')} target='_self'>
         min
       </L.A>
     ),
@@ -76,16 +95,17 @@ export const propsDesc = [
     name: 'name',
     type: 'string | [string | undefined, string | undefined]',
     required: false,
-    description: 'Имя поля ввода для использования в формах и валидации',
+    description:
+      'Имя компонента в форме. Обязательно, если передан атрибут form. Должно быть уникальным в пределах формы.',
   },
   {
     name: 'onBlur',
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
@@ -98,7 +118,7 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
 }
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.DateTimeInputRangeTypes.BlurEvent</L.Span>
         </L.Tooltip>
@@ -110,19 +130,16 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
   },
   {
     name: (
-      <L.A
-        onClick={linkTo('Form|DateRange', 'Basic Usage')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|DateRange', 'Basic Usage')} target='_self'>
         onChange
       </L.A>
     ),
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface CustomRangeEvent {
@@ -134,7 +151,7 @@ interface CustomRangeEvent {
 }
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.DateTimeInputRangeTypes.ChangeEvent</L.Span>
         </L.Tooltip>
@@ -147,11 +164,11 @@ interface CustomRangeEvent {
   {
     name: 'onEnterPress',
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface ChangeEvent {
@@ -163,7 +180,7 @@ interface ChangeEvent {
 }
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.DateTimeInputRangeTypes.ChangeEvent</L.Span>
         </L.Tooltip>
@@ -176,11 +193,11 @@ interface ChangeEvent {
   {
     name: 'onFocus',
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
@@ -192,7 +209,7 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
 }
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.DateTimeInputRangeTypes.FocusEvent</L.Span>
         </L.Tooltip>
@@ -209,25 +226,99 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
     description: 'Плейсхолдер полей "от" и "до"',
   },
   {
+    name: 'requiredMessage',
+    type: 'string | [string, string]',
+    required: false,
+    description:
+      'Сообщение, которое выводится, когда инпут обязательный и не заполнен',
+  },
+  {
+    name: 'theme',
+    type: (
+      <L.Tooltip
+        title={
+          <pre>
+            {`
+{
+  delimiter: string,
+  from: {
+    calendar: {
+      buttonDisabled:         string,
+      dateCell:               string,
+      dateCellActive:         string,
+      dateCellDayOff:         string,
+      dateCellDifferentMonth: string,
+      dateCellDisabled:       string,
+      dateCellSelected:       string,
+      dateCellToday:          string,
+      dateRow:                string,
+      dateView:               string,
+      footer:                 string,
+      header:                 string,
+      monthCell:              string,
+      monthCellActive:        string,
+      monthCellDisabled:      string,
+      monthRow:               string,
+      monthView:              string,
+      nextButton:             string,
+      nextIcon:               string,
+      prevButton:             string,
+      prevIcon:               string,
+      title:                  string,
+      titleDisabled:          string,
+      weekDaysRow:            string,
+      wrapper:                string,
+      wrapperRight:           string,
+      wrapperTop:             string,
+      wrapperVisible:         string,
+      yearCell:               string,
+      yearCellActive:         string,
+      yearCellDifferentDecade:string,
+      yearCellDisabled:       string,
+      yearRow:                string,
+      yearView:               string,
+    },
+    calendarIcon:         string,
+    iconsWrapper:         string,
+    input:                string,
+    inputWrapper:         string,
+    inputWrapperFocused:  string,
+    inputWrapperInvalid:  string,
+    inputWrapperRequired: string,
+    wrapper:              string,
+    wrapperDisabled:      string,
+  },
+  to:      { ... },
+  wrapper: string,
+}
+              `}
+          </pre>
+        }
+      >
+        <L.Span _txt-success>DefaultDateRangeTheme</L.Span>
+      </L.Tooltip>
+    ),
+    required: false,
+    description: 'Тема компонента',
+  },
+  {
     name: 'ref',
     type: (
       <L.Span>
         {'React.Ref<'}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
-              {
-                `
+              {`
 interface DateTimeInputRangeRefCurrent {
   wrapper: HTMLDivElement | null,
   inputFrom: HTMLInputElement | null,
   inputTo: HTMLInputElement | null,
 }
-                `
-              }
+                `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>DateTimeInputRangeRefCurrent</L.Span>
         </L.Tooltip>
@@ -239,15 +330,62 @@ interface DateTimeInputRangeRefCurrent {
   },
   {
     name: (
-      <L.A
-        onClick={linkTo('Form|DatePicker', 'Basic Usage')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|DatePicker', 'Basic Usage')} target='_self'>
         value
       </L.A>
     ),
-    type: '[string, string] | [Date | null, Date | null]',
+    type: (
+      <L.Span>
+        {'['}
+        <L.Tooltip
+          position='bottom'
+          title={
+            <pre>
+              {`
+type DateTimeInputValueType = undefined | null | string | Date;
+                `}
+            </pre>
+          }
+        >
+          <L.Span _txt-success>DateTimeInputValueType</L.Span>
+        </L.Tooltip>
+        {', '}
+        <L.Tooltip
+          position='bottom'
+          title={
+            <pre>
+              {`
+type DateTimeInputValueType = undefined | null | string | Date;
+                `}
+            </pre>
+          }
+        >
+          <L.Span _txt-success>DateTimeInputValueType</L.Span>
+        </L.Tooltip>
+        {'] | null'}
+      </L.Span>
+    ),
     required: false,
     description: 'Значения полей ввода',
+  },
+  {
+    name: 'wrapperRangeRender',
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация враппера компонента',
+  },
+  {
+    name: 'wrapperRender',
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация враппера каждого инпута',
   },
 ];

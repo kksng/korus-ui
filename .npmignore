@@ -1,16 +1,27 @@
-/cypress/
-/demo/
-/styles/
-/types/
+cypress/
+demo/
+styles/
+types/
+docs/
+storybook/
+node_modules/
+public/
+cypress-coverage/
+.nyc_output/
 
-/coverage/
-/docs/
-/storybook/
+.idea/
+.vscode/
+.github/
 
-/.idea/
-/.nyc_output/
-/.vscode/
 
-/cypress.json
-/webpack.analyze.js
-/webpack.config.js
+cypress.json
+webpack.*.js
+tsconfig.json
+tsconfig.*.json
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc
+cg.config.json
+jest.config.js
+jest.setup.ts

@@ -14,13 +14,10 @@ describe('FileUpload', () => {
       const fileName = 'test.png';
       cy.get('.custom').contains('Загрузить').click();
       cy.fixture('test.png').then((uploadFile) => {
-        cy.get('input[type="file"]')
-          .eq(1)
+        cy.name('customFileUpload')
           .attachFile(fileName, uploadFile, 'image/png')
           .get('button')
           .should('have.class', 'loading')
-          .get('@consoleLog')
-          .should('be.calledWith', 'Вы загрузили файл!')
           .wait(3000)
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith('Файл загружен!');
@@ -34,8 +31,7 @@ describe('FileUpload', () => {
       const fileName = 'test.png';
       cy.get('.controlled').contains('Загрузить').click();
       cy.fixture('test.png').then((uploadFile) => {
-        cy.get('input[type="file"]')
-          .first()
+        cy.name('controlledFileUpload')
           .attachFile(fileName, uploadFile, 'image/png')
           .get('.controlled')
           .should('contain', 'Загрузка')
@@ -52,15 +48,14 @@ describe('FileUpload', () => {
       cy.on('window:alert', stub);
       cy.get('.partialcustom').contains('частично').click();
       cy.fixture('txtFile.txt').then((uploadInvalidFile) => {
-        cy.get('input[type="file"]')
-          .eq(2)
+        cy.name('partialCustomFileUpload')
           .attachFile(invalidFile, uploadInvalidFile, 'text/*')
           .get('.partialcustom')
           .should('contain', 'загружаю')
           .wait(3000)
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              'При загрузке возникла ошибка!'
+              'Недопустимый формат файла'
             );
           });
       });
@@ -71,15 +66,14 @@ describe('FileUpload', () => {
       cy.on('window:alert', stub);
       cy.get('.partialcustom').contains('частично').click();
       cy.fixture('bigFile.jpeg').then((uploadBigFile) => {
-        cy.get('input[type="file"]')
-          .eq(2)
+        cy.name('partialCustomFileUpload')
           .attachFile(bigFile, uploadBigFile, 'image/jpg')
           .get('.partialcustom')
           .should('contain', 'загружаю')
           .wait(3000)
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              'При загрузке возникла ошибка!'
+              'Превышен максимальный размер файла'
             );
           });
       });
@@ -90,15 +84,33 @@ describe('FileUpload', () => {
       cy.on('window:alert', stub);
       cy.get('.partialcustom').contains('частично').click();
       cy.fixture('test.png').then((uploadSmallFile) => {
-        cy.get('input[type="file"]')
-          .eq(2)
+        cy.name('partialCustomFileUpload')
           .attachFile(smallFile, uploadSmallFile, 'image/png')
           .get('.partialcustom')
           .should('contain', 'загружаю')
           .wait(3000)
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              'При загрузке возникла ошибка!'
+              'Файл меньше допустимого размера'
+            );
+          });
+      });
+    });
+
+    it('Upload file with too long name', () => {
+      const stub = cy.stub();
+      cy.on('window:alert', stub);
+      const fileName = 'bigFile.jpeg';
+      cy.get('.controlled').contains('Загрузить').click();
+      cy.fixture('bigFile.jpeg').then((uploadLongNameFile) => {
+        cy.name('controlledFileUpload')
+          .attachFile(fileName, uploadLongNameFile, 'image/jpg')
+          .get('.controlled')
+          .should('contain', 'Загрузка')
+          .wait(3000)
+          .then(() => {
+            expect(stub.getCall(0)).to.be.calledWith(
+              'Превышена максимальная длина имени файла'
             );
           });
       });

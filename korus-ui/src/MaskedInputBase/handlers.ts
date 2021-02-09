@@ -1,7 +1,7 @@
 import React from 'react';
 import { isFunction } from 'lodash';
 import {
-  BlurData, ChangeData, ExtendedEvent, FocusData, KeyDownData, MaskedInputBaseProps,
+  BlurData, ChangeData, ClearData, ClearEventHandler, ExtendedEvent, FocusData, KeyDownData, MaskedInputBaseProps,
 } from './types';
 import {
   addChar,
@@ -14,7 +14,7 @@ import {
   removeChar,
   setSelection,
 } from './helpers';
-import { INPUT_METHODS } from './constants';
+import { DEFAULT_PLACEHOLDER_CHAR, INPUT_METHODS } from './constants';
 
 export const createChangeHandler = (
   props: MaskedInputBaseProps,
@@ -92,6 +92,13 @@ export const createChangeHandler = (
     }
 
     if (inputMethod === INPUT_METHODS.remove) {
+      // if Backspace is pressed on mask placeholder, set actual position after Backspace key down event
+      // return current input value
+      if (compareResult[2] === placeholderChar) {
+        setCursor(input.selectionStart ? input.selectionStart : 0);
+        return inputValue;
+      }
+
       return removeChar({
         input,
         mask,
@@ -117,6 +124,31 @@ export const createChangeHandler = (
       component: {
         inputValue: newValue,
         value: newValue.includes(placeholderChar) ? '' : getRawValue(newValue, mask),
+      },
+    };
+
+    onChange(customEvent as unknown as ExtendedEvent<React.ChangeEvent<HTMLInputElement>>);
+  }
+};
+
+export const createClearHandler = (
+  props: MaskedInputBaseProps,
+  extraData: ClearData,
+): ClearEventHandler => () => {
+  const {
+    onChange, mask, placeholderChar = DEFAULT_PLACEHOLDER_CHAR,
+  } = props;
+  const { setInputValue } = extraData;
+
+  const emptyValue = getEmptyValue(mask, placeholderChar);
+
+  setInputValue(emptyValue);
+
+  if (isFunction(onChange)) {
+    const customEvent = {
+      component: {
+        inputValue: emptyValue,
+        value: '',
       },
     };
 

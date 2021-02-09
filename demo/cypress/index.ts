@@ -10,6 +10,7 @@ export { DropDown } from './DropDown';
 export { DropDownLink } from './DropDownLink';
 export { DropDownSelect } from './DropDownSelect';
 export { DateTimePicker } from './DateTimePicker';
+export { DateTimeRange } from './DateTimeRange';
 export { DropZone } from './DropZone';
 export { FileDrop } from './FileDrop';
 export { FileUpload } from './FileUpload';

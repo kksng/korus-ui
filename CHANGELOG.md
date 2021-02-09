@@ -4,7 +4,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.39.0] - 2020-01-25
+## [0.40.0] - 2020-02-09
+
+### Added
+- Validation: added scroll to invalid DropZone and FileDrop fields
+- FileUpload: Added maxFileNameLength prop
+- MaskedInput: Added clear button
+
+### Changed
+- README: Updated browsers list in README.md
+- Updated .npmignore
+
+### Fixed
+- MaskedInput: Fixed backspace
+- Fixed test coverage report for Windows
+- Tabs: Fixed scroll
+- MaskedInput: Remove mask on reset
+
+
+## [0.39.0] - 2020-01-26
 
 ### Added
 - TimeRange, TimePicker: Added autocompletion with 0

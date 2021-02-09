@@ -1,37 +1,20 @@
 import * as React from 'react';
 import * as L from '../../../korus-ui';
+import { BasicForm } from './BasicForm';
+import { ControlledValidation } from './ControlledValidation';
+import { NumericRangeValidation } from './NumericRangeValidation.tsx';
+import { PredefinedValidators } from './PredefinedValidators';
+import { ScrollForm, SubmitScrollForm } from './ScrollForm';
+import { ValidationTypes } from './ValidationTypes';
 
-export const Validation = () => {
-  const [isValid, setIsValid] = React.useState(true);
-  const [message, setMessage] = React.useState('');
-
-  return (
-    <L.Div _box _inner>
-      <L.Div>
-        <L.Div _inner>
-          <L.Input
-            isValid={isValid}
-            invalidMessage="The app decides component to have invalid content"
-            form="formIsValid"
-            name="Input1"
-            placeholder="outer isValid"
-          />
-        </L.Div>
-        <L.Div _inner>
-          <L.Button name="Toggle" onClick={() => setIsValid(!isValid)} _warning>
-            Toggle isValid
-          </L.Button>
-          <L.Button
-            name="Submit"
-            form="formIsValid"
-            onClick={() => setMessage('Submitted')}
-            onValidationFail={() => setMessage('Submit failed')}
-          >
-            Submit
-          </L.Button>
-          <L.Div name="Message">{message}</L.Div>
-        </L.Div>
-      </L.Div>
-    </L.Div>
-  );
-};
+export const Validation = () => (
+  <L.Div _box _inner>
+    <ScrollForm />
+    <ControlledValidation />
+    <BasicForm />
+    <ValidationTypes />
+    <PredefinedValidators />
+    <NumericRangeValidation />
+    <SubmitScrollForm />
+  </L.Div>
+);
