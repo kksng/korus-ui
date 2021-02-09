@@ -12,6 +12,7 @@ import {
   DatePicker,
   DateTimePicker,
   DateRange,
+  DateTimeRange,
   DropDown,
   DropDownLink,
   DropDownSelect,
@@ -87,6 +88,12 @@ export const CypressLayout = () => (
         </Route>
         <Route path='/cypress/datepicker'>
           <DatePicker />
+        </Route>
+        <Route path='/cypress/datetimerange'>
+          <DateTimeRange />
+        </Route>
+        <Route path='/cypress/daterange'>
+          <DateRange />
         </Route>
         <Route path='/cypress/datetimepicker'>
           <DateTimePicker />
