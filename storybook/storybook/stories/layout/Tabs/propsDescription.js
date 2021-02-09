@@ -100,7 +100,7 @@ interface TabsRefCurrent {
     name: 'shouldScrollTabs',
     type: 'boolean',
     required: false,
-    description: 'DOM-узел, в который будет помещено содержимое вкладки.',
+    description: 'Скролл для табов.',
   },
   {
     name: 'tabContentNode',
