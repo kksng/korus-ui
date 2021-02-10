@@ -29,6 +29,7 @@ export { RadioGroup } from './RadioGroup';
 export { Slider } from './Slider';
 export { StatusBar } from './StatusBar';
 export { StickyPanel } from './StickyPanel';
+export { Switcher } from './Switcher';
 export { Tabs } from './Tabs';
 export { Textarea } from './Textarea';
 export { TimeRange } from './TimeRange';
