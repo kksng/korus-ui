@@ -2,10 +2,10 @@
 import * as React from 'react';
 import * as L from '../../../korus-ui';
 import { StateButtonGroup } from '../../components/StateButtonGroup';
-import { StoryProps} from '../../types';
+import { StoryProps } from '../../types';
 
 export const Loader = (storyProps: StoryProps) => {
-  const [props, setProps] = React.useState({ });
+  const [props, setProps] = React.useState({});
 
   return (
     <L.Div _demoStory>
@@ -30,7 +30,9 @@ export const Loader = (storyProps: StoryProps) => {
         isLoading
         id='spinnerLoader'
         onClick={(ev) => console.log('ev', ev)}
-        iconRender= {({ elementProps }: { elementProps: any }) => <L.Div _loaderSpinner {...elementProps}/>}
+        iconRender={({ elementProps }: { elementProps: any }) => (
+          <L.Div _loaderSpinner {...elementProps} />
+        )}
       >
         <p>Content</p>
         <p>Content</p>
@@ -45,7 +47,9 @@ export const Loader = (storyProps: StoryProps) => {
         isLoading
         id='customLoader'
         onClick={(ev) => console.log('ev', ev)}
-        iconRender= {({ elementProps }: { elementProps: any }) => <L.Div _loaderHourglass {...elementProps}/>}
+        iconRender={({ elementProps }: { elementProps: any }) => (
+          <L.Div _loaderHourglass {...elementProps} />
+        )}
       >
         <p>Content</p>
         <p>Content</p>
@@ -60,7 +64,9 @@ export const Loader = (storyProps: StoryProps) => {
         isLoading={false}
         id='disabledLoader'
         onClick={(ev) => console.log('ev', ev)}
-        iconRender= {({ elementProps }: { elementProps: any }) => <L.Div _loaderHourglass {...elementProps}/>}
+        iconRender={({ elementProps }: { elementProps: any }) => (
+          <L.Div _loaderHourglass {...elementProps} />
+        )}
       >
         <p>Content</p>
         <p>Content</p>
@@ -69,23 +75,15 @@ export const Loader = (storyProps: StoryProps) => {
         <p>Content</p>
       </L.Loader>
 
-      {/* <StateButtonGroup
-        data={[
-          { text: 'Default', props: { } },
-          { text: 'Spinner', props: { iconRender: ({ elementProps }: { elementProps: any }) => <L.Div _loaderSpinner {...elementProps} /> } },
-          { text: 'Custom', props: { iconRender: ({ elementProps }: { elementProps: any }) => <><L.Div _loaderHourglass {...elementProps} /><L.Span>БЛАБЛАБЛАБЛАБЛА</L.Span></> } },
-          { text: 'Disabled', props: { isLoading: false } },
-        ]}
-        setProps={setProps}
-        theme={{ activeButton: 'warning' }}
-      />
-      <br />
-      <br /> */}
       <L.Button
         _warning
+        id='globalLoader'
         onClick={() => {
           setProps((prevProps) => ({ ...prevProps, isGlobal: true }));
-          setTimeout(() => { setProps((prevProps) => ({ ...prevProps, isGlobal: false })); alert('Полноэкранный лоадер отключен'); }, 6000);
+          setTimeout(() => {
+            setProps((prevProps) => ({ ...prevProps, isGlobal: false }));
+            alert('Полноэкранный лоадер отключен');
+          }, 6000);
         }}
       >
         Включить глобальный лоадер на 6 сек
