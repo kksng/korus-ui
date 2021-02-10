@@ -1,5 +1,5 @@
-export const WINDOW_SIZES = {
-  lg: 800,
-  md: 600,
-  sm: 480,
-} as const;
+export enum WINDOW_SIZES{
+  lg = 'lg',
+  md = 'md',
+  sm = 'sm',
+}
