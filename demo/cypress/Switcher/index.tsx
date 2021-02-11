@@ -11,24 +11,31 @@ export const Switcher = (storyProps: StoryProps) => {
     <L.Div _demoStory>
       <L.H4 _title>Switcher</L.H4>
       <br />
-        Uncontrolled<br />
-      <L.Switcher {...props} id='uncontrolledSwitcher'>Switcher</L.Switcher>
+      Uncontrolled
       <br />
-      <br />
-      <L.Div _controlled>
-        Controlled ({value.toString()})<br /></L.Div>
-      <L.Switcher
-        {...props}
-        value={value}
-        name="controlledSwitcher"
-        id="controlledSwitcher"
-        onClick={() => alert('Alert')}
-        onChange={ev => setValue(ev.component.value)}
-      >Switcher <br /> с многострочным описанием
+      <L.Switcher {...props} id='uncontrolledSwitcher'>
+        Switcher
       </L.Switcher>
       <br />
       <br />
-      <L.Switcher id='disabledSwitcher' {...props} isDisabled>Disabled</L.Switcher>
+      <L.Div _controlled>
+        Controlled ({value.toString()})<br />
+      </L.Div>
+      <L.Switcher
+        {...props}
+        value={value}
+        name='controlledSwitcher'
+        id='controlledSwitcher'
+        onClick={() => alert('Alert')}
+        onChange={(ev) => setValue(ev.component.value)}
+      >
+        Switcher <br /> с многострочным описанием
+      </L.Switcher>
+      <br />
+      <br />
+      <L.Switcher id='disabledSwitcher' {...props} isDisabled>
+        Disabled
+      </L.Switcher>
     </L.Div>
   );
 };

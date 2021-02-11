@@ -7,7 +7,7 @@ describe('Swithcer', () => {
     it('Should disabled when isDisabled', () => {
       cy.get('#disabledSwitcher')
         .find('.switcher-wrapper')
-        .should('have.class', 'disabled')
+        .should('have.class', 'disabled');
     });
   });
 
@@ -26,23 +26,23 @@ describe('Swithcer', () => {
       cy.on('window:alert', stub);
 
       cy.get('#controlledSwitcher')
-      .find('.switcher-wrapper')
-      .click()  
-      .should('not.have.class', 'active')   
-      .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith('Alert');
-      })
-      .get('.controlled')
-      .should('contain', 'false')
-      .get('#controlledSwitcher')
-      .find('.switcher-wrapper')
-      .click()  
-      .should('have.class', 'active')   
-      .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith('Alert');
-      })
-      .get('.controlled')
-      .should('contain', 'true');
+        .find('.switcher-wrapper')
+        .click()
+        .should('not.have.class', 'active')
+        .then(() => {
+          expect(stub.getCall(0)).to.be.calledWith('Alert');
+        })
+        .get('.controlled')
+        .should('contain', 'false')
+        .get('#controlledSwitcher')
+        .find('.switcher-wrapper')
+        .click()
+        .should('have.class', 'active')
+        .then(() => {
+          expect(stub.getCall(0)).to.be.calledWith('Alert');
+        })
+        .get('.controlled')
+        .should('contain', 'true');
     });
   });
 });
