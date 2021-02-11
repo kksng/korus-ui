@@ -35,6 +35,7 @@ import {
   StatusBar,
   StickyPanel,
   Tabs,
+  Tags,
   Textarea,
   ToolTip,
   TimePicker,
@@ -59,41 +60,23 @@ export const CypressLayout = () => (
         <Route path="/cypress/button-group">
           <ButtonGroup />
         </Route>
+        <Route path="/cypress/collapse">
+          <Collapse />
+        </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
         </Route>
         <Route path="/cypress/currency">
           <Currency />
         </Route>
-        <Route path="/cypress/filedrop">
-          <FileDrop />
-        </Route>
-        <Route path="/cypress/fileupload">
-          <FileUpload />
-        </Route>
-        <Route path="/cypress/input">
-          <Input />
-        </Route>
-        <Route path="/cypress/modal">
-          <Modal />
-        </Route>
-        <Route path="/cypress/notifications">
-          <Notifications />
-        </Route>
-        <Route path="/cypress/numericrange">
-          <NumericRange />
-        </Route>
-        <Route path="/cypress/collapse">
-          <Collapse />
-        </Route>
         <Route path="/cypress/datepicker">
           <DatePicker />
         </Route>
-        <Route path="/cypress/datetimerange">
-          <DateTimeRange />
-        </Route>
         <Route path="/cypress/daterange">
           <DateRange />
+        </Route>
+        <Route path="/cypress/datetimerange">
+          <DateTimeRange />
         </Route>
         <Route path="/cypress/datetimepicker">
           <DateTimePicker />
@@ -116,6 +99,9 @@ export const CypressLayout = () => (
         <Route path="/cypress/filedrop">
           <FileDrop />
         </Route>
+        <Route path="/cypress/fileupload">
+          <FileUpload />
+        </Route>
         <Route path="/cypress/input">
           <Input />
         </Route>
@@ -127,6 +113,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/multi-select">
           <MultiSelect />
+        </Route>
+        <Route path="/cypress/notifications">
+          <Notifications />
         </Route>
         <Route path="/cypress/numericrange">
           <NumericRange />
@@ -160,6 +149,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/tabs">
           <Tabs />
+        </Route>
+        <Route path="/cypress/tags">
+          <Tags />
         </Route>
         <Route path="/cypress/textarea">
           <Textarea />

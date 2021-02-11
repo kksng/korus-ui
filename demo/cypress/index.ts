@@ -30,6 +30,7 @@ export { Slider } from './Slider';
 export { StatusBar } from './StatusBar';
 export { StickyPanel } from './StickyPanel';
 export { Tabs } from './Tabs';
+export { Tags } from './Tags';
 export { Textarea } from './Textarea';
 export { TimeRange } from './TimeRange';
 export { ToolTip } from './ToolTip';
