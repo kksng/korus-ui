@@ -6,8 +6,8 @@ import { createCloseButtonClickHandler, createEscapePressHandler, createOverlayC
 import { useCustomElements } from './hooks';
 import { ModalWindowProps } from './types';
 import { COMPONENTS_NAMESPACES } from '../../constants';
-import { getModalWidth } from './helpers';
 import { ModalContext } from './ModalContext';
+import { WINDOW_SIZES } from './constants';
 
 export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
   const {
@@ -49,13 +49,14 @@ export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
     };
   }, [handleEscapePress]);
 
-  const windowStyles = {
-    width: getModalWidth(size),
-  };
-
   const wrapperClassname = getClassNames(
     className,
     theme.wrapper,
+  );
+
+  const windowClassname = getClassNames(
+    theme.window,
+    size || WINDOW_SIZES.md,
   );
 
   const {
@@ -81,8 +82,7 @@ export const ModalWindow = (props: ModalWindowProps): React.ReactElement => {
         {...restProp}
       >
         <div
-          className={theme.window}
-          style={windowStyles}
+          className={windowClassname}
         >
           {activeAlertKey == null && <Icon onClick={handleCloseButtonClick} className={theme.cross} />}
           {children}

@@ -58,7 +58,7 @@ export const Basic = (props: any) => {
         //   console.log('esc pressed');
         //   setOpen(false);
         // }}
-        size="md"
+        size="lg"
       >
         <L.ModalHeader>
           НОВЫЙ ПОЛЬЗОВАТЕЛЬ
