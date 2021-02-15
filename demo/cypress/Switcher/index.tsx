@@ -13,7 +13,7 @@ export const Switcher = (storyProps: StoryProps) => {
       <br />
       Uncontrolled
       <br />
-      <L.Switcher {...props} id='uncontrolledSwitcher'>
+      <L.Switcher {...props} id="uncontrolledSwitcher">
         Switcher
       </L.Switcher>
       <br />
@@ -24,8 +24,8 @@ export const Switcher = (storyProps: StoryProps) => {
       <L.Switcher
         {...props}
         value={value}
-        name='controlledSwitcher'
-        id='controlledSwitcher'
+        name="controlledSwitcher"
+        id="controlledSwitcher"
         onClick={() => alert('Alert')}
         onChange={(ev) => setValue(ev.component.value)}
       >
@@ -33,7 +33,7 @@ export const Switcher = (storyProps: StoryProps) => {
       </L.Switcher>
       <br />
       <br />
-      <L.Switcher id='disabledSwitcher' {...props} isDisabled>
+      <L.Switcher id="disabledSwitcher" {...props} isDisabled>
         Disabled
       </L.Switcher>
     </L.Div>
