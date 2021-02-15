@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as L from "../../../korus-ui";
-import { StoryProps } from "../../types";
+import * as React from 'react';
+import * as L from '../../../korus-ui';
+import { StoryProps } from '../../types';
 
 export const BasicUsage = (storyProps: StoryProps) => {
 

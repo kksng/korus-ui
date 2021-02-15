@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as L from '../../../korus-ui';
 
 export const Menu = () => {
-
   return (
     <L.Div _inner>
       <L.Menu
