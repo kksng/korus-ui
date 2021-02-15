@@ -10,7 +10,6 @@ export const NumericRange = () => {
       <L.NumericRange
         name="basicUse"
         id="basicUse"
-        // name={['min-num', 'max-num']}
         onChange={(ev) => { setValue(ev.component.value) }}
         value={value}
         isRequired
