@@ -43,6 +43,7 @@ export const COMPONENTS_NAMESPACES = {
   loader: 'loader',
   loaderComponent: 'loaderComponent',
   maskedInput: 'maskedInput',
+  menu: 'menu',
   modal: 'modal',
   modalBody: 'modalBody',
   modalFooter: 'modalFooter',

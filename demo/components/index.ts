@@ -23,6 +23,7 @@ export { HTMLTags } from './HTMLTags';
 export { LedaProvider } from './LedaProvider';
 export { Loader } from './Loader';
 export { MaskedInput } from './MaskedInput';
+export { Menu } from './Menu';
 export { Modal } from './Modal';
 export { MultiSelect } from './MultiSelect';
 export { Navigation } from './Navigation';
