@@ -4,25 +4,25 @@ import { stepContent } from '../../components/VStepper/constants';
 
 const data = [
   {
-    header: 'Счет об оплате',
-    statusSuccess: 'Получен',
-    statusProgress: 'Получение...',
+    header: "Счет об оплате",
+    statusSuccess: "Получен",
+    statusProgress: "Получение...",
     isDisabled: true,
   },
   {
-    header: 'Статус оплаты',
-    statusSuccess: 'Оплачен',
-    statusProgress: 'Не оплачен',
+    header: "Статус оплаты",
+    statusSuccess: "Оплачен",
+    statusProgress: "Не оплачен",
   },
   {
-    header: 'Анкета',
-    statusSuccess: 'Заполнена',
-    statusProgress: 'Не заполнена',
+    header: "Анкета",
+    statusSuccess: "Заполнена",
+    statusProgress: "Не заполнена",
   },
   {
-    header: 'Результат',
-    statusSuccess: 'Получен',
-    statusProgress: 'Не получен',
+    header: "Результат",
+    statusSuccess: "Получен",
+    statusProgress: "Не получен",
   },
 ];
 interface Data {
@@ -58,74 +58,74 @@ export const VStepper = (): React.ReactElement => {
       <L.VStepper>
         <L.VStepper.Item
           hasSignIcon
-          titleText='Добавление расходов'
-          statusText='Заполнено'
-          type='success'
-          footerContent={<L.Button name='btnNext'>Далее</L.Button>}
+          titleText="Добавление расходов"
+          statusText="Заполнено"
+          type="success"
+          footerContent={<L.Button name="btnNext">Далее</L.Button>}
         >
           {stepContent[0]}
         </L.VStepper.Item>
         <L.VStepper.Item
-          titleText='Персональные данные'
-          statusText='Заполнено'
-          type='success'
-          nextStepType='progress'
+          titleText="Персональные данные"
+          statusText="Заполнено"
+          type="success"
+          nextStepType="progress"
         >
           {stepContent[1]}
         </L.VStepper.Item>
         <L.VStepper.Item
-          titleText='Подтверждение командировки'
-          statusText='В процессе'
-          type='progress'
+          titleText="Подтверждение командировки"
+          statusText="В процессе"
+          type="progress"
         >
           {stepContent[2]}
         </L.VStepper.Item>
         <L.VStepper.Item
           hasSignIcon
-          titleText='Печать закрывающих документов'
-          statusText='Не заполнено'
-          type='danger'
+          titleText="Печать закрывающих документов"
+          statusText="Не заполнено"
+          type="danger"
         >
           {stepContent[3]}
         </L.VStepper.Item>
         <L.VStepper.Item
-          titleText='Дополнительная информация'
-          statusText='Не заполнено'
+          titleText="Дополнительная информация"
+          statusText="Не заполнено"
         >
           {stepContent[4]}
         </L.VStepper.Item>
         <L.VStepper.Item
           hasSignIcon
-          titleText='Предупреждение'
-          statusText='Не заполнено'
-          type='warning'
+          titleText="Предупреждение"
+          statusText="Не заполнено"
+          type="warning"
         >
           Предупреждение
         </L.VStepper.Item>
         <L.VStepper.Item
           hasSignIcon
           isOpen
-          id='isOpen'
-          titleText='isOpen'
-          statusText='Заполнено'
-          type='success'
-          footerContent={<L.Button name='btnNext'>Далее</L.Button>}
+          id="isOpen"
+          titleText="isOpen"
+          statusText="Заполнено"
+          type="success"
+          footerContent={<L.Button name="btnNext">Далее</L.Button>}
         >
           {stepContent[0]}
         </L.VStepper.Item>
         <L.VStepper.Item
-          id='isDisable'
-          titleText='isDisable'
+          id="isDisable"
+          titleText="isDisable"
           isDisabled
-          statusText='Заполнено'
-          type='success'
-          nextStepType='progress'
+          statusText="Заполнено"
+          type="success"
+          nextStepType="progress"
         ></L.VStepper.Item>
         <L.VStepper.Item
-          titleText='Click me!'
+          titleText="Click me!"
           onClick={() => alert('Click!')}
-          statusText='В процессе'
-          type='progress'
+          statusText="В процессе"
+          type="progress"
         >
           {stepContent[2]}
         </L.VStepper.Item>
@@ -140,15 +140,15 @@ export const VStepper = (): React.ReactElement => {
               isOpen={openKeys.includes(index)}
               onClick={() => handleHeadingClick(index)}
               item={item}
-              titleTextField='header'
-              statusTextField='statusProgress'
+              titleTextField="header"
+              statusTextField="statusProgress"
               statusRender={({
                 Element,
                 elementProps,
                 componentProps: { type },
               }) => (
                 <Element {...elementProps}>
-                  {type === 'success'
+                  {type === "success"
                     ? item.statusSuccess
                     : item.statusProgress}
                 </Element>
