@@ -9,7 +9,7 @@ export const Tags = (storyProps: StoryProps) => (
     <L.Tags>
       <L.Tag>Москва</L.Tag>
       <L.Tag
-        name='spb'
+        name="spb"
         onIconClick={(ev) => {
           alert('Clicked'), ev;
         }}
