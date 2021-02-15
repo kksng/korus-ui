@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProps, useTheme } from '../../utils';
+import { getClassNames, useProps, useTheme } from '../../utils';
 import { ChangeEvent } from '../Tabs/types';
 import { Tab, Tabs } from '../Tabs';
 import { useMenuScroll } from './hooks';
@@ -45,14 +45,22 @@ export const Menu = React.forwardRef((props: MenuProps, ref?: React.Ref<MenuRefC
       ref={ref ?? containerRef}
       theme={theme}
     >
-      {React.Children.map(children, (child, index) => {
+      {React.Children.map(children, (child) => {
         if (!React.isValidElement(child)) return null;
-        const DropDownMenu = React.cloneElement(child, { theme });
+
+        const { className: classNameProp, menuItemKey } = child.props;
+
+        const combinedClassNames = getClassNames(
+          [theme.menuDropDown],
+          classNameProp,
+        );
+
+        const DropDownMenu = React.cloneElement(child, { className: combinedClassNames });
 
         return (
           <Tab
-            key={index}
-            tabKey={index}
+            key={menuItemKey}
+            tabKey={menuItemKey}
             title={DropDownMenu}
           />
         );

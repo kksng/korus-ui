@@ -12,6 +12,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         }}
       >
         <L.MenuItem 
+          menuItemKey={0}
           title="Hello Click"
         >
           <L.Ul>
@@ -27,6 +28,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
           </L.Ul>
         </L.MenuItem>
         <L.MenuItem 
+          menuItemKey={1}
           title="Very looooooong tab naaaaame"
         >
           <L.Ul>
@@ -39,6 +41,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
           </L.Ul>
         </L.MenuItem>
         <L.MenuItem 
+          menuItemKey={2}
           title="Very looooooong tab naaaaame"
         >
           <L.Ul>
@@ -54,15 +57,19 @@ export const BasicUsage = (storyProps: StoryProps) => {
           </L.Ul>
         </L.MenuItem>
         <L.MenuItem 
+          menuItemKey={3}
           title="Very looooooong tab naaaaame"
         />
         <L.MenuItem 
+          menuItemKey={4}
           title="Very looooooong tab naaaaame"
         />
-        <L.MenuItem 
+        <L.MenuItem
+          menuItemKey={5} 
           title="Very looooooong tab naaaaame"
         />
-        <L.MenuItem 
+        <L.MenuItem
+          menuItemKey={6} 
           title="Very looooooong tab naaaaame"
         />
       </L.Menu>

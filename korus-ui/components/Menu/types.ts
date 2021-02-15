@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { DropDownProps } from '../DropDown/types';
 import { TabsProps } from '../Tabs/types';
 
-export interface MenuItemProps {
-  children?: ReactNode,
-  theme?: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.menu],
+export interface MenuItemProps extends DropDownProps{
+  menuItemKey: number,
   title: string,
 }
 

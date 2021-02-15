@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropDown } from '../DropDown';
 import { Span } from '../Span';
+import { useMenuItemRestProps } from './hooks';
 import { MenuItemProps, MenuItemRefCurrent } from './types';
 
 
@@ -8,14 +9,13 @@ export const MenuItem = React.forwardRef((props: MenuItemProps, ref: React.Ref<M
   const {
     title,
     children,
-    theme,
-    ...restProps
   } = props;
+
+  const restProps = useMenuItemRestProps(props);
 
   return (
     <DropDown
       ref={ref}
-      className={theme?.menuDropDown}
       interactionMode="click"
       {...restProps}
     >

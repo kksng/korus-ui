@@ -1,7 +1,7 @@
 import React from 'react';
-import { useElementRef } from '../../utils';
+import { useElementRef, useProps } from '../../utils';
 import { ChangeEvent } from '../Tabs/types';
-import { MenuRefCurrent, MenuScroll } from './types';
+import { MenuItemProps, MenuRefCurrent, MenuScroll } from './types';
 
 export const useMenuScroll = ({ theme, ref }: MenuScroll) => {
   const [Element, containerRef] = useElementRef();
@@ -28,4 +28,17 @@ export const useMenuScroll = ({ theme, ref }: MenuScroll) => {
     containerRef,
     onMenuItemClick,
   };
+};
+
+export const useMenuItemRestProps = (props: MenuItemProps) => {
+  const {
+    // should not get in restProps
+    title,
+    children,
+    menuItemKey,
+    // the end of what should not get into restProps
+    ...restProps
+  } = useProps(props);
+
+  return restProps;
 };
