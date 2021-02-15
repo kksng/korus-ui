@@ -185,7 +185,7 @@ describe('Modal ATTRIBUTES', () => {
       );
       const wrapper = mount(modal);
 
-      expect(wrapper.find('div.modal-window').props().style.width).toEqual(WINDOW_SIZES.sm);
+      expect(wrapper.find('div.modal-window').props().className).toContain(WINDOW_SIZES.sm);
     });
 
     it('should accept md', () => {
@@ -201,7 +201,7 @@ describe('Modal ATTRIBUTES', () => {
       );
       const wrapper = mount(modal);
 
-      expect(wrapper.find('div.modal-window').props().style.width).toEqual(WINDOW_SIZES.md);
+      expect(wrapper.find('div.modal-window').props().className).toContain(WINDOW_SIZES.md);
     });
 
     it('should accept lg', () => {
@@ -217,7 +217,7 @@ describe('Modal ATTRIBUTES', () => {
       );
       const wrapper = mount(modal);
 
-      expect(wrapper.find('div.modal-window').props().style.width).toEqual(WINDOW_SIZES.lg);
+      expect(wrapper.find('div.modal-window').props().className).toContain(WINDOW_SIZES.lg);
     });
   });
 });
