@@ -16,6 +16,7 @@ export { FileDrop } from './FileDrop';
 export { FileUpload } from './FileUpload';
 export { Input } from './Input';
 export { MaskedInput } from './MaskedInput';
+export { Menu } from './Menu';
 export { Modal } from './Modal';
 export { MultiSelect } from './MultiSelect';
 export { Notifications } from './Notifications';
