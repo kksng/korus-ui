@@ -104,6 +104,35 @@ describe('Tour tests', () => {
         .name('stepDelay')
         .click();
     });
+    it('Switching elements of the tour', () => {
+      cy.name('startTour')
+        .click()
+        .name('Modal1')
+        .parent()
+        .should('have.class', 'top')
+        .name('Next')
+        .click()
+        .name('Modal2')
+        .parent()
+        .should('have.class', 'right')
+        .name('Next')
+        .click()
+        .name('Modal3')
+        .parent()
+        .should('have.class', 'bottom')
+        .name('Back')
+        .click()
+        .name('Modal2')
+        .parent()
+        .should('have.class', 'right')
+        .name('Back')
+        .click()
+        .name('Modal1')
+        .parent()
+        .should('have.class', 'top')
+        .name('Close')
+        .click();
+    });
     describe('Should set and remove active styles correctly', () => {
       it('Previous active element should not be interactive', (done) => {
         cy.on('fail', (err, runnable) => {
