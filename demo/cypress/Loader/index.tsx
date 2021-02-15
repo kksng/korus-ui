@@ -13,7 +13,7 @@ export const Loader = (storyProps: StoryProps) => {
       <L.H4>Default loader</L.H4>
       <L.Loader
         isLoading
-        id='defaultLoader'
+        id="defaultLoader"
         onClick={(ev) => console.log('ev', ev)}
         {...props}
       >
@@ -28,7 +28,7 @@ export const Loader = (storyProps: StoryProps) => {
       <L.H4>Loader spinner</L.H4>
       <L.Loader
         isLoading
-        id='spinnerLoader'
+        id="spinnerLoader"
         onClick={(ev) => console.log('ev', ev)}
         iconRender={({ elementProps }: { elementProps: any }) => (
           <L.Div _loaderSpinner {...elementProps} />
@@ -45,7 +45,7 @@ export const Loader = (storyProps: StoryProps) => {
       <L.H4>Custom loader</L.H4>
       <L.Loader
         isLoading
-        id='customLoader'
+        id="customLoader"
         onClick={(ev) => console.log('ev', ev)}
         iconRender={({ elementProps }: { elementProps: any }) => (
           <L.Div _loaderHourglass {...elementProps} />
@@ -62,7 +62,7 @@ export const Loader = (storyProps: StoryProps) => {
       <L.H4>Disabled loader</L.H4>
       <L.Loader
         isLoading={false}
-        id='disabledLoader'
+        id="disabledLoader"
         onClick={(ev) => console.log('ev', ev)}
         iconRender={({ elementProps }: { elementProps: any }) => (
           <L.Div _loaderHourglass {...elementProps} />
@@ -77,7 +77,7 @@ export const Loader = (storyProps: StoryProps) => {
 
       <L.Button
         _warning
-        id='globalLoader'
+        id="globalLoader"
         onClick={() => {
           setProps((prevProps) => ({ ...prevProps, isGlobal: true }));
           setTimeout(() => {
