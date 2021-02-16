@@ -60,7 +60,8 @@ export const AutoComplete = (): React.ReactElement => {
           onBlur={(event) => setStringValue2(event.component.value)}
           placeholder="Type your city..."
           isRequired
-          form='myForm'
+          onEnterPress={(event) => testFunction(event)}
+          form="myForm"
           requiredMessage="Поле обязательно!"
           _width30
         />
