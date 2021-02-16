@@ -9,7 +9,7 @@ describe('Button', () => {
   });
 
   describe('Events in console', () => {
-    it('event in the console on click', () => {
+    it('Event in the console on click', () => {
       cy.name('consoleButton')
         .click()
         .get('@consoleLog')
@@ -18,27 +18,30 @@ describe('Button', () => {
   });
 
   describe('Display', () => {
-    it('should render button', () => {
+    it('Should render button', () => {
       cy.contains('Клик!').should('be.visible');
     });
   });
 
   describe('Styles', () => {
-    it('_danger', () => {
-      cy.contains('danger!').should('have.class', 'danger');
+    it('Should have class "danger"', () => {
+      cy.contains('danger!')
+        .should('have.class', 'danger');
     });
 
-    it('_warning', () => {
-      cy.contains('warning!').should('have.class', 'warning');
+    it('Should have class "warning"', () => {
+      cy.contains('warning!')
+        .should('have.class', 'warning');
     });
 
-    it('_success', () => {
-      cy.contains('success!').should('have.class', 'success');
+    it('Should have class "success"', () => {
+      cy.contains('success!')
+        .should('have.class', 'success');
     });
   });
 
   describe('Interaction', () => {
-    it('should call onClick', () => {
+    it('Should call onClick', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
@@ -50,7 +53,7 @@ describe('Button', () => {
         });
     });
 
-    it('on Validation Fail', () => {
+    it('Validation failed', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
@@ -66,13 +69,14 @@ describe('Button', () => {
         });
     });
 
-    it('on Validation Success', () => {
+    it('Validation succeeds', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
       cy.get('input')
         .each((validationSuccess) => {
-          cy.wrap(validationSuccess).type('on Validation Success');
+          cy.wrap(validationSuccess)
+            .type('on Validation Success');
         })
         .name('validation')
         .click()
@@ -83,7 +87,7 @@ describe('Button', () => {
         .clear();
     });
 
-    it('should Scroll To Invalid Fields', () => {
+    it('Should Scroll To Invalid Fields', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
@@ -98,7 +102,7 @@ describe('Button', () => {
         .isInViewport();
     });
 
-    it('should not call onClick when isLoading', () => {
+    it('Should not call onClick when isLoading', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 

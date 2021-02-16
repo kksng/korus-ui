@@ -10,7 +10,7 @@ export const Button = (): React.ReactElement => (
     <L.Button
       shouldScrollToInvalidFields
       form={['form1', 'form2']}
-      name='validation'
+      name="validation"
       onClick={() => alert('Submitted')}
       onValidationFail={() => alert('Alert!')}
     >
@@ -22,7 +22,7 @@ export const Button = (): React.ReactElement => (
     <L.Button _danger>danger!</L.Button>
     <L.Button _warning>warning!</L.Button>
     <L.Button _success>success!</L.Button>
-    <L.Button name='consoleButton' onClick={() => console.log('Do not click the button!')}>Don't click!</L.Button>
+    <L.Button name="consoleButton" onClick={() => console.log('Do not click the button!')}>Don't click!</L.Button>
     <L.Button _success>success!</L.Button>
     <div
       style={{
