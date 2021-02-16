@@ -16,7 +16,9 @@ describe('NumericRange', () => {
     });
 
     it('Should be disabled when isDisabled', () => {
-      cy.get('#disabledRange').find('input').should('have.attr', 'disabled');
+      cy.get('#disabledRange')
+        .find('input')
+        .should('have.attr', 'disabled');
     });
   });
 
