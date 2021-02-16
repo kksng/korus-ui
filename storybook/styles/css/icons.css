@@ -55,6 +55,10 @@ i.icon-40 {
   background-image: url(../images/sphere/icons-40.png);
   background-size: 80px 40px; }
 
+i.icon-16 {
+  font-size: 1.6rem;
+  line-height: 2rem; }
+
 /* blank icon */
 .i-none {
   display: inline-block;
@@ -664,6 +668,43 @@ svg.icon-badge {
 
 .icon-web-relations.r-pin {
   background-position: 0.1rem 0; }
+
+.uicon-star.off {
+  color: #bbb; }
+
+.uicon-star.on,
+a.uicon-star:hover,
+a:hover > .uicon-star {
+  color: #f49530; }
+
+[class*="uicon"].large {
+  font-size: 10rem;
+  opacity: .25; }
+
+[class*="uicon"].big {
+  font-size: 8rem;
+  opacity: .4; }
+
+[class*="uicon"].bigger {
+  font-size: 12rem;
+  opacity: .1; }
+
+.prodicon-star-fill.on,
+a.prodicon-star-fill:hover,
+a:hover > .prodicon-star-fill {
+  color: #f49530; }
+
+[class*="prodicon"].large {
+  font-size: 10rem;
+  opacity: .25; }
+
+[class*="prodicon"].big {
+  font-size: 8rem;
+  opacity: .4; }
+
+[class*="prodicon"].bigger {
+  font-size: 12rem;
+  opacity: .1; }
 
 /* Retina
 ----------------------------------------------------------------------------- Retina */
