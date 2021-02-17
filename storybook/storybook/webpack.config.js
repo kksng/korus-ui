@@ -16,10 +16,6 @@ module.exports = ({ config }) => {
         from: 'styles',
         to: 'assets',
       },
-      {
-        from: 'node_modules/@korus/leda/dist/styles/korus-ui',
-        to: 'assets',
-      },
     ]),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

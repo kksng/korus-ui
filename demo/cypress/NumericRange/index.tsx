@@ -6,12 +6,21 @@ export const NumericRange = () => {
   const [value, setValue] = React.useState<[number | null, number | null] | null>([null, null]);
   return (
     <>
-      <h4>Handle null value onChange</h4>
+      <L.H4>Handle null value onChange</L.H4>
       <L.NumericRange
-        name={['min-num', 'max-num']}
+        name="basicUsage"
+        id="basicUsage"
         onChange={(ev) => { setValue(ev.component.value) }}
         value={value}
+        isRequired
+        requiredMessage="Required field!"
+        placeholder="Only numbers"
+        form="foobar"
       />
+      <br />
+      <br />
+      <L.H4>isDisabled</L.H4>
+      <L.NumericRange isDisabled id="disabledRange"/>
     </>
   );
 };
