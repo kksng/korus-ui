@@ -15,6 +15,7 @@ export { DropZone } from './DropZone';
 export { FileDrop } from './FileDrop';
 export { FileUpload } from './FileUpload';
 export { Input } from './Input';
+export { Loader } from './Loader';
 export { MaskedInput } from './MaskedInput';
 export { Modal } from './Modal';
 export { MultiSelect } from './MultiSelect';

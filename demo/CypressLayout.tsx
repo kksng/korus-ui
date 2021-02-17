@@ -20,6 +20,7 @@ import {
   FileDrop,
   FileUpload,
   Input,
+  Loader,
   MaskedInput,
   Modal,
   MultiSelect,
@@ -59,41 +60,23 @@ export const CypressLayout = () => (
         <Route path="/cypress/button-group">
           <ButtonGroup />
         </Route>
+        <Route path="/cypress/collapse">
+          <Collapse />
+        </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
         </Route>
         <Route path="/cypress/currency">
           <Currency />
         </Route>
-        <Route path="/cypress/filedrop">
-          <FileDrop />
-        </Route>
-        <Route path="/cypress/fileupload">
-          <FileUpload />
-        </Route>
-        <Route path="/cypress/input">
-          <Input />
-        </Route>
-        <Route path="/cypress/modal">
-          <Modal />
-        </Route>
-        <Route path="/cypress/notifications">
-          <Notifications />
-        </Route>
-        <Route path="/cypress/numericrange">
-          <NumericRange />
-        </Route>
-        <Route path="/cypress/collapse">
-          <Collapse />
-        </Route>
         <Route path="/cypress/datepicker">
           <DatePicker />
         </Route>
-        <Route path="/cypress/datetimerange">
-          <DateTimeRange />
-        </Route>
         <Route path="/cypress/daterange">
           <DateRange />
+        </Route>
+        <Route path="/cypress/datetimerange">
+          <DateTimeRange />
         </Route>
         <Route path="/cypress/datetimepicker">
           <DateTimePicker />
@@ -116,8 +99,14 @@ export const CypressLayout = () => (
         <Route path="/cypress/filedrop">
           <FileDrop />
         </Route>
+        <Route path="/cypress/fileupload">
+          <FileUpload />
+        </Route>
         <Route path="/cypress/input">
           <Input />
+        </Route>
+        <Route path="/cypress/loader">
+          <Loader />
         </Route>
         <Route path="/cypress/masked-input">
           <MaskedInput />
@@ -127,6 +116,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/multi-select">
           <MultiSelect />
+        </Route>
+        <Route path="/cypress/notifications">
+          <Notifications />
         </Route>
         <Route path="/cypress/numericrange">
           <NumericRange />
