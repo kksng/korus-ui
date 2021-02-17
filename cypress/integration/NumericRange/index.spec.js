@@ -6,11 +6,12 @@ describe('NumericRange', () => {
 
   describe('Display', () => {
     it('Should be rendered', () => {
-      cy.get('#basicUse').should('be.visible');
+      cy.get('#basicUsage')
+        .should('be.visible');
     });
 
     it('Placeholder should be displayed', () => {
-      cy.get('#basicUse')
+      cy.get('#basicUsage')
         .find('input')
         .should('have.attr', 'placeholder', 'Only numbers');
     });
@@ -24,7 +25,7 @@ describe('NumericRange', () => {
 
   describe('Interaction', () => {
     it('Should handle null value', () => {
-      cy.get('#basicUse')
+      cy.get('#basicUsage')
         .find('input')
         .each((handleNullValue) => {
           cy.wrap(handleNullValue)
@@ -43,7 +44,7 @@ describe('NumericRange', () => {
     });
 
     it('Should handle only numbers', () => {
-      cy.get('#basicUse')
+      cy.get('#basicUsage')
         .find('input')
         .each((enteringValues) => {
           cy.wrap(enteringValues)

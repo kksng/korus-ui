@@ -8,8 +8,8 @@ export const NumericRange = () => {
     <>
       <L.H4>Handle null value onChange</L.H4>
       <L.NumericRange
-        name="basicUse"
-        id="basicUse"
+        name="basicUsage"
+        id="basicUsage"
         onChange={(ev) => { setValue(ev.component.value) }}
         value={value}
         isRequired
