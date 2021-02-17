@@ -5,36 +5,56 @@ describe('Collapse', () => {
 
   describe('Interaction', () => {
     it('Should be open on click', () => {
-      cy.get('.collapse-main')
+      cy.name('collapse-main')
+        .find('.collapse-heading-wrapper')
+        .first()
+        .click()
+        .next()
+        .should('not.be.visible')
+        .name('collapse-main')
         .find('.collapse-heading-wrapper')
         .each((collapse) => {
-          cy.wrap(collapse).click();
-          cy.get('.inner-main').should('be.visible');
-        });
-    });
-
-    it('Should be accordion', () => {
-      cy.get('.collapse-accordion')
-        .find('.collapse-heading-wrapper')
-        .each((collapse) => {
-          cy.wrap(collapse).click();
-          cy.get('.inner-accordion-first')
+          cy.wrap(collapse)
+            .click()
+            .next()
             .should('be.visible')
-            .parent()
-            .find('.inner-accordion-second')
+            .prev()
+            .click()
+            .next()
             .should('not.be.visible');
         });
     });
 
-    it('Should be disabled', () => {
-      cy.get('.collapse-disabled')
+    it('Should be accordion', () => {
+      cy.name('collapse-accordion')
         .find('.collapse-heading-wrapper')
+        .first()
+        .click()
+        .next()
+        .should('be.visible')
+        .parent()
+        .find('.inner-accordion-second')
+        .should('not.exist')
+        .name('collapse-accordion')
+        .find('.collapse-heading-wrapper')
+        .last()
+        .click()
+        .next()
+        .should('be.visible')
+        .parent()
+        .find('.inner-accordion-first')
+        .should('not.exist');
+    });
+
+    it('Should be disabled', () => {
+      cy.name('collapse-disabled')
         .contains('1 Disabled')
         .click()
-        .get('.inner-disabled')
+        .next()
         .should('be.visible')
-        .parents()
-        .find('.collapse-heading-wrapper', '2 Disabled')
+        .name('collapse-disabled')
+        .find('.collapse-heading-wrapper')
+        .last()
         .should('have.class', 'heading-disabled');
     });
   });
