@@ -51,8 +51,10 @@ export const ButtonGroup = (): React.ReactElement => {
       <L.ButtonGroup
         data={['one']}
         data-test="OneButtonGroup"
+        type="checkbox"
         value={value1}
-        onChange={(event) => setValue1(event.component.value)}
+        onChange={() => console.log('Click')}
+        onClick={() => alert('Alert!')}
       />
       <br />
       <br />
@@ -60,7 +62,7 @@ export const ButtonGroup = (): React.ReactElement => {
       <L.ButtonGroup
         data={[1, 2, 3]}
         data-test="NumberButtonGroup"
-        type='checkbox'
+        type="checkbox"
       />
       <br />
       <br />
