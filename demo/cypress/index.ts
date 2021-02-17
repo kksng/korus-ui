@@ -32,6 +32,7 @@ export { StatusBar } from './StatusBar';
 export { StickyPanel } from './StickyPanel';
 export { Switcher } from './Switcher';
 export { Tabs } from './Tabs';
+export { Tags } from './Tags';
 export { Textarea } from './Textarea';
 export { TimeRange } from './TimeRange';
 export { ToolTip } from './ToolTip';

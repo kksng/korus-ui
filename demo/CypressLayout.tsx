@@ -37,6 +37,7 @@ import {
   StickyPanel,
   Switcher,
   Tabs,
+  Tags,
   Textarea,
   ToolTip,
   TimePicker,
@@ -156,6 +157,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/tabs">
           <Tabs />
+        </Route>
+        <Route path="/cypress/tags">
+          <Tags />
         </Route>
         <Route path="/cypress/textarea">
           <Textarea />
