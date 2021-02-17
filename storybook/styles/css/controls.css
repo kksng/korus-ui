@@ -65,9 +65,13 @@ a, button {
   .button.more, button.more {
     padding: 0.5rem;
     min-width: 0.2rem; }
+    .button.more:not(.blank):focus, button.more:not(.blank):focus {
+      padding: .4rem; }
     .button.more.small, button.more.small {
       padding: 0.3rem;
       min-width: 0.2rem; }
+      .button.more.small:not(.blank):focus, button.more.small:not(.blank):focus {
+        padding: .2rem; }
   .button:active, .button.active, .button.active:hover, button:active, button.active, button.active:hover {
     background-image: none; }
   .button > .count, button > .count {
@@ -96,9 +100,9 @@ a, button {
   display: block;
   border-radius: 0; }
   .button-group > .button:first-child, .button-group button:first-child {
-    border-radius: 0.6rem 0 0 0.6rem; }
+    border-radius: 0.8rem 0 0 0.8rem; }
   .button-group > .button:last-child, .button-group button:last-child {
-    border-radius: 0 0.6rem 0.6rem 0; }
+    border-radius: 0 0.8rem 0.8rem 0; }
   .button-group > .button:not(:last-child), .button-group button:not(:last-child) {
     border-right-width: 0; }
 
