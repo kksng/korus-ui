@@ -1,13 +1,19 @@
 import React from 'react';
-import { getClassNames, useProps, useTheme } from '../../utils';
+import { useProps, useTheme } from '../../utils';
 import { ChangeEvent } from '../Tabs/types';
 import { Tab, Tabs } from '../Tabs';
 import { useMenuScroll } from './hooks';
 import { MenuProps, MenuRefCurrent } from './types';
 import { COMPONENTS_NAMESPACES } from '../../constants';
+import { getMenuItem } from './helpers';
 
-
-export const Menu = React.forwardRef((props: MenuProps, ref?: React.Ref<MenuRefCurrent>): React.ReactElement | null => {
+/**
+ * Menu component with scroll and dropdown items
+ * @param {MenuProps} props
+ *
+ * @returns {React.ReactElement}
+ */
+export const Menu = React.forwardRef((props: MenuProps, ref?: React.Ref<MenuRefCurrent>): React.ReactElement => {
   const {
     children,
     className,
@@ -48,20 +54,13 @@ export const Menu = React.forwardRef((props: MenuProps, ref?: React.Ref<MenuRefC
       {React.Children.map(children, (child) => {
         if (!React.isValidElement(child)) return null;
 
-        const { className: classNameProp, menuItemKey } = child.props;
-
-        const combinedClassNames = getClassNames(
-          [theme.menuDropDown],
-          classNameProp,
-        );
-
-        const DropDownMenu = React.cloneElement(child, { className: combinedClassNames });
+        const { menuItemKey, menuItem } = getMenuItem(child, theme);
 
         return (
           <Tab
             key={menuItemKey}
             tabKey={menuItemKey}
-            title={DropDownMenu}
+            title={menuItem}
           />
         );
       })}

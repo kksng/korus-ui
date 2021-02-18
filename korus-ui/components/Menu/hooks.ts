@@ -3,6 +3,10 @@ import { useElementRef, useProps } from '../../utils';
 import { ChangeEvent } from '../Tabs/types';
 import { MenuItemProps, MenuRefCurrent, MenuScroll } from './types';
 
+/**
+ * Hook scrolls menu to active tab
+ * @param {MenuScroll} props
+ */
 export const useMenuScroll = ({ theme, ref }: MenuScroll) => {
   const [Element, containerRef] = useElementRef();
   const menuWrapper = ref ? (ref as React.RefObject<MenuRefCurrent>).current?.wrapper : Element;
@@ -30,6 +34,10 @@ export const useMenuScroll = ({ theme, ref }: MenuScroll) => {
   };
 };
 
+/**
+ * Hook excludes unused props from restProps
+ * @param {MenuItemProps} props
+ */
 export const useMenuItemRestProps = (props: MenuItemProps) => {
   const {
     // should not get in restProps
