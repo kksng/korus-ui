@@ -20,12 +20,14 @@ describe('DropDown', () => {
   before(() => {
     cy.visit('http://localhost:9000/cypress/dropdownlink');
   });
+
   describe('Display', () => {
     it('Should display value', () => {
       cy.get('#DropDownLink')
         .find(linkClassName)
         .should('have.text', 'Saint Petersburg');
     });
+
     it('Should set new value', () => {
       cy.get('#DropDownLink')
         .trigger('mouseover')
@@ -37,6 +39,7 @@ describe('DropDown', () => {
         .should('have.text', 'London');
     });
   });
+
   describe('Interaction', () => {
     it('Should open on mouseenter and close on mouseleave', () => {
       cy.get('#DropDownLink')
@@ -47,6 +50,7 @@ describe('DropDown', () => {
         .find(wrapperVisibleClassName)
         .should('not.exist');
     });
+    
     it('Should close on item click', () => {
       cy.get('#DropDownLink')
         .trigger('mouseover')
