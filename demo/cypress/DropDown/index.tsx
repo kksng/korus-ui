@@ -10,7 +10,7 @@ export const DropDown = (): React.ReactElement => {
       <L.Div _demoStory _flexRow>
         <L.DropDown
           wrapperRender={({elementProps}: any) => <L.Button {...elementProps}/>}
-          id='DDButtonHover'
+          id="DDButtonHover"
         >
           <L.Span>Hover over me</L.Span>
           <L.Ul _txtLeft>
@@ -30,7 +30,7 @@ export const DropDown = (): React.ReactElement => {
         </L.DropDown>
         
         <L.DropDown
-          id='DDDivHover'
+          id="DDDivHover"
         >
           <L.Span>Hover over me</L.Span>
           <L.Ul _txtLeft>
@@ -58,8 +58,8 @@ export const DropDown = (): React.ReactElement => {
       <L.Div _demoStory _flexRow>   
         <L.DropDown
           wrapperRender={({elementProps}: any) => <L.Button {...elementProps}/>}
-          interactionMode='click'
-          id='DDButtonClick'
+          interactionMode="click"
+          id="DDButtonClick"
         >
           <L.Span>Click me</L.Span>
           <L.Ul _txtLeft>
@@ -79,8 +79,8 @@ export const DropDown = (): React.ReactElement => {
         </L.DropDown>
         
         <L.DropDown
-          interactionMode='click'
-          id='DDDivClick'
+          interactionMode="click"
+          id="DDDivClick"
         >
           <L.Span>Click me</L.Span>
           <L.Ul _txtLeft>
