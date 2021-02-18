@@ -11,60 +11,59 @@ describe('DatePicker', () => {
   beforeEach(() => { cy.name('success').focus() }) // It is needed because of bug with focus on several datepickers
 
   describe('Display', () => {
-    it('should render placeholder', () => {
+    it('Should render placeholder', () => {
       cy.name('firstDatePicker')
-        .should('have.attr', 'placeholder', 'Type your date...')
-    })
+        .should('have.attr', 'placeholder', 'Type your date...');
+    });
 
-    it('should render calendar-icon', () => {
-      cy.name('firstDatePicker')
-        .parent()
-        .children('.datepicker-icons-wrapper')
-        .children('.datepicker-calendar-icon')
+    it('Should render calendar-icon', () => {
+      cy.get('.datepicker-calendar-icon')
         .should('be.visible');
-    })
+    });
   });
 
   describe('BoundCheck', () => {
-    it('ValueMoreThanMax', () => {
+    it('Value more than max', () => {
       cy.name('firstDatePicker')
         .clear()
         .type('{home}11122030')
         .blur()
         .should('have.attr', 'value', '12.04.2030');
-    })
+    });
 
-    it('ValueLessThanMin', () => {
+    it('Value less than min', () => {
       cy.name('firstDatePicker')
         .clear()
         .type('{home}01011999')
         .blur()
         .should('have.attr', 'value', '01.05.2012');
-    })
+    });
 
-    it('ValuewithSomeTrash', () => {
+    it('Invalid values', () => {
       cy.name('firstDatePicker')
         .clear()
         .type('{home}1.1ю0@1$2#0&3?0')
         .blur()
-        .should('have.attr', 'value', '11.01.2030');
-    })
+        .should('have.attr', 'value', '11.01.2030')
+        .name('firstDatePicker')
+        .clear();
+    });
   });
 
   describe('States', () => {
-    it('should be disabled when isDisabled', () => {
+    it('Should be disabled when isDisabled', () => {
       cy.name('disabledCalendar')
         .should('be.disabled')
-        .should('have.attr', 'disabled');
-    })
+        .and('have.attr', 'disabled');
+    });
 
-    it('should be is open when isOpen', () => {
+    it('Should be is open when isOpen', () => {
       cy.name('openedCalendar')
-        .parents()
-        .children('.calendar-wrapper')
-        .should('be.visible')
-    })
-  })
+        .parents('.datepicker-wrapper')
+        .find('.calendar-wrapper')
+        .should('be.visible');
+    });
+  });
 
   describe('Events', () => {
     beforeEach(() => {
@@ -72,39 +71,40 @@ describe('DatePicker', () => {
         onBeforeLoad(win) {
           stub = cy.stub(win.console, 'log', (ev) => { lastConsole = ev })
         },
-      })
-    })
+      });
+    });
 
     it('onBlurWithValue', () => {
       cy.name('secondDatePicker')
-        .clear()
         .type('11111111')
         .blur()
         .then(() => {
           expect(stub).to.be.called
           expect(lastConsole).to.have.property('type', 'blur')
           expect(lastConsole.component).to.have.property('name', 'secondDatePicker')
-          expect(lastConsole.component).to.have.property('value', '11.11.1111')
+          expect(lastConsole.component).to.have.property('value', '11.11.1111');
         })
-    })
+        .name('secondDatePicker')
+        .clear();
+    });
 
     it('onBlurWithNoValue', () => {
       cy.name('secondDatePicker')
-        .clear()
         .type('1111111')
         .blur()
         .then(() => {
           expect(stub).to.be.called
           expect(lastConsole).to.have.property('type', 'blur')
           expect(lastConsole.component).to.have.property('name', 'secondDatePicker')
-          expect(lastConsole.component).to.have.property('value', '')
+          expect(lastConsole.component).to.have.property('value', '');
         })
-    })
+        .name('secondDatePicker')
+        .clear()
+    });
 
     it('onFocus', () => {
       cy.name('openedCalendar')
         .focus()
-        .wait(200) // сори, но хоум не сработал
         .type('{home}12113234')
         .blur()
         .focus()
@@ -112,16 +112,16 @@ describe('DatePicker', () => {
           expect(stub).to.be.called
           expect(lastConsole).to.have.property('type', 'focus')
           expect(lastConsole.component).to.have.property('name', 'openedCalendar')
-          expect(lastConsole.component).to.have.property('value', '12-е число  11-го месяца  3234-го года')
+          expect(lastConsole.component).to.have.property('value', '12-е число  11-го месяца  3234-го года');
         })
-    })
+        .name('openedCalendar')
+        .clear();
+    });
 
     it('onEnterPress', () => {
       cy.name('firstDatePicker')
         .focus()
-        .wait(200) // сори, но хоум не сработал
-        .type('12113234')
-        .type('{enter}')
+        .type('12113234{enter}')
         .then(() => {
           expect(stub).to.be.called
           expect(lastConsole).to.have.property('type', 'keydown')
@@ -129,235 +129,135 @@ describe('DatePicker', () => {
           expect(lastConsole.component).to.have.property('name', 'firstDatePicker')
           expect(lastConsole.component).to.have.property('value', '12.04.2030')
         })
-    })
+        .name('firstDatePicker')
+        .clear();
+    });
   });
 
   describe('DropdownCalendar', () => {
     it('MouseInput', () => {
       cy.name('firstDatePicker')
         .focus()
-        .clear()
-        .focus()
-        .wait(200)
-        .type('11112020')
-        .type('{enter}')
-        .clear()
-        .name('firstDatePicker')
-        .focus()
         .should('have.attr', 'value', '__.__.____')
         .parent()
-        .find('span.datepicker-calendar-icon')
+        .find('.datepicker-calendar-icon')
         .click()
-        .parents('div.datepicker-wrapper')
-        .find('span.calendar-title')
+        .parents('.datepicker-wrapper')
+        .find('.calendar-title')
         .click()
-        .parents('div.datepicker-wrapper')
-        .find('span.calendar-title')
+        .parents('.datepicker-wrapper')
+        .find('.calendar-title')
         .click()
-        .parents('div.datepicker-wrapper')
+        .parents('.datepicker-wrapper')
         .find('.calendar-month-year-cell[title="2025"]')
         .click()
         .name('firstDatePicker')
-        .parents('div.datepicker-wrapper')
+        .parents('.datepicker-wrapper')
         .find('.calendar-month-year-cell[title="Июль"]')
         .click()
         .name('firstDatePicker')
-        .parents('div.datepicker-wrapper')
-        .find('div.calendar-date-cell.different-month-date')
-        .should('have.length', 4)
-        .parent()
-        .parent()
-        .find('div.calendar-date-cell[title="18 июля 2025"]')
+        .parents('.datepicker-wrapper')
+        .find('.calendar-date-cell[title="18 июля 2025"]')
         .click()
         .name('firstDatePicker')
         .should('have.attr', 'value', '18.07.2025')
-        .find('div.calendar-wrapper')
-        .should('not.be.visible')
-    })
+        .find('.calendar-wrapper')
+        .should('not.be.visible');
+    });
 
-    it('CalendarTitle', () => {
+    it('Disabled CalendarTitle and buttons', () => {
       cy.name('MinMaxDatePickerOpened')
-        .parents('div.datepicker-wrapper')
-        .find('span.calendar-title.disabled-title')
+        .parents('.datepicker-wrapper')
+        .find('.calendar-title')
         .contains('Май 2012')
-        .click()
-        .contains('Май 2012')
+        .should('have.class', 'disabled-title')
         .parent()
-        .find('.calendar-prev-button.disabled-button')
+        .find('.calendar-prev-button, .calendar-next-button')
+        .should('have.class', 'disabled-button')
+        .parents('.calendar-wrapper')
+        .find('.calendar-date-cell[title="4 мая 2012"]')
         .click()
-        .parents('div.datepicker-wrapper')
-        .find('span.calendar-title.disabled-title')
-        .contains('Май 2012')
-        .parents('.calendar-wrapper.visible')
-        .find('.calendar-month-dates')
-        .find('div.calendar-date-cell.disabled-date')
-        .should('have.length', 33)
-        .parent()
-        .find('div.calendar-date-cell.active[title="4 мая 2012"]')
-        .click()
+        .should('have.class', 'active')
         .name('MinMaxDatePickerOpened')
-        .should('have.attr', 'value', '04.05.2012')
-    })
+        .should('have.attr', 'value', '04.05.2012');
+    });
 
     it('Next-Prev-Button', () => {
       cy.name('MinMaxDatePicker')
-        .parent()
-        .find('span.datepicker-calendar-icon')
+        .next()
         .click()
         .parents('.datepicker-wrapper')
-        .find('.calendar-prev-button')
+        .find('.calendar-title')
+        .should('contain', 'Май 2012')
+        .prev()
         .click()
-        .parents('div.datepicker-wrapper')
-        .find('span.calendar-title')
-        .contains('Апрель 2012')
-        .should('be.visible')
-        .parents('div.datepicker-wrapper')
-        .find('.calendar-next-button')
+        .next()
+        .should('contain', 'Апрель 2012')
+        .next()
         .click()
-        .parents('div.datepicker-wrapper')
-        .find('span.calendar-title')
-        .contains('Май 2012')
-        .should('be.visible')
-    })
-
-    it('Prev-ButtonDisabled', () => {
-      cy.name('MinMaxDatePickerOpened')
-        .parent()
-        .parent()
-        .find('.calendar-prev-button.disabled-button')
-        .click()
-        .parents('div.datepicker-wrapper')
-        .find('span.calendar-title.disabled-title')
-        .contains('Май 2012')
-        .should('be.visible')
-    })
-
-    it('Next-ButtonDisabled', () => {
-      cy.name('MinMaxDatePickerOpened')
-        .parent()
-        .parent()
-        .find('.calendar-next-button.disabled-button')
-        .click()
-        .parents('div.datepicker-wrapper')
-        .find('span.calendar-title.disabled-title')
-        .should('be.visible')
-        .contains('Май 2012')
-        .should('be.visible')
-    })
-
-    it('DisabledDates', () => {
-      cy.name('MinMaxDatePickerOpened')
-        .parent()
-        .parent()
-        .find('div.calendar-date-cell.disabled-date')
-        .should('have.length', 33)
-    })
+        .prev()
+        .should('contain','Май 2012')
+        .name('MinMaxDatePicker')
+        .blur();
+    });
 
     it('ActiveDates', () => {
       cy.name('MinMaxDatePickerOpened')
-        .parent()
-        .parent()
-        .find('div.calendar-date-cell[title="4 мая 2012"]')
-        .should('have.class', 'active')
-        .parent()
-        .parent()
-        .type('{leftarrow}')
-        .find('div.calendar-date-cell[title="3 мая 2012"]')
-        .should('have.class', 'active')
-        .should('not.have.class', 'selected')
-        .parent()
+        .parents('.datepicker-wrapper')
+        .find('.calendar-date-cell[title="4 мая 2012"]')
         .type('{enter}')
+        .should('have.class', 'active')
+        .and('have.class', 'selected')
+        .type('{leftarrow}')
+        .prev()
+        .should('have.class', 'active')
+        .type('{enter}')
+        .should('have.class','selected')
         .name('MinMaxDatePickerOpened')
         .should('have.attr', 'value', '03.05.2012')
-        .parents('.datepicker-wrapper')
-        .find('div.calendar-wrapper.visible')
-        .should('be.visible')
-    })
-
-    it('SelectedDates', () => {
-      cy.name('MinMaxDatePickerOpened')
-        .clear()
-        .focus()
-        .wait(200)
-        .type('04052012')
-        .blur()
-        .should('have.attr', 'value', '04.05.2012')
-        .focus()
-        .wait(200)
-        .clear() // Последняя выбранная дата должна быть 04.05.2012
-        .should('have.attr', 'value', '__.__.____')
-        .parents('.datepicker-wrapper')
-        .find('div.calendar-date-cell[title="4 мая 2012"]')
-        .should('have.class', 'active')
-        .should('not.have.class', 'selected')
-        .parent()
-        .parent()
-        .type('{leftarrow}')
-        .find('div.calendar-date-cell[title="3 мая 2012"]')
-        .should('have.class', 'active')
-        .should('not.have.class', 'selected')
-        .parent()
-        .type('{enter}')
-        .name('MinMaxDatePickerOpened')
-        .should('have.attr', 'value', '03.05.2012')
-        .parents('.datepicker-wrapper')
-        .find('div.calendar-wrapper.visible')
-        .should('be.visible')
-        .find('div.calendar-date-cell[title="3 мая 2012"]')
-        .should('have.class', 'active')
-        .should('have.class', 'selected')
-    })
+        .find('.calendar-date-cell[title="4 мая 2012"]')
+        .should('not.have.class', 'active')
+        .and('not.have.class', 'selected');
+    });
 
     it('WeekDays', () => {
       cy.name('MinMaxDatePickerOpened')
         .parents('.datepicker-wrapper')
         .find('.calendar-week-days')
         .children('.calendar-date-cell')
-        .should('have.length', 7)
-    })
+        .should('have.length', 7);
+    });
 
     it('MonthView', () => {
       cy.name('MinMaxDatePicker')
-        .parent()
-        .find('span.datepicker-calendar-icon')
+        .next()
         .click()
         .parents('.datepicker-wrapper')
-        .find('.calendar-wrapper')
-        .children('.calendar-nav')
-        .children('.calendar-title')
+        .find('.calendar-title')
         .click()
         .parents('.calendar-wrapper')
-        .children('.calendar-month-year-view')
-        .find('.calendar-month-year-cell.disabled-month-year')
-        .should('have.length', 10)
+        .find('.calendar-month-year-cell')
+        .should('have.length', 12)
         .parent()
         .find('[title="Апрель"]')
         .should('be.visible')
-        .should('not.be.disabled')
-        .parent()
-        .parent()
+        .parents('.datepicker-wrapper')
         .find('[title="Май"]')
         .should('be.visible')
-        .should('have.class', 'active')
-    })
+        .and('have.class', 'active');
+    });
 
     it('YearViewDisabled', () => {
       cy.name('MinMaxDatePicker')
-        .focus()
-        .wait(200)
         .type('04052012')
-        .parent()
-        .find('span.datepicker-calendar-icon')
+        .next()
         .click()
         .parents('.datepicker-wrapper')
-        .find('.calendar-wrapper')
-        .children('.calendar-nav')
-        .children('.calendar-title')
+        .find('.calendar-title')
         .click()
         .click()
         .should('not.have.text', '2010 - 2019')
         .parents('.calendar-wrapper')
-        .children('.calendar-month-year-view')
         .find('.calendar-month-year-cell')
         .should('not.contain.text', '2012')
         .name('MinMaxDatePicker')
@@ -368,110 +268,184 @@ describe('DatePicker', () => {
         .children('.calendar-month-year-view')
         .find('[title="Апрель"]')
         .should('be.visible')
-    })
-
-    it('YearViewPositive', () => {
-      cy.name('firstDatePicker')
+        .name('MinMaxDatePicker')
         .clear()
-        .parent()
-        .find('span.datepicker-calendar-icon')
-        .click()
-        .parents('.datepicker-wrapper')
-        .find('.calendar-wrapper')
-        .children('.calendar-nav')
-        .children('.calendar-title')
-        .click()
-        .click()
-        .parents('.calendar-wrapper')
-        .children('.calendar-month-year-view')
-        .find('.calendar-month-year-cell')
-        .should('have.length', 12)
-    })
+        .blur();
+    });
 
     it('Custom month names', () => {
       cy.name('CustomMonthsDatePicker')
-        .focus()
-        .wait(200)
         .type('04052012')
-        .parent()
-        .find('span.datepicker-calendar-icon')
+        .next()
         .click()
         .parents('.datepicker-wrapper')
         .find('.calendar-title')
         .contains('May 2012')
         .click()
         .parents('.calendar-wrapper')
-        .children('.calendar-month-year-view')
+        .find('.calendar-month-year-cell')
         .first()
-        .contains('Jan')
-    })
+        .should('contain', 'Jan')
+        .next()
+        .should('contain', 'Feb');
+    });
 
     it('Custom week day names', () => {
       cy.name('CustomMonthsDatePicker')
-        .parent()
-        .find('span.datepicker-calendar-icon')
+        .next()
         .click()
         .parents('.datepicker-wrapper')
-        .find('.calendar-wrapper')
-        .children('.calendar-week-days')
-        .first()
+        .find('.calendar-week-days')
         .contains('Mon')
         .should('have.attr', 'title', 'Monday')
-    })
+        .parent()
+        .contains('Thu')
+        .should('have.attr', 'title', 'Thursday')
+        .parent()
+        .contains('Sun')
+        .should('have.attr', 'title', 'Sunday');   
+      });
+    });
 
-    describe('ArrowsInput', () => {
+    describe('Keyboard input', () => {
       it('UpDownArrows', () => {
         cy.name('MinMaxDatePicker')
           .clear()
-          .parent()
-          .find('span.datepicker-calendar-icon')
+          .next()
           .click()
           .parents('.datepicker-wrapper')
-          .find('div.calendar-date-cell[title="4 мая 2012"]')
+          .find('.calendar-date-cell[title="4 мая 2012"]')
           .should('have.class', 'active')
           .parents('.datepicker-wrapper')
           .type('{uparrow}')
-          .find('div.calendar-date-cell[title="27 апреля 2012"]')
+          .find('.calendar-date-cell[title="27 апреля 2012"]')
           .should('have.class', 'active')
-        cy.name('MinMaxDatePicker')
+          .name('MinMaxDatePicker')
           .parents('.datepicker-wrapper')
-          .find('div.calendar-date-cell[title="27 апреля 2012"]')
+          .find('.calendar-date-cell[title="27 апреля 2012"]')
           .should('have.class', 'active')
           .parents('.datepicker-wrapper')
           .type('{downarrow}')
           .find('div.calendar-date-cell[title="4 мая 2012"]')
-          .should('have.class', 'active')
-      })
+          .should('have.class', 'active');
+      });
 
       it('LeftRightArrows', () => {
         cy.name('MinMaxDatePicker')
-          .parent()
-          .find('span.datepicker-calendar-icon')
+          .next()
           .click()
           .parents('.datepicker-wrapper')
-          .find('div.calendar-date-cell[title="4 мая 2012"]')
+          .find('.calendar-date-cell[title="4 мая 2012"]')
           .should('have.class', 'active')
           .parents('.datepicker-wrapper')
           .type('{leftarrow}')
-          .find('div.calendar-date-cell[title="3 мая 2012"]')
+          .find('.calendar-date-cell[title="3 мая 2012"]')
           .should('have.class', 'active')
           .parent()
-          .find('div.calendar-date-cell[title="4 мая 2012"]')
+          .find('.calendar-date-cell[title="4 мая 2012"]')
           .should('not.have.class', 'active')
-        cy.name('MinMaxDatePicker')
+          .name('MinMaxDatePicker')
           .parents('.datepicker-wrapper')
-          .find('div.calendar-date-cell[title="3 мая 2012"]')
+          .find('.calendar-date-cell[title="3 мая 2012"]')
           .should('have.class', 'active')
           .parents('.datepicker-wrapper')
           .type('{rightarrow}')
-          .find('div.calendar-date-cell[title="4 мая 2012"]')
-          .should('have.class', 'active')
-      })
+          .find('.calendar-date-cell[title="4 мая 2012"]')
+          .should('have.class', 'active');
+      });
 
-      xit('Validation tests', () => { })
-      xit('InputWithTab', () => { })
-    });
+      it('Pressing "Tab" opens the calendar', () => {
+        cy.name('firstDatePicker')
+          .focus()
+          .tab()
+          .name('firstDatePicker')
+          .parents('.datepicker-wrapper')
+          .find('.calendar-wrapper')
+          .should('be.visible')
+          .name('firstDatePicker')
+          .next()
+          .click()
+          .parents('.datepicker-wrapper')
+          .find('.calendar-wrapper')
+          .should('not.be.visible');
+      });
+
+      it('If the calendar is open - pressing "Tab" switches to the previous view', () => {
+        cy.name('firstDatePicker')
+          .next()
+          .click()
+          .name('firstDatePicker')
+          .focus()
+          .tab()
+          .get('.calendar-month-year-cell[title="Август"]')
+          .should('be.visible')
+          .name('firstDatePicker')
+          .focus()
+          .tab()
+          .get('.calendar-month-year-cell[title="2030"]')
+          .should('be.visible');
+      }); 
+
+      it('If the calendar is open and the current view is dates, pressing "Enter" selects the date and closes the calendar', () => {
+        cy.name('firstDatePicker')
+          .clear()
+          .next()
+          .click()
+          .parents('.datepicker-wrapper')
+          .find('.calendar-title')
+          .click()
+          .parents('.datepicker-wrapper')
+          .find('.calendar-title')
+          .click()
+          .parents('.datepicker-wrapper')
+          .find('.calendar-month-year-cell[title="2021"]')
+          .click()
+          .name('firstDatePicker')
+          .parents('.datepicker-wrapper')
+          .find('.calendar-month-year-cell[title="Август"]')
+          .click()
+          .name('firstDatePicker')
+          .parents('.datepicker-wrapper')
+          .find('.calendar-date-cell[title="2 августа 2021"]')
+          .type('{enter}')
+          .name('firstDatePicker')
+          .should('have.attr', 'value', '02.08.2021')
+          .name('firstDatePicker')
+          .parents('.datepicker-wrapper')
+          .find('.calendar-wrapper')
+          .should('not.be.visible');
+      });
+      
+      it('Pressing "Backspace" will delete characters in "Input"', () => {
+        cy.name('firstDatePicker')
+          .clear()
+          .type('02.08.2020')
+          .type('{backspace}')
+          .name('firstDatePicker')
+          .should('have.attr', 'value', '02.08.202_')
+          .type('{backspace}')
+          .name('firstDatePicker')
+          .should('have.attr', 'value', '02.08.20__')
+          .type('{backspace}')
+          .name('firstDatePicker')
+          .should('have.attr', 'value', '02.08.2___')
+          .name('firstDatePicker')
+          .clear();
+      });
+
+      it('Pressing "Esc" closes the calendar', () => {
+        cy.name('firstDatePicker')
+          .parent()
+          .find('.datepicker-calendar-icon')
+          .click()
+          .type('{esc}')
+          .name('firstDatePicker')
+          .parents('.datepicker-wrapper')
+          .find('.calendar-wrapper')
+          .should('not.be.visible');
+      });
   });
+
   describe('Validation', () => {
     it('Should display validation error', () => {
       cy.name('MinValueDatePicker')
