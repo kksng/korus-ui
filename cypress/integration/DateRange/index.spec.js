@@ -2,104 +2,84 @@
 import { defaultAutoCompleteTheme as theme } from '../../../korus-ui/components/AutoComplete/theme';
 
 describe('DateRange', () => {
-  let lastConsole
-  let stub
   before(() => {
     cy.visit('http://localhost:9000/cypress/daterange')
-    cy.viewport(1600, 900)
-  })
+  });
 
-  it('Delimiter', () => {
-    cy.name('firstDatePicker')
-      .parents('div.demo-story')
-      .parent()
-      .find('.daterange-delimiter')
-      .should('have.length', 9)
-  })
+  describe('Display', () => {
+    it('Delimiter', () => {
+      cy.get('.daterange-delimiter')
+        .should('have.length', 9)
+        .and('be.visible');
+    });
 
-  it('EnterPress', () => {
-    cy.name('ThirdDateRange-from')
-      .parent()
-      .find('span.datepicker-calendar-icon')
-      .click()
-      .parents('.datepicker-input-wrapper')
-      .type('{enter}')
-      .type('{enter}')
-      .focused().should('have.attr', 'name', 'ThirdDateRange-to')
-  })
+    it('Placeholders', () => {
+      cy.name('firstDatePicker')
+        .should('have.attr', 'placeholder', 'Type your date...')
+        .name('secondDatePicker')
+        .should('have.attr', 'placeholder', 'Type something...')
+        .name('MinMaxDatePickerOpened-to')
+        .should('have.attr', 'placeholder', 'Type your date...');
+    });
 
-  it('MinMaxTest', () => {
-    cy.name('MinMaxDatePicker-from')
-      .parent()
-      .parent()
-      .find('.calendar-prev-button i')
-      .click()
-      .click()
-      .parents('.calendar-wrapper.visible')
-      .find('div.calendar-date-cell[title="13 апреля 2012"]')
-      .click()
-      .parent()
-      .find('div.calendar-date-cell[title="12 апреля 2012"]')
-      .click()
-      .name('MinMaxDatePicker-from')
-      .should('have.value', '12.04.2012')
-      .name('MinMaxDatePicker-to')
-      .parent()
-      .parent()
-      .find('.calendar-prev-button')
-      .click()
-      .click()
-      .parents('.calendar-wrapper.visible')
-      .find('div.calendar-date-cell.disabled-date')
-      .contains('11')
-      .should('exist')
-      .parents('.calendar-wrapper.visible')
-      .find('div.calendar-date-cell.disabled-date')
-      .should('have.length', 19)
-      .name('MinMaxDatePicker-to')
-      .parent()
-      .parent()
-      .find('div.calendar-date-cell[title="25 апреля 2012"]')
-      .click()
-      .parent()
-      .find('div.calendar-date-cell[title="26 апреля 2012"]')
-      .click()
-      .name('MinMaxDatePicker-from')
-      .parent()
-      .parent()
-      .find('div.calendar-date-cell.disabled-date')
-      .contains('27')
-      .should('be.exist')
-      .parents('.calendar-wrapper.visible')
-      .find('div.calendar-date-cell.disabled-date')
-      .should('have.length', 18)
-  })
+    it('Values', () => {
+      cy.name('openedCalendar-to')
+        .should('have.attr', 'value', '11-е число  22-го месяца  33__-го года');
+    });
+  });
 
+  describe('Interaction', () => {
+    it('EnterPress', () => {
+      cy.name('MinMaxDatePicker-from')
+        .parents('.daterange-wrapper')
+        .find('input')
+        .each((enterPressTesting) => {
+          cy.wrap(enterPressTesting)
+          .type('{enter}')
+          .should('have.value', '04.05.2012')
+          .clear()
+        });
+    });
+  
+    it('MinMaxTest', () => {
+      cy.name('MinMaxDatePicker-from')
+        .parents('.daterange-wrapper')
+        .find('input')
+        .each((minMaxTest) => {
+          cy.wrap(minMaxTest)
+            .type('03042012')
+            .blur()
+            .should('have.value', ('04.04.2012'))
+            .clear()
+            .type('05052012')
+            .blur()
+            .should('have.value', ('04.05.2012'))
+            .clear();
+        });
+    });
+  });
+  
   describe('States', () => {
-    it('should be disabled when isDisabled', () => {
+    it('Should be disabled when isDisabled', () => {
       cy.name('firstDatePicker')
         .should('be.disabled')
-        .should('have.attr', 'disabled')
+        .and('have.attr', 'disabled')
         .name('disabledCalendar-from')
         .should('be.disabled')
-        .should('have.attr', 'disabled')
+        .and('have.attr', 'disabled')
         .name('disabledCalendar-to')
         .should('be.disabled')
-        .should('have.attr', 'disabled')
-    })
+        .and('have.attr', 'disabled');
+    });
 
-    it('should be open when isOpen', () => {
+    it('Should be open when isOpen', () => {
       cy.name('MinMaxDatePicker-to')
-        .parents()
-        .children('.calendar-wrapper')
-        .should('be.visible')
-        .name('MinMaxDatePicker-from')
-        .parents()
-        .children('.calendar-wrapper')
-        .should('be.visible')
-    })
+        .parents('.daterange-wrapper')
+        .find('.calendar-wrapper')
+        .should('be.visible');
+    });
 
-    it('should be required when isRequired', () => {
+    it('Should be required when isRequired', () => {
       cy.name('ThirdDateRange-to')
         .should('have.attr', 'aria-required', 'true')
         .name('ThirdDateRange-from')
@@ -109,9 +89,10 @@ describe('DateRange', () => {
         .focus()
         .blur()
         .parent()
-        .should('have.class', 'danger')
-    })
-    it('should be able to reset values with empty strings and with null', () => {
+        .should('have.class', 'danger');
+    });
+
+    it('Should be able to reset values with empty strings and with null', () => {
       cy.name('resetButton')
         .click()
         .name('DatePickerStringReset-from')
@@ -127,37 +108,18 @@ describe('DateRange', () => {
         .name('DatePickerNullReset-to')
         .should('have.attr', 'value', '')
         .name('toInitialStateButton')
-        .click()
-    })
+        .click();
+    });
+
     it('Calendar should display today date if value is empty', () => {
       cy.name('resetButton')
         .click()
         .name('DatePickerNullReset-from')
-        .parent()
-        .find('.datepicker-calendar-icon')
-        .click()
-        .parent()
-        .parent()
         .next()
-        .should('have.class', 'calendar-wrapper')
-        .find('.calendar-date-cell.today')
-        .should('have.class', 'active')
+        .click()
+        .parents('.datepicker-wrapper')
+        .find('.today')
+        .should('have.class', 'active');
     });
-  })
-
-  describe('Display', () => {
-    it('Placeholders', () => {
-      cy.name('firstDatePicker')
-        .should('have.attr', 'placeholder', 'Type your date...')
-        .name('secondDatePicker')
-        .should('have.attr', 'placeholder', 'Type something...')
-        .name('MinMaxDatePickerOpened-to')
-        .should('have.attr', 'placeholder', 'Type your date...')
-    })
-
-    it('Values', () => {
-      cy.name('openedCalendar-to')
-        .should('have.attr', 'value', '11-е число  22-го месяца  33__-го года')
-    })
-  })
-})
+  }); 
+});
