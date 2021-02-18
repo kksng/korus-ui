@@ -12,7 +12,7 @@ describe('DateTimePicker', () => {
       });
     });
 
-    it('focus and blur', () => {
+    it('Focus and blur', () => {
       cy.get('[data-test="dp1"]')
         .focus()
         .blur()
@@ -21,7 +21,7 @@ describe('DateTimePicker', () => {
         .and('be.calledWith', 'blur');
     });
 
-    it('change event', () => {
+    it('Change event', () => {
       console.clear();
       cy.get('[data-test="dp1"]')
         .clear()
@@ -29,7 +29,7 @@ describe('DateTimePicker', () => {
         .should('be.calledWith', 'change');
     });
 
-    it('enter press', () => {
+    it('Enter press', () => {
       console.clear();
       cy.get('[data-test="dp1"]')
         .type('{enter}')
@@ -39,7 +39,7 @@ describe('DateTimePicker', () => {
   });
 
   describe('Display', () => {
-    it('shoul be disabled', () => {
+    it('Should be disabled', () => {
       cy.get('[data-test="dp4"]')
         .find('input')
         .should('be.disabled')
@@ -49,7 +49,7 @@ describe('DateTimePicker', () => {
   });
 
   describe('Interaction', () => {
-    it('opening and closing the calendar', () => {
+    it('Opening and closing the calendar', () => {
       cy.get('#basic')
         .find('.datepicker-calendar-icon')
         .should('be.visible')
@@ -63,11 +63,10 @@ describe('DateTimePicker', () => {
         .click()
         .parents()
         .find('.calendar-wrapper')
-        .should('not.have.class', 'visible')
-        .and('not.be.visible');
+        .should('not.exist');
     });
 
-    it('should validate the form', () => {
+    it('Should validate the form', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
@@ -78,7 +77,7 @@ describe('DateTimePicker', () => {
         });
     });
 
-    it('should validation failed', () => {
+    it('Should validation failed', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
@@ -95,7 +94,7 @@ describe('DateTimePicker', () => {
         .and('have.class', 'required');
     });
 
-    it('entering values from the keyboard', () => {
+    it('Entering values from the keyboard', () => {
       cy.name('datetimepicker')
         .clear()
         .focus()
@@ -103,11 +102,12 @@ describe('DateTimePicker', () => {
         .should('have.value', '')
         .type('99.99.99 99:99:99{enter}')
         .should('have.value', '20.06.19 00:00:00')
-        .type('{backspace}{backspace}{backspace}{backspace}{backspace}{enter}')
+        .type('{backspace}'.repeat(5))
+        .type('{enter}')
         .should('have.value', '20.06.19 00:__:__');
     });
 
-    it('maximal, minimal and invalid values', () => {
+    it('Maximal, minimal and invalid values', () => {
       cy.name('datetimepicker')
         .clear()
         .type('21.05.19 23:60:01{enter}')
@@ -120,7 +120,7 @@ describe('DateTimePicker', () => {
         .should('have.value', '12.3_.__ __:__:__');
     });
 
-    it('selecting a date from the calendar', () => {
+    it('Selecting a date from the calendar', () => {
       cy.get('#basic')
         .find('.datepicker-calendar-icon')
         .click()
@@ -147,7 +147,8 @@ describe('DateTimePicker', () => {
         .name('datetimepicker')
         .should('contain.value', '11.09.18');
     });
-    it('using the TAB button', () => {
+
+    it('Using the TAB button', () => {
       cy.name('datetimepicker')
         .clear()
         .focus()
