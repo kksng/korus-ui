@@ -59,30 +59,30 @@ export const DatePicker = (): React.ReactElement => {
     <L.Div>
       <L.Div _demoStory _flexRow>
         <L.DatePicker
-          max={new Date('04.12.2030')}
-          min={new Date('05.01.2012')}
+          max={new Date(2030, 3, 12)}
+          min={new Date(2012, 4 ,1)}
           onChange={handleChange1}
           onEnterPress={(ev) => testFunction(ev)}
           value={value1}
-          name='firstDatePicker'
+          name="firstDatePicker"
           placeholder="Type your date..."
         />
 
         <L.DatePicker
-          max={new Date('05.04.2012')}
-          min={new Date('04.03.2012')}
+          max={new Date(2012, 4, 4)}
+          min={new Date(2012, 3, 3)}
           onChange={handleChange2}
           onEnterPress={(ev) => testFunction(ev)}
           value={value2}
-          name='MinMaxDatePicker'
+          name="MinMaxDatePicker"
           placeholder="Type your date..."
         />
 
         <L.DatePicker
           onChange={handleChange3}
-          format='dd.MM.yyyy'
+          format="dd.MM.yyyy"
           onBlur={(ev) => testFunction(ev)}
-          name = 'secondDatePicker'
+          name = "secondDatePicker"
         />
 
       </L.Div>
@@ -93,7 +93,7 @@ export const DatePicker = (): React.ReactElement => {
       <L.Div _demoStory _flexRow>
         <L.DatePicker
           format="dd-е число  MM-го месяца  yyyy-го года"
-          name = 'openedCalendar'
+          name="openedCalendar"
           onChange={handleChange4}
           value={value4}
           onFocus={(ev) => testFunction(ev)}
@@ -102,19 +102,19 @@ export const DatePicker = (): React.ReactElement => {
 
         <L.DatePicker
           format="dd-е число  MM-го месяца  yyyy-го года"
-          name = 'disabledCalendar'
+          name="disabledCalendar"
           onChange={handleChange5}
           value={value5}
           isDisabled
         />
 
         <L.DatePicker
-          max={new Date('05.04.2012')}
-          min={new Date('05.03.2012')}
+          max={new Date(2012, 4, 4)}
+          min={new Date(2012, 4, 3)}
           onChange={handleChange6}
           onEnterPress={(ev) => testFunction(ev)}
           value={value6}
-          name='MinMaxDatePickerOpened'
+          name="MinMaxDatePickerOpened"
           placeholder="Type your date..."
           isOpen
         />
@@ -127,7 +127,7 @@ export const DatePicker = (): React.ReactElement => {
           onChange={handleChange7}
           onEnterPress={(ev) => testFunction(ev)}
           value={value7}
-          name='CustomMonthsDatePicker'
+          name="CustomMonthsDatePicker"
           placeholder="Type your date..."
         />
          <L.Button _success name="success">success!</L.Button>
