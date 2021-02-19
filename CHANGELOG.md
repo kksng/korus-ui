@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.41.0] - 2020-02-25
 
+### Added
+- Menu: Added new component
+
 ### Changed
 - Modal: Prop 'size' adds class to div.modal-window instead of style attribute
 

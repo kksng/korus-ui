@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as L from '../korus-ui';
 import {
   AutoComplete, ButtonGroup, CheckBox, DatePicker, DateRange,
-  DropDown, DropDownSelect, Input, A, LedaProvider, Loader, MaskedInput, Modal,
+  DropDown, DropDownSelect, Input, A, LedaProvider, Loader, MaskedInput, Menu, Modal,
   MultiSelect, Notifications, NumericRange, NumericTextBox, Password,
   Pagination, RadioGroup, ProgressBar, Slider, StatusBar, StickyPanel, Svg, Switcher,
   Tabs, Tags, DropZone, Textarea, DateTimePicker, TimePicker,
@@ -49,6 +49,7 @@ export const Demo = hot(() => (
       <LedaProvider />
       <Loader />
       <MaskedInput />
+      <Menu />
       <Modal />
       <MultiSelect />
       <Notifications />

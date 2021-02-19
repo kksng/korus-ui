@@ -22,6 +22,7 @@ import {
   Input,
   Loader,
   MaskedInput,
+  Menu,
   Modal,
   MultiSelect,
   Notifications,
@@ -112,6 +113,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/masked-input">
           <MaskedInput />
+        </Route>
+        <Route path="/cypress/menu">
+          <Menu />
         </Route>
         <Route path="/cypress/modal">
           <Modal />

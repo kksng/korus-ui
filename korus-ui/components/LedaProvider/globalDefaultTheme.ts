@@ -36,6 +36,7 @@ import { defaultNotificationsTheme } from '../Notifications/theme';
 import { defaultMultiSelectTheme } from '../MultiSelect/theme';
 import { defaultFileDropTheme } from '../FileDrop/theme';
 import { defaultWizardTheme } from '../Wizard/theme';
+import { defaultMenuTheme } from '../Menu/theme';
 
 export const globalDefaultTheme = {
   autoComplete: defaultAutoCompleteTheme,
@@ -54,6 +55,7 @@ export const globalDefaultTheme = {
   loader: defaultLoaderTheme,
   loaderComponent: defaultLoaderComponentTheme,
   maskedInput: defaultMaskedInputTheme,
+  menu: defaultMenuTheme,
   modal: defaultModalTheme,
   multiSelect: defaultMultiSelectTheme,
   notifications: defaultNotificationsTheme,
