@@ -89,7 +89,7 @@ const handleDatesSelect = (payload: DatesSelectPayload): void => {
     updateDate(
       new Date(
         year,
-        monthCell || month,
+        monthCell ?? month,
         dateCell,
         hours,
         minutes,

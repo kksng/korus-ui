@@ -485,4 +485,30 @@ describe('DatePicker', () => {
         .should('have.class', 'danger');
     });
   });
+  describe('Use cases', () => {
+    it('Should select correctly date in January', () => {
+      cy.name('secondDatePicker')
+        .parent()
+        .find('.datepicker-calendar-icon')
+        .click()
+        .parents('.datepicker-wrapper')
+        .find('.calendar-title')
+        .click()
+        .parents('.calendar-wrapper')
+        .children('.calendar-month-year-view')
+        .contains('февр.')
+        .click()
+        .name('secondDatePicker')
+        .parents('.datepicker-wrapper')
+        .find('.calendar-wrapper')
+        .find('.calendar-dates-row')
+        .children('.calendar-date-cell')
+        .contains('31')
+        .click()
+        .name('secondDatePicker')
+        .should(($input) => {
+          expect($input[0].value).to.contain('31.01');
+        })
+    });
+  });
 });
