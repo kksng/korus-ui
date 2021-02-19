@@ -38,13 +38,15 @@ describe('DropZone', () => {
         .first()
         .next()
         .contains('example.json')
+        .should('exist')
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('txtFile.txt');
+        .contains('txtFile.txt')
+        .should('exist');
     });
 
-    it('Should download attached files', () => {
+    xit('Should download attached files', () => {
       cy.get(rejectedFilesWrapperClassNames)
         .first()
         .next()
@@ -82,18 +84,30 @@ describe('DropZone', () => {
         .contains('example.json')
         .should('not.exist');
     });
+
     it('Should not remove attached files if is disabled', () => {
       cy.name('disable')
         .click()
+        .name('controlledDZ')
+        .next()
+        .should('have.class', 'disabled')
+        .parent()
+        .should('have.class', 'disabled')
+        .parent()
+        .should('have.class', 'disabled')
         .get(fileDeleteIconClassName)
-        .first()
         .click({force: true})
         .get(rejectedFilesWrapperClassNames)
         .eq(2)
         .next()
         .contains('external file')
+        .should('exist')
         .name('disable')
         .click()
+        .get('.controlledDZ')
+        .should('not.have.class', 'disabled')
+        .children()
+        .should('not.have.class', 'disabled')
     });
   });
 
@@ -182,6 +196,7 @@ describe('DropZone', () => {
       });
     });
   });
+
   describe('Loader', () => {
     it('Should display default loader', () => {
       cy.name('loader')
@@ -191,7 +206,11 @@ describe('DropZone', () => {
         .should('exist')
         .name('loader')
         .click()
+        .get('.controlledDZ')
+        .find('.loader-wrapper')
+        .should('not.exist');
     });
+
     it('Should display progress loader', () => {
       cy.name('progressLoader')
         .click()
@@ -200,7 +219,11 @@ describe('DropZone', () => {
         .should('exist')
         .name('progressLoader')
         .click()
+        .get('.controlledDZ')
+        .find('.progress-loader')
+        .should('not.exist');
     });
+    
     it('Should display custom loader', () => {
       cy.name('customLoader')
         .click()
@@ -209,6 +232,9 @@ describe('DropZone', () => {
         .should('have.text', 'Custom loader...')
         .name('customLoader')
         .click()
+        .get('.controlledDZ')
+        .find('.txt-success')
+        .should('not.exist');
     });
   });
 });

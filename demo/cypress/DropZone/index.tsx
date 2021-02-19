@@ -37,6 +37,7 @@ export const DropZone = (): React.ReactElement => {
       <L.Span>Controlled</L.Span>
       <L.DropZone
         className="controlledDZ"
+        name="controlledDZ"
         value={value}
         isLoading={isLoading}
         loadingProgress={loadingProgress}
