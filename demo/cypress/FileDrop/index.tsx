@@ -65,7 +65,7 @@ export const FileDrop = () => {
           isLoading={isLoading}
           loadingProgress={loaded}
           maxFileNameLength={10}
-          loadingText='Loading...'
+          loadingText="Loading..."
           name="FDwithLoader"
           form="file-drop"
         />{' '}
@@ -105,8 +105,8 @@ export const FileDrop = () => {
             }
             setError(ev.component.error);
           }}
-          form='FD_basic'
-          name='FD_basic'
+          form="FD_basic"
+          name="FD_basic"
           isRequired
         />
         <L.Button
@@ -125,7 +125,7 @@ export const FileDrop = () => {
         value={file3}
         error={error3}
         maxFileNameLength={10}
-        allowedFiles='.json, .png, .jpeg'
+        allowedFiles=".json, .png, .jpeg"
         onChange={(ev) => {
           console.log('droped', ev.component);
           console.log('ev.component.value', ev.component.value);
