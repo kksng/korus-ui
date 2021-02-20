@@ -15,7 +15,7 @@ export const NumericTextBox = () => {
       <L.NumericTextBox
         _basic
         format="#.####"
-        name="basicUse"
+        name="basicUsage"
         max={20000000000000}
         min={-100000000000}
         step={1}
