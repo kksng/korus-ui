@@ -2,6 +2,7 @@ describe('TimePicker tests', () => {
     beforeEach(() => {
       cy.visit('http://localhost:9000/cypress/timepicker');
     });
+
     describe('Validation', () => {
       it('Should display validation error', () => {
         cy.name('submit')
@@ -13,6 +14,7 @@ describe('TimePicker tests', () => {
           .should('have.text', 'Submit failed!');
       });
     });
+
     describe('Interaction', () => {
       it('Should autocomplete time with 0', () => {
         cy.name('TimePicker')
@@ -26,11 +28,12 @@ describe('TimePicker tests', () => {
           .should('have.value', '09:00:00')
           .clear()
       });
+
       it('Should not be able to enter more than 23 hours', () => {
         cy.name('TimePicker')
           .clear()
           .type('143030{enter}')
-          .type('{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}')
+          .type('{leftArrow}'.repeat(8))
           .type('6{enter}')
           .should('have.value', '14:30:30')
           .clear()
@@ -38,15 +41,17 @@ describe('TimePicker tests', () => {
           .should('have.value', '00:00:00')
           .clear()
       });
+
       it('Should not be able to enter more than 59 minutes', () => {
         cy.name('TimePicker')
           .clear()
           .type('123030{enter}')
-          .type('{leftArrow}{leftArrow}{leftArrow}{leftArrow}{leftArrow}')
+          .type('{leftArrow}'.repeat(5))
           .type('6{enter}')
           .should('have.value', '12:30:30')
           .clear()
       });
+      
       it('Should not be able to enter more than 59 seconds', () => {
         cy.name('TimePicker')
           .clear()
