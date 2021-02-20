@@ -4,58 +4,83 @@ describe('Modal', () => {
     cy.visit('http://localhost:9000/cypress/modal');
   });
 
-  describe('Open and Close', () => {
-    it('should be closed', () => {
-      cy.contains('Modal header')
-        .should('not.be.visible')
-    });
-
-    it('should be open', () => {
-      cy.get('[data-test=openModalButton]').click()
-      cy.contains('Modal header')
+  describe('Interaction', () => {
+    it('Open and close', () => {
+      cy.datatest('openModalButton')
+        .click()
+        .get('.modal-window')
         .should('be.visible')
+        .get('.modal-cross')
+        .click()
+        .get('.modal-window')
+        .should('not.exist')
     });
 
-    it('should be closed', () => {
-      cy.get('.modal-window > .modal-cross').click()
-      cy.contains('Modal header')
-        .should('not.be.visible')
-    });
-  });
-
-  describe('Alert', () => {
-    it('should open Alert', () => {
-      cy.get('[data-test=openModalButton]').click()
-      cy.contains('Simple alert')
-        .should('not.be.visible')
-      cy.get('[data-test=openAlertSimpleButton]').click()
-      cy.contains('Simple alert')
+    it('Different closing methods', () => {
+      cy.datatest('openModalButton')
+        .click()
+        .get('.modal-window')
         .should('be.visible')
-    });
-
-    it('should hide Modal close button', () => {
-      cy.get('.modal-window > .modal-cross')
-        .should('not.be.visible')
-    });
-
-    it('should disable Modal close on overlay click', () => {
-      cy.get('.modal-wrapper').click()
-      cy.contains('Simple alert')
+        .get('.modal-cross')
+        .click()
+        .get('.modal-window')
+        .should('not.exist')
+        .datatest('openModalButton')
+        .click()
+        .get('.modal-window')
         .should('be.visible')
-    });
-
-    it('should close Alert', () => {
-      cy.get('.modal-alert > .modal-alert-cross').click()
-      cy.contains('Simple alert')
-        .should('not.be.visible')
-    });
-
-    it('should close Modal', () => {
-      cy.contains('Modal header')
+        .name('cancel')
+        .click()
+        .get('.modal-window')
+        .should('not.exist')
+        .datatest('openModalButton')
+        .click()
+        .get('.modal-window')
         .should('be.visible')
-      cy.get('.modal-window > .modal-cross').click()
-      cy.contains('Modal header')
-        .should('not.be.visible')
+        .get('.modal-wrapper')
+        .click(0, 100)
+        .get('.modal-window')
+        .should('not.exist');
+    });
+
+    it('Closing with the ESС key', () => {
+      cy.datatest('openModalButton')
+        .click()
+        .get('.modal-window')
+        .should('be.visible');
+      cy.focused().type('{esc}')
+        .get('.modal-window')
+        .should('not.exist');
+    });
+
+    it('Leave alert', () => {
+      cy.datatest('openModalButton')
+        .click()
+        .datatest('openAlertLeaveButton')
+        .click()
+        .name('leave')
+        .should('be.visible')
+        .name('okButton')
+        .click()
+        .name('leave')
+        .should('not.exist')
+        .name('cancel')
+        .click();
+    });
+
+    it('Simple alert', () => {
+      cy.datatest('openModalButton')
+        .click()
+        .datatest('openAlertSimpleButton')
+        .click()
+        .name('simple')
+        .should('be.visible')
+        .get('.modal-alert-cross')
+        .click()
+        .name('simple')
+        .should('not.exist')
+        .name('cancel')
+        .click();
     });
   });
 });
