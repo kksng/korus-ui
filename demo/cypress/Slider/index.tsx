@@ -36,6 +36,7 @@ export const Slider = () => {
       <br />
       <br />
       <L.Button
+        name="reset"
         _warning
         onClick={() => {
           setFirstSliderValue(10);
