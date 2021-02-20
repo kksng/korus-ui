@@ -36,6 +36,7 @@ export const Wizard = () => {
         <br/>
       <L.Button
         _warning
+        name="prev"
         className="previous"
         onClick={() => handleClick(index - 1)}
       >
@@ -44,6 +45,7 @@ export const Wizard = () => {
       {' '}
       <L.Button
         _warning
+        name="next"
         className="next"
         onClick={() => handleClick(index + 1)}
       >
