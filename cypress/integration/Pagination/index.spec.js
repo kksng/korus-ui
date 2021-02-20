@@ -13,6 +13,7 @@ describe('Pagination', () => {
         .contains('1')
         .should('have.class', 'selected');
     });
+
     it('Basic usage', () => {
       cy.get('.active')
         .find('.pagination-button')
@@ -65,6 +66,7 @@ describe('Pagination', () => {
         .find('.first', '.prev')
         .should('have.class', 'disabled');
     });
+    
     it('Selecting the number of pages', () => {
       cy.get('.active')
         .find('.dropdownselect-select-icon')
@@ -105,8 +107,26 @@ describe('Pagination', () => {
         .click()
         .get('.active')
         .find('.pagination-label-info')
-        .should('contain', '50');
+        .should('contain', '50')
+        .get('.active')
+        .find('.dropdownselect-select-icon')
+        .click()
+        .parents()
+        .find('.suggestion-wrapper')
+        .contains('.suggestion-item', 'Все')
+        .click()
+        .get('.active')
+        .find('.pagination-label-info')
+        .should('contain', 'Итого')
+        .get('.active')
+        .find('.dropdownselect-select-icon')
+        .click()
+        .parents()
+        .find('.suggestion-wrapper')
+        .contains('.suggestion-item', '5')
+        .click();
     });
+
     it('Select a page by clicking', () => {
       cy.get('.active')
         .find('.pagination-button')
