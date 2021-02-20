@@ -17,6 +17,12 @@ export const Input = (): React.ReactElement => (
       placeholder="only Latin symbols"
       allowedSymbols={/([A-Za-z]|\s)/}
     />
+    <L.Span>Цифры и символы</L.Span>
+    <L.Input
+      id="numbersAndSymbols"
+      placeholder="Numbers or symbols"
+      forbiddenSymbols={/([A-Za-z]|\s)/}
+    />
     <L.Span>Компонент неактивный</L.Span>
     <L.Input
       id="isDisabled"
@@ -57,6 +63,7 @@ export const Input = (): React.ReactElement => (
       />
     </L.P>
     <L.Button
+      name="submit"
       form="requiredForm"
     >
     Submit
