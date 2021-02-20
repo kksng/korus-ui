@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { debounce } from 'lodash';
 import { useElementRef, useProps } from '../../utils';
 import { ChangeEvent } from '../Tabs/types';
-import { MenuItemProps, MenuRefCurrent, MenuScroll } from './types';
+import {
+  MenuItemProps, MenuItemRefCurrent, MenuRefCurrent, MenuScroll,
+} from './types';
 
 /**
  * Hook scrolls menu to active tab
@@ -31,6 +34,54 @@ export const useMenuScroll = ({ theme, ref }: MenuScroll) => {
   return {
     containerRef,
     onMenuItemClick,
+  };
+};
+
+/**
+ * Hook closes dropdown on window and menu scroll
+ * @param {React.Ref<MenuItemRefCurrent>} ref
+ */
+export const useCloseOnScroll = (ref: React.Ref<MenuItemRefCurrent>) => {
+  const [Element, containerRef] = useElementRef();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const dropDown = ref ? (ref as React.RefObject<MenuRefCurrent>).current?.wrapper : Element;
+  const container = dropDown?.parentNode?.parentNode?.parentNode;
+
+  const handleClick = (event: MouseEvent) => {
+    const target = event.target as Node;
+    const isWrapperClicked = dropDown?.contains(target);
+
+    if (!isWrapperClicked) {
+      setIsOpen(false);
+    }
+  };
+
+  const handleScroll = debounce(() => {
+    setIsOpen(false);
+  }, 100);
+
+  useEffect(() => {
+    document.addEventListener('scroll', handleScroll);
+    container?.addEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      container?.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dropDown, container]);
+
+  const handleItemClick = () => {
+    setTimeout(() => setIsOpen(!isOpen), 600);
+  };
+
+  return {
+    containerRef,
+    handleItemClick,
+    isOpen,
   };
 };
 
