@@ -2,6 +2,7 @@ describe('Tour tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:9000/cypress/tour');
   });
+
   describe('Display', () => {
     it('Should start tour and end tour', () => {
       cy.name('startTour')
@@ -13,8 +14,9 @@ describe('Tour tests', () => {
         .name('Close')
         .click()
         .get('.tour-overlay')
-        .should('not.be.visible');
+        .should('not.exist');
     });
+
     it('Should set class corresponding to position', () => {
       cy.name('startTour')
         .click()
@@ -54,14 +56,15 @@ describe('Tour tests', () => {
         .name('Close')
         .click()
     });
+
     it('Tour element on Modal should scroll to viewport', () => {
       cy.name('startModalTour')
         .click()
         .get('.tour-active-element')
         .isInViewport()
     });
-
   });
+
   describe('Interaction', () => {
     it('Should be able to interact with tour elements during tour', () => {
       cy.name('startTour')
@@ -79,6 +82,7 @@ describe('Tour tests', () => {
         .name('Close')
         .click();
     });
+
     it('Should set stepDelay', () => {
       cy.name('stepDelay')
         .click()
@@ -95,7 +99,7 @@ describe('Tour tests', () => {
         .name('Next')
         .click()
         .name('Modal2')
-        .should('not.be.visible')
+        .should('not.exist')
         .wait(5000)
         .name('Modal2')
         .should('be.visible')
@@ -104,6 +108,7 @@ describe('Tour tests', () => {
         .name('stepDelay')
         .click();
     });
+
     it('Switching elements of the tour', () => {
       cy.name('startTour')
         .click()
@@ -133,6 +138,7 @@ describe('Tour tests', () => {
         .name('Close')
         .click();
     });
+
     describe('Should set and remove active styles correctly', () => {
       it('Previous active element should not be interactive', (done) => {
         cy.on('fail', (err, runnable) => {
@@ -154,7 +160,8 @@ describe('Tour tests', () => {
           .click()
           .name('Close')
           .click();
-      })
+      });
+
       it('Should set and remove active class', () => {
         cy.name('startTour')
           .click()
@@ -168,7 +175,7 @@ describe('Tour tests', () => {
           .should('have.class', 'tour-active-element')
           .name('Close')
           .click();
-      })
+      });
     });
   });
 });
