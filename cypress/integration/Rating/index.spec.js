@@ -5,7 +5,7 @@ describe('Rating', () => {
 
   describe('Interaction', () => {
     it('Default mode', () => {
-      cy.get('.default')
+      cy.name('default')
         .find('.rating-item')
         .eq(0)
         .click()
@@ -18,16 +18,16 @@ describe('Rating', () => {
         .prevAll()
         .should('have.class', 'filled')
         .parents()
-        .find('button')
-        .contains('Обнулить')
+        .name('reset')
         .click()
         .parents()
-        .get('.default')
+        .name('default')
         .find('.rating-item')
         .should('not.have.class', 'filled');
     });
+
     it('Custom mode', () => {
-      cy.get('.custom')
+      cy.name('custom')
         .find('.rating-empty')
         .eq(0)
         .click()
@@ -40,16 +40,16 @@ describe('Rating', () => {
         .prevAll()
         .should('have.class', 'rating-filled')
         .parents()
-        .find('button')
-        .contains('Обнулить')
+        .name('reset')
         .click()
         .parents()
-        .get('.custom')
+        .name('custom')
         .find('.rating-empty')
         .should('not.have.class', 'rating-filled');
     });
+
     it('ReadOnly mode', () => {
-      cy.get('.disabled')
+      cy.name('disabled')
         .find('.rating-item')
         .eq(2)
         .click()
