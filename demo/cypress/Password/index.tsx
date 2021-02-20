@@ -69,6 +69,10 @@ export const Password = () => {
         {...props}
       />
       <br />
+      <L.Password name="lowercase" letterCase="lower" _width30></L.Password>
+      <br />
+      <L.Password name="uppercase" letterCase="upper" _width30></L.Password>
+      <br />
       <L.Password isDisabled={true} _width30></L.Password>
     </L.Div>
   );
