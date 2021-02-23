@@ -12,7 +12,10 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       const fileName = 'test.png';
-      cy.get('.custom').contains('Загрузить').click();
+      
+      cy.get('.custom')
+        .contains('Загрузить')
+        .click();
       cy.fixture('test.png').then((uploadFile) => {
         cy.name('customFileUpload')
           .attachFile(fileName, uploadFile, 'image/png')
@@ -29,7 +32,10 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       const fileName = 'test.png';
-      cy.get('.controlled').contains('Загрузить').click();
+
+      cy.get('.controlled')
+        .contains('Загрузить')
+        .click();
       cy.fixture('test.png').then((uploadFile) => {
         cy.name('controlledFileUpload')
           .attachFile(fileName, uploadFile, 'image/png')
@@ -46,7 +52,10 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       const invalidFile = 'txtFile.txt';
       cy.on('window:alert', stub);
-      cy.get('.partialcustom').contains('частично').click();
+
+      cy.get('.partialcustom')
+        .contains('частично')
+        .click();
       cy.fixture('txtFile.txt').then((uploadInvalidFile) => {
         cy.name('partialCustomFileUpload')
           .attachFile(invalidFile, uploadInvalidFile, 'text/*')
@@ -65,7 +74,10 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       const bigFile = 'bigFile.jpeg';
       cy.on('window:alert', stub);
-      cy.get('.partialcustom').contains('частично').click();
+
+      cy.get('.partialcustom')
+        .contains('частично')
+        .click();
       cy.fixture('bigFile.jpeg').then((uploadBigFile) => {
         cy.name('partialCustomFileUpload')
           .attachFile(bigFile, uploadBigFile, 'image/jpg')
@@ -84,7 +96,10 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       const smallFile = 'test.png';
       cy.on('window:alert', stub);
-      cy.get('.partialcustom').contains('частично').click();
+
+      cy.get('.partialcustom')
+        .contains('частично')
+        .click();
       cy.fixture('test.png').then((uploadSmallFile) => {
         cy.name('partialCustomFileUpload')
           .attachFile(smallFile, uploadSmallFile, 'image/png')
@@ -103,7 +118,10 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       const fileName = 'bigFile.jpeg';
-      cy.get('.controlled').contains('Загрузить').click();
+
+      cy.get('.controlled')
+        .contains('Загрузить')
+        .click();
       cy.fixture('bigFile.jpeg').then((uploadLongNameFile) => {
         cy.name('controlledFileUpload')
           .attachFile(fileName, uploadLongNameFile, 'image/jpg')

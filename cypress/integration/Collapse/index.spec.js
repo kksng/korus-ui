@@ -34,7 +34,7 @@ describe('Collapse', () => {
         .should('be.visible')
         .parent()
         .find('.inner-accordion-second')
-        .should('not.be.visible')
+        .should('not.exist')
         .name('collapse-accordion')
         .find('.collapse-heading-wrapper')
         .last()
@@ -43,7 +43,7 @@ describe('Collapse', () => {
         .should('be.visible')
         .parent()
         .find('.inner-accordion-first')
-        .should('not.be.visible');
+        .should('not.exist');
     });
 
     it('Should be disabled', () => {

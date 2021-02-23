@@ -10,7 +10,7 @@ describe('DropDownSelect', () => {
   });
 
   describe('Display', () => {
-    it('should render ClearButton', () => {
+    it('Should render ClearButton', () => {
       cy.name('DDSDisabled')
         .next()
         .should('be.visible')
@@ -46,6 +46,42 @@ describe('DropDownSelect', () => {
         .name('toggleIsOpen')
         .click()
     });
+
+    it('Should render loader when isLoading', () => {
+      cy.name('toggleIsLoading')
+        .click()
+        .name('DDSBoundingContainerRef')
+        .clear()
+        .type('z')
+        .parents('.dropdownselect-wrapper')
+        .find('.loader-container')
+        .should('be.visible')
+        .find('.loader-element')
+        .should('be.visible')
+        .name('toggleIsLoading')
+        .click()
+        .name('DDSBoundingContainerRef')
+        .parents('.dropdownselect-wrapper')
+        .find('.loader-container')
+        .should('not.exist');
+    });
+  
+    it('Should be disabled when isDisabled', () => {
+      cy.name('toggleIsDisabled')
+        .click()
+        .name('DDSDisabled')     
+        .parent()
+        .should('have.class', 'disabled')
+        .children('[name="DDSDisabled"]')
+        .should('have.attr', 'disabled')
+        .name('toggleIsDisabled')
+        .click()
+        .name('DDSDisabled')     
+        .parent()
+        .should('not.have.class', 'disabled')
+        .children('[name="DDSDisabled"]')
+        .should('not.have.attr', 'disabled')
+    });
   });
 
   describe('noSuggestionsRender', () => {
@@ -75,42 +111,6 @@ describe('DropDownSelect', () => {
         .find('.nodata')
         .should('not.exist')
     });
-  });
-
-  it('Should render loader when isLoading', () => {
-    cy.name('toggleIsLoading')
-      .click()
-      .name('DDSBoundingContainerRef')
-      .clear()
-      .type('z')
-      .parents('.dropdownselect-wrapper')
-      .find('.loader-container')
-      .should('be.visible')
-      .find('.loader-element')
-      .should('be.visible')
-      .name('toggleIsLoading')
-      .click()
-      .name('DDSBoundingContainerRef')
-      .parents('.dropdownselect-wrapper')
-      .find('.loader-container')
-      .should('not.exist');
-  });
-
-  it('Should be disabled when isDisabled', () => {
-    cy.name('toggleIsDisabled')
-      .click()
-      .name('DDSDisabled')     
-      .parent()
-      .should('have.class', 'disabled')
-      .children('[name="DDSDisabled"]')
-      .should('have.attr', 'disabled')
-      .name('toggleIsDisabled')
-      .click()
-      .name('DDSDisabled')     
-      .parent()
-      .should('not.have.class', 'disabled')
-      .children('[name="DDSDisabled"]')
-      .should('not.have.attr', 'disabled')
   });
 
   describe('Item Render', () => {

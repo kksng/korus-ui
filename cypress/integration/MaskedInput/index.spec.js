@@ -149,7 +149,7 @@ describe('MaskedInput', () => {
 
   describe('Rest', () => {
     describe('Controlled mode', () => {
-      it('should clear and set value', () => {
+      it('Should clear and set value', () => {
         cy.name('MIControlledPhone')
           .clear()
           .type('9818862798')
@@ -163,7 +163,8 @@ describe('MaskedInput', () => {
           .name('MIControlledPhone')
           .should('have.value', '+7 (981)-886-27-98');
       });
-      it('should clear mask value', () => {
+
+      it('Should clear mask value', () => {
         cy.name('clearPhoneValue')
           .click()
           .name('MIControlledPhone')
@@ -181,7 +182,8 @@ describe('MaskedInput', () => {
           .get('@consoleLog')
           .should('be.calledWith', '+7 (___)-___-__-__')
       });
-      it('should remove mask when value is cleared', () => {
+
+      it('Should remove mask when value is cleared', () => {
         cy.name('MICardNumberControlled')
           .type('33')
           .get('@consoleLog')

@@ -78,7 +78,7 @@ describe('AutoComplete', () => {
       });
     });
 
-    isTaggedTemplateExpression('Should render loader when isLoading', () => {
+    it('Should render loader when isLoading', () => {
       cy.name('AutoComplete6')
         .clear()
         .type('z')
@@ -125,7 +125,7 @@ describe('AutoComplete', () => {
         cy.name('AutoComplete4')
           .clear()
           .type('n')
-          .parent()
+          .parents('.autocomplete-wrapper')
           .contains('New York')
           .should('not.have.class', 'txt-bold')
           .and('not.have.class', 'txt-success')
@@ -136,7 +136,7 @@ describe('AutoComplete', () => {
   });
 
   describe('minSearchLength', () => {
-    isTemplateLiteral('0', () => {
+    it('0', () => {
       cy.name('AutoComplete2')
         .clear()
         .parents('.autocomplete-wrapper')
@@ -154,7 +154,7 @@ describe('AutoComplete', () => {
         .type('Lo')
         .parents('.autocomplete-wrapper')
         .find('.suggestion-list')
-        .should('not.be.visible')
+        .should('not.exist')
         .name('AutoComplete3')
         .clear()
         .type('Lon')

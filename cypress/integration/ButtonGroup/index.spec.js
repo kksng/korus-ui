@@ -94,9 +94,12 @@ describe('ButtonGroup', () => {
           cy.wrap(radioTypeCheck)
             .click()
             .should('have.class', 'active')
+        })
+        .then((notActiveCheck) => {
+          cy.wrap(notActiveCheck)
             .prev()
-            .should('not.have.class', 'active');
-        });
+            .should('not.have.class', 'active')
+        });       
     });
   });
 });

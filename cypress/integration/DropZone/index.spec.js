@@ -46,7 +46,7 @@ describe('DropZone', () => {
         .should('exist');
     });
 
-    xit('Should download attached files', () => {
+    xit('Should download attached files', () => {  //На мой взгляд ничего полезного не делает. Нужен ли вообще?
       cy.get(rejectedFilesWrapperClassNames)
         .first()
         .next()

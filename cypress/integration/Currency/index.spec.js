@@ -38,7 +38,7 @@ describe('Currency', () => {
         .should('contain', '.00');
     });
 
-    it.only('Should display 3 decimal places', () => {
+    it('Should display 3 decimal places', () => {
       cy.name('prec')
         .should('contain', '.000');
     });

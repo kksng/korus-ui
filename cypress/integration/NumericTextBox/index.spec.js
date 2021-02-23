@@ -16,6 +16,7 @@ describe('NumericTextBox', () => {
         .find('.required')
         .should('have.class', 'danger');
     });
+    
     it('Using the arrows', () => {
       cy.get('.basic')
         .find('.numeric-text-box-arrow-down')
@@ -49,6 +50,7 @@ describe('NumericTextBox', () => {
         .should('have.value', '-1.0000')
         .clear();
     });
+
     it('Invalid values', () => {
       cy.name('basicUsage')
         .type('Hello')
@@ -64,7 +66,8 @@ describe('NumericTextBox', () => {
         .paste('~`ёЁ!@')
         .should('have.value', '');
     });
-    it('Basic use', () => {
+
+    it('Basic usage', () => {
       cy.name('basicUsage')
         .type('0')
         .blur()
@@ -91,6 +94,7 @@ describe('NumericTextBox', () => {
         .should('have.value', '-100 000 000 000.0000')
         .clear();
     });
+
     it('Comma separator', () => {
       cy.get('.comma-separator')
         .find('.numeric-text-box-prefix', '.numeric-text-box-suffix')
@@ -101,6 +105,7 @@ describe('NumericTextBox', () => {
         .should('contain.value', ',')
         .clear();
     });
+
     it('Trailing zeros', () => {
       cy.name('numer')
         .type('123456789.0000')
@@ -120,6 +125,7 @@ describe('NumericTextBox', () => {
         .should('have.value', '0')
         .clear();
     });
+
     it('Should be disabled', () => {
       cy.name('disabledInput')
         .should('have.attr', 'disabled');
