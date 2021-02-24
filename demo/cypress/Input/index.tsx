@@ -63,7 +63,7 @@ export const Input = (): React.ReactElement => (
       />
     </L.P>
     <L.Button
-      name="submit"
+      id="submit"
       form="requiredForm"
     >
     Submit

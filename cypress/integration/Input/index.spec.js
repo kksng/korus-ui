@@ -21,7 +21,7 @@ describe('Input', () => {
     it('IsDisabled must set the component to disabled (the component is visible on the form, but it is inactive, there is no way to enter text)', () => {
       cy.get('#isDisabled')
         .parent()
-        .should('have.class', 'disabled')
+        .should('have.class', `${theme.inputWrapperDisabled}`)
         .children()
         .should('be.visible')
         .and('have.attr', 'disabled');
@@ -124,12 +124,12 @@ describe('Input', () => {
     it('IsRequired should check if the field is required (highlight the field in red if nothing is entered and press the submit button)', () => {
       cy.get('#checkDangerClass')
         .closest(`.${theme.inputWrapper}`)
-        .should('not.have.class', 'danger')
-        .name('submit')
+        .should('not.have.class', `${theme.inputWrapperInvalid}`)
+        .get('#submit')
         .click()
         .get('#checkDangerClass')
         .closest(`.${theme.inputWrapper}`)
-        .should('have.class', 'danger');
+        .should('have.class', `${theme.inputWrapperInvalid}`);
     });
 
     it('IsRequired must check that the field is required (highlight the field in red if it has been removed from focus)', () => {
@@ -137,15 +137,15 @@ describe('Input', () => {
         .focus()
         .blur()
         .closest(`.${theme.inputWrapper}`)
-        .should('have.class', 'danger');
+        .should('have.class', `${theme.inputWrapperInvalid}`);
     });
 
     it('It should work to access the element by form name', () => {
-      cy.name('submit')
+      cy.get('#submit')
         .click()
         .get('#checkDangerClass')
         .closest(`.${theme.inputWrapper}`)
-        .should('have.class', 'input-element-wrapper danger');
+        .should('have.class', `${theme.inputWrapperInvalid}`);
     });
 
     it('Must show a message if the validation isn\'t past + Validator function check', () => {
@@ -159,7 +159,7 @@ describe('Input', () => {
         .type('rrrrr dfdddd')
         .blur()
         .closest(`.${theme.inputWrapper}`)
-        .should('not.have.class', 'input-element-wrapper danger');
+        .should('not.have.class', `${theme.inputWrapperInvalid}`);
     });
 
     it('RequiredMessage should output a message when the focus is lost from an empty mandatory field', () => {
@@ -176,7 +176,7 @@ describe('Input', () => {
         .type('Clear me')
         .blur()
         .parent()
-        .find('.input-clear-icon')
+        .find(`.${theme.closeIcon}`)
         .click()
         .get('#hasClearButton')
         .should('have.value', '');
@@ -187,7 +187,7 @@ describe('Input', () => {
         .type('Clear me')
         .blur()
         .parent()
-        .get('.input-clear-icon')
+        .get(`.${theme.closeIcon}`)
         .click()
       cy.focused().should('have.attr', 'id', 'hasClearButton');
     });
@@ -201,7 +201,7 @@ describe('Input', () => {
       });
 
       it('Should paste value adjusted to maxLength, if old value is replaced completely', () => {
-        cy.get('input#only5Characters')
+        cy.get('#only5Characters')
           .paste('test text')
           .should('have.value', 'test ')
           .type('{selectall}')
