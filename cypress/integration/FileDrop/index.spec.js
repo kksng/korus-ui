@@ -133,6 +133,7 @@ describe('FileDrop', () => {
 
     it('Replacement of attachments', () => {
       const fileName = 'test.png';
+      
       cy.name('FDwithLoader')
         .attachFile('example.json', { subjectType: 'drag-n-drop' })
         .next()
