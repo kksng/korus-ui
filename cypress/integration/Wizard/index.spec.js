@@ -54,7 +54,7 @@ describe('Wizard tests', () => {
 
   describe('Interaction', () => {
     it('Should switch to next step', () => {
-      cy.name('next')
+      cy.get('#next')
         .click()
         .get('.wizard .step')
         .eq(3)
@@ -63,7 +63,7 @@ describe('Wizard tests', () => {
     });
 
     it('Should switch to previous step', () => {
-      cy.name('prev')
+      cy.get('#prev')
         .click()
         .get('.wizard .step')
         .eq(1)
@@ -71,4 +71,4 @@ describe('Wizard tests', () => {
         .and('have.class', 'progress');
     });
   });
-})
+});
