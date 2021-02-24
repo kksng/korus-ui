@@ -19,7 +19,8 @@ describe('Button', () => {
 
   describe('Display', () => {
     it('Should render button', () => {
-      cy.contains('Клик!').should('be.visible');
+      cy.name('basicButton')
+        .should('be.visible');
     });
   });
 
@@ -46,7 +47,7 @@ describe('Button', () => {
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.contains('Клик!')
+      cy.name('basicButton')
         .click()
         .then(() => {
           expect(stub.getCall(0)).to.be.calledWith('Alert!');
@@ -58,7 +59,7 @@ describe('Button', () => {
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.contains('Validate!')
+      cy.name('validation')
         .click()
         .name('Input1')
         .should('have.attr', 'aria-invalid', 'true')
@@ -91,12 +92,11 @@ describe('Button', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
-      cy.contains('Validate!')
+      cy.name('validation')
         .scrollIntoView()
         .name('Input1')
         .isNotInViewport()
-        .get('button')
-        .contains('Validate!')
+        .name('validation')
         .click()
         .name('Input1')
         .isInViewport();
@@ -107,7 +107,7 @@ describe('Button', () => {
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.contains('isLoading')
+      cy.name('loadButton')
         .click()
         .then(() => {
           expect(stub).not.to.be.called;
@@ -116,7 +116,7 @@ describe('Button', () => {
         .should('have.class', 'loading');
     });
 
-    it('should not call onClick when isDisabled', () => {
+    it('Should not call onClick when isDisabled', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
