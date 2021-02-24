@@ -16,6 +16,7 @@ export const NumericTextBox = () => {
         _basic
         format="#.####"
         name="basicUsage"
+        id="basicUsage"
         max={20000000000000}
         min={-100000000000}
         step={1}
@@ -42,7 +43,7 @@ export const NumericTextBox = () => {
       <L.NumericTextBox
         _comma-separator
         format="#,####"
-        name="commaSeparator"
+        id="commaSeparator"
         max={20000000000000}
         min={-100000000000}
         step={1}
@@ -89,7 +90,7 @@ export const NumericTextBox = () => {
           update('Focus', ev);
         }}
         form="foobar"
-        name="numer"
+        id="numer"
         isRequired
         placeholder="Gimme ur number!"
         _width30
@@ -100,7 +101,7 @@ export const NumericTextBox = () => {
         _disabledInput
         isDisabled
         format="#.####"
-        name="disabledInput"
+        id="disabledInput"
         data-test="numerictextbox"
         max={20000000000000}
         min={-100000000000}

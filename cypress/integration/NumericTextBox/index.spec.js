@@ -1,3 +1,9 @@
+import { defaultNumericTextBoxTheme as theme} from '../../../korus-ui/components/NumericTextBox/theme';
+
+const inputWrapperInvalid = `${theme.inputWrapperInvalid}`;
+const prefix = `.${theme.prefix}`;
+const suffix = `.${theme.suffix}`;
+
 describe('NumericTextBox', () => {
   before(() => {
     cy.visit('http://localhost:9000/cypress/numerictextbox');
@@ -5,7 +11,7 @@ describe('NumericTextBox', () => {
 
   describe('Interaction', () => {
     it('Empty field', () => {
-      cy.name('basicUsage')
+      cy.get('#basicUsage')
         .should('have.attr', 'placeholder', 'Gimme ur number!')
         .focus()
         .blur()
@@ -14,35 +20,35 @@ describe('NumericTextBox', () => {
         .should('have.text', 'Required field!')
         .parents('.basic')
         .find('.required')
-        .should('have.class', 'danger');
+        .should('have.class', inputWrapperInvalid);
     });
 
     it('Using the arrows', () => {
       cy.get('.basic')
         .find('.numeric-text-box-arrow-down')
         .click({ force: true })
-        .name('basicUsage')
+        .get('#basicUsage')
         .should('have.value', '20 000 000 000 000.0000')
         .clear()
         .parents('.basic')
         .find('.numeric-text-box-arrow-up')
         .click({ force: true })
-        .name('basicUsage')
+        .get('#basicUsage')
         .should('have.value', '-100 000 000 000.0000')
         .clear()
         .type('123456789')
         .parents('.basic')
         .find('.numeric-text-box-arrow-up')
         .click({ force: true })
-        .name('basicUsage')
+        .get('#basicUsage')
         .should('have.value', '123 456 790.0000')
         .parents('.basic')
         .find('.numeric-text-box-arrow-down')
         .click({ force: true })
-        .name('basicUsage')
+        .get('#basicUsage')
         .should('have.value', '123 456 789.0000')
         .clear()
-        .name('basicUsage')
+        .get('#basicUsage')
         .type('{uparrow}')
         .should('have.value', '1.0000')
         .clear()
@@ -52,7 +58,7 @@ describe('NumericTextBox', () => {
     });
 
     it('Invalid values', () => {
-      cy.name('basicUsage')
+      cy.get('#basicUsage')
         .type('Hello')
         .should('have.value', '')
         .paste('Hello')
@@ -68,7 +74,7 @@ describe('NumericTextBox', () => {
     });
 
     it('Basic usage', () => {
-      cy.name('basicUsage')
+      cy.get('#basicUsage')
         .type('0')
         .blur()
         .should('have.value', '0.0000')
@@ -97,9 +103,9 @@ describe('NumericTextBox', () => {
 
     it('Comma separator', () => {
       cy.get('.comma-separator')
-        .find('.numeric-text-box-prefix', '.numeric-text-box-suffix')
+        .find(prefix, suffix)
         .should('be.visible')
-        .name('commaSeparator')
+        .get('#commaSeparator')
         .type('123456789')
         .blur()
         .should('contain.value', ',')
@@ -107,7 +113,7 @@ describe('NumericTextBox', () => {
     });
 
     it('Trailing zeros', () => {
-      cy.name('numer')
+      cy.get('#numer')
         .type('123456789.0000')
         .blur()
         .should('have.value', '123 456 789')
@@ -127,7 +133,7 @@ describe('NumericTextBox', () => {
     });
     
     it('Should be disabled', () => {
-      cy.name('disabledInput')
+      cy.get('#disabledInput')
         .should('have.attr', 'disabled');
     });
   });
