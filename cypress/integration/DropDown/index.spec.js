@@ -15,6 +15,7 @@ describe('DropDown', () => {
           .children('ul')
           .should('not.be.visible')
       });
+
       it('Should open on mouseover and close on mouseout with default wrapper', () => {
         cy.get('#DDDivHover')
           .trigger('mouseover')
@@ -25,6 +26,7 @@ describe('DropDown', () => {
           .children('ul')
           .should('not.be.visible')
       });
+
       it('Should close on list item click', () => {
         cy.get('#DDButtonHover')
           .trigger('mouseover')
@@ -37,6 +39,7 @@ describe('DropDown', () => {
           .should('not.be.visible')
       });
     });
+
     describe('InteractionMode click', () => {
       it('Should open on click and close on click outside if wrapped in button', () => {
         cy.get('#DDButtonClick')
@@ -49,6 +52,7 @@ describe('DropDown', () => {
           .children('ul')
           .should('not.be.visible')
       });
+
       it('Should open on click and close on click outside with default wrapper', () => {
         cy.get('#DDDivClick')
           .click()
@@ -60,6 +64,7 @@ describe('DropDown', () => {
           .children('ul')
           .should('not.be.visible')
       });
+      
       it('Should close on list item click', () => {
         cy.get('#DDButtonClick')
           .click()
