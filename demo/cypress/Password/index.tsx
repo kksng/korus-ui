@@ -45,6 +45,7 @@ export const Password = () => {
           },
         ]}
         name="Password"
+        id="Password"
         form="AwesomePassword"
         data-test="password"
         value={value}
@@ -69,11 +70,11 @@ export const Password = () => {
         {...props}
       />
       <br />
-      <L.Password name="lowercase" letterCase="lower" _width30></L.Password>
+      <L.Password id="lowercase" letterCase="lower" _width30></L.Password>
       <br />
-      <L.Password name="uppercase" letterCase="upper" _width30></L.Password>
+      <L.Password id="uppercase" letterCase="upper" _width30></L.Password>
       <br />
-      <L.Password isDisabled={true} _width30></L.Password>
+      <L.Password id="isDisabled" isDisabled={true} _width30></L.Password>
     </L.Div>
   );
 };
