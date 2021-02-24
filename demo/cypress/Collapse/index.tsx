@@ -8,7 +8,7 @@ export const Collapse = () => {
 
   return (
     <L.Div _demoStory>
-      <L.Div name="collapse-main">
+      <L.Div id="collapse-main">
         <L.H4 _title>Collapse</L.H4>
         <br />
         <L.Collapse
@@ -54,7 +54,7 @@ export const Collapse = () => {
         </L.Collapse>
       </L.Div>
       <br />
-      <L.Div name="collapse-accordion">
+      <L.Div id="collapse-accordion">
         <L.H4 _title>Collapse Accordion</L.H4>
         <br />
         <L.Collapse
@@ -74,7 +74,7 @@ export const Collapse = () => {
               onOpen={() => console.log('open')}
               onCloseByClick={() => console.log('close by click')}
             >
-              <L.Div _inner _inner__accordion-first>
+              <L.Div _inner id="first">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                 diam nonummy nibh
                 <br />
@@ -90,7 +90,7 @@ export const Collapse = () => {
               <L.Span>Условия сделки продажи 2 Accordion</L.Span>
             </L.Collapse.Heading>
             <L.Collapse.Body>
-              <L.Div _inner _inner__accordion-second>
+              <L.Div _inner id="second">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                 diam nonummy nibh
                 <br />
@@ -102,7 +102,7 @@ export const Collapse = () => {
       </L.Div>
       <br />
 
-      <L.Div name="collapse-disabled">
+      <L.Div id="collapse-disabled">
         <L.H4 _title>Collapse Disabled</L.H4>
         <br />
         <L.Collapse
