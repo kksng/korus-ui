@@ -1,3 +1,9 @@
+import { defaultNotificationsTheme as theme} from '../../../korus-ui/components/Notifications/theme';
+
+const notificationWrapper = `.${theme.notificationWrapper}`;
+const wrapper = `.${theme.wrapper}`;
+
+
 const { find } = require('lodash');
 const { contains } = require('../../../korus-ui/components/StatusBar/helpers');
 
@@ -8,58 +14,58 @@ describe('Notifications', () => {
 
   describe('Interactions', () => {
     it('Closing by clicking on the button', () => {
-      cy.name('accept')
+      cy.get('#accept')
         .click()
         .parent()
-        .find('.notifications-item')
+        .find(notificationWrapper)
         .contains('Принять')
         .should('be.visible')
         .click()
-        .get('.notifications-item')
+        .get(notificationWrapper)
         .should('not.exist');
     });
 
     it('Open and close on click', () => {
-      cy.name('default')
+      cy.get('#default')
         .click()
         .parent()
-        .find('.notifications-wrapper')
+        .find(wrapper)
         .should('be.visible')
         .parents()
         .find('.notifications-icon-close')
         .click()
-        .get('.notifications-wrapper')
+        .get(wrapper)
         .should('not.exist');
     });
 
     it('Open and close with delay 1200ms', () => {
-      cy.name('default')
+      cy.get('#default')
         .click()
         .parent()
-        .find('.notifications-wrapper')
+        .find(wrapper)
         .should('be.visible')
         .wait(1200)
-        .get('.notifications-wrapper')
+        .get(wrapper)
         .should('not.exist');
     });
 
     it('Opening the maximum number of notifications (max={3})', () => {
-      cy.name('default')
+      cy.get('#default')
         .click()
         .parent()
-        .find('.notifications-wrapper')
+        .find(wrapper)
         .should('be.visible')
         .parent()
-        .name('default')
+        .get('#default')
         .click()
         .parent()
-        .find('.notifications-wrapper')
+        .find(wrapper)
         .should('be.visible')
         .parent()
-        .name('default')
+        .get('#default')
         .click()
         .parent()
-        .find('.notifications-wrapper')
+        .find(wrapper)
         .should('be.visible');
     });
   });

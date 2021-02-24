@@ -144,17 +144,17 @@ export const Notifications = (): JSX.Element => {
         _notificationsTop
       />
       <br />
-      <L.Button _warning name="default" onClick={handleButtonOnClick}>
+      <L.Button _warning id="default" onClick={handleButtonOnClick}>
         Добавить уведомление
       </L.Button>
       <br />
       <br />
-      <L.Button _warning name="accept" onClick={acceptType}>
+      <L.Button _warning id="accept" onClick={acceptType}>
         Type 'accept'
       </L.Button>
       <br />
       <br />
-      <L.Button _warning name="reject"onClick={rejectType}>
+      <L.Button _warning id="reject"onClick={rejectType}>
         Type 'reject'
       </L.Button>
     </L.Div>
