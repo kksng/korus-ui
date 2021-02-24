@@ -15,7 +15,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
       <L.Div _basic>
         <L.Div _rub>
           <L.Currency 
-            name="rub" 
+            id="rub" 
             precision={2} 
             currencyCode="RUB"
             >
@@ -26,7 +26,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <br />
         <L.Div _usd>
           <L.Currency   
-            name="usd" 
+            id="usd" 
             precision={2} 
             currencyCode="USD"
             >
@@ -37,7 +37,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <br />
         <L.Div _eur>
           <L.Currency 
-            name="eur" 
+            id="eur" 
             precision={2} 
             currencyCode="EUR"
             >
@@ -53,7 +53,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
       <L.Div _custom>
         <L.Div _custom_rub>
           <L.Currency
-            name="customRub"
+            id="customRub"
             currencySymbolRender={({
               elementProps: { children, style },
             }: any) => (
@@ -75,7 +75,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <br />
         <L.Div _placeholder_eur>
           <L.Currency
-            name="placeholderEur"
+            id="placeholderEur"
             precision={2}
             currencyCode="EUR"
             placeholder="тут ничего нет"
@@ -88,7 +88,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <br />
         <L.Div _trim_eur>
           <L.Currency
-            name="trimEur"
+            id="trimEur"
             precision={2}
             currencyCode="EUR"
             shouldTrimFraction={false}
@@ -103,7 +103,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <br />
         <L.Div _prec>
           <L.Currency 
-            name="prec" 
+            id="prec" 
             precision={3} 
             currencyCode="EUR"
             >
