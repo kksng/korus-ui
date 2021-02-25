@@ -5,19 +5,19 @@ describe('TimePicker tests', () => {
 
     describe('Validation', () => {
       it('Should display validation error', () => {
-        cy.name('submit')
+        cy.get('#submit')
           .click()
-          .name('MinValueTimePicker')
+          .get('#MinValueTimePicker')
           .parent()
           .should('have.class', 'danger')
-          .name('submitMessage')
+          .get('#submitMessage')
           .should('have.text', 'Submit failed!');
       });
     });
 
     describe('Interaction', () => {
       it('Should autocomplete time with 0', () => {
-        cy.name('TimePicker')
+        cy.get('#TimePicker')
           .clear()
           .type('1{enter}')
           .should('have.value', '10:00:00')
@@ -30,7 +30,7 @@ describe('TimePicker tests', () => {
       });
 
       it('Should not be able to enter more than 23 hours', () => {
-        cy.name('TimePicker')
+        cy.get('#TimePicker')
           .clear()
           .type('143030{enter}')
           .type('{leftArrow}'.repeat(8))
@@ -43,7 +43,7 @@ describe('TimePicker tests', () => {
       });
 
       it('Should not be able to enter more than 59 minutes', () => {
-        cy.name('TimePicker')
+        cy.get('#TimePicker')
           .clear()
           .type('123030{enter}')
           .type('{leftArrow}'.repeat(5))
@@ -53,7 +53,7 @@ describe('TimePicker tests', () => {
       });
       
       it('Should not be able to enter more than 59 seconds', () => {
-        cy.name('TimePicker')
+        cy.get('#TimePicker')
           .clear()
           .type('152020{enter}')
           .type('{leftArrow}{leftArrow}')

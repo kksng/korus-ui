@@ -19,6 +19,7 @@ export const TimePicker = () => {
         format="hh:mm:ss"
         form="TimePickerForm"
         name="MinValueTimePicker"
+        id="MinValueTimePicker"
         validator={[
           {
             validator: (value) => !isTimeGreater(new Date(2020, 10, 30, 14, 0, 0), value),
@@ -38,6 +39,7 @@ export const TimePicker = () => {
         format="hh:mm:ss"
         form="TimePickerForm"
         name="TimePicker"
+        id="TimePicker"
         onChange={(ev: any) => {
           setValue2(ev.component.value);
         }}
@@ -49,13 +51,14 @@ export const TimePicker = () => {
       <L.Button
         _warning
         name="submit"
+        id="submit"
         form="TimePickerForm"
         onClick={() => setSubmitMessage('Submitted!')}
         onValidationFail={() => setSubmitMessage('Submit failed!')}
       >
         Submit
       </L.Button>
-      <L.Div name="submitMessage">{submitMessage}</L.Div>
+      <L.Div id="submitMessage">{submitMessage}</L.Div>
     </L.Div>
   );
 };
