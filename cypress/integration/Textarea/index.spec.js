@@ -5,7 +5,7 @@ describe('Textarea', () => {
 
   describe('Interaction', () => {
     it('Empty area', () => {
-      cy.datatest('textarea')
+      cy.get('#textarea')
         .focus()
         .blur()
         .parent()
@@ -14,7 +14,7 @@ describe('Textarea', () => {
     });
 
     it('Latin letters, сyrillic letters, numbers and special characters', () => {
-      cy.datatest('textarea')
+      cy.get('#textarea')
         .type(
           'Speed of light was 140,000 miles per second. Ужасным в двухминутке ненависти было не то, что ты должен разыгрывать роль, а то, что ты просто не мог остаться в стороне. !@#$%^&*()_+`~Ёё'
         )
@@ -26,7 +26,7 @@ describe('Textarea', () => {
     });
 
     it('Inserting text', () => {
-      cy.datatest('textarea')
+      cy.get('#textarea')
         .paste('Speed of light was 140,000 miles per second.')
         .should('contain', 'light')
         .and('contain', '140')
@@ -38,7 +38,7 @@ describe('Textarea', () => {
     });
 
     it('Should be disabled', () => {
-      cy.datatest('textarea-disabled')
+      cy.get('#textarea-disabled')
         .should('have.class', 'disabled')
         .and('be.disabled');
     });
