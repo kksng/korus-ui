@@ -11,17 +11,17 @@ const getData = (
     borderRadius: 4,
     padding: 4,
     content: (props) => (
-      <L.Div name="Modal1" _inner>
+      <L.Div id="Modal1" _inner>
         <L.H1>Header 1</L.H1>
         some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button name="Close" onClick={props.stopTour}>
+            <L.Button id="Close" onClick={props.stopTour}>
               Close
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Next" _success onClick={props.next}>
+            <L.Button id="Next" _success onClick={props.next}>
               Next
             </L.Button>
           </L.Li>
@@ -35,22 +35,22 @@ const getData = (
     stepKey: '2',
     borderRadius: 4,
     content: (props) => (
-      <L.Div name="Modal2" _inner>
+      <L.Div id="Modal2" _inner>
         <L.H1>Header 2</L.H1>
         some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button name="Close" onClick={props.stopTour}>
+            <L.Button id="Close" onClick={props.stopTour}>
               Close
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Back" _success onClick={props.prev}>
+            <L.Button id="Back" _success onClick={props.prev}>
               Back
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Next" _success onClick={props.next}>
+            <L.Button id="Next" _success onClick={props.next}>
               Next
             </L.Button>
           </L.Li>
@@ -64,22 +64,22 @@ const getData = (
     stepKey: '3',
     borderRadius: 4,
     content: (props) => (
-      <L.Div name="Modal3" _inner>
+      <L.Div id="Modal3" _inner>
         <L.H1>Header 3</L.H1>
         some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button name="Close" onClick={props.stopTour}>
+            <L.Button id="Close" onClick={props.stopTour}>
               Close
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Back" _success onClick={props.prev}>
+            <L.Button id="Back" _success onClick={props.prev}>
               Back
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Next" _success onClick={props.next}>
+            <L.Button id="Next" _success onClick={props.next}>
               Next
             </L.Button>
           </L.Li>
@@ -93,12 +93,12 @@ const getData = (
     stepKey: '4',
     borderRadius: 4,
     content: (props) => (
-      <L.Div name="Modal4" _inner>
+      <L.Div id="Modal4" _inner>
         <L.H1>Header 4</L.H1>
         some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button name="Close" onClick={props.stopTour}>
+            <L.Button id="Close" onClick={props.stopTour}>
               Close
             </L.Button>
           </L.Li>
@@ -108,7 +108,7 @@ const getData = (
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Next" _success onClick={props.next}>
+            <L.Button id="Next" _success onClick={props.next}>
               Next
             </L.Button>
           </L.Li>
@@ -122,12 +122,12 @@ const getData = (
     stepKey: '5',
     borderRadius: 4,
     content: (props) => (
-      <L.Div name="Modal5" _inner>
+      <L.Div id="Modal5" _inner>
         <L.H1>Header 5</L.H1>
         some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button name="Close" onClick={props.stopTour}>
+            <L.Button id="Close" onClick={props.stopTour}>
               Close
             </L.Button>
           </L.Li>
@@ -137,7 +137,7 @@ const getData = (
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Next" _success onClick={props.next}>
+            <L.Button id="Next" _success onClick={props.next}>
               Next
             </L.Button>
           </L.Li>
@@ -151,12 +151,12 @@ const getData = (
     stepKey: '6',
     borderRadius: 4,
     content: (props) => (
-      <L.Div name="Modal6" _inner>
+      <L.Div id="Modal6" _inner>
         <L.H1>Header 6</L.H1>
         some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button name="Close" onClick={props.stopTour}>
+            <L.Button id="Close" onClick={props.stopTour}>
               Close
             </L.Button>
           </L.Li>
@@ -166,7 +166,7 @@ const getData = (
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Next" _success onClick={props.next}>
+            <L.Button id="Next" _success onClick={props.next}>
               Next
             </L.Button>
           </L.Li>
@@ -180,12 +180,12 @@ const getData = (
     stepKey: '7',
     borderRadius: 4,
     content: (props) => (
-      <L.Div name="Modal7" _inner>
+      <L.Div id="Modal7" _inner>
         <L.H1>Header 7</L.H1>
         some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button name="Close" onClick={props.stopTour}>
+            <L.Button id="Close" onClick={props.stopTour}>
               Close
             </L.Button>
           </L.Li>
@@ -195,7 +195,7 @@ const getData = (
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button name="Next" _success onClick={props.next}>
+            <L.Button id="Next" _success onClick={props.next}>
               Next
             </L.Button>
           </L.Li>
@@ -209,12 +209,12 @@ const getData = (
     stepKey: '8',
     borderRadius: 4,
     content: (props) => (
-      <L.Div name="Modal8" _inner>
+      <L.Div id="Modal8" _inner>
         <L.H1>Header 8</L.H1>
         some text
         <L.Ul _list-h>
           <L.Li>
-            <L.Button name="Close" onClick={props.stopTour}>
+            <L.Button id="Close" onClick={props.stopTour}>
               Close
             </L.Button>
           </L.Li>
@@ -278,10 +278,11 @@ export const Tour = (): React.ReactElement => {
     <L.Div _demo-story>
       <L.H4 _title>Tour</L.H4>
       <L.Div _inner>
-        <L.Button name="startTour" _warning onClick={() => setActiveStep('1')}>
+        <L.Button id="startTour" name="startTour" _warning onClick={() => setActiveStep('1')}>
           Start tour
         </L.Button>
         <L.Button
+          id="startModalTour"
           name="startModalTour"
           _warning
           onClick={() => setActiveStep('8')}
@@ -295,7 +296,7 @@ export const Tour = (): React.ReactElement => {
         <br />
         <L.Div _inner>
           <L.Button
-            name="tourElement1"
+            id="tourElement1"
             _inner
             ref={ref1}
             onClick={() => setMessage('Clicked 1!')}
@@ -305,7 +306,7 @@ export const Tour = (): React.ReactElement => {
           <br />
           <br />
           <L.Button
-            name="tourElement2"
+            id="tourElement2"
             _inner
             ref={ref2}
             onClick={() => setMessage('Clicked 2!')}
@@ -315,6 +316,7 @@ export const Tour = (): React.ReactElement => {
           <br />
           <br />
           <L.Button
+            id="tourElement3"
             name="tourElement3"
             _inner
             ref={ref3}
@@ -325,7 +327,7 @@ export const Tour = (): React.ReactElement => {
           <br />
           <br />
           <L.Button
-            name="tourElement4"
+            id="tourElement4"
             _inner
             ref={ref4}
             style={{ marginLeft: '500px' }}
@@ -397,7 +399,7 @@ export const Tour = (): React.ReactElement => {
       </L.Div>
       <L.Button
         _warning
-        name="stepDelay"
+        id="stepDelay"
         onClick={() =>
           setStepDelay((stepDelay) => (isNil(stepDelay) ? 5000 : undefined))
         }
@@ -405,7 +407,7 @@ export const Tour = (): React.ReactElement => {
         Set/remove stepDelay 5 sec
       </L.Button>
       <L.H4 _title>onClick Message</L.H4>
-      <L.Div name="message">{message}</L.Div>
+      <L.Div id="message">{message}</L.Div>
     </L.Div>
   );
 };
