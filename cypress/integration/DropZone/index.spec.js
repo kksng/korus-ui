@@ -15,7 +15,7 @@ const rejectedFilesWrapperClassNames = theme.rejectedFilesWrapper
 
 describe('DropZone', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/dropzone');
+    cy.visit('/cypress/dropzone');
   });
 
   describe('Display', () => {

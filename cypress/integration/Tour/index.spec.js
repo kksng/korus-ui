@@ -1,6 +1,6 @@
 describe('Tour tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/tour');
+    cy.visit('/cypress/tour');
   });
   describe('Display', () => {
     it('Should start tour and end tour', () => {

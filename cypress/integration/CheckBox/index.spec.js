@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('CheckBox', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/checkbox');
+    cy.visit('/cypress/checkbox');
   });
 
   describe('Display', () => {

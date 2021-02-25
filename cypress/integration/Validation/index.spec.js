@@ -6,7 +6,7 @@ const wrapperInvalid = theme.inputWrapperInvalid;
 
 describe('Validation', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/validation', {
+    cy.visit('/cypress/validation', {
       onBeforeLoad(win) {
         cy.stub(win.console, 'log').as('consoleLog');
       },

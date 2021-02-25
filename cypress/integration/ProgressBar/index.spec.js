@@ -1,6 +1,6 @@
 describe('ProgressBar', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/progressbar');
+    cy.visit('/cypress/progressbar');
   });
 
   describe('Interaction', () => {

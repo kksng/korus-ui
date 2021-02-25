@@ -4,7 +4,7 @@ const theme = globalDefaultTheme.menu;
 
 describe('Menu', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/menu');
+    cy.visit('/cypress/menu');
   });
 
   describe('Interaction', () => {

@@ -1,11 +1,11 @@
 describe('DateTimePicker', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/datetimepicker');
+    cy.visit('/cypress/datetimepicker');
   });
 
   describe('Events in the console', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/cypress/datetimepicker', {
+      cy.visit('/cypress/datetimepicker', {
         onBeforeLoad(win) {
           cy.stub(win.console, 'log').as('consoleLog');
         },

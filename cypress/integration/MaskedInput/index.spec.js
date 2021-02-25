@@ -4,7 +4,7 @@ const theme = globalDefaultTheme.maskedInput;
 
 describe('MaskedInput', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/masked-input')
+    cy.visit('/cypress/masked-input')
     cy.window().then((win) => {
       cy.spy(win.console, 'log').as('consoleLog')
     })         

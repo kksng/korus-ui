@@ -1,6 +1,6 @@
 describe('Currency', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/currency');
+    cy.visit('/cypress/currency');
   });
 
   describe('Display', () => {

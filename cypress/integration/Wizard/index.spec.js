@@ -1,6 +1,6 @@
 describe('Wizard tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/wizard');
+    cy.visit('/cypress/wizard');
   });
 
   describe('Display', () => {

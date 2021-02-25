@@ -1,6 +1,6 @@
 describe('Collapse', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/collapse');
+    cy.visit('/cypress/collapse');
   });
 
   describe('Interaction', () => {

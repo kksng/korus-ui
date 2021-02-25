@@ -1,6 +1,6 @@
 describe('RadioGroup', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/radio-group');
+    cy.visit('/cypress/radio-group');
   });
 
   describe('Display', () => {

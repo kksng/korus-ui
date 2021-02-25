@@ -4,7 +4,7 @@ const theme = globalDefaultTheme.input;
 
 describe('Input', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/input');
+    cy.visit('/cypress/input');
   });
 
   describe('Display', () => {

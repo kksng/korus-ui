@@ -1,6 +1,6 @@
 describe('Password', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/password');
+    cy.visit('/cypress/password');
   });
 
   describe('Interaction', () => {

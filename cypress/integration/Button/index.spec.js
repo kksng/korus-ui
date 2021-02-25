@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('Button', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/button', {
+    cy.visit('/cypress/button', {
       onBeforeLoad(win) {
         cy.stub(win.console, 'log').as('consoleLog');
       },

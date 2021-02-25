@@ -1,6 +1,6 @@
 describe('TimePicker tests', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/cypress/timepicker');
+      cy.visit('/cypress/timepicker');
     });
     describe('Validation', () => {
       it('Should display validation error', () => {

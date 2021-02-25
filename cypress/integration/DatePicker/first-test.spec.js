@@ -1,7 +1,7 @@
 import { defaultAutoCompleteTheme as theme } from '../../../korus-ui/components/AutoComplete/theme';
 describe('DatePicker', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/datepicker')
+    cy.visit('/cypress/datepicker')
   });
   it('Should close after picking a date', () => {
   	cy.name('firstDatePicker')

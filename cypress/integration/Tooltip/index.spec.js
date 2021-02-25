@@ -1,6 +1,6 @@
 describe('ToolTip tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/tooltip');
+    cy.visit('/cypress/tooltip');
   });
   describe('Display', () => {
     it('should choose right side correctly without positioning', () => {

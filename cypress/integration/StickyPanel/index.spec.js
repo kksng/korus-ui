@@ -1,6 +1,6 @@
 describe('StickyPanel', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/stickypanel');
+    cy.visit('/cypress/stickypanel');
   });
   describe('Interaction', () => {
     it('Basic use', () => {
