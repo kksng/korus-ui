@@ -43,10 +43,10 @@ export const ProgressBar = () => {
       <L.ProgressBar value={value} valueRender={() => null} />
       <br />
       <br />
-      <L.Button _warning name="launchButton" onClick={launchProgress}>
+      <L.Button _warning id="launchButton" onClick={launchProgress}>
         {state.interval !== null ? 'Stop' : 'Launch'} progress
       </L.Button>{' '}
-      <L.Button _warning name="resetButton" onClick={resetProgress}>
+      <L.Button _warning id="resetButton" onClick={resetProgress}>
         Reset progress
       </L.Button>
     </L.Div>
