@@ -36,7 +36,7 @@ describe('StickyPanel', () => {
         .get('.stickypanel-container')
         .find('button')
         .should('be.visible')
-        .get('button.success')
+        .get('#success')
         .click()
         .then(() => {
           expect(stub.getCall(0)).to.be.calledWith('Clicked!');
