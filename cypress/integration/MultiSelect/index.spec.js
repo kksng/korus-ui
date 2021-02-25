@@ -2,24 +2,30 @@ describe('MultiSelect', () => {
   before(() => {
     cy.visit('http://localhost:9000/cypress/multi-select');
   });
+
   describe('Display', () => {
-    it('should open SuggestionList', () => {
+    it('Should open SuggestionList', () => {
       cy.get('#MSCheckboxes')
+        .focus()
+        .parents('.multiselect-input-wrapper')
+        .should('have.class', 'focused')
+        .get('#MSCheckboxes')
         .click()
-        .parent()
-        .parent()
+        .parents('.multiselect-wrapper')
         .find('.suggestion-list')
         .should('be.visible')
         .get('#MSCheckboxes')
         .blur();
     });
-    it('should render ClearButton', () => {
+
+    it('Should render ClearButton', () => {
       cy.get('#MSCheckboxes')
         .parent()
         .find('.multiselect-clear-icon')
         .should('be.visible');
     });
-    it('should render default values', () => {
+
+    it('Should render default values', () => {
       cy.get('#MSCheckboxes')
         .parent()
         .find('.tags-item')
@@ -30,24 +36,22 @@ describe('MultiSelect', () => {
         .last()
         .should('have.text', 'Paris');
     });
-    it('should render selectAll checkbox unchecked', () => {
+
+    it('Should render selectAll checkbox unchecked', () => {
       cy.get('#MSCheckboxes')
         .click()
-        .parent()
-        .parent()
-        .find('.suggestion-list')
+        .parents('.multiselect-wrapper')
         .find('.suggestion-item')
         .first()
         .should('not.have.class', 'selected')
         .get('#MSCheckboxes')
         .blur();
     });
-    it('should render selectAll checkbox with class semi', () => {
+
+    it('Should render selectAll checkbox with class semi', () => {
       cy.get('#MSCheckboxes')
         .click()
-        .parent()
-        .parent()
-        .find('.suggestion-list')
+        .parents('.multiselect-wrapper')
         .find('.suggestion-item')
         .eq(1)
         .click()
@@ -59,24 +63,22 @@ describe('MultiSelect', () => {
         .get('#MSCheckboxes')
         .blur();
     });
-    it('should render text for selectAll item by default', () => {
+
+    it('Should render text for selectAll item by default', () => {
       cy.get('#MSDefaultWithDataArray')
         .click()
-        .parent()
-        .parent()
-        .find('.suggestion-list')
+        .parents('.multiselect-wrapper')
         .find('.suggestion-item')
         .first()
         .should('have.text', 'Выбрать все')
         .get('#MSDefaultWithDataArray')
         .blur();
     });
-    it('should render custom text for selectAll item', () => {
+
+    it('Should render custom text for selectAll item', () => {
       cy.get('#MSDefaultWithDataObject')
         .click()
-        .parent()
-        .parent()
-        .find('.suggestion-list')
+        .parents('.multiselect-wrapper')
         .find('.suggestion-item')
         .first()
         .should('have.text', 'Select all')
@@ -84,8 +86,9 @@ describe('MultiSelect', () => {
         .blur();
     });
   });
+
   describe('Interaction', () => {
-    it('should clear input on clear button click', () => {
+    it('Should clear input on clear button click', () => {
       cy.get('#MSCheckboxes')
         .parent()
         .find('.multiselect-clear-icon')
@@ -95,9 +98,7 @@ describe('MultiSelect', () => {
         .find('.multiselect-tags-container')
         .should('not.exist')
         .get('#MSCheckboxes')
-        .parent()
-        .parent()
-        .find('.suggestion-list')
+        .parents('.multiselect-wrapper')
         .find('.suggestion-item')
         .each(($item) => {
           cy.wrap($item).should('not.have.class', 'selected');
@@ -105,12 +106,11 @@ describe('MultiSelect', () => {
         .get('#MSCheckboxes')
         .blur();
     });
-    it('should not check selectAll checkbox if some values are checked', () => {
+
+    it('Should not check selectAll checkbox if some values are checked', () => {
       cy.get('#MSCheckboxes')
         .click()
-        .parent()
-        .parent()
-        .find('.suggestion-list')
+        .parents('.multiselect-wrapper')
         .find('.suggestion-item')
         .eq(1)
         .click()
@@ -121,12 +121,11 @@ describe('MultiSelect', () => {
         .get('#MSCheckboxes')
         .blur();
     });
-    it('should select all values if selectAll checkbox is selected', () => {
+
+    it('Should select all values if selectAll checkbox is selected', () => {
       cy.get('#MSCheckboxes')
         .click()
-        .parent()
-        .parent()
-        .find('.suggestion-list')
+        .parents('.multiselect-wrapper')
         .find('.suggestion-item')
         .first()
         .click()
@@ -138,32 +137,41 @@ describe('MultiSelect', () => {
         .get('#MSCheckboxes')
         .blur();
     });
-    it('should clear input text on item select', () => {
+
+    it('Should clear input text on item select', () => {
       cy.get('#MSDefaultWithDataObject')
-        .type('Isla')
-        .type('{downarrow}')
-        .type('{enter}')
-        .should('have.value', '');
+        .type('Isla{downarrow}{enter}')
+        .should('have.value', '')
+        .get('#MSDefaultWithDataObject')
+        .blur();
     });
+
+    it('Selection with the arrow keys', () => {
+      cy.get('#MSDefaultWithDataObject')
+        .type('{uparrow}{enter}')
+        .parent()
+        .contains('Paris')
+        .should('be.visible')
+        .get('#MSDefaultWithDataObject')
+        .blur();
+    });
+
     describe('With object data', () => {
       it('Should add and delete correctly on item click', () => {
         cy.get('#MSCheckboxesWithDataObject')
           .click()
-          .parent()
-          .parent()
-          .find('.suggestion-list')
+          .parents('.multiselect-wrapper')
           .find('.suggestion-item')
           .eq(1)
           .click()
           .next()
           .click()
-          .parent()
-          .parent()
-          .parent()
-          .find('.multiselect-tags-container')
+          .parents('.multiselect-wrapper')
           .find('.tags-item')
           .should('have.length', 1)
-          .should('have.text', 'Islamabad')
+          .and('have.text', 'Islamabad')
+          .get('#MSCheckboxesWithDataObject')
+          .blur()
       });
     });
   });

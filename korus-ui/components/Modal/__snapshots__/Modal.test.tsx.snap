@@ -19,8 +19,7 @@ exports[`Modal SNAPSHOTS different component states should have header 1`] = `
           class="modal-wrapper"
         >
           <div
-            class="modal-window"
-            style="width: 600px;"
+            class="modal-window md"
           >
             <a
               class="modal-cross"
@@ -61,12 +60,7 @@ exports[`Modal SNAPSHOTS different component states should have header 1`] = `
             onClick={[Function]}
           >
             <div
-              className="modal-window"
-              style={
-                Object {
-                  "width": 600,
-                }
-              }
+              className="modal-window md"
             >
               <Icon
                 className="modal-cross"
@@ -139,8 +133,7 @@ exports[`Modal SNAPSHOTS different component states should render closing icon i
           class="modal-wrapper"
         >
           <div
-            class="modal-window"
-            style="width: 600px;"
+            class="modal-window md"
           >
             <a
               class="modal-cross"
@@ -182,12 +175,7 @@ exports[`Modal SNAPSHOTS different component states should render closing icon i
             onClick={[Function]}
           >
             <div
-              className="modal-window"
-              style={
-                Object {
-                  "width": 600,
-                }
-              }
+              className="modal-window md"
             >
               <Icon
                 className="modal-cross"
@@ -259,8 +247,7 @@ exports[`Modal SNAPSHOTS should render 1`] = `
           class="modal-wrapper"
         >
           <div
-            class="modal-window"
-            style="width: 600px;"
+            class="modal-window md"
           >
             <a
               class="modal-cross"
@@ -287,12 +274,7 @@ exports[`Modal SNAPSHOTS should render 1`] = `
             onClick={[Function]}
           >
             <div
-              className="modal-window"
-              style={
-                Object {
-                  "width": 600,
-                }
-              }
+              className="modal-window md"
             >
               <Icon
                 className="modal-cross"

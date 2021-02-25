@@ -45,7 +45,7 @@ const getData = (
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button _success onClick={props.prev}>
+            <L.Button name="Back" _success onClick={props.prev}>
               Back
             </L.Button>
           </L.Li>
@@ -74,7 +74,7 @@ const getData = (
             </L.Button>
           </L.Li>
           <L.Li>
-            <L.Button _success onClick={props.prev}>
+            <L.Button name="Back" _success onClick={props.prev}>
               Back
             </L.Button>
           </L.Li>

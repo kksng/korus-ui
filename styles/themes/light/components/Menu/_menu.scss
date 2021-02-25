@@ -1,0 +1,57 @@
+.menu {
+  &-wrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &-item {
+    cursor: pointer;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid transparent;
+    padding: 9px 14px;
+
+    &.active {
+      border-bottom-color: $accent-02;
+      cursor: default;
+    }
+
+    &.disabled {
+      color: $black-04;
+      cursor: default;
+    }
+
+    &:not(.active):not(.disabled):hover {
+      color: $accent-02;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 4px;
+    }
+  }
+
+  &-bar {
+    padding-left: 0;
+    background-color: inherit;
+    display: flex;
+    border-bottom: 1px solid $black-06;
+  }
+
+  &-container {
+    &.scroll {
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      scrollbar-width: none;
+    }
+  }
+
+  &-dropdown{
+    position: static;
+  }
+}

@@ -59,6 +59,7 @@ import { Loader } from './components/Loader';
 import { Main } from './components/Main';
 import { Mark } from './components/Mark';
 import { MaskedInput } from './components/MaskedInput';
+import { Menu, MenuItem } from './components/Menu';
 import {
   Modal,
   ModalAlert,
@@ -237,6 +238,8 @@ export {
   Main,
   Mark,
   MaskedInput,
+  Menu,
+  MenuItem,
   Modal,
   ModalAlert,
   ModalBody,

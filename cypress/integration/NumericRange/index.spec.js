@@ -5,22 +5,80 @@ describe('NumericRange', () => {
   });
 
   describe('Display', () => {
-    it('should be rendered', () => {
-      cy.get('input[name="min-num"]')
-        .should('be.visible')
+    it('Should be rendered', () => {
+      cy.get('#basicUsage')
+        .should('be.visible');
+    });
+
+    it('Placeholder should be displayed', () => {
+      cy.get('#basicUsage')
+        .find('input')
+        .should('have.attr', 'placeholder', 'Only numbers');
+    });
+
+    it('Should be disabled when isDisabled', () => {
+      cy.get('#disabledRange')
+        .find('input')
+        .should('have.attr', 'disabled');
     });
   });
 
   describe('Interaction', () => {
-    it('should handle null value', () => {
-      cy.get('input[name="min-num"]')
-        .click()
-        .type('42')
-        .blur()
-        .should('have.value', '42')
-        .clear()
-        .blur()
-        .should('have.value', '')
+    it('Should handle null value', () => {
+      cy.get('#basicUsage')
+        .find('input')
+        .each((handleNullValue) => {
+          cy.wrap(handleNullValue)
+            .click()
+            .type('42')
+            .blur()
+            .should('have.value', '42')
+            .clear()
+            .blur()
+            .should('have.value', '')
+            .clear()
+            .blur()
+            .parent()
+            .should('have.class', 'danger');
+        });
+    });
+
+    it('Should handle only numbers', () => {
+      cy.get('#basicUsage')
+        .find('input')
+        .each((enteringValues) => {
+          cy.wrap(enteringValues)
+            .type('0')
+            .should('have.value', '0')
+            .clear()
+            .type('1')
+            .should('have.value', '1')
+            .clear()
+            .type('1000000000')
+            .should('have.value', '1000000000')
+            .clear()
+            .type('-1')
+            .should('have.value', '-1')
+            .clear()
+            .type('-1000000000')
+            .should('have.value', '-1000000000')
+            .clear()
+            .type('A!с,')
+            .should('have.value', '')
+            .clear()
+            .paste('0')
+            .should('have.value', '0')
+            .clear()
+            .paste('1')
+            .should('have.value', '1')
+            .clear()
+            .paste('-1')
+            .should('have.value', '-1')
+            .clear()
+            .paste('A!с,')
+            .should('have.value', '')
+            .clear();
+        });
     });
   });
 });

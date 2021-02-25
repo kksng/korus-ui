@@ -3,8 +3,9 @@ import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { CustomRender, CustomEventHandler } from '../../commonTypes';
 import { DivRefCurrent } from '../Div';
+import { WINDOW_SIZES } from './constants';
 
-export type WindowSizeType = 'sm' | 'md' | 'lg';
+export type WindowSizeType = keyof typeof WINDOW_SIZES;
 
 export interface ModalProps {
   /** Классы переданные через _ */
@@ -31,9 +32,8 @@ export interface ModalProps {
   ref?: React.Ref<ModalRefCurrent>,
   /** Размер окна.
    * Имеет три стандартных значения sm=480, md=608, lg=868.
-   * Принимает строку вида "50%", "50px", "50rem"
    * Если не задан, то устанавливается значение md=608 */
-  size?: WindowSizeType | string,
+  size?: WindowSizeType,
   /** Темизация компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.modal],
   /** Кастомный рендер для wrapper */

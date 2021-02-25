@@ -5,45 +5,4 @@
 
 @import "helpers";
 
-@import "commonStyles/border-box";
-@import "commonStyles/DropDownList/dropdown-list";
-@import "commonStyles/Input/input";
-
-@import "components/A/anchor";
-@import "components/AutoComplete/autocomplete";
-@import "components/Button/button";
-@import "components/ButtonGroup/button-group";
-@import "components/Calendar/calendar";
-@import "components/CheckBox/checkbox";
-@import "components/Collapse/collapse";
-@import "components/DateTimePicker/datetimepicker";
-@import "components/DateTimeRange/datetime-range";
-@import "components/DropDown/dropdown";
-@import "components/DropDownSelect/dropdown-select";
-@import "components/DropZone/dropzone";
-@import "components/FileDrop/file-drop";
-@import "components/Input/input";
-@import "components/Loader/loader";
-@import "components/MaskedInput/masked-input";
-@import "components/Modal/modal";
-@import "components/MultiSelect/multiselect";
-@import "components/Notifications/notifications";
-@import "components/NumericRange/numeric-range";
-@import "components/NumericTextBox/numeric";
-@import "components/Pagination/pagination";
-@import "components/Password/password";
-@import "components/ProgressBar/progress-bar";
-@import "components/RadioGroup/radio";
-@import "components/Rating/rating";
-@import "components/Slider/slider";
-@import "components/StatusBar/statusbar";
-@import "components/StickyPanel/sticky-panel";
-@import "components/SuggestionList/suggestion-list";
-@import "components/Switcher/switcher";
-@import "components/Tabs/tabs";
-@import "components/Tags/tags";
-@import "components/Textarea/textarea";
-@import "components/Tooltip/tooltip";
-@import "components/Tour/tour";
-@import "components/Validation/invalid-message";
-@import "components/VStepper/v-stepper";
+@import "Menu/menu"

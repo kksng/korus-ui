@@ -7,6 +7,9 @@
 .none {
   display: none !important; }
 
+.hidden {
+  visibility: hidden; }
+
 /* typography */
 .subtitle {
   display: block;
@@ -22,6 +25,21 @@
   font-size: 1.2rem;
   line-height: 1.6rem; }
 
+.txt-default {
+  font-size: 1.4rem;
+  line-height: 2rem; }
+
+.txt-large {
+  font-size: 1.6rem;
+  line-height: 2.4rem; }
+
+.txt-larger {
+  font-size: 1.8rem;
+  line-height: 2.8rem; }
+
+.txt-color-default {
+  color: inherit; }
+
 .txt-monospace {
   font-family: Consolas, monospace; }
 
@@ -36,6 +54,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
+
+.txt-wrap {
+  white-space: normal !important; }
 
 .txt-break {
   word-wrap: break-word;
@@ -522,12 +543,13 @@ main > .right + .left {
 
 .disabled {
   color: #7d838a !important;
-  background-color: rgba(228, 232, 235, 0.3) !important;
   border-color: #d0d7dd;
   cursor: not-allowed !important; }
   .disabled * {
     color: #7d838a !important;
     cursor: not-allowed !important; }
+  .disabled:not(li) {
+    background-color: rgba(228, 232, 235, 0.3) !important; }
 
 /* cursor */
 .pointer {
