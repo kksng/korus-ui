@@ -11,7 +11,7 @@ export const Rating = () => {
       <L.H4 _title>Rating</L.H4>
       <L.Div>
         <L.Rating
-          name="default"
+          id="default"
           max={5}
           value={value}
           {...props}
@@ -22,7 +22,7 @@ export const Rating = () => {
         <Span>Кастомизация иконок: </Span>
         <br />
         <L.Rating
-          name="custom"
+          id="custom"
           max={5}
           value={value}
           {...props}
@@ -33,14 +33,14 @@ export const Rating = () => {
         />
       </L.Div>
       <br />
-      <L.Button name="reset" onClick={() => setValue(0)}>Обнулить рейтинг</L.Button>
+      <L.Button id="reset" onClick={() => setValue(0)}>Обнулить рейтинг</L.Button>
       <br />
       <br />
       <L.H4 _title>Read Only</L.H4>
       <br />
       <L.Div>
         <L.Rating
-          name="disabled"
+          id="disabled"
           max={5}
           value={value}
           isReadOnly={true}
