@@ -86,20 +86,20 @@ export const StatusBar = () => {
       <br />
       <br />
       <L.Button
-        name="prev"       
+        id="prev"       
         _warning
         onClick={() => handleClick(index - 1, setValue, setIndex)}
       >
         Предыдущий Шаг
       </L.Button>{' '}
       <L.Button
-        name="next"
+        id="next"
         _warning
         onClick={() => handleClick(index + 1, setValue, setIndex)}
       >
         Следующий Шаг
       </L.Button>{' '}
-      <L.Button name="start" _warning onClick={() => setProgress(0)}>
+      <L.Button id="start" _warning onClick={() => setProgress(0)}>
         Начать анимацию
       </L.Button>
       <br />

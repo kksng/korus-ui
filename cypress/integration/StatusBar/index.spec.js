@@ -11,7 +11,7 @@ describe('Statusbar', () => {
   
   describe('Interaction', () => {
     it('Previous step', () => {
-      cy.name('prev')
+      cy.get('#prev')
         .click()
         .parent()
         .find('.progress')
@@ -22,7 +22,7 @@ describe('Statusbar', () => {
     });
 
     it('Next step', () => {
-      cy.name('next')
+      cy.get('#next')
         .click()
         .parent()
         .find('.progress')
@@ -33,7 +33,7 @@ describe('Statusbar', () => {
     });
 
     it('Start animation progress', () => {
-      cy.name('start')
+      cy.get('#start')
         .click()
         .parent()
         .find('.animate')
