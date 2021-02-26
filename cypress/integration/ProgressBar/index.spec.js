@@ -5,15 +5,13 @@ describe('ProgressBar', () => {
 
   describe('Interaction', () => {
     it('Start and stop progress on click', () => {
-      cy.get('button')
-        .contains('Launch')
+      cy.get('#launchButton')
         .click()
         .parent()
         .find('.progressbar-fill')
         .trigger('start')
         .parent()
-        .get('button')
-        .contains('Stop')
+        .get('#launchButton')
         .click()
         .parent()
         .find('.progressbar-fill')
@@ -21,8 +19,7 @@ describe('ProgressBar', () => {
     });
 
     it('Reset progress', () => {
-      cy.get('button')
-        .contains('Reset')
+      cy.get('#resetButton')
         .click()
         .parent()
         .find('.progressbar-fill')
