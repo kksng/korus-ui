@@ -48,6 +48,7 @@ module.exports = (on, config) => {
 
   return findBrowser().then((browser) => {
     return {
+      ...config,
       baseUrl: `http://${host}:${port}/`,
       browsers: config.browsers.concat(browser),
     };
