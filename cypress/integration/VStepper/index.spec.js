@@ -59,8 +59,8 @@ describe('VStepper tests', () => {
         .get(itemIcon)
         .eq(4)
         .should('not.have.attr', 'type')
-        // .and('have.not.class', 'sign-check')
-        // .and('have.not.class', 'sign-stop')
+        .and('have.not.class', 'sign-check')
+        .and('have.not.class', 'sign-stop')
         .get(itemIcon)
         .eq(5)
         .should('have.attr', 'type', statusWarning);
