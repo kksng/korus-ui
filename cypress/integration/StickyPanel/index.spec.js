@@ -3,7 +3,7 @@ describe('StickyPanel', () => {
     cy.visit('/cypress/stickypanel');
   });
   describe('Interaction', () => {
-    it('Basic use', () => {
+    it('Basic usage', () => {
       cy.get('#stickyTest')
         .scrollIntoView()
         .find('.stickypanel-wrapper')
@@ -13,9 +13,11 @@ describe('StickyPanel', () => {
         .get('.stickypanel-wrapper')
         .should('not.have.class', 'fixed');
     });
+
     it('Use elements', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
+
       cy.get('#stickyTest')
         .find('.switcher-wrapper')
         .should('have.class', 'active')
@@ -34,7 +36,7 @@ describe('StickyPanel', () => {
         .get('.stickypanel-container')
         .find('button')
         .should('be.visible')
-        .get('button.success')
+        .get('#success')
         .click()
         .then(() => {
           expect(stub.getCall(0)).to.be.calledWith('Clicked!');

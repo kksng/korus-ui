@@ -2,15 +2,20 @@ describe('TimeRange tests', () => {
   beforeEach(() => {
     cy.visit('/cypress/timerange');
   });
+
   describe('Interaction', () => {
     it('Should move cursor to next input on Tab click', () => {
-      cy.name('TimeRange-from').tab().name('TimeRange-to').should('be.focused');
+      cy.name('TimeRange-from')
+        .tab()
+        .name('TimeRange-to')
+        .should('be.focused');
     });
-    it('Basic use and entry of limit values', () => {
+
+    it('Basic usage and entry of limit values', () => {
       cy.get('.active')
         .find('input')
-        .each((basicUse) => {
-          cy.wrap(basicUse)
+        .each((basicUsage) => {
+          cy.wrap(basicUsage)
             .clear()
             .type('12:30{enter}')
             .should('have.value', '12:30')
@@ -29,6 +34,7 @@ describe('TimeRange tests', () => {
             .clear()
         });
     });
+
     it('Entering invalid values', () => {
       cy.get('.active')
         .find('input')
@@ -46,6 +52,7 @@ describe('TimeRange tests', () => {
             .clear();
         });
     });
+
     it('Entering values out of range', () => {
       cy.get('.active')
         .find('input')
@@ -66,6 +73,7 @@ describe('TimeRange tests', () => {
             .clear()
         });
     });
+
     it('Should be disabled', () => {
       cy.get('.disabled-state')
         .find('input')
@@ -75,6 +83,7 @@ describe('TimeRange tests', () => {
             .and('have.attr', 'disabled');
         });
     });
+
     it('Should autocomplete time with 0', () => {
       cy.name('TimeRange-from')
         .clear()
@@ -89,6 +98,7 @@ describe('TimeRange tests', () => {
         .should('have.value', '12:30')
         .clear()
     });
+
     it('Should not be able to enter more than 23 hours', () => {
       cy.name('TimeRange-from')
         .clear()
@@ -103,6 +113,7 @@ describe('TimeRange tests', () => {
         .should('have.value', '12:30')
         .clear()
     });
+
     it('Should not be able to enter more than 59 minutes', () => {
       cy.name('TimeRange-from')
         .clear()
