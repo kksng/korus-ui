@@ -21,6 +21,7 @@ export const StickyPanel = () => {
       <L.StickyPanel offsetTop={200}>
         <L.Div style={{ display: 'flex', justifyContent: 'space-around' }}>
           <L.Button
+            id="success"
             _success
             onClick={(ev: React.MouseEvent<HTMLButtonElement>) => {
               ev.preventDefault();
