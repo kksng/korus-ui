@@ -12,7 +12,7 @@ describe('MaskedInput', () => {
 
   describe('Interaction', () => {
     describe('Input', () => {
-      it('should clear one char per backspace press', () => {
+      it('Should clear one char per backspace press', () => {
         cy.name('MINotControlledPhone')
           .focusMasked()
           .clear()
@@ -37,7 +37,7 @@ describe('MaskedInput', () => {
           .should('have.value', '+7 (___)-___-__-__');
       });
 
-      it('should move cursor if backspace pressed on empty mask', () => {
+      it('Should move cursor if backspace pressed on empty mask', () => {
         cy.name('MINotControlledPhone')
           .focusMasked()
           .type('{rightArrow}'.repeat(7))
@@ -56,7 +56,7 @@ describe('MaskedInput', () => {
           .should('have.value', '+7 (___)-___-__-__');
       });
 
-      it('should clear masked value on clear button click', () => {
+      it('Should clear masked value on clear button click', () => {
         cy.name('MINotControlledPhone')
           .type('9818862798')
           .should('have.value', '+7 (981)-886-27-98') 
@@ -73,7 +73,7 @@ describe('MaskedInput', () => {
           .should('have.value', '+7 (___)-___-__-__');
       });
 
-      it('should fill different masks', () => {
+      it('Should fill different masks', () => {
         cy.name('MIControlledPhone')
           .should('have.value', '+7 (800)-200-06-00')
           .focusMasked()
@@ -103,7 +103,7 @@ describe('MaskedInput', () => {
           .should('have.value', '1234-1234-1234-1234');
       });
 
-      it('should forbid non-mask chars', () => {
+      it('Should forbid non-mask chars', () => {
         cy.name('MINotControlledPhone')
           .focusMasked()
           .should('have.value', '+7 (___)-___-__-__')
@@ -113,7 +113,7 @@ describe('MaskedInput', () => {
     });
 
     describe('Validation', () => {
-      it('should be invalid when isRequired and value is empty', () => {
+      it('Should be invalid when isRequired and value is empty', () => {
         cy.name('MINotControlledPhone')
           .focusMasked()
           .blur()
@@ -123,7 +123,7 @@ describe('MaskedInput', () => {
           .should('contain', 'Обязательное поле!');
       });
 
-      it('should be invalid when isRequired and value is not complete', () => {
+      it('Should be invalid when isRequired and value is not complete', () => {
         cy.name('MINotControlledPhone')
           .focusMasked()
           .type('1234')
@@ -134,7 +134,7 @@ describe('MaskedInput', () => {
           .should('contain', 'Обязательное поле!');
       });
 
-      it('should be valid when isRequired and value is complete', () => {
+      it('Should be valid when isRequired and value is complete', () => {
         cy.name('MINotControlledPhone')
           .focusMasked()
           .type('9818862798')
@@ -149,7 +149,7 @@ describe('MaskedInput', () => {
 
   describe('Rest', () => {
     describe('Controlled mode', () => {
-      it('should clear and set value', () => {
+      it('Should clear and set value', () => {
         cy.name('MIControlledPhone')
           .clear()
           .type('9818862798')
@@ -163,7 +163,7 @@ describe('MaskedInput', () => {
           .name('MIControlledPhone')
           .should('have.value', '+7 (981)-886-27-98');
       });
-      it('should clear mask value', () => {
+      it('Should clear mask value', () => {
         cy.name('clearPhoneValue')
           .click()
           .name('MIControlledPhone')
@@ -181,7 +181,7 @@ describe('MaskedInput', () => {
           .get('@consoleLog')
           .should('be.calledWith', '+7 (___)-___-__-__')
       });
-      it('should remove mask when value is cleared', () => {
+      it('Should remove mask when value is cleared', () => {
         cy.name('MICardNumberControlled')
           .type('33')
           .get('@consoleLog')
