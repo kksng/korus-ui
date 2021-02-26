@@ -443,7 +443,7 @@ describe('DatePicker', () => {
           .name('firstDatePicker')
           .parents('.datepicker-wrapper')
           .find('.calendar-wrapper')
-          .should('not.be.visible');
+          .should('not.exist');
       });
   });
 
