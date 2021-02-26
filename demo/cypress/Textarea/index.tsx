@@ -15,7 +15,7 @@ export const Textarea = () => {
       <L.Textarea
         placeholder="Tell me your secrets..."
         isRequired
-        data-test="textarea"
+        id="textarea"
         requiredMessage="Обязательное поле!"
         name="textarea"
         form="one-lonely-form"
@@ -51,7 +51,7 @@ export const Textarea = () => {
       <br />
       <L.Textarea
         placeholder="Tell me your secrets..."
-        data-test="textarea-disabled"
+        id="textarea-disabled"
         isDisabled={true}
         style={{ height: '200px' }}
         _width50
