@@ -2,11 +2,16 @@ describe('Statusbar', () => {
   before(() => {
     cy.visit('http://localhost:9000/cypress/statusbar');
   });
-
+  describe('Display',() => {
+    it('Shouldrender types', () => {
+      cy.get('.types')
+        .should('be.visible');
+    });
+  });
+  
   describe('Interaction', () => {
     it('Previous step', () => {
-      cy.get('button')
-        .contains('Предыдущий')
+      cy.get('#prev')
         .click()
         .parent()
         .find('.progress')
@@ -17,8 +22,7 @@ describe('Statusbar', () => {
     });
 
     it('Next step', () => {
-      cy.get('button')
-        .contains('Следующий')
+      cy.get('#next')
         .click()
         .parent()
         .find('.progress')
@@ -29,8 +33,7 @@ describe('Statusbar', () => {
     });
 
     it('Start animation progress', () => {
-      cy.get('button')
-        .contains('Начать')
+      cy.get('#start')
         .click()
         .parent()
         .find('.animate')
@@ -41,5 +44,18 @@ describe('Statusbar', () => {
         .invoke('attr', 'style')
         .should('contains', '100%');
     });
+
+    it('onClick event', () => {
+      const stub = cy.stub();
+      cy.on('window:alert', stub);
+
+      cy.get('#progress')
+        .find('.statusbar-icon')
+        .eq(3)
+        .click()
+        .then(() => {
+          expect(stub.getCall(0)).to.be.calledWith('clicked!');
+        });
+    })
   });
 });

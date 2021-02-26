@@ -13,6 +13,12 @@ const data = [
   { labelText: 'Оплата' },
 ]
 
+const data1 = [
+  { type: 'Первый' },
+  { type: 'Второй' },
+  { type: 'Третий' },
+]
+
 const handleClick = (
   newIndex: number,
   setValue: SetState<{ labelText: string }>,
@@ -48,8 +54,18 @@ export const StatusBar = () => {
         />
       </L.Div>
       <br />
+      <L.Div _types>
+        <L.StatusBar
+          data={data1}
+          value={data[2]}
+          typeField="type"
+          currentStepProgress={progress}
+        />
+      </L.Div>
+      <br />
       <L.Div _progress>
         <L.StatusBar
+          id="progress"
           data={data}
           value={value}
           textField="labelText"
@@ -70,18 +86,20 @@ export const StatusBar = () => {
       <br />
       <br />
       <L.Button
+        id="prev"       
         _warning
         onClick={() => handleClick(index - 1, setValue, setIndex)}
       >
         Предыдущий Шаг
       </L.Button>{' '}
       <L.Button
+        id="next"
         _warning
         onClick={() => handleClick(index + 1, setValue, setIndex)}
       >
         Следующий Шаг
       </L.Button>{' '}
-      <L.Button _warning onClick={() => setProgress(0)}>
+      <L.Button id="start" _warning onClick={() => setProgress(0)}>
         Начать анимацию
       </L.Button>
       <br />
