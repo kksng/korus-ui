@@ -107,7 +107,6 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         <L.DropDownSelect
           shouldFilterValues
           id="Opened"
-          name="Opened"
           onFocus={testFunction}
           data={[
             { name: 'Paris', region: 'Europe' },
@@ -146,7 +145,6 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
 
         <L.DropDownSelect
           id="DDSCompareObjectsByObjects"
-          name="DDSCompareObjectsByObjects"
           data={data}
           defaultValue={{ id: 2, city: 'Berlin' }}
           textField="city"
@@ -157,7 +155,6 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
 
         <L.DropDownSelect
           id="DDSonBlur"
-          name="DDSonBlur"
           data={[
             'London',
             'Islamabad',
@@ -266,7 +263,6 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
 
         <L.DropDownSelect
           id="DDSDisabled"
-          name="DDSDisabled"
           data={[
             'London',
             'Islamabad',

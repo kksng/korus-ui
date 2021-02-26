@@ -254,7 +254,6 @@ describe('DropDownSelect', () => {
         .then(() => {
           expect(stub).to.be.called;
           expect(lastConsole).to.have.property('type', 'blur');
-          expect(lastConsole.component).to.have.property('name', 'DDSonBlur');
           expect(lastConsole.component).to.have.property('value', 'London');
         });
     });
@@ -265,7 +264,6 @@ describe('DropDownSelect', () => {
         .then(() => {
           expect(stub).to.be.called;
           expect(lastConsole).to.have.property('type', 'focus');
-          expect(lastConsole.component).to.have.property('name', 'Opened');
           expect(lastConsole.component).to.have.property('value', null);
         });
     });
@@ -306,7 +304,6 @@ describe('DropDownSelect', () => {
         .then(() => {
           expect(stub).to.be.called;
           expect(lastConsole).to.have.property('type', 'keydown');
-          expect(lastConsole.component).to.have.property('name', 'DDSCompareObjectsByObjects');
           expect(lastConsole.component.value).to.have.property('id', 0);
           expect(lastConsole.component.value).to.have.property('city', 'Moscow');
         });
@@ -319,7 +316,6 @@ describe('DropDownSelect', () => {
         .then(() => {
           expect(stub).to.be.called;
           expect(lastConsole).to.have.property('type', 'keydown');
-          expect(lastConsole.component).to.have.property('name', 'DDSDisabled');
           expect(lastConsole.component).to.have.property('value', 'Washington');
         });
     });
