@@ -11,6 +11,7 @@ export const Menu = () => {
       >
         <L.MenuItem 
           menuItemKey={0}
+          name="mainMenu"
           title="Hello Click"
         >
           <L.Ul>

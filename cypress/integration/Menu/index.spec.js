@@ -21,5 +21,53 @@ describe('Menu', () => {
         .find(`.${theme.menuDropDown}`)
         .should('not.have.class', 'opened');
     });
+
+    it.only('Left menu position and dropdown opening', () => {
+      cy.get(`.${theme.container}`)
+        .scrollTo('right')
+        .find(`.${theme.menuItem}`)
+        .eq(4)
+        .isWithinViewport()
+    })
+
+    describe('Opening and closing of a dropdown', () => {
+      it('Closing by click on dropdown menu', () => {
+        cy.name('mainMenu')
+        .click()
+        .should('have.class', 'opened')
+        .children()
+        .should('be.visible')
+        .contains('Мармелад')
+        .click({force:true})
+        .name('mainMenu')
+        .should('not.have.class', 'opened');
+      });
+
+      it('Closing by click outside the dropdown menu', () => {
+        cy.name('mainMenu')
+        .click()
+        .should('have.class', 'opened')
+        .children()
+        .should('be.visible')
+        .get('body')
+        .click(0, 100)
+        .name('mainMenu')
+        .should('not.have.class', 'opened');
+      });
+
+      it('Closing by scrolling the tab list', () => {
+        cy.name('mainMenu')
+          .click()
+          .should('have.class', 'opened')
+          .children()
+          .should('be.visible')
+          .get(`.${theme.container}`)
+          .scrollTo('right')
+          .name('mainMenu')
+          .should('not.have.class', 'opened')
+          .get(`.${theme.container}`)
+          .scrollTo('left');
+      });
+    })
   });
 });
