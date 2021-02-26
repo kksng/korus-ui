@@ -11,7 +11,7 @@ describe('NumericTextBox', () => {
 
   describe('Interaction', () => {
     it('Empty field', () => {
-      cy.get('#basicUsage')
+      cy.name('basicUsage')
         .should('have.attr', 'placeholder', 'Gimme ur number!')
         .focus()
         .blur()
@@ -27,28 +27,28 @@ describe('NumericTextBox', () => {
       cy.get('.basic')
         .find('.numeric-text-box-arrow-down')
         .click({ force: true })
-        .get('#basicUsage')
+        .name('basicUsage')
         .should('have.value', '20 000 000 000 000.0000')
         .clear()
         .parents('.basic')
         .find('.numeric-text-box-arrow-up')
         .click({ force: true })
-        .get('#basicUsage')
+        .name('basicUsage')
         .should('have.value', '-100 000 000 000.0000')
         .clear()
         .type('123456789')
         .parents('.basic')
         .find('.numeric-text-box-arrow-up')
         .click({ force: true })
-        .get('#basicUsage')
+        .name('basicUsage')
         .should('have.value', '123 456 790.0000')
         .parents('.basic')
         .find('.numeric-text-box-arrow-down')
         .click({ force: true })
-        .get('#basicUsage')
+        .name('basicUsage')
         .should('have.value', '123 456 789.0000')
         .clear()
-        .get('#basicUsage')
+        .name('basicUsage')
         .type('{uparrow}')
         .should('have.value', '1.0000')
         .clear()
@@ -58,7 +58,7 @@ describe('NumericTextBox', () => {
     });
 
     it('Invalid values', () => {
-      cy.get('#basicUsage')
+      cy.name('basicUsage')
         .type('Hello')
         .should('have.value', '')
         .paste('Hello')
@@ -74,7 +74,7 @@ describe('NumericTextBox', () => {
     });
 
     it('Basic usage', () => {
-      cy.get('#basicUsage')
+      cy.name('basicUsage')
         .type('0')
         .blur()
         .should('have.value', '0.0000')

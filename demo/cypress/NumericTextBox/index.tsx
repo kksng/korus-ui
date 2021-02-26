@@ -16,7 +16,6 @@ export const NumericTextBox = () => {
         _basic
         format="#.####"
         name="basicUsage"
-        id="basicUsage"
         max={20000000000000}
         min={-100000000000}
         step={1}
