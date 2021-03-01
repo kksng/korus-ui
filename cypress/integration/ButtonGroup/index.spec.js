@@ -35,9 +35,9 @@ describe('ButtonGroup', () => {
 
     it('Disabled group should be disabled', () => {
       cy.datatest('TwoButtonGroup')
-        .find('.button-group-buttons-wrapper')
+        .find(`.${theme.buttonsWrapper}`)
         .should('have.length', 1)
-        .and('have.class', 'disabled');
+        .and('have.class', `${theme.wrapperDisabled}`);
     });
   });
 
@@ -66,7 +66,7 @@ describe('ButtonGroup', () => {
   describe('Interaction', () => {
     it('Should ignore clicks when isDisabled', () => {
       cy.datatest('TwoButtonGroup')
-        .find('.button-group-item')
+        .find(`.${theme.button}`)
         .last()
         .should('have.not.class', 'active')
         .click()
