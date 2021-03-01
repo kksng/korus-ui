@@ -1,14 +1,11 @@
 import { globalDefaultTheme } from '../../../korus-ui/components/LedaProvider';
 
 const theme = globalDefaultTheme.dropZone;
-
 const wrapperClassName = `.${theme.wrapper}`;
-
 const contentClassName = `.${theme.content}`;
-
 const fileDeleteIconClassName = `.${theme.fileDeleteIcon}`;
-
 const rejectedFilesWrapperClassNames = theme.rejectedFilesWrapper
+
   .split(' ')
   .map((className) => `.${className}`)
   .join('');
@@ -86,15 +83,15 @@ describe('DropZone', () => {
     });
 
     it('Should not remove attached files if is disabled', () => {
-      cy.name('disable')
+      cy.get('#disable')
         .click()
-        .name('controlledDZ')
+        .get('#controlledDZ')
         .next()
-        .should('have.class', 'disabled')
+        .should('have.class', `${theme.disabled}`)
         .parent()
-        .should('have.class', 'disabled')
+        .should('have.class', `${theme.disabled}`)
         .parent()
-        .should('have.class', 'disabled')
+        .should('have.class', `${theme.disabled}`)
         .get(fileDeleteIconClassName)
         .click({force: true})
         .get(rejectedFilesWrapperClassNames)
@@ -102,12 +99,12 @@ describe('DropZone', () => {
         .next()
         .contains('external file')
         .should('exist')
-        .name('disable')
+        .get('#disable')
         .click()
         .get('.controlledDZ')
-        .should('not.have.class', 'disabled')
+        .should('not.have.class', `${theme.disabled}`)
         .children()
-        .should('not.have.class', 'disabled')
+        .should('not.have.class', `${theme.disabled}`)
     });
   });
 
@@ -199,12 +196,12 @@ describe('DropZone', () => {
 
   describe('Loader', () => {
     it('Should display default loader', () => {
-      cy.name('loader')
+      cy.get('#loader')
         .click()
         .get('.controlledDZ')
         .find('.loader-wrapper')
         .should('exist')
-        .name('loader')
+        .get('#loader')
         .click()
         .get('.controlledDZ')
         .find('.loader-wrapper')
@@ -212,12 +209,12 @@ describe('DropZone', () => {
     });
 
     it('Should display progress loader', () => {
-      cy.name('progressLoader')
+      cy.get('#progressLoader')
         .click()
         .get('.controlledDZ')
         .find('.progress-loader')
         .should('exist')
-        .name('progressLoader')
+        .get('#progressLoader')
         .click()
         .get('.controlledDZ')
         .find('.progress-loader')
@@ -225,12 +222,12 @@ describe('DropZone', () => {
     });
     
     it('Should display custom loader', () => {
-      cy.name('customLoader')
+      cy.get('#customLoader')
         .click()
         .get('.controlledDZ')
         .find('.txt-success')
         .should('have.text', 'Custom loader...')
-        .name('customLoader')
+        .get('#customLoader')
         .click()
         .get('.controlledDZ')
         .find('.txt-success')
