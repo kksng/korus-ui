@@ -65,9 +65,10 @@ Cypress.Commands.add('isAtTop', { prevSubject: 'element' }, (element) => {
   });
 });
 
-/**Commands for the "Menu" component that allow you to test the acceptance of the left position of the element when clicked. */
+/**Commands for the "Menu" component that allow you to test the 
+ * acceptance of the left position of the element when clicked. */
 
-Cypress.Commands.add('leftIsWithinViewport', { prevSubject: true }, subject => {
+Cypress.Commands.add('itemPositionIsWithinViewport', { prevSubject: true }, subject => {
   const windowInnerWidth = Cypress.config(`viewportWidth`);
   const bounding = subject[0].getBoundingClientRect();
   const leftBoundOfWindow = windowInnerWidth;
@@ -77,7 +78,7 @@ Cypress.Commands.add('leftIsWithinViewport', { prevSubject: true }, subject => {
   return subject;
 });
 
-Cypress.Commands.add('leftIsInViewport', { prevSubject: true }, subject => {
+Cypress.Commands.add('itemPositionIsInViewport', { prevSubject: true }, subject => {
   const windowInnerWidth = Cypress.config(`viewportWidth`);
   const bounding = subject[0].getBoundingClientRect();
   const leftBoundOfWindow = windowInnerWidth;
