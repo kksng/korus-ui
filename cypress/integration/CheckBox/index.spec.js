@@ -6,7 +6,7 @@ describe('CheckBox', () => {
 
   describe('Display', () => {
     it('Should render elements inside the checkbox', () => {
-      cy.name('checkBoxButton')
+      cy.get('#checkBoxButton')
         .should('exist')
         .parent()
         .find('button')
@@ -21,7 +21,7 @@ describe('CheckBox', () => {
     });
 
     it('Should render disabled checkbox', () => {
-      cy.name('checkBoxDisabled')
+      cy.get('#checkBoxDisabled')
         .should('have.attr', 'disabled');
     });
   });
@@ -40,8 +40,19 @@ describe('CheckBox', () => {
         .click();
     });
 
+    it('Should not call onClick when isDisabled', () => {
+      const stub = cy.stub();
+      cy.on('window:alert', stub);
+      // eslint-disable-next-line jest/valid-expect-in-promise
+      cy.contains('isDisabled')
+        .click({ force: true })
+        .then(() => {
+          expect(stub).not.to.be.called;
+        })
+    });
+
     it('Can change value', () => {
-      cy.name('checkBoxGroup')
+      cy.get('#checkBoxGroup')
         .find('label')
         .each((changeValue) => {
           cy.wrap(changeValue)
