@@ -16,7 +16,7 @@ describe('FileUpload', () => {
         .contains('Загрузить')
         .click();
       cy.fixture('test.png').then((uploadFile) => {
-        cy.name('customFileUpload')
+        cy.get('#customFileUpload')
           .attachFile(fileName, uploadFile, 'image/png')
           .get('button')
           .should('have.class', 'loading')
@@ -35,7 +35,7 @@ describe('FileUpload', () => {
         .contains('Загрузить')
         .click();
       cy.fixture('test.png').then((uploadFile) => {
-        cy.name('controlledFileUpload')
+        cy.get('#controlledFileUpload')
           .attachFile(fileName, uploadFile, 'image/png')
           .get('.controlled')
           .should('contain', 'Загрузка')
@@ -54,7 +54,7 @@ describe('FileUpload', () => {
         .contains('частично')
         .click();
       cy.fixture('txtFile.txt').then((uploadInvalidFile) => {
-        cy.name('partialCustomFileUpload')
+        cy.get('#partialCustomFileUpload')
           .attachFile(invalidFile, uploadInvalidFile, 'text/*')
           .get('.partialcustom')
           .should('contain', 'загружаю')
@@ -75,7 +75,7 @@ describe('FileUpload', () => {
         .contains('частично')
         .click();
       cy.fixture('bigFile.jpeg').then((uploadBigFile) => {
-        cy.name('partialCustomFileUpload')
+        cy.get('#partialCustomFileUpload')
           .attachFile(bigFile, uploadBigFile, 'image/jpg')
           .get('.partialcustom')
           .should('contain', 'загружаю')
@@ -96,7 +96,7 @@ describe('FileUpload', () => {
         .contains('частично')
         .click();
       cy.fixture('test.png').then((uploadSmallFile) => {
-        cy.name('partialCustomFileUpload')
+        cy.get('#partialCustomFileUpload')
           .attachFile(smallFile, uploadSmallFile, 'image/png')
           .get('.partialcustom')
           .should('contain', 'загружаю')
@@ -117,7 +117,7 @@ describe('FileUpload', () => {
         .contains('Загрузить')
         .click();
       cy.fixture('bigFile.jpeg').then((uploadLongNameFile) => {
-        cy.name('controlledFileUpload')
+        cy.get('#controlledFileUpload')
           .attachFile(fileName, uploadLongNameFile, 'image/jpg')
           .get('.controlled')
           .should('contain', 'Загрузка')

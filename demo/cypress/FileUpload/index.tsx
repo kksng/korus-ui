@@ -34,7 +34,7 @@ export const Controlled = (storyProps: StoryProps) => {
         <L.FileUpload
           allowedFiles=".jpg, .gif, .png, .txt, .jpeg"
           maxFileNameLength={10}
-          name="controlledFileUpload"
+          id="controlledFileUpload"
           onChange={(ev) => {
             console.log('ev.component', ev.component);
             setProps({ isLoading: true });
@@ -56,7 +56,7 @@ export const Controlled = (storyProps: StoryProps) => {
       <L.Div _custom>
         <L.FileUpload
           allowedFiles=".jpg, .gif, .png"
-          name="customFileUpload"
+          id="customFileUpload"
           wrapperRender={({
             elementProps,
             componentProps: { isLoading },
@@ -96,7 +96,7 @@ export const Controlled = (storyProps: StoryProps) => {
       <L.Div _partialcustom>
         <L.FileUpload
           allowedFiles=".jpg, .gif, .png, .jpeg"
-          name="partialCustomFileUpload"
+          id="partialCustomFileUpload"
           wrapperRender={({ Element, elementProps }: any) => (
             <>
               <Element
