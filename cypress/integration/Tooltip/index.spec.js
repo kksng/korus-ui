@@ -4,38 +4,38 @@ describe('ToolTip tests', () => {
   });
   describe('Display', () => {
     it('Should choose right side correctly without positioning', () => {
-      cy.name('rightSide')
+      cy.get('#rightSide')
         .click()
         .get('.tooltip')
         .eq(6)
         .should('have.class', 'right');
     });
     it('Should choose left side correctly without positioning', () => {
-      cy.name('leftSide')
+      cy.get('#leftSide')
         .click()
         .get('.tooltip')
         .eq(7)
         .should('have.class', 'left');
     });
     it('Should choose top side by default, if enough space', () => {
-      cy.name('topSidePressedToLeft')
+      cy.get('#topSidePressedToLeft')
         .click()
         .get('.tooltip')
         .eq(8)
         .should('have.class', 'top');    
-      cy.name('topSidePressedToRight')
+      cy.get('#topSidePressedToRight')
         .click()
         .get('.tooltip')
         .eq(9)
         .should('have.class', 'top');  
     });
     it('Should define corner position', () => {
-      cy.name('topLeftCorner')
+      cy.get('#topLeftCorner')
         .click()
         .get('.tooltip')
         .first()
         .should('have.class', 'bottom-right');    
-      cy.name('topRightCorner')
+      cy.get('#topRightCorner')
         .click()
         .get('.tooltip')
         .eq(1)
