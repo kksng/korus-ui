@@ -1,3 +1,5 @@
+import { defaultButtonTheme as theme } from '../../../korus-ui/components/Button/theme';
+
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('Button', () => {
   before(() => {
@@ -10,7 +12,7 @@ describe('Button', () => {
 
   describe('Events in console', () => {
     it('Event in the console on click', () => {
-      cy.name('consoleButton')
+      cy.get('#consoleButton')
         .click()
         .get('@consoleLog')
         .should('be.calledWith', 'Do not click the button!');
@@ -19,7 +21,7 @@ describe('Button', () => {
 
   describe('Display', () => {
     it('Should render button', () => {
-      cy.name('basicButton')
+      cy.get('#basicButton')
         .should('be.visible');
     });
   });
@@ -47,7 +49,7 @@ describe('Button', () => {
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.name('basicButton')
+      cy.get('#basicButton')
         .click()
         .then(() => {
           expect(stub.getCall(0)).to.be.calledWith('Alert!');
@@ -59,7 +61,7 @@ describe('Button', () => {
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.name('validation')
+      cy.get('#validation')
         .click()
         .name('Input1')
         .should('have.attr', 'aria-invalid', 'true')
@@ -79,7 +81,7 @@ describe('Button', () => {
           cy.wrap(validationSuccess)
             .type('on Validation Success');
         })
-        .name('validation')
+        .get('#validation')
         .click()
         .then(() => {
           expect(stub.getCall(0)).to.be.calledWith('Submitted');
@@ -92,11 +94,11 @@ describe('Button', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
-      cy.name('validation')
+      cy.get('#validation')
         .scrollIntoView()
         .name('Input1')
         .isNotInViewport()
-        .name('validation')
+        .get('#validation')
         .click()
         .name('Input1')
         .isInViewport();
@@ -107,13 +109,13 @@ describe('Button', () => {
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.name('loadButton')
+      cy.get('#loadButton')
         .click()
         .then(() => {
           expect(stub).not.to.be.called;
         })
         .contains('isLoading')
-        .should('have.class', 'loading');
+        .should('have.class', `${theme.loading}`);
     });
 
     it('Should not call onClick when isDisabled', () => {
@@ -127,7 +129,7 @@ describe('Button', () => {
           expect(stub).not.to.be.called;
         })
         .contains('isDisabled')
-        .should('have.class', 'disabled');
+        .should('have.class', `${theme.disabled}`);
     });
   });
 });
