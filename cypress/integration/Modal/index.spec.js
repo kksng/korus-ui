@@ -1,3 +1,5 @@
+import { defaultModalTheme as theme } from '../../../korus-ui/components/Modal/theme'
+
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('Modal', () => {
   before(() => {
@@ -8,48 +10,48 @@ describe('Modal', () => {
     it('Open and close', () => {
       cy.datatest('openModalButton')
         .click()
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('be.visible')
-        .get('.modal-cross')
+        .get(`.${theme.cross}`)
         .click()
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('not.exist')
     });
 
     it('Different closing methods', () => {
       cy.datatest('openModalButton')
         .click()
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('be.visible')
-        .get('.modal-cross')
+        .get(`.${theme.cross}`)
         .click()
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('not.exist')
         .datatest('openModalButton')
         .click()
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('be.visible')
-        .name('cancel')
+        .get('#cancel')
         .click()
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('not.exist')
         .datatest('openModalButton')
         .click()
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('be.visible')
-        .get('.modal-wrapper')
+        .get(`.${theme.wrapper}`)
         .click(0, 100)
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('not.exist');
     });
 
     it('Closing with the ESС key', () => {
       cy.datatest('openModalButton')
         .click()
-        .get('.modal-window')
+        .get(`.${theme.window}`)
         .should('be.visible');
-      cy.focused().type('{esc}')
-        .get('.modal-window')
+      cy.focused().type('{esc}');
+      cy.get(`.${theme.window}`)
         .should('not.exist');
     });
 
@@ -58,13 +60,13 @@ describe('Modal', () => {
         .click()
         .datatest('openAlertLeaveButton')
         .click()
-        .name('leave')
+        .get('#leave')
         .should('be.visible')
-        .name('okButton')
+        .get('#okButton')
         .click()
-        .name('leave')
+        .get('#leave')
         .should('not.exist')
-        .name('cancel')
+        .get('#cancel')
         .click();
     });
 
@@ -73,13 +75,13 @@ describe('Modal', () => {
         .click()
         .datatest('openAlertSimpleButton')
         .click()
-        .name('simple')
+        .get('#simple')
         .should('be.visible')
         .get('.modal-alert-cross')
         .click()
-        .name('simple')
+        .get('#simple')
         .should('not.exist')
-        .name('cancel')
+        .get('#cancel')
         .click();
     });
   });
