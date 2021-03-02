@@ -19,7 +19,7 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
       <br />
       <br />
       <L.H4 _title>Basic Use</L.H4>
-      <L.Div name="basicUsage">
+      <L.Div id="basicUsage">
         <L.Div style={{ display: 'flex' }}>
           <L.DateTimeRange
             min={new Date(2001, 3, 14, 16, 30)}

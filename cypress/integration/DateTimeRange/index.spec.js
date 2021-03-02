@@ -30,7 +30,7 @@ describe('DateTimeRange', () => {
 
   describe('Interaction', () => {
     it('Opening and closing the calendar', () => {
-      cy.name('basicUsage')
+      cy.get('#basicUsage')
         .find('.datepicker-calendar-icon')
         .should('be.visible')
         .each((openingCalendar) => {
