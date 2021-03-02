@@ -7,7 +7,7 @@ describe('Modal', () => {
   });
 
   describe('Interaction', () => {
-    it('Open and close', () => {
+    it('Should open and close', () => {
       cy.datatest('openModalButton')
         .click()
         .get(`.${theme.window}`)
@@ -18,7 +18,7 @@ describe('Modal', () => {
         .should('not.exist')
     });
 
-    it('Different closing methods', () => {
+    it('Closing by close button', () => {
       cy.datatest('openModalButton')
         .click()
         .get(`.${theme.window}`)
@@ -26,16 +26,22 @@ describe('Modal', () => {
         .get(`.${theme.cross}`)
         .click()
         .get(`.${theme.window}`)
-        .should('not.exist')
-        .datatest('openModalButton')
+        .should('not.exist');
+    });
+
+    it('Closing by cancel button', () => {
+      cy.datatest('openModalButton')
         .click()
         .get(`.${theme.window}`)
         .should('be.visible')
         .get('#cancel')
         .click()
         .get(`.${theme.window}`)
-        .should('not.exist')
-        .datatest('openModalButton')
+        .should('not.exist');
+    });
+
+    it('Closing by click outside the modal window', () => {
+      cy.datatest('openModalButton')
         .click()
         .get(`.${theme.window}`)
         .should('be.visible')
