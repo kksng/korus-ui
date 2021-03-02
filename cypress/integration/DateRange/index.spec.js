@@ -7,13 +7,13 @@ describe('DateRange', () => {
   });
 
   describe('Display', () => {
-    it('Delimiter', () => {
+    it('Should render delimiter', () => {
       cy.get('.daterange-delimiter')
         .should('have.length', 9)
         .and('be.visible');
     });
 
-    it('Placeholders', () => {
+    it('Should render placeholders', () => {
       cy.name('firstDatePicker')
         .should('have.attr', 'placeholder', 'Type your date...')
         .name('secondDatePicker')
@@ -22,14 +22,14 @@ describe('DateRange', () => {
         .should('have.attr', 'placeholder', 'Type your date...');
     });
 
-    it('Values', () => {
+    it('Should render values in placeholder', () => {
       cy.name('openedCalendar-to')
         .should('have.attr', 'value', '11-е число  22-го месяца  33__-го года');
     });
   });
 
   describe('Interaction', () => {
-    it('EnterPress', () => {
+    it('Selecting a value by enter press', () => {
       cy.name('MinMaxDatePicker-from')
         .parents('.daterange-wrapper')
         .find('input')
