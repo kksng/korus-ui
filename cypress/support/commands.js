@@ -65,8 +65,10 @@ Cypress.Commands.add('isAtTop', { prevSubject: 'element' }, (element) => {
   });
 });
 
-/**Commands for the "Menu" component that allow you to test the 
- * acceptance of the left position of the element when clicked. */
+/**
+  * Commands for the "Menu" component that allow you to test the 
+  * acceptance of the left position of the element when clicked.
+  */
 
 Cypress.Commands.add('itemPositionIsWithinViewport', { prevSubject: true }, subject => {
   const windowInnerWidth = Cypress.config(`viewportWidth`);
