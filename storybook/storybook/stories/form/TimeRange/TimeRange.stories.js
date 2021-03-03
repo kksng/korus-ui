@@ -6,7 +6,6 @@ import
   BasicUsage,
   Format,
   MinMax,
-  TimeStepMinutes,
   UX,
 } from './Examples';
 import { Story } from '../../../components/Story';

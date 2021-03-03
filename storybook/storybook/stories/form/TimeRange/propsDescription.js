@@ -6,16 +6,14 @@ import { linkTo } from '@storybook/addon-links';
 export const propsDesc = [
   {
     name: (
-      <L.A
-        onClick={linkTo('Form|TimeRange|Props', 'format')}
-        target="_self"
-      >
+      <L.A onClick={linkTo('Form|TimeRange|Props', 'format')} target='_self'>
         format
       </L.A>
     ),
     type: 'string',
     required: false,
-    description: 'Формат отображаемого и вводимого времени. По-умолчанию "hh:mm"',
+    description:
+      'Формат отображаемого и вводимого времени. По-умолчанию "hh:mm"',
   },
   {
     name: 'isDisabled',
@@ -38,11 +36,11 @@ export const propsDesc = [
   {
     name: 'onBlur',
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
@@ -55,7 +53,7 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
 }       
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.DateTimeInputTypes.BlurEvent</L.Span>
         </L.Tooltip>
@@ -69,17 +67,17 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
     name: (
       <L.A
         onClick={linkTo('Form|TimeRange', 'Базовое использование')}
-        target="_self"
+        target='_self'
       >
         onChange
       </L.A>
     ),
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface ChangeEvent {
@@ -91,7 +89,7 @@ interface ChangeEvent {
 }        
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.DateTimeInputTypes.ChangeEvent</L.Span>
         </L.Tooltip>
@@ -104,11 +102,11 @@ interface ChangeEvent {
   {
     name: 'onEnterPress',
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface ChangeEvent {
@@ -120,7 +118,7 @@ interface ChangeEvent {
 }       
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.DateTimeInputTypes.ChangeEvent</L.Span>
         </L.Tooltip>
@@ -133,11 +131,11 @@ interface ChangeEvent {
   {
     name: 'onFocus',
     type: (
-      <L.Span>(event:
-        {' '}
+      <L.Span>
+        (event:{' '}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
               {`
 interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
@@ -149,7 +147,7 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
 }      
               `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>L.DateTimeInputTypes.FocusEvent</L.Span>
         </L.Tooltip>
@@ -171,19 +169,17 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
       <L.Span>
         {'React.Ref<'}
         <L.Tooltip
-          position="bottom"
-          title={(
+          position='bottom'
+          title={
             <pre>
-              {
-                `
+              {`
 interface DateTimeInputRefCurrent {
   input: HTMLInputElement | null,
   wrapper: HTMLElement | null,
 }
-                `
-              }
+                `}
             </pre>
-          )}
+          }
         >
           <L.Span _txt-success>DateTimeInputRefCurrent</L.Span>
         </L.Tooltip>
@@ -197,33 +193,35 @@ interface DateTimeInputRefCurrent {
     name: (
       <L.A
         onClick={linkTo('Form|TimeRange', 'Ограничение выбора времени')}
-        target="_self"
+        target='_self'
       >
         timeMin
       </L.A>
     ),
     type: '[number, number]',
     required: false,
-    description: 'Минимальное доступное время в формате массива ([часы, минуты]).',
+    description:
+      'Минимальное доступное время в формате массива ([часы, минуты]).',
   },
   {
     name: (
       <L.A
         onClick={linkTo('Form|TimeRange', 'Ограничение выбора времени')}
-        target="_self"
+        target='_self'
       >
         timeMax
       </L.A>
     ),
     type: '[number, number]',
     required: false,
-    description: 'Максимальное доступное время в формате массива ([часы, минуты]).',
+    description:
+      'Максимальное доступное время в формате массива ([часы, минуты]).',
   },
   {
     name: (
       <L.A
         onClick={linkTo('Form|TimeRange', 'Базовое использование')}
-        target="_self"
+        target='_self'
       >
         value
       </L.A>
