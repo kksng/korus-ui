@@ -13,5 +13,5 @@ import { ApiStory } from '../../../components/ApiStory';
 
 storiesOf('Form|CheckBox', module)
   .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
-  .add('Basic Usage', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
-  .add('Semi state', context => (<Story {...Semi} customProps={propsDesc} context={context} />));
+  .add('Базовый пример', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
+  .add('Получекбокс', context => (<Story {...Semi} customProps={propsDesc} context={context} />));

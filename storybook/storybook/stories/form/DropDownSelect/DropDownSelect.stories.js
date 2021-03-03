@@ -18,7 +18,7 @@ import { ApiStory } from '../../../components/ApiStory';
 
 storiesOf('Form| DropDownSelect', module)
   .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
-  .add('Customization', context => (<Story {...Customization} customProps={propsDesc} context={context} />))
+  .add('Расширяемость', context => (<Story {...Customization} customProps={propsDesc} context={context} />))
   .add('Debounce', context => (<Story {...Debounce} customProps={propsDesc} context={context} />));
 
 storiesOf('Form| DropDownSelect.Props', module)

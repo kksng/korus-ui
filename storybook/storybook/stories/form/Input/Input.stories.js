@@ -21,8 +21,8 @@ const compoundProps = [
 
 storiesOf('Form|Input', module)
   .add('API', context => (<ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />))
-  .add('Basic Usage', context => (<Story {...BasicUsage} compoundCustomProps={compoundProps} context={context} />))
-  .add('Customization', context => (<Story {...Customization} compoundCustomProps={compoundProps} context={context} />));
+  .add('Базовый приме', context => (<Story {...BasicUsage} compoundCustomProps={compoundProps} context={context} />))
+  .add('Расширяемость', context => (<Story {...Customization} compoundCustomProps={compoundProps} context={context} />));
 
 storiesOf('Form|Input.Props', module)
   .add('allowedSymbols', context => (<Story {...AllowedSymbols} compoundCustomProps={compoundProps} context={context} />))

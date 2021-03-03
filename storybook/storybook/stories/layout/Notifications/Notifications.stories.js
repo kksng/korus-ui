@@ -10,7 +10,14 @@ const compoundProps = [
   { componentName: 'Item', props: itemDesc },
 ];
 
-
 storiesOf('Layout|Notifications', module)
-  .add('API', context => (<ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />))
-  .add('Basic Usage', context => (<Story {...BasicUsage} context={context} compoundCustomProps={compoundProps} />));
+  .add('API', (context) => (
+    <ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />
+  ))
+  .add('Базовый пример', (context) => (
+    <Story
+      {...BasicUsage}
+      context={context}
+      compoundCustomProps={compoundProps}
+    />
+  ));
