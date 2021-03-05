@@ -38,7 +38,7 @@ describe('DropZone', () => {
         .should('exist')
         .parent()
         .find(fileDeleteIconClassName)
-        .click()
+        .click({force: true})
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
@@ -46,7 +46,7 @@ describe('DropZone', () => {
         .should('exist')
         .parent()
         .find(fileDeleteIconClassName)
-        .click();
+        .click({force: true});
     });
 
     it('Should download attached files', () => {
@@ -65,11 +65,16 @@ describe('DropZone', () => {
               .then((text) => resolve(text));
           })
         ))
-        .should('equal', 'Lorem ipsum dolor sit amet.\r\n');
-      cy.contains('txtFile.txt')
+        .should('equal', 'Lorem ipsum dolor sit amet.\r\n')
+        .get(contentClassName)
+        .first()
+        .get(rejectedFilesWrapperClassNames)
+        .first()
+        .next()
+        .contains('txtFile.txt')
         .parent()
         .find(fileDeleteIconClassName)
-        .click();
+        .click({force: true});
     });
 
     it('Should remove attached files', () => {
@@ -83,7 +88,7 @@ describe('DropZone', () => {
         .contains('txtFile.txt')
         .parent()
         .find(fileDeleteIconClassName)
-        .click()
+        .click({force: true})
         .get('txtFile.txt')
         .should('not.exist')
         .get(rejectedFilesWrapperClassNames)
@@ -92,7 +97,7 @@ describe('DropZone', () => {
         .contains('example.json')
         .parent()
         .find(fileDeleteIconClassName)
-        .click()
+        .click({force: true})
         .get('example.json')
         .should('not.exist');
     });
@@ -108,6 +113,7 @@ describe('DropZone', () => {
         .parent()
         .should('have.class', `${theme.disabled}`)
         .get(fileDeleteIconClassName)
+        .eq(0)
         .click({force: true})
         .get(rejectedFilesWrapperClassNames)
         .eq(2)
@@ -180,7 +186,7 @@ describe('DropZone', () => {
           .contains('external file')
           .parent()
           .find(fileDeleteIconClassName)
-          .click()
+          .click({force: true})
           .get(contentClassName)
           .eq(2)
           .attachFile('example.json', { subjectType: 'drag-n-drop' })
@@ -191,7 +197,7 @@ describe('DropZone', () => {
           .should('exist')
           .parent()
           .find(fileDeleteIconClassName)
-          .click()
+          .click({force: true})
           .get(rejectedFilesWrapperClassNames)
           .eq(2)
           .next('ul')
