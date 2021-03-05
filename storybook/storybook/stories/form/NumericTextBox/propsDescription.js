@@ -8,7 +8,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox', 'Customization')}
+        onClick={linkTo('Form|NumericTextBox', 'Расширяемость')}
         target="_self"
       >
         arrowButtonsRender
@@ -43,7 +43,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox', 'Customization')}
+        onClick={linkTo('Form|NumericTextBox', 'Расширяемость')}
         target="_self"
       >
         inputRender
@@ -112,12 +112,6 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
     description: 'Обработчик события потери фокуса.',
   },
   {
-    name: 'onClick',
-    type: '(event: React.MouseEvent) => void',
-    required: false,
-    description: 'Обработчик кликов',
-  },
-  {
     name: 'onChange',
     type: (
       <L.Span>(event:
@@ -145,6 +139,12 @@ interface ChangeEvent {
     ),
     required: false,
     description: 'Обработчик события изменения значения.',
+  },
+  {
+    name: 'onClick',
+    type: '(event: React.MouseEvent) => void',
+    required: false,
+    description: 'Обработчик кликов',
   },
   {
     name: 'onEnterPress',
@@ -289,7 +289,7 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox', 'Customization')}
+        onClick={linkTo('Form|NumericTextBox', 'Расширяемость')}
         target="_self"
       >
         wrapperRender
