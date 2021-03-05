@@ -88,12 +88,6 @@ export const propsDesc = [
     description: 'Наличие кнопки для очистки поля ввода.',
   },
   {
-    name: 'isDisabled',
-    type: 'boolean',
-    required: false,
-    description: 'Перевести компонент в неактивное состояние.',
-  },
-  {
     name: (
       <L.A
         onClick={linkTo('Form|Input', 'Customization')}
@@ -109,6 +103,12 @@ export const propsDesc = [
     ),
     required: false,
     description: 'Кастомизация поля ввода.',
+  },
+  {
+    name: 'isDisabled',
+    type: 'boolean',
+    required: false,
+    description: 'Перевести компонент в неактивное состояние.',
   },
   {
     name: (
