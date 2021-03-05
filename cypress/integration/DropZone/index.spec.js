@@ -36,17 +36,17 @@ describe('DropZone', () => {
         .next()
         .contains('txtFile.txt')
         .should('exist')
-        .get(fileDeleteIconClassName)
-        .eq(0)
+        .parent()
+        .find(fileDeleteIconClassName)
         .click()
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
         .contains('example.json')
         .should('exist')
-        .get(fileDeleteIconClassName)
-        .eq(0)
-        .click()
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click();
     });
 
     it('Should download attached files', () => {
@@ -65,9 +65,10 @@ describe('DropZone', () => {
               .then((text) => resolve(text));
           })
         ))
-        .should('equal', 'Lorem ipsum dolor sit amet.\r\n')
-        .get(fileDeleteIconClassName)
-        .eq(0)
+        .should('equal', 'Lorem ipsum dolor sit amet.\r\n');
+      cy.contains('txtFile.txt')
+        .parent()
+        .find(fileDeleteIconClassName)
         .click();
     });
 
@@ -76,25 +77,23 @@ describe('DropZone', () => {
         .first()
         .attachFile('example.json', { subjectType: 'drag-n-drop' })
         .attachFile('txtFile.txt', { subjectType: 'drag-n-drop' })
-        .get(fileDeleteIconClassName)
-        .first()
-        .click()
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
         .contains('txtFile.txt')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click()
+        .get('txtFile.txt')
         .should('not.exist')
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
         .contains('example.json')
-        .get(fileDeleteIconClassName)
-        .first()
+        .parent()
+        .find(fileDeleteIconClassName)
         .click()
-        .get(rejectedFilesWrapperClassNames)
-        .first()
-        .next()
-        .contains('example.json')
+        .get('example.json')
         .should('not.exist');
     });
 
@@ -142,8 +141,7 @@ describe('DropZone', () => {
       cy.get(contentClassName)
         .eq(1)
         .attachFile('txtFile.txt', { subjectType: 'drag-n-drop' })
-        .get('button')
-        .contains('Submit')
+        .get('#submit')
         .click()
         .get(wrapperClassName)
         .eq(1)
@@ -153,6 +151,10 @@ describe('DropZone', () => {
         .next()
         .contains('Files are required!')
         .should('not.exist');
+      cy.contains('txtFile.txt')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click();
     });
 
     it('Should be invalid when isRequired and prop value is null', () => {
@@ -176,6 +178,9 @@ describe('DropZone', () => {
           .eq(2)
           .next()
           .contains('external file')
+          .parent()
+          .find(fileDeleteIconClassName)
+          .click()
           .get(contentClassName)
           .eq(2)
           .attachFile('example.json', { subjectType: 'drag-n-drop' })
@@ -184,11 +189,8 @@ describe('DropZone', () => {
           .next()
           .contains('example.json')
           .should('exist')
-          .get(fileDeleteIconClassName)
-          .last()
-          .click()
-          .get(fileDeleteIconClassName)
-          .last()
+          .parent()
+          .find(fileDeleteIconClassName)
           .click()
           .get(rejectedFilesWrapperClassNames)
           .eq(2)
@@ -200,8 +202,7 @@ describe('DropZone', () => {
         cy.get(contentClassName)
           .eq(2)
           .attachFile('example.json', { subjectType: 'drag-n-drop' })
-          .get('button')
-          .contains('Set state as null')
+          .get('#stateAsNull')
           .click()
           .get(rejectedFilesWrapperClassNames)
           .eq(2)

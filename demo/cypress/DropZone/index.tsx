@@ -30,7 +30,7 @@ export const DropZone = (): React.ReactElement => {
         requiredMessage="Files are required!"
       />
 
-      <L.Button form="dropzone-form" >Submit</L.Button>
+      <L.Button id="submit" form="dropzone-form" >Submit</L.Button>
 
       <br />
 
@@ -47,7 +47,7 @@ export const DropZone = (): React.ReactElement => {
         isDisabled={isDisabled}
       />
       <br />
-      <L.Button _warning onClick={() => setValue(null)}>Set state as null</L.Button>
+      <L.Button _warning id="stateAsNull" onClick={() => setValue(null)}>Set state as null</L.Button>
       <br />
       <br />
       <L.Button _warning id="disable" onClick={() => setIsDisabled(!isDisabled)}>Disable / Enable</L.Button>
