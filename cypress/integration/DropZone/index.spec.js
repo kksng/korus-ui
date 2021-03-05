@@ -183,6 +183,7 @@ describe('DropZone', () => {
           .eq(2)
           .next()
           .contains('example.json')
+          .should('exist')
           .get(fileDeleteIconClassName)
           .last()
           .click()
