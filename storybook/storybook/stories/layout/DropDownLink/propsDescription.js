@@ -34,7 +34,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DropDownLink', 'Расширяемость')}
+        onClick={linkTo('Form|DropDownLink', 'Кастомизация')}
         target='_self'
       >
         itemRender
@@ -47,7 +47,7 @@ export const propsDesc = [
     ),
     required: false,
     description:
-      'Функция для кастомизации значения и внешнего вида элемента выпадающего списка. Вызывается когда элемент собирается визуализироваться.',
+      'Функция для кастомизации значения и внешнего вида элемента выпадающего списка. Вызывается когда элемент собирается кастомизироваться.',
   },
   {
     name: 'name',
