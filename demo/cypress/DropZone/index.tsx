@@ -71,7 +71,7 @@ export const DropZone = (): React.ReactElement => {
         requiredMessage="Files are required!"
       />
       <br />
-      <L.Button form="dropzone-null" >Submit null value</L.Button>
+      <L.Button id="nullValue" form="dropzone-null" >Submit null value</L.Button>
     </L.Div>
   );
 };

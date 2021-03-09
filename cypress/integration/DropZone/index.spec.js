@@ -52,11 +52,11 @@ describe('DropZone', () => {
     it('Should download attached files', () => {
       cy.get(contentClassName)
         .first()
-        .attachFile('txtFile.txt', { subjectType: 'drag-n-drop' })
+        .attachFile('testTxtFile.txt', { subjectType: 'drag-n-drop' })
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('txtFile.txt')
+        .contains('testTxtFile.txt')
         .then((anchor) => (
           new Cypress.Promise((resolve) => {
             fetch(anchor.prop('href'))
@@ -65,13 +65,13 @@ describe('DropZone', () => {
               .then((text) => resolve(text));
           })
         ))
-        .should('equal', 'Lorem ipsum dolor sit amet.\n')
+        .should('equal', 'Lorem ipsum dolor sit amet.\r\n')
         .get(contentClassName)
         .first()
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('txtFile.txt')
+        .contains('testTxtFile.txt')
         .parent()
         .find(fileDeleteIconClassName)
         .click({force: true});
@@ -80,25 +80,25 @@ describe('DropZone', () => {
     it('Should remove attached files', () => {
       cy.get(contentClassName)
         .first()
-        .attachFile('example.json', { subjectType: 'drag-n-drop' })
-        .attachFile('txtFile.txt', { subjectType: 'drag-n-drop' })
+        .attachFile('fileWithTooLongName.json', { subjectType: 'drag-n-drop' })
+        .attachFile('test.png', { subjectType: 'drag-n-drop' })
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('txtFile.txt')
+        .contains('test.png')
         .parent()
         .find(fileDeleteIconClassName)
         .click({force: true})
-        .get('txtFile.txt')
+        .get('test.png')
         .should('not.exist')
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('example.json')
+        .contains('fileWithTooLongName.json')
         .parent()
         .find(fileDeleteIconClassName)
         .click({force: true})
-        .get('example.json')
+        .get('fileWithTooLongName.json')
         .should('not.exist');
     });
 
@@ -131,8 +131,7 @@ describe('DropZone', () => {
 
   describe('Validation', () => {
     it('Should be invalid when isRequired and files are`t attached', () => {
-      cy.get('button')
-        .contains('Submit')
+      cy.get('#submit')
         .click()
         .get(wrapperClassName)
         .eq(1)
@@ -164,8 +163,7 @@ describe('DropZone', () => {
     });
 
     it('Should be invalid when isRequired and prop value is null', () => {
-      cy.get('button')
-        .contains('Submit null value')
+      cy.get('#nullValue')
         .click()
         .get(wrapperClassName)
         .eq(3)
@@ -189,11 +187,11 @@ describe('DropZone', () => {
           .click({force: true})
           .get(contentClassName)
           .eq(2)
-          .attachFile('example.json', { subjectType: 'drag-n-drop' })
+          .attachFile('bigFile.jpeg', { subjectType: 'drag-n-drop' })
           .get(rejectedFilesWrapperClassNames)
           .eq(2)
           .next()
-          .contains('example.json')
+          .contains('bigFile.jpeg')
           .should('exist')
           .parent()
           .find(fileDeleteIconClassName)
