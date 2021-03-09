@@ -3,7 +3,8 @@ import { defaultAutoCompleteTheme as theme } from '../../../korus-ui/components/
 
 describe('DateRange', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/daterange')
+    cy.visit('/cypress/daterange')
+    cy.viewport(1600, 900)
   });
 
   describe('Display', () => {

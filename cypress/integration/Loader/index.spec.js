@@ -1,6 +1,6 @@
 describe('Loader', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/loader');
+    cy.visit('/cypress/loader');
     cy.window().then((win) => {
       cy.spy(win.console, 'log').as('consoleLog');
     });

@@ -13,20 +13,25 @@ export const CheckBox = (): React.ReactElement => {
     <L.Div _demoStory>
       <L.CheckBox
         onChange={() => alert('Alert!')}
-        name="checkBoxMain"
+        id="checkBoxMain"
       >
         Main
       </L.CheckBox>
       <br />
       <br />
-      <L.CheckBox name="checkBoxButton">
-        <L.Button isLoading onClick={() => alert('Alert!')}>isLoading</L.Button>
+      <L.CheckBox 
+        id="checkBoxButton">
+        <L.Button 
+          isLoading onClick={() => alert('Alert!')}
+        >
+          isLoading
+        </L.Button>
       </L.CheckBox>
       <br />
       <br />
       <L.CheckBox
         isDisabled
-        name="checkBoxDisabled"
+        id="checkBoxDisabled"
         onChange={() => alert('Alert!')}
       >
         isDisabled
@@ -34,13 +39,29 @@ export const CheckBox = (): React.ReactElement => {
       <br />
       <br />
       <L.CheckBox
-        name="checkBoxSemi"
+        id="checkBoxSemi"
         value={value}
         onChange={handleChange}
         isSemi
       >
         isSemi
       </L.CheckBox>
+      <br />
+      <br />
+      <L.H4>CheckBox group</L.H4>
+      <L.Div id="checkBoxGroup">
+        <L.CheckBox>1</L.CheckBox>
+        <br />
+        <L.CheckBox
+          isSemi
+        >
+          Semi
+        </L.CheckBox>
+        <br />
+        <L.CheckBox>2</L.CheckBox>
+        <br />
+        <L.CheckBox>3</L.CheckBox>
+      </L.Div>
     </L.Div>
   );
 };

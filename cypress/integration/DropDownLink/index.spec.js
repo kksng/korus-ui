@@ -18,7 +18,7 @@ const wrapperVisibleClassName = `.${theme.wrapperVisible}`;
 
 describe('DropDown', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/dropdownlink');
+    cy.visit('/cypress/dropdownlink');
   });
 
   describe('Display', () => {

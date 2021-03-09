@@ -1,6 +1,6 @@
 describe('Slider', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/slider');
+    cy.visit('/cypress/slider');
   });
 
   describe('Interaction', () => {

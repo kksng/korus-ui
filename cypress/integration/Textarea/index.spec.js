@@ -1,6 +1,6 @@
 describe('Textarea', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/textarea');
+    cy.visit('/cypress/textarea');
   });
 
   describe('Interaction', () => {

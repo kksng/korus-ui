@@ -4,25 +4,25 @@ import { stepContent } from '../../components/VStepper/constants';
 
 const data = [
   {
-    header: "Счет об оплате",
-    statusSuccess: "Получен",
-    statusProgress: "Получение...",
+    header: "Payment Invoice",
+    statusSuccess: "Received",
+    statusProgress: "Receiving...",
     isDisabled: true,
   },
   {
-    header: "Статус оплаты",
-    statusSuccess: "Оплачен",
-    statusProgress: "Не оплачен",
+    header: "Payment status",
+    statusSuccess: "Paid for",
+    statusProgress: "Not paid for",
   },
   {
-    header: "Анкета",
-    statusSuccess: "Заполнена",
-    statusProgress: "Не заполнена",
+    header: "Questionnaire",
+    statusSuccess: "Filled in",
+    statusProgress: "Not filled in",
   },
   {
-    header: "Результат",
-    statusSuccess: "Получен",
-    statusProgress: "Не получен",
+    header: "Result",
+    statusSuccess: "Received",
+    statusProgress: "Not received",
   },
 ];
 interface Data {
@@ -58,58 +58,58 @@ export const VStepper = (): React.ReactElement => {
       <L.VStepper>
         <L.VStepper.Item
           hasSignIcon
-          titleText="Добавление расходов"
-          statusText="Заполнено"
+          titleText="Adding expenses"
+          statusText="Filled in"
           type="success"
-          footerContent={<L.Button name="btnNext">Далее</L.Button>}
+          footerContent={<L.Button name="btnNext">Further</L.Button>}
         >
           {stepContent[0]}
         </L.VStepper.Item>
         <L.VStepper.Item
-          titleText="Персональные данные"
-          statusText="Заполнено"
+          titleText="Personal data"
+          statusText="Filled in"
           type="success"
           nextStepType="progress"
         >
           {stepContent[1]}
         </L.VStepper.Item>
         <L.VStepper.Item
-          titleText="Подтверждение командировки"
-          statusText="В процессе"
+          titleText="Confirmation of business trip"
+          statusText="In progress"
           type="progress"
         >
           {stepContent[2]}
         </L.VStepper.Item>
         <L.VStepper.Item
           hasSignIcon
-          titleText="Печать закрывающих документов"
-          statusText="Не заполнено"
+          titleText="Print of closing documents"
+          statusText="Not filled in"
           type="danger"
         >
           {stepContent[3]}
         </L.VStepper.Item>
         <L.VStepper.Item
-          titleText="Дополнительная информация"
-          statusText="Не заполнено"
+          titleText="Additional information"
+          statusText="Not filled in"
         >
           {stepContent[4]}
         </L.VStepper.Item>
         <L.VStepper.Item
           hasSignIcon
-          titleText="Предупреждение"
-          statusText="Не заполнено"
+          titleText="Warning"
+          statusText="Not filled in"
           type="warning"
         >
-          Предупреждение
+          Warning
         </L.VStepper.Item>
         <L.VStepper.Item
           hasSignIcon
           isOpen
           id="isOpen"
           titleText="isOpen"
-          statusText="Заполнено"
+          statusText="Filled in"
           type="success"
-          footerContent={<L.Button name="btnNext">Далее</L.Button>}
+          footerContent={<L.Button name="btnNext">Further</L.Button>}
         >
           {stepContent[0]}
         </L.VStepper.Item>
@@ -117,14 +117,14 @@ export const VStepper = (): React.ReactElement => {
           id="isDisable"
           titleText="isDisable"
           isDisabled
-          statusText="Заполнено"
+          statusText="Filled in"
           type="success"
           nextStepType="progress"
         ></L.VStepper.Item>
         <L.VStepper.Item
           titleText="Click me!"
           onClick={() => alert('Click!')}
-          statusText="В процессе"
+          statusText="In progress"
           type="progress"
         >
           {stepContent[2]}
@@ -160,7 +160,7 @@ export const VStepper = (): React.ReactElement => {
               {stepContent[index]}
               <br />
               <L.Button _success onClick={() => handleNextClick(index)}>
-                Далее
+                Further
               </L.Button>
             </L.VStepper.Item>
           ))}

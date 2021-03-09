@@ -1,6 +1,6 @@
 describe('MultiSelect', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/multi-select');
+    cy.visit('/cypress/multi-select');
   });
 
   describe('Display', () => {
