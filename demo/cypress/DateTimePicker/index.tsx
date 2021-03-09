@@ -16,16 +16,16 @@ export const DateTimePicker = () => {
       <L.H4 _title>DateTimePicker</L.H4>
       <br />
       <br />
-      <L.Div id='basic'>
+      <L.Div id="basic">
         <L.DateTimePicker
-          data-test='dp1'
-          form='date-form'
-          format='dd.MM.yy hh:mm:ss'
+          data-test="dp1"
+          form="date-form"
+          format="dd.MM.yy hh:mm:ss"
           hasTodayButton
           isRequired
           max={new Date(2019, 5, 20)}
           min={new Date(2016, 4, 3)}
-          name='datetimepicker'
+          name="datetimepicker"
           onBlur={(ev) => console.log('blur', ev)}
           onChange={(ev) => {
             console.log('change', ev);
@@ -40,8 +40,8 @@ export const DateTimePicker = () => {
         <br />
         <L.Button
           _warning
-          name='submit'
-          form='date-form'
+          name="submit"
+          form="date-form"
           onClick={() => alert('Submitted!')}
           onValidationFail={() => alert('Submit failed!')}
         >
@@ -49,7 +49,7 @@ export const DateTimePicker = () => {
         </L.Button>
       </L.Div>
       <br />
-      <L.Div data-test='dp4' _width30>
+      <L.Div data-test="dp4" _width30>
         <L.DateTimePicker isDisabled />
       </L.Div>
     </L.Div>

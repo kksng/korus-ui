@@ -1,6 +1,7 @@
 describe('Password', () => {
+
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/password', {
+    cy.visit('/cypress/password', {
       onBeforeLoad(win) {
         cy.stub(win.console, 'log').as('consoleLog');
       },
