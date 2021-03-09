@@ -1,6 +1,6 @@
 describe('Swithcer', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/switcher');
+    cy.visit('/cypress/switcher');
   });
 
   describe('Display', () => {

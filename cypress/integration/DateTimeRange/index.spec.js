@@ -1,6 +1,6 @@
 describe('DateTimeRange', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/datetimerange');
+    cy.visit('/cypress/datetimerange');
     cy.window().then((win) => {
       cy.spy(win.console, 'log').as('consoleLog');
     });

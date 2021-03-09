@@ -1,6 +1,6 @@
 describe('Statusbar', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/statusbar');
+    cy.visit('/cypress/statusbar');
   });
   describe('Display',() => {
     it('Shouldrender types', () => {

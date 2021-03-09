@@ -6,7 +6,7 @@ const suffix = `.${theme.suffix}`;
 
 describe('NumericTextBox', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/numerictextbox');
+    cy.visit('/cypress/numerictextbox');
   });
 
   describe('Interaction', () => {

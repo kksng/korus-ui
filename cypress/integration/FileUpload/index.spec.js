@@ -1,6 +1,6 @@
 describe('FileUpload', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/fileupload', {
+    cy.visit('/cypress/fileupload', {
       onBeforeLoad(win) {
         cy.stub(win.console, 'log').as('consoleLog');
       },

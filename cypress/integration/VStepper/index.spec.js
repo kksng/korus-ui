@@ -13,7 +13,7 @@ const itemActive = `${theme.itemActive}`;
 
 describe('VStepper tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/vstepper');
+    cy.visit('/cypress/vstepper');
   });
 
   describe('Display', () => {

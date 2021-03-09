@@ -13,7 +13,7 @@ describe('DropDownSelect', () => {
   let lastConsole;
   let stub;
   before(() => {
-    cy.visit('http://localhost:9000/cypress/dropdownselect');
+    cy.visit('/cypress/dropdownselect');
     cy.viewport(1600, 900)
   });
 
@@ -238,7 +238,7 @@ describe('DropDownSelect', () => {
 
   describe('Events', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/cypress/dropdownselect', {
+      cy.visit('/cypress/dropdownselect', {
         onBeforeLoad(win) {
           stub = cy.stub(win.console, 'log', (ev) => { lastConsole = ev; });
         },

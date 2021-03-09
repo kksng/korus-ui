@@ -6,7 +6,7 @@ const itemFilled = `${theme.itemFilled}`;
 
 describe('Rating', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/rating');
+    cy.visit('/cypress/rating');
   });
 
   describe('Interaction', () => {
