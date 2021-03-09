@@ -74,7 +74,7 @@ describe('MaskedInput', () => {
       });
 
       it('Should fill different masks', () => {
-        cy.name('MIControlledPhone')
+        cy.get('#MIControlledPhone')
           .should('have.value', '+7 (800)-200-06-00')
           .focusMasked()
           .clear()
