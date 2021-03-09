@@ -65,7 +65,7 @@ describe('DropZone', () => {
               .then((text) => resolve(text));
           })
         ))
-        .should('equal', 'Lorem ipsum dolor sit amet.\r\n')
+        .should('equal', 'Lorem ipsum dolor sit amet.\n')
         .get(contentClassName)
         .first()
         .get(rejectedFilesWrapperClassNames)
