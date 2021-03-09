@@ -5,7 +5,7 @@ describe('DatePicker', () => {
   let lastConsole
   let stub
   before(() => {
-    cy.visit('http://localhost:9000/cypress/datepicker')
+    cy.visit('/cypress/datepicker')
   });
 
   beforeEach(() => { cy.name('success').focus() }) // It is needed because of bug with focus on several datepickers
@@ -67,7 +67,7 @@ describe('DatePicker', () => {
 
   describe('Events', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/cypress/datepicker', {
+      cy.visit('/cypress/datepicker', {
         onBeforeLoad(win) {
           stub = cy.stub(win.console, 'log', (ev) => { lastConsole = ev })
         },

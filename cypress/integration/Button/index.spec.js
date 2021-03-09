@@ -1,7 +1,9 @@
+import { defaultButtonTheme as theme } from '../../../korus-ui/components/Button/theme';
+
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('Button', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/button', {
+    cy.visit('/cypress/button', {
       onBeforeLoad(win) {
         cy.stub(win.console, 'log').as('consoleLog');
       },
@@ -9,8 +11,8 @@ describe('Button', () => {
   });
 
   describe('Events in console', () => {
-    it('event in the console on click', () => {
-      cy.name('consoleButton')
+    it('Event in the console on click', () => {
+      cy.get('#consoleButton')
         .click()
         .get('@consoleLog')
         .should('be.calledWith', 'Do not click the button!');
@@ -18,44 +20,48 @@ describe('Button', () => {
   });
 
   describe('Display', () => {
-    it('should render button', () => {
-      cy.contains('Клик!').should('be.visible');
+    it('Should render button', () => {
+      cy.get('#basicButton')
+        .should('be.visible');
     });
   });
 
   describe('Styles', () => {
-    it('_danger', () => {
-      cy.contains('danger!').should('have.class', 'danger');
+    it('Should have class "danger"', () => {
+      cy.contains('danger!')
+        .should('have.class', 'danger');
     });
 
-    it('_warning', () => {
-      cy.contains('warning!').should('have.class', 'warning');
+    it('Should have class "warning"', () => {
+      cy.contains('warning!')
+        .should('have.class', 'warning');
     });
 
-    it('_success', () => {
-      cy.contains('success!').should('have.class', 'success');
+    it('Should have class "success"', () => {
+      cy.contains('success!')
+        .should('have.class', 'success');
     });
   });
 
   describe('Interaction', () => {
-    it('should call onClick', () => {
+    it('Should call onClick', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.contains('Клик!')
+      cy.get('#basicButton')
         .click()
         .then(() => {
           expect(stub.getCall(0)).to.be.calledWith('Alert!');
         });
     });
 
-    it('on Validation Fail', () => {
+    it('Validation failed', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.contains('Validate!')
+      cy.get('#validation')
         .click()
         .name('Input1')
         .should('have.attr', 'aria-invalid', 'true')
@@ -66,15 +72,16 @@ describe('Button', () => {
         });
     });
 
-    it('on Validation Success', () => {
+    it('Validation succeeds', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
       cy.get('input')
         .each((validationSuccess) => {
-          cy.wrap(validationSuccess).type('on Validation Success');
+          cy.wrap(validationSuccess)
+            .type('on Validation Success');
         })
-        .name('validation')
+        .get('#validation')
         .click()
         .then(() => {
           expect(stub.getCall(0)).to.be.calledWith('Submitted');
@@ -83,36 +90,35 @@ describe('Button', () => {
         .clear();
     });
 
-    it('should Scroll To Invalid Fields', () => {
+    it('Should Scroll To Invalid Fields', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
-      cy.contains('Validate!')
+      cy.get('#validation')
         .scrollIntoView()
         .name('Input1')
         .isNotInViewport()
-        .get('button')
-        .contains('Validate!')
+        .get('#validation')
         .click()
         .name('Input1')
         .isInViewport();
     });
 
-    it('should not call onClick when isLoading', () => {
+    it('Should not call onClick when isLoading', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
       // eslint-disable-next-line jest/valid-expect-in-promise
-      cy.contains('isLoading')
+      cy.get('#loadButton')
         .click()
         .then(() => {
           expect(stub).not.to.be.called;
         })
         .contains('isLoading')
-        .should('have.class', 'loading');
+        .should('have.class', `${theme.loading}`);
     });
 
-    it('should not call onClick when isDisabled', () => {
+    it('Should not call onClick when isDisabled', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
 
@@ -123,7 +129,7 @@ describe('Button', () => {
           expect(stub).not.to.be.called;
         })
         .contains('isDisabled')
-        .should('have.class', 'disabled');
+        .should('have.class', `${theme.disabled}`);
     });
   });
 });

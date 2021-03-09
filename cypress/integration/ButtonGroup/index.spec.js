@@ -3,7 +3,7 @@ import { defaultButtonGroupTheme as theme } from '../../../korus-ui/components/B
 
 describe('ButtonGroup', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/button-group');
+    cy.visit('/cypress/button-group');
   });
 
   describe('Display', () => {

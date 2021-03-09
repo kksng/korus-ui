@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('Modal', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/modal');
+    cy.visit('/cypress/modal');
   });
 
   describe('Open and Close', () => {

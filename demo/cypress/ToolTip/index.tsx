@@ -25,7 +25,7 @@ export const ToolTip = (): React.ReactElement => {
           title="Tooltip at tTop Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner Top Left Corner"
         >
           <L.Button
-            name="topLeftCorner"
+            id="topLeftCorner"
             style={{ position: 'absolute', left: 0 }}
           >
             Top Left Corner
@@ -37,7 +37,7 @@ export const ToolTip = (): React.ReactElement => {
           title="Tooltip at Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner Top Right Corner"
         >
           <L.Button
-            name="topRightCorner"
+            id="topRightCorner"
             style={{ position: 'absolute', right: 0 }}
           >
             Top Right Corner
@@ -109,7 +109,7 @@ export const ToolTip = (): React.ReactElement => {
             title="Tooltip without positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning"
           >
             <L.Button
-              name="rightSide"
+              id="rightSide"
               style={{ position: 'absolute', left: 0, bottom: '50px' }}
             >
               defines the right side
@@ -120,7 +120,7 @@ export const ToolTip = (): React.ReactElement => {
             title="Tooltip without positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning"
           >
             <L.Button
-              name="leftSide"
+              id="leftSide"
               style={{ position: 'absolute', right: 0, bottom: '50px' }}
             >
               defines the left side
@@ -131,7 +131,7 @@ export const ToolTip = (): React.ReactElement => {
             title="Tooltip without positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning"
           >
             <L.Button
-              name="topSidePressedToLeft"
+              id="topSidePressedToLeft"
               style={{ position: 'absolute', left: '140px', bottom: '10px' }}
             >
               no positioning
@@ -142,7 +142,7 @@ export const ToolTip = (): React.ReactElement => {
             title="Tooltip without positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning positioning"
           >
             <L.Button
-              name="topSidePressedToRight"
+              id="topSidePressedToRight"
               style={{ position: 'absolute', right: '140px', bottom: '10px' }}
             >
               no positioning
