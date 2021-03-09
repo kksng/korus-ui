@@ -90,7 +90,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Input', 'Customization')}
+        onClick={linkTo('Form|Input', 'Кастомизация')}
         target="_self"
       >
         inputRender
@@ -325,7 +325,7 @@ interface InputRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Input', 'Customization')}
+        onClick={linkTo('Form|Input', 'Кастомизация')}
         target="_self"
       >
         wrapperRender

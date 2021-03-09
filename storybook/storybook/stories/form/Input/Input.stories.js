@@ -26,7 +26,7 @@ storiesOf('Form|Input', module)
   .add('Базовый пример', context => (
     <Story {...BasicUsage} compoundCustomProps={compoundProps} context={context} />
   ))
-  .add('Расширяемость', context => (
+  .add('Кастомизация', context => (
     <Story {...Customization} compoundCustomProps={compoundProps} context={context} />
   ));
 
