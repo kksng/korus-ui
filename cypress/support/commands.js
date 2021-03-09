@@ -66,6 +66,31 @@ Cypress.Commands.add('isAtTop', { prevSubject: 'element' }, (element) => {
 });
 
 /**
+  * Commands for the "Menu" component that allow you to test the 
+  * acceptance of the left position of the element when clicked.
+  */
+
+Cypress.Commands.add('itemPositionIsWithinViewport', { prevSubject: true }, subject => {
+  const windowInnerWidth = Cypress.config(`viewportWidth`);
+  const bounding = subject[0].getBoundingClientRect();
+  const leftBoundOfWindow = windowInnerWidth;
+  
+  expect(bounding.left).to.be.lessThan(leftBoundOfWindow);
+
+  return subject;
+});
+
+Cypress.Commands.add('itemPositionIsInViewport', { prevSubject: true }, subject => {
+  const windowInnerWidth = Cypress.config(`viewportWidth`);
+  const bounding = subject[0].getBoundingClientRect();
+  const leftBoundOfWindow = windowInnerWidth;
+  
+  expect(bounding.left).not.to.be.greaterThan(leftBoundOfWindow);
+
+  return subject;
+});
+
+/**
  * Simulates a paste event.
  *
  * @param subject A jQuery context representing a DOM element.
