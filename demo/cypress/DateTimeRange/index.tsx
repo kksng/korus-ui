@@ -19,13 +19,13 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
       <br />
       <br />
       <L.H4 _title>Basic Use</L.H4>
-      <L.Div _basicUse>
+      <L.Div id="basicUsage">
         <L.Div style={{ display: 'flex' }}>
           <L.DateTimeRange
             min={new Date(2001, 3, 14, 16, 30)}
             max={new Date(2019, 5, 20, 17, 0)}
             value={DTRValue}
-            name='DateTimeRange'
+            name="DateTimeRange"
             onChange={(ev) => {
               const {
                 component: { date, value, name },
