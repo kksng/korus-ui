@@ -15,7 +15,7 @@ export interface CheckBoxProps {
   [x: string]: unknown,
   /** Всё, что обёрнуто в L.Checkbox, попадает в label */
   children?: React.ReactNode,
-  /** Значение по-умолчанию, если не передано - false */
+  /** Значение по умолчанию, если не передано - false */
   defaultValue?: boolean,
   /** Id для чекбокса */
   id?: string,

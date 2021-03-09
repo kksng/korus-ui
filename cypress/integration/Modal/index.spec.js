@@ -3,7 +3,7 @@ import { defaultModalTheme as theme } from '../../../korus-ui/components/Modal/t
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('Modal', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/modal');
+    cy.visit('/cypress/modal');
   });
 
   describe('Interaction', () => {

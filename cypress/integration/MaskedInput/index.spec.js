@@ -4,7 +4,7 @@ const theme = globalDefaultTheme.maskedInput;
 
 describe('MaskedInput', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/masked-input')
+    cy.visit('/cypress/masked-input')
     cy.window().then((win) => {
       cy.spy(win.console, 'log').as('consoleLog')
     })         
@@ -82,20 +82,20 @@ describe('MaskedInput', () => {
           .type('9818862798')
           .should('have.value', '+7 (981)-886-27-98')
           .closest('.demo-story')
-          .name('MIControlledInsurance')
+          .get('#MIControlledInsurance')
           .should('have.attr', 'placeholder', '___-___-___ __')
           .focusMasked()
           .clear()
           .type('12345678901')
           .should('have.value', '123-456-789 01')
           .closest('.demo-story')
-          .name('MICarNumber')
+          .get('#MICarNumber')
           .should('have.attr', 'placeholder', 'Car number')
           .focusMasked()
           .type('AA12BB3456')
           .should('have.value', 'AA12BB3456')
           .closest('.demo-story')
-          .name('MICreditCardNumber')
+          .get('#MICreditCardNumber')
           .should('have.value', '6666-7777-8888-9999')
           .focusMasked()
           .clear()
@@ -149,48 +149,48 @@ describe('MaskedInput', () => {
 
   describe('Rest', () => {
     describe('Controlled mode', () => {
-      it('should clear and set value', () => {
-        cy.name('MIControlledPhone')
+      it('Should clear and set value', () => {
+        cy.get('#MIControlledPhone')
           .clear()
           .type('9818862798')
           .should('have.value', '+7 (981)-886-27-98')
-          .name('clearPhoneValue')
+          .get('#clearPhoneValue')
           .click()
-          .name('MIControlledPhone')
+          .get('#MIControlledPhone')
           .should('not.have.value')
-          .name('setPhoneValue')
+          .get('#setPhoneValue')
           .click()
-          .name('MIControlledPhone')
+          .get('#MIControlledPhone')
           .should('have.value', '+7 (981)-886-27-98');
       });
-      it('should clear mask value', () => {
-        cy.name('clearPhoneValue')
+      it('Should clear mask value', () => {
+        cy.get('#clearPhoneValue')
           .click()
-          .name('MIControlledPhone')
+          .get('#MIControlledPhone')
           .type('{enter}')
           .get('@consoleLog')
           .should('be.calledWith', '+7 (___)-___-__-__')
-          .name('MIControlledPhone')
+          .get('#MIControlledPhone')
           .type('8888')
           .get('@consoleLog')
           .should('be.calledWith', '+7 (888)-8__-__-__')
-          .name('clearPhoneValue')
+          .get('#clearPhoneValue')
           .click()
-          .name('MIControlledPhone')
+          .get('#MIControlledPhone')
           .type('{enter}')
           .get('@consoleLog')
           .should('be.calledWith', '+7 (___)-___-__-__')
       });
-      it('should remove mask when value is cleared', () => {
-        cy.name('MICardNumberControlled')
+      it('Should remove mask when value is cleared', () => {
+        cy.get('#MICardNumberControlled')
           .type('33')
           .get('@consoleLog')
           .should('be.calledWith', '33__-____-____-____')
-          .name('clearCardValue')
+          .get('#clearCardValue')
           .click()
           .get('@consoleLog')
           .should('be.calledWith', '')
-          .name('MICardNumberControlled')
+          .get('#MICardNumberControlled')
       });
     });
   });

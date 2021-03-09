@@ -11,6 +11,7 @@ export const Menu = () => {
       >
         <L.MenuItem 
           menuItemKey={0}
+          id="mainMenu"
           title="Hello Click"
         >
           <L.Ul>
@@ -61,7 +62,19 @@ export const Menu = () => {
         <L.MenuItem
           menuItemKey={4}
           title="Very looooooong tab naaaaame"
-        />
+        >
+          <L.Ul>
+            <L.Li>
+              <L.A>Мармелад</L.A>
+            </L.Li>
+            <L.Li>
+              <L.A>Суфле</L.A>
+            </L.Li>
+            <L.Li>
+              <L.A>Шоколад</L.A>
+            </L.Li>
+          </L.Ul>
+        </L.MenuItem>
         <L.MenuItem
           menuItemKey={5}
           title="Very looooooong tab naaaaame"

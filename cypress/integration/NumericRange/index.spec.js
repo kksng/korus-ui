@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('NumericRange', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/numericrange');
+    cy.visit('/cypress/numericrange');
   });
 
   describe('Display', () => {
