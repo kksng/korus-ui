@@ -56,7 +56,7 @@ describe('DropZone', () => {
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('testTxtFile.txt')
+      cy.contains('testTxtFile.txt')
         .then((anchor) => (
           new Cypress.Promise((resolve) => {
             fetch(anchor.prop('href'))
@@ -191,7 +191,7 @@ describe('DropZone', () => {
           .get(rejectedFilesWrapperClassNames)
           .eq(2)
           .next()
-          .contains('bigFile.jpeg')
+        cy.contains('bigFile.jpeg')
           .should('exist')
           .parent()
           .find(fileDeleteIconClassName)
