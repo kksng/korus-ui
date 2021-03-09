@@ -1,6 +1,14 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 import { defaultDropDownSelectTheme as theme } from '../../../korus-ui/components/DropDownSelect/theme';
 
+const clearIcon = `.${theme.clearIcon}`;
+const wrapper = `.${theme.wrapper}`;
+const container = `.${theme.container}`;
+const list = `.${theme.list}`;
+const item = `.${theme.item}`;
+const inputWrapperDisabled = `${theme.inputWrapperDisabled}`;
+const noSuggestions = `.${theme.noSuggestions}`;
+
 describe('DropDownSelect', () => {
   let lastConsole;
   let stub;
@@ -10,230 +18,220 @@ describe('DropDownSelect', () => {
   });
 
   describe('Display', () => {
-    it('should render ClearButton', () => {
-      cy.name('DDSDisabled')
-        .parent()
-        .children('.dropdownselect-clear-icon')
+    it('Should render ClearButton', () => {
+      cy.get('#DDSDisabled')
+        .next()
         .should('be.visible')
         .click()
-        .name('DDSDisabled')
+        .get('#DDSDisabled')
         .parent()
-        .children('.dropdownselect-clear-icon')
-        .should('not.be.visible')
+        .find(clearIcon)
+        .should('not.exist')
     });
 
-    it('should render placeholder', () => {
-      cy.name('DDSDisabled')
-        .should('have.attr', 'placeholder', 'Choose a city...')
-        .click()
-        .parent()
-        .parent()
-        .find('.suggestion-item.placeholder')
-        .should('be.visible')
-        .should('have.text', 'Choose a city...')
-        .click()
+    it('Should render placeholder', () => {
+      cy.get('#Opened')
+        .should('have.attr', 'placeholder', 'Choose a city')
     });
 
-    it('should render SuggestionList when isOpen', () => {
-      cy.get('button')
-        .contains('Toggle isOpen')
+    it('Should render SuggestionList when isOpen', () => {
+      cy.get('#toggleIsOpen')
         .click()
-        .name('Opened')
-        .parent()
-        .parent()
-        .children('.suggestion-wrapper.visible')
+        .get('#Opened')
+        .parents(wrapper)
+        .find(container)
         .should('exist')
-        .children('.suggestion-list')
+        .children(list)
         .should('be.visible')
-        .children('.suggestion-item')
+        .children(item)
         .should('have.length', 9)
-        .parent('.suggestion-list')
-        .children('.txt-bold.suggestion-item')
+        .parent(list)
+        .children('.txt-bold')
         .should('have.length', 5)
-        .parent('.suggestion-list')
-        .children('.txt-success.suggestion-item')
+        .parent(list)
+        .children('.txt-success')
         .should('have.length', 3)
-        .get('button')
-        .contains('Toggle isOpen')
+        .get('#toggleIsOpen')
         .click()
     });
   });
 
   describe('noSuggestionsRender', () => {
-    it('should have a default message', () => {
-      cy.name('DDSBoundingContainerRef')
+    it('Should have a default message', () => {
+      cy.get('#DDSBoundingContainerRef')
         .clear()
         .type('Z')
-        .parent()
-        .parent()
-        .find('.suggestion-wrapper.pos-top.visible')
-        .children('.nodata')
+        .parents(wrapper)
+        .find(noSuggestions)
         .should('have.text', 'Ничего не найдено');
     });
 
-    it('should allow custom messages', () => {
-      cy.name('Opened')
+    it('Should allow custom messages', () => {
+      cy.get('#Opened')
         .clear()
         .type('Z')
-        .parent()
-        .parent()
-        .find('.suggestion-wrapper.visible')
+        .parents(wrapper)
+        .find(container)
         .should('have.text', 'Ничего не скажу по этому поводу');
     });
 
-    it('should allow an empty message', () => {
-      cy.name('DDSonBlur')
+    it('Should allow an empty message', () => {
+      cy.get('#DDSonBlur')
         .clear()
         .type('Z')
-        .parent()
-        .parent()
-        .children('.suggestion-wrapper')
-        .children('.nodata')
+        .parents(wrapper)
+        .find(noSuggestions)
         .should('not.exist')
     });
   });
 
-  it('should render loader when isLoading', () => {
-    cy.get('button')
-      .contains('Toggle isLoading')
+  it('Should render loader when isLoading', () => {
+    cy.get('#toggleIsLoading')
       .click()
-      .name('DDSBoundingContainerRef')
+      .get('#DDSBoundingContainerRef')
       .clear()
       .type('z')
-      .parent()
-      .parent()
+      .parents(wrapper)
       .find('.loader-container')
       .should('be.visible')
-      .children('.loader-element')
+      .find('.loader-element')
       .should('be.visible')
-      .get('button')
-      .contains('Toggle isLoading')
-      .click();
+      .get('#toggleIsLoading')
+      .click()
+      .get('#DDSBoundingContainerRef')
+      .parents(wrapper)
+      .find('.loader-container')
+      .should('not.exist');
   });
 
-  it('should be disabled when isDisabled', () => {
-    cy.get('button')
-      .contains('Toggle isDisabled')
+  it('Should be disabled when isDisabled', () => {
+    cy.get('#toggleIsDisabled')
       .click()
-      .name('DDSDisabled')
-      .should('be.disabled')
-      .get('button')
-      .contains('Toggle isDisabled')
+      .get('#DDSDisabled')     
+      .parent()
+      .should('have.class', inputWrapperDisabled)
+      .children('#DDSDisabled')
+      .should('have.attr', inputWrapperDisabled)
+      .get('#toggleIsDisabled')
       .click()
+      .get('#DDSDisabled')     
+      .parent()
+      .should('not.have.class', inputWrapperDisabled)
+      .children('#DDSDisabled')
+      .should('not.have.attr', inputWrapperDisabled)
   });
 
-  describe('itemRender', () => {
-    it('should customize a suggestion item', () => {
-      cy.get('button')
-        .contains('Toggle isOpen')
+  describe('Item Render', () => {
+    it('Should customize a suggestion item', () => {
+      cy.get('#toggleIsOpen')
         .click()
-        .name('Opened')
+        .get('#Opened')
         .type('n')
-        .parent()
-        .parent()
+        .parents(wrapper)
+        .find(container)
+        .should('be.visible')
         .contains('Berlin')
         .should('have.class', 'txt-bold')
-        .should('not.have.class', 'txt-success')
-        .get('button')
-        .contains('Toggle isOpen')
+        .and('not.have.class', 'txt-success')
+        .get('#toggleIsOpen')
         .click()
+        .get('#Opened')
+        .parents(wrapper)
+        .find(container)
+        .should('not.exist')
     });
 
-    it('should add a custom css-class to a suggestion item', () => {
-      cy.get('button')
-        .contains('Toggle isOpen')
+    it('Should add a custom css-class to a suggestion item', () => {
+      cy.get('#toggleIsOpen')
         .click()
-        .name('Opened')
+        .get('#Opened')
         .type('n')
-        .parent()
-        .parent()
+        .parents(wrapper)
         .contains('Bangkok')
         .should('not.have.class', 'txt-bold')
-        .should('have.class', 'txt-success')
-        .get('button')
-        .contains('Toggle isOpen')
+        .and('have.class', 'txt-success')
+        .get('#toggleIsOpen')
         .click()
+        .get('#Opened')
+        .parents(wrapper)
+        .find(container)
+        .should('not.exist');
     });
 
-    it('customization on suggestion item should not exist', () => {
-      cy.get('button')
-        .contains('Toggle isOpen')
+    it('Customization on suggestion item should not exist', () => {
+      cy.get('#toggleIsOpen')
         .click()
-        .name('Opened')
+        .get('#Opened')
         .type('n')
-        .parent()
-        .parent()
+        .parents(wrapper)
         .contains('New-York')
         .should('not.have.class', 'txt-bold')
-        .should('not.have.class', 'txt-success')
-        .get('button')
-        .contains('Toggle isOpen')
+        .and('not.have.class', 'txt-success')
+        .get('#toggleIsOpen')
         .click()
+        .get('#Opened')
+        .parents(wrapper)
+        .find(container)
+        .should('not.exist');
     });
   });
 
 
   describe('FilterRule', () => {
-    it('smart', () => {
-      cy.name('DDSFilterRule')
+    it('Smart', () => {
+      cy.get('#DDSFilterRule')
         .clear()
         .type('don')
-        .parent()
-        .parent()
-        .find('.suggestion-item')
+        .parents(wrapper)
+        .find(item)
         .should('have.length', 1)
-        .should('have.text', 'London')
-        .name('DDSFilterRule')
+        .and('have.text', 'London')
+        .get('#DDSFilterRule')
         .clear()
         .type('don lon')
-        .parent()
-        .parent()
-        .find('.suggestion-item')
+        .parents(wrapper)
+        .find(item)
         .should('have.length', 1)
-        .should('have.text', 'London');
+        .and('have.text', 'London')
+        .get('#DDSFilterRule')
+        .clear();
     });
 
-    it('includes', () => {
+    it('Includes', () => {
       cy.get('button')
         .contains('Includes')
         .click()
-        .name('DDSFilterRule')
+        .get('#DDSFilterRule')
         .clear()
         .type('don')
-        .parent()
-        .parent()
-        .find('.suggestion-item')
+        .parents(wrapper)
+        .find(item)
         .should('have.length', 1)
-        .should('have.text', 'London')
-        .name('DDSFilterRule')
+        .and('have.text', 'London')
+        .get('#DDSFilterRule')
         .clear()
         .type('don lon')
-        .parent()
-        .parent()
-        .children('.suggestion-wrapper')
-        .children('.nodata')
+        .parents(wrapper)
+        .find(noSuggestions)
         .should('be.visible');
     });
 
-    it('startsWith', () => {
+    it('StartsWith', () => {
       cy.get('button')
         .contains('StartsWith')
         .click()
-        .name('DDSFilterRule')
+        .get('#DDSFilterRule')
         .clear()
         .type('lon')
-        .parent()
-        .parent()
-        .find('.suggestion-item')
+        .parents(wrapper)
+        .find(item)
         .should('have.length', 1)
-        .should('have.text', 'London')
-        .name('DDSFilterRule')
+        .and('have.text', 'London')
+        .get('#DDSFilterRule')
         .clear()
         .type('don')
-        .parent()
-        .parent()
-        .children('.suggestion-wrapper')
-        .children('.nodata')
+        .parents(wrapper)
+        .find(noSuggestions)
         .should('be.visible');
     });
   });
@@ -246,145 +244,140 @@ describe('DropDownSelect', () => {
         },
       });
     });
+
     it('onBlur', () => {
-      cy.name('DDSonBlur')
+      cy.get('#DDSonBlur')
         .clear()
         .type('London')
-        .type('{downarrow}')
-        .type('{enter}')
+        .type('{downarrow}{enter}')
         .blur()
         .then(() => {
           expect(stub).to.be.called;
           expect(lastConsole).to.have.property('type', 'blur');
-          expect(lastConsole.component).to.have.property('name', 'DDSonBlur');
           expect(lastConsole.component).to.have.property('value', 'London');
         });
     });
 
     it('onFocus', () => {
-      cy.name('Opened')
+      cy.get('#Opened')
         .focus()
         .then(() => {
           expect(stub).to.be.called;
           expect(lastConsole).to.have.property('type', 'focus');
-          expect(lastConsole.component).to.have.property('name', 'Opened');
           expect(lastConsole.component).to.have.property('value', null);
         });
     });
 
     it('Should not open on Window focus event', () => {
-      cy.name('DDSFocusCheck')
+      cy.get('#DDSFocusCheck')
         .focus()
         .type('{downarrow}', { force: true })
         .type('{enter}', { force: true })
         .windowBlur()
         .windowFocus()
-        .parent()
-        .parent()
-        .find('.suggestion-list')
-        .should('not.be.visible')
+        .parents(wrapper)
+        .find(list)
+        .should('not.exist')
     });
 
-    it('onFocus: should not open on focus event', () => {
-      cy.name('DDSFocusCheck')
+    it('OnFocus: should not open on focus event', () => {
+      cy.get('#DDSFocusCheck')
         .focus()
-        .parent()
-        .parent()
-        .children('.suggestion-wrapper.visible')
+        .parents(wrapper)
+        .find(container)
         .should('not.exist')
     })
 
-    it('onClick: should open on click event', () => {
-      cy.name('DDSFocusCheck')
+    it('OnClick: should open on click event', () => {
+      cy.get('#DDSFocusCheck')
         .click()
-        .parent()
-        .parent()
-        .children('.suggestion-wrapper.visible')
+        .parents(wrapper)
+        .find(container)
         .should('exist')
     })
 
     it('OnChange', () => {
-      cy.name('DDSCompareObjectsByObjects')
+      cy.get('#DDSCompareObjectsByObjects')
         .focus()
         .type('{downarrow}', { force: true })
         .type('{enter}', { force: true })
         .then(() => {
           expect(stub).to.be.called;
           expect(lastConsole).to.have.property('type', 'keydown');
-          expect(lastConsole.component).to.have.property('name', 'DDSCompareObjectsByObjects');
           expect(lastConsole.component.value).to.have.property('id', 0);
           expect(lastConsole.component.value).to.have.property('city', 'Moscow');
         });
     });
 
     it('onFilterChange', () => {
-      cy.name('DDSDisabled')
+      cy.get('#DDSDisabled')
         .focus()
-        .type('{downarrow}')
-        .type('{enter}')
+        .type('{downarrow}{enter}')
         .then(() => {
           expect(stub).to.be.called;
           expect(lastConsole).to.have.property('type', 'keydown');
-          expect(lastConsole.component).to.have.property('name', 'DDSDisabled');
           expect(lastConsole.component).to.have.property('value', 'Washington');
         });
     });
-
   });
 
   describe('Interaction', () => {
-    it('should clear input on clear button click', () => {
-      cy.get('[name=DDSBoundingContainerRef]')
+    it('Should clear input on clear button click', () => {
+      cy.get('#DDSBoundingContainerRef')
         .clear()
-        .type('Paris')
-        .type('{downarrow}')
-        .type('{enter}')
+        .type('Paris{downarrow}{enter}')
         .parent()
-        .children('.dropdownselect-clear-icon')
+        .children(clearIcon)
         .click()
-        .get('[name=DDSBoundingContainerRef]')
+        .get('#DDSBoundingContainerRef')
+        .should('have.value', '')
+        .get('#DDSBoundingContainerRef')
+        .clear()
+        .type('Paris{uparrow}{enter}')
+        .parent()
+        .children(clearIcon)
+        .click()
+        .get('#DDSBoundingContainerRef')
         .should('have.value', '');
     });
-  });
-  it('compareObjectsBy', () => {
-    cy.name('DDSCompareObjectsBy')
-      .click()
-      .parent()
-      .parent()
-      .children('.suggestion-wrapper.visible')
-      .contains('Moscow')
-      .click()
-      .name('DDSCompareObjectsBy')
-      .click()
-      .parent()
-      .parent()
-      .children('.suggestion-wrapper.visible')
-      .find('.suggestion-item.highlighted.selected')
-      .eq(0)
-      .should('contain', 'Moscow')
-      .parents('.suggestion-wrapper.visible')
-      .find('.suggestion-item.highlighted.selected')
-      .eq(1)
-      .should('contain', 'Minsk')
-  });
 
-  it('sortSuggestions', () => {
-    cy.name('DDSSortSuggestions')
-      .click()
-      .parent()
-      .parent()
-      .children('.suggestion-wrapper.pos-top.visible')
-      .find('.suggestion-item')
-      .eq(0)
-      .parents('.suggestion-wrapper.visible')
-      .find('.suggestion-item')
-      .eq(13)
-      .should('contain', 'Tallin')
+    it('CompareObjectsBy', () => {
+      cy.get('#DDSCompareObjectsBy')
+        .click()
+        .parents(wrapper)
+        .find(container)
+        .contains('Moscow')
+        .click()
+        .get('#DDSCompareObjectsBy')
+        .click()
+        .parents(wrapper)
+        .children('.suggestion-wrapper.visible')
+        .find('.suggestion-item.highlighted.selected')
+        .eq(0)
+        .should('contain', 'Moscow')
+        .parents('.suggestion-wrapper.visible')
+        .find('.suggestion-item.highlighted.selected')
+        .eq(1)
+        .should('contain', 'Minsk')
+    });
+
+    it('SortSuggestions', () => {
+      cy.get('#DDSSortSuggestions')
+        .click()
+        .parents(wrapper)
+        .children('.suggestion-wrapper.pos-top.visible')
+        .find(item)
+        .eq(0)
+        .parents('.suggestion-wrapper.visible')
+        .find(item)
+        .eq(13)
+        .should('contain', 'Tallin')
+    });
   });
 
   describe('DataTypes', () => {
-    xit('should render 0', () => {
-      cy.get('[name=DDSShouldAllowEmpty]')
+    it('Should render 0', () => {
+      cy.get('#DDSShouldAllowEmpty')
         .should('have.value', 0);
     });
   });
