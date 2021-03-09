@@ -252,7 +252,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DropDownSelect', 'Customization')}
+        onClick={linkTo('Form|DropDownSelect', 'Кастомизация')}
         target="_self"
       >
         itemRender
@@ -279,7 +279,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DropDownSelect', 'Расширяемость')}
+        onClick={linkTo('Form|DropDownSelect', 'Кастомизация')}
         target="_self"
       >
         noSuggestionsRender
@@ -539,7 +539,7 @@ DropDownSelectRefCurrent {
             <pre>
               {
                 `
-interface Item {
+{
   isScrollTarget: boolean,
   isPlaceholder: boolean,
   isHighlighted?: boolean,
@@ -561,7 +561,7 @@ interface Item {
             <pre>
               {
                 `
-interface Item {
+{
   isScrollTarget: boolean,
   isPlaceholder: boolean,
   isHighlighted?: boolean,
