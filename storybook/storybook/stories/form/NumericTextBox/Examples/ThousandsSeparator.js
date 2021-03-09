@@ -9,7 +9,7 @@ const ThousandsSeparator = () => {
 
   return (
     <L.NumericTextBox
-      thousandsSeparator = "||"
+      thousandsSeparator = "."
       placeholder="Gimme ur number!"
       _width-30
     />

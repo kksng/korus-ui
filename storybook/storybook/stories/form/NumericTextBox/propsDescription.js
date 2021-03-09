@@ -8,7 +8,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox', 'Расширяемость')}
+        onClick={linkTo('Form|NumericTextBox', 'Кастомизация')}
         target="_self"
       >
         arrowButtonsRender
@@ -43,7 +43,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox', 'Расширяемость')}
+        onClick={linkTo('Form|NumericTextBox', 'Кастомизация')}
         target="_self"
       >
         inputRender
@@ -289,7 +289,7 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox', 'Расширяемость')}
+        onClick={linkTo('Form|NumericTextBox', 'Кастомизация')}
         target="_self"
       >
         wrapperRender

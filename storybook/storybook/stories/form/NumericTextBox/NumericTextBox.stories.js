@@ -15,7 +15,7 @@ import { ApiStory } from '../../../components/ApiStory';
 
 storiesOf('Form|NumericTextBox', module)
   .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
-  .add('Расширяемость', context => (<Story {...Customization} customProps={propsDesc} context={context} />))
+  .add('Кастомизация', context => (<Story {...Customization} customProps={propsDesc} context={context} />))
   .add('Ограничение диапазона', context => (<Story {...Limits} customProps={propsDesc} context={context} />));
 
 storiesOf('Form|NumericTextBox.Props', module)
