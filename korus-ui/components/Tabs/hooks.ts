@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { debounce } from 'lodash';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { useElement, useElementRef } from '../../utils';
 import { Div } from '../Div';
@@ -56,19 +57,17 @@ export const useTabsScroll = ({ shouldScrollTabs, theme }: TabsScrollProps): Tab
   const tabsContainer = Element?.querySelector(`.${theme.tabsBar}`);
   const tabs = Element?.querySelectorAll(`.${theme.tab}`);
   const elementRect = Element?.getBoundingClientRect();
+  const tabsContainerScrollWidth = tabsContainer?.scrollWidth;
 
   const setScrollControls = () => {
-    if (shouldScrollTabs && Element && elementRect && tabsContainer) {
-      // tabsContainer should be inline-flex, so that scrollWidth is computed correctly
-      // must be set in inline styles, since in some cases it is computed as a block element
-      (tabsContainer as HTMLElement).style.display = 'inline-flex';
+    if (shouldScrollTabs && Element && elementRect && tabsContainer && tabsContainerScrollWidth) {
       const tabsContainerRect = tabsContainer.getBoundingClientRect();
 
-      if (tabsContainer.scrollWidth > elementRect.width) {
+      if (tabsContainerScrollWidth > elementRect.width) {
         setHasScroll(true);
 
         setHasLeftArrow(tabsContainerRect.left < elementRect.left);
-        setHasRightArrow(Math.round(tabsContainer.scrollWidth + tabsContainerRect.left) > elementRect.right);
+        setHasRightArrow(Math.round(tabsContainerScrollWidth + tabsContainerRect.left) > elementRect.right);
       }
     }
   };
@@ -105,13 +104,15 @@ export const useTabsScroll = ({ shouldScrollTabs, theme }: TabsScrollProps): Tab
     });
   };
 
-  React.useEffect(setScrollControls, [Element]);
+  React.useEffect(setScrollControls, [tabsContainerScrollWidth]);
+
+  const debounceSetScrollControls = debounce(setScrollControls, 100);
 
   React.useEffect(() => {
-    Element?.addEventListener('scroll', setScrollControls);
+    Element?.addEventListener('scroll', debounceSetScrollControls);
 
     return () => {
-      Element?.removeEventListener('scroll', setScrollControls);
+      Element?.removeEventListener('scroll', debounceSetScrollControls);
     };
   });
 
