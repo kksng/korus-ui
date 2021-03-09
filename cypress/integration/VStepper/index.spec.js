@@ -1,3 +1,16 @@
+import { defaultVStepperTheme as theme } from '../../../korus-ui/components/VStepper/theme';
+
+const itemTitle = `.${theme.itemTitle}`;
+const itemIcon = `.${theme.itemIcon}`;
+const itemWrapper = `.${theme.itemWrapper}`;
+const itemContent = `.${theme.itemContent}`;
+const itemWrapperDisabled = `${theme.itemWrapperDisabled}`;
+const statusDanger = `${theme.statusDanger}`;
+const statusProgress = `${theme.statusProgress}`;
+const statusSuccess = `${theme.statusSuccess}`;
+const statusWarning = `${theme.statusWarning}`;
+const itemActive = `${theme.itemActive}`;
+
 describe('VStepper tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:9000/cypress/vstepper');
@@ -5,58 +18,58 @@ describe('VStepper tests', () => {
 
   describe('Display', () => {
     it('Titles should render', () => {
-      cy.get('.v-stepper-title')
+      cy.get(itemTitle)
         .first()
-        .should('have.text', 'Добавление расходов')
-        .get('.v-stepper-title')
+        .should('have.text', 'Adding expenses')
+        .get(itemTitle)
         .eq(1)
-        .should('have.text', 'Персональные данные')
-        .get('.v-stepper-title')
+        .should('have.text', 'Personal data')
+        .get(itemTitle)
         .eq(2)
-        .should('have.text', 'Подтверждение командировки')
-        .get('.v-stepper-title')
+        .should('have.text', 'Confirmation of business trip')
+        .get(itemTitle)
         .eq(3)
-        .should('have.text', 'Печать закрывающих документов')
-        .get('.v-stepper-title')
+        .should('have.text', 'Print of closing documents')
+        .get(itemTitle)
         .eq(4)
-        .should('have.text', 'Дополнительная информация');
+        .should('have.text', 'Additional information');
     });
 
     it('Current step should highlight', () => {
       cy.get('.v-stepper-wrapper .v-stepper-step')
         .eq(2)
-        .should('have.class', 'progress');
+        .should('have.class', statusProgress);
     });
 
     it('Should have icons and number symbols', () => {
-      cy.get('.v-stepper-icon')
+      cy.get(itemIcon)
         .first()
-        .should('have.attr', 'type', 'success')
+        .should('have.attr', 'type', statusSuccess)
         .and('have.class', 'sign-check')
-        .get('.v-stepper-icon')
+        .get(itemIcon)
         .eq(1)
-        .should('have.attr', 'type', 'success')
-        .get('.v-stepper-icon')
+        .should('have.attr', 'type', statusSuccess)
+        .get(itemIcon)
         .eq(2)
-        .should('have.attr', 'type', 'progress')
-        .get('.v-stepper-icon')
+        .should('have.attr', 'type', statusProgress)
+        .get(itemIcon)
         .eq(3)
         .should('have.class', 'sign-stop')
-        .and('have.attr', 'type', 'danger')
-        .get('.v-stepper-icon')
+        .and('have.attr', 'type', statusDanger)
+        .get(itemIcon)
         .eq(4)
         .should('not.have.attr', 'type')
-        .and('not.have.class', 'sign-check')
-        .and('not.have.class', 'sign-stop')
-        .get('.v-stepper-icon')
+        .and('have.not.class', 'sign-check')
+        .and('have.not.class', 'sign-stop')
+        .get(itemIcon)
         .eq(5)
-        .should('have.attr', 'type', 'warning');
+        .should('have.attr', 'type', statusWarning);
     });
 
     it('Should display footer content', () => {
       cy.get('.v-stepper-content-wrapper')
         .first()
-        .get('.v-stepper-content')
+        .get(itemContent)
         .next()
         .should('have.class', 'v-stepper-ending')
         .name('btnNext')
@@ -67,54 +80,54 @@ describe('VStepper tests', () => {
       cy.get('.v-stepper-content-wrapper')
         .eq(1)
         .get('.v-stepper-line')
-        .should('have.class', 'progress');
+        .should('have.class', statusProgress);
     });
 
     it('Should be open when isOpen', () => {
       cy.contains('isOpen')
-        .parents('.v-stepper-step')
-        .should('have.class', 'active');
+        .parents(itemWrapper)
+        .should('have.class', itemActive);
     });
 
     it('Should be disabled when isDisabled', () => {
       cy.contains('isDisable')
-        .parents('.v-stepper-step')
-        .should('have.class', 'disabled');
+        .parents(itemWrapper)
+        .should('have.class', itemWrapperDisabled);
     });
   });
 
   describe('Interaction', () => {
     it('All steps must be available to open/close', () => {
-      cy.contains('Добавление расходов')
-        .parents('.v-stepper-step')
-        .should('have.class', 'success')
-        .find('.v-stepper-icon')
-        .should('have.attr', 'type', 'success');
+      cy.contains('Adding expenses')
+        .parents(itemWrapper)
+        .should('have.class', statusSuccess)
+        .find(itemIcon)
+        .should('have.attr', 'type', statusSuccess);
 
-      cy.contains('Персональные данные')
-        .parents('.v-stepper-step')
-        .should('have.class', 'success')
-        .find('.v-stepper-icon')
-        .should('have.attr', 'type', 'success');
+      cy.contains('Personal data')
+        .parents(itemWrapper)
+        .should('have.class', statusSuccess)
+        .find(itemIcon)
+        .should('have.attr', 'type', statusSuccess);
 
-      cy.contains('Подтверждение командировки')
-        .parents('.v-stepper-step')
-        .should('have.class', 'progress')
-        .find('.v-stepper-icon')
-        .should('have.attr', 'type', 'progress');
+      cy.contains('Confirmation of business trip')
+        .parents(itemWrapper)
+        .should('have.class', statusProgress)
+        .find(itemIcon)
+        .should('have.attr', 'type', statusProgress);
 
-      cy.contains('Печать закрывающих документов')
-        .parents('.v-stepper-step')
-        .should('have.class', 'danger')
-        .find('.v-stepper-icon')
-        .should('have.attr', 'type', 'danger');
+      cy.contains('Print of closing documents')
+        .parents(itemWrapper)
+        .should('have.class', statusDanger)
+        .find(itemIcon)
+        .should('have.attr', 'type', statusDanger);
 
-      cy.get('.v-stepper-title').each((openStep) => {
+      cy.get(itemTitle).each((openStep) => {
         cy.wrap(openStep)
           .click()
-          .get('.v-stepper-step')
-          .should('have.class', 'active')
-          .find('.v-stepper-content')
+          .get(itemWrapper)
+          .should('have.class', itemActive)
+          .find(itemContent)
           .should('be.visible');
       });
     });
@@ -129,59 +142,59 @@ describe('VStepper tests', () => {
         });
     });
     it('Dynamic steps', () => {
-      cy.contains('Статус оплаты')
+      cy.contains('Payment status')
         .click()
-        .parents('.v-stepper-step')
-        .should('have.class', 'active')
+        .parents(itemWrapper)
+        .should('have.class', itemActive)
         .find('.v-stepper-status')
-        .should('contain', 'Не оплачен')
-        .parents('.v-stepper-step')
-        .find('.v-stepper-content')
+        .should('contain', 'Not paid for')
+        .parents(itemWrapper)
+        .find(itemContent)
         .should('be.visible')
         .find('button')
-        .contains('Далее')
+        .contains('Further')
         .click();
 
-      cy.contains('Статус оплаты')
-        .parents('.v-stepper-step')
-        .should('not.have.class', 'active')
-        .find('.v-stepper-icon')
-        .should('have.attr', 'type', 'progress')
-        .parents('.v-stepper-step')
-        .find('.v-stepper-content')
+      cy.contains('Payment status')
+        .parents(itemWrapper)
+        .should('have.not.class', itemActive)
+        .find(itemIcon)
+        .should('have.attr', 'type', statusProgress)
+        .parents(itemWrapper)
+        .find(itemContent)
         .should('not.be.visible');
 
-      cy.contains('Анкета')
-        .parents('.v-stepper-step')
-        .should('have.class', 'active')
+      cy.contains('Questionnaire')
+        .parents(itemWrapper)
+        .should('have.class', itemActive)
         .find('.v-stepper-status')
-        .should('contain', 'Не заполнена')
-        .parents('.v-stepper-step')
-        .find('.v-stepper-content')
+        .should('contain', 'Not filled in')
+        .parents(itemWrapper)
+        .find(itemContent)
         .should('be.visible')
         .find('button')
-        .contains('Далее')
+        .contains('Further')
         .click();
 
-      cy.contains('Анкета')
-        .parents('.v-stepper-step')
-        .should('not.have.class', 'active')
-        .find('.v-stepper-icon')
-        .should('have.attr', 'type', 'progress')
-        .parents('.v-stepper-step')
-        .find('.v-stepper-content')
+      cy.contains('Questionnaire')
+        .parents(itemWrapper)
+        .should('have.not.class', itemActive)
+        .find(itemIcon)
+        .should('have.attr', 'type', statusProgress)
+        .parents(itemWrapper)
+        .find(itemContent)
         .should('not.be.visible');
 
-      cy.contains('Результат')
-        .parents('.v-stepper-step')
-        .should('have.class', 'active')
+      cy.contains('Result')
+        .parents(itemWrapper)
+        .should('have.class', itemActive)
         .find('.v-stepper-status')
-        .should('contain', 'Не получен')
-        .parents('.v-stepper-step')
-        .find('.v-stepper-content')
+        .should('contain', 'Not received')
+        .parents(itemWrapper)
+        .find(itemContent)
         .should('be.visible')
         .find('button')
-        .contains('Далее')
+        .contains('Further')
         .click();
     });
   });
