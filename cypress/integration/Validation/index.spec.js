@@ -14,7 +14,7 @@ describe('Validation', () => {
   });
 
   describe('Display', () => {
-    it('should add class danger if input is invalid', () => {
+    it('Should add class danger if input is invalid', () => {
       cy.name('Toggle')
         .click()
         .name('InputCV')
@@ -29,7 +29,7 @@ describe('Validation', () => {
         .name('Toggle')
         .click();
     });
-    it('should display invalidMessage', () => {
+    it('Should display invalidMessage', () => {
       cy.name('Toggle')
         .click()
         .get('.invalid-message-item')
@@ -44,7 +44,7 @@ describe('Validation', () => {
   });
 
   describe('Interaction', () => {
-    it('submit should fail if input field is set as invalid', () => {
+    it('Submit should fail if input field is set as invalid', () => {
       cy.name('Toggle')
         .click()
         .name('SubmitCV')
@@ -68,7 +68,7 @@ describe('Validation', () => {
         .isAtTop()
     });
 
-    it('should validate onBlur', () => {
+    it('Should validate onBlur', () => {
       cy.get('#validationRequiredBlur')
         .find('input')
         .each((validationOnBlur) => {
@@ -92,7 +92,7 @@ describe('Validation', () => {
         .should('contain', 'required');
     });
 
-    it('should validate onClick', () => {
+    it('Should validate onClick', () => {
       cy.get('#validationRequiredBlur')
         .find('button')
         .click()
@@ -115,7 +115,7 @@ describe('Validation', () => {
         .should('contain', 'required');
     });
 
-    it('numericRange validation', () => {
+    it('NumericRange validation', () => {
       cy.get('#numericRange')
         .find('input')
         .each((numericRangeVal) => {
@@ -132,8 +132,8 @@ describe('Validation', () => {
         });
     });
 
-    describe('using of types of validators', () => {
-      it('e-mail validator', () => {
+    describe('Using of types of validators', () => {
+      it('E-mail validator', () => {
         cy.get('#propsValidator')
           .name('email')
           .type('1')
@@ -193,7 +193,7 @@ describe('Validation', () => {
           .clear();
       });
 
-      it('function validator', () => {
+      it('Function validator', () => {
         cy.get('#propsValidator')
           .name('function')
           .type('1')
@@ -220,7 +220,7 @@ describe('Validation', () => {
           .should('not.have.class', 'danger');
       });
 
-      it('array of validators', () => {
+      it('Array of validators', () => {
         cy.get('#propsValidator')
           .name('array-field')
           .focus()
@@ -242,7 +242,7 @@ describe('Validation', () => {
           .and('contain', 'Минимум 10 символов!');
       });
 
-      it('submit onClick', () => {
+      it('Submit onClick', () => {
         cy.get('#propsValidator')
           .name('submitButton')
           .click()
@@ -272,8 +272,8 @@ describe('Validation', () => {
       });
     });
 
-    describe('using of predefined validators', () => {
-      it('validation of different values', () => {
+    describe('Using of predefined validators', () => {
+      it('Validation of different values', () => {
         cy.get('#predefinedValidators')
           .find('input')
           .each((preVal) => {
