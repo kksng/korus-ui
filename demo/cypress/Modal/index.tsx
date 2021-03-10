@@ -5,22 +5,24 @@ import * as L from '../../../korus-ui';
 const Alerts = ({ setActiveAlertKey }: any) => (
   <>
     <L.ModalAlert
+      id="leave"
       alertKey="leave"
       onClose={() => setActiveAlertKey(null)}
     >
       <L.H2>Title!</L.H2>
       <L.P>Lorem sit amet!</L.P>
       <L.Div>
-        <L.Button onClick={() => setActiveAlertKey(null)}>
+        <L.Button id="cancelButton" onClick={() => setActiveAlertKey(null)}>
           Cancel
         </L.Button>
         &nbsp;&nbsp;&nbsp;
-        <L.Button _warning onClick={() => setActiveAlertKey(null)}>
+        <L.Button id="okButton" _warning onClick={() => setActiveAlertKey(null)}>
           Ok
         </L.Button>
       </L.Div>
     </L.ModalAlert>
     <L.ModalAlert
+      id="simple"
       alertKey="simple"
       onClose={() => setActiveAlertKey(null)}
     >
@@ -58,8 +60,8 @@ export const Modal = () => {
           </L.Button>
         </L.ModalBody>
         <L.ModalFooter>
-          <L.Button onClick={() => setOpen(false)}>Cancel</L.Button>
-          <L.Button _warning form="modal-form" onClick={() => setOpen(false)} onValidationFail={() => alert('Заполните все поля, пожалуйста!')}>Submit</L.Button>
+          <L.Button id="cancel" onClick={() => setOpen(false)}>Cancel</L.Button>
+          <L.Button id="submit" _warning form="modal-form" onClick={() => setOpen(false)} onValidationFail={() => alert('Заполните все поля, пожалуйста!')}>Submit</L.Button>
         </L.ModalFooter>
         <Alerts setActiveAlertKey={setActiveAlertKey} />
       </L.Modal>
