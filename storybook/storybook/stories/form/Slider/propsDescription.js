@@ -12,16 +12,16 @@ export const propsDesc = [
     description: 'Значение по умолчанию.',
   },
   {
-    name: 'isDisabled',
-    type: 'boolean',
-    required: false,
-    description: 'Отключить Slider.',
-  },
-  {
     name: 'hasTooltip',
     type: 'boolean',
     required: false,
     description: 'Показывать тултипы над ползунками.',
+  },
+  {
+    name: 'isDisabled',
+    type: 'boolean',
+    required: false,
+    description: 'Отключить Slider.',
   },
   {
     name: 'labelType',
