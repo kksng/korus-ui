@@ -30,6 +30,7 @@ export const COMPONENTS_NAMESPACES = {
   collapseBody: 'collapseBody',
   collapseHeading: 'collapseHeading',
   collapsePanel: 'collapsePanel',
+  countDown: 'countDown',
   currency: 'currency',
   dateTimeInput: 'dateTimeInput',
   dateTimeInputRange: 'dateTimeInputRange',
