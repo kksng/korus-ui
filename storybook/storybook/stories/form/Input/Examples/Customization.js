@@ -38,6 +38,7 @@ const Customization = () => {
     <L.Input
       inputRender={inputRender}
       wrapperRender={wrapperRender}
+      _width-30
     />
   );
 };
