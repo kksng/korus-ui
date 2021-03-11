@@ -5,7 +5,7 @@ import * as L from '../../../korus-ui';
 export const CountDown = () => {
   const [time, setTime] = React.useState(45000);
   const [restart, setRestart] = React.useState(0);
-  const [interval, setInterval] = React.useState(1000);
+  const [delay, setDelay] = React.useState<number | null>(1000);
 
   const handleRestart = (time?: number) => {
     if (isNumber(time)) setTime(time);
@@ -29,7 +29,7 @@ export const CountDown = () => {
           id="countDown"
           key={restart}
           time={time}
-          interval={interval}
+          interval={delay}
           text="Send the code again"
           onTick={() => console.log('Tick!')}
           onStart={() => console.log('onStart!')}
@@ -37,8 +37,8 @@ export const CountDown = () => {
           onComplete={() => console.log('Completed!')}
         />
         <br />
-        <L.Button onClick={() => setInterval(null)}>Pause</L.Button>
-        <L.Button onClick={() => setInterval(1000)}>Resume</L.Button>
+        <L.Button onClick={() => setDelay(null)}>Pause</L.Button>
+        <L.Button onClick={() => setDelay(1000)}>Resume</L.Button>
         <L.Button onClick={() => handleRestart()}>Restart</L.Button>
         <br />
         <br />

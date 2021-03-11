@@ -6,7 +6,7 @@ import { StoryProps } from '../../types';
 export const BasicUsage = (storyProps: StoryProps) => {
   const [time, setTime] = React.useState(45000);
   const [restart, setRestart] = React.useState(0);
-  const [interval, setInterval] = React.useState(1000);
+  const [delay, setDelay] = React.useState<number | null>(1000);
 
   const handleRestart = (time?: number) => {
     if (isNumber(time)) setTime(time);
@@ -29,7 +29,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <L.CountDown 
           key={restart}
           time={time}
-          interval={interval}
+          interval={delay}
           text="Send the code again"
           onTick={() => console.log('Tick!')}
           onStart={() => console.log('onStart!')}
@@ -37,15 +37,15 @@ export const BasicUsage = (storyProps: StoryProps) => {
           onComplete={() => console.log('Completed!')}
         />
         <br />
-        <L.Button onClick={() => setInterval(null)}>Pause</L.Button>
-        <L.Button onClick={() => setInterval(1000)}>Resume</L.Button>
+        <L.Button onClick={() => setDelay(null)}>Pause</L.Button>
+        <L.Button onClick={() => setDelay(1000)}>Resume</L.Button>
         <L.Button onClick={() => handleRestart()}>Restart</L.Button>
         <br />
         <br />
         <L.ButtonGroup
           data={timers}
           defaultValue={timers[0]}
-          onChange={(event) => handleRestart(event.component.value.time)}
+          onChange={(event) => handleRestart(event.component.value?.time)}
           textField="text"
           _primary
         />
