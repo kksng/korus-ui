@@ -6,19 +6,24 @@ import { componentSrc } from './index';
 export const Customization = {
   liveDemo: `
 const Customization = () => {
-  const [value, setValue] = React.useState('');
-
-  const handleChange = ev => setValue(ev.component.value);
-
-  const groupWrapperRender = () => <ul />;  
-  const buttonWrapperRender = () => <li />;  
+  const [value, setValue] = React.useState(false);
+  
+  const handleChange = ({ component: { name, value } }) => {
+    console.log(name, value);
+    setValue(value);
+  };
+ 
   
   return (
-    <L.RadioGroup value={value} onChange={handleChange} wrapperRender={groupWrapperRender}>
-      <L.RadioButton value="radio-1" wrapperRender={buttonWrapperRender}>One</L.RadioButton>
-      <L.RadioButton value="radio-2">Two</L.RadioButton>
-      <L.RadioButton value="radio-3">Three</L.RadioButton>
-    </L.RadioGroup>
+    <L.CheckBox
+      name="myCheckBox"
+      value={value}
+      onChange={handleChange}
+      inputRender={({ elementProps }) => <L.Div {...elementProps} style={{ border: 'solid yellow' }}/>}
+      // wrapperRender={({ elementProps }) => <L.Div {...elementProps} style={{ border: 'solid red' }}/>}
+      >
+      <L.Span _txt-success>good</L.Span>
+    </L.CheckBox>
   );
 };
 
