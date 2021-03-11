@@ -1,14 +1,11 @@
 import { globalDefaultTheme } from '../../../korus-ui/components/LedaProvider';
 
 const theme = globalDefaultTheme.dropZone;
-
 const wrapperClassName = `.${theme.wrapper}`;
-
 const contentClassName = `.${theme.content}`;
-
 const fileDeleteIconClassName = `.${theme.fileDeleteIcon}`;
-
 const rejectedFilesWrapperClassNames = theme.rejectedFilesWrapper
+
   .split(' ')
   .map((className) => `.${className}`)
   .join('');
@@ -37,18 +34,29 @@ describe('DropZone', () => {
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('example.json')
+        .contains('txtFile.txt')
+        .should('exist')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click({force: true})
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('txtFile.txt');
+        .contains('example.json')
+        .should('exist')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click({force: true});
     });
 
     it('Should download attached files', () => {
-      cy.get(rejectedFilesWrapperClassNames)
+      cy.get(contentClassName)
+        .first()
+        .attachFile('testTxtFile.txt', { subjectType: 'drag-n-drop' })
+        .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('txtFile.txt')
+      cy.contains('testTxtFile.txt')
         .then((anchor) => (
           new Cypress.Promise((resolve) => {
             fetch(anchor.prop('href'))
@@ -57,50 +65,73 @@ describe('DropZone', () => {
               .then((text) => resolve(text));
           })
         ))
-        .should('equal', 'Lorem ipsum dolor sit amet.\n');
-    });
-
-    it('Should remove attached files', () => {
-      cy.get(fileDeleteIconClassName)
+        .should('contain', 'Lorem ipsum dolor sit amet.')
+        .get(contentClassName)
         .first()
-        .click()
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('txtFile.txt')
+        .contains('testTxtFile.txt')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click({force: true});
+    });
+
+    it('Should remove attached files', () => {
+      cy.get(contentClassName)
+        .first()
+        .attachFile('fileWithTooLongName.json', { subjectType: 'drag-n-drop' })
+        .attachFile('test.png', { subjectType: 'drag-n-drop' })
+        .get(rejectedFilesWrapperClassNames)
+        .first()
+        .next()
+        .contains('test.png')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click({force: true})
+        .get('test.png')
         .should('not.exist')
         .get(rejectedFilesWrapperClassNames)
         .first()
         .next()
-        .contains('example.json')
-        .get(fileDeleteIconClassName)
-        .first()
-        .click()
-        .get(rejectedFilesWrapperClassNames)
-        .first()
-        .next()
-        .contains('example.json')
+        .contains('fileWithTooLongName.json')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click({force: true})
+        .get('fileWithTooLongName.json')
         .should('not.exist');
     });
+
     it('Should not remove attached files if is disabled', () => {
-      cy.name('disable')
+      cy.get('#disable')
         .click()
+        .get('#controlledDZ')
+        .next()
+        .should('have.class', `${theme.disabled}`)
+        .parent()
+        .should('have.class', `${theme.disabled}`)
+        .parent()
+        .should('have.class', `${theme.disabled}`)
         .get(fileDeleteIconClassName)
-        .first()
+        .eq(0)
         .click({force: true})
         .get(rejectedFilesWrapperClassNames)
         .eq(2)
         .next()
         .contains('external file')
-        .name('disable')
+        .should('exist')
+        .get('#disable')
         .click()
+        .get('.controlledDZ')
+        .should('not.have.class', `${theme.disabled}`)
+        .children()
+        .should('not.have.class', `${theme.disabled}`)
     });
   });
 
   describe('Validation', () => {
     it('Should be invalid when isRequired and files are`t attached', () => {
-      cy.get('button')
-        .contains('Submit')
+      cy.get('#submit')
         .click()
         .get(wrapperClassName)
         .eq(1)
@@ -115,8 +146,7 @@ describe('DropZone', () => {
       cy.get(contentClassName)
         .eq(1)
         .attachFile('txtFile.txt', { subjectType: 'drag-n-drop' })
-        .get('button')
-        .contains('Submit')
+        .get('#submit')
         .click()
         .get(wrapperClassName)
         .eq(1)
@@ -126,11 +156,14 @@ describe('DropZone', () => {
         .next()
         .contains('Files are required!')
         .should('not.exist');
+      cy.contains('txtFile.txt')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click();
     });
 
     it('Should be invalid when isRequired and prop value is null', () => {
-      cy.get('button')
-        .contains('Submit null value')
+      cy.get('#nullValue')
         .click()
         .get(wrapperClassName)
         .eq(3)
@@ -149,19 +182,20 @@ describe('DropZone', () => {
           .eq(2)
           .next()
           .contains('external file')
+          .parent()
+          .find(fileDeleteIconClassName)
+          .click({force: true})
           .get(contentClassName)
           .eq(2)
-          .attachFile('example.json', { subjectType: 'drag-n-drop' })
+          .attachFile('bigFile.jpeg', { subjectType: 'drag-n-drop' })
           .get(rejectedFilesWrapperClassNames)
           .eq(2)
           .next()
-          .contains('example.json')
-          .get(fileDeleteIconClassName)
-          .last()
-          .click()
-          .get(fileDeleteIconClassName)
-          .last()
-          .click()
+        cy.contains('bigFile.jpeg')
+          .should('exist')
+          .parent()
+          .find(fileDeleteIconClassName)
+          .click({force: true})
           .get(rejectedFilesWrapperClassNames)
           .eq(2)
           .next('ul')
@@ -172,8 +206,7 @@ describe('DropZone', () => {
         cy.get(contentClassName)
           .eq(2)
           .attachFile('example.json', { subjectType: 'drag-n-drop' })
-          .get('button')
-          .contains('Set state as null')
+          .get('#stateAsNull')
           .click()
           .get(rejectedFilesWrapperClassNames)
           .eq(2)
@@ -182,33 +215,45 @@ describe('DropZone', () => {
       });
     });
   });
+
   describe('Loader', () => {
     it('Should display default loader', () => {
-      cy.name('loader')
+      cy.get('#loader')
         .click()
         .get('.controlledDZ')
         .find('.loader-wrapper')
         .should('exist')
-        .name('loader')
+        .get('#loader')
         .click()
+        .get('.controlledDZ')
+        .find('.loader-wrapper')
+        .should('not.exist');
     });
+
     it('Should display progress loader', () => {
-      cy.name('progressLoader')
+      cy.get('#progressLoader')
         .click()
         .get('.controlledDZ')
         .find('.progress-loader')
         .should('exist')
-        .name('progressLoader')
+        .get('#progressLoader')
         .click()
+        .get('.controlledDZ')
+        .find('.progress-loader')
+        .should('not.exist');
     });
+    
     it('Should display custom loader', () => {
-      cy.name('customLoader')
+      cy.get('#customLoader')
         .click()
         .get('.controlledDZ')
         .find('.txt-success')
         .should('have.text', 'Custom loader...')
-        .name('customLoader')
+        .get('#customLoader')
         .click()
+        .get('.controlledDZ')
+        .find('.txt-success')
+        .should('not.exist');
     });
   });
 });
