@@ -9,6 +9,7 @@ const MaxLength = () => {
     <L.Input
       maxLength={5}
       placeholder="Только 5 символов"
+      _width-30
     />
   );
 };

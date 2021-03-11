@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Tabs: Fixed scroll
 
+
 ## [0.41.0] - 2021-02-25
 
 ### Added
@@ -20,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - DatePicker: Fixed date selection from previous month
+
 
 ## [0.40.0] - 2021-02-09
 

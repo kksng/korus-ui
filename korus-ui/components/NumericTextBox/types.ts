@@ -127,7 +127,7 @@ export interface NumericTextBoxProps extends ValidationProps {
   step?: number,
   /** Тема компонента */
   theme?: PartialGlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.numericTextBox],
-  /** Разделитьель разрядов - по-умолчанию пробел */
+  /** Разделитель разрядов - по умолчанию пробел */
   thousandsSeparator?: string,
   /** Значение компонента */
   value?: number | null,
