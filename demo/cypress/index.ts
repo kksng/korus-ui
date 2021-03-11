@@ -4,6 +4,7 @@ export { ButtonGroup } from './ButtonGroup';
 export { CheckBox } from './CheckBox';
 export { Currency } from './Currency';
 export { Collapse } from './Collapse';
+export { CountDown } from './CountDown';
 export { DatePicker } from './DatePicker';
 export { DateRange } from './DateRange';
 export { DropDown } from './DropDown';
