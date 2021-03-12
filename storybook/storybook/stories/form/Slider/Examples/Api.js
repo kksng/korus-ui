@@ -3,7 +3,7 @@ import { componentSrc } from './index';
 export const Api = {
   liveDemo: `
 const Api = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(100);
   
   const handleChange = (ev) => {
     console.log('Slider onChange', ev);
@@ -20,7 +20,6 @@ const Api = () => {
       max={200}
       value={value}
       onChange={handleChange}
-      _width50
       labelType="current"
       unitsRender={() => 'млн.руб.'}
       name="Slider 1"
