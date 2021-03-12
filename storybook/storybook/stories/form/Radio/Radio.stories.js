@@ -20,5 +20,5 @@ const radioProps = [
 storiesOf('Form|Radio', module)
   .add('API', context => (<ApiStory {...Api} compoundCustomProps={radioProps} context={context} />))
   .add('Базовый пример', context => (<Story {...BasicUsage} compoundCustomProps={radioProps} context={context} />))
-  .add('Расширяемость', context => (<Story {...Customization} compoundCustomProps={radioProps} context={context} />))
+  .add('Кастомизация', context => (<Story {...Customization} compoundCustomProps={radioProps} context={context} />))
   .add('Состояния', context => (<Story {...States} compoundCustomProps={radioProps} context={context} />));

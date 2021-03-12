@@ -19,4 +19,4 @@ storiesOf('Form|ButtonGroup', module)
   .add('API', context => (<ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />))
   .add('Режимы работы', context => (<Story {...WorkTypes} customProps={propsDesc} context={context} />))
   .add('Типы данных', context => (<Story {...DataTypes} customProps={propsDesc} context={context} />))
-  .add('Расширяемость', context => (<Story {...CustomRender} customProps={propsDesc} context={context} />));
+  .add('Кастомизация', context => (<Story {...CustomRender} customProps={propsDesc} context={context} />));

@@ -12,4 +12,4 @@ import { ApiStory } from '../../../components/ApiStory';
 storiesOf('Layout|VStepper', module)
   .add('API', (context) => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
   .add('Динамические шаги', (context) => (<Story {...DynamicSteps} customProps={propsDesc} context={context} />))
-  .add('Расширяемость', (context) => (<Story {...Customization} customProps={propsDesc} context={context} />));
+  .add('Кастомизация', (context) => (<Story {...Customization} customProps={propsDesc} context={context} />));
