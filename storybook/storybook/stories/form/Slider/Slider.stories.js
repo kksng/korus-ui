@@ -14,6 +14,6 @@ import { ApiStory } from '../../../components/ApiStory';
 
 storiesOf('Form|Slider', module)
   .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
-  .add('Мультислайдер', context => (<Story {...MultipleHandles} customProps={propsDesc} context={context} />))
+  .add('Слайдер с диапазоном значений', context => (<Story {...MultipleHandles} customProps={propsDesc} context={context} />))
   .add('Ограничения выбора значений', context => (<Story {...Limits} customProps={propsDesc} context={context} />))
   .add('Кастомизация', context => (<Story {...Customization} customProps={propsDesc} context={context} />));
