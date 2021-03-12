@@ -29,6 +29,7 @@ import { ButtonGroup } from './components/ButtonGroup';
 import { CheckBox } from './components/CheckBox';
 import { Collapse } from './components/Collapse';
 import { Collapsible } from './components/Collapsible';
+import { CountDown } from './components/CountDown';
 import {
   Currency, RUB, EUR, USD,
 } from './components/Currency';
@@ -207,6 +208,7 @@ export {
   CheckBox,
   Collapse,
   Collapsible,
+  CountDown,
   Currency,
   RUB,
   EUR,

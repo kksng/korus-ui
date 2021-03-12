@@ -15,7 +15,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox|Props', 'format')}
+        onClick={linkTo('Form|NumericRange|Props', 'format')}
         target="_self"
       >
         format
@@ -27,7 +27,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox', 'Customization')}
+        onClick={linkTo('Form|NumericRange', 'Кастомизация')}
         target="_self"
       >
         inputsRender
@@ -47,13 +47,25 @@ export const propsDesc = [
     description: 'Выключенное состояние компонента (для всего компонента | для каждого поля в отдельности)',
   },
   {
-    name: 'max',
+    name: (
+    <L.A
+        onClick={linkTo('Form|NumericRange', 'Ограничение диапазона')}
+        target="_self"
+      >
+        max
+      </L.A>),
     type: 'number',
     required: false,
     description: 'Максимальное значение диапазона',
   },
   {
-    name: 'min',
+    name: (
+      <L.A
+        onClick={linkTo('Form|NumericRange', 'Ограничение диапазона')}
+        target="_self"
+      >
+        min
+      </L.A>),
     type: 'number',
     required: false,
     description: 'Минимальное значение диапазона',
@@ -129,6 +141,34 @@ interface RangeChangeEvent {
     description: 'Обработчик изменения значения',
   },
   {
+    name: 'onEnterPress',
+    type: (
+      <L.Span>(event:
+        {' '}
+        <L.Tooltip
+          position="bottom"
+          title={(
+            <pre>
+              {`
+interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
+  component: {
+    name?: string,
+    value: number | null,
+  },
+}            
+              `}
+            </pre>
+          )}
+        >
+          <L.Span _txt-success>L.NumericRangeTypes.EnterPressEvent</L.Span>
+        </L.Tooltip>
+        ) => void
+      </L.Span>
+    ),
+    required: false,
+    description: 'Функция обратного вызова при нажатии Enter',
+  },
+  {
     name: 'onFocus',
     type: (
       <L.Span>(event:
@@ -156,34 +196,6 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
     ),
     required: false,
     description: 'Обработчик события фокуса',
-  },
-  {
-    name: 'onEnterPress',
-    type: (
-      <L.Span>(event:
-        {' '}
-        <L.Tooltip
-          position="bottom"
-          title={(
-            <pre>
-              {`
-interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
-  component: {
-    name?: string,
-    value: number | null,
-  },
-}            
-              `}
-            </pre>
-          )}
-        >
-          <L.Span _txt-success>L.NumericRangeTypes.EnterPressEvent</L.Span>
-        </L.Tooltip>
-        ) => void
-      </L.Span>
-    ),
-    required: false,
-    description: 'Функция обратного вызова при нажатии Enter',
   },
   {
     name: 'placeholder',
@@ -217,13 +229,19 @@ interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
     description: 'Реф для компонента',
   },
   {
-    name: 'shouldTrimTrailingZeros',
+    name: (
+      <L.A
+        onClick={linkTo('Form|NumericRange|Props', 'shouldTrimTrailingZeros')}
+        target="_self"
+      >
+        shouldTrimTrailingZeros
+      </L.A>),
     type: 'boolean',
     required: false,
     description: (
       <div>
         <p>
-          Удаляет незначащие ноли в конце дробной части: 1.2500 -> 1.25.
+          Удаляет незначащие нули в конце дробной части: 1.2500 -> 1.25
         </p>
       </div>
     ),
@@ -257,10 +275,16 @@ interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
     description: 'Тема компонента',
   },
   {
-    name: 'thousandsSeparator',
+    name: (
+      <L.A
+        onClick={linkTo('Form|NumericRange|Props', 'thousandsSeparator')}
+        target="_self"
+      >
+        thousandsSeparator
+      </L.A>),
     type: 'string',
     required: false,
-    description: 'Разделитель разрядов. По умолчанию - пробел: 1 000 000.',
+    description: 'Разделитель разрядов. По умолчанию - пробел: 1 000 000',
   },
   {
     name: 'value',
@@ -271,7 +295,7 @@ interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|NumericTextBox', 'Customization')}
+        onClick={linkTo('Form|NumericRange', 'Кастомизация')}
         target="_self"
       >
         wrapperRender

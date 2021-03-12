@@ -1,6 +1,6 @@
 describe('Tags', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/tags');
+    cy.visit('/cypress/tags');
   });
 
   describe('Display', () => {

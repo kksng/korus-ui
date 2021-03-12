@@ -1,33 +1,33 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 describe('CheckBox', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/checkbox');
+    cy.visit('/cypress/checkbox');
   });
 
   describe('Display', () => {
-    it('should render elements inside the checkbox', () => {
-      cy.name('checkBoxButton')
+    it('Should render elements inside the checkbox', () => {
+      cy.get('#checkBoxButton')
         .should('exist')
         .parent()
         .find('button')
-        .should('be.visible')
+        .should('have.class', 'loading')
+        .and('be.visible');
     });
 
-    it('should render semi', () => {
+    it('Should render semi', () => {
       cy.contains('isSemi')
         .should('be.visible')
-        .should('have.class', 'semi')
+        .and('have.class', 'semi');
     });
 
-    it('should render disabled checkbox', () => {
-      cy.name('checkBoxDisabled')
-        .should('exist')
-        .should('be.disabled')
+    it('Should render disabled checkbox', () => {
+      cy.get('#checkBoxDisabled')
+        .should('have.attr', 'disabled');
     });
   });
 
   describe('Interaction', () => {
-    it('should call onChange', () => {
+    it('Should call onChange', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       // eslint-disable-next-line jest/valid-expect-in-promise
@@ -35,10 +35,12 @@ describe('CheckBox', () => {
         .click()
         .then(() => {
           expect(stub.getCall(0)).to.be.calledWith('Alert!');
-        });
+        })
+        .contains("Main")
+        .click();
     });
 
-    it('should not call onClick when isDisabled', () => {
+    it('Should not call onClick when isDisabled', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       // eslint-disable-next-line jest/valid-expect-in-promise
@@ -50,19 +52,19 @@ describe('CheckBox', () => {
     });
 
     it('Can change value', () => {
-      cy.name('checkBoxSemi')
-        .should('be.checked')
-        .get('label')
-        .contains('isSemi')
-        .click()
-        .name('checkBoxSemi')
-        .should('not.be.checked')
-        .get('label')
-        .contains('isSemi')
-        .click()
-        .name('checkBoxSemi')
-        .should('be.checked')
-    })
+      cy.get('#checkBoxGroup')
+        .find('label')
+        .each((changeValue) => {
+          cy.wrap(changeValue)
+            .click()
+            .parent()
+            .find('input')
+            .should('be.checked')
+            .next()
+            .click()
+            .prev()
+            .should('not.be.checked');
+        });
+    });
   });
-  xit('Validation tests', () => {})
 });

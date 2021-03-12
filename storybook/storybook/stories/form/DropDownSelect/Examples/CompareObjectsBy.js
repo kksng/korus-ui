@@ -57,7 +57,7 @@ const CompareObjectsBy = () => {
 render(<CompareObjectsBy />);
 `,
   text: (
-    <L.Div _block>`
+    <L.Div _block>
       <p>
         По-умолчанию объекты <b>data</b> сравниваются по ссылке.
       </p>

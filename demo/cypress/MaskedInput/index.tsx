@@ -28,14 +28,14 @@ export const MaskedInput = (): React.ReactElement => {
       <L.Span>Insurance number (controlled)</L.Span>
       <L.MaskedInput
         mask="###-###-### ##"
-        name="MIControlledInsurance"
+        id="MIControlledInsurance"
         placeholder="___-___-___ __"
         value={cardValue}
         onChange={(event) => setCardValue(event.component.value)}
       />
       <L.Span>Phone number (controlled)</L.Span>
       <L.MaskedInput
-        name="MIControlledPhone"
+        id="MIControlledPhone"
         mask="+7 (###)-###-##-##"
         placeholder="+7 (___)-___-__-__"
         value={phoneValue}
@@ -47,34 +47,34 @@ export const MaskedInput = (): React.ReactElement => {
           console.log(event.component.inputValue);
         }}
       />
-      <L.Button _warning name="clearPhoneValue" onClick={() => {setPhoneValue(null)}}>Clear Value</L.Button>
+      <L.Button _warning id="clearPhoneValue" onClick={() => {setPhoneValue(null)}}>Clear Value</L.Button>
       {' '}
-      <L.Button _warning name="setPhoneValue" onClick={() => {setPhoneValue('9818862798')}}>Set Value</L.Button>
+      <L.Button _warning id="setPhoneValue" onClick={() => {setPhoneValue('9818862798')}}>Set Value</L.Button>
       <br />
       <br />
       <L.Span>Credit card number (controlled without placeholder)</L.Span>
       <L.MaskedInput
         mask="####-####-####-####"
-        name="MICardNumberControlled"
+        id="MICardNumberControlled"
         value={cardNumberValue}
         onChange={(event) => {
           setCardNumberValue(event.component.value);
           console.log(event.component.inputValue);
         }}
       />
-      <L.Button _warning name="clearCardValue" onClick={() => {setCardNumberValue(null)}}>Clear Value</L.Button>
+      <L.Button _warning id="clearCardValue" onClick={() => {setCardNumberValue(null)}}>Clear Value</L.Button>
       <br />
       <br />
       <L.Span>Car Number (uncontrolled)</L.Span>
       <L.MaskedInput
         mask="LL##LL####"
-        name="MICarNumber"
+        id="MICarNumber"
         placeholder="Car number"
       />
       <L.Span>Credit card number (uncontrolled with default value)</L.Span>
       <L.MaskedInput
         mask="####-####-####-####"
-        name="MICreditCardNumber"
+        id="MICreditCardNumber"
         placeholder="####-####-####-####"
         defaultValue="6666777788889999"
       />

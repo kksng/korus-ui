@@ -37,6 +37,7 @@ import { defaultMultiSelectTheme } from '../MultiSelect/theme';
 import { defaultFileDropTheme } from '../FileDrop/theme';
 import { defaultWizardTheme } from '../Wizard/theme';
 import { defaultMenuTheme } from '../Menu/theme';
+import { defaultCountDownTheme } from '../CountDown/theme';
 
 export const globalDefaultTheme = {
   autoComplete: defaultAutoCompleteTheme,
@@ -44,6 +45,7 @@ export const globalDefaultTheme = {
   buttonGroup: defaultButtonGroupTheme,
   checkBox: defaultCheckBoxTheme,
   collapse: defaultCollapseTheme,
+  countDown: defaultCountDownTheme,
   dateTimeInput: defaultDateTimeInputTheme,
   dateTimeInputRange: defaultDateTimeInputRangeTheme,
   dropDown: defaultDropDownTheme,

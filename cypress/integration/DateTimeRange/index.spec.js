@@ -1,13 +1,13 @@
 describe('DateTimeRange', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/datetimerange');
+    cy.visit('/cypress/datetimerange');
     cy.window().then((win) => {
       cy.spy(win.console, 'log').as('consoleLog');
     });
   });
 
   describe('Events in console', () => {
-    it('name, value and date events', () => {
+    it('Name, value and date events', () => {
       cy.name('DateTimeRange-from')
         .focus()
         .type('{enter}')
@@ -19,7 +19,7 @@ describe('DateTimeRange', () => {
   });
 
   describe('Display', () => {
-    it('should be disabled when isDisabled', () => {
+    it('Should be disabled when isDisabled', () => {
       cy.get('.disabled-field')
         .find('input')
         .should('be.disabled')
@@ -29,8 +29,8 @@ describe('DateTimeRange', () => {
   });
 
   describe('Interaction', () => {
-    it('opening and closing the calendar', () => {
-      cy.get('.basic-use')
+    it('Opening and closing the calendar', () => {
+      cy.get('#basicUsage')
         .find('.datepicker-calendar-icon')
         .should('be.visible')
         .each((openingCalendar) => {
@@ -45,21 +45,20 @@ describe('DateTimeRange', () => {
             .click()
             .parents()
             .find('.calendar-wrapper')
-            .should('not.have.class', 'visible')
-            .and('not.be.visible');
+            .should('not.exist');
         });
     });
 
-    it('entering values from the keyboard', () => {
-      cy.get('.basic-use')
-        .name('DateTimeRange-from')
+    it('Entering values from the keyboard', () => {
+      cy.name('DateTimeRange-from')
         .clear()
         .focus()
         .blur()
         .should('have.value', '')
         .type('99.99.99 99:99:99{enter}')
         .should('have.value', '15.05.2018 16:30')
-        .type('{backspace}{backspace}{backspace}{backspace}{backspace}{enter}')
+        .type('{backspace}'.repeat(5))
+        .type('{enter}')
         .should('have.value', '15.05.2018 __:__')
         .name('DateTimeRange-to')
         .clear()
@@ -68,11 +67,16 @@ describe('DateTimeRange', () => {
         .should('have.value', '')
         .type('99.99.99 99:99:99{enter}')
         .should('have.value', '20.06.2019 17:00')
-        .type('{backspace}{backspace}{backspace}{backspace}{backspace}{enter}')
-        .should('have.value', '20.06.2019 __:__');
+        .type('{backspace}'.repeat(5))
+        .type('{enter}')        
+        .should('have.value', '20.06.2019 __:__')
+        .name('DateTimeRange-from')
+        .clear()
+        .name('DateTimeRange-to')
+        .clear();
     });
 
-    it('maximal, minimal and invalid values', () => {
+    it('Maximal, minimal and invalid values', () => {
       cy.name('DateTimeRange-from')
         .clear()
         .type('21.06.20 23:60:01{enter}')
@@ -82,8 +86,8 @@ describe('DateTimeRange', () => {
         .should('have.value', '14.04.2001 16:30')
         .clear()
         .type('1q2we3erfv ``{enter}')
-        .should('have.value', '12.3_.____ __:__');
-      cy.name('DateTimeRange-to')
+        .should('have.value', '12.3_.____ __:__')
+        .name('DateTimeRange-to')
         .clear()
         .type('21.06.20 23:60:01{enter}')
         .should('have.value', '20.06.2019 17:00')
@@ -92,13 +96,16 @@ describe('DateTimeRange', () => {
         .should('have.value', '14.04.2001 16:30')
         .clear()
         .type('1q2we3erfv ``{enter}')
-        .should('have.value', '12.3_.____ __:__');
+        .should('have.value', '12.3_.____ __:__')
+        .name('DateTimeRange-from')
+        .clear()
+        .name('DateTimeRange-to')
+        .clear();
     });
 
-    it('selecting a date from the calendar', () => {
+    it('Selecting a date from the calendar', () => {
       cy.name('DateTimeRange-from')
-        .parent()
-        .find('.datepicker-calendar-icon')
+        .next()
         .click()
         .parents()
         .find('.calendar-wrapper')
@@ -115,10 +122,9 @@ describe('DateTimeRange', () => {
         .get('.calendar-date-cell[title="11 апреля 2018"]')
         .click()
         .get('.datepicker-input')
-        .should('contain.value', '11.04.2018');
-      cy.name('DateTimeRange-to')
-        .parent()
-        .find('.datepicker-calendar-icon')
+        .should('contain.value', '11.04.2018')
+        .name('DateTimeRange-to')
+        .next()
         .click()
         .parents()
         .find('.calendar-wrapper')
@@ -135,10 +141,14 @@ describe('DateTimeRange', () => {
         .get('.calendar-date-cell[title="11 апреля 2018"]')
         .click()
         .get('.datepicker-input')
-        .should('contain.value', '11.04.2018');
+        .should('contain.value', '11.04.2018')
+        .name('DateTimeRange-from')
+        .clear()
+        .name('DateTimeRange-to')
+        .clear();
     });
 
-    it('using the TAB button', () => {
+    it('Using the TAB button', () => {
       cy.name('DateTimeRange-from')
         .clear()
         .focus()
@@ -160,7 +170,11 @@ describe('DateTimeRange', () => {
         .name('DateTimeRange-from')
         .tab()
         .name('DateTimeRange-to')
-        .should('be.focused');
+        .should('be.focused')
+        .name('DateTimeRange-from')
+        .clear()
+        .name('DateTimeRange-to')
+        .clear();
     });
   });
 });

@@ -9,7 +9,7 @@ const { contains } = require('../../../korus-ui/components/StatusBar/helpers');
 
 describe('Notifications', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/notifications');
+    cy.visit('/cypress/notifications');
   });
 
   describe('Interactions', () => {

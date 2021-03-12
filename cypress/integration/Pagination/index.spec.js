@@ -1,6 +1,6 @@
 describe('Pagination', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/pagination');
+    cy.visit('/cypress/pagination');
   });
 
   describe('Interaction', () => {

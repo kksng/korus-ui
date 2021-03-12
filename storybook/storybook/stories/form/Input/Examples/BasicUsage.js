@@ -16,6 +16,7 @@ const BasicUsage = () => {
     <L.Input
       onChange={handleChange}
       value={value}
+      _width-30
     />
   );
 };
