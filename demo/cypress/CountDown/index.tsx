@@ -78,14 +78,14 @@ export const CountDown = (): React.ReactElement  => {
             text="Send the code again"
             key={restart}
             time={time}
-            />
-            <br />
-            <L.Button 
-          id="formatRestart"
-          onClick={() => handleRestart()}
-        >
-          Restart
-        </L.Button>
+          />
+          <br />
+          <L.Button 
+            id="formatRestart"
+            onClick={() => handleRestart()}
+          >
+            Restart
+          </L.Button>
         </L.Div>
       </L.Div>
     );
