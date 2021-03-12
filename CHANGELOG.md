@@ -4,10 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.42.0] - 2020-03-12
+## [0.42.0] - 2021-03-15
+
+### Fixed
+- Tabs: Fixed scroll
 
 
-## [0.41.0] - 2020-02-25
+## [0.41.0] - 2021-02-25
 
 ### Added
 - Menu: Added new component
@@ -19,7 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - DatePicker: Fixed date selection from previous month
 
-## [0.40.0] - 2020-02-09
+
+## [0.40.0] - 2021-02-09
 
 ### Added
 - Validation: added scroll to invalid DropZone and FileDrop fields
@@ -37,13 +41,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - MaskedInput: Remove mask on reset
 
 
-## [0.39.0] - 2020-01-26
+## [0.39.0] - 2021-01-26
 
 ### Added
 - TimeRange, TimePicker: Added autocompletion with 0
 
 
-## [0.38.0] - 2020-01-12
+## [0.38.0] - 2021-01-12
 
 ### Changed
 - Refactoring: Renamed leda folder to korus-ui
