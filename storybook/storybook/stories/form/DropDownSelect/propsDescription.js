@@ -590,11 +590,14 @@ string | number | null | DataObject
             target="_blank"
             rel="noopener noreferrer"
           >
-            compareFunction
+            compareFunction.
           </a>.
         </p>
         <p>
           Например: <i>sortSuggestions=&#123;(a, b) => (a.text > b.text ? 1 : -1)&#125;</i>.
+        </p>
+        <p>
+          В качестве параметров на вход функция принимает элементы списка, соответствующие типу элементов <b>data</b>.
         </p>
       </div>
     ),
