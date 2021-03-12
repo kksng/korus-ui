@@ -44,9 +44,9 @@ export const propsDesc = [
         {'string | (suggestionListItem: '}
         <L.Tooltip
           position="bottom"
-          title="object"
+          title={'{ [x: string]: any }'}
         >
-          <L.Span _txt-success>Value</L.Span>
+          <L.Span _txt-success>DataObject</L.Span>
         </L.Tooltip>
         {') => any'}
       </L.Span>
@@ -71,10 +71,10 @@ export const propsDesc = [
     ),
     type: (
       <L.Span>
-        {'Array<string | '}
+        {'Array<string | number | null | '}
         <L.Tooltip
           position="bottom"
-          title={'{ [string]: string | number }'}
+          title={'{ [x: string]: any }'}
         >
           <L.Span _txt-success>DataObject</L.Span>
         </L.Tooltip>
@@ -92,7 +92,18 @@ export const propsDesc = [
   },
   {
     name: 'defaultValue',
-    type: 'object | string | number | null',
+    type: (
+      <L.Span>
+      string | number | null | 
+      {' '}
+      <L.Tooltip
+        position="bottom"
+        title={'{ [x: string]: any }'}
+      >
+        <L.Span _txt-success>DataObject</L.Span>
+      </L.Tooltip>
+    </L.Span>
+    ),
     required: false,
     description: (
       <div>
@@ -148,10 +159,10 @@ export const propsDesc = [
     name: 'groupBy',
     type: (
       <L.Span>
-        {'('}
+        {'(suggestionListItem: '}
         <L.Tooltip
           position="bottom"
-          title={'{ [string]: string | number }'}
+          title={'{ [x: string]: any }'}
         >
           <L.Span _txt-success>DataObject</L.Span>
         </L.Tooltip>
@@ -539,15 +550,8 @@ DropDownSelectRefCurrent {
             <pre>
               {
                 `
-{
-  isScrollTarget: boolean,
-  isPlaceholder: boolean,
-  isHighlighted?: boolean,
-  isSelected?: boolean,
-  item: string | number | SomeObject | null,
-  key: string,
-  text: string | number,
-}                `
+string | number | null | DataObject
+           `
               }
             </pre>
           )}
@@ -561,15 +565,8 @@ DropDownSelectRefCurrent {
             <pre>
               {
                 `
-{
-  isScrollTarget: boolean,
-  isPlaceholder: boolean,
-  isHighlighted?: boolean,
-  isSelected?: boolean,
-  item: string | number | SomeObject | null,
-  key: string,
-  text: string | number,
-}                `
+string | number | null | DataObject
+                `
               }
             </pre>
           )}
@@ -655,14 +652,14 @@ DropDownSelectRefCurrent {
     name: 'value',
     type: (
       <L.Span>
+        string | number | null | 
+        {' '}
         <L.Tooltip
           position="bottom"
-          title={'{ [string]: string | number }'}
+          title={'{ [x: string]: any }'}
         >
           <L.Span _txt-success>DataObject</L.Span>
         </L.Tooltip>
-        {' '}
-        | string | number | null
       </L.Span>
     ),
     required: false,
