@@ -52,4 +52,3 @@ export const BasicUsage = (storyProps: StoryProps): React.ReactElement => {
       </L.Div>
     );
   };
-  

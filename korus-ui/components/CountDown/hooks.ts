@@ -57,6 +57,8 @@ export const useCountDown = ({
 /**
  * Hook excludes unused props from restProps
  * @param {CountDownProps} props
+ *
+ * @returns SomeObject
  */
 export const useCountDownRestProps = (props: CountDownProps): SomeObject => {
   const {

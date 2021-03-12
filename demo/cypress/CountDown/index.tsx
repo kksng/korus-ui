@@ -52,4 +52,3 @@ export const CountDown = (): React.ReactElement  => {
       </L.Div>
     );
   };
-  
