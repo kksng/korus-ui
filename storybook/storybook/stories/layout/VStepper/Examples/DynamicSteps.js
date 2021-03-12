@@ -26,8 +26,16 @@ const DynamicSteps = () => {
     },
   ];
 
-  const [value, setValue] = React.useState();
-  const [openKeys, setOpenKeys] = React.useState();
+  const stepContent = [
+    'Маркетингово-ориентированное издание тормозит формат события, tertium nоn datur.',
+    'Сомнение определяет эмпирический катарсис, не учитывая мнения авторитетов.',
+    'Коммуникация, суммируя приведенные примеры, программирует медиавес.',
+    'Коммуникация, суммируя приведенные примеры, программирует медиавес.',
+    'Селекция бренда, по определению, реально транспонирует примитивный предмет деятельности.'
+  ];
+
+  const [value, setValue] = React.useState(data[0]);
+  const [openKeys, setOpenKeys] = React.useState([0]);
 
   const handleNextClick = (index) => {
     if (index === 3) {

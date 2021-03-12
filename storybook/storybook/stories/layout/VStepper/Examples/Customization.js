@@ -4,27 +4,47 @@ import { componentSrc } from './index';
 
 export const Customization = {
   liveDemo: `
-const Content = ({ children }: any) => <L.Div _txtBold _vStepperCustomContent>{children}</L.Div>;
+
+const CustomIconStyle = {
+  position: 'relative',
+  display: 'flex',
+  backgroundColor: 'white',
+  borderRadius: '100%',
+  width: '50px',
+  height: '50px',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center',
+  padding: '5px',
+  border: '2px solid lightgrey',
+  fontWeight: '500',
+  zIndex: '2',
+}  
+
+const CustomContentStyle = {
+  display: 'flex', 
+  alignItems: 'center', 
+  marginLeft: '20px',
+}
+
+const Content = ({ children }) => <L.Div _txtBold style={CustomContentStyle}>{children}</L.Div>;
 Content.displayName = 'CustomContent';
 
-const SmallText = ({ children }: any) => <L.Div _txtGray _txtSmall _vStepperCustomContent>{children}</L.Div>;
+const SmallText = ({ children }) => <L.Div _txtGray _txtSmall style={CustomContentStyle}>{children}</L.Div>;
 SmallText.displayName = 'SmallText';
 
-const OpenedContent = ({ children, title }: any) => (
+const OpenedContent = ({ children, title }) => (
   <L.Div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-    <L.Div _txtBold _vStepperCustomContent>{title}</L.Div>
-    <L.Div _txtGray _txtSmall _vStepperCustomContent>{children}</L.Div>
+    <L.Div _txtBold style={{display: 'flex', alignItems: 'center', marginLeft: '20px'}}>{title}</L.Div>
+    <L.Div _txtGray _txtSmall style={CustomContentStyle}>{children}</L.Div>
   </L.Div>
 );
 
-const DataIcon = ({ children, style }: any) => <L.Div style={style} _vStepperCustomIcon>{children}</L.Div>;
-
-const NoIcon = () => <L.Div _vStepperCustomIcon style={{ height: '30px', backgroundColor: 'transparent', border: 'none' }} />;
+const DataIcon = ({ children, style }) => <L.Div style={{...style, ...CustomIconStyle}}>{children}</L.Div>;
 
 const ArrowIcon = () => (
   <L.Div
-    _vStepperCustomIcon
-    style={{ backgroundColor: 'transparent', border: 'none' }}
+    style={{ ...CustomIconStyle, backgroundColor: 'transparent', border: 'none' }}
   >
     <L.I style={{ color: 'rgba(170, 178, 183, 0.8)', marginRight: '1px' }} _icon20 _iArrowUp />
   </L.Div>
@@ -36,28 +56,28 @@ const Customization = () => (
         iconRender={() => <ArrowIcon />}
         _vStepperCustomWrapper
         _marginBottomNone
-        contentRender={({ componentProps: { children } }: any) => <SmallText>{children}</SmallText>}
+        contentRender={({ componentProps: { children } }) => <SmallText>{children}</SmallText>}
       >
         Вручение
       </L.VStepper.Item>
       <L.VStepper.Item
-        iconRender={() => <NoIcon />}
+        iconRender={() => <DataIcon />}
         _vStepperCustomWrapper
-        contentRender={({ componentProps: { children } }: any) => <SmallText>{children}</SmallText>}
+        contentRender={({ componentProps: { children } }) => <SmallText>{children}</SmallText>}
       >
         Доставка в место вручения
       </L.VStepper.Item>
       <L.VStepper.Item
-        iconRender={() => <NoIcon />}
+        iconRender={() => <DataIcon />}
         _vStepperCustomWrapper
-        contentRender={({ componentProps: { children } }: any) => <SmallText>{children}</SmallText>}
+        contentRender={({ componentProps: { children } }) => <SmallText>{children}</SmallText>}
       >
         Доставка по Росии
       </L.VStepper.Item>
       <L.VStepper.Item
         _vStepperCustomWrapper
         iconRender={() => <DataIcon><L.I style={{ color: 'rgba(170, 178, 183, 0.8)' }} _uiconAircraft /></DataIcon>}
-        contentRender={({ componentProps: { titleText, children } }: any) => <OpenedContent title={titleText}>{children}</OpenedContent>}
+        contentRender={({ componentProps: { titleText, children } }) => <OpenedContent title={titleText}>{children}</OpenedContent>}
         statusRender={() => null}
         titleText="Выпущено таможней 15 июля, 15:45 (92г)"
       >
@@ -70,7 +90,7 @@ const Customization = () => (
             <L.I style={{ backgroundColor: 'white', color: 'rgba(170, 178, 183, 0.8)' }} _uiconClock />
           </DataIcon>
         )}
-        contentRender={({ componentProps: { children } }: any) => <SmallText>{children}</SmallText>}
+        contentRender={({ componentProps: { children } }) => <SmallText>{children}</SmallText>}
       >
         6 дней в пути
       </L.VStepper.Item>
@@ -79,7 +99,7 @@ const Customization = () => (
         iconRender={() => <DataIcon>15 Июл</DataIcon>}
         statusRender={() => null}
         key="2"
-        contentRender={({ Element, elementProps, componentState }: any) => <Element state={componentState} {...elementProps} style={{ padding: '0 0 0 20px' }} />}
+        contentRender={({ Element, elementProps, componentState }) => <Element state={componentState} {...elementProps} style={{ padding: '0 0 0 20px' }} />}
         titleText="Прием на таможню"
       >
         Здесь текст
@@ -87,31 +107,31 @@ const Customization = () => (
       <L.VStepper.Item
         _vStepperCustomWrapper
         iconRender={() => <DataIcon>15 Июл</DataIcon>}
-        contentRender={({ componentProps: { titleText } }: any) => <Content>{titleText}</Content>}
+        contentRender={({ componentProps: { titleText } }) => <Content>{titleText}</Content>}
         titleText="Прошло регистрацию"
       />
       <L.VStepper.Item
         _vStepperCustomWrapper
         iconRender={() => <DataIcon>14 Июл</DataIcon>}
-        contentRender={({ componentProps: { titleText } }: any) => <Content>{titleText}</Content>}
+        contentRender={({ componentProps: { titleText } }) => <Content>{titleText}</Content>}
         titleText="Прибыло в сортировочный центр"
       />
       <L.VStepper.Item
         _vStepperCustomWrapper
         iconRender={() => <DataIcon>11 Июл</DataIcon>}
-        contentRender={({ componentProps: { titleText } }: any) => <Content>{titleText}</Content>}
+        contentRender={({ componentProps: { titleText } }) => <Content>{titleText}</Content>}
         titleText="Прибыло на территорию России"
       />
       <L.VStepper.Item
         _vStepperCustomWrapper
         iconRender={() => <DataIcon>11 Июл</DataIcon>}
-        contentRender={({ componentProps: { titleText } }: any) => <Content>{titleText}</Content>}
+        contentRender={({ componentProps: { titleText } }) => <Content>{titleText}</Content>}
         titleText="Прибыло на границу Китая"
       />
       <L.VStepper.Item
         _vStepperCustomWrapper
         iconRender={() => <DataIcon>11 Июл</DataIcon>}
-        contentRender={({ componentProps: { titleText } }: any) => <Content>{titleText}</Content>}
+        contentRender={({ componentProps: { titleText } }) => <Content>{titleText}</Content>}
         titleText="Принято в отделении связи"
       />
     </L.VStepper>
