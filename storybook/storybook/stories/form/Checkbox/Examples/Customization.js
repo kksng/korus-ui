@@ -6,19 +6,23 @@ import { componentSrc } from './index';
 export const Customization = {
   liveDemo: `
 const Customization = () => {
-  const [value, setValue] = React.useState('');
-
-  const handleChange = ev => setValue(ev.component.value);
-
-  const groupWrapperRender = () => <ul />;  
-  const buttonWrapperRender = () => <li />;  
+  const [value, setValue] = React.useState(false);
+  
+  const handleChange = ({ component: { name, value } }) => {
+    console.log(name, value);
+    setValue(value);
+  };
+ 
   
   return (
-    <L.RadioGroup value={value} onChange={handleChange} wrapperRender={groupWrapperRender}>
-      <L.RadioButton value="radio-1" wrapperRender={buttonWrapperRender}>One</L.RadioButton>
-      <L.RadioButton value="radio-2">Two</L.RadioButton>
-      <L.RadioButton value="radio-3">Three</L.RadioButton>
-    </L.RadioGroup>
+    <L.CheckBox
+      name="myCheckBox"
+      value={value}
+      onChange={handleChange}
+      wrapperRender={({ elementProps }) => <L.Div {...elementProps} style={{ border: 'solid red' }}/>}
+      >
+      <L.Span _txt-success>good</L.Span>
+    </L.CheckBox>
   );
 };
 
@@ -30,7 +34,17 @@ render(<Customization />);
         Для настройки внешнего вида частей компонента используйте методы с суффиксом Render:
       </L.P>
       <L.P>
-        <b>wrapperRender</b> - кастомизация враппера, применяется к <b>L.RadioGroup</b> и к <b>L.RadioButton</b>. Враппер по умолчанию - <b>&lt;L.Div&gt;</b>.
+        <L.Ul>
+          <L.Li>
+            <b>inputRender</b> - кастомизация инпута. Непосредственно сам <i>input</i> невидим, но <b>inputRender</b> позволяет добавить в него атрибуты.
+          </L.Li>
+          <L.Li>
+            <b>labelRender</b> - позволяет кастомизировать элемент <i>label</i>.
+          </L.Li>
+          <L.Li>
+            <b>wrapperRender</b> - кастомизация враппера.
+          </L.Li>
+        </L.Ul>
       </L.P>
     </L.Div>
   ),

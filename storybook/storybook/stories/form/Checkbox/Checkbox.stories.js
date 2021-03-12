@@ -5,6 +5,7 @@ import
 {
   Api,
   BasicUsage,
+  Customization,
   Semi,
 } from './Examples';
 import { Story } from '../../../components/Story';
@@ -14,4 +15,5 @@ import { ApiStory } from '../../../components/ApiStory';
 storiesOf('Form|CheckBox', module)
   .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
   .add('Базовый пример', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
+  .add('Кастомизация', context => (<Story {...Customization} customProps={propsDesc} context={context} />))
   .add('Получекбокс', context => (<Story {...Semi} customProps={propsDesc} context={context} />));
