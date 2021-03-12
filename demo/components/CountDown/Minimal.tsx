@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 
-export const Minimal = (storyProps: StoryProps) => {
+export const Minimal = (storyProps: StoryProps): React.ReactElement  => {
   
     return (
       <L.Div _box _inner _demoBg>
@@ -10,4 +10,3 @@ export const Minimal = (storyProps: StoryProps) => {
       </L.Div>
     );
   };
-  

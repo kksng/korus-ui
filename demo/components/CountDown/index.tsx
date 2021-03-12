@@ -3,7 +3,7 @@ import { Story } from '../Story';
 import { BasicUsage } from './BasicUsage';
 import { Minimal } from './Minimal';
 
-export const CountDown = () => (
+export const CountDown = (): React.ReactElement  => (
     <Story title="CountDown">
       <BasicUsage title="Basic example" />
       <Minimal title="Minimal example" />

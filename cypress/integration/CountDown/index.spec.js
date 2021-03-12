@@ -15,45 +15,5 @@ describe('CountDown', () => {
       cy.get('#countDown')
         .should('contain', 'Send the code again')
     });
-
-    it('Should pass custom classes to wrapper', () => {
-
-    });
-
-    it('Should work with hh:mm:ss format', () => {
-
-    });
-  });
-
-  describe('Interaction', () => {
-    it('Should pause and resume countdown', () => {
-
-    });
-
-    it('Should restart countdown', () => {
-
-    });
-
-    it('Should set new time', () => {
-
-    });
-  });
-
-  describe('Callbacks', () => {
-    it('Should call onStart', () => {
-
-    });
-
-    it('Should call onTick', () => {
-
-    });
-
-    it('Should call onPause', () => {
-
-    });
-
-    it('Should call onComplete', () => {
-
-    });
   });
 });

@@ -1,5 +1,6 @@
 import { isFunction } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
+import { SomeObject } from '../../commonTypes';
 import { useInterval, useProps } from '../../utils';
 import { getDelta } from './helpers';
 import { CountDownProps } from './types';
@@ -17,7 +18,7 @@ export const useCountDown = ({
   const [delay, setDelay] = useState<number | null>(interval);
   const startTimestamp = useRef<number>(0);
 
-  const tick = () => {
+  const tick = (): void => {
     if (countDown === time && isFunction(onStart)) onStart();
 
     const newDelta = getDelta(startTimestamp.current);
@@ -57,7 +58,7 @@ export const useCountDown = ({
  * Hook excludes unused props from restProps
  * @param {CountDownProps} props
  */
-export const useCountDownRestProps = (props: CountDownProps) => {
+export const useCountDownRestProps = (props: CountDownProps): SomeObject => {
   const {
     // should not get in restProps
     time,

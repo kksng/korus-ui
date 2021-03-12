@@ -2,12 +2,12 @@ import { isNumber } from 'lodash';
 import * as React from 'react';
 import * as L from '../../../korus-ui';
 
-export const CountDown = () => {
+export const CountDown = (): React.ReactElement  => {
   const [time, setTime] = React.useState(45000);
   const [restart, setRestart] = React.useState(0);
   const [delay, setDelay] = React.useState<number | null>(1000);
 
-  const handleRestart = (time?: number) => {
+  const handleRestart = (time?: number): void => {
     if (isNumber(time)) setTime(time);
     setRestart(restart + 1)
   }
