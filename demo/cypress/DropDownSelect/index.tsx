@@ -44,6 +44,8 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
   const handleChange1 = ev => setValue6(ev.component.value);
 
   const [value7, setValue7] = React.useState(null);
+  const [value8, setValue8] = React.useState('');
+
 
   const itemRender = ({ Element, elementProps, componentProps }) => {
     const { isPlaceholder, item, textField } = componentProps;
@@ -347,6 +349,20 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           onChange={ev => setValue7(ev.component.value)}
           _width40
         />  
+
+        <L.DropDownSelect
+          id="DDSLongStrings"
+          data={[
+            'Information about the status of payments for taxes, fees, insurance premiums, penalties, fines, and interest',
+            'The act of joint reconciliation of calculations on taxes, fees, insurance premiums, penalties, fines, interest',
+            'Certificate of performance by the taxpayer (payer of the fee, payer of insurance premiums, tax agent) of the obligation to pay taxes, fees, insurance premiums, penalties, fines, interest',
+          ]}
+          value={value8}
+          onChange={(ev) => {
+            setValue8(ev.component.value);
+          }}
+          _width40
+        />
       </L.Div>
 
     </>
