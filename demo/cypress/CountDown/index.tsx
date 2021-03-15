@@ -6,6 +6,7 @@ export const CountDown = (): React.ReactElement  => {
   const [time, setTime] = React.useState(45000);
   const [restart, setRestart] = React.useState(0);
   const [delay, setDelay] = React.useState<number | null>(1000);
+  const [delay2, setDelay2] = React.useState<number | null>(null);
 
   const handleRestart = (time?: number): void => {
     if (isNumber(time)) setTime(time);
@@ -20,6 +21,10 @@ export const CountDown = (): React.ReactElement  => {
     {
       time: 60000,
       text: '1 min'
+    },
+    {
+      time: 3000,
+      text: '3 sec'
     }
   ]
 
@@ -27,6 +32,7 @@ export const CountDown = (): React.ReactElement  => {
       <L.Div _box _inner _demoBg>
         <L.CountDown 
           id="countDown"
+          className="customClassName"
           key={restart}
           time={time}
           interval={delay}
@@ -37,9 +43,24 @@ export const CountDown = (): React.ReactElement  => {
           onComplete={() => console.log('Completed!')}
         />
         <br />
-        <L.Button onClick={() => setDelay(null)}>Pause</L.Button>
-        <L.Button onClick={() => setDelay(1000)}>Resume</L.Button>
-        <L.Button onClick={() => handleRestart()}>Restart</L.Button>
+        <L.Button
+          id="pause" 
+          onClick={() => setDelay(null)}
+        >
+          Pause
+        </L.Button>
+        <L.Button 
+          id="resume"
+          onClick={() => setDelay(1000)}
+        >
+          Resume
+        </L.Button>
+        <L.Button 
+          id="restart"
+          onClick={() => handleRestart()}
+        >
+          Restart
+        </L.Button>
         <br />
         <br />
         <L.ButtonGroup
@@ -49,6 +70,24 @@ export const CountDown = (): React.ReactElement  => {
           textField="text"
           _primary
         />
+        <br />
+        <br />
+        <L.Div>
+          <L.CountDown
+            id="countDownFormat"
+            format="hh:mm:ss"
+            text="Send the code again"
+            time={45000}
+            interval={delay2}
+          />
+          <br />
+          <L.Button 
+            id="formatStart"
+            onClick={() => setDelay2(1000)}
+          >
+            Start
+          </L.Button>
+        </L.Div>
       </L.Div>
     );
   };
