@@ -27,10 +27,10 @@ describe('CountDown', () => {
     });
 
     it('Should work with hh:mm:ss format', () => {
-      cy.get('#formatRestart')
+      cy.get('#formatStart')
         .click()
         .get('#countDownFormat')
-        .should('contain', '03:00:45')
+        .should('contain', '00:00:45')
     });
   });
 

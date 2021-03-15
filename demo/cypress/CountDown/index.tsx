@@ -6,6 +6,7 @@ export const CountDown = (): React.ReactElement  => {
   const [time, setTime] = React.useState(45000);
   const [restart, setRestart] = React.useState(0);
   const [delay, setDelay] = React.useState<number | null>(1000);
+  const [delay2, setDelay2] = React.useState<number | null>(null);
 
   const handleRestart = (time?: number): void => {
     if (isNumber(time)) setTime(time);
@@ -76,15 +77,15 @@ export const CountDown = (): React.ReactElement  => {
             id="countDownFormat"
             format="hh:mm:ss"
             text="Send the code again"
-            key={restart}
-            time={time}
+            time={45000}
+            interval={delay2}
           />
           <br />
           <L.Button 
-            id="formatRestart"
-            onClick={() => handleRestart()}
+            id="formatStart"
+            onClick={() => setDelay2(1000)}
           >
-            Restart
+            Start
           </L.Button>
         </L.Div>
       </L.Div>
