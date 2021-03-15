@@ -20,6 +20,6 @@ storiesOf('Layout|Tabs', module)
   .add('Выбор DOM-узла для контента', (context) => (
     <Story {...TabsNode} compoundCustomProps={tabsProps} context={context} />
   ))
-  .add('Tabs useElementRef', (context) => (
+  .add('Ссылки на DOM-элементы', (context) => (
     <Story {...TabsRef} compoundCustomProps={tabsProps} context={context} />
   ));
