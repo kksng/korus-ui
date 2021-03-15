@@ -30,7 +30,8 @@ describe('CountDown', () => {
       cy.get('#formatStart')
         .click()
         .get('#countDownFormat')
-        .should('contain', '00:00:45')
+        .wait(5000)
+        .should('contain', '00:00:40')
     });
   });
 
