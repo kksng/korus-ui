@@ -8,7 +8,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|CheckBox', 'Basic Usage')}
+        onClick={linkTo('Form|CheckBox', 'Базовый пример')}
         target="_self"
       >
         children
@@ -22,7 +22,7 @@ export const propsDesc = [
     name: 'defaultValue',
     type: 'boolean',
     required: false,
-    description: 'Значение по-умолчанию, если не передано - false.',
+    description: 'Значение по умолчанию, если не передано - false.',
   },
   {
     name: 'id',
@@ -31,7 +31,14 @@ export const propsDesc = [
     description: 'Id чекбокса.',
   },
   {
-    name: 'inputRender',
+    name: (
+      <L.A
+        onClick={linkTo('Form|CheckBox', 'Кастомизация')}
+        target="_self"
+      >
+        inputRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -54,13 +61,27 @@ export const propsDesc = [
     description: 'Перевести компонент в состояние disabled.',
   },
   {
-    name: 'isSemi',
+    name: (
+      <L.A
+        onClick={linkTo('Form|CheckBox', 'Получекбокс')}
+        target="_self"
+      >
+        isSemi
+      </L.A>
+    ),
     type: 'boolean',
     required: false,
-    description: '"Получекбокс" (минус вместо галочки). "Полувыбранное" состояние можно реализовать с помощью соответствующего css-класса.',
+    description: '"Получекбокс" (минус вместо галочки). Такой вид обычно используется совместно со списком чекбоксов, показывает наличие некоторых выбранных пунктов. Также можно реализовать с помощью css-класса \'semi\'.',
   },
   {
-    name: 'labelRender',
+    name: (
+      <L.A
+        onClick={linkTo('Form|CheckBox', 'Кастомизация')}
+        target="_self"
+      >
+        labelRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -84,7 +105,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|CheckBox', 'Basic Usage')}
+        onClick={linkTo('Form|CheckBox', 'Базовый пример')}
         target="_self"
       >
         onChange
@@ -167,7 +188,7 @@ interface CheckBoxRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|CheckBox', 'Basic Usage')}
+        onClick={linkTo('Form|CheckBox', 'Базовый пример')}
         target="_self"
       >
         value
@@ -184,7 +205,14 @@ interface CheckBoxRefCurrent {
     ),
   },
   {
-    name: 'wrapperRender',
+    name: (
+      <L.A
+        onClick={linkTo('Form|CheckBox', 'Кастомизация')}
+        target="_self"
+      >
+        wrapperRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode

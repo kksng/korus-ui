@@ -1,33 +1,39 @@
+import { defaultRatingTheme as theme} from '../../../korus-ui/components/Rating/theme';
+
+const item = `.${theme.item}`;
+const itemFilled = `${theme.itemFilled}`;
+
+
 describe('Rating', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/rating');
+    cy.visit('/cypress/rating');
   });
 
   describe('Interaction', () => {
     it('Default mode', () => {
-      cy.get('.default')
-        .find('.rating-item')
+      cy.get('#default')
+        .find(item)
         .eq(0)
         .click()
-        .should('have.class', 'filled')
+        .should('have.class', itemFilled)
         .parent()
-        .find('.rating-item')
+        .find(item)
         .eq(4)
         .click()
-        .should('have.class', 'filled')
+        .should('have.class', itemFilled)
         .prevAll()
-        .should('have.class', 'filled')
+        .should('have.class', itemFilled)
         .parents()
-        .find('button')
-        .contains('Обнулить')
+        .get('#reset')
         .click()
         .parents()
-        .get('.default')
-        .find('.rating-item')
-        .should('not.have.class', 'filled');
+        .get('#default')
+        .find(item)
+        .should('not.have.class', itemFilled);
     });
+
     it('Custom mode', () => {
-      cy.get('.custom')
+      cy.get('#custom')
         .find('.rating-empty')
         .eq(0)
         .click()
@@ -40,20 +46,20 @@ describe('Rating', () => {
         .prevAll()
         .should('have.class', 'rating-filled')
         .parents()
-        .find('button')
-        .contains('Обнулить')
+        .get('#reset')
         .click()
         .parents()
-        .get('.custom')
+        .get('#custom')
         .find('.rating-empty')
         .should('not.have.class', 'rating-filled');
     });
+
     it('ReadOnly mode', () => {
-      cy.get('.disabled')
-        .find('.rating-item')
+      cy.get('#disabled')
+        .find(item)
         .eq(2)
         .click()
-        .should('not.have.class', 'filled');
+        .should('not.have.class', itemFilled);
     });
   });
 });

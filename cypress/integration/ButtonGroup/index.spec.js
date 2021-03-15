@@ -3,11 +3,15 @@ import { defaultButtonGroupTheme as theme } from '../../../korus-ui/components/B
 
 describe('ButtonGroup', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/button-group');
+    cy.visit('/cypress/button-group', {
+      onBeforeLoad(win) {
+        cy.stub(win.console, 'log').as('consoleLog');
+      },
+    });
   });
 
   describe('Display', () => {
-    it('should render all the buttons in the group', () => {
+    it('Should render all the buttons in the group', () => {
       cy.datatest('FourButtonGroup')
         .find('button')
         .should('have.length', 4)
@@ -19,70 +23,83 @@ describe('ButtonGroup', () => {
         .should('have.length', 3)
         .datatest('OneButtonGroup')
         .find('button')
-        .should('have.length', 1)
+        .should('have.length', 1);
     });
 
-    it('should render selected button with active class', () => {
+    it('Should render selected button with active class', () => {
       cy.datatest('FourButtonGroup')
-        .find('.button-wrapper.button-group-item.active')
-        .should('have.text', 'three')
+        .contains('three')
         .should('have.length', 1)
+        .and('have.class', 'active');
     });
 
     it('Disabled group should be disabled', () => {
       cy.datatest('TwoButtonGroup')
-        .find('.button-group-buttons-wrapper.disabled')
+        .find(`.${theme.buttonsWrapper}`)
         .should('have.length', 1)
+        .and('have.class', `${theme.wrapperDisabled}`);
+    });
+  });
+
+  describe('Events', () => {
+    it('onChange event', () => {
+      cy.datatest('OneButtonGroup')
+        .find('button')
+        .click()
+        .get('@consoleLog')
+        .should('be.calledWith', 'Click');
+    });
+
+    it('onClick event', () => {
+      const stub = cy.stub();
+      cy.on('window:alert', stub);
+
+      cy.datatest('OneButtonGroup')
+        .find('button')
+        .click()
+        .then(() => {
+          expect(stub.getCall(0)).to.be.calledWith('Alert!');
+        });
     });
   });
 
   describe('Interaction', () => {
-    it('should ignore clicks when isDisabled', () => {
+    it('Should ignore clicks when isDisabled', () => {
       cy.datatest('TwoButtonGroup')
-        .find('.button-wrapper.button-group-item.last')
+        .find(`.${theme.button}`)
+        .last()
         .should('have.not.class', 'active')
         .click()
-        .should('not.have.class', 'active')
+        .should('not.have.class', 'active');
     });
 
-    it('should select button on click', () => {
+    it('Working in Checkbox mode', () => {
       cy.datatest('NumberButtonGroup')
-        .find('.button-wrapper.button-group-item.last')
-        .should('have.not.class', 'active')
-        .click()
-        .should('have.class', 'active')
-        .parent()
-        .find('.button-wrapper.button-group-item.first')
-        .should('have.not.class', 'active')
-        .click()
-        .should('have.class', 'active')
-        .parent()
-        .find('.button-wrapper.button-group-item.last')
-        .should('have.class', 'active')
+        .should('have.attr', 'type', 'checkbox')
+        .find('button')
+        .each((checkboxTypeCheck) => {
+          cy.wrap(checkboxTypeCheck)
+            .click()
+            .should('have.class', 'active')
+            .click()
+            .should('not.have.class', 'active');
+        });
     });
 
-  
-    it('should allow only one pressed button in Radio mode', () => {
-      cy.datatest('RadioButtonGroup')
-        .find('.button-wrapper.button-group-item.last')
-        .should('have.not.class', 'active')
-        .click()
-        .should('have.class', 'active')
-        .parent()
-        .find('.button-wrapper.button-group-item.first')
-        .should('have.not.class', 'active')
-        .click()
-        .should('have.class', 'active')
-        .parent()
-        .find('.button-wrapper.button-group-item.last')
-        .should('not.have.class', 'active')
-    });
-
-    xit('Names', () => {
-      cy.name('FourButtonGroup')
-        .find('.button-wrapper.button-group-item.active')
-        .should('have.text', 'three')
-        .should('have.length', 1)
+    it('Should allow only one pressed button in Radio mode', () => {
+      cy.datatest('ThreeButtonGroup')
+        .should('have.attr', 'type', 'radio')
+        .find('button')
+        .each((radioTypeCheck) => {
+          cy.wrap(radioTypeCheck)
+            .click()
+            .should('have.class', 'active')
+        })
+        .then((notActiveCheck) => {
+          cy.wrap(notActiveCheck)
+            .prev()
+            .should('not.have.class', 'active')
+        });
     });
   });
 });

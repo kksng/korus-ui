@@ -1,6 +1,6 @@
 describe('Slider', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/slider');
+    cy.visit('/cypress/slider');
   });
 
   describe('Interaction', () => {
@@ -15,8 +15,7 @@ describe('Slider', () => {
         .find('.slider-label')
         .should('contain', '11')
         .parents()
-        .find('button')
-        .contains('Обновить')
+        .name('reset')
         .click()
         .parents()
         .get('.basic')
@@ -27,6 +26,7 @@ describe('Slider', () => {
         .find('.slider-label')
         .should('contain', '10');
     });
+
     it('The boundary values', () => {
       cy.get('.basic')
         .find('.slider-handle')
@@ -45,10 +45,10 @@ describe('Slider', () => {
         .find('.slider-label')
         .should('contain', '0')
         .parents()
-        .find('button')
-        .contains('Обновить')
+        .name('reset')
         .click();
     });
+
     it('Changing the value by clicking on the scale', () => {
       cy.get('.basic')
         .find('.slider-track.active')
@@ -64,15 +64,16 @@ describe('Slider', () => {
         .find('.slider-handle')
         .should('have.attr', 'aria-valuenow', 12)
         .parents()
-        .find('button')
-        .contains('Обновить')
+        .name('reset')
         .click();
     });
+
     it('Should be disable', () => {
       cy.get('.disable')
         .find('.slider-container')
         .should('have.class', 'disabled');
     });
+
     it('The use of multiple sliders', () => {
       cy.get('.multi')
         .find('.slider-handle')

@@ -6,7 +6,7 @@ const contentClassName = `.${theme.content}`;
 
 describe('FileDrop', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:9000/cypress/filedrop');
+    cy.visit('/cypress/filedrop');
     cy.window().then((win) => {
       cy.spy(win.console, 'log').as('consoleLog');
     });

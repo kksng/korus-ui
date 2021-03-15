@@ -14,22 +14,34 @@ export const BasicUsage = (storyProps: StoryProps) => {
     <L.Div _box _inner _demoBg>
       <L.Div _basic>
         <L.Div _rub>
-          <L.Currency precision={2} currencyCode="RUB">
-            12 550
+          <L.Currency 
+            id="rub" 
+            precision={2} 
+            currencyCode="RUB"
+            >
+              12 550
           </L.Currency>
         </L.Div>
         <br />
         <br />
         <L.Div _usd>
-          <L.Currency precision={2} currencyCode="USD">
-            12 550
+          <L.Currency   
+            id="usd" 
+            precision={2} 
+            currencyCode="USD"
+            >
+              12 550
           </L.Currency>
         </L.Div>
         <br />
         <br />
         <L.Div _eur>
-          <L.Currency precision={2} currencyCode="EUR">
-            12 550
+          <L.Currency 
+            id="eur" 
+            precision={2} 
+            currencyCode="EUR"
+            >
+              12 550
           </L.Currency>
         </L.Div>
       </L.Div>
@@ -41,6 +53,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
       <L.Div _custom>
         <L.Div _custom_rub>
           <L.Currency
+            id="customRub"
             currencySymbolRender={({
               elementProps: { children, style },
             }: any) => (
@@ -62,6 +75,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <br />
         <L.Div _placeholder_eur>
           <L.Currency
+            id="placeholderEur"
             precision={2}
             currencyCode="EUR"
             placeholder="тут ничего нет"
@@ -74,6 +88,7 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <br />
         <L.Div _trim_eur>
           <L.Currency
+            id="trimEur"
             precision={2}
             currencyCode="EUR"
             shouldTrimFraction={false}
@@ -87,8 +102,12 @@ export const BasicUsage = (storyProps: StoryProps) => {
         <hr />
         <br />
         <L.Div _prec>
-          <L.Currency precision={3} currencyCode="EUR">
-            12 500.00
+          <L.Currency 
+            id="prec" 
+            precision={3} 
+            currencyCode="EUR"
+            >
+              12 500.00
           </L.Currency>
         </L.Div>
       </L.Div>

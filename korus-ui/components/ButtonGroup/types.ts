@@ -30,7 +30,7 @@ export type ChangeEvent<T> = ButtonClickEvent<T> | ResetEvent<T>;
 export interface ButtonGroupProps<T extends Value | Value[] = Value | Value[]> extends ValidationProps {
   /** Классы переданные через _ */
   [x: string]: unknown,
-  /** Кастомизация кнопки при передачи data. По дефолту используется L.Button */
+  /** Кастомизация кнопки при передаче data. По дефолту используется L.Button */
   buttonRender?: CustomRender<ButtonGroupProps, ButtonGroupState, ButtonProps>,
   /** Данные для элементов. Массив обьектов или строк или чисел. ВАЖНО! В компоненте не может быть двух кнопок с одинаковым текстом */
   data?: ArrayElement<T>[],

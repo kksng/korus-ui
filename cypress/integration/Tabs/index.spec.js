@@ -1,6 +1,6 @@
 describe('Tabs', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/tabs');
+    cy.visit('/cypress/tabs');
   });
 
   describe('Interaction', () => {
@@ -33,6 +33,7 @@ describe('Tabs', () => {
         .click()
         .should('have.class', 'disabled');
     });
+
     it('Scrolling through tabs', () => {
       cy.get('.scrol')
         .find('.tabs-item')
@@ -53,6 +54,7 @@ describe('Tabs', () => {
         .first()
         .should('be.visible');
     });
+    
     it('Using content node', () => {
       cy.get('.tabs-node')
         .find('.tabs-item')

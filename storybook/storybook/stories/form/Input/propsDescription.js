@@ -88,15 +88,9 @@ export const propsDesc = [
     description: 'Наличие кнопки для очистки поля ввода.',
   },
   {
-    name: 'isDisabled',
-    type: 'boolean',
-    required: false,
-    description: 'Перевести компонент в неактивное состояние.',
-  },
-  {
     name: (
       <L.A
-        onClick={linkTo('Form|Input', 'Customization')}
+        onClick={linkTo('Form|Input', 'Кастомизация')}
         target="_self"
       >
         inputRender
@@ -109,6 +103,12 @@ export const propsDesc = [
     ),
     required: false,
     description: 'Кастомизация поля ввода.',
+  },
+  {
+    name: 'isDisabled',
+    type: 'boolean',
+    required: false,
+    description: 'Перевести компонент в неактивное состояние.',
   },
   {
     name: (
@@ -325,7 +325,7 @@ interface InputRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Input', 'Customization')}
+        onClick={linkTo('Form|Input', 'Кастомизация')}
         target="_self"
       >
         wrapperRender

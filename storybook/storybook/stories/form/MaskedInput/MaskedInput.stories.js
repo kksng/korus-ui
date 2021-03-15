@@ -14,8 +14,8 @@ import { ApiStory } from '../../../components/ApiStory';
 
 storiesOf('Form|MaskedInput', module)
   .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
-  .add('Basic Usage', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
-  .add('Customization', context => (<Story {...Customization} customProps={propsDesc} context={context} />));
+  .add('Базовый пример', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
+  .add('Кастомизация', context => (<Story {...Customization} customProps={propsDesc} context={context} />));
 
 storiesOf('Form|MaskedInput.Props', module)
   .add('mask', context => (<Story {...Mask} customProps={propsDesc} context={context} />))

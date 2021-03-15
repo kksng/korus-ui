@@ -6,7 +6,7 @@ export interface CurrencyProps {
   [x: string]: unknown,
   /** значение, как потомок */
   children?: number | string,
-  /** Валюта в формате ISO 4217 - EUR, USD, RUB etc, по-умолчанию RUB */
+  /** Валюта в формате ISO 4217 - EUR, USD, RUB etc, по умолчанию RUB */
   currencyCode?: string,
   /** Кастомный рендер знака валюты (для добавления единиц измерения, например) */
   currencySymbolRender?: CustomRender<CurrencyProps, {}, CurrencySymbolProps>,
@@ -20,7 +20,7 @@ export interface CurrencyProps {
   shouldTrimFraction?: boolean,
   /** значение поля */
   value?: number | string,
-  /** Кастомизация враппера (по-умолчанию span) */
+  /** Кастомизация враппера (по умолчанию span) */
   wrapperRender?: CustomRender<CurrencyProps, {}, WrapperProps>,
 }
 

@@ -1,6 +1,6 @@
 describe('DropDown', () => {
   before(() => {
-    cy.visit('http://localhost:9000/cypress/dropdown');
+    cy.visit('/cypress/dropdown');
   });
 
   describe('Interaction', () => {

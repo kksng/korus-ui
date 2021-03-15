@@ -1,8 +1,8 @@
 import componentSrc from '!raw-loader!@korus/leda/dist/components/CheckBox/';
 
 export { componentSrc };
-export { Customization } from './Customization';
+export { Api } from './Api';
 export { BasicUsage } from './BasicUsage';
+export { Customization } from './Customization';
 export { Semi } from './Semi';
 export { States } from './States';
-export { Api } from './Api';

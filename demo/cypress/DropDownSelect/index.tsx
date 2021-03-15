@@ -75,7 +75,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         ref={containerRef}
       >
         <L.DropDownSelect
-          name='DDSBoundingContainerRef'
+          id="DDSBoundingContainerRef"
           boundingContainerRef={containerRef}
           data={[
             'London',
@@ -106,7 +106,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
       <L.Div _demoStory _flexRow>
         <L.DropDownSelect
           shouldFilterValues
-          name='Opened'
+          id="Opened"
           onFocus={testFunction}
           data={[
             { name: 'Paris', region: 'Europe' },
@@ -130,7 +130,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         />
 
         <L.DropDownSelect
-          name='DDSCompareObjectsBy'
+          id="DDSCompareObjectsBy"
           data={data}
           textField="city"
           value={value2}
@@ -144,7 +144,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         />
 
         <L.DropDownSelect
-          name='DDSCompareObjectsByObjects'
+          id="DDSCompareObjectsByObjects"
           data={data}
           defaultValue={{ id: 2, city: 'Berlin' }}
           textField="city"
@@ -154,7 +154,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         />
 
         <L.DropDownSelect
-          name='DDSonBlur'
+          id="DDSonBlur"
           data={[
             'London',
             'Islamabad',
@@ -208,11 +208,29 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         ]}
         setProps={setProps1}
       />
-      <L.Button _warning={isDisabled} onClick={() => setIsDisabled(!isDisabled)}>Toggle isDisabled</L.Button>
+      <L.Button 
+        id="toggleIsDisabled"
+        _warning={isDisabled} 
+        onClick={() => setIsDisabled(!isDisabled)}
+        >
+          Toggle isDisabled
+      </L.Button>
       {' '}
-      <L.Button _warning={isLoading} onClick={() => setIsLoading(!isLoading)}>Toggle isLoading</L.Button>
+      <L.Button 
+        id="toggleIsLoading"
+        _warning={isLoading} 
+        onClick={() => setIsLoading(!isLoading)}
+        >
+          Toggle isLoading
+      </L.Button>
       {' '}
-      <L.Button _warning={isOpen} onClick={() => setIsOpen(isOpen ? undefined : true)}>Toggle isOpen</L.Button>
+      <L.Button 
+        id="toggleIsOpen"
+        _warning={isOpen} 
+        onClick={() => setIsOpen(isOpen ? undefined : true)}
+        >
+          Toggle isOpen
+      </L.Button>
       <br />
       <br />
       <br />
@@ -226,7 +244,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
       <br />
       <L.Div _demoStory _flexRow>
         <L.DropDownSelect
-          name='DDSShouldAllowEmpty'
+          id="DDSShouldAllowEmpty"
           data={[
             1,
             0,
@@ -244,7 +262,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         />
 
         <L.DropDownSelect
-          name="DDSDisabled"
+          id="DDSDisabled"
           data={[
             'London',
             'Islamabad',
@@ -273,7 +291,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         />
 
         <L.DropDownSelect
-          name='DDSFilterRule'
+          id="DDSFilterRule"
           value={value5}
           onChange={handleChange}
           shouldFilterValues
@@ -299,7 +317,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         />
 
         <L.DropDownSelect
-          name='DDSSortSuggestions'
+          id="DDSSortSuggestions"
           textField="city"
           sortSuggestions={sort}
           data={[
@@ -321,7 +339,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         />
 
         <L.DropDownSelect
-          name='DDSFocusCheck'
+          id="DDSFocusCheck"
           data={data}
           value={value7}
           textField="city"

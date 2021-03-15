@@ -1,3 +1,4 @@
+import { eventNames } from 'cluster';
 import * as React from 'react';
 import * as L from '../../../korus-ui';
 import { DateValueType } from '../../../korus-ui/src/DateTimeInputRange/types';
@@ -104,8 +105,8 @@ export const DateRange = (): React.ReactElement => {
 
         <L.DateRange
           _grow1
-          max={new Date('05.04.2012')}
-          min={new Date('04.03.2012')}
+          max={new Date(2012, 4, 4)}
+          min={new Date(2012, 3, 4)}
           onChange={handleChange2}
           onEnterPress={console.log}
           name="MinMaxDatePicker"
@@ -126,6 +127,7 @@ export const DateRange = (): React.ReactElement => {
           onChange={handleChange3}
           format="dd.MM.yyyy"
           onBlur={console.log}
+          onEnterPress={(ev) => console.log('Enter', ev)}
           name="ThirdDateRange"
           isRequired
           form="112"

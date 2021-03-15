@@ -9,6 +9,7 @@ import {
   CheckBox,
   Currency,
   Collapse,
+  CountDown,
   DatePicker,
   DateTimePicker,
   DateRange,
@@ -68,6 +69,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
+        </Route>
+        <Route path="/cypress/countdown">
+          <CountDown />
         </Route>
         <Route path="/cypress/currency">
           <Currency />

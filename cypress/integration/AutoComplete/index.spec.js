@@ -5,7 +5,7 @@ describe('AutoComplete', () => {
   let lastConsole;
   let stub;
   before(() => {
-    cy.visit('http://localhost:9000/cypress/autocomplete');
+    cy.visit('cypress/autocomplete');
   });
 
   describe('Display', () => {
@@ -219,7 +219,7 @@ describe('AutoComplete', () => {
 
   describe('Events', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/cypress/autocomplete', {
+      cy.visit('cypress/autocomplete', {
         onBeforeLoad(win) {
           stub = cy.stub(win.console, 'log', (ev) => { lastConsole = ev; });
         },

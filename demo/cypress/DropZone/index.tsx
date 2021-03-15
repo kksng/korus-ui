@@ -30,13 +30,14 @@ export const DropZone = (): React.ReactElement => {
         requiredMessage="Files are required!"
       />
 
-      <L.Button form="dropzone-form" >Submit</L.Button>
+      <L.Button id="submit" form="dropzone-form" >Submit</L.Button>
 
       <br />
 
       <L.Span>Controlled</L.Span>
       <L.DropZone
         className="controlledDZ"
+        id="controlledDZ"
         value={value}
         isLoading={isLoading}
         loadingProgress={loadingProgress}
@@ -46,19 +47,19 @@ export const DropZone = (): React.ReactElement => {
         isDisabled={isDisabled}
       />
       <br />
-      <L.Button _warning onClick={() => setValue(null)}>Set state as null</L.Button>
+      <L.Button _warning id="stateAsNull" onClick={() => setValue(null)}>Set state as null</L.Button>
       <br />
       <br />
-      <L.Button _warning name="disable" onClick={() => setIsDisabled(!isDisabled)}>Disable / Enable</L.Button>
+      <L.Button _warning id="disable" onClick={() => setIsDisabled(!isDisabled)}>Disable / Enable</L.Button>
       <br />
       <br />
-      <L.Button _warning name="loader" onClick={() => setIsLoading(!isLoading)}>Show/hide loader</L.Button>
+      <L.Button _warning id="loader" onClick={() => setIsLoading(!isLoading)}>Show/hide loader</L.Button>
       <br />
       <br />
-      <L.Button _warning name="progressLoader" onClick={() => {setLoadingProgress(progress => isNil(progress) ? 0 : undefined); setIsLoading(!isLoading); }}>Show/hide progress</L.Button>
+      <L.Button _warning id="progressLoader" onClick={() => {setLoadingProgress(progress => isNil(progress) ? 0 : undefined); setIsLoading(!isLoading); }}>Show/hide progress</L.Button>
       <br />
       <br />
-      <L.Button _warning name="customLoader" onClick={() => {setIsCustomLoader(!isCustomLoader); setIsLoading(!isLoading); }}>Set/remove Custom Loader</L.Button>
+      <L.Button _warning id="customLoader" onClick={() => {setIsCustomLoader(!isCustomLoader); setIsLoading(!isLoading); }}>Set/remove Custom Loader</L.Button>
       <br />
 
       <L.Span>Uncontrolled (prop value is null)</L.Span>
@@ -70,7 +71,7 @@ export const DropZone = (): React.ReactElement => {
         requiredMessage="Files are required!"
       />
       <br />
-      <L.Button form="dropzone-null" >Submit null value</L.Button>
+      <L.Button id="nullValue" form="dropzone-null" >Submit null value</L.Button>
     </L.Div>
   );
 };

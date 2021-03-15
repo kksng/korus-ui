@@ -26,7 +26,7 @@ const compoundProps = [
 
 storiesOf('Form| AutoComplete', module)
   .add('API', context => (<ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />))
-  .add('Customization', context => (<Story {...Customization} compoundCustomProps={compoundProps} context={context} />))
+  .add('Кастомизация', context => (<Story {...Customization} compoundCustomProps={compoundProps} context={context} />))
   .add('Debounce', context => (<Story {...Debounce} compoundCustomProps={compoundProps} context={context} />));
 
 storiesOf('Form| AutoComplete.Props', module)

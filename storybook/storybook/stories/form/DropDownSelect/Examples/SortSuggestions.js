@@ -39,7 +39,7 @@ const SortSuggestions = () => {
 render(<SortSuggestions />);
 `,
   text: (
-    <L.Div _block>`
+    <L.Div _block>
       <p>
         Предположим, что у нас есть несортированный список городов и данные о количестве жителей в каждом городе.
       </p>
