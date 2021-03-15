@@ -21,7 +21,9 @@ export const getDelta = (startTimestamp: number): number => {
  */
 export const formatTime = (milliseconds: number, format = 'mm:ss'): string => {
   const timestamp = Math.ceil(milliseconds / 1000) * 1000;
-  const date = new Date(timestamp);
+
+  const offset = new Date().getTimezoneOffset() * 60 * 1000;
+  const date = new Date(timestamp + offset);
 
   const timeTable = {
     hh: date.getHours(),
