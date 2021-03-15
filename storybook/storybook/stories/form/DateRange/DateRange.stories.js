@@ -26,7 +26,7 @@ storiesOf('Form| DateRange', module)
   .add('Базовый пример', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
   .add('Ограничение выбора дат', context => (<Story {...MinMax} customProps={propsDesc} context={context} />))
   .add('Контролируемый режим', context => (<Story {...ControlledDate} customProps={propsDesc} context={context} />))
-  .add('Расширяемость', context => (<Story {...CustomRender} customProps={propsDesc} context={context} />))
+  .add('Кастомизация', context => (<Story {...CustomRender} customProps={propsDesc} context={context} />))
   .add('Позиционирование', context => (<Story {...Positioning} customProps={propsDesc} context={context} />))
   .add('UX', context => (<Story {...UX} customProps={propsDesc} context={context} />));
 

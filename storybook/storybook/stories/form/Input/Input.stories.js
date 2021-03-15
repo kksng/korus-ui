@@ -23,12 +23,8 @@ const compoundProps = [
 
 storiesOf('Form|Input', module)
   .add('API', context => (<ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />))
-  .add('Базовый пример', context => (
-    <Story {...BasicUsage} compoundCustomProps={compoundProps} context={context} />
-  ))
-  .add('Кастомизация', context => (
-    <Story {...Customization} compoundCustomProps={compoundProps} context={context} />
-  ));
+  .add('Базовый пример', context => (<Story {...BasicUsage} compoundCustomProps={compoundProps} context={context} />))
+  .add('Кастомизация', context => (<Story {...Customization} compoundCustomProps={compoundProps} context={context} />));
 
 storiesOf('Form|Input.Props', module)
   .add('allowedSymbols', context => (

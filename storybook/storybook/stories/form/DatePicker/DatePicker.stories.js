@@ -14,8 +14,8 @@ import { ApiStory } from '../../../components/ApiStory';
 
 storiesOf('Form| DatePicker', module)
   .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
-  .add('Basic usage', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
-  .add('Limits', context => (<Story {...MinMax} customProps={propsDesc} context={context} />))
+  .add('Базовый пример', context => (<Story {...BasicUsage} customProps={propsDesc} context={context} />))
+  .add('Ограничения выбора дат', context => (<Story {...MinMax} customProps={propsDesc} context={context} />))
   .add('UX', context => (<Story {...UX} customProps={propsDesc} context={context} />));
 
 storiesOf('Form| DatePicker.Props', module)
