@@ -28,7 +28,14 @@ export const collapsePropsDesc = [
     description: 'Дочерние элементы',
   },
   {
-    name: 'isAccordion',
+    name: (
+      <L.A
+        onClick={linkTo('Layout| Collapse', 'Режим аккордеона')}
+        target="_self"
+      >
+        isAccordion
+      </L.A>
+    ),
     type: 'boolean',
     required: false,
     description: (
@@ -130,7 +137,14 @@ export const collapsePanelPropsDesc = [
     description: 'Идентификатор панели, передается в событии onSelect компонента L.Collapse.',
   },
   {
-    name: 'wrapperRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout| Collapse', 'Кастомизация')}
+        target="_self"
+      >
+        wrapperRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -149,7 +163,14 @@ export const collapseHeadingPropsDesc = [
     description: 'Дочерние элементы.',
   },
   {
-    name: 'iconRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout| Collapse', 'Кастомизация')}
+        target="_self"
+      >
+        iconRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -157,6 +178,12 @@ export const collapseHeadingPropsDesc = [
     ),
     required: false,
     description: 'Кастомизация иконки справа от заголовка.',
+  },
+  {
+    name: 'onClick',
+    type: '(event: React.MouseEvent) => void',
+    required: false,
+    description: 'Обработчик кликов.',
   },
   {
     name: 'ref',
@@ -186,7 +213,14 @@ interface HeadingRefCurrent {
     description: 'Cсылки на DOM-элементы компонента',
   },
   {
-    name: 'wrapperRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout| Collapse', 'Кастомизация')}
+        target="_self"
+      >
+        wrapperRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -343,7 +377,14 @@ interface BodyRefCurrent {
     ),
   },
   {
-    name: 'wrapperRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout| Collapse', 'Кастомизация')}
+        target="_self"
+      >
+        wrapperRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
