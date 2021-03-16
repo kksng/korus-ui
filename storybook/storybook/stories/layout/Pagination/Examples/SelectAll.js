@@ -1,3 +1,5 @@
+import React from 'react';
+import * as L from '@korus/leda';
 import { componentSrc } from './index';
 
 export const SelectAll = {
@@ -32,7 +34,6 @@ const SelectAll = () => {
           if (componentProps.value === total) return <Element {...elementProps} value="Все" />;
           return <Element {...elementProps} />;
         }}
-
       />
     </L.Div>
   );
@@ -40,5 +41,12 @@ const SelectAll = () => {
 
 render(<SelectAll />);
 `,
+  text: (
+    <L.Div>
+      <L.P>
+        С помощью средств кастомизации, как пример мы можем реализовать отображение всего содержимого страницы с помощью отдельного поля в дропдауне. 
+      </L.P>
+    </L.Div>
+  ),
   source: componentSrc,
 };
