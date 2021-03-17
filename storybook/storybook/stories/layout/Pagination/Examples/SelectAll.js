@@ -1,5 +1,6 @@
 import React from 'react';
 import * as L from '@korus/leda';
+import { linkTo } from '@storybook/addon-links';
 import { componentSrc } from './index';
 
 export const SelectAll = {
@@ -43,8 +44,11 @@ render(<SelectAll />);
 `,
   text: (
     <L.Div>
-      <L.P>
-        С помощью средств кастомизации, как пример мы можем реализовать отображение всего содержимого страницы с помощью отдельного поля в дропдауне. 
+      <L.P> 
+        С помощью <L.A onClick={linkTo('Layout|Pagination', 'Кастомизация')}target="_self"><b>pageSizeItemRender</b></L.A> и <L.A onClick={linkTo('Layout|Pagination', 'Кастомизация')}target="_self"><b>pageSizeInputRender</b></L.A> можно кастомизировать выпадающий список с выбором количества записей на странице.
+        <br />
+        <br />
+        Пример вывода всех записей на одной странице:
       </L.P>
     </L.Div>
   ),
