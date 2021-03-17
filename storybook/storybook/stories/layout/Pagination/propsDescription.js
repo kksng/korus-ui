@@ -35,7 +35,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Pagination', 'Кастомизация')}
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
         target="_self"
       >
         itemsInfoRender
@@ -52,7 +52,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Pagination', 'Кастомизация')}
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
         target="_self"
       >
         itemsRangeInfoRender
@@ -69,7 +69,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Pagination', 'Кастомизация')}
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
         target="_self"
       >
         itemsTotalInfoRender
@@ -149,7 +149,7 @@ interface PageSizeChangeEvent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Pagination', 'Кастомизация')}
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
         target="_self"
       >
         pagesDropDownRender
@@ -172,7 +172,7 @@ interface PageSizeChangeEvent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Pagination', 'Кастомизация')}
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
         target="_self"
       >
         pageSizeInputRender
@@ -189,7 +189,7 @@ interface PageSizeChangeEvent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|Pagination', 'Кастомизация')}
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
         target="_self"
       >
         pageSizeItemRender
