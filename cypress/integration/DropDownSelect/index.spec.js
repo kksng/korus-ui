@@ -2,6 +2,7 @@
 import { defaultDropDownSelectTheme as theme } from '../../../korus-ui/components/DropDownSelect/theme';
 
 const clearIcon = `.${theme.clearIcon}`;
+const selectIcon = `.${theme.selectIcon}`;
 const wrapper = `.${theme.wrapper}`;
 const container = `.${theme.container}`;
 const list = `.${theme.list}`;
@@ -379,6 +380,15 @@ describe('DropDownSelect', () => {
     it('Should render 0', () => {
       cy.get('#DDSShouldAllowEmpty')
         .should('have.value', 0);
+    });
+    it('Should put the cursor to initial position on icon click', () => {
+      cy.get('#DDSLongStrings')
+        .should('have.value', 'Information about the status of payments for taxes, fees, insurance premiums, penalties, fines, and interest')
+        .next(selectIcon)
+        .click()
+        .get('#DDSLongStrings')
+        .type('Some ')
+        .should('have.value', 'Some Information about the status of payments for taxes, fees, insurance premiums, penalties, fines, and interest');
     });
   });
 });
