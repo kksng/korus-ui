@@ -33,6 +33,25 @@ export const propsDesc = [
     ),
   },
   {
+    name: (
+      <L.A
+        onClick={linkTo('Layout| DropDown', 'Режимы работы')}
+        target="_self"
+      >
+        interactionMode
+      </L.A>
+    ),
+    type: 'click',
+    require: false,
+    description: 'Открытие по клику, по умолчанию открытие по наведению.'
+  },
+  {
+    name: 'isOpen',
+    type: 'boolean',
+    require: false,
+    description: 'Принудительное открытие списка.'
+  },
+  {
     name: 'ref',
     type: (
       <L.Span>
@@ -81,7 +100,14 @@ interface DropDownRefCurrent {
     description: 'Тема компонента.',
   },
   {
-    name: 'wrapperRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout| DropDown', 'Кастомизация')}
+        target="_self"
+      >
+        wrapperRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
