@@ -34,6 +34,7 @@ export const COMPONENTS_NAMESPACES = {
   currency: 'currency',
   dateTimeInput: 'dateTimeInput',
   dateTimeInputRange: 'dateTimeInputRange',
+  drawer: 'drawer',
   dropDown: 'dropDown',
   dropDownLink: 'dropDownLink',
   dropDownSelect: 'dropDownSelect',

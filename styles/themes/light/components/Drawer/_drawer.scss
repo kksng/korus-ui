@@ -1,0 +1,111 @@
+.drawer {
+  bottom: 0;
+  background-color: $white;
+  min-width: 22.4rem;
+  top: 0;
+  position: fixed;
+  z-index: 10001;
+  transition: 170ms ease-in-out;
+
+  &-left {
+    box-shadow: .2rem 0 .8rem 0 rgba(0, 0, 0, .15);
+    left: 0;
+
+    .drawer-bars {
+      box-shadow: .3rem 0 .4rem 0 rgba(191, 191, 191, .4);
+      right: -4.7rem;
+      border-top-right-radius: 1.6rem;
+      border-bottom-right-radius: 1.6rem;
+    }
+  }
+
+  &-right {
+    box-shadow: -.2rem 0 .8rem 0 rgba(0, 0, 0, .15);
+    right: 0;
+
+    .drawer-bars {
+      box-shadow: -.3rem 0 .4rem 0 rgba(191, 191, 191, .4);
+      left: -4.7rem;
+      border-top-left-radius: 1.6rem;
+      border-bottom-left-radius: 1.6rem;
+    }
+  }
+
+  &-overlay {
+    background: $black-01;
+    opacity: 0;
+    width: 100%;
+    height: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: opacity .3s cubic-bezier(.78, .14, .15, .86), height 0s ease .3s;
+    z-index: 10000;
+  }
+
+  &.visible {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    +.drawer-overlay {
+      opacity: .3;
+      height: 100%;
+      transition: none;
+    }
+  }
+}
+
+.drawer-bars {
+  align-items: center;
+  background-color: $white;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  height: 4.8rem;
+  cursor: pointer;
+  width: 4.8rem;
+  top: 2.4rem;
+  transition: all .5s;
+  z-index: 10001;
+
+  span {
+    height: .2rem;
+    width: 2.4rem;
+    background-color: $brand-primary;
+    position: relative;
+    &::before,
+    &::after {
+      left: 0;
+      position: absolute;
+      height: .2rem;
+      width: 2.4rem;
+      content: "";
+      background-color: $brand-primary;
+      transition-duration: .3s;
+    }
+    &::before {
+      top: -.7rem;
+    }
+    &::after {
+      top: .7rem;
+    }
+  }
+
+  &.open {
+    span {
+      background: transparent;
+      &::before,
+      &::after {
+        top: 0;
+        background: $black-04;
+        transition: transform .3s;
+      }
+      &::before {
+        transform: rotateZ(135deg);
+      }
+      &::after {
+        transform: rotateZ(-135deg);
+      }
+    }
+  }
+}
