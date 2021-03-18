@@ -175,35 +175,7 @@ interface ContentProps {
   },
   {
     name: 'position',
-    type: (
-      <L.Span>
-        {'(props: '}
-        <L.Tooltip
-          position="bottom"
-          title={(
-            <pre>
-              {
-                `
-export const Position = {
-Bottom: 'bottom-center',
-BottomLeft: 'bottom-left',
-BottomRight: 'bottom',
-Left: 'left',
-Right: 'right',
-Top: 'top-center',
-TopLeft: 'top-left',
-TopRight: 'top',
-}
-                `
-              }
-            </pre>
-          )}
-        >
-          <L.Span _txt-success>PositionType</L.Span>
-        </L.Tooltip>
-        {') => (typeof Position)[keyof typeof Position]'}
-      </L.Span>
-    ),
+    type: '\'top\' | \'top-left\' | \'top-center\' | \'right\' | \'bottom\' | \'bottom-left\' | \'bottom-center\' | \'left\'',
     required: true,
     description: (
       <div>
