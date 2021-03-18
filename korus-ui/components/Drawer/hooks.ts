@@ -2,6 +2,12 @@ import { useElementRef } from '../../utils';
 import { Position } from './constants';
 import { UseDrawer } from './types';
 
+/**
+ * Hook gets Drawer width and computes styles
+ * @param {position} 'left' | 'right'
+ *
+ * @return ReturnType<UseDrawer>
+ */
 export const useDrawer: UseDrawer = (position) => {
   const [Element, elementRef] = useElementRef();
   const drawerElement = Element?.parentNode as HTMLElement;

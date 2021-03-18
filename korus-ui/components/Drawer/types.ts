@@ -28,6 +28,10 @@ export interface WrapperProps extends React.HtmlHTMLAttributes<HTMLElement>{
   /** Component's current ref */
   ref?: React.Ref<DrawerRefCurrent>,
 }
+
+/**
+ * useDrawer hook interface
+ */
 export interface UseDrawer {
   (
     position: DrawerProps['position']

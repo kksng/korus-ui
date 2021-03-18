@@ -10,6 +10,12 @@ import { Position } from './constants';
 import { useDrawer } from './hooks';
 import { DrawerProps, DrawerRefCurrent, WrapperProps } from './types';
 
+/**
+ * Drawer component: a panel that slides in from the side
+ * @param {DrawerProps} props
+ *
+ * @returns {React.ReactElement}
+ */
 export const Drawer = React.forwardRef((props: DrawerProps, ref?: React.Ref<DrawerRefCurrent>): React.ReactElement => {
   const {
     className,
