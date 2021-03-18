@@ -14,6 +14,7 @@ import {
   DateTimePicker,
   DateRange,
   DateTimeRange,
+  Drawer,
   DropDown,
   DropDownLink,
   DropDownSelect,
@@ -90,6 +91,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/daterange">
           <DateRange />
+        </Route>
+        <Route path="/cypress/drawer">
+          <Drawer />
         </Route>
         <Route path="/cypress/dropdown">
           <DropDown />
