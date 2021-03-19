@@ -1,8 +1,7 @@
-/* eslint-disable no-alert, no-console */
 import * as React from 'react';
 import * as L from '../../../korus-ui';
 
-export const Drawer = () => {
+export const Drawer = (): React.ReactElement => {
   return (
     <L.Drawer id="drawer" position="right">
       <L.Div style={{ width: 300, padding: 20 }}>

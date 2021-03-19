@@ -1,9 +1,8 @@
-/* eslint-disable no-alert, no-console */
 import * as React from 'react';
 import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 
-export const Basic = (storyProps: StoryProps) => {
+export const Basic = (storyProps: StoryProps): React.ReactElement => {
   const [shouldRender, setShouldRender] = React.useState(false);
 
   return (

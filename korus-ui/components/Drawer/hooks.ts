@@ -8,7 +8,7 @@ import { UseDrawer } from './types';
  *
  * @return ReturnType<UseDrawer>
  */
-export const useDrawer: UseDrawer = (position) => {
+export const useDrawer: UseDrawer = (position): ReturnType<UseDrawer> => {
   const [Element, elementRef] = useElementRef();
   const drawerElement = Element?.parentNode as HTMLElement;
 
