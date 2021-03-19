@@ -5,30 +5,31 @@ import { StateButtonGroup } from '../StateButtonGroup';
 import { StoryProps } from '../../types';
 
 export const DataTypes = (storyProps: StoryProps): React.ReactElement => {
-  const [props, setProps] = React.useState({});
+  const defaultData = [
+    'London',
+    'Islamabad',
+    'Berlin',
+    'Washington',
+    'Paris',
+    'Rome',
+    'Tokyo',
+    'Budapest',
+    'Ottawa',
+    'Moscow',
+  ]
+  const [props, setProps] = React.useState({data: defaultData});
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [value, setValue] = React.useState<string | number | SomeObject | null>(null);
+  const [value, setValue] = React.useState<string | number | SomeObject | null | undefined>();
 
   return (
     <L.Div _box _inner _demoBg>
       <L.DropDownSelect
-        data={[
-          'London',
-          'Islamabad',
-          'Berlin',
-          'Washington',
-          'Paris',
-          'Rome',
-          'Tokyo',
-          'Budapest',
-          'Ottawa',
-          'Moscow',
-        ]}
+        data={defaultData}
         hasClearButton
         data-test="dropdownselect"
-        defaultValue="London"
+        defaultValue={props.data[0]}
         _width40
         isOpen={isOpen}
         isLoading={isLoading}
@@ -51,19 +52,19 @@ export const DataTypes = (storyProps: StoryProps): React.ReactElement => {
           {
             text: 'String data',
             props: {
-              data: [
-                'London',
-                'Islamabad',
-                'Berlin',
-                'Washington',
-                'Paris',
-                'Rome',
-                'Tokyo',
-                'Budapest',
-                'Ottawa',
-                'Moscow',
-              ],
+              data: defaultData,
               key: 'string-data',
+            },
+          },
+          {
+            text: 'Long String data',
+            props: {
+              data: [
+                'Information about the status of payments for taxes, fees, insurance premiums, penalties, fines, and interest',
+                'The act of joint reconciliation of calculations on taxes, fees, insurance premiums, penalties, fines, interest',
+                'Certificate of performance by the taxpayer (payer of the fee, payer of insurance premiums, tax agent) of the obligation to pay taxes, fees, insurance premiums, penalties, fines, interest',
+              ],
+              key: 'long-string-data',
             },
           },
           {
@@ -78,7 +79,6 @@ export const DataTypes = (storyProps: StoryProps): React.ReactElement => {
                 { id: 6, text: 'Rome' },
               ],
               textField: 'text',
-              defaultValue: { id: 1, text: 'London' },
               key: 'object-data',
             },
           },

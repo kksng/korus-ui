@@ -17,7 +17,14 @@ import { RenderEvent } from '../../../propsHelpers';
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
   {
-    name: 'allowedSymbols',
+    name: (
+      <L.A
+        onClick={linkTo('Form|Input|Props', 'allowedSymbols')}
+        target="_self"
+      >
+        allowedSymbols
+      </L.A>
+    ),
     type: (
       <L.Span>
         <L.Tooltip
@@ -40,7 +47,14 @@ export const propsDesc = [
     description: 'Значение по умолчанию',
   },
   {
-    name: 'forbiddenSymbols',
+    name: (
+      <L.A
+        onClick={linkTo('Form|Input|Props', 'forbiddenSymbols')}
+        target="_self"
+      >
+        forbiddenSymbols
+      </L.A>
+    ),
     type: (
       <L.Span>
         <L.Tooltip
@@ -57,19 +71,27 @@ export const propsDesc = [
     description: 'Символы, которые нельзя вводить в поле ввода',
   },
   {
-    name: 'hasClearButton',
+    name: (
+      <L.A
+        onClick={linkTo('Form|Input|Props', 'hasClearButton')}
+        target="_self"
+      >
+        hasClearButton
+      </L.A>
+    ),
     type: 'boolean',
     required: false,
     description: 'Наличие кнопки для очистки поля ввода',
   },
   {
-    name: 'isDisabled',
-    type: 'boolean',
-    required: false,
-    description: 'Перевести компонент в неактивное состояние',
-  },
-  {
-    name: 'inputRender',
+    name: (
+      <L.A
+        onClick={linkTo('Form|Password', 'Кастомизация')}
+        target="_self"
+      >
+        inputRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -79,7 +101,20 @@ export const propsDesc = [
     description: 'Кастомизация поля ввода',
   },
   {
-    name: 'letterCase',
+    name: 'isDisabled',
+    type: 'boolean',
+    required: false,
+    description: 'Перевести компонент в неактивное состояние',
+  },
+  {
+    name: (
+      <L.A
+        onClick={linkTo('Form|Input|Props', 'letterCase')}
+        target="_self"
+      >
+        letterCase
+      </L.A>
+    ),
     type: "'lower' | 'upper'",
     required: false,
     description: 'При вводе переводит все буквы в верхний или нижний регистр',
@@ -91,13 +126,20 @@ export const propsDesc = [
     description: 'Ограничение на количество символов',
   },
   {
-    name: 'minPasswordEvaluationLength',
+    name: (
+      <L.A
+        onClick={linkTo('Form|Password', 'Оценки сложности пароля')}
+        target="_self"
+      >
+        minPasswordEvaluationLength
+      </L.A>
+    ),
     type: 'number',
     required: false,
     description: (
       <div>
         <p>
-          Минимальная длина пароля, с которой начинается оценка его сложности. По-умолчанию - 4.
+          Минимальная длина пароля, с которой начинается оценка его сложности. По умолчанию - 4.
         </p>
         <p>
           Если длина пароля меньше заданного количества символов, пользователь видит подсказку с правилами для пароля.
@@ -168,6 +210,34 @@ interface ChangeEvent {
     description: 'Обработчик события изменения значения в поле ввода',
   },
   {
+    name: 'onEnterPress',
+    type: (
+      <L.Span>(event:
+        {' '}
+        <L.Tooltip
+          position="bottom"
+          title={(
+            <pre>
+              {`
+interface EnterPressEvent extends React.KeyboardEvent<HTMLInputElement> {
+  component: {
+    name?: string,
+    value: string,
+  },
+}          
+              `}
+            </pre>
+          )}
+        >
+          <L.Span _txt-success>EnterPressEvent</L.Span>
+        </L.Tooltip>
+        ) => void
+      </L.Span>
+    ),
+    required: false,
+    description: 'Обработчик нажатия Enter.',
+  },
+  {
     name: 'onFocus',
     type: (
       <L.Span>(event:
@@ -195,7 +265,14 @@ interface FocusEvent extends React.FocusEvent<HTMLInputElement> {
     description: 'Обработчик события потери фокуса',
   },
   {
-    name: 'passwordEvaluators',
+    name: (
+      <L.A
+        onClick={linkTo('Form|Password', 'Оценки сложности пароля')}
+        target="_self"
+      >
+        passwordEvaluators
+      </L.A>
+    ),
     type: (
       <L.Span>
         <L.Tooltip
@@ -242,7 +319,14 @@ interface PasswordEvaluator {
     ),
   },
   {
-    name: 'passwordRules',
+    name: (
+      <L.A
+        onClick={linkTo('Form|Password', 'Оценки сложности пароля')}
+        target="_self"
+      >
+        passwordRules
+      </L.A>
+    ),
     type: 'string',
     required: false,
     description: (
@@ -256,6 +340,23 @@ interface PasswordEvaluator {
         </p>
       </div>
     ),
+  },
+  {
+    name: (
+      <L.A
+        onClick={linkTo('Form|Password', 'Кастомизация')}
+        target="_self"
+      >
+        passwordVisibilityRender
+      </L.A>
+    ),
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация иконки видимости пароля'
   },
   {
     name: 'placeholder',
@@ -333,7 +434,14 @@ interface PasswordRefCurrent {
     description: 'Значение в поле ввода',
   },
   {
-    name: 'wrapperRender',
+    name: (
+      <L.A
+        onClick={linkTo('Form|Password', 'Кастомизация')}
+        target="_self"
+      >
+        wrapperRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
