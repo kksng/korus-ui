@@ -38,6 +38,7 @@ import { defaultFileDropTheme } from '../FileDrop/theme';
 import { defaultWizardTheme } from '../Wizard/theme';
 import { defaultMenuTheme } from '../Menu/theme';
 import { defaultCountDownTheme } from '../CountDown/theme';
+import { defaultLinkTreeTheme } from '../LinkTree/theme';
 
 export const globalDefaultTheme = {
   autoComplete: defaultAutoCompleteTheme,
@@ -54,6 +55,7 @@ export const globalDefaultTheme = {
   dropZone: defaultDropZoneTheme,
   fileDrop: defaultFileDropTheme,
   input: defaultInputTheme,
+  linkTree: defaultLinkTreeTheme,
   loader: defaultLoaderTheme,
   loaderComponent: defaultLoaderComponentTheme,
   maskedInput: defaultMaskedInputTheme,

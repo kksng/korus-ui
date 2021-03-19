@@ -21,6 +21,7 @@ import {
   FileDrop,
   FileUpload,
   Input,
+  LinkTree,
   Loader,
   MaskedInput,
   Menu,
@@ -111,6 +112,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/input">
           <Input />
+        </Route>
+        <Route path="/cypress/link-tree">
+          <LinkTree />
         </Route>
         <Route path="/cypress/loader">
           <Loader />
