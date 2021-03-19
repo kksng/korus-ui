@@ -6,7 +6,6 @@ import
   BasicUsage,
   Format,
   MinMax,
-  TimeStepMinutes,
   UX,
 } from './Examples';
 import { Story } from '../../../components/Story';
@@ -20,5 +19,4 @@ storiesOf('Form| DateTimePicker', module)
   .add('UX', context => (<Story {...UX} customProps={propsDesc} context={context} />));
 
 storiesOf('Form| DateTimePicker.Props', module)
-  .add('format', context => (<Story {...Format} customProps={propsDesc} context={context} />))
-  .add('timeStepMinutes', context => (<Story {...TimeStepMinutes} customProps={propsDesc} context={context} />));
+  .add('format', context => (<Story {...Format} customProps={propsDesc} context={context} />));

@@ -5,6 +5,12 @@ import { linkTo } from '@storybook/addon-links';
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
   {
+    name: 'disabledDates',
+    type: '(Date | [Date, Date])[]',
+    required: false,
+    description: 'Даты, которые отключены для выбора.'
+  },
+  {
     name: (
       <L.A
         onClick={linkTo('Form|DateTimePicker|Props', 'format')}
@@ -32,7 +38,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimePicker', 'Limits')}
+        onClick={linkTo('Form|DateTimePicker', 'Ограничение выбора дат')}
         target="_self"
       >
         max
@@ -45,7 +51,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimePicker', 'Limits')}
+        onClick={linkTo('Form|DateTimePicker', 'Ограничение выбора дат')}
         target="_self"
       >
         min
@@ -94,7 +100,7 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimePicker', 'Basic Usage')}
+        onClick={linkTo('Form|DateTimePicker', 'Базовый пример')}
         target="_self"
       >
         onChange
@@ -222,7 +228,7 @@ interface DateTimeInputRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimePicker', 'Limits')}
+        onClick={linkTo('Form|DateTimePicker', 'Ограничение выбора дат')}
         target="_self"
       >
         timeMin
@@ -235,7 +241,7 @@ interface DateTimeInputRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimePicker', 'Limits')}
+        onClick={linkTo('Form|DateTimePicker', 'Ограничение выбора дат')}
         target="_self"
       >
         timeMax
@@ -248,7 +254,7 @@ interface DateTimeInputRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimePicker', 'Basic Usage')}
+        onClick={linkTo('Form|DateTimePicker', 'Базовый пример')}
         target="_self"
       >
         value
