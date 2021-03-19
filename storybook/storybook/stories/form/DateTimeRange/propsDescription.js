@@ -6,6 +6,12 @@ import { RenderEvent } from '../../../propsHelpers';
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
   {
+    name: 'disabledDates',
+    type: '(Date | [Date, Date])[]',
+    required: false,
+    description: 'Даты, которые отключены для выбора.'
+  },
+  {
     name: (
       <L.A
         onClick={linkTo('Form|DateTimeRange|Props', 'format')}
@@ -49,7 +55,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Limits')}
+        onClick={linkTo('Form|DateTimeRange', 'Ограничение выбора дат')}
         target="_self"
       >
         max
@@ -62,7 +68,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Limits')}
+        onClick={linkTo('Form|DateTimeRange', 'Ограничение выбора дат')}
         target="_self"
       >
         min
@@ -111,7 +117,7 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Basic Usage')}
+        onClick={linkTo('Form|DateTimeRange', 'Базовый пример')}
         target="_self"
       >
         onChange
@@ -240,7 +246,7 @@ interface DateTimeInputRangeRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Limits')}
+        onClick={linkTo('Form|DateTimeRange', 'Ограничение выбора дат')}
         target="_self"
       >
         timeMin
@@ -253,7 +259,7 @@ interface DateTimeInputRangeRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Limits')}
+        onClick={linkTo('Form|DateTimeRange', 'Ограничение выбора дат')}
         target="_self"
       >
         timeMax
@@ -266,7 +272,7 @@ interface DateTimeInputRangeRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Basic Usage')}
+        onClick={linkTo('Form|DateTimeRange', 'Базовый пример')}
         target="_self"
       >
         value

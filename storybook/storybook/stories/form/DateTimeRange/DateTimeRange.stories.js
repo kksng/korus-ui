@@ -6,7 +6,6 @@ import
   BasicUsage,
   Format,
   MinMax,
-  TimeStep,
   UX,
 } from './Examples';
 import { Story } from '../../../components/Story';
@@ -20,5 +19,4 @@ storiesOf('Form| DateTimeRange', module)
   .add('UX', context => (<Story {...UX} customProps={propsDesc} context={context} />));
 
 storiesOf('Form| DateTimeRange.Props', module)
-  .add('format', context => (<Story {...Format} customProps={propsDesc} context={context} />))
-  .add('timeStepMinutes', context => (<Story {...TimeStep} customProps={propsDesc} context={context} />));
+  .add('format', context => (<Story {...Format} customProps={propsDesc} context={context} />));

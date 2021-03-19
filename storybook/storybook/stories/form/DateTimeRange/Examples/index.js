@@ -5,5 +5,4 @@ export { Api } from './Api';
 export { BasicUsage } from './BasicUsage';
 export { Format } from './Format';
 export { MinMax } from './MinMax';
-export { TimeStep } from './TimeStep';
 export { UX } from './UX';
