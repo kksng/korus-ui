@@ -1,13 +1,17 @@
 import React from 'react';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
-import { Position } from './constants';
+
+/**
+ * Drawer positioning
+ */
+export type PositionType = 'left' | 'right';
 
 export interface DrawerProps {
   /** Классы переданные через _ */
   [x: string]: unknown,
   /**  Позиционирование компонента, по умолчанию 'left' */
-  position?: Position,
+  position?: PositionType,
   /** Реф */
   ref?: React.Ref<DrawerRefCurrent>,
   /** Тема компонента */

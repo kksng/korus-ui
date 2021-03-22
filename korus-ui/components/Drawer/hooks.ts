@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useElementRef } from '../../utils';
 import { Position } from './constants';
-import { DrawerRefCurrent, UseDrawerStyle } from './types';
+import { DrawerRefCurrent, UseDrawerStyle, PositionType } from './types';
 
 /**
  * Hook gets Drawer width and computes styles
@@ -9,7 +9,7 @@ import { DrawerRefCurrent, UseDrawerStyle } from './types';
  *
  * @return UseDrawerStyle
  */
-export const useDrawerStyle = (position: Position, ref: React.Ref<DrawerRefCurrent> | undefined): UseDrawerStyle => {
+export const useDrawerStyle = (position: PositionType, ref: React.Ref<DrawerRefCurrent> | undefined): UseDrawerStyle => {
   const [Element, elementRef] = useElementRef();
   const [width, setWidth] = React.useState<number>();
 

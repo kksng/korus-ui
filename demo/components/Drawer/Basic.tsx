@@ -5,8 +5,6 @@ import { StoryProps } from '../../types';
 export const Basic = (storyProps: StoryProps): React.ReactElement => {
   const [shouldRender, setShouldRender] = React.useState(false);
 
-  const wrapperRef = React.useRef()
-
   return (
     <>
     <L.Switcher 
@@ -16,7 +14,6 @@ export const Basic = (storyProps: StoryProps): React.ReactElement => {
     </L.Switcher>
     {shouldRender && (
       <L.Drawer 
-        ref={wrapperRef}
         position='right'
       >
         <L.Div style={{width: 300, padding: 20}}>
