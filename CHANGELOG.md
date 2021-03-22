@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.43.0] - 2021-03-29
 
+### Added
+- LinkTree: Added new component
+
 ### Fixed
 - DropDownSelect: Fixed long strings display
 
