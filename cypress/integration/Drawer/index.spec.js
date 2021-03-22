@@ -10,26 +10,50 @@ describe('Drawer', () => {
 
   describe('Display', () => {
     it('Should open and close on bars click', () => {
-      cy.get('#drawer')
+      cy.get('#drawerRight')
         .should('not.be.visible')
         .find(bars)
         .click()
-        .get('#drawer')
+        .should('have.class', `${theme.barsOpen}`)
+        .get('#drawerRight')
         .should('be.visible')
+        .and('have.class', `${theme.wrapperVisible}`)
+        .and('have.class', `${theme.wrapperRight}`)
         .find(bars)
         .click()
-        .get('#drawer')
-        .should('not.be.visible');
+        .should('not.have.class', `${theme.barsOpen}`)
+        .get('#drawerRight')
+        .should('not.be.visible')
+        .and('not.have.class', `${theme.wrapperVisible}`);
     });
     it('Should close on overlay click', () => {
-      cy.get('#drawer')
+      cy.get('#drawerRight')
         .find(bars)
         .click()
-        .get('#drawer')
+        .get('#drawerRight')
         .should('be.visible')
         .get(overlay)
+        .first()
         .click()
-        .get('#drawer')
+        .get('#drawerRight')
+        .should('not.be.visible');
+    });
+  });
+
+  describe('Interaction', () => {
+    it('Left position', () => {
+      cy.get('#drawerLeft')
+        .should('not.be.visible')
+        .find(bars)
+        .click()
+        .should('have.class', `${theme.barsOpen}`)
+        .get('#drawerLeft')
+        .should('be.visible')
+        .and('have.class', `${theme.wrapperLeft}`)
+        .and('have.class', `${theme.wrapperVisible}`)
+        .find(bars)
+        .click()
+        .get('#drawerLeft')
         .should('not.be.visible');
     });
   });
