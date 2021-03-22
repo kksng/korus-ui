@@ -1,22 +1,40 @@
 import * as React from 'react';
 import * as L from '../../../korus-ui';
 
-export const LinkTree = () => {
+export const LinkTree = (): React.ReactElement => {
   const data = [
     {
       title1: [
         {
           title2: [
             {
-              title3: ['some', 'some'],
+              title3: [
+                {
+                  text: 'one',
+                  onClick: () => console.log('one')
+                }, 
+                {
+                  text: 'two',
+                  onClick: () => console.log('two')
+                }
+              ],
             },
-            'some',
+            {
+              text: 'one',
+              onClick: () => console.log('one')
+            }, 
           ],
         },
-        'some',
+        {
+          text: 'one',
+          onClick: () => console.log('one')
+        }, 
       ],
     },
-    'some',
+    {
+      text: 'one',
+      onClick: () => console.log('one')
+    }, 
   ];
 
   return (

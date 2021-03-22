@@ -1,4 +1,3 @@
-import { isObject } from 'lodash';
 import React from 'react';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import {
@@ -6,6 +5,7 @@ import {
 } from '../../utils';
 import { Div } from '../Div';
 import { Ul } from '../Ul';
+import { isTerminal } from './helpers';
 import { LinkTreeItem } from './LinkTreeItem';
 import { LinkTreeProps, LinkTreeRefCurrent, LinkTreeItemType } from './types';
 
@@ -23,7 +23,6 @@ export const LinkTree = React.forwardRef((props: LinkTreeProps, ref?: React.Ref<
     ...restProps
   } = useProps(props);
 
-
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.linkTree);
 
   const wrapperClassNames = getClassNames(theme.wrapper, className);
@@ -31,10 +30,11 @@ export const LinkTree = React.forwardRef((props: LinkTreeProps, ref?: React.Ref<
   const [currentItemId, setCurrentItemId] = React.useState<symbol | null>(null);
 
   const getTree = (items: LinkTreeItemType[]) => items.map((item) => {
-    if (isObject(item)) {
+    if (!isTerminal(item)) {
       const title = Object.keys(item)[0];
       return (
         <LinkTreeItem
+          key={title}
           text={title}
           theme={theme}
           currentItemId={currentItemId}
@@ -48,7 +48,9 @@ export const LinkTree = React.forwardRef((props: LinkTreeProps, ref?: React.Ref<
     }
     return (
       <LinkTreeItem
-        text={item}
+        key={item.text}
+        text={item.text}
+        onClick={item.onClick}
         currentItemId={currentItemId}
         theme={theme}
         setCurrentItemId={setCurrentItemId}

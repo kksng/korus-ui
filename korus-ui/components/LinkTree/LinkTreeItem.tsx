@@ -1,3 +1,4 @@
+import { isFunction } from 'lodash';
 import React from 'react';
 import { getClassNames } from '../../utils';
 import { A } from '../A';
@@ -14,6 +15,7 @@ import { LinkTreeItemProps } from './types';
 export const LinkTreeItem: React.FC<LinkTreeItemProps> = (props: LinkTreeItemProps) => {
   const {
     text,
+    onClick,
     theme,
     isLast,
     children,
@@ -44,6 +46,7 @@ export const LinkTreeItem: React.FC<LinkTreeItemProps> = (props: LinkTreeItemPro
   const handleLinkClick = () => {
     setCurrentItemId(itemId);
     setIsOpen(!isOpen);
+    if (isFunction(onClick)) onClick();
   };
 
   return (
