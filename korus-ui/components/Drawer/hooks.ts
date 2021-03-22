@@ -1,18 +1,24 @@
+import React, { useEffect } from 'react';
 import { useElementRef } from '../../utils';
 import { Position } from './constants';
-import { UseDrawer } from './types';
+import { DrawerRefCurrent, UseDrawerStyle } from './types';
 
 /**
  * Hook gets Drawer width and computes styles
- * @param {position} 'left' | 'right'
+ * @param {position} Position
  *
- * @return ReturnType<UseDrawer>
+ * @return UseDrawerStyle
  */
-export const useDrawer: UseDrawer = (position): ReturnType<UseDrawer> => {
+export const useDrawerStyle = (position: Position, ref: React.Ref<DrawerRefCurrent> | undefined): UseDrawerStyle => {
   const [Element, elementRef] = useElementRef();
-  const drawerElement = Element?.parentNode as HTMLElement;
+  const [width, setWidth] = React.useState<number>();
 
-  const width = drawerElement?.getBoundingClientRect()?.width;
+  const getDrawerWidth = () => {
+    const drawerElement = ref ? (ref as React.RefObject<DrawerRefCurrent>).current?.wrapper : Element;
+    setWidth(drawerElement?.getBoundingClientRect()?.width);
+  };
+
+  useEffect(getDrawerWidth, [ref, Element]);
 
   const isPositionLeft = position === Position.Left;
   const isPositionRight = position === Position.Right;

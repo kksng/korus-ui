@@ -7,7 +7,7 @@ import { Div } from '../Div';
 import { LedaContext } from '../LedaProvider';
 import { Span } from '../Span';
 import { Position } from './constants';
-import { useDrawer } from './hooks';
+import { useDrawerStyle } from './hooks';
 import { DrawerProps, DrawerRefCurrent, WrapperProps } from './types';
 
 /**
@@ -58,21 +58,22 @@ export const Drawer = React.forwardRef((props: DrawerProps, ref?: React.Ref<Draw
   const {
     elementRef,
     style,
-  } = useDrawer(position);
+  } = useDrawerStyle(position, ref);
 
   return (
     <>
       <Wrapper
         className={wrapperClassNames}
         style={style}
-        ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
-          wrapper: component.wrapper || component,
-        }))}
+        ref={ref
+          ? ((component) => bindFunctionalRef(component, ref, component && {
+            wrapper: component.wrapper || component,
+          }))
+          : elementRef}
         {...restProps}
       >
         {children}
         <Div
-          ref={elementRef}
           className={barClassNames}
           onClick={() => setIsVisible(!isVisible)}
         >

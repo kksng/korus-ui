@@ -1,12 +1,13 @@
 import React from 'react';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { Position } from './constants';
 
 export interface DrawerProps {
   /** Классы переданные через _ */
   [x: string]: unknown,
   /**  Позиционирование компонента, по умолчанию 'left' */
-  position?: 'left' | 'right',
+  position?: Position,
   /** Реф */
   ref?: React.Ref<DrawerRefCurrent>,
   /** Тема компонента */
@@ -30,13 +31,9 @@ export interface WrapperProps extends React.HtmlHTMLAttributes<HTMLElement>{
 }
 
 /**
- * useDrawer hook interface
+ * useDrawerStyle hook
  */
-export interface UseDrawer {
-  (
-    position: DrawerProps['position']
-  ): {
-    elementRef: (component: any) => void,
-    style: React.CSSProperties,
-  },
+export interface UseDrawerStyle {
+  elementRef: (component: any) => void,
+  style: React.CSSProperties,
 }
