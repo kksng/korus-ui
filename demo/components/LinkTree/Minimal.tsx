@@ -3,7 +3,7 @@ import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 
 export const Minimal = (storyProps: StoryProps): React.ReactElement => {
-  const data = [
+  const data: L.LinkTreeTypes.LinkTreeItemType[] = [
     {
       title1: [
         {
