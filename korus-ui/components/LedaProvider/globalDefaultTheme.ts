@@ -38,6 +38,7 @@ import { defaultFileDropTheme } from '../FileDrop/theme';
 import { defaultWizardTheme } from '../Wizard/theme';
 import { defaultMenuTheme } from '../Menu/theme';
 import { defaultCountDownTheme } from '../CountDown/theme';
+import { defaultDrawerTheme } from '../Drawer/theme';
 
 export const globalDefaultTheme = {
   autoComplete: defaultAutoCompleteTheme,
@@ -48,6 +49,7 @@ export const globalDefaultTheme = {
   countDown: defaultCountDownTheme,
   dateTimeInput: defaultDateTimeInputTheme,
   dateTimeInputRange: defaultDateTimeInputRangeTheme,
+  drawer: defaultDrawerTheme,
   dropDown: defaultDropDownTheme,
   dropDownLink: defaultDropDownLinkTheme,
   dropDownSelect: defaultDropDownSelectTheme,
