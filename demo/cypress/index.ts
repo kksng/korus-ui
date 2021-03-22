@@ -7,6 +7,7 @@ export { Collapse } from './Collapse';
 export { CountDown } from './CountDown';
 export { DatePicker } from './DatePicker';
 export { DateRange } from './DateRange';
+export { Drawer } from './Drawer';
 export { DropDown } from './DropDown';
 export { DropDownLink } from './DropDownLink';
 export { DropDownSelect } from './DropDownSelect';

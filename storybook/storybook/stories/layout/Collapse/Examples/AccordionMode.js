@@ -2,17 +2,17 @@ import * as React from 'react';
 import * as L from '@korus/leda';
 import { componentSrc } from './index';
 
-/* eslint-disable react/no-unescaped-entities */
-export const Customization = {
+export const Accordion = {
   liveDemo: `
-const Customization = () => {
+const Accordion = () => {
   const [activeKey, setActiveKey] = React.useState('1');
 
   return (
     <L.Collapse
+      isAccordion
       activePanelKey={activeKey}
       onSelect={ev => setActiveKey(ev.component.value)}
-      >
+     >
       <L.Collapse.Panel panelKey="1">
         <L.Collapse.Heading>
           <L.H5>Условия продажи</L.H5>
@@ -38,19 +38,12 @@ const Customization = () => {
     </L.Collapse>
   );
 };
-render(<Customization />);
+render(<Accordion />);
 `,
   text: (
     <L.Div>
       <L.P>
-        Для настройки внешнего вида частей компонента используйте методы с суффиксом <b>Render</b>:
-      </L.P>
-      <L.P>
-        <L.Ul _txt-list>
-          <L.Li><b>iconRender</b> - кастомизация иконки справа от заголовка.</L.Li>
-          <L.Li><b>wrapperRender</b> - кастомизация компонента-обертки для панели. Враппер по умолчанию - <b>&lt;L.Div&gt;</b>.</L.Li>
-        </L.Ul>
-        
+        Для включения "режима аккордеона" используйте атрибут <b>isAccordion</b>. При использовании этого режима работы компонента открываться будет только одна панель, вторая при этом автоматически закроется.
       </L.P>
     </L.Div>
   ),

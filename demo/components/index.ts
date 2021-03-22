@@ -13,6 +13,7 @@ export { DateTimePicker } from './DateTimePicker';
 export { DateTimeRange } from './DateTimeRange';
 export { Div } from './Div';
 export { Dl } from './Dl';
+export { Drawer } from './Drawer';
 export { DropDown } from './DropDown';
 export { DropDownLink } from './DropDownLink';
 export { DropDownSelect } from './DropDownSelect';

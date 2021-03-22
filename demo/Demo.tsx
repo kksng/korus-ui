@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import * as L from '../korus-ui';
 import {
-  AutoComplete, ButtonGroup, CheckBox, CountDown, DatePicker, DateRange,
+  AutoComplete, ButtonGroup, CheckBox, CountDown, DatePicker, DateRange, Drawer,
   DropDown, DropDownSelect, Input, A, LedaProvider, LinkTree, Loader, MaskedInput, Menu, Modal,
   MultiSelect, Notifications, NumericRange, NumericTextBox, Password,
   Pagination, RadioGroup, ProgressBar, Slider, StatusBar, StickyPanel, Svg, Switcher,
@@ -40,6 +40,7 @@ export const Demo = hot(() => (
       <DateRange />
       <Div />
       <Dl />
+      <Drawer />
       <DropDown />
       <DropDownLink />
       <DropDownSelect />

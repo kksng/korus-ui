@@ -7,7 +7,6 @@ const Api = () => {
 
   return (
     <L.Collapse
-      isAccordion
       activePanelKey={activeKey}
       onSelect={ev => setActiveKey(ev.component.value)}
      >
