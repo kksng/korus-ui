@@ -71,6 +71,33 @@ interface ChangeEvent {
     required: true,
     description: 'Обработчик изменения шага.',
   },
+  {
+    name: 'stepDelay',
+    type: 'number',
+    required: false,
+    description: 'Пауза перед отрисовкой шага гайд-тура. Передается в миллисекундах.'
+  },
+  {
+    name: 'theme',
+    type: (
+      <L.Tooltip title={(
+        <pre>{`
+{
+  activeElement:          'tour-active-element',
+  modal:                  'tour-modal',
+  overlay:                'tour-overlay',
+  overlayLoading:         'tour-overlay--loading',
+}
+        `}
+        </pre>
+      )}
+      >
+        <L.Span _txt-success>DefaultTourTheme</L.Span>
+      </L.Tooltip>
+    ),
+    required: false,
+    description: 'Тема компонента.',
+  },
 ];
 
 export const tourItemPropsDesc = [
@@ -141,20 +168,14 @@ interface ContentProps {
     ),
   },
   {
-    name: 'overlayBackgroundColor',
-    type: 'string',
-    required: false,
-    description: (
-      <div>
-        <p>
-          Цвет фона оверлея, по умолчанию серый rgba(33, 33, 33, 0.7).
-        </p>
-      </div>
-    ),
+    name: 'padding',
+    type: 'number',
+    require: false,
+    description: 'Отступы выделенной области в px, по умолчанию 0px'
   },
   {
     name: 'position',
-    type: '\'top\' | \'right\' | \'bottom\' | \'left\'',
+    type: '\'top\' | \'top-left\' | \'top-center\' | \'right\' | \'bottom\' | \'bottom-left\' | \'bottom-center\' | \'left\'',
     required: true,
     description: (
       <div>
@@ -175,5 +196,32 @@ interface ContentProps {
         </p>
       </div>
     ),
+  },
+];
+
+export const tourContentPropsDesc = [
+  {
+    name: 'goTo',
+    type: '(stepNumber: number) => void',
+    require: false,
+    description: 'Функция, позволяющая перейти к любому элементу тура.'
+  },
+  {
+    name: 'next',
+    type: '() => void',
+    require: false,
+    description: 'Функция, переключающая на следующий элемент тура.'
+  },
+  {
+    name: 'prev',
+    type: '() => void',
+    require: false,
+    description: 'Функция, переключающая на предыдущий элемент тура.'
+  },
+  {
+    name: 'stopTour',
+    type: '() => void',
+    require: false,
+    description: 'Функция, останавливающая выполнение тура.'
   },
 ];

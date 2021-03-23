@@ -48,7 +48,7 @@ export interface TourProps {
 }
 
 export interface TourStepItem {
-  /** Скругление у выделенных элементов в px, по-умолчанию 15px */
+  /** Скругление у выделенных элементов в px, по умолчанию 15px */
   borderRadius?: number,
   /** Контент */
   content: (props: ContentProps) => React.ReactElement | null,
@@ -56,7 +56,7 @@ export interface TourStepItem {
   element: HTMLElement | null,
   /** Отступ при скролле в px, по умолчанию 200px */
   offsetTop?: number,
-  /** Отступы выделенной области в px, по-умолчанию 0px */
+  /** Отступы выделенной области в px, по умолчанию 0px */
   padding?: number,
   /** Положение модалки */
   position: PositionType,
