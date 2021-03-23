@@ -17,12 +17,6 @@ import {
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
   {
-    name: 'className',
-    type: 'string',
-    require: false,
-    description: 'Классы для компонента',
-  },
-  {
     name: (
       <L.A
         onClick={linkTo('Form|DatePicker|Props', 'format')}
