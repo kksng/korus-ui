@@ -23,6 +23,7 @@ export { FileUpload } from './FileUpload';
 export { Input } from './Input';
 export { HTMLTags } from './HTMLTags';
 export { LedaProvider } from './LedaProvider';
+export { LinkTree } from './LinkTree';
 export { Loader } from './Loader';
 export { MaskedInput } from './MaskedInput';
 export { Menu } from './Menu';

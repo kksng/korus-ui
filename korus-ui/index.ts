@@ -57,6 +57,7 @@ import { Img } from './components/Img';
 import { Input } from './components/Input';
 import { Label } from './components/Label';
 import { Li } from './components/Li';
+import { LinkTree } from './components/LinkTree';
 import { Loader } from './components/Loader';
 import { Main } from './components/Main';
 import { Mark } from './components/Mark';
@@ -121,6 +122,7 @@ import * as FileDropTypes from './components/FileDrop/types';
 import * as DivTypes from './components/Div';
 import * as FileUploadTypes from './components/FileUpload/types';
 import * as InputTypes from './components/Input/types';
+import * as LinkTreeTypes from './components/LinkTree/types';
 import * as MaskedInputTypes from './components/MaskedInput/types';
 import * as MenuTypes from './components/Menu/types';
 import * as MultiSelectTypes from './components/MultiSelect/types';
@@ -182,6 +184,7 @@ export {
   DivTypes,
   FileUploadTypes,
   InputTypes,
+  LinkTreeTypes,
   MaskedInputTypes,
   MenuTypes,
   MultiSelectTypes,
@@ -244,6 +247,7 @@ export {
   Input,
   Label,
   Li,
+  LinkTree,
   Loader,
   Main,
   Mark,

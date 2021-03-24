@@ -42,6 +42,7 @@ export const COMPONENTS_NAMESPACES = {
   fileDrop: 'fileDrop',
   fileUpload: 'fileUpload',
   input: 'input',
+  linkTree: 'linkTree',
   loader: 'loader',
   loaderComponent: 'loaderComponent',
   maskedInput: 'maskedInput',
