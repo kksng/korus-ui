@@ -29,7 +29,13 @@ export const LinkTree = React.forwardRef((props: LinkTreeProps, ref?: React.Ref<
 
   const [currentItemId, setCurrentItemId] = React.useState<symbol | null>(null);
 
-  const getTree = (items: LinkTreeItemType[]) => items.map((item) => {
+  /**
+   * Generates a tree of links
+   * @param {LinkTreeItemType[]} items
+   *
+   * @returns {React.ReactElement[]}
+   */
+  const getTree = (items: LinkTreeItemType[]): React.ReactElement[] => items.map((item) => {
     if (!isTerminal(item)) {
       const title = Object.keys(item)[0];
       return (
