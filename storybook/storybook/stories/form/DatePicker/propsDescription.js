@@ -1,6 +1,18 @@
 import * as React from 'react';
 import * as L from '@korus/leda';
 import { linkTo } from '@storybook/addon-links';
+import { RenderEvent } from '../../../propsHelpers';
+import {
+  form,
+  invalidMessage,
+  isRequired,
+  isValid,
+  name,
+  requiredMessage,
+  shouldValidateUnmounted,
+  validator,
+  invalidMessageRender,
+} from '../../basics/6_validation/propsDescription';
 
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
@@ -15,7 +27,41 @@ export const propsDesc = [
     ),
     type: 'string',
     required: false,
-    description: 'Формат даты. По-умолчанию dd.MM.yyyy',
+    description: 'Формат даты. По умолчанию dd.MM.yyyy',
+  },
+  {
+    name: (
+      <L.A
+        onClick={linkTo('Form|DatePicker', 'Кастомизация')}
+        target="_self"
+      >
+        iconRender
+      </L.A>
+    ),
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация иконки календаря',
+  },
+  {
+    name: (
+      <L.A
+        onClick={linkTo('Form|DatePicker', 'Кастомизация')}
+        target="_self"
+      >
+        inputRender
+      </L.A>
+    ),
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация поля ввода',
   },
   {
     name: 'isDisabled',
@@ -32,7 +78,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DatePicker', 'Limits')}
+        onClick={linkTo('Form|DatePicker', 'Ограничения выбора дат')}
         target="_self"
       >
         max
@@ -45,7 +91,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DatePicker', 'Limits')}
+        onClick={linkTo('Form|DatePicker', 'Ограничения выбора дат')}
         target="_self"
       >
         min
@@ -94,7 +140,7 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DatePicker', 'Basic Usage')}
+        onClick={linkTo('Form|DatePicker', 'Базовый пример')}
         target="_self"
       >
         onChange
@@ -283,7 +329,7 @@ interface DateTimeInputRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DatePicker', 'Basic Usage')}
+        onClick={linkTo('Form|DatePicker', 'Базовый пример')}
         target="_self"
       >
         value
@@ -293,4 +339,33 @@ interface DateTimeInputRefCurrent {
     required: false,
     description: 'Значение поля ввода',
   },
+  {
+    name: (
+      <L.A
+        onClick={linkTo('Form|DatePicker', 'Кастомизация')}
+        target="_self"
+      >
+        wrapperRender
+      </L.A>
+    ),
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация враппера компонента',
+  },
+];
+
+export const validationPropsDesc = [
+  form,
+  invalidMessage,
+  invalidMessageRender,
+  isRequired,
+  isValid,
+  name,
+  requiredMessage,
+  shouldValidateUnmounted,
+  validator,
 ];
