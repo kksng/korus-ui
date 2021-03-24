@@ -5,8 +5,13 @@ import
 {
   Api,
 } from './Examples';
-import { propsDesc } from './propsDescription';
+import { propsDesc, validationPropsDesc } from './propsDescription';
 import { ApiStory } from '../../../components/ApiStory';
 
+const compoundProps = [
+  { componentName: 'Textarea', props: propsDesc },
+  { componentName: 'Validation', props: validationPropsDesc },
+];
+
 storiesOf('Form|Textarea', module)
-  .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />));
+  .add('API', context => (<ApiStory {...Api} compoundCustomProps={compoundProps} context={context} />));
