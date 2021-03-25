@@ -14,9 +14,9 @@ export interface ChangeEventHandler {
  */
 export interface CheckBoxTreeChangeEvent {
   component: {
-    /** Array of names of selected terminal checkboxes */
+    /** Array of ids of selected terminal checkboxes */
     selected: string[],
-    /** Array of names of selected internal checkboxes (is added only if all subgroup is selected) */
+    /** Array of ids of selected internal checkboxes (is added only if all subgroup is selected) */
     selectedGroups: string[],
   },
 }
@@ -63,7 +63,7 @@ export interface CheckBoxTreeGroupProps {
   mergeState?: React.Dispatch<GroupState>,
   /** Name */
   name?: string,
-  /** Array of selected internal checkboxes names */
+  /** Array of selected internal checkboxes ids */
   selectedGroups: string[],
   /** Set state action for selected checkboxes */
   setSelectedGroups: React.Dispatch<React.SetStateAction<string[]>>,
@@ -88,7 +88,7 @@ export interface CheckBoxTreeItemProps {
   mergeState?: React.Dispatch<GroupState>,
   /** Name */
   name?: string,
-  /** Array of selected terminal checkboxes names */
+  /** Array of selected terminal checkboxes ids */
   selected: string[],
   /** Set state action for selected checkboxes */
   setSelected: React.Dispatch<React.SetStateAction<string[]>>,
@@ -132,9 +132,9 @@ export interface GroupState {
  */
 export interface HandlerData {
   onChange?: (event: CheckBoxTreeChangeEvent) => void,
-  /** Array of selected terminal checkboxes names */
+  /** Array of selected terminal checkboxes ids */
   selected: string[],
-  /** Array of selected internal checkboxes names */
+  /** Array of selected internal checkboxes ids */
   selectedGroups: string[],
 }
 
@@ -158,8 +158,8 @@ export interface UseGroupStateUpdateData {
 export interface UseHandleChangeData {
   /** Change event handler */
   handleChange: ChangeEventHandler,
-  /** Array of selected terminal checkboxes names */
+  /** Array of selected terminal checkboxes ids */
   selected: string[],
-  /** Array of selected internal checkboxes names */
+  /** Array of selected internal checkboxes ids */
   selectedGroups: string[],
 }
