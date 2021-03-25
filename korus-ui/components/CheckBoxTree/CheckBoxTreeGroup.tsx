@@ -8,7 +8,7 @@ import { Span } from '../Span';
 import { Ul } from '../Ul';
 import { CheckBoxTreeItem } from './CheckBoxTreeItem';
 import { SelectedState } from './constants';
-import { isSomeSelected } from './helpers';
+import { getInitialGroupState, getIsSomeSelected } from './helpers';
 import { useGroupStateUpdate } from './hooks';
 import { CheckBoxTreeGroupProps, GroupState } from './types';
 
@@ -33,23 +33,13 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
   const [value, setValue] = React.useState(SelectedState.Nothing);
   const [isSelectAll, setSelectAll] = React.useState<boolean | undefined>();
 
-  const initialState = React.Children.toArray(children).reduce<GroupState>((groupState, child) => {
-    if (React.isValidElement(child) && child.type === CheckBoxTreeGroup) {
-      groupState[child.props.name] = child.props.value ? SelectedState.All : SelectedState.Nothing;
-      return groupState;
-    }
-    if (React.isValidElement(child) && child.type === CheckBoxTreeItem) {
-      groupState[child.props.name] = !!child.props.value;
-      return groupState;
-    }
-    return groupState;
-  }, {});
+  const initialState = getInitialGroupState(children);
 
   const [state, mergeState] = React.useReducer((oldState: GroupState, newState: GroupState) => ({
     ...oldState, ...newState,
   }), initialState);
 
-  const isSome = isSomeSelected(state);
+  const isSomeSelected = getIsSomeSelected(state);
 
   useGroupStateUpdate({
     props,
@@ -82,7 +72,7 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
    */
   const handleChange = (ev: ChangeEvent): void => {
     // If group was partly selected - select all subgroup
-    if (isSome) {
+    if (isSomeSelected) {
       setSelectAll(true);
       setValue(SelectedState.All);
       if (isFunction(mergeStateProp)) mergeStateProp({ [name]: SelectedState.All });
@@ -96,7 +86,7 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
   return (
     <Li className={itemClassNames}>
       <CheckBox
-        isSemi={isSome}
+        isSemi={isSomeSelected}
         name={name}
         value={value !== SelectedState.Nothing}
         onChange={handleChange}

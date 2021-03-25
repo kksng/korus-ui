@@ -2,7 +2,7 @@ import { isFunction } from 'lodash';
 import React from 'react';
 import { SelectedState } from './constants';
 import {
-  add, isAllSelected, isNothingSelected, isSomeSelected, remove,
+  add, getIsAllSelected, getIsNothingSelected, getIsSomeSelected, remove,
 } from './helpers';
 import { UseGroupStateUpdateData, UseHandleChangeData } from './types';
 
@@ -36,9 +36,9 @@ export const useGroupStateUpdate = ({
     value, mergeState, name, setSelectedGroups, selectedGroups,
   } = props;
 
-  const isAll = isAllSelected(state);
-  const isSome = isSomeSelected(state);
-  const isNothing = isNothingSelected(state);
+  const isAllSelected = getIsAllSelected(state);
+  const isSomeSelected = getIsSomeSelected(state);
+  const isNothingSelected = getIsNothingSelected(state);
 
   React.useEffect(() => {
     if (value !== undefined) {
@@ -49,29 +49,29 @@ export const useGroupStateUpdate = ({
   }, [value]);
 
   React.useEffect(() => {
-    if (isSome) {
+    if (isSomeSelected) {
       setSelectAll(undefined);
       setValue(SelectedState.Some);
       if (isFunction(mergeState)) mergeState({ [name]: SelectedState.Some });
       setSelectedGroups(remove(selectedGroups, name));
     }
-  }, [isSome]);
+  }, [isSomeSelected]);
 
   React.useEffect(() => {
-    if (isAll) {
+    if (isAllSelected) {
       setSelectAll(undefined);
       setValue(SelectedState.All);
       if (isFunction(mergeState)) mergeState({ [name]: SelectedState.All });
       setSelectedGroups(add(selectedGroups, name));
     }
-  }, [isAll]);
+  }, [isAllSelected]);
 
   React.useEffect(() => {
-    if (isNothing) {
+    if (isNothingSelected) {
       setSelectAll(undefined);
       setValue(SelectedState.Nothing);
       if (isFunction(mergeState)) mergeState({ [name]: SelectedState.Nothing });
       setSelectedGroups(remove(selectedGroups, name));
     }
-  }, [isNothing]);
+  }, [isNothingSelected]);
 };

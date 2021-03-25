@@ -1,3 +1,6 @@
+import React from 'react';
+import { CheckBoxTreeGroup } from './CheckBoxTreeGroup';
+import { CheckBoxTreeItem } from './CheckBoxTreeItem';
 import { SelectedState } from './constants';
 import {
   CheckBoxTreeItemType, CheckBoxTreeInternalItem, GroupState,
@@ -17,7 +20,7 @@ export const isInternal = (item: CheckBoxTreeItemType): item is CheckBoxTreeInte
  *
  * @returns {boolean}
  */
-export const isSelected = (value: boolean | number): boolean => value === true || value === SelectedState.All;
+export const getIsSelected = (value: boolean | number): boolean => value === true || value === SelectedState.All;
 
 /**
  * Helper defines if checkbox is not selected
@@ -25,7 +28,7 @@ export const isSelected = (value: boolean | number): boolean => value === true |
  *
  * @returns {boolean}
  */
-export const isNotSelected = (value: boolean | number): boolean => value === false || value === SelectedState.Nothing;
+export const getIsNotSelected = (value: boolean | number): boolean => value === false || value === SelectedState.Nothing;
 
 /**
  * Helper defines if all checkboxes in subgroup are selected
@@ -33,7 +36,7 @@ export const isNotSelected = (value: boolean | number): boolean => value === fal
  *
  * @returns {boolean}
  */
-export const isAllSelected = (state: GroupState): boolean => Object.values(state).every(isSelected);
+export const getIsAllSelected = (state: GroupState): boolean => Object.values(state).every(getIsSelected);
 
 /**
  * Helper defines if no checkboxes in subgroup are selected
@@ -41,7 +44,7 @@ export const isAllSelected = (state: GroupState): boolean => Object.values(state
  *
  * @returns {boolean}
  */
-export const isNothingSelected = (state: GroupState): boolean => Object.values(state).every(isNotSelected);
+export const getIsNothingSelected = (state: GroupState): boolean => Object.values(state).every(getIsNotSelected);
 
 /**
  * Helper defines if some checkboxes in subgroup are selected
@@ -49,7 +52,7 @@ export const isNothingSelected = (state: GroupState): boolean => Object.values(s
  *
  * @returns {boolean}
  */
-export const isSomeSelected = (state: GroupState): boolean => Object.values(state).includes(SelectedState.Some) || (Object.values(state).some(isNotSelected) && Object.values(state).some(isSelected));
+export const getIsSomeSelected = (state: GroupState): boolean => Object.values(state).includes(SelectedState.Some) || (Object.values(state).some(getIsNotSelected) && Object.values(state).some(getIsSelected));
 
 /**
  * Helper adds checkbox name to array of selected checkboxes' names
@@ -79,4 +82,26 @@ export const remove = (selectedArray: string[], name: string): string[] => {
   // should mutate state to handle simultaneous state updates in the tree
   selectedArray.splice(index, 1);
   return [...selectedArray];
+};
+
+/**
+ * Helper gets initial state of items in a subgroup
+ * @param {React.ReactNode} children
+ *
+ * @returns {GroupState}
+ */
+export const getInitialGroupState = (children: React.ReactNode): GroupState => {
+  const initialState = React.Children.toArray(children).reduce<GroupState>((groupState, child) => {
+    if (React.isValidElement(child) && child.type === CheckBoxTreeGroup) {
+      groupState[child.props.name] = child.props.value ? SelectedState.All : SelectedState.Nothing;
+      return groupState;
+    }
+    if (React.isValidElement(child) && child.type === CheckBoxTreeItem) {
+      groupState[child.props.name] = !!child.props.value;
+      return groupState;
+    }
+    return groupState;
+  }, {});
+
+  return initialState;
 };
