@@ -1,4 +1,4 @@
-[{
+export const bigData = [{
     "id": 1751,
     "name": "Россия",
     "localityLevel": 1,
