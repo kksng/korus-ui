@@ -6,6 +6,7 @@ export const propsDesc = [
     name: 'data',
     type: (
       <>
+      {'('}
       <L.Tooltip title={(
         <pre>{`
 {
@@ -22,7 +23,7 @@ export const propsDesc = [
       <L.Tooltip title={(
         <pre>{`
 {
-  [x: string]: TerminalItem | InternalItem[],
+  [x: string]: (TerminalItem | InternalItem)[],
 }
         `}
         </pre>
@@ -30,7 +31,7 @@ export const propsDesc = [
       >
         <L.Span _txt-success>InternalItem</L.Span>
       </L.Tooltip>
-      {'[]'}
+      {')[]'}
       </>
     ),
     required: true,
