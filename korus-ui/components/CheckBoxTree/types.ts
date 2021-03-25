@@ -24,7 +24,9 @@ export interface CheckBoxTreeChangeEvent {
 /**
  * Terminal CheckBoxTree item
  */
-export type CheckBoxTreeTerminalItem = {
+export interface CheckBoxTreeTerminalItem {
+  /** Child items */
+  children?: CheckBoxTreeItemType[],
   /** Default value */
   defaultValue?: boolean,
   /** Id (should be unique) */
@@ -33,15 +35,15 @@ export type CheckBoxTreeTerminalItem = {
   label: string,
   /** Name */
   name?: string,
-};
+}
 
 /**
  * Internal CheckBoxTree item
  */
-export type CheckBoxTreeInternalItem = CheckBoxTreeTerminalItem & {
+export interface CheckBoxTreeInternalItem extends CheckBoxTreeTerminalItem {
   /** Child items */
   children: CheckBoxTreeItemType[],
-};
+}
 
 /**
  * CheckBoxTree item

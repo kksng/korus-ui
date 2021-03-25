@@ -12,7 +12,7 @@ import {
  *
  * @returns {boolean}
  */
-export const isInternal = (item: CheckBoxTreeItemType): item is CheckBoxTreeInternalItem => Object.keys(item).includes('children');
+export const isInternal = (item: CheckBoxTreeItemType): item is CheckBoxTreeInternalItem => !!item?.children && item.children.length > 0;
 
 /**
  * Helper defines if checkbox is selected
