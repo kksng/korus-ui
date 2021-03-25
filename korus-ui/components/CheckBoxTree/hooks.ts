@@ -33,7 +33,7 @@ export const useGroupStateUpdate = ({
   props, state, setSelectAll, setValue,
 }: UseGroupStateUpdateData): void => {
   const {
-    value, mergeState, name, setSelectedGroups, selectedGroups,
+    value, mergeState, id, setSelectedGroups, selectedGroups,
   } = props;
 
   const isAllSelected = getIsAllSelected(state);
@@ -44,7 +44,7 @@ export const useGroupStateUpdate = ({
     if (value !== undefined) {
       setSelectAll(value);
       setValue(value ? SelectedState.All : SelectedState.Nothing);
-      if (isFunction(mergeState)) mergeState({ [name]: value ? SelectedState.All : SelectedState.Nothing });
+      if (isFunction(mergeState)) mergeState({ [id]: value ? SelectedState.All : SelectedState.Nothing });
     }
   }, [value]);
 
@@ -52,8 +52,8 @@ export const useGroupStateUpdate = ({
     if (isSomeSelected) {
       setSelectAll(undefined);
       setValue(SelectedState.Some);
-      if (isFunction(mergeState)) mergeState({ [name]: SelectedState.Some });
-      setSelectedGroups(remove(selectedGroups, name));
+      if (isFunction(mergeState)) mergeState({ [id]: SelectedState.Some });
+      setSelectedGroups(remove(selectedGroups, id));
     }
   }, [isSomeSelected]);
 
@@ -61,8 +61,8 @@ export const useGroupStateUpdate = ({
     if (isAllSelected) {
       setSelectAll(undefined);
       setValue(SelectedState.All);
-      if (isFunction(mergeState)) mergeState({ [name]: SelectedState.All });
-      setSelectedGroups(add(selectedGroups, name));
+      if (isFunction(mergeState)) mergeState({ [id]: SelectedState.All });
+      setSelectedGroups(add(selectedGroups, id));
     }
   }, [isAllSelected]);
 
@@ -70,8 +70,8 @@ export const useGroupStateUpdate = ({
     if (isNothingSelected) {
       setSelectAll(undefined);
       setValue(SelectedState.Nothing);
-      if (isFunction(mergeState)) mergeState({ [name]: SelectedState.Nothing });
-      setSelectedGroups(remove(selectedGroups, name));
+      if (isFunction(mergeState)) mergeState({ [id]: SelectedState.Nothing });
+      setSelectedGroups(remove(selectedGroups, id));
     }
   }, [isNothingSelected]);
 };

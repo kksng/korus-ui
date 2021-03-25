@@ -25,10 +25,12 @@ export interface CheckBoxTreeChangeEvent {
  * Terminal CheckBoxTree item
  */
 export type CheckBoxTreeTerminalItem = {
+  /** Id (should be unique) */
+  id: string,
   /** Label */
   label: string,
-  /** Name (names should be unique) */
-  name: string,
+  /** Name */
+  name?: string,
 };
 
 /**
@@ -50,6 +52,8 @@ export type CheckBoxTreeItemType = CheckBoxTreeTerminalItem | CheckBoxTreeIntern
 export interface CheckBoxTreeGroupProps {
   /** Child Items */
   children?: React.ReactNode,
+  /** Id (should be unique) */
+  id: string,
   /** Text */
   label: string,
   /**
@@ -58,7 +62,7 @@ export interface CheckBoxTreeGroupProps {
    */
   mergeState?: React.Dispatch<GroupState>,
   /** Name */
-  name: string,
+  name?: string,
   /** Array of selected internal checkboxes names */
   selectedGroups: string[],
   /** Set state action for selected checkboxes */
@@ -73,6 +77,8 @@ export interface CheckBoxTreeGroupProps {
  * CheckBoxTree item props
  */
 export interface CheckBoxTreeItemProps {
+  /** Id (should be unique) */
+  id: string,
   /** Text */
   label: string,
   /**
@@ -81,7 +87,7 @@ export interface CheckBoxTreeItemProps {
    */
   mergeState?: React.Dispatch<GroupState>,
   /** Name */
-  name: string,
+  name?: string,
   /** Array of selected terminal checkboxes names */
   selected: string[],
   /** Set state action for selected checkboxes */

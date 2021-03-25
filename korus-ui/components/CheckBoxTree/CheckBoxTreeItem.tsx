@@ -15,6 +15,7 @@ import { ChangeEvent } from '../CheckBox/types';
 export const CheckBoxTreeItem: React.FC<CheckBoxTreeItemProps> = (props: CheckBoxTreeItemProps): React.ReactElement => {
   const {
     label,
+    id,
     name,
     theme,
     value: valueProp,
@@ -29,12 +30,12 @@ export const CheckBoxTreeItem: React.FC<CheckBoxTreeItemProps> = (props: CheckBo
     if (valueProp !== undefined) {
       setValue(valueProp);
 
-      if (isFunction(mergeState)) mergeState({ [name]: valueProp });
+      if (isFunction(mergeState)) mergeState({ [id]: valueProp });
 
       if (valueProp) {
-        setSelected(add(selected, name));
+        setSelected(add(selected, id));
       } else {
-        setSelected(remove(selected, name));
+        setSelected(remove(selected, id));
       }
     }
   }, [valueProp]);
@@ -46,18 +47,19 @@ export const CheckBoxTreeItem: React.FC<CheckBoxTreeItemProps> = (props: CheckBo
   const handleChange = (ev: ChangeEvent): void => {
     setValue(ev.component.value);
 
-    if (isFunction(mergeState)) mergeState({ [name]: ev.component.value });
+    if (isFunction(mergeState)) mergeState({ [id]: ev.component.value });
 
     if (ev.component.value) {
-      setSelected(add(selected, name));
+      setSelected(add(selected, id));
     } else {
-      setSelected(remove(selected, name));
+      setSelected(remove(selected, id));
     }
   };
 
   return (
     <Li className={theme.checkBoxTreeItem}>
       <CheckBox
+        id={id}
         name={name}
         value={value}
         onChange={handleChange}

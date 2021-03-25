@@ -23,6 +23,7 @@ import { CheckBoxTreeGroupProps, GroupState } from './types';
 export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: CheckBoxTreeGroupProps): React.ReactElement => {
   const {
     label,
+    id,
     name,
     theme,
     children,
@@ -75,10 +76,10 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
     if (isSomeSelected) {
       setSelectAll(true);
       setValue(SelectedState.All);
-      if (isFunction(mergeStateProp)) mergeStateProp({ [name]: SelectedState.All });
+      if (isFunction(mergeStateProp)) mergeStateProp({ [id]: SelectedState.All });
     } else {
       setValue(ev.component.value ? SelectedState.All : SelectedState.Nothing);
-      if (isFunction(mergeStateProp)) mergeStateProp({ [name]: ev.component.value ? SelectedState.All : SelectedState.Nothing });
+      if (isFunction(mergeStateProp)) mergeStateProp({ [id]: ev.component.value ? SelectedState.All : SelectedState.Nothing });
       setSelectAll(ev.component.value);
     }
   };
@@ -86,6 +87,7 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
   return (
     <Li className={itemClassNames}>
       <CheckBox
+        id={id}
         isSemi={isSomeSelected}
         name={name}
         value={value !== SelectedState.Nothing}

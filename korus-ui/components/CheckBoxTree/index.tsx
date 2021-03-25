@@ -50,10 +50,11 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
     if (isInternal(item)) {
       return (
         <CheckBoxTreeGroup
-          key={item.name}
+          key={item.id}
           label={item.label}
           theme={theme}
           name={item.name}
+          id={item.id}
           selectedGroups={selectedGroups}
           setSelectedGroups={setSelectedGroups}
         >
@@ -63,8 +64,9 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
     }
     return (
       <CheckBoxTreeItem
-        key={item.name}
+        key={item.id}
         label={item.label}
+        id={item.id}
         name={item.name}
         theme={theme}
         selected={selected}

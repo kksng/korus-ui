@@ -8,51 +8,51 @@ export const Basic = (storyProps: StoryProps): React.ReactElement => {
 
   const data: L.CheckBoxTreeTypes.CheckBoxTreeItemType[] = [
     {
-      name: 'level1',
+      id: 'level1',
       label: 'Level one',
       children: [
         {
-          name: 'level2',
+          id: 'level2',
           label: 'Level two',
           children: [
             {
-              name: 'level3',
+              id: 'level3',
               label: 'Level three',
               children: [
                 {
-                  name: 'level3-1',
+                  id: 'level3-1',
                   label: 'Level three: one',
                 },
                 {
-                  name: 'level4',
+                  id: 'level4',
                   label: 'Level four',
                   children: [
                     {
-                      name: 'level4-1',
+                      id: 'level4-1',
                       label: 'Level four: one',
                     },
                     {
-                      name: 'level5',
+                      id: 'level5',
                       label: 'Level five',
                       children: [
                         {
-                          name: 'level5-1',
+                          id: 'level5-1',
                           label: 'Level five: one',
                         },
                         {
-                          name: 'level6',
+                          id: 'level6',
                           label: 'Level six',
                           children: [
                             {
-                              name: 'level6-1',
+                              id: 'level6-1',
                               label: 'Level six: one',
                             },
                             {
-                              name: 'level6-2',
+                              id: 'level6-2',
                               label: 'Level six: two',
                             },
                             {
-                              name: 'level6-3',
+                              id: 'level6-3',
                               label: 'Level six: three',
                             },
                           ],
@@ -64,19 +64,19 @@ export const Basic = (storyProps: StoryProps): React.ReactElement => {
               ],
             },
             {
-              name: 'level2-1',
+              id: 'level2-1',
               label: 'Level two: one',
             },
           ],
         },
         {
-          name: 'level1-1',
+          id: 'level1-1',
           label: 'Level one: one',
         },
       ],
     },
     {
-      name: 'one',
+      id: 'one',
       label: 'one',
     },
   ];

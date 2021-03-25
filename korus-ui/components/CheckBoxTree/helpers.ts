@@ -55,29 +55,29 @@ export const getIsNothingSelected = (state: GroupState): boolean => Object.value
 export const getIsSomeSelected = (state: GroupState): boolean => Object.values(state).includes(SelectedState.Some) || (Object.values(state).some(getIsNotSelected) && Object.values(state).some(getIsSelected));
 
 /**
- * Helper adds checkbox name to array of selected checkboxes' names
+ * Helper adds checkbox id to array of selected checkboxes' ids
  * returns new array
  * @param {string[]} selectedArray
- * @param {string} name
+ * @param {string} id
  *
  * @returns {string[]}
  */
-export const add = (selectedArray: string[], name: string): string[] => {
+export const add = (selectedArray: string[], id: string): string[] => {
   // should mutate state to handle simultaneous state updates in the tree
-  selectedArray.push(name);
+  selectedArray.push(id);
   return [...new Set(selectedArray)];
 };
 
 /**
- * Helper removes checkbox name from array of selected checkboxes' names
+ * Helper removes checkbox id from array of selected checkboxes' ids
  * returns new array
  * @param {string[]} selectedArray
- * @param {string} name
+ * @param {string} id
  *
  * @returns {string[]}
  */
-export const remove = (selectedArray: string[], name: string): string[] => {
-  const index = selectedArray.findIndex((selectedName) => selectedName === name);
+export const remove = (selectedArray: string[], id: string): string[] => {
+  const index = selectedArray.findIndex((selectedId) => selectedId === id);
   if (index === -1) return selectedArray;
   // should mutate state to handle simultaneous state updates in the tree
   selectedArray.splice(index, 1);
@@ -93,11 +93,11 @@ export const remove = (selectedArray: string[], name: string): string[] => {
 export const getInitialGroupState = (children: React.ReactNode): GroupState => {
   const initialState = React.Children.toArray(children).reduce<GroupState>((groupState, child) => {
     if (React.isValidElement(child) && child.type === CheckBoxTreeGroup) {
-      groupState[child.props.name] = child.props.value ? SelectedState.All : SelectedState.Nothing;
+      groupState[child.props.id] = child.props.value ? SelectedState.All : SelectedState.Nothing;
       return groupState;
     }
     if (React.isValidElement(child) && child.type === CheckBoxTreeItem) {
-      groupState[child.props.name] = !!child.props.value;
+      groupState[child.props.id] = !!child.props.value;
       return groupState;
     }
     return groupState;
