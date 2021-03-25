@@ -3,8 +3,8 @@ import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 
 export const Basic = (storyProps: StoryProps): React.ReactElement => {
-  const [selected, setSelected] = React.useState([]);
-  const [selectedGroups, setSelectedGroups] = React.useState([]);
+  const [selected, setSelected] = React.useState<string[]>([]);
+  const [selectedGroups, setSelectedGroups] = React.useState<string[]>([]);
 
   const data: L.CheckBoxTreeTypes.CheckBoxTreeItemType[] = [
     {

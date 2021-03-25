@@ -125,7 +125,7 @@ export interface GroupState {
  * Parameters of handler creator
  */
 export interface HandlerData {
-  onChange: (event: CheckBoxTreeChangeEvent) => void,
+  onChange?: (event: CheckBoxTreeChangeEvent) => void,
   /** Array of selected terminal checkboxes names */
   selected: string[],
   /** Array of selected internal checkboxes names */
