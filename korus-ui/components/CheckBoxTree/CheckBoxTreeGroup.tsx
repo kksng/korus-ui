@@ -14,7 +14,8 @@ import { CheckBoxTreeGroupProps, GroupState } from './types';
 
 
 /**
- * CheckBoxTree Group
+ * CheckBoxTree Group component is an internal item of the tree
+ * manages state of a subgroup
  * @param {CheckBoxTreeGroupProps} props
  *
  * @returns {React.ReactElement}

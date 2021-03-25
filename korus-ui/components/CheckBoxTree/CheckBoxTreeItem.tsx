@@ -7,7 +7,7 @@ import { add, remove } from './helpers';
 import { ChangeEvent } from '../CheckBox/types';
 
 /**
- * CheckBoxTree Item
+ * CheckBoxTree Item component is a terminal item of the tree
  * @param {CheckBoxTreeItemProps} props
  *
  * @returns {React.ReactElement}
