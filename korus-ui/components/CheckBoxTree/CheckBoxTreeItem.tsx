@@ -18,13 +18,24 @@ export const CheckBoxTreeItem: React.FC<CheckBoxTreeItemProps> = (props: CheckBo
     id,
     name,
     theme,
+    defaultValue,
     value: valueProp,
     mergeState,
     selected,
     setSelected,
   } = props;
 
-  const [value, setValue] = React.useState(false);
+  const [value, setValue] = React.useState<boolean | undefined>();
+
+  useEffect(() => {
+    if (defaultValue) {
+      setValue(defaultValue);
+
+      if (isFunction(mergeState)) mergeState({ [id]: defaultValue });
+
+      if (defaultValue) setSelected(add(selected, id));
+    }
+  }, [defaultValue]);
 
   useEffect(() => {
     if (valueProp !== undefined) {

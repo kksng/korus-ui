@@ -25,6 +25,8 @@ export interface CheckBoxTreeChangeEvent {
  * Terminal CheckBoxTree item
  */
 export type CheckBoxTreeTerminalItem = {
+  /** Default value */
+  defaultValue?: boolean,
   /** Id (should be unique) */
   id: string,
   /** Label */
@@ -77,6 +79,8 @@ export interface CheckBoxTreeGroupProps {
  * CheckBoxTree item props
  */
 export interface CheckBoxTreeItemProps {
+  /** Default value */
+  defaultValue?: boolean,
   /** Id (should be unique) */
   id: string,
   /** Text */
@@ -124,7 +128,7 @@ export interface CheckBoxTreeRefCurrent {
  */
 export interface GroupState {
   /** State of a checkbox, boolean for terminal, number for internal (0 - nothing selected, 1 - some selected, 2 - all selected) */
-  [k: string]: boolean | number,
+  [k: string]: boolean | number | undefined,
 }
 
 /**
@@ -147,7 +151,7 @@ export interface UseGroupStateUpdateData {
   /** Set state action for selecting all group items */
   setSelectAll: React.Dispatch<React.SetStateAction<boolean | undefined>>,
   /** Set state action for group value (0 - nothing selected, 1 - some selected, 2 - all selected) */
-  setValue: React.Dispatch<React.SetStateAction<SelectedState>>,
+  setValue: React.Dispatch<React.SetStateAction<SelectedState | undefined>>,
   /** Group state */
   state: GroupState,
 }

@@ -31,7 +31,7 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
   } = props;
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const [value, setValue] = React.useState(SelectedState.Nothing);
+  const [value, setValue] = React.useState<SelectedState | undefined>();
   const [isSelectAll, setSelectAll] = React.useState<boolean | undefined>();
 
   const initialState = getInitialGroupState(children);
@@ -90,7 +90,7 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
         id={id}
         isSemi={isSomeSelected}
         name={name}
-        value={value !== SelectedState.Nothing}
+        value={!!value}
         onChange={handleChange}
       >
         {label}

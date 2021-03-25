@@ -16,19 +16,19 @@ export const isInternal = (item: CheckBoxTreeItemType): item is CheckBoxTreeInte
 
 /**
  * Helper defines if checkbox is selected
- * @param {boolean | number} value
+ * @param {boolean | number | undefined} value
  *
  * @returns {boolean}
  */
-export const getIsSelected = (value: boolean | number): boolean => value === true || value === SelectedState.All;
+export const getIsSelected = (value: boolean | number | undefined): boolean => !!value && value !== SelectedState.Some;
 
 /**
  * Helper defines if checkbox is not selected
- * @param {boolean | number} value
+ * @param {boolean | number | undefined} value
  *
  * @returns {boolean}
  */
-export const getIsNotSelected = (value: boolean | number): boolean => value === false || value === SelectedState.Nothing;
+export const getIsNotSelected = (value: boolean | number | undefined): boolean => !value;
 
 /**
  * Helper defines if all checkboxes in subgroup are selected
@@ -93,11 +93,11 @@ export const remove = (selectedArray: string[], id: string): string[] => {
 export const getInitialGroupState = (children: React.ReactNode): GroupState => {
   const initialState = React.Children.toArray(children).reduce<GroupState>((groupState, child) => {
     if (React.isValidElement(child) && child.type === CheckBoxTreeGroup) {
-      groupState[child.props.id] = child.props.value ? SelectedState.All : SelectedState.Nothing;
+      groupState[child.props.id] = undefined;
       return groupState;
     }
     if (React.isValidElement(child) && child.type === CheckBoxTreeItem) {
-      groupState[child.props.id] = !!child.props.value;
+      groupState[child.props.id] = child.props.value;
       return groupState;
     }
     return groupState;
