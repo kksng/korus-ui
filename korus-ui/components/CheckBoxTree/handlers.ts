@@ -42,16 +42,16 @@ export const createItemChangeHandler = ({
   setValue,
 }: ItemData): CustomEventHandler<ChangeEvent> => (ev) => {
   const {
-    mergeState, id, setSelected, selected,
+    mergeState, id, setSelected,
   } = props;
   setValue(ev.component.value);
 
   if (isFunction(mergeState)) mergeState({ [id]: ev.component.value });
 
   if (ev.component.value) {
-    setSelected(addToSelected(selected, id));
+    setSelected((currentState) => addToSelected(currentState, id));
   } else {
-    setSelected(removeFromSelected(selected, id));
+    setSelected((currentState) => removeFromSelected(currentState, id));
   }
 };
 

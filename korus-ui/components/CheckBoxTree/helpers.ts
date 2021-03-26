@@ -62,11 +62,7 @@ export const getIsSomeSelected = (state: GroupState): boolean => Object.values(s
  *
  * @returns {string[]}
  */
-export const addToSelected = (selectedArray: string[], id: string): string[] => {
-  // should mutate state to handle simultaneous state updates in the tree
-  selectedArray.push(id);
-  return [...new Set(selectedArray)];
-};
+export const addToSelected = (selectedArray: string[], id: string): string[] => [...new Set([...selectedArray, id])];
 
 /**
  * Helper removes checkbox id from array of selected checkboxes' ids
@@ -79,9 +75,10 @@ export const addToSelected = (selectedArray: string[], id: string): string[] => 
 export const removeFromSelected = (selectedArray: string[], id: string): string[] => {
   const index = selectedArray.findIndex((selectedId) => selectedId === id);
   if (index === -1) return selectedArray;
-  // should mutate state to handle simultaneous state updates in the tree
-  selectedArray.splice(index, 1);
-  return [...selectedArray];
+
+  const newSelectedArray = [...selectedArray];
+  newSelectedArray.splice(index, 1);
+  return newSelectedArray;
 };
 
 /**

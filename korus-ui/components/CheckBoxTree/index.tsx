@@ -55,7 +55,6 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
           theme={theme}
           name={item.name}
           id={item.id}
-          selectedGroups={selectedGroups}
           setSelectedGroups={setSelectedGroups}
         >
           {getTree(item.children)}
@@ -70,7 +69,6 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
         name={item.name}
         theme={theme}
         defaultValue={item.defaultValue}
-        selected={selected}
         setSelected={setSelected}
       />
     );

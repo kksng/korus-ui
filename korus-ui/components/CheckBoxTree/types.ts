@@ -16,7 +16,7 @@ export interface CheckBoxTreeChangeEvent {
   component: {
     /** Array of ids of selected terminal checkboxes */
     selected: string[],
-    /** Array of ids of selected internal checkboxes (is addToSelecteded only if all subgroup is selected) */
+    /** Array of ids of selected internal checkboxes (is added only if all subgroup is selected) */
     selectedGroups: string[],
   },
 }
@@ -67,8 +67,6 @@ export interface CheckBoxTreeGroupProps {
   mergeState?: React.Dispatch<GroupState>,
   /** Name */
   name?: string,
-  /** Array of selected internal checkboxes ids */
-  selectedGroups: string[],
   /** Set state action for selected checkboxes */
   setSelectedGroups: React.Dispatch<React.SetStateAction<string[]>>,
   /** Theme */
@@ -94,8 +92,6 @@ export interface CheckBoxTreeItemProps {
   mergeState?: React.Dispatch<GroupState>,
   /** Name */
   name?: string,
-  /** Array of selected terminal checkboxes ids */
-  selected: string[],
   /** Set state action for selected checkboxes */
   setSelected: React.Dispatch<React.SetStateAction<string[]>>,
   /** Theme */

@@ -33,7 +33,7 @@ export const useGroupStateUpdate = ({
   props, state, setSelectAll, setValue,
 }: GroupData): void => {
   const {
-    value, mergeState, id, setSelectedGroups, selectedGroups,
+    value, mergeState, id, setSelectedGroups,
   } = props;
 
   const isAllSelected = getIsAllSelected(state);
@@ -53,7 +53,7 @@ export const useGroupStateUpdate = ({
       setSelectAll(undefined);
       setValue(SelectedState.Some);
       if (isFunction(mergeState)) mergeState({ [id]: SelectedState.Some });
-      setSelectedGroups(removeFromSelected(selectedGroups, id));
+      setSelectedGroups((currentState) => removeFromSelected(currentState, id));
     }
   }, [isSomeSelected]);
 
@@ -62,7 +62,7 @@ export const useGroupStateUpdate = ({
       setSelectAll(undefined);
       setValue(SelectedState.All);
       if (isFunction(mergeState)) mergeState({ [id]: SelectedState.All });
-      setSelectedGroups(addToSelected(selectedGroups, id));
+      setSelectedGroups((currentState) => addToSelected(currentState, id));
     }
   }, [isAllSelected]);
 
@@ -71,7 +71,7 @@ export const useGroupStateUpdate = ({
       setSelectAll(undefined);
       setValue(SelectedState.Nothing);
       if (isFunction(mergeState)) mergeState({ [id]: SelectedState.Nothing });
-      setSelectedGroups(removeFromSelected(selectedGroups, id));
+      setSelectedGroups((currentState) => removeFromSelected(currentState, id));
     }
   }, [isNothingSelected]);
 };
@@ -82,7 +82,7 @@ export const useGroupStateUpdate = ({
  */
 export const useItemStateUpdate = ({ props, setValue }: ItemData): void => {
   const {
-    defaultValue, value, mergeState, id, setSelected, selected,
+    defaultValue, value, mergeState, id, setSelected,
   } = props;
 
   React.useEffect(() => {
@@ -91,7 +91,7 @@ export const useItemStateUpdate = ({ props, setValue }: ItemData): void => {
 
       if (isFunction(mergeState)) mergeState({ [id]: defaultValue });
 
-      if (defaultValue) setSelected(addToSelected(selected, id));
+      if (defaultValue) setSelected((currentState) => addToSelected(currentState, id));
     }
   }, [defaultValue]);
 
@@ -102,9 +102,9 @@ export const useItemStateUpdate = ({ props, setValue }: ItemData): void => {
       if (isFunction(mergeState)) mergeState({ [id]: value });
 
       if (value) {
-        setSelected(addToSelected(selected, id));
+        setSelected((currentState) => addToSelected(currentState, id));
       } else {
-        setSelected(removeFromSelected(selected, id));
+        setSelected((currentState) => removeFromSelected(currentState, id));
       }
     }
   }, [value]);
