@@ -1,13 +1,12 @@
-import { isFunction } from 'lodash';
 import React from 'react';
 import { getClassNames } from '../../utils';
 import { CheckBox } from '../CheckBox';
-import { ChangeEvent } from '../CheckBox/types';
 import { Li } from '../Li';
 import { Span } from '../Span';
 import { Ul } from '../Ul';
 import { CheckBoxTreeItem } from './CheckBoxTreeItem';
 import { SelectedState } from './constants';
+import { createGroupChangeHandler } from './handlers';
 import { getInitialGroupState, getIsSomeSelected } from './helpers';
 import { useGroupStateUpdate } from './hooks';
 import { CheckBoxTreeGroupProps, GroupState } from './types';
@@ -27,7 +26,6 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
     name,
     theme,
     children,
-    mergeState: mergeStateProp,
   } = props;
 
   const [isOpen, setIsOpen] = React.useState(false);
@@ -39,8 +37,6 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
   const [state, mergeState] = React.useReducer((oldState: GroupState, newState: GroupState) => ({
     ...oldState, ...newState,
   }), initialState);
-
-  const isSomeSelected = getIsSomeSelected(state);
 
   useGroupStateUpdate({
     props,
@@ -67,28 +63,18 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
     setIsOpen(!isOpen);
   };
 
-  /**
-   * Change event handler for internal checkbox
-   * @param {ChangeEvent} ev
-   */
-  const handleChange = (ev: ChangeEvent): void => {
-    // If group was partly selected - select all subgroup
-    if (isSomeSelected) {
-      setSelectAll(true);
-      setValue(SelectedState.All);
-      if (isFunction(mergeStateProp)) mergeStateProp({ [id]: SelectedState.All });
-    } else {
-      setValue(ev.component.value ? SelectedState.All : SelectedState.Nothing);
-      if (isFunction(mergeStateProp)) mergeStateProp({ [id]: ev.component.value ? SelectedState.All : SelectedState.Nothing });
-      setSelectAll(ev.component.value);
-    }
-  };
+  const handleChange = createGroupChangeHandler({
+    props,
+    setSelectAll,
+    setValue,
+    state,
+  });
 
   return (
     <Li className={itemClassNames}>
       <CheckBox
         id={id}
-        isSemi={isSomeSelected}
+        isSemi={getIsSomeSelected(state)}
         name={name}
         value={!!value}
         onChange={handleChange}

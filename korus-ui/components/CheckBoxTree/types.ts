@@ -147,7 +147,7 @@ export interface ChangeHandlerData {
 /**
  * Data for useGroupStateUpdate hook
  */
-export interface UseGroupStateUpdateData {
+export interface GroupData {
   /** props of CheckBoxTree group */
   props: CheckBoxTreeGroupProps,
   /** Set state action for selecting all group items */

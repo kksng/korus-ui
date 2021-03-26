@@ -4,7 +4,7 @@ import { SelectedState } from './constants';
 import {
   addToSelected, getIsAllSelected, getIsNothingSelected, getIsSomeSelected, removeFromSelected,
 } from './helpers';
-import { ItemData, UseGroupStateUpdateData, UseHandleChangeData } from './types';
+import { ItemData, GroupData, UseHandleChangeData } from './types';
 
 /**
  * Hook calls change event handler on state update
@@ -27,11 +27,11 @@ export const useHandleChange = ({ handleChange, selected, selectedGroups }: UseH
 
 /**
  * Hook handles subgroup state updates
- * @param {UseGroupStateUpdateData} params
+ * @param {GroupData} params
  */
 export const useGroupStateUpdate = ({
   props, state, setSelectAll, setValue,
-}: UseGroupStateUpdateData): void => {
+}: GroupData): void => {
   const {
     value, mergeState, id, setSelectedGroups, selectedGroups,
   } = props;
