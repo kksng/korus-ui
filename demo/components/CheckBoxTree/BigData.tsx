@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as L from '../../../korus-ui';
+import { ArrayElement } from '../../../korus-ui/commonTypes';
 import { StoryProps } from '../../types';
 import { bigData } from './data';
 
@@ -7,10 +8,12 @@ export const BigData = (storyProps: StoryProps): React.ReactElement => {
   const [selected, setSelected] = React.useState<string[]>([]);
   const [selectedGroups, setSelectedGroups] = React.useState<string[]>([]);
 
-  type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
-  type BigData = ArrayElement<typeof bigData>
-
-  const prepareData = (item: BigData): L.CheckBoxTreeTypes.CheckBoxTreeItemType => {
+  /**
+   * Helper prepares data for checkbox tree
+   * @param {ArrayElement<typeof bigData>} item 
+   * @returns {L.CheckBoxTreeTypes.CheckBoxTreeItemType}
+   */
+  const prepareData = (item: ArrayElement<typeof bigData>): L.CheckBoxTreeTypes.CheckBoxTreeItemType => {
     const newItem = {} as L.CheckBoxTreeTypes.CheckBoxTreeItemType;
     newItem.id = item['id'].toString();
     newItem.name = item['name'];
@@ -24,7 +27,7 @@ export const BigData = (storyProps: StoryProps): React.ReactElement => {
   return (
     <>
       <L.CheckBoxTree
-        onChange={(ev) => {
+        onChange={(ev): void => {
           setSelected(ev.component.selected);
           setSelectedGroups(ev.component.selectedGroups);
         }}

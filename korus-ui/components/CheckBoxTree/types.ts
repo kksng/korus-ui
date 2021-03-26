@@ -136,7 +136,7 @@ export interface GroupState {
 /**
  * Parameters of handler creator
  */
-export interface HandlerData {
+export interface ChangeHandlerData {
   onChange?: (event: CheckBoxTreeChangeEvent) => void,
   /** Array of selected terminal checkboxes ids */
   selected: string[],
@@ -168,4 +168,14 @@ export interface UseHandleChangeData {
   selected: string[],
   /** Array of selected internal checkboxes ids */
   selectedGroups: string[],
+}
+
+/**
+ * Data for Item helpers
+ */
+export interface ItemData {
+  /** props of CheckBoxTree item */
+  props: CheckBoxTreeItemProps,
+  /** Set state action for item value */
+  setValue: React.Dispatch<React.SetStateAction<boolean | undefined>>,
 }

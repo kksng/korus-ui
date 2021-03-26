@@ -4,7 +4,7 @@ import { SelectedState } from './constants';
 import {
   add, getIsAllSelected, getIsNothingSelected, getIsSomeSelected, remove,
 } from './helpers';
-import { UseGroupStateUpdateData, UseHandleChangeData } from './types';
+import { ItemData, UseGroupStateUpdateData, UseHandleChangeData } from './types';
 
 /**
  * Hook calls change event handler on state update
@@ -74,4 +74,38 @@ export const useGroupStateUpdate = ({
       setSelectedGroups(remove(selectedGroups, id));
     }
   }, [isNothingSelected]);
+};
+
+/**
+ * Hook handles item state updates
+ * @param {ItemData} params
+ */
+export const useItemStateUpdate = ({ props, setValue }: ItemData): void => {
+  const {
+    defaultValue, value, mergeState, id, setSelected, selected,
+  } = props;
+
+  React.useEffect(() => {
+    if (defaultValue) {
+      setValue(defaultValue);
+
+      if (isFunction(mergeState)) mergeState({ [id]: defaultValue });
+
+      if (defaultValue) setSelected(add(selected, id));
+    }
+  }, [defaultValue]);
+
+  React.useEffect(() => {
+    if (value !== undefined) {
+      setValue(value);
+
+      if (isFunction(mergeState)) mergeState({ [id]: value });
+
+      if (value) {
+        setSelected(add(selected, id));
+      } else {
+        setSelected(remove(selected, id));
+      }
+    }
+  }, [value]);
 };

@@ -1,9 +1,14 @@
 import { isFunction } from 'lodash';
-import { ChangeEventHandler, HandlerData } from './types';
+import { CustomEventHandler } from '../../commonTypes';
+import {
+  ChangeEventHandler, ChangeHandlerData, ItemData,
+} from './types';
+import { ChangeEvent } from '../CheckBox/types';
+import { add, remove } from './helpers';
 
 /**
  * Creates change event handler
- * @param {HandlerProps} props
+ * @param {ChangeHandlerData} params
  *
  * @returns {ChangeEventHandler}
  */
@@ -11,7 +16,7 @@ export const createChangeHandler = ({
   onChange,
   selected,
   selectedGroups,
-}: HandlerData): ChangeEventHandler => () => {
+}: ChangeHandlerData): ChangeEventHandler => () => {
   if (!isFunction(onChange)) return;
 
   const customEvent = {
@@ -22,4 +27,29 @@ export const createChangeHandler = ({
   };
 
   onChange(customEvent);
+};
+
+
+/**
+ * Creates сhange event handler for checkbox tree item
+ * @param {ItemData} params
+ *
+ * @returns {CustomEventHandler<ChangeEvent>}
+ */
+export const createItemChangeHandler = ({
+  props,
+  setValue,
+}: ItemData): CustomEventHandler<ChangeEvent> => (ev) => {
+  const {
+    mergeState, id, setSelected, selected,
+  } = props;
+  setValue(ev.component.value);
+
+  if (isFunction(mergeState)) mergeState({ [id]: ev.component.value });
+
+  if (ev.component.value) {
+    setSelected(add(selected, id));
+  } else {
+    setSelected(remove(selected, id));
+  }
 };

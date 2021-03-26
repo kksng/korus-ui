@@ -89,7 +89,7 @@ export const InitialState = (storyProps: StoryProps): React.ReactElement => {
   return (
     <>
       <L.CheckBoxTree
-        onChange={(ev) => {
+        onChange={(ev): void => {
           setSelected(ev.component.selected);
           setSelectedGroups(ev.component.selectedGroups);
         }}

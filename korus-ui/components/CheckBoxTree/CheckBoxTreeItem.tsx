@@ -1,10 +1,9 @@
-import { isFunction } from 'lodash';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CheckBox } from '../CheckBox';
 import { CheckBoxTreeItemProps } from './types';
 import { Li } from '../Li';
-import { add, remove } from './helpers';
-import { ChangeEvent } from '../CheckBox/types';
+import { useItemStateUpdate } from './hooks';
+import { createItemChangeHandler } from './handlers';
 
 /**
  * CheckBoxTree Item component is a terminal item of the tree
@@ -18,54 +17,13 @@ export const CheckBoxTreeItem: React.FC<CheckBoxTreeItemProps> = (props: CheckBo
     id,
     name,
     theme,
-    defaultValue,
-    value: valueProp,
-    mergeState,
-    selected,
-    setSelected,
   } = props;
 
   const [value, setValue] = React.useState<boolean | undefined>();
 
-  useEffect(() => {
-    if (defaultValue) {
-      setValue(defaultValue);
+  useItemStateUpdate({ props, setValue });
 
-      if (isFunction(mergeState)) mergeState({ [id]: defaultValue });
-
-      if (defaultValue) setSelected(add(selected, id));
-    }
-  }, [defaultValue]);
-
-  useEffect(() => {
-    if (valueProp !== undefined) {
-      setValue(valueProp);
-
-      if (isFunction(mergeState)) mergeState({ [id]: valueProp });
-
-      if (valueProp) {
-        setSelected(add(selected, id));
-      } else {
-        setSelected(remove(selected, id));
-      }
-    }
-  }, [valueProp]);
-
-  /**
-   * Change event handler for terminal checkbox
-   * @param {ChangeEvent} ev
-   */
-  const handleChange = (ev: ChangeEvent): void => {
-    setValue(ev.component.value);
-
-    if (isFunction(mergeState)) mergeState({ [id]: ev.component.value });
-
-    if (ev.component.value) {
-      setSelected(add(selected, id));
-    } else {
-      setSelected(remove(selected, id));
-    }
-  };
+  const handleChange = createItemChangeHandler({ props, setValue });
 
   return (
     <Li className={theme.checkBoxTreeItem}>
