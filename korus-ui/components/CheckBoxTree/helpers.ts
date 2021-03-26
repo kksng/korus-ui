@@ -76,7 +76,9 @@ export const removeFromSelected = (selectedArray: string[], id: string): string[
   const index = selectedArray.findIndex((selectedId) => selectedId === id);
   if (index === -1) return selectedArray;
 
-  return [...selectedArray].splice(index, 1);
+  const newArray = [...selectedArray];
+  newArray.splice(index, 1);
+  return newArray;
 };
 
 /**
