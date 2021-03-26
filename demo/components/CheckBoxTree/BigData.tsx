@@ -27,7 +27,7 @@ export const BigData = (storyProps: StoryProps): React.ReactElement => {
   return (
     <>
       <L.CheckBoxTree
-        onChange={(ev): void => {
+        onChange={(ev: L.CheckBoxTreeTypes.CheckBoxTreeChangeEvent): void => {
           setSelected(ev.component.selected);
           setSelectedGroups(ev.component.selectedGroups);
         }}
