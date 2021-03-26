@@ -16,7 +16,7 @@ export interface CheckBoxTreeChangeEvent {
   component: {
     /** Array of ids of selected terminal checkboxes */
     selected: string[],
-    /** Array of ids of selected internal checkboxes (is added only if all subgroup is selected) */
+    /** Array of ids of selected internal checkboxes (is addToSelecteded only if all subgroup is selected) */
     selectedGroups: string[],
   },
 }
@@ -24,7 +24,7 @@ export interface CheckBoxTreeChangeEvent {
 /**
  * Terminal CheckBoxTree item
  */
-export interface CheckBoxTreeTerminalItem {
+export interface CheckBoxTreeItem {
   /** Child items */
   children?: CheckBoxTreeItemType[],
   /** Default value */
@@ -38,9 +38,9 @@ export interface CheckBoxTreeTerminalItem {
 }
 
 /**
- * Internal CheckBoxTree item
+ * Group CheckBoxTree item
  */
-export interface CheckBoxTreeInternalItem extends CheckBoxTreeTerminalItem {
+export interface CheckBoxTreeGroupItem extends CheckBoxTreeItem {
   /** Child items */
   children: CheckBoxTreeItemType[],
 }
@@ -48,7 +48,7 @@ export interface CheckBoxTreeInternalItem extends CheckBoxTreeTerminalItem {
 /**
  * CheckBoxTree item
  */
-export type CheckBoxTreeItemType = CheckBoxTreeTerminalItem | CheckBoxTreeInternalItem;
+export type CheckBoxTreeItemType = CheckBoxTreeGroupItem | CheckBoxTreeItem;
 
 /**
  * CheckBoxTree group props

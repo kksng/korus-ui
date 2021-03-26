@@ -3,7 +3,7 @@ import { CheckBoxTreeGroup } from './CheckBoxTreeGroup';
 import { CheckBoxTreeItem } from './CheckBoxTreeItem';
 import { SelectedState } from './constants';
 import {
-  CheckBoxTreeItemType, CheckBoxTreeInternalItem, GroupState,
+  CheckBoxTreeItemType, CheckBoxTreeGroupItem, GroupState,
 } from './types';
 
 /**
@@ -12,7 +12,7 @@ import {
  *
  * @returns {boolean}
  */
-export const isInternal = (item: CheckBoxTreeItemType): item is CheckBoxTreeInternalItem => !!item?.children && item.children.length > 0;
+export const getHasChildItems = (item: CheckBoxTreeItemType): item is CheckBoxTreeGroupItem => !!item?.children && item.children.length > 0;
 
 /**
  * Helper defines if checkbox is selected
@@ -62,7 +62,7 @@ export const getIsSomeSelected = (state: GroupState): boolean => Object.values(s
  *
  * @returns {string[]}
  */
-export const add = (selectedArray: string[], id: string): string[] => {
+export const addToSelected = (selectedArray: string[], id: string): string[] => {
   // should mutate state to handle simultaneous state updates in the tree
   selectedArray.push(id);
   return [...new Set(selectedArray)];
@@ -76,7 +76,7 @@ export const add = (selectedArray: string[], id: string): string[] => {
  *
  * @returns {string[]}
  */
-export const remove = (selectedArray: string[], id: string): string[] => {
+export const removeFromSelected = (selectedArray: string[], id: string): string[] => {
   const index = selectedArray.findIndex((selectedId) => selectedId === id);
   if (index === -1) return selectedArray;
   // should mutate state to handle simultaneous state updates in the tree

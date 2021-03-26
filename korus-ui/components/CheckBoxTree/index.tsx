@@ -5,7 +5,7 @@ import {
 } from '../../utils';
 import { Div } from '../Div';
 import { Ul } from '../Ul';
-import { isInternal } from './helpers';
+import { getHasChildItems } from './helpers';
 import { CheckBoxTreeItem } from './CheckBoxTreeItem';
 import { CheckBoxTreeProps, CheckBoxTreeRefCurrent, CheckBoxTreeItemType } from './types';
 import { CheckBoxTreeGroup } from './CheckBoxTreeGroup';
@@ -47,7 +47,7 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
    * @returns {React.ReactElement[]}
    */
   const getTree = (items: CheckBoxTreeItemType[]): React.ReactElement[] => items.map((item) => {
-    if (isInternal(item)) {
+    if (getHasChildItems(item)) {
       return (
         <CheckBoxTreeGroup
           key={item.id}

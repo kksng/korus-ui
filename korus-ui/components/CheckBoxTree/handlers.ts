@@ -4,7 +4,7 @@ import {
   ChangeEventHandler, ChangeHandlerData, ItemData,
 } from './types';
 import { ChangeEvent } from '../CheckBox/types';
-import { add, remove } from './helpers';
+import { addToSelected, removeFromSelected } from './helpers';
 
 /**
  * Creates change event handler
@@ -48,8 +48,8 @@ export const createItemChangeHandler = ({
   if (isFunction(mergeState)) mergeState({ [id]: ev.component.value });
 
   if (ev.component.value) {
-    setSelected(add(selected, id));
+    setSelected(addToSelected(selected, id));
   } else {
-    setSelected(remove(selected, id));
+    setSelected(removeFromSelected(selected, id));
   }
 };

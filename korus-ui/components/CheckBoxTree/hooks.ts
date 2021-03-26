@@ -2,7 +2,7 @@ import { isFunction } from 'lodash';
 import React from 'react';
 import { SelectedState } from './constants';
 import {
-  add, getIsAllSelected, getIsNothingSelected, getIsSomeSelected, remove,
+  addToSelected, getIsAllSelected, getIsNothingSelected, getIsSomeSelected, removeFromSelected,
 } from './helpers';
 import { ItemData, UseGroupStateUpdateData, UseHandleChangeData } from './types';
 
@@ -53,7 +53,7 @@ export const useGroupStateUpdate = ({
       setSelectAll(undefined);
       setValue(SelectedState.Some);
       if (isFunction(mergeState)) mergeState({ [id]: SelectedState.Some });
-      setSelectedGroups(remove(selectedGroups, id));
+      setSelectedGroups(removeFromSelected(selectedGroups, id));
     }
   }, [isSomeSelected]);
 
@@ -62,7 +62,7 @@ export const useGroupStateUpdate = ({
       setSelectAll(undefined);
       setValue(SelectedState.All);
       if (isFunction(mergeState)) mergeState({ [id]: SelectedState.All });
-      setSelectedGroups(add(selectedGroups, id));
+      setSelectedGroups(addToSelected(selectedGroups, id));
     }
   }, [isAllSelected]);
 
@@ -71,7 +71,7 @@ export const useGroupStateUpdate = ({
       setSelectAll(undefined);
       setValue(SelectedState.Nothing);
       if (isFunction(mergeState)) mergeState({ [id]: SelectedState.Nothing });
-      setSelectedGroups(remove(selectedGroups, id));
+      setSelectedGroups(removeFromSelected(selectedGroups, id));
     }
   }, [isNothingSelected]);
 };
@@ -91,7 +91,7 @@ export const useItemStateUpdate = ({ props, setValue }: ItemData): void => {
 
       if (isFunction(mergeState)) mergeState({ [id]: defaultValue });
 
-      if (defaultValue) setSelected(add(selected, id));
+      if (defaultValue) setSelected(addToSelected(selected, id));
     }
   }, [defaultValue]);
 
@@ -102,9 +102,9 @@ export const useItemStateUpdate = ({ props, setValue }: ItemData): void => {
       if (isFunction(mergeState)) mergeState({ [id]: value });
 
       if (value) {
-        setSelected(add(selected, id));
+        setSelected(addToSelected(selected, id));
       } else {
-        setSelected(remove(selected, id));
+        setSelected(removeFromSelected(selected, id));
       }
     }
   }, [value]);
