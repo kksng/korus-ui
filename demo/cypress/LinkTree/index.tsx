@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as L from '../../../korus-ui';
 
 export const LinkTree = (): React.ReactElement => {
-  const data = [
+  const data: L.LinkTreeTypes.LinkTreeItemType[] = [
     {
       title1: [
         {

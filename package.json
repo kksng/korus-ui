@@ -34,7 +34,7 @@
     "build": "npm run clean && npm run tsc && npm run sass",
     "lint": "eslint --color --ext .ts,.tsx korus-ui",
     "test": "jest --color --silent",
-    "tsc": "tsc --project tsconfig.app.json",
+    "tsc": "tsc --project tsconfig.json",
     "tsc:withDemo": "tsc --noEmit --project tsconfig.demo.json",
     "jest": "jest",
     "cypress": "start-test wds 9000 cypress:open",

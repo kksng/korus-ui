@@ -14,47 +14,47 @@ export const DatePicker = (): React.ReactElement => {
   const [value8, setValue8] = React.useState('12.10.2020');
   const [submitMessage, setSubmitMessage] = React.useState('');
 
-  const handleChange1 = (event) => {
+  const handleChange1 = (event: L.DateTimeInputTypes.ChangeEvent): void => {
     const { date, value } = event.component;
     setValue1(value);
   };
-  const handleChange2 = (event) => {
+  const handleChange2 = (event: L.DateTimeInputTypes.ChangeEvent): void => {
     const { date, value } = event.component;
     setValue2(value);
     console.log(value, date);
   };
-  const handleChange3 = (event) => {
+  const handleChange3 = (event: L.DateTimeInputTypes.ChangeEvent): void => {
     const { date, value } = event.component;
     setValue3(value);
     console.log(value, date);
   };
-  const handleChange4 = (event) => {
+  const handleChange4 = (event: L.DateTimeInputTypes.ChangeEvent): void => {
     const { date, value } = event.component;
     setValue4(value);
     console.log(value, date);
   };
-  const handleChange5 = (event) => {
+  const handleChange5 = (event: L.DateTimeInputTypes.ChangeEvent): void => {
     const { date, value } = event.component;
     setValue5(value);
     console.log(value, date);
   };
-  const handleChange6 = (event) => {
+  const handleChange6 = (event: L.DateTimeInputTypes.ChangeEvent): void => {
     const { date, value } = event.component;
     setValue6(value);
     console.log(value, date);
   };
-  const handleChange7 = (event) => {
+  const handleChange7 = (event: L.DateTimeInputTypes.ChangeEvent): void => {
     const { date, value } = event.component;
     setValue7(value);
     console.log(value, date);
   };
-  const handleChange8 = (event) => {
+  const handleChange8 = (event: L.DateTimeInputTypes.ChangeEvent): void => {
     const { date, value } = event.component;
     setValue8(value);
     console.log(value, date);
   };
 
-  const testFunction = (ev) => { console.log(ev) }
+  const testFunction = (ev: L.DateTimeInputTypes.ChangeEvent) => { console.log(ev) }
   return (
     <L.Div>
       <L.Div _demoStory _flexRow>

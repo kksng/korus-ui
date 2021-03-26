@@ -23,59 +23,59 @@ export const DateRange = (): React.ReactElement => {
     new Date(2019, 5, 15),
   ]);
 
-  const handleChange1 = (ev) => {
+  const handleChange1 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
     setValue1(value);
   };
-  const handleChange2 = (ev) => {
+  const handleChange2 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
     setValue2(value);
   };
-  const handleChange3 = (ev) => {
+  const handleChange3 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
     setValue3(value);
   };
-  const handleChange4 = (ev) => {
+  const handleChange4 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
     setValue4(value);
   };
-  const handleChange5 = (ev) => {
+  const handleChange5 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
     setValue5(value);
   };
-  const handleChange6 = (ev) => {
+  const handleChange6 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
     setValue6(value);
   };
-  const handleChange7 = (ev) => {
+  const handleChange7 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
     setValue7(value);
   };
-  const handleChange8 = (ev) => {
+  const handleChange8 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
-    setValue8(value);
+    setValue8(date);
   };
-  const handleChange9 = (ev) => {
+  const handleChange9 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
     console.log(value);
     console.log(date);
-    setValue9(value);
+    setValue9(date);
   };
 
   const DateRangeStyles = () => (

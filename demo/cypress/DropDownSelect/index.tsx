@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { SomeObject } from '../../../korus-ui/commonTypes';
+import { RenderEvent, SomeObject } from '../../../korus-ui/commonTypes';
 import * as L from '../../../korus-ui';
 import { StateButtonGroup } from '../../../demo/components';
+import { SuggestionElementProps, SuggestionItemProps } from '../../../korus-ui/src/SuggestionList/types';
+import { isNumber, isString } from 'lodash';
 const data = [
   { id: 0, city: 'Moscow' },
   { id: 0, city: 'Minsk' },
@@ -26,35 +28,44 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
   const [value3, setValue3] = React.useState<string | null>(null);
   const [props2, setProps2] = React.useState<any>({});
   const [value4, setValue4] = React.useState<string>('Berlin');
-  const [value5, setValue5] = React.useState(null);
+  const [value5, setValue5] = React.useState<string | null>(null);
   const [filterValue, setFilterValue] = React.useState('');
   const [isOpen, setIsOpen] = React.useState<boolean | undefined>();
   const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const handleFilterChange = (ev) => {
+
+  const handleFilterChange = (ev: L.DropDownSelectTypes.ChangeEvent<string>): void => {
     const { value } = ev.component;
     setFilterValue(value);
     console.log('Filter value', value);
   };
-  const handleChange = (ev) => {
-    const { value5 } = ev.component;
-    setValue5(value5);
-    console.log('You have chosen', value5);
+  const handleChange = (ev: L.DropDownSelectTypes.ChangeEvent<string>): void => {
+    const { value } = ev.component;
+    setValue5(value);
+    console.log('You have chosen', value);
   };
 
   const textField = 'name';
-  const [value6, setValue6] = React.useState(null);
-  const testFunction = (event: {}) => {
+  const [value6, setValue6] = React.useState<SomeObject | null>(null);
+
+  const testFunction = (event: L.DropDownSelectTypes.FocusEvent<SomeObject> | L.DropDownSelectTypes.ChangeEvent<SomeObject> | L.DropDownSelectTypes.BlurEvent<string>): void => {
     console.log(event);
   };
-  const handleChange1 = ev => setValue6(ev.component.value);
+  const handleChange1 = (ev: L.DropDownSelectTypes.ChangeEvent<SomeObject>): void => {
+    setValue6(ev.component.value)
+  };
 
-  const [value7, setValue7] = React.useState(null);
+  const [value7, setValue7] = React.useState<SomeObject | null>(null);
   const [value8, setValue8] = React.useState(longStringData[0]);
 
 
-  const itemRender = ({ Element, elementProps, componentProps }) => {
-    const { isPlaceholder, item, textField } = componentProps;
+  const itemRender = ({ 
+    Element, 
+    elementProps, 
+    componentProps }: RenderEvent<SuggestionItemProps, {}, SuggestionElementProps>): React.ReactNode => {
+    const { item, textField } = componentProps;
+
+    if (!item || isString(item) || isNumber(item)) return;
 
     return (
       <Element
@@ -62,11 +73,11 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         _txtSuccess={item.region === 'Asia'}
         _txtBold={item.region === 'Europe'}
       >
-        {item[textField]} (region: {item.region})
+        {textField && item[textField]} (region: {item.region})
       </Element>
     );
   }
-  const sort = (suggestion1, suggestion2) => {
+  const sort = (suggestion1: SomeObject, suggestion2: SomeObject): number => {
     return suggestion2.population - suggestion1.population;
   }
 
@@ -112,7 +123,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         />
       </L.Div>
       <L.Div _demoStory _flexRow>
-        <L.DropDownSelect
+        <L.DropDownSelect<SomeObject>
           shouldFilterValues
           id="Opened"
           onFocus={testFunction}
@@ -144,9 +155,9 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           value={value2}
           placeholder="Choose a city"
           compareObjectsBy="id"
-          onChange={(ev) => {
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<SomeObject>) => {
             setValue2(ev.component.value);
-            testFunction(event);
+            testFunction(ev);
           }}
           _width40
         />
@@ -161,7 +172,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           _width40
         />
 
-        <L.DropDownSelect
+        <L.DropDownSelect<string>
           id="DDSonBlur"
           data={[
             'London',
@@ -179,7 +190,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           shouldFilterValues
           value={value3}
           noSuggestionsRender={noSuggestionsRenderNull}
-          onChange={ev => {
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<string>): void => {
             console.log('ev.component', ev.component);
             setValue3(ev.component.value);
           }}
@@ -352,7 +363,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           value={value7}
           textField="city"
           onFocus={testFunction}
-          onChange={ev => setValue7(ev.component.value)}
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<SomeObject>) => setValue7(ev.component.value)}
           _width40
         />  
 

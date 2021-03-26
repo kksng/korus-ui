@@ -66,7 +66,7 @@ export const CountDown = (): React.ReactElement  => {
         <L.ButtonGroup
           data={timers}
           defaultValue={timers[0]}
-          onChange={(event) => handleRestart(event.component.value.time)}
+          onChange={(event) => handleRestart(event.component.value?.time)}
           textField="text"
           _primary
         />

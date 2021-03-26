@@ -68,10 +68,12 @@ const notificationsWithoutDelay = [
   },
 ];
 
-const ActionButton = (props: {
-  item: L.NotificationsTypes.Item;
-  onClose: (id: string | number) => void;
-}): JSX.Element => {
+interface ActionButtonProps {
+  item: L.NotificationsTypes.Item,
+  onClose: (id: string | number) => void,
+}
+
+const ActionButton: React.FC<ActionButtonProps> = (props) => {
   switch (props.item.type) {
     case 'accept': {
       return (
@@ -97,7 +99,7 @@ export const Notifications = (): JSX.Element => {
     setItems(newItems);
   };
 
-  const handleNotificationsOnChange = (ev) => {
+  const handleNotificationsOnChange = (ev: L.NotificationsTypes.ChangeEvent) => {
     console.log('change', ev.component);
     setItems(ev.component.value);
   };

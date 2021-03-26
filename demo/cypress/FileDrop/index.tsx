@@ -16,12 +16,12 @@ export const FileDrop = () => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [loaded, setLoaded] = React.useState<number>(0);
 
-  const handleChange1 = (ev) => {
+  const handleChange1 = (ev: L.FileDropTypes.ChangeEvent) => {
     setError1('some custom error');
     console.log(ev.component);
   };
 
-  const handleChange2 = (ev) => {
+  const handleChange2 = (ev: L.FileDropTypes.ChangeEvent) => {
     console.log(ev.component);
 
     if (ev.component.value) {
