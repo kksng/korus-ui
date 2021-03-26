@@ -41,7 +41,7 @@ export const propsDesc = [
   },
   {
     name: 'footerContent',
-    type: React.ReactNode,
+    type: 'React.ReactNode',
     required: false,
     description: 'Содержимое футера шага',
   },
