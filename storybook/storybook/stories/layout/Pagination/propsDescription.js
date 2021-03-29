@@ -33,7 +33,14 @@ export const propsDesc = [
     description: 'Состояние загрузки, на это время блокируются все клики.',
   },
   {
-    name: 'itemsInfoRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
+        target="_self"
+      >
+        itemsInfoRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -43,7 +50,14 @@ export const propsDesc = [
     description: 'Кастомизация информации о пагинации (блок со служебной информацией справа от стрелок).',
   },
   {
-    name: 'itemsRangeInfoRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
+        target="_self"
+      >
+        itemsRangeInfoRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -53,7 +67,14 @@ export const propsDesc = [
     description: 'Кастомизация текста "1-10 из 124".',
   },
   {
-    name: 'itemsTotalInfoRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
+        target="_self"
+      >
+        itemsTotalInfoRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -126,7 +147,14 @@ interface PageSizeChangeEvent {
     description: 'Обработчик изменения количества отображаемых элементов.',
   },
   {
-    name: 'pagesDropDownRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
+        target="_self"
+      >
+        pagesDropDownRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -142,7 +170,14 @@ interface PageSizeChangeEvent {
     description: 'Количество элементов на странице.',
   },
   {
-    name: 'pageSizeInputRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
+        target="_self"
+      >
+        pageSizeInputRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -152,7 +187,14 @@ interface PageSizeChangeEvent {
     description: 'Кастомизация поля ввода выпадающего списка с выбором количества записей на странице.',
   },
   {
-    name: 'pageSizeItemRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout|Pagination', 'Кастомизация')}
+        target="_self"
+      >
+        pageSizeItemRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode

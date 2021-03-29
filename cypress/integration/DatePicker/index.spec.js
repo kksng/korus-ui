@@ -463,17 +463,10 @@ describe('DatePicker', () => {
   describe('Use cases', () => {
     it('Should select correctly date in January', () => {
       cy.name('secondDatePicker')
+        .type('01.02.2021')
         .parent()
         .find('.datepicker-calendar-icon')
         .click()
-        .parents('.datepicker-wrapper')
-        .find('.calendar-title')
-        .click()
-        .parents('.calendar-wrapper')
-        .children('.calendar-month-year-view')
-        .contains('февр.')
-        .click()
-        .name('secondDatePicker')
         .parents('.datepicker-wrapper')
         .find('.calendar-wrapper')
         .find('.calendar-dates-row')

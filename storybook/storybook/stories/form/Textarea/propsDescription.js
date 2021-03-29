@@ -1,6 +1,17 @@
 import * as React from 'react';
 import * as L from '@korus/leda';
 import { RenderEvent } from '../../../propsHelpers';
+import {
+  form,
+  invalidMessage,
+  isRequired,
+  isValid,
+  name,
+  requiredMessage,
+  shouldValidateUnmounted,
+  validator,
+  invalidMessageRender,
+} from '../../basics/6_validation/propsDescription';
 
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
@@ -148,6 +159,12 @@ interface FocusEvent extends React.FocusEvent<HTMLTextAreaElement> {
     description: 'Плейсхолдер.',
   },
   {
+    name: 'shouldAutoResize',
+    type: 'boolean',
+    required: false,
+    description: 'Автоматическая регулировка высоты компонента при вводе текста во избежание прокрутки. Перезаписывает встроенный стиль CSS-свойств "overflow-y" и "height".'
+  },
+  {
     name: 'theme',
     type: (
       <L.Tooltip title={(
@@ -185,5 +202,16 @@ interface FocusEvent extends React.FocusEvent<HTMLTextAreaElement> {
     required: false,
     description: 'Кастомизация враппера.',
   },
-
 ];
+
+export const validationPropsDesc = [
+  form,
+  invalidMessage,
+  invalidMessageRender,
+  isRequired,
+  isValid,
+  name,
+  requiredMessage,
+  shouldValidateUnmounted,
+  validator,
+]; 

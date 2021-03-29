@@ -14,6 +14,7 @@ const Api = () => {
     <L.Password
       onChange={handleChange}
       value={value}
+      _width-30
       passwordEvaluators={[
         {
           strengthLevel: L.PasswordTypes.PasswordStrength.Low,

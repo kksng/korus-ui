@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react';
 import
 {
   Api,
-  // BasicUsage,
-  // Customization,
+  Accordion,
+  Customization,
 } from './Examples';
 import { Story } from '../../../components/Story';
 import {
@@ -25,5 +25,5 @@ const collapseProps = [
 
 storiesOf('Layout|Collapse', module)
   .add('API', context => (<ApiStory {...Api} compoundCustomProps={collapseProps} context={context} />))
-  // .add('Basic Usage', context => (<Story {...BasicUsage} compoundCustomProps={collapseProps} context={context} />))
-  // .add('Customization', context => (<Story {...Customization} compoundCustomProps={collapseProps} context={context} />))
+  .add('Режим аккордеона', context => (<Story {...Accordion} compoundCustomProps={collapseProps} context={context} />))
+  .add('Кастомизация', context => (<Story {...Customization} compoundCustomProps={collapseProps} context={context} />))

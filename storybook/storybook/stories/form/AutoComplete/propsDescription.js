@@ -117,6 +117,23 @@ export const propsDesc = [
     description: 'Хедер над значениями в выпадающем списке.',
   },
   {
+    name: (
+      <L.A
+        onClick={linkTo('Form|AutoComplete', 'Кастомизация')}
+        target="_self"
+      >
+        inputRender
+      </L.A>
+    ),
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Настройка внешнего вида поля ввода.',
+  },
+  {
     name: 'isDisabled',
     type: 'boolean',
     required: false,
@@ -137,24 +154,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|AutoComplete', 'Customization')}
-        target="_self"
-      >
-        inputRender
-      </L.A>
-    ),
-    type: (
-      <L.Span>
-        <RenderEvent /> => React.ReactNode
-      </L.Span>
-    ),
-    required: false,
-    description: 'Настройка внешнего вида поля ввода.',
-  },
-  {
-    name: (
-      <L.A
-        onClick={linkTo('Form|AutoComplete', 'Customization')}
+        onClick={linkTo('Form|AutoComplete', 'Кастомизация')}
         target="_self"
       >
         itemRender
@@ -193,7 +193,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|AutoComplete', 'Customization')}
+        onClick={linkTo('Form|AutoComplete', 'Кастомизация')}
         target="_self"
       >
         noSuggestionsRender
@@ -360,6 +360,12 @@ interface AutoCompleteRefCurrent {
     description: 'Cсылки на DOM-элементы компонента.',
   },
   {
+    name: 'searchFields',
+    type: 'string[]',
+    required: false,
+    description: 'Кроме поля, указанного в textField, можно искать вхождения и в других полях объекта data, перечислите в массиве имена этих полей.',
+  },
+  {
     name: (
       <L.A
         onClick={linkTo('Form|AutoComplete|Props', 'shouldCorrectValue')}
@@ -379,12 +385,6 @@ interface AutoCompleteRefCurrent {
     description: 'Показывать все элементы из data, не фильтруя.',
   },
   {
-    name: 'searchFields',
-    type: 'string[]',
-    required: false,
-    description: 'Кроме поля, указанного в textField, можно искать вхождения и в других полях объекта data, перечислите в массиве имена этих полей.',
-  },
-  {
     name: 'sortSuggestions',
     type: (
       <L.Span>
@@ -395,15 +395,8 @@ interface AutoCompleteRefCurrent {
             <pre>
               {
                 `
-interface Item {
-  isScrollTarget: boolean,
-  isPlaceholder: boolean,
-  isHighlighted?: boolean,
-  isSelected?: boolean,
-  item: string | number | SomeObject | null,
-  key: string,
-  text: string | number,
-}                `
+DataObject | string | number | null
+              `
               }
             </pre>
           )}
@@ -417,15 +410,7 @@ interface Item {
             <pre>
               {
                 `
-interface Item {
-  isScrollTarget: boolean,
-  isPlaceholder: boolean,
-  isHighlighted?: boolean,
-  isSelected?: boolean,
-  item: string | number | SomeObject | null,
-  key: string,
-  text: string | number,
-}                `
+ DataObject | string | number | null                `
               }
             </pre>
           )}

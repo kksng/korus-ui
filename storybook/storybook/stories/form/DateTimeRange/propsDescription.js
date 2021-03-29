@@ -6,6 +6,23 @@ import { RenderEvent } from '../../../propsHelpers';
 /* eslint-disable max-len, react/no-unescaped-entities */
 export const propsDesc = [
   {
+    name: 'delimiterRender',
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация разделителя инпутов',
+  },
+  {
+    name: 'form',
+    type: 'string',
+    required: false,
+    description:
+      'Имя формы. Обязательно для привязки компонента к форме и корректной работы валидации. Каждая новая форма должна иметь уникальное имя.',
+  },
+  {
     name: (
       <L.A
         onClick={linkTo('Form|DateTimeRange|Props', 'format')}
@@ -17,6 +34,16 @@ export const propsDesc = [
     type: 'string',
     required: false,
     description: 'Формат даты. По-умолчанию dd.MM.yyyy',
+  },
+  {
+    name: 'iconRender',
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация иконки календаря',
   },
   {
     name: 'inputsRender',
@@ -49,7 +76,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Limits')}
+        onClick={linkTo('Form|DateTimeRange', 'Ограничение выбора дат')}
         target="_self"
       >
         max
@@ -62,7 +89,7 @@ export const propsDesc = [
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Limits')}
+        onClick={linkTo('Form|DateTimeRange', 'Ограничение выбора дат')}
         target="_self"
       >
         min
@@ -111,7 +138,7 @@ interface BlurEvent extends React.FocusEvent<HTMLInputElement> {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Basic Usage')}
+        onClick={linkTo('Form|DateTimeRange', 'Базовый пример')}
         target="_self"
       >
         onChange
@@ -238,9 +265,16 @@ interface DateTimeInputRangeRefCurrent {
     description: 'Cсылки на DOM-элементы компонента',
   },
   {
+    name: 'requiredMessage',
+    type: 'string | [string, string]',
+    required: false,
+    description:
+      'Сообщение, которое выводится, когда инпут обязательный и не заполнен',
+  },
+  {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Limits')}
+        onClick={linkTo('Form|DateTimeRange', 'Ограничение выбора дат')}
         target="_self"
       >
         timeMin
@@ -253,7 +287,7 @@ interface DateTimeInputRangeRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Limits')}
+        onClick={linkTo('Form|DateTimeRange', 'Ограничение выбора дат')}
         target="_self"
       >
         timeMax
@@ -266,7 +300,7 @@ interface DateTimeInputRangeRefCurrent {
   {
     name: (
       <L.A
-        onClick={linkTo('Form|DateTimeRange', 'Basic Usage')}
+        onClick={linkTo('Form|DateTimeRange', 'Базовый пример')}
         target="_self"
       >
         value
@@ -275,5 +309,25 @@ interface DateTimeInputRangeRefCurrent {
     type: '[string, string] | [Date | null, Date | null]',
     required: false,
     description: 'Значения полей ввода',
+  },
+  {
+    name: 'wrapperRangeRender',
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация враппера компонента',
+  },
+  {
+    name: 'wrapperRender',
+    type: (
+      <L.Span>
+        <RenderEvent /> => React.ReactNode
+      </L.Span>
+    ),
+    required: false,
+    description: 'Кастомизация враппера каждого инпута',
   },
 ];

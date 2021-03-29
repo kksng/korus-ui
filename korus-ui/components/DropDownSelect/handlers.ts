@@ -135,7 +135,14 @@ export const createIconClickHandler = ({
 
   if (isDisabled) return;
 
-  if (inputRef.current) inputRef.current.focus();
+  if (inputRef.current) {
+    const inputElement = inputRef.current;
+    // Set cursor to the initial position in order to prevent text shifting to right
+    inputElement.selectionStart = 0;
+    inputElement.selectionEnd = 0;
+
+    inputElement.focus();
+  }
 
   mergeState({
     isOpen: !state.isOpen,

@@ -22,7 +22,7 @@ export const TimePicker = () => {
         id="MinValueTimePicker"
         validator={[
           {
-            validator: (value) => !isTimeGreater(new Date(2020, 10, 30, 14, 0, 0), value),
+            validator: (value: Date) => !isTimeGreater(new Date(2020, 10, 30, 14, 0, 0), value),
             invalidMessage: "Current time is less than min time",
           },
         ]}

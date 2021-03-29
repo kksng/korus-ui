@@ -1,0 +1,615 @@
+@font-face {
+  font-family: 'prodicon';
+  src: url("../fonts/prodicon/prodicon.woff2") format("woff2"), url("../fonts/prodicon/prodicon.woff") format("woff"), url("../fonts/prodicon/prodicon.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; }
+
+[class^="prodicon-"], [class*=" prodicon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  display: inline-block;
+  font-family: 'prodicon' !important;
+  color: #B2B8BF;
+  speak: none;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: top;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.prodicon-link-big:before {
+  content: "\e9c7"; }
+
+.prodicon-document-unlock:before {
+  content: "\e9c4"; }
+
+.prodicon-lock-close:before {
+  content: "\e9c5"; }
+
+.prodicon-lock-open:before {
+  content: "\e9c6"; }
+
+.prodicon-alert:before {
+  content: "\e9aa"; }
+
+.prodicon-error:before {
+  content: "\e9ab"; }
+
+.prodicon-success:before {
+  content: "\e9ac"; }
+
+.prodicon-caretleft:before {
+  content: "\e992"; }
+
+.prodicon-caretright:before {
+  content: "\e993"; }
+
+.prodicon-clear:before {
+  content: "\e995"; }
+
+.prodicon-closemedium:before {
+  content: "\e996"; }
+
+.prodicon-arrowdown:before {
+  content: "\e994"; }
+
+.prodicon-arrowleft:before {
+  content: "\e9a5"; }
+
+.prodicon-arrowright:before {
+  content: "\e997"; }
+
+.prodicon-arrowup:before {
+  content: "\e9a6"; }
+
+.prodicon-arrows:before {
+  content: "\e9c3"; }
+
+.prodicon-caretdown:before {
+  content: "\e998"; }
+
+.prodicon-caretup:before {
+  content: "\e999"; }
+
+.prodicon-edittext:before {
+  content: "\e99a"; }
+
+.prodicon-hint:before {
+  content: "\e99b"; }
+
+.prodicon-link:before {
+  content: "\e991";
+  font-size: 1.6rem; }
+
+.prodicon-more:before {
+  content: "\e974"; }
+
+.prodicon-calendar:before {
+  content: "\e975"; }
+
+.prodicon-search:before {
+  content: "\e976"; }
+
+.prodicon-linkeddocs:before {
+  content: "\e977"; }
+
+.prodicon-attachment:before {
+  content: "\e978"; }
+
+.prodicon-copy:before {
+  content: "\e979"; }
+
+.prodicon-edit:before {
+  content: "\e97a"; }
+
+.prodicon-print:before {
+  content: "\e97b"; }
+
+.prodicon-delete:before {
+  content: "\e97c"; }
+
+.prodicon-download:before {
+  content: "\e97d"; }
+
+.prodicon-export:before {
+  content: "\e97e"; }
+
+.prodicon-refresh:before {
+  content: "\e97f"; }
+
+.prodicon-railway:before {
+  content: "\e980"; }
+
+.prodicon-avia:before {
+  content: "\e981"; }
+
+.prodicon-exit:before {
+  content: "\e982"; }
+
+.prodicon-invisible:before {
+  content: "\e983"; }
+
+.prodicon-visible:before {
+  content: "\e984"; }
+
+.prodicon-currency:before {
+  content: "\e985"; }
+
+.prodicon-1c:before, .prodicon-1-c:before {
+  content: "\e986"; }
+
+.prodicon-excel:before {
+  content: "\e987"; }
+
+.prodicon-word:before {
+  content: "\e988"; }
+
+.prodicon-pdf:before {
+  content: "\e989"; }
+
+.prodicon-xml:before {
+  content: "\e98a"; }
+
+.prodicon-csv:before {
+  content: "\e98b"; }
+
+.prodicon-review:before {
+  content: "\e98c"; }
+
+.prodicon-document:before {
+  content: "\e98d"; }
+
+.prodicon-answer:before {
+  content: "\e98e"; }
+
+.prodicon-clock:before {
+  content: "\e98f"; }
+
+.prodicon-sea:before {
+  content: "\e990"; }
+
+.prodicon-manager:before {
+  content: "\e973"; }
+
+.prodicon-mailbell:before {
+  content: "\e972";
+  font-size: 3.2rem; }
+
+.prodicon-accountcontrol:before {
+  content: "\e900"; }
+
+.prodicon-accounts:before {
+  content: "\e901"; }
+
+.prodicon-acredetivesinkasso:before {
+  content: "\e902"; }
+
+.prodicon-analytics:before {
+  content: "\e903"; }
+
+.prodicon-api:before {
+  content: "\e904"; }
+
+.prodicon-b2b:before, .prodicon-b-2-b:before {
+  content: "\e905"; }
+
+.prodicon-bankingsupport:before {
+  content: "\e906"; }
+
+.prodicon-bcard:before {
+  content: "\e907"; }
+
+.prodicon-bill:before {
+  content: "\e908"; }
+
+.prodicon-bookkeeper:before {
+  content: "\e909"; }
+
+.prodicon-bookkeeperforip:before {
+  content: "\e90a"; }
+
+.prodicon-bookkeeperoutsource:before {
+  content: "\e90b"; }
+
+.prodicon-brokers:before {
+  content: "\e90c"; }
+
+.prodicon-businessprofile:before {
+  content: "\e90d"; }
+
+.prodicon-businesstravel:before {
+  content: "\e90e"; }
+
+.prodicon-cardguard:before {
+  content: "\e90f"; }
+
+.prodicon-cash:before {
+  content: "\e910"; }
+
+.prodicon-cashback:before {
+  content: "\e911"; }
+
+.prodicon-cashintransit:before {
+  content: "\e912"; }
+
+.prodicon-cashorder:before {
+  content: "\e913"; }
+
+.prodicon-certificate:before {
+  content: "\e914"; }
+
+.prodicon-checkemployee:before {
+  content: "\e915"; }
+
+.prodicon-compensation:before {
+  content: "\e916"; }
+
+.prodicon-counterparty:before {
+  content: "\e917"; }
+
+.prodicon-create:before {
+  content: "\e918"; }
+
+.prodicon-credithistory:before {
+  content: "\e919"; }
+
+.prodicon-creditinsurance:before {
+  content: "\e91a"; }
+
+.prodicon-credits:before {
+  content: "\e91b"; }
+
+.prodicon-crm:before {
+  content: "\e91c"; }
+
+.prodicon-currencypayment:before {
+  content: "\e91d"; }
+
+.prodicon-customs:before {
+  content: "\e91e"; }
+
+.prodicon-customsguarantee:before {
+  content: "\e91f"; }
+
+.prodicon-defaulticon:before {
+  content: "\e920"; }
+
+.prodicon-deposit:before {
+  content: "\e921"; }
+
+.prodicon-deriatives:before {
+  content: "\e922"; }
+
+.prodicon-digitalarchive:before {
+  content: "\e923"; }
+
+.prodicon-distressedassets:before {
+  content: "\e924"; }
+
+.prodicon-docdoc:before {
+  content: "\e925"; }
+
+.prodicon-documentconstructor:before {
+  content: "\e926"; }
+
+.prodicon-einv:before {
+  content: "\e927"; }
+
+.prodicon-employeeprotect:before {
+  content: "\e928"; }
+
+.prodicon-encashment:before {
+  content: "\e929"; }
+
+.prodicon-escrow:before {
+  content: "\e92a"; }
+
+.prodicon-evotor:before {
+  content: "\e92b"; }
+
+.prodicon-factoring:before {
+  content: "\e92c"; }
+
+.prodicon-fines:before {
+  content: "\e92d"; }
+
+.prodicon-finhelper:before {
+  content: "\e92e"; }
+
+.prodicon-finmonitoring:before {
+  content: "\e92f"; }
+
+.prodicon-gosoboronzakaz:before {
+  content: "\e930"; }
+
+.prodicon-guarantee:before {
+  content: "\e931"; }
+
+.prodicon-guard:before {
+  content: "\e932"; }
+
+.prodicon-help:before {
+  content: "\e933"; }
+
+.prodicon-import:before {
+  content: "\e934"; }
+
+.prodicon-integratedservices:before {
+  content: "\e935"; }
+
+.prodicon-internetacquiring:before {
+  content: "\e936"; }
+
+.prodicon-invoicerub:before {
+  content: "\e937"; }
+
+.prodicon-lawyer:before {
+  content: "\e938"; }
+
+.prodicon-legaldossieredit:before {
+  content: "\e939"; }
+
+.prodicon-mail:before {
+  content: "\e93a"; }
+
+.prodicon-mainpage:before {
+  content: "\e93b"; }
+
+.prodicon-makesite:before {
+  content: "\e93c"; }
+
+.prodicon-merchantacquiring:before {
+  content: "\e93d"; }
+
+.prodicon-mobileapp:before {
+  content: "\e93e"; }
+
+.prodicon-moneymove:before {
+  content: "\e93f"; }
+
+.prodicon-mymarket:before {
+  content: "\e940"; }
+
+.prodicon-myorganization:before {
+  content: "\e941"; }
+
+.prodicon-napolke:before {
+  content: "\e942"; }
+
+.prodicon-notification:before {
+  content: "\e943"; }
+
+.prodicon-ofd:before {
+  content: "\e944"; }
+
+.prodicon-onehundredtwenty:before {
+  content: "\e945"; }
+
+.prodicon-onlinekassa:before {
+  content: "\e946"; }
+
+.prodicon-onlinemarketsberbank:before {
+  content: "\e947"; }
+
+.prodicon-onlinepromotion:before {
+  content: "\e948"; }
+
+.prodicon-option:before {
+  content: "\e949"; }
+
+.prodicon-partnerbonuses:before {
+  content: "\e94a"; }
+
+.prodicon-partnersbank:before {
+  content: "\e94b"; }
+
+.prodicon-paymentspeople:before {
+  content: "\e94c"; }
+
+.prodicon-preparationfortax:before {
+  content: "\e94d"; }
+
+.prodicon-profile:before {
+  content: "\e94e"; }
+
+.prodicon-prolongation:before {
+  content: "\e94f"; }
+
+.prodicon-proxy:before {
+  content: "\e950"; }
+
+.prodicon-puls:before {
+  content: "\e951"; }
+
+.prodicon-rabotaru:before {
+  content: "\e952"; }
+
+.prodicon-reportstogovernment:before {
+  content: "\e953"; }
+
+.prodicon-rub:before {
+  content: "\e954"; }
+
+.prodicon-safebusiness:before {
+  content: "\e955"; }
+
+.prodicon-safedeal:before {
+  content: "\e956"; }
+
+.prodicon-salaryproject:before {
+  content: "\e957"; }
+
+.prodicon-savehealth:before {
+  content: "\e958"; }
+
+.prodicon-sbb:before {
+  content: "\e959"; }
+
+.prodicon-sberbankid:before {
+  content: "\e95a"; }
+
+.prodicon-sberbanklising:before {
+  content: "\e95b"; }
+
+.prodicon-sberclub:before {
+  content: "\e95c"; }
+
+.prodicon-sberlogistic:before {
+  content: "\e95d"; }
+
+.prodicon-sbermarket:before {
+  content: "\e95e"; }
+
+.prodicon-sberraiting:before {
+  content: "\e95f"; }
+
+.prodicon-sbertarget:before {
+  content: "\e960"; }
+
+.prodicon-servicepack:before {
+  content: "\e961"; }
+
+.prodicon-settings:before {
+  content: "\e962"; }
+
+.prodicon-shop:before {
+  content: "\e963"; }
+
+.prodicon-smsservice:before {
+  content: "\e964"; }
+
+.prodicon-spasibo:before {
+  content: "\e965"; }
+
+.prodicon-spk:before {
+  content: "\e966"; }
+
+.prodicon-statements:before {
+  content: "\e967"; }
+
+.prodicon-tariffmanage:before {
+  content: "\e968"; }
+
+.prodicon-tarifrko:before {
+  content: "\e969"; }
+
+.prodicon-template:before {
+  content: "\e96a"; }
+
+.prodicon-token:before {
+  content: "\e96b"; }
+
+.prodicon-tokencertificate:before {
+  content: "\e96c"; }
+
+.prodicon-trust:before {
+  content: "\e96d"; }
+
+.prodicon-ved:before {
+  content: "\e96e"; }
+
+.prodicon-vote:before {
+  content: "\e96f"; }
+
+.prodicon-warranty:before {
+  content: "\e970"; }
+
+.prodicon-yandexkassa:before {
+  content: "\e971"; }
+
+.prodicon-signed:before {
+  content: "\e99c"; }
+
+.prodicon-star:before {
+  content: "\e99d"; }
+
+.prodicon-star-fill:before {
+  content: "\e99e"; }
+
+.prodicon-archive:before {
+  content: "\e99f"; }
+
+.prodicon-check:before {
+  content: "\e9a0"; }
+
+.prodicon-filter:before {
+  content: "\e9a1"; }
+
+.prodicon-lock:before {
+  content: "\e9a2"; }
+
+.prodicon-minus:before {
+  content: "\e9a3"; }
+
+.prodicon-plus:before {
+  content: "\e9a4"; }
+
+.prodicon-qr:before {
+  content: "\e9a7"; }
+
+.prodicon-inbox:before {
+  content: "\e9a8"; }
+
+.prodicon-outbox:before {
+  content: "\e9a9"; }
+
+.prodicon-clock-fill:before {
+  content: "\e9bb"; }
+
+.prodicon-document-landscape:before {
+  content: "\e9bc"; }
+
+.prodicon-caretnext:before {
+  content: "\e9b7"; }
+
+.prodicon-caretprev:before {
+  content: "\e9b8"; }
+
+.prodicon-exclamation-triangle:before {
+  content: "\e9b9"; }
+
+.prodicon-users:before {
+  content: "\e9ba"; }
+
+.prodicon-key:before {
+  content: "\e9ad"; }
+
+.prodicon-save:before {
+  content: "\e9ae"; }
+
+.prodicon-list:before {
+  content: "\e9af"; }
+
+.prodicon-success-fill:before {
+  content: "\e9b0"; }
+
+.prodicon-exclamation-triangle-fill:before {
+  content: "\e9b1"; }
+
+.prodicon-blocked:before {
+  content: "\e9b2"; }
+
+.prodicon-flag:before {
+  content: "\e9b3"; }
+
+.prodicon-flag-fill:before {
+  content: "\e9b4"; }
+
+.prodicon-alert-fill:before {
+  content: "\e9b5"; }
+
+.prodicon-error-fill:before {
+  content: "\e9b6"; }
+
+.prodicon-info-fill:before {
+  content: "\e9bd"; }
+
+.prodicon-chat:before {
+  content: "\e9c8"; }
+
+/*# sourceMappingURL=fonts.prodicon.css.map */

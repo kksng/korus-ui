@@ -6,31 +6,51 @@ import { componentSrc } from './index';
 export const Customization = {
   liveDemo: `
 const Customization = () => {
-  const [value, setValue] = React.useState('');
+  const [activeKey, setActiveKey] = React.useState('1');
 
-  const handleChange = ev => setValue(ev.component.value);
-
-  const groupWrapperRender = () => <ul />;  
-  const buttonWrapperRender = () => <li />;  
-  
   return (
-    <L.RadioGroup value={value} onChange={handleChange} wrapperRender={groupWrapperRender}>
-      <L.RadioButton value="radio-1" wrapperRender={buttonWrapperRender}>One</L.RadioButton>
-      <L.RadioButton value="radio-2">Two</L.RadioButton>
-      <L.RadioButton value="radio-3">Three</L.RadioButton>
-    </L.RadioGroup>
+    <L.Collapse
+      activePanelKey={activeKey}
+      onSelect={ev => setActiveKey(ev.component.value)}
+      >
+      <L.Collapse.Panel panelKey="1">
+        <L.Collapse.Heading>
+          <L.H5>Условия продажи</L.H5>
+        </L.Collapse.Heading>
+        <L.Collapse.Body>
+          <L.Div _inner>
+            1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+            <br />euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+          </L.Div>
+        </L.Collapse.Body>
+      </L.Collapse.Panel>
+      <L.Collapse.Panel panelKey="2">
+        <L.Collapse.Heading>
+          <L.H5>Условия покупки</L.H5>
+        </L.Collapse.Heading>
+        <L.Collapse.Body>
+          <L.Div _inner>
+            2. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh<br />
+            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+          </L.Div>
+        </L.Collapse.Body>
+      </L.Collapse.Panel>
+    </L.Collapse>
   );
 };
-
 render(<Customization />);
 `,
   text: (
     <L.Div>
       <L.P>
-        Для настройки внешнего вида частей компонента используйте методы с суффиксом Render:
+        Для настройки внешнего вида частей компонента используйте методы с суффиксом <b>Render</b>:
       </L.P>
       <L.P>
-        <b>wrapperRender</b> - кастомизация враппера, применяется к <b>L.RadioGroup</b> и к <b>L.RadioButton</b>. Враппер по умолчанию - <b>&lt;L.Div&gt;</b>.
+        <L.Ul _txt-list>
+          <L.Li><b>iconRender</b> - кастомизация иконки справа от заголовка.</L.Li>
+          <L.Li><b>wrapperRender</b> - кастомизация компонента-обертки для панели. Враппер по умолчанию - <b>&lt;L.Div&gt;</b>.</L.Li>
+        </L.Ul>
+        
       </L.P>
     </L.Div>
   ),

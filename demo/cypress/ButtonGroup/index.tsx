@@ -5,8 +5,8 @@ import { DataObject } from '../../../korus-ui/commonTypes';
 
 export const ButtonGroup = (): React.ReactElement => {
   const [value, setValue] = React.useState<string | undefined>();
-  const [value1, setValue1] = React.useState<string[] | undefined>(null);
-  const [value2, setValue2] = React.useState<DataObject | undefined>(null);
+  const [value1, setValue1] = React.useState<string[] | undefined | null>(null);
+  const [value2, setValue2] = React.useState<DataObject | undefined | null>(null);
 
   return (
     <L.Div _demoStory>
