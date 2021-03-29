@@ -3,7 +3,7 @@ import * as L from '../../../korus-ui';
 import { FileDropError } from '../../../korus-ui/components/FileDrop/types';
 import { useInterval } from '../../../korus-ui/utils';
 
-export const FileDrop = () => {
+export const FileDrop = (): React.ReactElement => {
   const [file, setFile] = React.useState<File | null>(null);
   const [error, setError] = React.useState<FileDropError>(null);
   const [file1, setFile1] = React.useState<File | null>(null);
@@ -16,12 +16,12 @@ export const FileDrop = () => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [loaded, setLoaded] = React.useState<number>(0);
 
-  const handleChange1 = (ev: L.FileDropTypes.ChangeEvent) => {
+  const handleChange1 = (ev: L.FileDropTypes.ChangeEvent): void => {
     setError1('some custom error');
     console.log(ev.component);
   };
 
-  const handleChange2 = (ev: L.FileDropTypes.ChangeEvent) => {
+  const handleChange2 = (ev: L.FileDropTypes.ChangeEvent): void => {
     console.log(ev.component);
 
     if (ev.component.value) {
@@ -41,7 +41,7 @@ export const FileDrop = () => {
     () => {
       setLoaded(loaded + 5);
     },
-    isLoading ? 100 : null
+    isLoading ? 100 : null,
   );
 
   return (
@@ -72,7 +72,7 @@ export const FileDrop = () => {
         <L.Button
           name="loading"
           _warning
-          onClick={() => {
+          onClick={(): void => {
             setIsLoading(!isLoading);
           }}
         >
@@ -80,7 +80,7 @@ export const FileDrop = () => {
         </L.Button>{' '}
         <L.Button
           name="reset"
-          onClick={() => {
+          onClick={(): void => {
             L.form('file-drop').reset();
             setError1(null);
           }}
@@ -97,7 +97,7 @@ export const FileDrop = () => {
           maxFileNameLength={10}
           minFileSize={1500}
           maxFileSize={2000}
-          onChange={(ev) => {
+          onChange={(ev): void => {
             console.log('droped', ev.component);
             console.log('ev.component.value', ev.component.value);
             if (!ev.component.error) {
@@ -111,7 +111,7 @@ export const FileDrop = () => {
         />
         <L.Button
           id="reset"
-          onClick={() => {
+          onClick={(): void => {
             L.form('FD_basic').reset();
             setError(null);
           }}
@@ -126,7 +126,7 @@ export const FileDrop = () => {
         error={error3}
         maxFileNameLength={10}
         allowedFiles=".json, .png, .jpeg"
-        onChange={(ev) => {
+        onChange={(ev): void => {
           console.log('droped', ev.component);
           console.log('ev.component.value', ev.component.value);
           if (!ev.component.error) {

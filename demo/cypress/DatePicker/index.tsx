@@ -54,15 +54,15 @@ export const DatePicker = (): React.ReactElement => {
     console.log(value, date);
   };
 
-  const testFunction = (ev: L.DateTimeInputTypes.ChangeEvent) => { console.log(ev) }
+  const testFunction = (ev: L.DateTimeInputTypes.ChangeEvent): void => { console.log(ev); };
   return (
     <L.Div>
       <L.Div _demoStory _flexRow>
         <L.DatePicker
           max={new Date(2030, 3, 12)}
-          min={new Date(2012, 4 ,1)}
+          min={new Date(2012, 4, 1)}
           onChange={handleChange1}
-          onEnterPress={(ev) => testFunction(ev)}
+          onEnterPress={(ev): void => testFunction(ev)}
           value={value1}
           name="firstDatePicker"
           placeholder="Type your date..."
@@ -72,7 +72,7 @@ export const DatePicker = (): React.ReactElement => {
           max={new Date(2012, 4, 4)}
           min={new Date(2012, 3, 3)}
           onChange={handleChange2}
-          onEnterPress={(ev) => testFunction(ev)}
+          onEnterPress={(ev): void => testFunction(ev)}
           value={value2}
           name="MinMaxDatePicker"
           placeholder="Type your date..."
@@ -81,14 +81,15 @@ export const DatePicker = (): React.ReactElement => {
         <L.DatePicker
           onChange={handleChange3}
           format="dd.MM.yyyy"
-          onBlur={(ev) => testFunction(ev)}
-          name = "secondDatePicker"
+          onBlur={(ev): void => testFunction(ev)}
+          name="secondDatePicker"
         />
 
       </L.Div>
       <div style={{
         height: '30vh',
-      }} />
+      }}
+      />
 
       <L.Div _demoStory _flexRow>
         <L.DatePicker
@@ -96,7 +97,7 @@ export const DatePicker = (): React.ReactElement => {
           name="openedCalendar"
           onChange={handleChange4}
           value={value4}
-          onFocus={(ev) => testFunction(ev)}
+          onFocus={(ev): void => testFunction(ev)}
           isOpen
         />
 
@@ -112,7 +113,7 @@ export const DatePicker = (): React.ReactElement => {
           max={new Date(2012, 4, 4)}
           min={new Date(2012, 4, 3)}
           onChange={handleChange6}
-          onEnterPress={(ev) => testFunction(ev)}
+          onEnterPress={(ev): void => testFunction(ev)}
           value={value6}
           name="MinMaxDatePickerOpened"
           placeholder="Type your date..."
@@ -125,12 +126,12 @@ export const DatePicker = (): React.ReactElement => {
           weekDayNames={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}
           shortWeekDayNames={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
           onChange={handleChange7}
-          onEnterPress={(ev) => testFunction(ev)}
+          onEnterPress={(ev): void => testFunction(ev)}
           value={value7}
           name="CustomMonthsDatePicker"
           placeholder="Type your date..."
         />
-         <L.Button _success name="success">success!</L.Button>
+        <L.Button _success name="success">success!</L.Button>
       </L.Div>
       <div
         style={{
@@ -148,8 +149,8 @@ export const DatePicker = (): React.ReactElement => {
           min={new Date('2021-10-12')}
           validator={[
             {
-              validator: (value) => !isDateGreater(new Date('2021-10-12'), value),
               invalidMessage: 'Current value is less than min value',
+              validator: (value): boolean => !isDateGreater(new Date('2021-10-12'), value),
             },
           ]}
         />
@@ -160,8 +161,8 @@ export const DatePicker = (): React.ReactElement => {
           _warning
           name="submit"
           form="datePicker"
-          onClick={() => setSubmitMessage('Submitted!')}
-          onValidationFail={() => setSubmitMessage('Submit failed!')}
+          onClick={(): void => setSubmitMessage('Submitted!')}
+          onValidationFail={(): void => setSubmitMessage('Submit failed!')}
         >
           Submit
         </L.Button>
