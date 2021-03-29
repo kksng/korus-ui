@@ -14,7 +14,11 @@ export const DropZone = (): React.ReactElement => {
   const [isCustomLoader, setIsCustomLoader] = React.useState<boolean>(false);
 
   useInterval(() => {
-    setLoadingProgress((progress) => progress === 100 ? 0 : progress + 5);
+    setLoadingProgress((progress) => {
+      if (progress === undefined) return;
+      if (progress === 100) return 0;
+      return progress + 5
+    });
   }, !isNil(loadingProgress) ? 100 : null);
   
   return (
@@ -41,7 +45,7 @@ export const DropZone = (): React.ReactElement => {
         value={value}
         isLoading={isLoading}
         loadingProgress={loadingProgress}
-        loadingViewRender={isCustomLoader && (() => <L.Span _txtSuccess>Custom loader...</L.Span>)}
+        loadingViewRender={isCustomLoader ? (() => <L.Span _txtSuccess>Custom loader...</L.Span>) : undefined}
         onChange={({ component: { value } }) => setValue(value)}
         isRequired
         isDisabled={isDisabled}

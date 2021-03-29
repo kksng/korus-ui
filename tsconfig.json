@@ -25,6 +25,6 @@
     "dist"
   ],
   "include": [
-    "./korus-ui/"
+    "korus-ui"
   ]
 }
