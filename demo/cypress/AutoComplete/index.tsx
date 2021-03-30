@@ -71,7 +71,9 @@ export const AutoComplete = (): React.ReactElement => {
             'Islamabad',
             'Berlin',
           ]}
+          _customClass
           name="AutoComplete3"
+          placeholder="AutoComplete3"
           onChange={(event) => setStringValue3(event.component.value)}
           filterRule="smart"
           minSearchLength={3}
@@ -102,10 +104,11 @@ export const AutoComplete = (): React.ReactElement => {
           noSuggestionsRender={noSuggestionsRenderVal}
           onBlur={() => console.log('OnBlur+')}
           itemRender={itemRender1}
-          placeholder="Type your city..."
+          placeholder="AutoComplete4"
           textField="name"
           shouldCorrectValue
           value={objectValue4}
+          compareObjectsBy="name"
           _width30
         />
       </L.Div>
@@ -170,7 +173,6 @@ export const AutoComplete = (): React.ReactElement => {
           shouldCorrectValue
           placeholder="Type your city..."
           textField="name"
-
           value={objectValue6}
           _width30
         />

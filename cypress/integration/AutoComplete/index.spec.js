@@ -16,6 +16,12 @@ describe('AutoComplete', () => {
         .should('have.attr', 'placeholder', 'Type your city...');
     });
 
+    it('Should assign a custom class', () => {
+      cy.name('AutoComplete3')
+        .parents(`.${theme.wrapper}`)
+        .should('have.class', 'custom-class');
+    });
+
     it('Should render ClearButton', () => {
       cy.name('AutoComplete1')
         .clear()
@@ -39,15 +45,17 @@ describe('AutoComplete', () => {
         .should('have.length', 2);
     });
 
-    it('Should appear css-class "danger" and render requiredMessage when the focus is lost', () => {
-      cy.name('AutoComplete2')
-        .focus()
-        .blur()
-        .parent()
-        .should('have.class', `${theme.inputWrapperInvalid}`)
-        .parent()
-        .find('.invalid-message-list')
-        .should('have.text', 'Поле обязательно!');
+    describe('Validation', () => {
+      it('Should appear css-class "danger" and render requiredMessage when the focus is lost', () => {
+        cy.name('AutoComplete2')
+          .focus()
+          .blur()
+          .parent()
+          .should('have.class', `${theme.inputWrapperInvalid}`)
+          .parent()
+          .find('.invalid-message-list')
+          .should('have.text', 'Поле обязательно!');
+      });
     });
 
     describe('noSuggestionsRender', () => {
@@ -354,6 +362,27 @@ describe('AutoComplete', () => {
         .should('have.value', 'Washington')
         .clear()
         .blur();
+    });
+
+    it('If the focus is lost, it must have a correct or empty value (shouldCorrectValue)', () => {
+      cy.name('AutoComplete3')
+        .type('q1w2e3e4t5')
+        .blur()
+        .name('AutoComplete3')
+        .should('have.value', '')
+        .name('AutoComplete3')
+        .type('London')
+        .blur()
+        .name('AutoComplete3')
+        .should('have.value', 'London')
+        .name('AutoComplete3')
+        .clear()
+        .type('Islamabad')
+        .blur()
+        .name('AutoComplete3')
+        .should('have.value', 'Islamabad')
+        .name('AutoComplete3')
+        .clear();
     });
   });
 });
