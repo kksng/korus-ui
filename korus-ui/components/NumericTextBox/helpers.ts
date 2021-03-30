@@ -69,9 +69,9 @@ export const formatValue = ({
 
   const integerPart = Math.floor(number);
 
-  const decimalPart = (() => {
+  const decimalPart = ((): string => {
     /* Округление и приведение к целочисленному значению дробной части числа */
-    const unformattedDecimalPart = Math.ceil(Math.floor((number % 1) * (10 ** (precision + 1))) / 10);
+    const unformattedDecimalPart = Math.round(Math.floor((number % 1) * (10 ** (precision + 1))) / 10);
     /* Форматирование дробной части числа в соответствии с маской */
     const formattedDecimalPart = separator + unformattedDecimalPart.toString().padStart(precision, '0');
     if (shouldTrimTrailingZeros) {
