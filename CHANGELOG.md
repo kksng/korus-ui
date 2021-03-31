@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.44.0] - 2021-04-12
 
+### Fixed
+- NumericTextBox: Fixed rounding numbers on change event
+
+
 ## [0.43.0] - 2021-03-29
 
 ### Added

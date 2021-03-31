@@ -10,6 +10,14 @@ describe('NumericTextBox', () => {
   });
 
   describe('Interaction', () => {
+    beforeEach(() => {
+      cy.visit('/cypress/numerictextbox', {
+        onBeforeLoad(win) {
+          cy.stub(win.console, 'log').as('consoleLog');
+        },
+      });
+    });
+
     it('Empty field', () => {
       cy.name('basicUsage')
         .should('have.attr', 'placeholder', 'Gimme ur number!')
@@ -135,6 +143,22 @@ describe('NumericTextBox', () => {
     it('Should be disabled', () => {
       cy.get('#disabledInput')
         .should('have.attr', 'disabled');
+    });
+
+    it('Should round numbers correctly on change event', () => {
+      cy.name('basicUsage')
+        .type('0.23333333333')
+        .get('@consoleLog')
+        .its('lastCall')
+        .should('be.calledWith', '0.2333')
+        .name('basicUsage')
+        .clear()
+        .type('0.233355555')
+        .get('@consoleLog')
+        .its('lastCall')
+        .should('be.calledWith', '0.2334')
+        .name('basicUsage')
+        .clear()
     });
   });
 });
