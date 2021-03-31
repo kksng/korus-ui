@@ -6,5 +6,3 @@ describe('fromFormArraytoFormObject tests', () => {
     expect(arrayField).toEqual({});
   });
 });
-
-
