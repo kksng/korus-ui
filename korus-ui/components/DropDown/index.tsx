@@ -100,7 +100,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
 
   return (
     <Wrapper
-      {...!isDisabled && { ...interaction }}
+      {...!isDisabled ? { ...interaction } : {}}
       className={combinedClassNames}
       {...restProps}
       ref={wrapperRef && ((component): void => bindFunctionalRef(component, wrapperRef, component && {
