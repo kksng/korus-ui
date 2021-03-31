@@ -55,3 +55,15 @@ describe('test getSuggestionValue', () => {
     expect(value).toEqual(suggestion[textField]);
   });
 });
+
+describe('safeTrim tests', () => {
+  it('with string', () => {
+    const value = ' value ';
+    expect(helpers.safeTrim(value)).toBe('value')
+  });
+
+  it('with null', () => {
+    const value = null;
+    expect(helpers.safeTrim(value)).toBe('');
+  })
+});
