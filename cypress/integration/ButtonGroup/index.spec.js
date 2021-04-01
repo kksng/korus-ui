@@ -39,28 +39,81 @@ describe('ButtonGroup', () => {
         .should('have.length', 1)
         .and('have.class', `${theme.wrapperDisabled}`);
     });
+
+    describe('Rendering with different attributes', () => {
+      it('Primary', () => {
+        cy.datatest('FourButtonGroup')
+          .should('have.class', 'primary');
+      });
+
+      it('Secondary', () => {
+        cy.datatest('NumberButtonGroup')
+          .should('have.class', 'secondary');
+      });
+
+      it('Warning', () => {
+        cy.datatest('ThreeButtonGroup')
+          .should('have.class', 'warning');
+      });
+
+      it('Danger', () => {
+        cy.datatest('OneButtonGroup')
+          .should('have.class', 'danger');
+      });
+
+      it('Success', () => {
+        cy.datatest('RadioButtonGroup')
+          .should('have.class', 'success');
+      });
+    });
   });
 
   describe('Events', () => {
-    it('onChange event', () => {
-      cy.datatest('OneButtonGroup')
-        .find('button')
-        .click()
-        .get('@consoleLog')
-        .should('be.calledWith', 'Click');
+    describe('CheckBoxMode events', () => {
+      it('onChange event', () => {
+        cy.datatest('OneButtonGroup')
+          .find('button')
+          .click()
+          .get('@consoleLog')
+          .should('be.calledWith', 'Checkbox Click');
+      });
+  
+      it('onClick event', () => {
+        const stub = cy.stub();
+        cy.on('window:alert', stub);
+  
+        cy.datatest('OneButtonGroup')
+          .find('button')
+          .click()
+          .then(() => {
+            expect(stub.getCall(0)).to.be.calledWith('Checkbox Alert!');
+          });
+      });
     });
-
-    it('onClick event', () => {
-      const stub = cy.stub();
-      cy.on('window:alert', stub);
-
-      cy.datatest('OneButtonGroup')
-        .find('button')
-        .click()
-        .then(() => {
-          expect(stub.getCall(0)).to.be.calledWith('Alert!');
-        });
-    });
+    
+    describe('RadioMode events', () => {
+      it('onChange event', () => {
+        cy.datatest('ThreeButtonGroup')
+          .find('button')
+          .first()
+          .click()
+          .get('@consoleLog')
+          .should('be.calledWith', 'RadioClick');
+      });
+  
+      it('onClick event', () => {
+        const stub = cy.stub();
+        cy.on('window:alert', stub);
+  
+        cy.datatest('ThreeButtonGroup')
+          .find('button')
+          .first()
+          .click()
+          .then(() => {
+            expect(stub.getCall(0)).to.be.calledWith('RadioAlert!');
+          });
+      });
+    })
   });
 
   describe('Interaction', () => {

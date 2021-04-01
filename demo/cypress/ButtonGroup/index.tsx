@@ -43,6 +43,8 @@ export const ButtonGroup = (): React.ReactElement => {
         type="radio"
         data-test="ThreeButtonGroup"
         textField="data"
+        onChange={() => console.log('RadioClick')}
+        onClick={() => alert('RadioAlert!')}
         _warning
       />
       <br />
@@ -53,8 +55,9 @@ export const ButtonGroup = (): React.ReactElement => {
         data-test="OneButtonGroup"
         type="checkbox"
         value={value1}
-        onChange={() => console.log('Click')}
-        onClick={() => alert('Alert!')}
+        onChange={() => console.log('Checkbox Click')}
+        onClick={() => alert('Checkbox Alert!')}
+        _danger
       />
       <br />
       <br />
@@ -63,6 +66,7 @@ export const ButtonGroup = (): React.ReactElement => {
         data={[1, 2, 3]}
         data-test="NumberButtonGroup"
         type="checkbox"
+        _secondary
       />
       <br />
       <br />
@@ -78,6 +82,7 @@ export const ButtonGroup = (): React.ReactElement => {
         type="radio"
         textField="data"
         onChange={(event) => setValue2(event.component.value)}
+        _success
       />
       <br />
       <br />
