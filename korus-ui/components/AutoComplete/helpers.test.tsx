@@ -74,8 +74,8 @@ describe('getSuggestionFromValue tests', () => {
       data: [],
       value: 'value',
     };
-    const value = someObject.value;
+    const value = null;
     const suggestions = helpers.getSuggestionFromValue(someObject);
-    expect(suggestions).toEqual(value)
+    expect(suggestions).toEqual(value);
   });
 });
