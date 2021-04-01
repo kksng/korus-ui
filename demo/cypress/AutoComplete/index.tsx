@@ -12,6 +12,7 @@ export const AutoComplete = (): React.ReactElement => {
   const [stringValue5, setStringValue5] = React.useState<string | null>(null);
   const [objectValue6, setObjectValue6] = React.useState<string | null>(null);
   const [stringValue7, setStringValue7] = React.useState<string | null>(null);
+  const [objectValue8, setObjectValue8] = React.useState<string | null>(null);
 
   const itemRender1 = ({
     Element, elementProps, componentProps,
@@ -146,7 +147,7 @@ export const AutoComplete = (): React.ReactElement => {
           minSearchLength={3}
           onBlur={(event) => setStringValue5(event.component.value)}
           onFocus={() => console.log('OnFocus+')}
-          placeholder="Type your city..."
+          placeholder="AutoComplete5"
           _width30
         />
         <L.AutoComplete
@@ -161,17 +162,16 @@ export const AutoComplete = (): React.ReactElement => {
             { name: 'Delhi', region: 'Asia' },
           ]}
           name="AutoComplete6"
+          placeholder="AutoComplete6"
           onChange={(event) => setObjectValue6(event.component.value)}
           isLoading
           filterRule="includes"
           hasClearButton
           isOpen={isOpen}
           itemRender={({ Element, elementProps, componentProps }) => <Element {...elementProps} _txtSuccess>{componentProps.item}</Element>}
-
           onBlur={() => console.log('OnBlur+')}
           onFocus={() => console.log('OnFocus+')}
           shouldCorrectValue
-          placeholder="Type your city..."
           textField="name"
           value={objectValue6}
           _width30
@@ -182,6 +182,7 @@ export const AutoComplete = (): React.ReactElement => {
             { name: 'Delhi', region: 'Asia' },
           ]}
           name="AutoComplete1"
+          placeholder="AutoComplete1"
           onChange={(event) => setObjectValue1(event.component.value)}
           hasClearButton
           isOpen
@@ -205,10 +206,35 @@ export const AutoComplete = (): React.ReactElement => {
       <L.Div _demoStory _flexRow>
       <L.AutoComplete
         name="AutoComplete7"
+        placeholder="AutoComplete7"
         data={['1', '2', '3', '33']}
         onChange={(event) => setStringValue7(event.component.value)}
         value={stringValue7}
         minSearchLength={0}
+        _width30
+        />
+        <L.AutoComplete
+          data={[
+            { id: 0, attr: 'value0', city: 'Moscow' },
+            { id: 0, attr: 'value0', city: 'Minsk' },
+            { id: 1, attr: 'value1', city: 'London' },
+            { id: 2, attr: 'value2', city: 'Berlin' },
+            { id: 3, attr: 'value3', city: 'Paris' },
+            { id: 4, attr: 'value4', city: 'Stockholm' },
+            { id: 5, attr: 'value5', city: 'Madrid' },
+            { id: 6, attr: 'value6', city: 'Madrid' },
+          ]}
+          placeholder="AutoComplete8"
+          name="AutoComplete8"
+          onChange={(event) => {
+            console.log('event.component.value', event.component.value, event.component.suggestion)
+            setObjectValue8(event.component.value);
+          }}          
+          value={objectValue8}
+          minSearchLength={0}
+          compareObjectsBy="id"
+          textField="city"
+          _width30
         />
       </L.Div>
     </>

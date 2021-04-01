@@ -384,5 +384,21 @@ describe('AutoComplete', () => {
         .name('AutoComplete3')
         .clear();
     });
+
+    it('Compare objects by id', () => {
+      cy.name('AutoComplete8')
+        .focus()
+        .type('{downArrow}')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
+        .contains('Moscow')
+        .should('have.class', `${theme.suggestionHighlighted}`)
+        .next()
+        .should('have.class', `${theme.suggestionHighlighted}`)
+        .next()
+        .should('not.have.class', `${theme.suggestionHighlighted}`)
+        .name('AutoComplete8')
+        .blur()
+    });
   });
 });

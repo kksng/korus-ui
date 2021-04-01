@@ -67,3 +67,15 @@ describe('safeTrim tests', () => {
     expect(helpers.safeTrim(value)).toBe('');
   });
 });
+
+describe('getSuggestionFromValue tests', () => {
+  it('Value null', () => {
+    const someObject = {
+      data: [],
+      value: 'value',
+    };
+    const value = someObject.value;
+    const suggestions = helpers.getSuggestionFromValue(someObject);
+    expect(suggestions).toEqual(value)
+  });
+});
