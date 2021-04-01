@@ -5,7 +5,7 @@ describe('getArrayValue tests', () => {
     const value = [1, 2];
     const item = 1;
     const currentItem = 2;
-    expect(helpers.getArrayValue(value, item)).not.toEqual(currentItem);    
+    expect(helpers.getArrayValue(value, item)).not.toEqual(currentItem);
   });
 
   it('Strings', () => {
@@ -16,9 +16,9 @@ describe('getArrayValue tests', () => {
   });
 
   it('Objects', () => {
-    const value = [ 
-      { object: 1 }, 
-      { object: 2 }
+    const value = [
+      { object: 1 },
+      { object: 2 },
     ];
     const item = { object: 1 };
     const currentItem = { object: 2 };
