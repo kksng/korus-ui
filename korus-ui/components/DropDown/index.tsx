@@ -25,6 +25,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
     theme: themeProp,
     interactionMode,
     wrapperRender,
+    isDisabled,
     ...restProps
   } = useProps(props);
 
@@ -35,6 +36,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
   const theme = useTheme(themeProp, COMPONENTS_NAMESPACES.dropDown);
 
   const combinedClassNames = getClassNames([theme.wrapper], className, {
+    disabled: isDisabled,
     opened: isOpen,
   });
 
@@ -50,7 +52,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
    * Function sets dropdown state to close if click was made outside wrapper
    * @param {MouseEvent} event - click event
    */
-  const handleClick = (event: MouseEvent) => {
+  const handleClick = (event: MouseEvent): void => {
     const target = event.target as Node;
     const isWrapperClicked = wrapperRef && (wrapperRef as React.MutableRefObject<DropDownRefCurrent | null>).current?.wrapper?.contains(target);
     if (!isWrapperClicked) {
@@ -61,7 +63,7 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
   React.useEffect(() => {
     document.addEventListener('click', handleClick);
 
-    return () => {
+    return (): void => {
       document.removeEventListener('click', handleClick);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -89,19 +91,19 @@ export const DropDown = React.forwardRef((props: DropDownProps, ref?: React.Ref<
 
   const interaction = interactionMode === InteractionModes.Click
     ? {
-      onClick: () => setIsOpen(!isOpenState),
+      onClick: (): void => setIsOpen(!isOpenState),
     }
     : {
-      onMouseLeave: () => setIsOpen(false),
-      onMouseOver: () => setIsOpen(true),
+      onMouseLeave: (): void => setIsOpen(false),
+      onMouseOver: (): void => setIsOpen(true),
     };
 
   return (
     <Wrapper
-      {...interaction}
+      {...!isDisabled ? { ...interaction } : {}}
       className={combinedClassNames}
       {...restProps}
-      ref={wrapperRef && ((component) => bindFunctionalRef(component, wrapperRef, component && {
+      ref={wrapperRef && ((component): void => bindFunctionalRef(component, wrapperRef, component && {
         wrapper: component.wrapper || component,
       }))}
     >
