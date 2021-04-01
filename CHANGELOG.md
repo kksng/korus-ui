@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - DropDown: Added class disabled
 
+### Fixed
+- NumericTextBox: Fixed rounding numbers on change event
+
+
 ## [0.43.0] - 2021-03-29
 
 ### Added

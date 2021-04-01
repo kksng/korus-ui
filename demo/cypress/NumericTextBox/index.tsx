@@ -20,14 +20,14 @@ export const NumericTextBox = () => {
         min={-100000000000}
         step={1}
         requiredMessage="Required field!"
-        onChange={(ev) => {
+        onChange={(ev): void => {
           update('Change', ev);
-          console.log('Change ev.component.value', ev.component.value);
+          console.log(ev.component.formattedValue);
         }}
-        onBlur={(ev) => {
+        onBlur={(ev): void => {
           update('Blur', ev);
         }}
-        onFocus={(ev) => {
+        onFocus={(ev): void => {
           console.log('focus ev', ev);
           update('Focus', ev);
         }}
