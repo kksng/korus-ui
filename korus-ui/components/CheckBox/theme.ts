@@ -1,9 +1,9 @@
 /* eslint-disable key-spacing */
 export const defaultCheckBoxTheme = {
+  disabled:                 'disabled',
   input:                    'checkbox-input',
   label:                    'checkbox-label',
-  wrapper:                  'checkbox-wrapper',
   semi:                     'semi',
-  disabled:                 'disabled',
+  wrapper:                  'checkbox-wrapper',
 };
 /* eslint-enable key-spacing */
