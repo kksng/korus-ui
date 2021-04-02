@@ -41,8 +41,8 @@ describe('CheckBox', () => {
         .should('have.class', `${theme.input}`)
         .parent()
         .children('label')
-        .should('have.class', `${theme.label}`)
-    })
+        .should('have.class', `${theme.label}`);
+    });
   });
 
   describe('Interaction', () => {
