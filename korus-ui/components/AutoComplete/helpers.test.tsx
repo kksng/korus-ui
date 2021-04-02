@@ -70,12 +70,41 @@ describe('safeTrim tests', () => {
 
 describe('getSuggestionFromValue tests', () => {
   it('Value null', () => {
-    const someObject = {
+    const parameters = {
       data: [],
-      value: 'value',
+      value: 'some',
     };
-    const value = null;
-    const suggestions = helpers.getSuggestionFromValue(someObject);
-    expect(suggestions).toEqual(value);
+    const expected = null;
+    const suggestions = helpers.getSuggestionFromValue(parameters);
+    expect(suggestions).toEqual(expected);
+  });
+
+  it('Value is object', () => {
+    const parameters = {
+      data: [
+        { key: 'value' },
+        { key: 'value1' },
+        { key: 'value2' },
+      ],
+      textField: 'key',
+      value: 'value1',
+    };
+    const expected = { key: 'value1' };
+    const suggestion = helpers.getSuggestionFromValue(parameters);
+    expect(suggestion).toEqual(expected);
+  });
+
+  it('Value is string', () => {
+    const parameters = {
+      data: [
+        'value1',
+        'value2',
+        'value3',
+      ],
+      value: 'value2',
+    };
+    const expected = 'value2';
+    const suggestion = helpers.getSuggestionFromValue(parameters);
+    expect(suggestion).toEqual(expected);
   });
 });
