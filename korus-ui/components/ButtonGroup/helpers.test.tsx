@@ -91,9 +91,7 @@ describe('compareItems tests', () => {
     const value = { key: 9 };
     const item = { key: 9 };
     const textField = 'key';
-    expect(helpers.compareItems(value[textField], item[textField])).toEqual(
-      true
-    );
+    expect(helpers.compareItems(value[textField], item[textField])).toEqual(true);
   });
 
   it('Strings', () => {
