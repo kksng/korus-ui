@@ -20,6 +20,18 @@ export const ButtonGroup = (): React.ReactElement => {
       />
       <br />
       <br />
+
+      <L.ButtonGroup
+        data={['one', 'two', 'three', 'four']}
+        defaultValue="three"
+        onChange={(event) => setValue(event.component.value)}
+        textField="data"
+        data-test="StringCheckboxGroup"
+        type="checkbox"
+        _primary
+      />
+      <br />
+      <br />
       
       <L.ButtonGroup
         data={[2, 3]}
@@ -27,6 +39,15 @@ export const ButtonGroup = (): React.ReactElement => {
         defaultValue={[2]}
         data-test="TwoButtonGroup"
         type="checkbox"
+      />
+      <br />
+      <br />
+
+      <L.ButtonGroup
+        data={[2, 3]}
+        defaultValue={[2]}
+        data-test="NumberButtonGroup"
+        type="radio"
       />
       <br />
       <br />
@@ -49,6 +70,24 @@ export const ButtonGroup = (): React.ReactElement => {
       />
       <br />
       <br />
+      <L.ButtonGroup
+        data={[
+          { data: 'one' },
+          { data: 'two' },
+          { data: 'three' },
+        ]}
+        defaultValue={[
+          { data: 'one' },
+        ]}
+        type="checkbox"
+        data-test="ObjectCheckboxGroup"
+        textField="data"
+        onChange={() => console.log('RadioClick')}
+        onClick={() => alert('RadioAlert!')}
+        _warning
+      />
+      <br />
+      <br />
 
       <L.ButtonGroup
         data={['one']}
@@ -64,7 +103,17 @@ export const ButtonGroup = (): React.ReactElement => {
 
       <L.ButtonGroup
         data={[1, 2, 3]}
-        data-test="NumberButtonGroup"
+        defaultValue={[2]}
+        data-test="NumberCheckboxGroup"
+        type="checkbox"
+        _secondary
+      />
+      <br />
+      <br />
+
+      <L.ButtonGroup
+        data={[1, 2, 3]}
+        data-test="WithoutDefaultValueCheckboxGroup"
         type="checkbox"
         _secondary
       />

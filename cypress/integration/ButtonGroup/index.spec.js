@@ -40,6 +40,154 @@ describe('ButtonGroup', () => {
         .and('have.class', `${theme.wrapperDisabled}`);
     });
 
+    describe('Rendering RadioType group', () => {
+      it('Should render with string value', () => {
+        cy.datatest('FourButtonGroup')
+          .contains('one')
+          .should('have.length', 1)
+          .and('have.class', 'first')
+          .parent()
+          .contains('four')
+          .should('have.length', 1)
+          .and('have.class', 'last')
+          .parent()
+          .find('button')
+          .each((radioTypeBtnRender) => {
+            cy.wrap(radioTypeBtnRender)
+            .should('have.length', 1)
+            .and('have.class', 'button-wrapper')
+          });
+      });
+
+      it('Should render with object value', () => {
+        cy.datatest('ThreeButtonGroup')
+          .contains('one')
+          .should('have.length', 1)
+          .and('have.class', 'first')
+          .parent()
+          .contains('three')
+          .should('have.length', 1)
+          .and('have.class', 'last')
+          .parent()
+          .find('button')
+          .each((radioTypeBtnRender) => {
+            cy.wrap(radioTypeBtnRender)
+            .should('have.length', 1)
+            .and('have.class', 'button-wrapper')
+          });
+      });
+    
+      it('Should render with number value', () => {
+        cy.datatest('NumberButtonGroup')
+          .contains('2')
+          .should('have.length', 1)
+          .and('have.class', 'first')
+          .parent()
+          .contains('3')
+          .should('have.length', 1)
+          .and('have.class', 'last')
+          .parent()
+          .find('button')
+          .each((radioTypeBtnRender) => {
+            cy.wrap(radioTypeBtnRender)
+            .should('have.length', 1)
+            .and('have.class', 'button-wrapper')
+          });
+      });
+
+      it('Should render with default value is string', () => {
+        cy.datatest('FourButtonGroup')
+          .contains('three')
+          .should('have.class', 'active');
+      });
+
+      it('Should render with default value is number', () => {
+        cy.datatest('NumberButtonGroup')
+          .contains('2')
+          .should('have.class', 'active');
+      });
+
+      it('Should render with default walue is object', () => {
+        cy.datatest('ThreeButtonGroup')
+          .contains('one')
+          .should('have.class', 'active');
+      });
+    });
+
+    describe('Rendering Checkbox type group', () => {
+      it('Should render with string value', () => {
+        cy.datatest('StringCheckboxGroup')
+        .contains('one')
+          .should('have.length', 1)
+          .and('have.class', 'first')
+          .parent()
+          .contains('four')
+          .should('have.length', 1)
+          .and('have.class', 'last')
+          .parent()
+          .find('button')
+          .each((checkboxTypeBtnRender) => {
+            cy.wrap(checkboxTypeBtnRender)
+            .should('have.length', 1)
+            .and('have.class', 'button-wrapper')
+          });
+      });
+
+      it('Should render with number value', () => {
+        cy.datatest('NumberCheckboxGroup')
+          .contains('1')
+          .should('have.length', 1)
+          .and('have.class', 'first')
+          .parent()
+          .contains('3')
+          .should('have.length', 1)
+          .and('have.class', 'last')
+          .parent()
+          .find('button')
+          .each((checkboxTypeBtnRender) => {
+            cy.wrap(checkboxTypeBtnRender)
+            .should('have.length', 1)
+            .and('have.class', 'button-wrapper')
+          });
+      });
+
+      it('Should render with object value', () => {
+        cy.datatest('ObjectCheckboxGroup')
+          .contains('one')
+          .should('have.length', 1)
+          .and('have.class', 'first')
+          .parent()
+          .contains('three')
+          .should('have.length', 1)
+          .and('have.class', 'last')
+          .parent()
+          .find('button')
+          .each((checkboxTypeBtnRender) => {
+            cy.wrap(checkboxTypeBtnRender)
+            .should('have.length', 1)
+            .and('have.class', 'button-wrapper')
+          });
+      });
+
+      it('Should render with default value is string', () => {
+        cy.datatest('StringCheckboxGroup')
+          .contains('three')
+          .should('have.class', 'active');
+      });
+
+      it('Should render with default value is number', () => {
+        cy.datatest('NumberCheckboxGroup')
+          .contains('2')
+          .should('have.class', 'active');
+      });
+
+      it('Should render with default value is object', () => {
+        cy.datatest('ObjectCheckboxGroup')
+          .contains('one')
+          .should('have.class', 'active');
+      });
+    });
+
     describe('Rendering with different attributes', () => {
       it('Primary', () => {
         cy.datatest('FourButtonGroup')
@@ -47,7 +195,7 @@ describe('ButtonGroup', () => {
       });
 
       it('Secondary', () => {
-        cy.datatest('NumberButtonGroup')
+        cy.datatest('NumberCheckboxGroup')
           .should('have.class', 'secondary');
       });
 
@@ -127,7 +275,7 @@ describe('ButtonGroup', () => {
     });
 
     it('Working in Checkbox mode', () => {
-      cy.datatest('NumberButtonGroup')
+      cy.datatest('WithoutDefaultValueCheckboxGroup')
         .should('have.attr', 'type', 'checkbox')
         .find('button')
         .each((checkboxTypeCheck) => {
