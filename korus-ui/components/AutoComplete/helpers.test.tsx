@@ -57,19 +57,19 @@ describe('test getSuggestionValue', () => {
 });
 
 describe('safeTrim tests', () => {
-  it('with string', () => {
+  it('Should trim spaces when value is string', () => {
     const value = ' value ';
     expect(helpers.safeTrim(value)).toBe('value');
   });
 
-  it('with null', () => {
+  it('Should return empty string when value is null', () => {
     const value = null;
     expect(helpers.safeTrim(value)).toBe('');
   });
 });
 
 describe('getSuggestionFromValue tests', () => {
-  it('Value null', () => {
+  it('Should return null when empty array in data', () => {
     const parameters = {
       data: [],
       value: 'some',
@@ -79,7 +79,7 @@ describe('getSuggestionFromValue tests', () => {
     expect(suggestions).toEqual(expected);
   });
 
-  it('Value is object', () => {
+  it('Should return object', () => {
     const parameters = {
       data: [
         { key: 'value' },
@@ -94,7 +94,7 @@ describe('getSuggestionFromValue tests', () => {
     expect(suggestion).toEqual(expected);
   });
 
-  it('Value is string', () => {
+  it('Should return string when value is string', () => {
     const parameters = {
       data: [
         'value1',
