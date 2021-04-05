@@ -12,19 +12,22 @@ describe('CheckBox', () => {
         .parent()
         .find('button')
         .should('have.class', 'loading')
-        .and('be.visible');
+        .and('be.visible')
+        .snapshot();
     });
 
     it('Should render semi', () => {
       cy.contains('isSemi')
         .should('be.visible')
         .and('have.class', `${theme.label}`)
-        .and('have.class', `${theme.semi}`);
+        .and('have.class', `${theme.semi}`)
+        .snapshot();
     });
 
     it('Should render disabled checkbox', () => {
       cy.get('#checkBoxDisabled')
-        .should('have.attr', `${theme.disabled}`);
+        .should('have.attr', `${theme.disabled}`)
+        .snapshot();
     });
 
     it('Should add a custom class', () => {
