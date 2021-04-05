@@ -11,14 +11,39 @@ describe('DatePicker', () => {
   beforeEach(() => { cy.name('success').focus() }) // It is needed because of bug with focus on several datepickers
 
   describe('Display', () => {
+    it('Should render datepicker', () => {
+      cy.name('firstDatePicker')
+        .should('be.visible')
+        .and('have.attr', 'maxlength', 11)
+        .snapshot();
+    });
+
+    it('Should render with custom names of months, weekdays and short names', () => {
+      cy.name('CustomMonthsDatePicker')
+        .type('04052012')
+        .next()
+        .click()
+        .parents('.datepicker-wrapper')
+        .find('.calendar-title')
+        .should('contain', 'May')
+        .parents('.calendar-wrapper')
+        .find('.calendar-week-days')
+        .should('contain', 'Mon')
+        .and('contain', 'Sun')
+        .name('CustomMonthsDatePicker')
+        .clear();
+    });
+
     it('Should render placeholder', () => {
       cy.name('firstDatePicker')
-        .should('have.attr', 'placeholder', 'Type your date...');
+        .should('have.attr', 'placeholder', 'Type your date...')
+        .snapshot();
     });
 
     it('Should render calendar-icon', () => {
       cy.get('.datepicker-calendar-icon')
-        .should('be.visible');
+        .should('be.visible')
+        .snapshot;
     });
   });
 
@@ -54,7 +79,7 @@ describe('DatePicker', () => {
     it('Should be disabled when isDisabled', () => {
       cy.name('disabledCalendar')
         .should('be.disabled')
-        .and('have.attr', 'disabled');
+        .and('have.attr', `${theme.inputWrapperDisabled}`);
     });
 
     it('Should be is open when isOpen', () => {
@@ -102,7 +127,7 @@ describe('DatePicker', () => {
         .clear();
     });
 
-    xit('onFocus', () => { // Does not pass when running all tests at once
+    it('onFocus', () => { 
       cy.name('openedCalendar')
         .focus()
         .type('{home}12113234')

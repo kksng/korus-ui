@@ -121,6 +121,8 @@ export const DatePicker = (): React.ReactElement => {
         />
 
         <L.DatePicker
+          // max={new Date(2012, 4, 4)}
+          // min={new Date(2012, 4, 3)}
           monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
           shortMonthNames={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
           weekDayNames={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}
@@ -129,7 +131,7 @@ export const DatePicker = (): React.ReactElement => {
           onEnterPress={(ev): void => testFunction(ev)}
           value={value7}
           name="CustomMonthsDatePicker"
-          placeholder="Type your date..."
+          placeholder="CustomMonthsDatePicker"
         />
         <L.Button _success name="success">success!</L.Button>
       </L.Div>
