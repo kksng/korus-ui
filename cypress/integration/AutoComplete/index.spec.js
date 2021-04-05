@@ -13,7 +13,8 @@ describe('AutoComplete', () => {
   describe('Display', () => {
     it('Should render placeholder', () => {
       cy.name('AutoComplete2')
-        .should('have.attr', 'placeholder', 'Type your city...');
+        .should('have.attr', 'placeholder', 'Type your city...')
+        .snapshot();
     });
 
     it('Should assign a custom class', () => {
@@ -28,7 +29,8 @@ describe('AutoComplete', () => {
         .type('Paris')
         .parent()
         .find(`.${theme.closeIcon}`)
-        .should('be.visible');
+        .should('be.visible')
+        .snapshot();
     });
 
     it('Should render SuggestionList when isOpen', () => {
@@ -41,6 +43,7 @@ describe('AutoComplete', () => {
         .and('have.class', `${theme.containerVisible}`)
         .find(`.${theme.suggestionsList}`)
         .should('be.visible')
+        .snapshot()
         .find(`.${theme.suggestion}`)
         .should('have.length', 2);
     });
@@ -65,8 +68,9 @@ describe('AutoComplete', () => {
           .type('Z')
           .parents(`.${theme.wrapper}`)
           .find(`.${theme.suggestionsContainer}`, `.${theme.noSuggestions}`)
-          .should('have.text', 'Ничего не найдено');
-      });
+          .should('have.text', 'Ничего не найдено')
+          .snapshot();
+        });
 
       it('Should render customMessage', () => {
         cy.name('AutoComplete4')
@@ -74,8 +78,9 @@ describe('AutoComplete', () => {
           .type('Z')
           .parents(`.${theme.wrapper}`)
           .find(`.${theme.suggestionsContainer}`, `.${theme.noSuggestions}`)
-          .should('have.text', 'набери что-то, что я знаю');
-      });
+          .should('have.text', 'набери что-то, что я знаю')
+          .snapshot();
+        });
 
       it('nullMessage', () => {
         cy.name('AutoComplete1')
@@ -93,7 +98,8 @@ describe('AutoComplete', () => {
         .type('z')
         .parents(`.${theme.wrapper}`)
         .find(`.${loader.container}`, `.${loader.element}`)
-        .should('be.visible');
+        .should('be.visible')
+        .snapshot();
     });
 
     it('Should be disabled when isDisabled', () => {
