@@ -23,7 +23,8 @@ describe('ButtonGroup', () => {
         .should('have.length', 3)
         .datatest('OneButtonGroup')
         .find('button')
-        .should('have.length', 1);
+        .should('have.length', 1)
+        .snapshot();
     });
 
     it('Should render selected button with active class', () => {
