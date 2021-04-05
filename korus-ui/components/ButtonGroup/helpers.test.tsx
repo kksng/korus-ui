@@ -2,7 +2,7 @@ import * as helpers from './helpers';
 
 describe('getArrayValue tests', () => {
   describe('Adding new values to an array', () => {
-    it('Array of numbers', () => {
+    it('Adding new value into array of numbers', () => {
       const value = [1, 2, 3];
       const currentItem = 4;
       const received = helpers.getArrayValue(value, currentItem);
@@ -26,7 +26,7 @@ describe('getArrayValue tests', () => {
       expect(received).toEqual(expected);
     });
 
-    it('Array of strings', () => {
+    it('Adding string into array of strings', () => {
       const value = ['str1', 'str2', 'str3'];
       const currentItem = 'str4';
       const received = helpers.getArrayValue(value, currentItem);
@@ -50,7 +50,7 @@ describe('getArrayValue tests', () => {
       expect(received).toEqual(expected);
     });
 
-    it('Array of undefined', () => {
+    it('Adding object into array of undefined', () => {
       const value = [undefined, undefined];
       const currentItem = { object: 2 };
       const received = helpers.getArrayValue(value, currentItem);
@@ -60,7 +60,7 @@ describe('getArrayValue tests', () => {
   });
 
   describe('Deleting values from an array', () => {
-    it('Array of numbers', () => {
+    it('Deleting value from array of numbers', () => {
       const value = [1, 2, 3];
       const currentItem = 2;
       const received = helpers.getArrayValue(value, currentItem);
@@ -68,7 +68,7 @@ describe('getArrayValue tests', () => {
       expect(received).toEqual(expected);
     });
 
-    it('Array of strings', () => {
+    it('Deleting value from array of strings', () => {
       const value = ['str1', 'str2', 'str3'];
       const currentItem = 'str1';
       const received = helpers.getArrayValue(value, currentItem);
@@ -79,7 +79,7 @@ describe('getArrayValue tests', () => {
 });
 
 describe('compareItems tests', () => {
-  it('Numbers', () => {
+  it('Compare numbers', () => {
     const value = 9;
     const item = 9;
     const currentItem = 1;
@@ -87,26 +87,26 @@ describe('compareItems tests', () => {
     expect(helpers.compareItems(value, item)).toBe(true);
   });
 
-  it('Objects', () => {
+  it('Compare objects by textfield', () => {
     const value = { key: 9 };
     const item = { key: 9 };
     const textField = 'key';
     expect(helpers.compareItems(value[textField], item[textField])).toEqual(true);
   });
 
-  it('Strings', () => {
+  it('Compare strings', () => {
     const value = 'string1';
     const currentItem = 'string2';
     expect(helpers.compareItems(value, currentItem)).toBe(false);
   });
 
-  it('Value null', () => {
+  it('Compare when value is null', () => {
     const value = null;
     const currentItem = 1;
     expect(helpers.compareItems(value, currentItem)).toBe(false);
   });
 
-  it('Value undefined', () => {
+  it('Compare when value is undefined', () => {
     const value = undefined;
     const currentItem = '1';
     expect(helpers.compareItems(value, currentItem)).toBe(false);
