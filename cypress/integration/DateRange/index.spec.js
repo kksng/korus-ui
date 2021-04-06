@@ -8,9 +8,18 @@ describe('DateRange', () => {
   });
 
   describe('Display', () => {
+    it('Should render DateRange', () => {
+      cy.name('MinMaxDatePicker-from')
+        .should('be.visible')
+        .name('MinMaxDatePicker-to')
+        .should('be.visible')
+        .parents('.datepicker-wrapper')
+        .snapshot();
+    });
+
     it('Should render delimiter', () => {
       cy.get('.daterange-delimiter')
-        .should('have.length', 9)
+        .should('have.length', 10)
         .and('be.visible');
     });
 
@@ -20,16 +29,151 @@ describe('DateRange', () => {
         .name('secondDatePicker')
         .should('have.attr', 'placeholder', 'Type something...')
         .name('MinMaxDatePickerOpened-to')
-        .should('have.attr', 'placeholder', 'Type your date...');
+        .should('have.attr', 'placeholder', 'MinMaxDatePickerOpened');
     });
 
     it('Should render values in placeholder', () => {
       cy.name('openedCalendar-to')
         .should('have.attr', 'value', '11-е число  22-го месяца  33__-го года');
     });
+
+    it('Should render DateRange with value set as date', () => {
+      cy.name('MinMaxDatePicker-from')
+        .should('be.visible')
+        .name('MinMaxDatePicker-to')
+        .should('be.visible');
+    });
+
+    it('Should render the datepicker with empty strings and with a null value', () => {
+      cy.name('resetButton')
+        .click()
+        .name('DatePickerStringReset-from')
+        .should('be.visible')
+        .name('DatePickerStringReset-to')
+        .should('be.visible')
+        .name('DatePickerNullArrayReset-from')
+        .should('be.visible')
+        .name('DatePickerNullArrayReset-to')
+        .should('be.visible')
+        .name('DatePickerNullReset-from')
+        .should('be.visible')
+        .name('DatePickerNullReset-to')
+        .should('be.visible')
+        .name('toInitialStateButton')
+        .click();
+    });
+
+    it('Should render with custom names of months, weekdays and short names', () => {
+      cy.name('CustomMonthsDateRange-from')
+        .parents('.daterange-wrapper')
+        .find('input')
+        .each((workingWithCustomNames) => {
+          cy.wrap(workingWithCustomNames)
+          .type('04052012')
+          .next()
+          .click()
+          .parents('.datepicker-wrapper')
+          .find('.calendar-title')
+          .should('contain', 'May')
+          .parents('.calendar-wrapper')
+          .find('.calendar-week-days')
+          .should('contain', 'Mon')
+          .and('contain', 'Sun')
+          .parents('.datepicker-wrapper')
+          .find('input')
+          .clear();
+        });
+    });
+
+    it('Should show required message when isRequired', () => {
+      cy.name('secondDatePicker')
+        .focus()
+        .blur()
+        .parent()
+        .should('have.class', 'danger')
+        .parent()
+        .find('.invalid-message-list')
+        .should('have.text', 'required message')
+        .parents('.datepicker-wrapper')
+        .snapshot();
+    });
+
+    it('Should show different required messages', () => {
+      cy.name('ThirdDateRange-from')
+        .focus()
+        .blur()
+        .parent()
+        .should('have.class', 'danger')
+        .parent()
+        .find('.invalid-message-list')
+        .should('have.text', 'first message')
+        .name('ThirdDateRange-to')
+        .focus()
+        .blur()
+        .parent()
+        .should('have.class', 'danger')
+        .parent()
+        .find('.invalid-message-list')
+        .should('have.text', 'second message')
+        .parents('.datepicker-wrapper')
+        .snapshot();
+    });
+  });
+
+  describe('Events', () => {
+    beforeEach(() => {
+      cy.visit('/cypress/daterange', {
+        onBeforeLoad(win) {
+          cy.stub(win.console, 'log').as('consoleLog');
+        },
+      });
+    });
+
+    it('onBlur event', () => {
+      cy.name('ThirdDateRange-from')
+        .focus()
+        .blur()
+        .get('@consoleLog')
+        .should('be.calledWith', [null, null]);
+    });
+
+    it('onChange event', () => {
+      cy.name('MinMaxDatePickerOpened-from')
+        .type('{0}')
+        .get('@consoleLog')
+        .should('be.calledWith', 'change')
+        .name('MinMaxDatePickerOpened-from')
+        .clear();
+    });
+
+    it('onEnterPress event', () => {
+      cy.name('MinMaxDatePicker-from')
+        .focus()
+        .type('{enter}')
+        .get('@consoleLog')
+        .should('be.calledWith', ['04.05.2012', ''])
+        .name('MinMaxDatePicker-from')
+        .clear();
+    });
+
+    it('onFocus event', () => {
+      cy.name('openedCalendar-to')
+        .focus()
+        .get('@consoleLog')
+        .should('be.calledWith', 'focus');
+    });
   });
 
   describe('Interaction', () => {
+    it('Should work with different date formats', () => {
+      cy.name('ThirdDateRange-from')
+        .type('11111111')
+        .should('have.value', '11.11.1111')
+        .clear()
+        .name('openedCalendar-to')
+        .should('have.value', '11-е число  22-го месяца  33__-го года');
+    });
+
     it('Selecting a value by enter press', () => {
       cy.name('MinMaxDatePicker-from')
         .parents('.daterange-wrapper')

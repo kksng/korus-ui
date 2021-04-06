@@ -22,6 +22,8 @@ export const DateRange = (): React.ReactElement => {
     new Date(2019, 5, 5),
     new Date(2019, 5, 15),
   ]);
+  const [value10, setValue10] = React.useState<[string, string]>(['', '']);
+
 
   const handleChange1 = (ev: L.DateTimeInputRangeTypes.CustomRangeEvent): void => {
     const { value, date } = ev.component;
@@ -99,6 +101,7 @@ export const DateRange = (): React.ReactElement => {
           name={['firstDatePicker', 'secondDatePicker']}
           placeholder={['Type your date...', 'Type something...']}
           isRequired={[false, true]}
+          requiredMessage="required message"
           isDisabled={[true, false]}
           form="111"
         />
@@ -129,7 +132,9 @@ export const DateRange = (): React.ReactElement => {
           onBlur={console.log}
           onEnterPress={(ev) => console.log('Enter', ev)}
           name="ThirdDateRange"
+          placeholder="ThirdDateRange"
           isRequired
+          requiredMessage={['first message', 'second message']}
           form="112"
         />
 
@@ -137,9 +142,10 @@ export const DateRange = (): React.ReactElement => {
           _grow1
           format="dd-е число  MM-го месяца  yyyy-го года"
           name="openedCalendar"
+          placeholder="openedCalendar"
           onChange={handleChange4}
           value={[value4[0], '11.22.33']}
-          onFocus={console.log}
+          onFocus={(ev) => console.log('focus', ev)}
           isOpen
           isDisabled={[true, false]}
         />
@@ -166,12 +172,23 @@ export const DateRange = (): React.ReactElement => {
           _grow1
           max={new Date('05.04.2012')}
           min={new Date('05.03.2012')}
-          onChange={handleChange6}
+          onChange={(ev) => console.log('change', ev)}
           onEnterPress={console.log}
           value={value6}
           name="MinMaxDatePickerOpened"
-          placeholder="Type your date..."
+          placeholder="MinMaxDatePickerOpened"
           isDisabled={[false, true]}
+        />
+
+        <L.DateRange
+          monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
+          shortMonthNames={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+          weekDayNames={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}
+          shortWeekDayNames={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+          onEnterPress={console.log}
+          value={value10}
+          name="CustomMonthsDateRange"
+          placeholder="CustomMonthsDateRange"
         />
       </L.Div>
 
