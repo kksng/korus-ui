@@ -96,19 +96,19 @@ describe('ButtonGroup', () => {
           });
       });
 
-      it('Should render with default value is string', () => {
+      it('Should render with default string value', () => {
         cy.datatest('FourButtonGroup')
           .contains('three')
           .should('have.class', 'active');
       });
 
-      it('Should render with default value is number', () => {
+      it('Should render with default number value', () => {
         cy.datatest('NumberButtonGroup')
           .contains('2')
           .should('have.class', 'active');
       });
 
-      it('Should render with default walue is object', () => {
+      it('Should render with default object value', () => {
         cy.datatest('ThreeButtonGroup')
           .contains('one')
           .should('have.class', 'active');
@@ -170,19 +170,19 @@ describe('ButtonGroup', () => {
           });
       });
 
-      it('Should render with default value is string', () => {
+      it('Should render with default string value', () => {
         cy.datatest('StringCheckboxGroup')
           .contains('three')
           .should('have.class', 'active');
       });
 
-      it('Should render with default value is number', () => {
+      it('SShould render with default number value', () => {
         cy.datatest('NumberCheckboxGroup')
           .contains('2')
           .should('have.class', 'active');
       });
 
-      it('Should render with default value is object', () => {
+      it('Should render with default object value', () => {
         cy.datatest('ObjectCheckboxGroup')
           .contains('one')
           .should('have.class', 'active');
