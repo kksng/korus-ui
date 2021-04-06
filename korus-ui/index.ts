@@ -116,6 +116,7 @@ import * as CountDownTypes from './components/CountDown/types';
 import * as DateTimeInputTypes from './src/DateTimeInput/types';
 import * as DateTimeInputRangeTypes from './src/DateTimeInputRange/types';
 import * as DrawerTypes from './components/Drawer/types';
+import * as DropDownTypes from './components/DropDown/types';
 import * as DropDownSelectTypes from './components/DropDownSelect/types';
 import * as DropZoneTypes from './components/DropZone/types';
 import * as FileDropTypes from './components/FileDrop/types';
@@ -178,6 +179,7 @@ export {
   DateTimeInputRangeTypes,
   DateTimeInputTypes,
   DrawerTypes,
+  DropDownTypes,
   DropDownSelectTypes,
   DropZoneTypes,
   FileDropTypes,

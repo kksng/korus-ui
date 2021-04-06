@@ -30,8 +30,7 @@ describe('NumericTextBox SNAPSHOTS', () => {
         <NumericTextBox format="#,#### ₽" value={0.235813} />
       ));
 
-      // todo fix precision
-      expect(screen.getByRole('textbox')).toHaveValue('0,2359 ₽');
+      expect(screen.getByRole('textbox')).toHaveValue('0,2358 ₽');
 
       expect(wrapper.container).toMatchSnapshot();
     });
