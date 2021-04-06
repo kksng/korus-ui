@@ -34,6 +34,24 @@ describe('DatePicker', () => {
         .clear();
     });
 
+    it('Should render if value set as string', () => {
+      cy.name('valueSetString')
+        .should('be.visible')
+        .and('have.value', '30.04.1991')
+    });
+
+    it('Should render if value set as Date', () => {
+      cy.name('valueSetNull')
+        .should('be.visible')
+        .and('have.value', '')
+    });
+
+    it('Should render if value set as null', () => {
+      cy.name('valueSetDate')
+        .should('be.visible')
+        .and('have.value', '05.01.2020')
+    });
+
     it('Should render placeholder', () => {
       cy.name('firstDatePicker')
         .should('have.attr', 'placeholder', 'Type your date...')
@@ -122,6 +140,16 @@ describe('DatePicker', () => {
           expect(lastConsole).to.have.property('type', 'blur')
           expect(lastConsole.component).to.have.property('name', 'secondDatePicker')
           expect(lastConsole.component).to.have.property('value', '');
+        })
+        .name('secondDatePicker')
+        .clear();
+    });
+
+    it('onChange', () => {
+      cy.name('secondDatePicker')
+        .type('1')
+        .then(() => {
+          expect(stub).to.be.calledWith('Change')
         })
         .name('secondDatePicker')
         .clear();
@@ -472,6 +500,21 @@ describe('DatePicker', () => {
       });
   });
 
+  describe('Interaction', () => {
+    it('Should work with different date formats', () => {
+      cy.name('secondDatePicker')
+        .type('11111111')
+        .should('have.value', '11.11.1111')
+        .snapshot()
+        .clear()
+        .name('openedCalendar')
+        .type('11111111')
+        .should('have.value', '11-е число  11-го месяца  1111-го года')
+        .snapshot()
+        .clear();
+    });
+  });
+
   describe('Validation', () => {
     it('Should display validation error', () => {
       cy.name('MinValueDatePicker')
@@ -485,6 +528,7 @@ describe('DatePicker', () => {
         .should('have.class', 'danger');
     });
   });
+
   describe('Use cases', () => {
     it('Should select correctly date in January', () => {
       cy.name('secondDatePicker')

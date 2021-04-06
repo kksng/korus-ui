@@ -79,7 +79,7 @@ export const DatePicker = (): React.ReactElement => {
         />
 
         <L.DatePicker
-          onChange={handleChange3}
+          onChange={(ev) => console.log('Change')}
           format="dd.MM.yyyy"
           onBlur={(ev): void => testFunction(ev)}
           name="secondDatePicker"
@@ -121,8 +121,6 @@ export const DatePicker = (): React.ReactElement => {
         />
 
         <L.DatePicker
-          // max={new Date(2012, 4, 4)}
-          // min={new Date(2012, 4, 3)}
           monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
           shortMonthNames={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
           weekDayNames={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}
@@ -169,6 +167,26 @@ export const DatePicker = (): React.ReactElement => {
           Submit
         </L.Button>
         <L.Div name="submitMessage">{submitMessage}</L.Div>
+      </L.Div>
+      <br />
+      <L.Div>
+        <L.H4>Value set as string</L.H4>
+        <L.DatePicker
+          value={'30.04.1991'}
+          name="valueSetString"
+        />
+        <br />
+        <L.H4>Value set as null</L.H4>
+        <L.DatePicker
+          value={null}
+          name="valueSetNull"
+        />
+        <br />
+        <L.H4>Value set as Date</L.H4>
+        <L.DatePicker
+          value={new Date('01.05.2020')}
+          name="valueSetDate"
+        />
       </L.Div>
     </L.Div>
   );
