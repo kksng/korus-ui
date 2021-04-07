@@ -63,7 +63,7 @@ module.exports = {
       }
     }
   },
-     "CheckBox": {
+  "CheckBox": {
     "Display": {
       "Should render elements inside the checkbox": {
         "1": "<button type=\"button\"\n  class=\"button-wrapper loading\">isLoading</button>"
@@ -73,6 +73,13 @@ module.exports = {
       },
       "Should render disabled checkbox": {
         "1": "disabled"
+      }
+    }
+  },
+  "DateTimeRange": {
+    "Display": {
+      "Should render DateTimeRange": {
+        "1": "<div class=\"datepicker-wrapper\">\n  <div class=\"datepicker-input-wrapper\"><input class=\"datepicker-input\"\n      maxlength=\"17\"\n      aria-invalid=\"false\"\n      aria-required=\"true\"\n      name=\"DateTimeRange-to\"\n      value=\"15.05.2018 16:30\"><span class=\"datepicker-icons-wrapper\"><span\n        class=\"datepicker-calendar-icon\"></span></span></div>\n</div>"
       }
     }
   }
