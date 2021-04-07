@@ -1,83 +1,33 @@
 import { isFunction } from 'lodash';
-import { CustomEventHandler } from '../../commonTypes';
 import {
-  ChangeEventHandler, ChangeHandlerData, ItemData, GroupData,
+  ChangeEventHandler, ChangeHandlerData, ItemState,
 } from './types';
 import { ChangeEvent } from '../CheckBox/types';
-import { addToSelected, getIsSomeSelected, removeFromSelected } from './helpers';
 import { SelectedState } from './constants';
+import {
+  getCustomEvent, getUpdatedTreeState,
+} from './helpers';
+
 
 /**
- * Creates change event handler
+ * Helper creates change event handler
  * @param {ChangeHandlerData} params
  *
- * @returns {ChangeEventHandler}
+ * @returns {(id: number, value?: SelectedState): ChangeEventHandler}
  */
 export const createChangeHandler = ({
   onChange,
-  selected,
-  selectedGroups,
-}: ChangeHandlerData): ChangeEventHandler => () => {
+  setTreeState,
+}: ChangeHandlerData) => (id: number, value?: SelectedState): ChangeEventHandler => (ev: ChangeEvent): void => {
   if (!isFunction(onChange)) return;
 
-  const customEvent = {
-    component: {
-      selected,
-      selectedGroups,
-    },
-  };
+  const newValue = ev.component.value || value === SelectedState.Some ? SelectedState.All : SelectedState.Nothing;
 
-  onChange(customEvent);
-};
+  setTreeState((prevState): Map<number, ItemState> => {
+    const newTreeState = getUpdatedTreeState({ id, newValue, prevState });
 
+    onChange(getCustomEvent(newTreeState));
 
-/**
- * Creates сhange event handler for checkbox tree item
- * @param {ItemData} params
- *
- * @returns {CustomEventHandler<ChangeEvent>}
- */
-export const createItemChangeHandler = ({
-  props,
-  setValue,
-}: ItemData): CustomEventHandler<ChangeEvent> => (ev) => {
-  const {
-    mergeState, id, setSelected,
-  } = props;
-  setValue(ev.component.value);
-
-  if (isFunction(mergeState)) mergeState({ [id]: ev.component.value });
-
-  if (ev.component.value) {
-    setSelected((currentState) => addToSelected(currentState, id));
-  } else {
-    setSelected((currentState) => removeFromSelected(currentState, id));
-  }
-};
-
-/**
- * Creates сhange event handler for checkbox tree group
- * @param {GroupData} params
- *
- * @returns {CustomEventHandler<ChangeEvent>}
- */
-export const createGroupChangeHandler = ({
-  props,
-  setSelectAll,
-  setValue,
-  state,
-}: GroupData): CustomEventHandler<ChangeEvent> => (ev) => {
-  const { mergeState, id } = props;
-  const isSomeSelected = getIsSomeSelected(state);
-
-  // If group was partly selected - select all subgroup
-  if (isSomeSelected) {
-    setSelectAll(true);
-    setValue(SelectedState.All);
-    if (isFunction(mergeState)) mergeState({ [id]: SelectedState.All });
-  } else {
-    setValue(ev.component.value ? SelectedState.All : SelectedState.Nothing);
-    if (isFunction(mergeState)) mergeState({ [id]: ev.component.value ? SelectedState.All : SelectedState.Nothing });
-    setSelectAll(ev.component.value);
-  }
+    return newTreeState;
+  });
 };

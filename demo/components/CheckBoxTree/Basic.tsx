@@ -3,56 +3,56 @@ import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 
 export const Basic = (storyProps: StoryProps): React.ReactElement => {
-  const [selected, setSelected] = React.useState<string[]>([]);
-  const [selectedGroups, setSelectedGroups] = React.useState<string[]>([]);
+  const [selected, setSelected] = React.useState<number[]>([]);
+  const [selectedGroups, setSelectedGroups] = React.useState<number[]>([]);
 
   const data: L.CheckBoxTreeTypes.CheckBoxTreeItemType[] = [
     {
-      id: 'level1',
+      id: 1,
       label: 'Level one',
       children: [
         {
-          id: 'level2',
+          id: 2,
           label: 'Level two',
           children: [
             {
-              id: 'level3',
+              id: 3,
               label: 'Level three',
               children: [
                 {
-                  id: 'level3-1',
+                  id: 31,
                   label: 'Level three: one',
                 },
                 {
-                  id: 'level4',
+                  id: 4,
                   label: 'Level four',
                   children: [
                     {
-                      id: 'level4-1',
+                      id: 41,
                       label: 'Level four: one',
                     },
                     {
-                      id: 'level5',
+                      id: 5,
                       label: 'Level five',
                       children: [
                         {
-                          id: 'level5-1',
+                          id: 51,
                           label: 'Level five: one',
                         },
                         {
-                          id: 'level6',
+                          id: 6,
                           label: 'Level six',
                           children: [
                             {
-                              id: 'level6-1',
+                              id: 61,
                               label: 'Level six: one',
                             },
                             {
-                              id: 'level6-2',
+                              id: 62,
                               label: 'Level six: two',
                             },
                             {
-                              id: 'level6-3',
+                              id: 63,
                               label: 'Level six: three',
                             },
                           ],
@@ -64,19 +64,19 @@ export const Basic = (storyProps: StoryProps): React.ReactElement => {
               ],
             },
             {
-              id: 'level2-1',
+              id: 21,
               label: 'Level two: one',
             },
           ],
         },
         {
-          id: 'level1-1',
+          id: 11,
           label: 'Level one: one',
         },
       ],
     },
     {
-      id: 'one',
+      id: 7,
       label: 'one',
     },
   ];
@@ -92,6 +92,7 @@ export const Basic = (storyProps: StoryProps): React.ReactElement => {
       />
       <br />
       <br />
+      <L.H2>Change event</L.H2>
       <L.P>{`selected: ${selected.join(' ')}`}</L.P>
       <L.P>{`selectedGroups: ${selectedGroups.join(' ')}`}</L.P>
     </>

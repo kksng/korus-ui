@@ -4,51 +4,51 @@ import * as L from '../../../korus-ui';
 export const CheckBoxTree = (): React.ReactElement => {
   const data: L.CheckBoxTreeTypes.CheckBoxTreeItemType[] = [
     {
-      name: 'level1',
+      id: 1,
       label: 'Level one',
       children: [
         {
-          name: 'level2',
+          id: 2,
           label: 'Level two',
           children: [
             {
-              name: 'level3',
+              id: 3,
               label: 'Level three',
               children: [
                 {
-                  name: 'level3-1',
+                  id: 31,
                   label: 'Level three: one',
                 }, 
                 {
-                  name: 'level4',
+                  id: 4,
                   label: 'Level four',
                   children: [
                     {
-                      name: 'level4-1',
+                      id: 41,
                       label: 'Level four: one',
                     }, 
                     {
-                      name: 'level5',
+                      id: 5,
                       label: 'Level five',
                       children: [
                         {
-                          name: 'level5-1',
+                          id: 51,
                           label: 'Level five: one',
                         }, 
                         {
-                          name: 'level6',
+                          id: 6,
                           label: 'Level six',
                           children: [
                             {
-                              name: 'level6-1',
+                              id: 61,
                               label: 'Level six: one',
                             }, 
                             {
-                              name: 'level6-2',
+                              id: 62,
                               label: 'Level six: two',
                             }, 
                             {
-                              name: 'level6-3',
+                              id: 63,
                               label: 'Level six: three',
                               
                             }
@@ -61,19 +61,19 @@ export const CheckBoxTree = (): React.ReactElement => {
               ],
             },
             {
-              name: 'level2-1',
+              id: 21,
               label: 'Level two: one',
             }, 
           ],
         },
         {
-          name: 'level1-1',
+          id: 11,
           label: 'Level one: one',
         }, 
       ],
     },
     {
-      name: 'one',
+      id: 7,
       label: 'one',
     }, 
   ];

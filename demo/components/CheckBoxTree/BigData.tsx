@@ -5,8 +5,8 @@ import { StoryProps } from '../../types';
 import { bigData } from './data';
 
 export const BigData = (storyProps: StoryProps): React.ReactElement => {
-  const [selected, setSelected] = React.useState<string[]>([]);
-  const [selectedGroups, setSelectedGroups] = React.useState<string[]>([]);
+  const [selected, setSelected] = React.useState<number[]>([]);
+  const [selectedGroups, setSelectedGroups] = React.useState<number[]>([]);
 
   /**
    * Helper prepares data for checkbox tree
@@ -15,7 +15,7 @@ export const BigData = (storyProps: StoryProps): React.ReactElement => {
    */
   const prepareData = (item: ArrayElement<typeof bigData>): L.CheckBoxTreeTypes.CheckBoxTreeItemType => {
     const newItem = {} as L.CheckBoxTreeTypes.CheckBoxTreeItemType;
-    newItem.id = item['id'].toString();
+    newItem.id = item['id'];
     newItem.name = item['name'];
     newItem.label = item['name'];
     newItem.children = item['children'].length > 0 ? item['children'].map(prepareData) : [];
@@ -35,6 +35,7 @@ export const BigData = (storyProps: StoryProps): React.ReactElement => {
       />
       <br />
       <br />
+      <L.H2>Change event</L.H2>
       <L.P>{`selected: ${selected.join(' ')}`}</L.P>
       <L.P>{`selectedGroups: ${selectedGroups.join(' ')}`}</L.P>
     </>

@@ -4,13 +4,8 @@ import { CheckBox } from '../CheckBox';
 import { Li } from '../Li';
 import { Span } from '../Span';
 import { Ul } from '../Ul';
-import { CheckBoxTreeItem } from './CheckBoxTreeItem';
 import { SelectedState } from './constants';
-import { createGroupChangeHandler } from './handlers';
-import { getInitialGroupState, getIsSomeSelected } from './helpers';
-import { useGroupStateUpdate } from './hooks';
-import { CheckBoxTreeGroupProps, GroupState } from './types';
-
+import { CheckBoxTreeGroupProps, ItemState } from './types';
 
 /**
  * CheckBoxTree Group component is an internal item of the tree
@@ -26,58 +21,46 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
     name,
     theme,
     children,
+    isOpen: isOpenProp = false,
+    value,
+    setState,
+    handleChange,
   } = props;
-
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [value, setValue] = React.useState<SelectedState | undefined>();
-  const [isSelectAll, setSelectAll] = React.useState<boolean | undefined>();
-
-  const initialState = getInitialGroupState(children);
-
-  const [state, mergeState] = React.useReducer((oldState: GroupState, newState: GroupState) => ({
-    ...oldState, ...newState,
-  }), initialState);
-
-  useGroupStateUpdate({
-    props,
-    setSelectAll,
-    setValue,
-    state,
-  });
 
   const itemClassNames = getClassNames(
     [theme.checkBoxTreeItem],
     {
-      [theme.opened]: children && isOpen,
+      [theme.opened]: children && isOpenProp,
     },
   );
 
   const iconClassNames = getClassNames(
     [theme.checkBoxTreeIcon],
     {
-      [theme.checkBoxTreeIconExpanded]: isOpen,
+      [theme.checkBoxTreeIconExpanded]: isOpenProp,
     },
   );
 
   const handleIconClick = (): void => {
-    setIsOpen(!isOpen);
-  };
+    setState((prevState) => {
+      const currentItemState = prevState.get(id);
 
-  const handleChange = createGroupChangeHandler({
-    props,
-    setSelectAll,
-    setValue,
-    state,
-  });
+      if (!currentItemState) return prevState;
+
+      const updatedCurrentItemState: [number, ItemState] = [id, { ...currentItemState, isOpen: !isOpenProp }];
+
+      return new Map([...prevState, updatedCurrentItemState]);
+    });
+  };
 
   return (
     <Li className={itemClassNames}>
       <CheckBox
-        id={id}
-        isSemi={getIsSomeSelected(state)}
+        id={id.toString()}
+        isSemi={value === SelectedState.Some}
         name={name}
         value={!!value}
-        onChange={handleChange}
+        onChange={handleChange(id, value)}
       >
         {label}
       </CheckBox>
@@ -86,13 +69,7 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
         className={iconClassNames}
       />
       <Ul className={theme.checkBoxTreeList}>
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && (child.type === CheckBoxTreeItem || child.type === CheckBoxTreeGroup)) {
-            return React.cloneElement(child, { mergeState, value: isSelectAll });
-          }
-
-          return child;
-        })}
+        {children}
       </Ul>
     </Li>
   );

@@ -5,21 +5,21 @@ import { StoryProps } from '../../types';
 export const Minimal = (storyProps: StoryProps): React.ReactElement => {
   const data: L.CheckBoxTreeTypes.CheckBoxTreeItemType[] = [
     {
-      id: 'level1',
+      id: 1,
       label: 'Level one',
       children: [
         {
-          id: 'level2',
+          id: 2,
           label: 'Level two',
         },
         {
-          id: 'level1-1',
+          id: 11,
           label: 'Level one: one',
         },
       ],
     },
     {
-      id: 'one',
+      id: 3,
       label: 'one',
     },
   ];

@@ -5,12 +5,15 @@ import {
 } from '../../utils';
 import { Div } from '../Div';
 import { Ul } from '../Ul';
-import { getHasChildItems } from './helpers';
+import { getHasChildItems, getTreeStateFromData, getUpdatedTreeState } from './helpers';
 import { CheckBoxTreeItem } from './CheckBoxTreeItem';
-import { CheckBoxTreeProps, CheckBoxTreeRefCurrent, CheckBoxTreeItemType } from './types';
+import {
+  CheckBoxTreeProps, CheckBoxTreeRefCurrent, CheckBoxTreeItemType, ItemState,
+} from './types';
 import { CheckBoxTreeGroup } from './CheckBoxTreeGroup';
 import { createChangeHandler } from './handlers';
-import { useHandleChange } from './hooks';
+import { SelectedState } from './constants';
+
 
 /**
  * CheckBoxTree component renders tree of checkboxes
@@ -24,6 +27,7 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
     data,
     theme: themeProp,
     onChange,
+    defaultValue,
     ...restProps
   } = useProps(props);
 
@@ -31,14 +35,28 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
 
   const wrapperClassNames = getClassNames(theme.wrapper, className);
 
-  const [selected, setSelected] = React.useState<string[]>([]);
-  const [selectedGroups, setSelectedGroups] = React.useState<string[]>([]);
+  const [treeState, setTreeState] = React.useState<Map<number, ItemState>>(
+    getTreeStateFromData({
+      items: data,
+    }),
+  );
+
+  React.useEffect(() => {
+    if (!defaultValue) return;
+
+    defaultValue.forEach(((id) => {
+      setTreeState((prevState: Map<number, ItemState>): Map<number, ItemState> => getUpdatedTreeState({
+        id,
+        newValue: SelectedState.All,
+        prevState,
+      }));
+    }));
+  }, [defaultValue]);
 
   const handleChange = createChangeHandler({
-    onChange, selected, selectedGroups,
+    onChange,
+    setTreeState,
   });
-
-  useHandleChange({ handleChange, selected, selectedGroups });
 
   /**
    * Generates tree of checkboxes
@@ -47,6 +65,8 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
    * @returns {React.ReactElement[]}
    */
   const getTree = (items: CheckBoxTreeItemType[]): React.ReactElement[] => items.map((item) => {
+    const itemState = treeState.get(item.id);
+
     if (getHasChildItems(item)) {
       return (
         <CheckBoxTreeGroup
@@ -55,9 +75,12 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
           theme={theme}
           name={item.name}
           id={item.id}
-          setSelectedGroups={setSelectedGroups}
+          isOpen={itemState?.isOpen}
+          value={itemState?.value}
+          setState={setTreeState}
+          handleChange={handleChange}
         >
-          {getTree(item.children)}
+          {itemState?.isOpen ? getTree(item.children) : null}
         </CheckBoxTreeGroup>
       );
     }
@@ -68,8 +91,8 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
         id={item.id}
         name={item.name}
         theme={theme}
-        defaultValue={item.defaultValue}
-        setSelected={setSelected}
+        value={!!itemState?.value}
+        handleChange={handleChange}
       />
     );
   });

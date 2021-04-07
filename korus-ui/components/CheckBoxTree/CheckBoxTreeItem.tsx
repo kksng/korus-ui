@@ -2,8 +2,6 @@ import React from 'react';
 import { CheckBox } from '../CheckBox';
 import { CheckBoxTreeItemProps } from './types';
 import { Li } from '../Li';
-import { useItemStateUpdate } from './hooks';
-import { createItemChangeHandler } from './handlers';
 
 /**
  * CheckBoxTree Item component is a terminal item of the tree
@@ -17,21 +15,18 @@ export const CheckBoxTreeItem: React.FC<CheckBoxTreeItemProps> = (props: CheckBo
     id,
     name,
     theme,
+    value,
+    handleChange,
   } = props;
 
-  const [value, setValue] = React.useState<boolean | undefined>();
-
-  useItemStateUpdate({ props, setValue });
-
-  const handleChange = createItemChangeHandler({ props, setValue });
 
   return (
     <Li className={theme.checkBoxTreeItem}>
       <CheckBox
-        id={id}
+        id={id.toString()}
         name={name}
         value={value}
-        onChange={handleChange}
+        onChange={handleChange(id)}
       >
         {label}
       </CheckBox>

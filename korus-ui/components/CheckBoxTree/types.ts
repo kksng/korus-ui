@@ -1,12 +1,13 @@
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { GlobalDefaultTheme, PartialGlobalDefaultTheme } from '../../utils/useTheme';
+import { ChangeEvent } from '../CheckBox/types';
 import { SelectedState } from './constants';
 
 /**
  * Change event handler
  */
 export interface ChangeEventHandler {
-  (): void,
+  (ev: ChangeEvent): void,
 }
 
 /**
@@ -15,9 +16,9 @@ export interface ChangeEventHandler {
 export interface CheckBoxTreeChangeEvent {
   component: {
     /** Array of ids of selected terminal checkboxes */
-    selected: string[],
+    selected: number[],
     /** Array of ids of selected internal checkboxes (is added only if all subgroup is selected) */
-    selectedGroups: string[],
+    selectedGroups: number[],
   },
 }
 
@@ -27,10 +28,8 @@ export interface CheckBoxTreeChangeEvent {
 export interface CheckBoxTreeItem {
   /** Child items */
   children?: CheckBoxTreeItemType[],
-  /** Default value */
-  defaultValue?: boolean,
   /** Id (should be unique) */
-  id: string,
+  id: number,
   /** Label */
   label: string,
   /** Name */
@@ -56,44 +55,52 @@ export type CheckBoxTreeItemType = CheckBoxTreeGroupItem | CheckBoxTreeItem;
 export interface CheckBoxTreeGroupProps {
   /** Child Items */
   children?: React.ReactNode,
+  /** Change event handler */
+  handleChange: (id: number, value?: SelectedState) => ChangeEventHandler,
   /** Id (should be unique) */
-  id: string,
+  id: number,
+  /** Item's open state */
+  isOpen?: boolean,
   /** Text */
   label: string,
-  /**
-   * Set state action for subgroup checkboxes.
-   * undefined if checkbox doesn't belong to a subgroup
-   */
-  mergeState?: React.Dispatch<GroupState>,
   /** Name */
   name?: string,
-  /** Set state action for selected checkboxes */
-  setSelectedGroups: React.Dispatch<React.SetStateAction<string[]>>,
+  /** Set state action for tree state */
+  setState: (value: React.SetStateAction<Map<number, ItemState>>) => void,
   /** Theme */
   theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.checkBoxTree],
   /** Value of CheckBox */
-  value?: boolean,
+  value?: SelectedState,
+}
+
+/**
+ * State of tree item
+ */
+export interface ItemState {
+  /** Array of Item childrens' ids */
+  childrenIds?: number[],
+  /** Item's open state */
+  isOpen?: boolean,
+  /** Id of Item's parent */
+  parentId?: number,
+  /** Array of selected Item childrens' ids */
+  selectedChildrenIds?: Set<number>,
+  /** Item's value */
+  value: SelectedState,
 }
 
 /**
  * CheckBoxTree item props
  */
 export interface CheckBoxTreeItemProps {
-  /** Default value */
-  defaultValue?: boolean,
+  /** Change event handler */
+  handleChange: (id: number, value?: SelectedState) => ChangeEventHandler,
   /** Id (should be unique) */
-  id: string,
+  id: number,
   /** Text */
   label: string,
-  /**
-   * Set state action for subgroup checkboxes.
-   * undefined if checkbox doesn't belong to a subgroup
-   */
-  mergeState?: React.Dispatch<GroupState>,
   /** Name */
   name?: string,
-  /** Set state action for selected checkboxes */
-  setSelected: React.Dispatch<React.SetStateAction<string[]>>,
   /** Theme */
   theme: GlobalDefaultTheme[typeof COMPONENTS_NAMESPACES.checkBoxTree],
   /** Value of CheckBox */
@@ -106,6 +113,8 @@ export interface CheckBoxTreeProps {
   [x: string]: unknown,
   /** Data for checkbox tree */
   data: CheckBoxTreeItemType[],
+  /** Array of items ids that should be selected by default */
+  defaultValue?: number[],
   /** onChange callback */
   onChange?: (event: CheckBoxTreeChangeEvent) => void,
   /** Theme */
@@ -122,56 +131,10 @@ export interface CheckBoxTreeRefCurrent {
 }
 
 /**
- * State of a sub group of checkboxes
- */
-export interface GroupState {
-  /** State of a checkbox, boolean for terminal, number for internal (0 - nothing selected, 1 - some selected, 2 - all selected) */
-  [k: string]: boolean | number | undefined,
-}
-
-/**
  * Parameters of handler creator
  */
 export interface ChangeHandlerData {
   onChange?: (event: CheckBoxTreeChangeEvent) => void,
-  /** Array of selected terminal checkboxes ids */
-  selected: string[],
-  /** Array of selected internal checkboxes ids */
-  selectedGroups: string[],
-}
-
-/**
- * Data for useGroupStateUpdate hook
- */
-export interface GroupData {
-  /** props of CheckBoxTree group */
-  props: CheckBoxTreeGroupProps,
-  /** Set state action for selecting all group items */
-  setSelectAll: React.Dispatch<React.SetStateAction<boolean | undefined>>,
-  /** Set state action for group value (0 - nothing selected, 1 - some selected, 2 - all selected) */
-  setValue: React.Dispatch<React.SetStateAction<SelectedState | undefined>>,
-  /** Group state */
-  state: GroupState,
-}
-
-/**
- * Data for useHandleChange hook
- */
-export interface UseHandleChangeData {
-  /** Change event handler */
-  handleChange: ChangeEventHandler,
-  /** Array of selected terminal checkboxes ids */
-  selected: string[],
-  /** Array of selected internal checkboxes ids */
-  selectedGroups: string[],
-}
-
-/**
- * Data for Item helpers
- */
-export interface ItemData {
-  /** props of CheckBoxTree item */
-  props: CheckBoxTreeItemProps,
-  /** Set state action for item value */
-  setValue: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+  /** Set state action for tree state */
+  setTreeState: (value: React.SetStateAction<Map<number, ItemState>>) => void,
 }
