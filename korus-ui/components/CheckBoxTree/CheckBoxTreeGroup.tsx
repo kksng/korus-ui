@@ -42,7 +42,7 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
   );
 
   const handleIconClick = (): void => {
-    setState((prevState) => {
+    setState((prevState: Map<number, ItemState>): Map<number, ItemState> => {
       const currentItemState = prevState.get(id);
 
       if (!currentItemState) return prevState;

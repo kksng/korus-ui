@@ -100,7 +100,7 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
   return (
     <Div
       className={wrapperClassNames}
-      ref={ref && ((component) => bindFunctionalRef(component, ref, component && {
+      ref={ref && ((component): void => bindFunctionalRef(component, ref, component && {
         wrapper: component.wrapper,
       }))}
       {...restProps}

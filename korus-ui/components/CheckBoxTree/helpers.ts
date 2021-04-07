@@ -132,7 +132,7 @@ export const getUpdatedParentsState = ({
     parentState.selectedChildrenIds?.delete(currentId);
   }
 
-  const newValue = (() => {
+  const newValue = ((): SelectedState => {
     if (value === SelectedState.All) {
       return getIsAllSelected(parentState) ? SelectedState.All : SelectedState.Some;
     }

@@ -23,7 +23,7 @@ export const createChangeHandler = ({
 
   const newValue = ev.component.value || value === SelectedState.Some ? SelectedState.All : SelectedState.Nothing;
 
-  setTreeState((prevState): Map<number, ItemState> => {
+  setTreeState((prevState: Map<number, ItemState>): Map<number, ItemState> => {
     const newTreeState = getUpdatedTreeState({ id, newValue, prevState });
 
     onChange(getCustomEvent(newTreeState));
