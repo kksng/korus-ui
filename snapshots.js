@@ -82,5 +82,12 @@ module.exports = {
         "1": "<div class=\"datepicker-wrapper\">\n  <div class=\"datepicker-input-wrapper\"><input class=\"datepicker-input\"\n      maxlength=\"17\"\n      aria-invalid=\"false\"\n      aria-required=\"true\"\n      name=\"DateTimeRange-to\"\n      value=\"15.05.2018 16:30\"><span class=\"datepicker-icons-wrapper\"><span\n        class=\"datepicker-calendar-icon\"></span></span></div>\n</div>"
       }
     }
+  },
+  "DateTimePicker": {
+    "Display": {
+      "Should render DateTimePicker": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"18\"\n  placeholder=\"datetimepicker\"\n  data-test=\"dp1\"\n  form=\"date-form\"\n  aria-invalid=\"false\"\n  aria-required=\"true\"\n  name=\"datetimepicker\"\n  value=\"23.10.18 14:30:25\">"
+      }
+    }
   }
 }
