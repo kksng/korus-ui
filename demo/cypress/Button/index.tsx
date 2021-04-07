@@ -28,6 +28,7 @@ export const Button = (): React.ReactElement => (
         height: '100vh',
       }}
     />
+    <L.Button id="renderWithForm" form="form1">Rendering with form</L.Button>
     <L.Input
       isRequired
       form="form1"

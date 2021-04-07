@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-expressions,jest/valid-expect */
 import { defaultAutoCompleteTheme as theme } from '../../../korus-ui/components/AutoComplete/theme';
+import { defaultLoaderTheme as loader } from '../../../korus-ui/components/Loader/theme';
+
 
 describe('AutoComplete', () => {
   let lastConsole;
@@ -11,7 +13,14 @@ describe('AutoComplete', () => {
   describe('Display', () => {
     it('Should render placeholder', () => {
       cy.name('AutoComplete2')
-        .should('have.attr', 'placeholder', 'Type your city...');
+        .should('have.attr', 'placeholder', 'Type your city...')
+        .snapshot();
+    });
+
+    it('Should assign a custom class', () => {
+      cy.name('AutoComplete3')
+        .parents(`.${theme.wrapper}`)
+        .should('have.class', 'custom-class');
     });
 
     it('Should render ClearButton', () => {
@@ -19,33 +28,37 @@ describe('AutoComplete', () => {
         .clear()
         .type('Paris')
         .parent()
-        .find('.autocomplete-clear-icon')
-        .should('be.visible');
+        .find(`.${theme.closeIcon}`)
+        .should('be.visible')
+        .snapshot();
     });
 
     it('Should render SuggestionList when isOpen', () => {
       cy.name('AutoComplete1')
         .clear()
         .blur()
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-wrapper')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestionsContainer}`)
         .should('be.visible')
-        .and('have.class', 'visible')
-        .find('.suggestion-list')
+        .and('have.class', `${theme.containerVisible}`)
+        .find(`.${theme.suggestionsList}`)
         .should('be.visible')
-        .find('.suggestion-item')
+        .snapshot()
+        .find(`.${theme.suggestion}`)
         .should('have.length', 2);
     });
 
-    it('Should appear css-class "danger" and render requiredMessage when the focus is lost', () => {
-      cy.name('AutoComplete2')
-        .focus()
-        .blur()
-        .parent()
-        .should('have.class', 'danger')
-        .parent()
-        .find('.invalid-message-list')
-        .should('have.text', 'Поле обязательно!');
+    describe('Validation', () => {
+      it('Should appear css-class "danger" and render requiredMessage when the focus is lost', () => {
+        cy.name('AutoComplete2')
+          .focus()
+          .blur()
+          .parent()
+          .should('have.class', `${theme.inputWrapperInvalid}`)
+          .parent()
+          .find('.invalid-message-list')
+          .should('have.text', 'Поле обязательно!');
+      });
     });
 
     describe('noSuggestionsRender', () => {
@@ -53,26 +66,28 @@ describe('AutoComplete', () => {
         cy.name('AutoComplete2')
           .clear()
           .type('Z')
-          .parents('.autocomplete-wrapper')
-          .find('.suggestion-wrapper .nodata')
-          .should('have.text', 'Ничего не найдено');
-      });
+          .parents(`.${theme.wrapper}`)
+          .find(`.${theme.suggestionsContainer}`, `.${theme.noSuggestions}`)
+          .should('have.text', 'Ничего не найдено')
+          .snapshot();
+        });
 
       it('Should render customMessage', () => {
         cy.name('AutoComplete4')
           .clear()
           .type('Z')
-          .parents('.autocomplete-wrapper')
-          .find('.suggestion-wrapper .nodata')
-          .should('have.text', 'набери что-то, что я знаю');
-      });
+          .parents(`.${theme.wrapper}`)
+          .find(`.${theme.suggestionsContainer}`, `.${theme.noSuggestions}`)
+          .should('have.text', 'набери что-то, что я знаю')
+          .snapshot();
+        });
 
       it('nullMessage', () => {
         cy.name('AutoComplete1')
           .clear()
           .type('Z')
           .parent()
-          .find('.suggestion-wrapper .nodata')
+          .find(`.${theme.suggestionsContainer}`, `.${theme.noSuggestions}`)
           .should('not.exist');
       });
     });
@@ -81,18 +96,19 @@ describe('AutoComplete', () => {
       cy.name('AutoComplete6')
         .clear()
         .type('z')
-        .parents('.autocomplete-wrapper')
-        .find('.loader-container, .loader-element')
-        .should('be.visible');
+        .parents(`.${theme.wrapper}`)
+        .find(`.${loader.container}`, `.${loader.element}`)
+        .should('be.visible')
+        .snapshot();
     });
 
     it('Should be disabled when isDisabled', () => {
       cy.name('AutoComplete5')       
         .parent()
-        .should('have.class', 'disabled')
+        .should('have.class', `${theme.inputWrapperDisabled}`)
         .children()
         .should('be.disabled')
-        .and('have.attr', 'disabled');
+        .and('have.attr', `${theme.inputWrapperDisabled}`);
     });
 
     describe('itemRender', () => {
@@ -100,7 +116,7 @@ describe('AutoComplete', () => {
         cy.name('AutoComplete4')
           .clear()
           .type('n')
-          .parents('.autocomplete-wrapper')
+          .parents(`.${theme.wrapper}`)
           .contains('Berlin')
           .should('have.class', 'txt-bold')
           .and('not.have.class', 'txt-success')
@@ -112,7 +128,7 @@ describe('AutoComplete', () => {
         cy.name('AutoComplete4')
           .clear()
           .type('n')
-          .parents('.autocomplete-wrapper')
+          .parents(`.${theme.wrapper}`)
           .contains('Bangkok')
           .should('have.class', 'txt-success')
           .and('not.have.class', 'txt-bold')
@@ -124,7 +140,7 @@ describe('AutoComplete', () => {
         cy.name('AutoComplete4')
           .clear()
           .type('n')
-          .parents('.autocomplete-wrapper')
+          .parents(`.${theme.wrapper}`)
           .contains('New York')
           .should('not.have.class', 'txt-bold')
           .and('not.have.class', 'txt-success')
@@ -138,12 +154,12 @@ describe('AutoComplete', () => {
     it('0', () => {
       cy.name('AutoComplete2')
         .clear()
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-wrapper')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestionsContainer}`)
         .should('be.visible')
-        .and('have.class', 'visible')
-        .children('.suggestion-list')
-        .children('.suggestion-item')
+        .and('have.class', `${theme.containerVisible}`)
+        .children(`.${theme.suggestionsList}`)
+        .children(`.${theme.suggestion}`)
         .should('have.length', 10);
     });
 
@@ -151,16 +167,16 @@ describe('AutoComplete', () => {
       cy.name('AutoComplete3')
         .clear()
         .type('Lo')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-list')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestionsList}`)
         .should('not.exist')
         .name('AutoComplete3')
         .clear()
         .type('Lon')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-list')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestionsList}`)
         .should('be.visible')
-        .find('.suggestion-item')
+        .find(`.${theme.suggestion}`)
         .should('have.length', 1)
         .and('have.text', 'London');
     });
@@ -171,15 +187,15 @@ describe('AutoComplete', () => {
       cy.name('AutoComplete4')
         .clear()
         .type('don')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-item')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
         .should('have.length', 1)
         .and('have.text', 'London (region: Europe)')
         .name('AutoComplete4')
         .clear()
         .type('don lon')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-wrapper .nodata')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestionsContainer}`, `.${theme.noSuggestions}`)
         .should('be.visible');
     });
 
@@ -187,15 +203,15 @@ describe('AutoComplete', () => {
       cy.name('AutoComplete3')
         .clear()
         .type('don')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-item')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
         .should('have.length', 1)
         .and('have.text', 'London')
         .name('AutoComplete3')
         .clear()
         .type('don lon')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-item')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
         .should('have.length', 1)
         .and('have.text', 'London');
     });
@@ -204,15 +220,15 @@ describe('AutoComplete', () => {
       cy.name('AutoComplete2')
         .clear()
         .type('lon')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-item')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
         .should('have.length', 1)
         .and('have.text', 'London')
         .name('AutoComplete2')
         .clear()
         .type('don')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-wrapper .nodata')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestionsContainer}`, `.${theme.noSuggestions}`)
         .should('be.visible');
     });
   });
@@ -274,8 +290,8 @@ describe('AutoComplete', () => {
           expect(lastConsole.component).to.have.property('value', 'lon');
           expect(lastConsole.component).to.have.property('suggestion', null);
         })
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-item')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
         .click()
         .then(() => {
           expect(stub).to.be.called;
@@ -295,15 +311,15 @@ describe('AutoComplete', () => {
         .clear()
         .type('Mo')
         .should('have.value', 'Mo')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-item')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
         .click()
         .name('AutoComplete2')
         .should('have.value', 'Moscow')
         .type('{backspace}'.repeat(5))
         .should('have.value', 'M')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-item')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
         .first()
         .click()
         .name('AutoComplete2')
@@ -316,8 +332,8 @@ describe('AutoComplete', () => {
       cy.name('AutoComplete7')
         .type('3')
         .should('have.value', '3')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-item')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
         .first()
         .click()
         .name('AutoComplete7')
@@ -333,7 +349,7 @@ describe('AutoComplete', () => {
         .clear()
         .type('Paris')
         .parent()
-        .find('.autocomplete-clear-icon')
+        .find(`.${theme.closeIcon}`)
         .click()
         .name('AutoComplete1')
         .should('have.value', '');
@@ -343,8 +359,8 @@ describe('AutoComplete', () => {
       cy.name('AutoComplete2')
         .focus()
         .type('{downArrow}')
-        .parents('.autocomplete-wrapper')
-        .find('.suggestion-list')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestionsList}`)
         .should('be.visible')
         .name('AutoComplete2')
         .type('{downArrow}'.repeat(3))
@@ -352,6 +368,43 @@ describe('AutoComplete', () => {
         .should('have.value', 'Washington')
         .clear()
         .blur();
+    });
+
+    it('If the focus is lost, it must have a correct or empty value (shouldCorrectValue)', () => {
+      cy.name('AutoComplete3')
+        .type('q1w2e3e4t5')
+        .blur()
+        .name('AutoComplete3')
+        .should('have.value', '')
+        .name('AutoComplete3')
+        .type('London')
+        .blur()
+        .name('AutoComplete3')
+        .should('have.value', 'London')
+        .name('AutoComplete3')
+        .clear()
+        .type('Islamabad')
+        .blur()
+        .name('AutoComplete3')
+        .should('have.value', 'Islamabad')
+        .name('AutoComplete3')
+        .clear();
+    });
+
+    it('Compare objects by id', () => {
+      cy.name('AutoComplete8')
+        .focus()
+        .type('{downArrow}')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.suggestion}`)
+        .contains('Moscow')
+        .should('have.class', `${theme.suggestionHighlighted}`)
+        .next()
+        .should('have.class', `${theme.suggestionHighlighted}`)
+        .next()
+        .should('not.have.class', `${theme.suggestionHighlighted}`)
+        .name('AutoComplete8')
+        .blur()
     });
   });
 });
