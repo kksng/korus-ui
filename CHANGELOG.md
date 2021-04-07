@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - DropDown: Added class disabled
+- CheckBoxTree: Added new component
 
 ### Fixed
 - NumericTextBox: Fixed rounding numbers on change event
@@ -16,7 +17,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.43.0] - 2021-03-29
 
 ### Added
-- CheckBoxTree: Added new component
 - LinkTree: Added new component
 - Drawer: Added new component
 
