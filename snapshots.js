@@ -11,6 +11,5 @@ module.exports = {
         "1": "disabled"
       }
     }
-  },
-  "__version": "5.2.0"
+  }
 }
