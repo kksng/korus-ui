@@ -41,14 +41,21 @@ export const CheckBoxTreeGroup: React.FC<CheckBoxTreeGroupProps> = (props: Check
     },
   );
 
+  /**
+   * Handler updates tree state on expand icon click
+   * If group was expanded sets isOpen flag to true for current item state inside tree state
+   */
   const handleIconClick = (): void => {
     setState((prevState: Map<number, ItemState>): Map<number, ItemState> => {
+      // get current item state from tree state
       const currentItemState = prevState.get(id);
 
       if (!currentItemState) return prevState;
 
+      // Update isOpen value for current item state
       const updatedCurrentItemState: [number, ItemState] = [id, { ...currentItemState, isOpen: !isOpenProp }];
 
+      // return updated tree state
       return new Map([...prevState, updatedCurrentItemState]);
     });
   };

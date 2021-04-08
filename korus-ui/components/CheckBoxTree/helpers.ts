@@ -11,32 +11,84 @@ import {
  */
 export const getHasChildItems = (item: CheckBoxTreeItemType): item is CheckBoxTreeGroupItem => !!item?.children && item.children.length > 0;
 
+/**
+ * Helper checks if there are child items in item's state
+ * @param {ItemState} item
+ * @returns {boolean}
+ */
+export const getHasChildItemsInState = (item: ItemState): boolean => !!(item.childrenIds && item.childrenIds.length > 0);
 
 /**
  * Helper defines if all checkboxes in subgroup are selected
- * @param {ItemState} state
+ * @param {number[]} childrenIds
+ * @param {Set<number>} selectedChildrenIds
  *
  * @returns {boolean}
  */
-export const getIsAllSelected = (state: ItemState): boolean => !!state.childrenIds?.every((childId) => state.selectedChildrenIds?.has(childId));
+export const getIsAllSelected = (childrenIds: number[], selectedChildrenIds: Set<number>): boolean => childrenIds.every((childId) => selectedChildrenIds.has(childId));
 
 /**
  * Helper defines if none of checkboxes in subgroup are selected
- * @param {ItemState} state
+ * @param {Set<number>} selectedChildrenIds
  *
  * @returns {boolean}
  */
-export const getIsNothingSelected = (state: ItemState): boolean => state.selectedChildrenIds?.size === 0;
+export const getIsNothingSelected = (selectedChildrenIds: Set<number>): boolean => selectedChildrenIds.size === 0;
 
 /**
- * Helper defines if some checkboxes in subgroup are selected
+ * Helper defines if some checkboxes in subgroup are selected or partly selected
+ * @param {number[]} childrenIds
+ * @param {Set<number>} selectedChildrenIds
  * @param {ItemState} state
  * @param {Map<number, ItemState>} tree state
  *
  * @returns {boolean}
  */
-export const getIsSomeSelected = (state: ItemState, treeState: Map<number, ItemState>): boolean => state.childrenIds?.some((childId) => treeState.get(childId)?.value === SelectedState.Some) || !getIsNothingSelected(state);
+export const getIsSomeSelected = (
+  childrenIds: number[],
+  selectedChildrenIds: Set<number>,
+  treeState: Map<number, ItemState>,
+): boolean => childrenIds.some((childId) => treeState.get(childId)?.value === SelectedState.Some) || !getIsNothingSelected(selectedChildrenIds);
 
+/**
+ * Helper returns new selectedChildren Set with all child items ids
+ * @param {ItemState} item
+ * @returns {Set<number>}
+ */
+export const getAllChildItemsSelected = (item: ItemState): Set<number> => {
+  const newSelectedChildrenIds = new Set<number>();
+
+  item.childrenIds?.forEach((childId) => newSelectedChildrenIds.add(childId));
+
+  return newSelectedChildrenIds;
+};
+
+/**
+ * Helper gets new child item state
+ * @param {ItemState} params.childItem
+ * @param {SelectedState} params.parentValue
+ *
+ * @returns {ItemState}
+ */
+export const getUpdatedChildItemState = ({
+  childItem,
+  parentValue,
+}: {
+  childItem: ItemState,
+  parentValue: SelectedState,
+}): ItemState => {
+  // if item has children get new selected children ids
+  const newSelectedChildrenIds = ((): Set<number> | undefined => {
+    if (!getHasChildItemsInState(childItem)) return childItem.selectedChildrenIds;
+    return parentValue === SelectedState.All ? getAllChildItemsSelected(childItem) : new Set<number>();
+  })();
+
+  return {
+    ...childItem,
+    selectedChildrenIds: newSelectedChildrenIds,
+    value: parentValue,
+  };
+};
 
 /**
  * Helper gets part of tree state with children Items, performs state updates
@@ -51,16 +103,16 @@ export const getIsSomeSelected = (state: ItemState, treeState: Map<number, ItemS
 export const getUpdatedChildrenState = ({
   childrenIds,
   treeState,
-  value,
+  parentValue,
   childrenState,
 }: {
   childrenIds?: number[],
   childrenState?: Map<number, ItemState>,
+  parentValue: SelectedState,
   treeState: Map<number, ItemState>,
-  value: SelectedState,
 }): Map<number, ItemState> => {
   const newChildrenState = childrenState ?? new Map<number, ItemState>();
-
+  // Check if there are children to update
   if (!childrenIds || childrenIds.length === 0) return newChildrenState;
 
   childrenIds.forEach((childId) => {
@@ -68,25 +120,21 @@ export const getUpdatedChildrenState = ({
 
     if (childItem === undefined) return;
 
-    const hasChildren = childItem.childrenIds && childItem.childrenIds.length > 0;
+    const updatedChildItemState = getUpdatedChildItemState({
+      childItem,
+      parentValue,
+    });
 
-    if (hasChildren) {
-      if (value === SelectedState.All) {
-        childItem.childrenIds?.forEach((childrenId) => childItem.selectedChildrenIds?.add(childrenId));
-      }
-      if (value === SelectedState.Nothing) {
-        childItem.childrenIds?.forEach((childrenId) => childItem.selectedChildrenIds?.delete(childrenId));
-      }
-    }
+    // Add updated item state to new childrens' state
+    newChildrenState.set(childId, updatedChildItemState);
 
-    newChildrenState.set(childId, { ...childItem, value });
-
-    if (hasChildren) {
+    // If current child item has children, also update their state
+    if (getHasChildItemsInState(childItem)) {
       getUpdatedChildrenState({
         childrenIds: childItem.childrenIds!,
         childrenState: newChildrenState,
+        parentValue,
         treeState,
-        value,
       });
     }
   });
@@ -109,51 +157,67 @@ export const getUpdatedParentsState = ({
   parentId,
   currentId,
   treeState,
-  value,
+  childValue,
   parentsState,
 }: {
+  childValue: SelectedState,
   currentId: number,
   parentId?: number,
   parentsState?: Map<number, ItemState>,
   treeState: Map<number, ItemState>,
-  value: SelectedState,
 }): Map<number, ItemState> => {
   const newParentsState: Map<number, ItemState> = parentsState ?? new Map<number, ItemState>();
-
+  // If it is root item, do not perform updates
   if (parentId === undefined) return newParentsState;
 
   const parentState = treeState.get(parentId);
 
   if (parentState === undefined) return newParentsState;
 
-  if (value === SelectedState.All) {
-    parentState.selectedChildrenIds?.add(currentId);
-  } else {
-    parentState.selectedChildrenIds?.delete(currentId);
-  }
+  // Get new selected children ids
+  const newSelectedChildrenIds = ((): Set<number> | undefined => {
+    if (!parentState.selectedChildrenIds) return undefined;
 
+    const selectedChildrenIds = new Set<number>([...parentState.selectedChildrenIds]);
+
+    if (childValue === SelectedState.All) {
+      selectedChildrenIds.add(currentId);
+    } else {
+      selectedChildrenIds.delete(currentId);
+    }
+    return selectedChildrenIds;
+  })();
+
+  // Get new parent's item value depending on children state
   const newValue = ((): SelectedState => {
-    if (value === SelectedState.All) {
-      return getIsAllSelected(parentState) ? SelectedState.All : SelectedState.Some;
+    if (!parentState.childrenIds || !newSelectedChildrenIds) return parentState.value;
+    // if child item selected, check if other child items are selected
+    if (childValue === SelectedState.All) {
+      return getIsAllSelected(parentState.childrenIds, newSelectedChildrenIds) ? SelectedState.All : SelectedState.Some;
     }
-    if (value === SelectedState.Nothing) {
-      return getIsSomeSelected(parentState, treeState) ? SelectedState.Some : SelectedState.Nothing;
+    // if child item is not selected, check if other child items are selected or partly selected
+    if (childValue === SelectedState.Nothing) {
+      return getIsSomeSelected(parentState.childrenIds, newSelectedChildrenIds, new Map([...treeState, ...newParentsState])) ? SelectedState.Some : SelectedState.Nothing;
     }
+    // if child item is partly selected, current item also should be partly selected
     return SelectedState.Some;
   })();
 
+  // Add updated item state to new parents' state
   newParentsState.set(parentId, {
     ...parentState,
+    selectedChildrenIds: newSelectedChildrenIds,
     value: newValue,
   });
 
+  // If current parent item has parents, also update their state
   if (parentState.parentId !== undefined) {
     getUpdatedParentsState({
+      childValue: newValue,
       currentId: parentId,
       parentId: parentState.parentId,
       parentsState: newParentsState,
       treeState,
-      value: newValue,
     });
   }
 
@@ -184,17 +248,19 @@ export const getTreeStateFromData = ({
       id, children,
     } = item;
 
+    // Add current item state to treeState
     treeState.set(id, {
-      childrenIds: children && children.length > 0 ? children.map((child) => child.id) : [],
+      childrenIds: getHasChildItems(item) ? children!.map((child) => child.id) : [],
       isOpen: false,
       parentId,
       selectedChildrenIds: new Set(),
       value: SelectedState.Nothing,
     });
 
-    if (children && children.length > 0) {
+    // Add child items to treeState if any (without nesting)
+    if (getHasChildItems(item)) {
       getTreeStateFromData({
-        items: children,
+        items: children!,
         parentId: id,
         state: treeState,
       });
@@ -211,20 +277,17 @@ export const getTreeStateFromData = ({
  * @returns {CheckBoxTreeChangeEvent}
  */
 export const getCustomEvent = (treeState: Map<number, ItemState>): CheckBoxTreeChangeEvent => {
-  const component: CheckBoxTreeChangeEvent['component'] = {
-    selected: [],
-    selectedGroups: [],
-  };
-
-  component.selected = [...treeState]
-    .filter(([, item]) => item.value === SelectedState.All && (!item.childrenIds || item.childrenIds.length === 0))
+  // Get all selected items without children
+  const selected = [...treeState]
+    .filter(([, item]) => item.value === SelectedState.All && !getHasChildItemsInState(item))
     .map(([itemId]) => itemId);
 
-  component.selectedGroups = [...treeState]
-    .filter(([, item]) => item.value === SelectedState.All && item?.childrenIds && item.childrenIds.length > 0)
+  // Get all selected items with children
+  const selectedGroups = [...treeState]
+    .filter(([, item]) => item.value === SelectedState.All && getHasChildItemsInState(item))
     .map(([itemId]) => itemId);
 
-  return { component };
+  return { component: { selected, selectedGroups } };
 };
 
 /**
@@ -244,34 +307,39 @@ export const getUpdatedTreeState = ({
   newValue: SelectedState,
   prevState: Map<number, ItemState>,
 }): Map<number, ItemState> => {
+  // Get current item state from tree state
   const currentItemState = prevState.get(id);
 
   if (!currentItemState) return prevState;
 
-  if (currentItemState.childrenIds && currentItemState.childrenIds.length > 0) {
-    if (newValue === SelectedState.All) {
-      currentItemState.childrenIds.forEach((childrenId) => currentItemState.selectedChildrenIds?.add(childrenId));
-    }
-    if (newValue === SelectedState.Nothing) {
-      currentItemState.childrenIds.forEach((childrenId) => currentItemState.selectedChildrenIds?.delete(childrenId));
-    }
-  }
+  // if current item has children get new selected children ids
+  const newSelectedChildrenIds = ((): Set<number> | undefined => {
+    if (!getHasChildItemsInState(currentItemState)) return currentItemState.selectedChildrenIds;
+    return newValue === SelectedState.All ? getAllChildItemsSelected(currentItemState) : new Set<number>();
+  })();
 
-  const updatedCurrentItemState: [number, ItemState] = [id, { ...currentItemState, value: newValue }];
+  const updatedCurrentItemState: [number, ItemState] = [id, {
+    ...currentItemState,
+    selectedChildrenIds: newSelectedChildrenIds,
+    value: newValue,
+  }];
 
+  // Get updated part of tree state for child items including deeply nested
   const updatedChildrenState = getUpdatedChildrenState({
     childrenIds: currentItemState.childrenIds,
+    parentValue: newValue,
     treeState: prevState,
-    value: newValue,
   });
 
+  // Get updated part of tree state for parent items up to root item
   const updatedParentsState = getUpdatedParentsState({
+    childValue: newValue,
     currentId: id,
     parentId: currentItemState?.parentId,
     treeState: prevState,
-    value: newValue,
   });
 
+  // Merge all updated parts of tree state into new tree state
   return new Map([
     ...prevState,
     ...updatedChildrenState,
