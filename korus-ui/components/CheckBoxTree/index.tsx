@@ -51,7 +51,7 @@ export const CheckBoxTree = React.forwardRef((props: CheckBoxTreeProps, ref?: Re
         prevState,
       }));
     }));
-  }, [defaultValue]);
+  }, []);
 
   const handleChange = createChangeHandler({
     onChange,
