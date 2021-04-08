@@ -92,7 +92,7 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
       <L.H4>Value set as null</L.H4>
       <L.DateTimeRange
         _width50
-        value={null}
+        value={[null, null]}
         name="valueSetNull"
       />
       <br />

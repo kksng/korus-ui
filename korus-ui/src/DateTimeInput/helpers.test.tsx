@@ -59,9 +59,9 @@ describe('getMonthNameOfDate tests', () => {
 describe('normalizeValue tests', () => {
   it('Should return normalized date when value greater than max', () => {
     const params = {
+      max: new Date('08.31.2019'),
       format: 'dd.MM.yyyy',
       value: '01.09.2019',
-      max: new Date('08.31.2019'),
     };
     const expected = '31.08.2019';
     const received = helpers.normalizeValue(params);
@@ -70,9 +70,9 @@ describe('normalizeValue tests', () => {
 
   it('Should return normalized date when value less than min', () => {
     const params = {
+      min: new Date('08.31.2019'),
       format: 'dd.MM.yyyy',
       value: '30.08.2019',
-      min: new Date('08.31.2019'),
     };
     const expected = '31.08.2019';
     const received = helpers.normalizeValue(params);
@@ -81,10 +81,10 @@ describe('normalizeValue tests', () => {
 
   it('Should return value if value located in range', () => {
     const params = {
-      format: 'dd.MM.yyyy',
-      value: '10.09.2019',
       min: new Date('08.31.2019'),
       max: new Date('09.30.2019'),
+      format: 'dd.MM.yyyy',
+      value: '10.09.2019',
     };
     const expected = '10.09.2019';
     const received = helpers.normalizeValue(params);
@@ -94,32 +94,32 @@ describe('normalizeValue tests', () => {
 
 describe('isTimeWithinLimits tests', () => {
   it('Should return true when value is correct', () => {
-    const mask = '##:##';
-    const maskedValue = '13:15';
+    const mask='##:##';
+    const maskedValue='13:15';
     expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(true);
   });
 
   it('Should return false when value greater than limit', () => {
-    const mask = '##:##';
-    const maskedValue = '24:24';
+    const mask='##:##';
+    const maskedValue='24:24';
     expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(false);
   });
 
   it('Should return true when value equal to zero', () => {
-    const mask = '##:##';
-    const maskedValue = '00:00';
+    const mask='##:##';
+    const maskedValue='00:00';
     expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(true);
   });
 
   it('Should return false when seconds greater than limit', () => {
-    const mask = '##:##:##';
-    const maskedValue = '07:24:61';
+    const mask='##:##:##';
+    const maskedValue='07:24:61';
     expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(false);
   });
 
   it('Should return false when value invalid', () => {
-    const mask = '##:##:##';
-    const maskedValue = '-07:24:61';
+    const mask='##:##:##';
+    const maskedValue='-07:24:61';
     expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(false);
   });
 });
