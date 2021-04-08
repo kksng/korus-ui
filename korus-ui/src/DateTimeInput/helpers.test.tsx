@@ -1,7 +1,7 @@
 import * as helpers from './helpers';
 
 describe('stringToDate tests', () => {
-  it('Shoulr return null when value undefined', () => {
+  it('Should return null when value undefined', () => {
     const format = 'dd.MM.yyyy';
     const string = undefined;
     const expected = null;
@@ -9,9 +9,9 @@ describe('stringToDate tests', () => {
     expect(received).toBe(expected);
   });
 
-  it('Should return null when format undefined', () => {
-    const format = undefined;
-    const string = '30.04.1991';
+  it('Should return null when string include "_" ', () => {
+    const format = 'dd.MM.yyyy';
+    const string = '30_04_1991';
     const expected = null;
     const received = helpers.stringToDate(string, format);
     expect(received).toBe(expected);
@@ -59,8 +59,8 @@ describe('getMonthNameOfDate tests', () => {
 describe('normalizeValue tests', () => {
   it('Should return normalized date when value greater than max', () => {
     const params = {
-      value: '01.09.2019',
       format: 'dd.MM.yyyy',
+      value: '01.09.2019',
       max: new Date('08.31.2019'),
     };
     const expected = '31.08.2019';
@@ -70,8 +70,8 @@ describe('normalizeValue tests', () => {
 
   it('Should return normalized date when value less than min', () => {
     const params = {
-      value: '30.08.2019',
       format: 'dd.MM.yyyy',
+      value: '30.08.2019',
       min: new Date('08.31.2019'),
     };
     const expected = '31.08.2019';
@@ -81,10 +81,10 @@ describe('normalizeValue tests', () => {
 
   it('Should return value if value located in range', () => {
     const params = {
-      value: '10.09.2019',
       format: 'dd.MM.yyyy',
+      value: '10.09.2019',
       min: new Date('08.31.2019'),
-      max: new Date('09.30.2019')
+      max: new Date('09.30.2019'),
     };
     const expected = '10.09.2019';
     const received = helpers.normalizeValue(params);
