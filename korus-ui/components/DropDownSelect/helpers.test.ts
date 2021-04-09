@@ -26,7 +26,7 @@ describe('getInputValue tests', () => {
     expect(received).toBe(expected);
   });
 
-  it('', () => {
+  it('Should return string if filterValue is null', () => {
     const value = 'London';
     const filterValue = null;
     const expected = 'London';
@@ -34,7 +34,7 @@ describe('getInputValue tests', () => {
     expect(received).toBe(expected);
   });
 
-  it('', () => {
+  it('Should return empty string if value is empty and filterValue is null', () => {
     const value = '';
     const filterValue = null;
     const expected = '';
@@ -51,7 +51,7 @@ describe('getInputValue tests', () => {
   });
 
   // it('', () => {
-  //   const value = { 
+  //   const value = {
   //     city: 'Stuttgard',
   //     city1: 'Berlin',
   //   };
