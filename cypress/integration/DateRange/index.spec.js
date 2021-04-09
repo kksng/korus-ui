@@ -38,29 +38,12 @@ describe('DateRange', () => {
     });
 
     it('Should render DateRange with value set as date', () => {
-      cy.name('MinMaxDatePicker-from')
+      cy.name('DatePickerNullReset-from')
         .should('be.visible')
-        .name('MinMaxDatePicker-to')
-        .should('be.visible');
-    });
-
-    it('Should render the datepicker with empty strings and with a null value', () => {
-      cy.name('resetButton')
-        .click()
-        .name('DatePickerStringReset-from')
-        .should('be.visible')
-        .name('DatePickerStringReset-to')
-        .should('be.visible')
-        .name('DatePickerNullArrayReset-from')
-        .should('be.visible')
-        .name('DatePickerNullArrayReset-to')
-        .should('be.visible')
-        .name('DatePickerNullReset-from')
-        .should('be.visible')
+        .and('have.value', '05.06.2019')
         .name('DatePickerNullReset-to')
         .should('be.visible')
-        .name('toInitialStateButton')
-        .click();
+        .and('have.value', '15.06.2019');
     });
 
     it('Should render with custom names of months, weekdays and short names', () => {
