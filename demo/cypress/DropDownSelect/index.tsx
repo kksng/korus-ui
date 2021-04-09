@@ -419,6 +419,17 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           }}
           _width40
         />
+
+        <L.DropDownSelect
+          id="DDSRequired"
+          isRequired
+          data={data}
+          textField="city"
+          placeholder="Choose a city"
+          form="form"
+          name="name"
+          _width40
+        />
       </L.Div>
     </>
   );

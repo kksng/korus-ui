@@ -503,4 +503,14 @@ describe('DropDownSelect', () => {
         .blur();
     });
   });
+
+  describe('Validation', () => {
+    it('Should add class "danger" on blur if is required and value is empty', () => {
+      cy.get('#DDSRequired')
+        .focus()
+        .blur()
+        .parent()
+        .should('have.class', theme.inputWrapperInvalid)
+    });
+  });
 });
