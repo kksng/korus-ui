@@ -1,6 +1,67 @@
 // @ts-nocheck
 import * as helpers from './helpers';
 
+describe('getInputValue tests', () => {
+  it('Should return value if filterValue is string', () => {
+    const value = 'London';
+    const filterValue = 'd';
+    const expected = 'London';
+    const received = helpers.getInputValue(value, filterValue);
+    expect(received).toBe(expected);
+  });
+
+  it('Should return value if filterValue is empty string', () => {
+    const value = 'London';
+    const filterValue = '';
+    const expected = 'London';
+    const received = helpers.getInputValue(value, filterValue);
+    expect(received).toBe(expected);
+  });
+
+  it('Should return value if filtervalue is number', () => {
+    const value = 'London';
+    const filterValue = 9;
+    const expected = 'London';
+    const received = helpers.getInputValue(value, filterValue);
+    expect(received).toBe(expected);
+  });
+
+  it('', () => {
+    const value = 'London';
+    const filterValue = null;
+    const expected = 'London';
+    const received = helpers.getInputValue(value, filterValue);
+    expect(received).toBe(expected);
+  });
+
+  it('', () => {
+    const value = '';
+    const filterValue = null;
+    const expected = '';
+    const received = helpers.getInputValue(value, filterValue);
+    expect(received).toBe(expected);
+  });
+
+  it('Should return string if filtervalue is empty string and value is number', () => {
+    const value = 100500;
+    const filterValue = '';
+    const expected = '100500';
+    const received = helpers.getInputValue(value, filterValue);
+    expect(received).toBe(expected);
+  });
+
+  // it('', () => {
+  //   const value = { 
+  //     city: 'Stuttgard',
+  //     city1: 'Berlin',
+  //   };
+  //   const textField = 'city';
+  //   const expected = 'Stuttgard';
+  //   const received = helpers.getInputValue(value, textField);
+  //   expect(received).toBe(expected);
+  // });
+});
+
 describe('DropDownSelect filterData', () => {
   it('should return undefined', () => {
     const props = {};

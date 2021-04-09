@@ -19,6 +19,13 @@ describe('DropDownSelect', () => {
   });
 
   describe('Display', () => {
+    it('Should render the component', () => {
+      cy.get('#DDSBoundingContainerRef')
+        .should('be.visible')
+        .parent()
+        .snapshot();
+    });
+
     it('Should render ClearButton', () => {
       cy.get('#DDSDisabled')
         .next()
@@ -54,6 +61,58 @@ describe('DropDownSelect', () => {
         .should('have.length', 3)
         .get('#toggleIsOpen')
         .click()
+    });
+
+    it('Should render value', () => {
+      cy.get('#DDSCompareObjectsBy')
+        .should('be.visible')
+        .and('have.value', 'London')
+        .snapshot();
+    });
+
+    it('Should render data', () => {
+      cy.get('#DDSCompareObjectsBy')
+        .next()
+        .click()
+        .parents(wrapper)
+        .find(`.${theme.container}`)
+        .should('be.visible')
+        .and('have.class', `${theme.containerVisible}`)
+        .snapshot()
+        .get('#DDSCompareObjectsBy')
+        .blur();
+    });
+
+    it('Should render with string data', () => {
+      cy.get('#DDSBoundingContainerRef')
+        .next()
+        .click()
+        .parents(wrapper)
+        .find(`.${theme.container}`)
+        .should('be.visible')
+        .and('have.class', `${theme.containerVisible}`)
+        .get('#DDSBoundingContainerRef')
+        .blur();
+    });
+
+    it('Should render with object data', () => {
+      cy.get('#DDSSortSuggestions')
+        .next()
+        .click()
+        .parents(wrapper)
+        .find(`.${theme.container}`)
+        .should('be.visible')
+        .and('have.class', `${theme.containerVisible}`)
+        .get('#DDSSortSuggestions')
+        .blur();
+    });
+
+    it('Should render component if no data', () => {
+      cy.get('#noData')
+        .should('be.visible')
+        .and('have.value', 'no data, lol')
+        .parents(wrapper)
+        .should('have.class', 'no-data');
     });
   });
 
@@ -95,6 +154,7 @@ describe('DropDownSelect', () => {
       .parents(wrapper)
       .find('.loader-container')
       .should('be.visible')
+      .snapshot()
       .find('.loader-element')
       .should('be.visible')
       .get('#toggleIsLoading')
@@ -246,6 +306,14 @@ describe('DropDownSelect', () => {
       });
     });
 
+    it('onEnterPress', () => {
+      cy.get('#Opened')
+        .type('{enter}')
+        .then(() => {
+          expect(stub).to.be.calledWith('Enter');
+        });
+    });
+
     it('onBlur', () => {
       cy.get('#DDSonBlur')
         .clear()
@@ -278,7 +346,7 @@ describe('DropDownSelect', () => {
         .windowFocus()
         .parents(wrapper)
         .find(list)
-        .should('not.exist')
+        .should('not.exist');
     });
 
     it('OnFocus: should not open on focus event', () => {
@@ -286,16 +354,16 @@ describe('DropDownSelect', () => {
         .focus()
         .parents(wrapper)
         .find(container)
-        .should('not.exist')
-    })
+        .should('not.exist');
+    });
 
     it('OnClick: should open on click event', () => {
       cy.get('#DDSFocusCheck')
         .click()
         .parents(wrapper)
         .find(container)
-        .should('exist')
-    })
+        .should('exist');
+    });
 
     it('OnChange', () => {
       cy.get('#DDSCompareObjectsByObjects')
@@ -323,6 +391,13 @@ describe('DropDownSelect', () => {
   });
 
   describe('Interaction', () => {
+    it('Should attach a class name through "_" and className prop', () => {
+      cy.get('#DDSBoundingContainerRef')
+        .parents(wrapper)
+        .should('have.class', 'attached-by-underlining')
+        .and('have.class', 'attachedByClassNameProp');
+    });
+
     it('Should clear input on clear button click', () => {
       cy.get('#DDSBoundingContainerRef')
         .clear()
@@ -359,7 +434,43 @@ describe('DropDownSelect', () => {
         .parents('.suggestion-wrapper.visible')
         .find('.suggestion-item.highlighted.selected')
         .eq(1)
-        .should('contain', 'Minsk')
+        .should('contain', 'Minsk');
+    });
+
+    it('CompareObjectsBy with function as value', () => {
+      cy.get('#DDSCompareObjectsWithFuctionInId')
+        .click()
+        .parents(wrapper)
+        .find(container)
+        .contains('Madrid')
+        .click()
+        .get('#DDSCompareObjectsWithFuctionInId')
+        .click()
+        .parents(wrapper)
+        .children('.suggestion-wrapper.visible')
+        .find('.suggestion-item.highlighted.selected')
+        .eq(0)
+        .should('contain', 'Madrid')
+        .parents('.suggestion-wrapper.visible')
+        .find('.suggestion-item.highlighted.selected')
+        .eq(1)
+        .should('contain', 'Madrid');
+    });
+
+    it('Should not compare if the string does not match data objects structure', () => {
+      cy.get('#notCompared')
+        .click()
+        .parents(wrapper)
+        .find(container)
+        .contains('Madrid')
+        .click()
+        .get('#notCompared')
+        .click()
+        .parents(wrapper)
+        .children('.suggestion-wrapper.visible')
+        .find('.suggestion-item')
+        .should('not.have.class', 'highlighted')
+        .and('not.have.class', 'selected');
     });
 
     it('SortSuggestions', () => {
@@ -372,7 +483,7 @@ describe('DropDownSelect', () => {
         .parents('.suggestion-wrapper.visible')
         .find(item)
         .eq(13)
-        .should('contain', 'Tallin')
+        .should('contain', 'Tallin');
     });
   });
 
@@ -388,7 +499,8 @@ describe('DropDownSelect', () => {
         .click()
         .get('#DDSLongStrings')
         .type('Some ')
-        .should('have.value', 'Some Information about the status of payments for taxes, fees, insurance premiums, penalties, fines, and interest');
+        .should('have.value', 'Some Information about the status of payments for taxes, fees, insurance premiums, penalties, fines, and interest')
+        .blur();
     });
   });
 });
