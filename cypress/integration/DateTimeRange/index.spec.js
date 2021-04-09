@@ -87,21 +87,27 @@ describe('DateTimeRange', () => {
     it('Should render when value set as string', () => {
       cy.name('valueSetString-from')
         .should('be.visible')
+        .and('have.value', '30.04.1991 00:00')
         .name('valueSetString-to')
         .should('be.visible')
+        .and('have.value', '30.05.1991 05:00')
     });
 
     it('Should render when value set as Date', () => {
       cy.name('valueSetDate-from')
         .should('be.visible')
+        .and('have.value', '05.01.2020 00:00')
         .name('valueSetDate-to')
         .should('be.visible')
+        .and('have.value', '05.01.2020 05:00')
     });
 
     it('Should render when value set as null', () => {
       cy.name('valueSetNull-from')
         .should('be.visible')
+        .and('have.value', '')
         .name('valueSetNull-to')
+        .and('have.value', '')
         .should('be.visible')
     });
   });

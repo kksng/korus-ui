@@ -4,11 +4,6 @@ import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 
 export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
-  const [value, setValue] = React.useState();
-  const [props, setProps] = React.useState<{
-    isDisabled: boolean | undefined;
-    isOpen: boolean | undefined;
-  }>({ isDisabled: false, isOpen: undefined });
   const [DTRValue, setDTRValue] = React.useState<[string, string]>([
     '12.05.2018 12:30',
     '15.05.2018 16:30',
@@ -27,9 +22,9 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
             max={new Date(2019, 5, 20, 17, 0)}
             value={DTRValue}
             name="DateTimeRange"
-            onFocus={(ev) => console.log('Focus', ev)}
-            onBlur={(ev) => console.log('Blur', ev)}
-            onChange={(ev) => {
+            onFocus={(ev): void => console.log('Focus', ev)}
+            onBlur={(ev): void => console.log('Blur', ev)}
+            onChange={(ev): void => {
               const {
                 component: { date, value, name },
               } = ev;
@@ -40,7 +35,6 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
             }}
             isRequired
             _width50
-            {...props}
           />
         </L.Div>
       </L.Div>
@@ -53,23 +47,22 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
         format="dd-е число  MM-го месяца  yyyy-го года в hh:mm"
         name="secondRange"
         placeholder="secondRange"
-        onEnterPress={(ev) => console.log('Enter', ev)}
+        onEnterPress={(ev): void => console.log('Enter', ev)}
       />
       <br />
-      <L.H4>Custom names and short names </L.H4>  
+      <L.H4>Custom names and short names </L.H4>
       <L.DateTimeRange
-          _width50
-          min={new Date(2012, 4, 4, 16, 30)}
-          max={new Date(2012, 3, 4, 17, 0)}      
-          monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
-          shortMonthNames={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
-          weekDayNames={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}
-          shortWeekDayNames={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
-          onEnterPress={console.log}
-          value={value}
-          name="CustomMonthsDateTimeRange"
-          placeholder="CustomMonthsDateTimeRange"
-         />
+        _width50
+        min={new Date(2012, 4, 4, 16, 30)}
+        max={new Date(2012, 3, 4, 17, 0)}
+        monthNames={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
+        shortMonthNames={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+        weekDayNames={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}
+        shortWeekDayNames={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+        onEnterPress={console.log}
+        name="CustomMonthsDateTimeRange"
+        placeholder="CustomMonthsDateTimeRange"
+      />
       <br />
       <L.H4 _title>isDisabled</L.H4>
       <L.Div style={{ display: 'flex' }} _disabledField>
@@ -78,13 +71,13 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
           _width50
         />
       </L.Div>
-       <br />
+      <br />
       <L.H4>Value set as string</L.H4>
       <L.DateTimeRange
         _width50
         value={[
-          '30.04.1991 00:00', 
-          '30.05.1991'
+          '30.04.1991 00:00',
+          '30.05.1991 05:00',
         ]}
         name="valueSetString"
       />
@@ -101,7 +94,7 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
         _width50
         value={[
           new Date('01.05.2020 00:00'),
-          new Date('01.05.2020')
+          new Date('01.05.2020 05:00'),
         ]}
         name="valueSetDate"
       />
@@ -113,8 +106,8 @@ export const DateTimeRange = (storyProps: StoryProps): React.ReactElement => {
         max={new Date(2016, 5, 20)}
         min={new Date(2016, 4, 3)}
         isOpen
-        />
-        <br />
+      />
+      <br />
     </L.Div>
   );
 };
