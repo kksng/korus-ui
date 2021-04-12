@@ -41,7 +41,7 @@ exports[`NumericTextBox SNAPSHOTS controllable mode should render format 2`] = `
         aria-invalid="false"
         class="numeric-text-box-input"
         inputmode="numeric"
-        value="0,2359 ₽"
+        value="0,2358 ₽"
       />
       <div
         class="numeric-text-box-arrow-buttons"

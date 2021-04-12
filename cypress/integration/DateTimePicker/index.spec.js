@@ -1,3 +1,5 @@
+import { defaultDateTimeInputTheme as theme } from '../../../korus-ui/src/DateTimeInput/theme';
+
 describe('DateTimePicker', () => {
   beforeEach(() => {
     cy.visit('/cypress/datetimepicker');
@@ -39,30 +41,60 @@ describe('DateTimePicker', () => {
   });
 
   describe('Display', () => {
-    it('Should be disabled', () => {
+    it('Should render DateTimePicker', () => {
+      cy.name('datetimepicker')
+        .should('be.visible')
+        .snapshot();
+    });
+
+    it('Should render placeholder', () => {
+      cy.name('datetimepicker')
+        .clear()
+        .should('have.attr', 'placeholder', 'datetimepicker');
+    });
+
+    it('Should be disabled when isDisabled', () => {
       cy.get('[data-test="dp4"]')
         .find('input')
         .should('be.disabled')
         .parent()
-        .should('have.class', 'disabled-state');
+        .should('have.class', `${theme.wrapperDisabled}`);
+    });
+
+    it('Should render if value set as string', () => {
+      cy.name('valueSetString')
+        .should('be.visible')
+        .and('have.value', '30.04.1991 00:00');
+    });
+
+    it('Should render if value set as Date', () => {
+      cy.name('valueSetNull')
+        .should('be.visible')
+        .and('have.value', '');
+    });
+
+    it('Should render if value set as null', () => {
+      cy.name('valueSetDate')
+        .should('be.visible')
+        .and('have.value', '05.01.2020 00:00');
     });
   });
 
   describe('Interaction', () => {
     it('Opening and closing the calendar', () => {
       cy.get('#basic')
-        .find('.datepicker-calendar-icon')
+        .find(`.${theme.calendarIcon}`)
         .should('be.visible')
         .click()
-        .parents()
-        .find('.calendar-wrapper')
-        .should('have.class', 'visible')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.calendar.wrapper}`)
+        .should('have.class', `${theme.calendar.wrapperVisible}`)
         .and('be.visible')
         .parent()
-        .find('.datepicker-calendar-icon')
+        .find(`.${theme.calendarIcon}`)
         .click()
-        .parents()
-        .find('.calendar-wrapper')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.calendar.wrapper}`)
         .should('not.exist');
     });
 
@@ -90,8 +122,8 @@ describe('DateTimePicker', () => {
         })
         .name('datetimepicker')
         .parent()
-        .should('have.class', 'danger')
-        .and('have.class', 'required');
+        .should('have.class', `${theme.inputWrapperInvalid}`)
+        .and('have.class', `${theme.inputWrapperRequired}`);
     });
 
     it('Entering values from the keyboard', () => {
@@ -122,30 +154,89 @@ describe('DateTimePicker', () => {
 
     it('Selecting a date from the calendar', () => {
       cy.get('#basic')
-        .find('.datepicker-calendar-icon')
+        .find(`.${theme.calendarIcon}`)
         .click()
-        .parents()
-        .find('.calendar-wrapper')
-        .get('.calendar-date-cell[title="23 октября 2018"]')
-        .should('have.class', 'active')
-        .and('have.class', 'selected')
-        .get('.calendar-date-cell[title="22 октября 2018"]')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.calendar.wrapper}`)
+        .get(`.${theme.calendar.dateCell}[title="23 октября 2018"]`)
+        .should('have.class', `${theme.calendar.dateCellActive}`)
+        .and('have.class', `${theme.calendar.dateCellSelected}`)
+        .get(`.${theme.calendar.dateCell}[title="22 октября 2018"]`)
         .click()
         .name('datetimepicker')
         .should('contain.value', '22.10.18')
         .parent()
-        .find('.datepicker-calendar-icon')
+        .find(`.${theme.calendarIcon}`)
         .click()
-        .parents()
-        .find('.calendar-wrapper')
-        .get('.calendar-prev-button')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.calendar.prevButton}`)
         .click()
         .parent()
         .should('contain', 'Сентябрь')
-        .get('.calendar-date-cell[title="11 сентября 2018"]')
+        .get(`.${theme.calendar.dateCell}[title="11 сентября 2018"]`)
         .click()
         .name('datetimepicker')
-        .should('contain.value', '11.09.18');
+        .should('contain.value', '11.09.18')
+        .clear();
+    });
+
+    it('Should work when isOpen', () => {
+      cy.name('openedDatePicker')
+        .should('be.visible')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.calendar.wrapper}`)
+        .should('be.visible')
+        .and('have.class', `${theme.calendar.wrapperVisible}`)
+        .contains('19')
+        .click()
+        .name('openedDatePicker')
+        .should('have.value', '19.06.2016 00:00')
+        .clear();
+    });
+
+    it('Should work with different format', () => {
+      cy.name('openedDatePicker')
+        .should('be.visible')
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.calendar.wrapper}`)
+        .should('be.visible')
+        .and('have.class', `${theme.calendar.wrapperVisible}`)
+        .contains('19')
+        .click()
+        .name('openedDatePicker')
+        .should('have.value', '19.06.2016 00:00')
+        .clear()
+        .name('anotherFormat')
+        .should('be.visible')
+        .next()
+        .click()
+        .parents(`.${theme.wrapper}`)
+        .find(`.${theme.calendar.wrapper}`)
+        .should('be.visible')
+        .and('have.class', `${theme.calendar.wrapperVisible}`)
+        .contains('19')
+        .click({ force: true} )
+        .name('anotherFormat')
+        .should('have.value', '19-е число  06-го месяца  2016-го года в 00:00')
+        .clear();
+    });
+
+    it('Should work with custom names of days, weeks, months', () => {
+      cy.name('CustomMonthsDatePicker')
+         .focus()
+         .next()
+         .click()
+         .parents(`.${theme.wrapper}`)
+         .find(`.${theme.calendar.title}`)
+         .should('contain', 'June')
+         .parents(`.${theme.calendar.wrapper}`)
+         .find(`.${theme.calendar.weekDaysRow}`)
+         .should('contain', 'Mon')
+         .and('contain', 'Sun')
+         .name('CustomMonthsDatePicker')
+         .type('{enter}')
+         .should('have.value', '20.06.2016 00:00')
+         .clear();
     });
 
     it('Using the TAB button', () => {
@@ -153,18 +244,18 @@ describe('DateTimePicker', () => {
         .clear()
         .focus()
         .tab()
-        .get('.calendar-date-cell')
+        .get(`.${theme.calendar.dateCell}`)
         .should('be.visible')
         .name('datetimepicker')
         .focus()
         .tab()
-        .get('.calendar-month-year-cell')
+        .get(`.${theme.calendar.monthCell}`)
         .contains('.')
         .should('be.visible')
         .name('datetimepicker')
         .focus()
         .tab()
-        .get('.calendar-month-year-cell')
+        .get(`.${theme.calendar.monthCell}`)
         .contains('20')
         .should('be.visible')
         .name('datetimepicker')

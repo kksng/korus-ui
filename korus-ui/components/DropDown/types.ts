@@ -17,6 +17,8 @@ export interface DropDownProps extends React.HTMLAttributes<HTMLElement> {
   boundingContainerRef?: React.RefObject<HTMLElement | { wrapper: HTMLElement | null }>,
   /** Открытие по клику, по умолчанию открытие по наведению */
   interactionMode?: 'click',
+  /** Отключение выпадающего списка */
+  isDisabled?: boolean,
   /** Принудительное открытие списка */
   isOpen?: boolean,
   /** Реф */

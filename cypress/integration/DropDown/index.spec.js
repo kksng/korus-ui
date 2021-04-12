@@ -38,6 +38,21 @@ describe('DropDown', () => {
           .children('ul')
           .should('not.be.visible')
       });
+
+      it('Should disable', () => {
+        cy.get('#disableButton')
+          .click()
+          .get('#DDButtonHover')
+          .trigger('mouseover')
+          .children('ul')
+          .should('not.be.visible')
+          .get('#DDDivHover')
+          .trigger('mouseover')
+          .children('ul')
+          .should('not.be.visible')
+          .get('#disableButton')
+          .click()
+      });
     });
 
     describe('InteractionMode click', () => {
@@ -89,6 +104,20 @@ describe('DropDown', () => {
           .get('#DDButtonClick')
           .children('ul')
           .should('not.be.visible')
+      });
+      it('Should disable', () => {
+       cy.get('#disableButton')
+         .click()
+          .get('#DDButtonClick')
+          .click()
+          .children('ul')
+          .should('not.be.visible')
+          .get('#DDDivClick')
+          .click()
+          .children('ul')
+          .should('not.be.visible')
+          .get('#disableButton')
+          .click()
       });
     });
   });
