@@ -22,7 +22,28 @@ describe('Button', () => {
   describe('Display', () => {
     it('Should render button', () => {
       cy.get('#basicButton')
-        .should('be.visible');
+        .should('be.visible')
+        .snapshot();
+    });
+
+    it('Should render button when isLoading', () => {
+      cy.get('#loadButton')
+        .should('be.visible')
+        .snapshot();
+    });
+
+    it('Should render button when isDisabled', () => {
+      cy.get('#disabledButton')
+        .should('be.visible')
+        .snapshot();
+    });
+
+    it('Should render with form', () => {
+      cy.get('#renderWithForm')
+        .should('be.visible')
+        .next()
+        .should('be.visible')
+        .snapshot();
     });
   });
 
