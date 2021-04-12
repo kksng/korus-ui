@@ -12,7 +12,8 @@ export const CheckBox = (): React.ReactElement => {
   return (
     <L.Div _demoStory>
       <L.CheckBox
-        onChange={() => alert('Alert!')}
+        _customClass
+        onChange={() => alert('Changed!')}
         id="checkBoxMain"
       >
         Main
@@ -22,7 +23,8 @@ export const CheckBox = (): React.ReactElement => {
       <L.CheckBox 
         id="checkBoxButton">
         <L.Button 
-          isLoading onClick={() => alert('Alert!')}
+          isLoading 
+          onClick={() => alert('Alert!')}
         >
           isLoading
         </L.Button>
@@ -43,6 +45,7 @@ export const CheckBox = (): React.ReactElement => {
         value={value}
         onChange={handleChange}
         isSemi
+        onClick={() => alert('Clicked!')}
       >
         isSemi
       </L.CheckBox>
