@@ -8,25 +8,22 @@ describe('stringToDate tests', () => {
   it('Should return null when value is undefined', () => {
     const format = 'dd.MM.yyyy';
     const string = undefined;
-    const expected = null;
     const received = helpers.stringToDate(string, format);
-    expect(received).toBe(expected);
+    expect(received).toBeNull();
   });
 
   it('Should return null when string includes "_" ', () => {
     const format = 'dd.MM.yyyy';
     const string = '30_04_1991';
-    const expected = null;
     const received = helpers.stringToDate(string, format);
-    expect(received).toBe(expected);
+    expect(received).toBeNull();
   });
 
   it('Should return null when arguments are undefined', () => {
     const format = undefined;
     const string = undefined;
-    const expected = null;
     const received = helpers.stringToDate(string, format);
-    expect(received).toBe(expected);
+    expect(received).toBeNull();
   });
 
   it('Should return date if string of correct format is supplied', () => {
@@ -108,31 +105,31 @@ describe('isTimeWithinLimits tests', () => {
   it('Should return true when value is correct', () => {
     const mask = '##:##';
     const maskedValue = '13:15';
-    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(true);
+    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBeTruthy();
   });
 
   it('Should return false when value is greater than limit', () => {
     const mask = '##:##';
     const maskedValue = '24:24';
-    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(false);
+    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBeFalsy();
   });
 
   it('Should return true when value is equal to zero', () => {
     const mask = '##:##';
     const maskedValue = '00:00';
-    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(true);
+    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBeTruthy();
   });
 
   it('Should return false when seconds are greater than limit', () => {
     const mask = '##:##:##';
     const maskedValue = '07:24:61';
-    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(false);
+    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBeFalsy();
   });
 
   it('Should return false when value is invalid', () => {
     const mask = '##:##:##';
     const maskedValue = '-07:24:61';
-    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBe(false);
+    expect(helpers.isTimeWithinLimits(mask, maskedValue)).toBeFalsy();
   });
 });
 
@@ -149,8 +146,7 @@ describe('extractFromFormat tests', () => {
     const format = 'dd.MM.yy';
     const pattern = 'ghg';
     const string = '18.05.19';
-    const expected = null;
-    expect(helpers.extractFromFormat(format, pattern, string)).toBe(expected);
+    expect(helpers.extractFromFormat(format, pattern, string)).toBeNull();
   });
 });
 
@@ -324,8 +320,7 @@ describe('normalizeTimeLimits tests', () => {
 
   it('Should return "undefined" if provided limits value is "undefined"', () => {
     const limits = undefined;
-    const expected = undefined;
-    expect(helpers.normalizeTimeLimits(limits)).toEqual(expected);
+    expect(helpers.normalizeTimeLimits(limits)).toBeUndefined();
   });
 });
 
@@ -345,12 +340,12 @@ describe('convertToDate tests', () => {
 describe('checkIsDateFormatIncorrect tests', () => {
   it('Should return false if date is of Date type', () => {
     const date = new Date('05.05.2019');
-    expect(helpers.checkIsDateFormatIncorrect(date)).toBe(false);
+    expect(helpers.checkIsDateFormatIncorrect(date)).toBeFalsy();
   });
 
   it('Should return false if undefined is provided', () => {
     const date = undefined;
-    expect(helpers.checkIsDateFormatIncorrect(date)).toBe(false);
+    expect(helpers.checkIsDateFormatIncorrect(date)).toBeFalsy();
   });
 });
 
