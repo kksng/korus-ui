@@ -11,14 +11,57 @@ describe('DatePicker', () => {
   beforeEach(() => { cy.name('success').focus() }) // It is needed because of bug with focus on several datepickers
 
   describe('Display', () => {
+    it('Should render datepicker', () => {
+      cy.name('firstDatePicker')
+        .should('be.visible')
+        .and('have.attr', 'maxlength', 11)
+        .snapshot();
+    });
+
+    it('Should render with custom names of months, weekdays and short names', () => {
+      cy.name('CustomMonthsDatePicker')
+        .type('04052012')
+        .next()
+        .click()
+        .parents('.datepicker-wrapper')
+        .find('.calendar-title')
+        .should('contain', 'May')
+        .parents('.calendar-wrapper')
+        .find('.calendar-week-days')
+        .should('contain', 'Mon')
+        .and('contain', 'Sun')
+        .name('CustomMonthsDatePicker')
+        .clear();
+    });
+
+    it('Should render if value set as string', () => {
+      cy.name('valueSetString')
+        .should('be.visible')
+        .and('have.value', '30.04.1991')
+    });
+
+    it('Should render if value set as Date', () => {
+      cy.name('valueSetNull')
+        .should('be.visible')
+        .and('have.value', '')
+    });
+
+    it('Should render if value set as null', () => {
+      cy.name('valueSetDate')
+        .should('be.visible')
+        .and('have.value', '05.01.2020')
+    });
+
     it('Should render placeholder', () => {
       cy.name('firstDatePicker')
-        .should('have.attr', 'placeholder', 'Type your date...');
+        .should('have.attr', 'placeholder', 'Type your date...')
+        .snapshot();
     });
 
     it('Should render calendar-icon', () => {
       cy.get('.datepicker-calendar-icon')
-        .should('be.visible');
+        .should('be.visible')
+        .snapshot;
     });
   });
 
@@ -54,7 +97,7 @@ describe('DatePicker', () => {
     it('Should be disabled when isDisabled', () => {
       cy.name('disabledCalendar')
         .should('be.disabled')
-        .and('have.attr', 'disabled');
+        .and('have.attr', `${theme.inputWrapperDisabled}`);
     });
 
     it('Should be is open when isOpen', () => {
@@ -102,7 +145,17 @@ describe('DatePicker', () => {
         .clear();
     });
 
-    xit('onFocus', () => { // Does not pass when running all tests at once
+    it('onChange', () => {
+      cy.name('secondDatePicker')
+        .type('1')
+        .then(() => {
+          expect(stub).to.be.calledWith('Change')
+        })
+        .name('secondDatePicker')
+        .clear();
+    });
+
+    it('onFocus', () => { 
       cy.name('openedCalendar')
         .focus()
         .type('{home}12113234')
@@ -447,6 +500,21 @@ describe('DatePicker', () => {
       });
   });
 
+  describe('Interaction', () => {
+    it('Should work with different date formats', () => {
+      cy.name('secondDatePicker')
+        .type('11111111')
+        .should('have.value', '11.11.1111')
+        .snapshot()
+        .clear()
+        .name('openedCalendar')
+        .type('11111111')
+        .should('have.value', '11-е число  11-го месяца  1111-го года')
+        .snapshot()
+        .clear();
+    });
+  });
+
   describe('Validation', () => {
     it('Should display validation error', () => {
       cy.name('MinValueDatePicker')
@@ -460,6 +528,7 @@ describe('DatePicker', () => {
         .should('have.class', 'danger');
     });
   });
+
   describe('Use cases', () => {
     it('Should select correctly date in January', () => {
       cy.name('secondDatePicker')
