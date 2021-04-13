@@ -14,7 +14,7 @@ import {
 } from './types';
 
 // retrieves a number according to pattern and format. Example: ("dd.MM.yy", "dd", "18.05.19") => 18
-const extractFromFormat = (format: string, pattern: string, string: string): number | null => {
+export const extractFromFormat = (format: string, pattern: string, string: string): number | null => {
   const formatStartIndex = format.indexOf(pattern);
 
   const formatEndIndex = formatStartIndex + pattern.length;
@@ -168,7 +168,7 @@ export const getInputWrapperClassNames = (theme: GlobalDefaultTheme['dateTimeInp
   );
 };
 
-const normilizeNumber = (value: number, rules: TimeLimits): number => {
+export const normilizeNumber = (value: number, rules: TimeLimits): number => {
   const [min, max] = rules;
   if (value < min) return min;
   if (value > max) return max;

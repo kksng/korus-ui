@@ -79,7 +79,7 @@ export const DatePicker = (): React.ReactElement => {
         />
 
         <L.DatePicker
-          onChange={handleChange3}
+          onChange={(ev) => console.log('Change')}
           format="dd.MM.yyyy"
           onBlur={(ev): void => testFunction(ev)}
           name="secondDatePicker"
@@ -129,7 +129,7 @@ export const DatePicker = (): React.ReactElement => {
           onEnterPress={(ev): void => testFunction(ev)}
           value={value7}
           name="CustomMonthsDatePicker"
-          placeholder="Type your date..."
+          placeholder="CustomMonthsDatePicker"
         />
         <L.Button _success name="success">success!</L.Button>
       </L.Div>
@@ -167,6 +167,26 @@ export const DatePicker = (): React.ReactElement => {
           Submit
         </L.Button>
         <L.Div name="submitMessage">{submitMessage}</L.Div>
+      </L.Div>
+      <br />
+      <L.Div>
+        <L.H4>Value set as string</L.H4>
+        <L.DatePicker
+          value={'30.04.1991'}
+          name="valueSetString"
+        />
+        <br />
+        <L.H4>Value set as null</L.H4>
+        <L.DatePicker
+          value={null}
+          name="valueSetNull"
+        />
+        <br />
+        <L.H4>Value set as Date</L.H4>
+        <L.DatePicker
+          value={new Date('01.05.2020')}
+          name="valueSetDate"
+        />
       </L.Div>
     </L.Div>
   );
