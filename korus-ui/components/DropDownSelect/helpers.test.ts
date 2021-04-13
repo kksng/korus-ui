@@ -186,7 +186,7 @@ describe('getInputValue tests', () => {
     expect(received).toBe(expected);
   });
 
-  it('Should return value if filtervalue is number', () => {
+  it('Should return value if filterValue is number', () => {
     const value = 'London';
     const filterValue = 9;
     const expected = 'London';
@@ -218,7 +218,7 @@ describe('getInputValue tests', () => {
     expect(received).toBe(expected);
   });
 
-  it('Should return string if filtervalue is empty string and value is number', () => {
+  it('Should return string if filterValue is empty string and value is number', () => {
     const value = 100500;
     const filterValue = '';
     const expected = '100500';
@@ -226,7 +226,7 @@ describe('getInputValue tests', () => {
     expect(received).toBe(expected);
   });
 
-  it('Should return string if filtervalue is null and value is number', () => {
+  it('Should return string if filterValue is null and value is number', () => {
     const value = 100500;
     const filterValue = null;
     const expected = '100500';
