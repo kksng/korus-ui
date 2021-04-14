@@ -3,20 +3,20 @@ import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import * as L from '../korus-ui';
 import {
-  AutoComplete, ButtonGroup, CheckBox, CountDown, DatePicker, DateRange, Drawer,
+  AutoComplete, ButtonGroup, CheckBox, CheckBoxTree, CountDown, DatePicker, DateRange, Drawer,
   DropDown, DropDownSelect, Input, A, LedaProvider, LinkTree, Loader, MaskedInput, Menu, Modal,
   MultiSelect, Notifications, NumericRange, NumericTextBox, Password,
   Pagination, RadioGroup, ProgressBar, Slider, StatusBar, StickyPanel, Svg, Switcher,
   Tabs, Tags, DropZone, Textarea, DateTimePicker, TimePicker,
   DateTimeRange, TimeRange, DropDownLink, Currency, Rating,
   Div, Table, Dl, FileUpload, HTMLTags, Validation,
-  Collapsible, Collapse, VStepper, Button, Tooltip, FileDrop, Tour, Wizard
+  Collapsible, Collapse, VStepper, Button, Tooltip, FileDrop, Tour, Wizard,
 } from './components';
 import { useElementRef } from '../korus-ui/utils';
 
 export const Demo = hot(() => (
   <L.Div style={{ color: 'black' }} _wrapper>
-    {/*<Navigation />*/}
+    {/* <Navigation /> */}
     <L.Div _container>
       <L.Div _row _demoMainTitle _noGutters>
         <L.H1 _colMd12>Demo sandbox</L.H1>
@@ -30,6 +30,7 @@ export const Demo = hot(() => (
       <Button />
       <ButtonGroup />
       <CheckBox />
+      <CheckBoxTree />
       <Collapse />
       <Collapsible />
       <CountDown />

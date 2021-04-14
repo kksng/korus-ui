@@ -26,6 +26,7 @@ export const COMPONENTS_NAMESPACES = {
   button: 'button',
   buttonGroup: 'buttonGroup',
   checkBox: 'checkBox',
+  checkBoxTree: 'checkBoxTree',
   collapse: 'collapse',
   collapseBody: 'collapseBody',
   collapseHeading: 'collapseHeading',

@@ -40,12 +40,14 @@ import { defaultMenuTheme } from '../Menu/theme';
 import { defaultCountDownTheme } from '../CountDown/theme';
 import { defaultLinkTreeTheme } from '../LinkTree/theme';
 import { defaultDrawerTheme } from '../Drawer/theme';
+import { defaultCheckBoxTreeTheme } from '../CheckBoxTree/theme';
 
 export const globalDefaultTheme = {
   autoComplete: defaultAutoCompleteTheme,
   button: defaultButtonTheme,
   buttonGroup: defaultButtonGroupTheme,
   checkBox: defaultCheckBoxTheme,
+  checkBoxTree: defaultCheckBoxTreeTheme,
   collapse: defaultCollapseTheme,
   countDown: defaultCountDownTheme,
   dateTimeInput: defaultDateTimeInputTheme,

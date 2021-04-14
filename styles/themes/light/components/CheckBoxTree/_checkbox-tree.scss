@@ -1,0 +1,33 @@
+.checkboxtree {
+  &-list {
+    padding-left: 24px;
+    position: relative;
+    .checkbox-wrapper {
+      margin-bottom: 8px;
+    }
+  }
+  &-icon {
+    cursor: pointer;
+    left: 0;
+    line-height: 24px;
+    position: absolute;
+    transition-duration: .2s;
+    &::before {
+      content: "›";
+    }
+    &-expanded {
+      transform: rotate(90deg);
+    }
+  }
+
+  &-item {
+    .checkboxtree-list {
+      display: none;
+    }
+    &.opened {
+      & > .checkboxtree-list {
+        display: block;
+      }
+    }
+  }  
+}
