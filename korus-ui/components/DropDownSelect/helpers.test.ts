@@ -3,13 +3,6 @@ import { defaultDropDownSelectTheme as theme } from './theme';
 import * as helpers from './helpers';
 
 describe('getComponentClassNames tests', () => {
-  /**
-    * default return *
-    * inputWrapperClassNames: .dropdownselect-input-wrapper
-    * selectIconClassNames: .dropdownselect-select-icon
-    * wrapperClassNames: .dropdownselect-wrapper
-  */
-
   describe('Should add .danger to inputWrapperClassNames', () => {
     it('Should add .danger if isValid false', () => {
       const data = {
