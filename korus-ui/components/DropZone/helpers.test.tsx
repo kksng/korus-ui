@@ -1,393 +1,152 @@
 import React from 'react';
 import * as helpers from './helpers';
 import { Div } from '../Div';
+import { FileErrorCodes } from '../../constants';
 
-// describe('compareFiles tests', () => {
-//   it('', () => {
-//     const firstFile = {
-//       arrayBuffer(),
-//       lastModified: 2020,
-//       name: 'firstFile',
-//       size: 2,
-//       slice(),
-//       stream(),
-//       text(),
-//       type: 'json',
-//     };
-//     const secondFile = {
-//       arrayBuffer(),
-//       lastModified: 2020,
-//       name: 'secondFile',
-//       size: 3,
-//       slice(),
-//       stream(),
-//       text(),
-//       type: 'json',
-//     },
-//     expect(helpers.compareFiles(firstFile, secondFile))
-//   })
-// });
+const firstFile = {
+  ...new Blob(),
+  lastModified: 1618496879591,
+  name: 'first',
+  size: 100,
+};
+const secondFile = {
+  ...new Blob(),
+  lastModified: 1618496879592,
+  name: 'second',
+  size: 100,
+};
+const props = {
+  value: undefined,
+};
+const state = {
+  acceptedFiles: [firstFile, secondFile],
+  rejectedFiles: [],
+};
+
+describe('compareFiles tests', () => {
+  it('Should return true if size of files is the same and lastModified time is different', () => {
+    expect(helpers.compareFiles(firstFile, secondFile)).toBeTruthy();
+  });
+
+  it('Should return false if size of files is different', () => {
+    const newFirstFile = { ...firstFile, size: 100 };
+    const newSecondFile = { ...secondFile, size: 1000 };
+
+    expect(helpers.compareFiles(newFirstFile, newSecondFile)).toBeFalsy();
+  });
+  // todo: possibly compareFiles should return true if lastModified time is the same
+  it('Should return false if lastModified time is the same', () => {
+    const lastModified = new Date().getTime();
+    const newFirstFile = { ...firstFile, lastModified };
+    const newSecondFile = { ...secondFile, lastModified };
+
+    expect(helpers.compareFiles(newFirstFile, newSecondFile)).toBeFalsy();
+  });
+});
 
 describe('checkForAddedFile tests', () => {
-  it('Should return false when value is null', () => {
-    const props = {
-      value: null,
-    };
-    const state = {
-      acceptedFiles: [{ name: 'external file' }],
-      rejectedFiles: [{ name: 'rejected file' }],
-    };
-    const file = {
-      lastModified: 2020,
-      name: 'fileName',
-    };
-    expect(helpers.checkForAddedFile(props, state, file)).toBeFalsy();
+  it('Should check accepted files in state if value is undefined', () => {
+    expect(helpers.checkForAddedFile(props, state, firstFile)).toBeTruthy();
   });
 
-  it('Should return false when value is undefined', () => {
-    const props = {
-      value: undefined,
-    };
-    const state = {
-      acceptedFiles: [{ name: 'external file' }],
-      rejectedFiles: [{ name: 'rejected file' }],
-    };
-    const file = {
-      lastModified: 2020,
-      name: 'fileName',
-    };
-    expect(helpers.checkForAddedFile(props, state, file)).toBeFalsy();
+  it('Should check accepted files in state if value is null', () => {
+    const newProps = { ...props, value: null };
+
+    expect(helpers.checkForAddedFile(newProps, state, firstFile)).toBeTruthy();
   });
 
-  // it('', () => {
-  //   const props = {
-  //     minFileSize: 3,
-  //     value: {
-  //       acceptedFiles: [{ name: 'external file', type: '.json' }],
-  //       rejectedFiles: [{ name: 'rejected file', type: '.txt' }],
-  //     },
-  //   };
-  //   const state = {
-  //     acceptedFiles: [{ name: 'external file' }],
-  //     rejectedFiles: [{ name: 'rejected file' }],
-  //   };
-  //   const file = {
-  //     lastModified: 2020,
-  //     name: 'fileName',
-  //     size: '2',
-  //   };
-  //   expect(helpers.checkForAddedFile(props, state, file)).toBeFalsy();
-  // });
+  it('Should check accepted files in props.value if provided', () => {
+    const newProps = {
+      ...props,
+      value: {
+        acceptedFiles: [],
+        rejectedFiles: [],
+      },
+    };
 
-  // it('Should return falsee', () => { // вопрос по типам файлов
-  //   const props = {
-  //     value: {
-  //       acceptedFiles: [{ name: 'file1', size: 1, type: '.json' }],
-  //       rejectedFiles: [{ name: 'file2', size: 2, type: '.txt' }],
-  //     },
-  //   };
-  //   const state = {
-  //     acceptedFiles: [{ name: 'external file' }],
-  //     rejectedFiles: [{ name: 'rejected file' }],
-  //   };
-  //   const file = {
-  //     lastModified: 2020,
-  //     name: 'fileName',
-  //     size: '2',
-  //   };
-  //   expect(helpers.checkForAddedFile(props, state, file)).toBeTruthy();
-  // });
+    expect(helpers.checkForAddedFile(newProps, state, firstFile)).toBeFalsy();
+  });
 
-//   it('true', () => {
-//     const props = {
-//       value: {
-//         acceptedFiles: [{ name: 'external file' }],
-//         rejectedFiles: [{ name: 'rejected file' }],
-//       },
-//     };
-//     const state = {
-//       acceptedFiles: [{ name: 'external file' }],
-//       rejectedFiles: [{ name: 'rejected file' }],
-//     };
-//     const file = {
-//       lastModified: 2020,
-//       name: 'fileName',
-//     };
-//     expect(helpers.checkForAddedFile(props, state, file)).toBe(true);
-//   });
+  it('Should compare files by size and lastModified time, if file was found by name', () => {
+    const differentSizeFile = { ...firstFile, size: 1000 };
+    // todo: possibly should return false if files size is different
+    expect(helpers.checkForAddedFile(props, state, differentSizeFile)).toBeTruthy();
+
+    const differentModifyTimeFile = { ...firstFile, lastModified: new Date().getTime() };
+
+    expect(helpers.checkForAddedFile(props, state, differentModifyTimeFile)).toBeFalsy();
+  });
 });
 
 describe('getErrorCode tests', () => {
-  it('Should return error code 0 if value is null', () => {
-    const props = {
-      value: null,
-    };
-    const state = {
-      acceptedFiles: [
-        { name: 'file1', size: 3 },
-        { name: 'file2', size: 4 },
-        { name: 'file3', size: 6 },
-      ],
-      rejectedFiles: [
-        { name: 'file4', size: 6 },
-        { name: 'file5', size: 8 },
-        { name: 'file6', size: 5 },
-      ],
-    };
-    const file = {
-      name: 'file7', size: 4,
-    };
-    const lastDropped = 5;
-    const received = helpers.getErrorCode(props, state, file, lastDropped);
-    const expected = 0;
-    expect(received).toBe(expected);
+  const testFile = {
+    ...new Blob(),
+    lastModified: 1618496879593,
+    name: 'test',
+    size: 100,
+    type: '.png',
+  };
+  const lastDropped = 1;
+
+  it('Should return error code 0 if no errors were found', () => {
+    expect(helpers.getErrorCode(props, state, testFile, lastDropped)).toBe(FileErrorCodes.None);
   });
 
-  it('Should return error code 0 if value is undefined', () => {
-    const props = {
-      value: undefined,
+  it('Should return error code 1 if file is too small', () => {
+    const newProps = {
+      ...props,
+      minFileSize: 1000,
     };
-    const state = {
-      acceptedFiles: [
-        { name: 'file1', size: 3 },
-        { name: 'file2', size: 4 },
-        { name: 'file3', size: 6 },
-      ],
-      rejectedFiles: [
-        { name: 'file4', size: 6 },
-        { name: 'file5', size: 8 },
-        { name: 'file6', size: 5 },
-      ],
-    };
-    const file = {
-      name: 'file7', size: 4,
-    };
-    const lastDropped = 5;
-    const received = helpers.getErrorCode(props, state, file, lastDropped);
-    const expected = 0;
-    expect(received).toBe(expected);
+
+    expect(helpers.getErrorCode(newProps, state, testFile, lastDropped)).toBe(FileErrorCodes.FileIsTooSmall);
   });
 
-  it('Should return error code 1 (file is too small) ', () => {
-    const props = {
-      minFileSize: 4,
-      value: {
-        acceptedFiles: [
-          { name: 'file1', size: 3, type: '.txt' },
-          { name: 'file2', size: 4, type: '.json' },
-          { name: 'file3', size: 6, type: '.png' },
-        ],
-        rejectedFiles: [
-          { name: 'file4', size: 6 },
-          { name: 'file5', size: 8 },
-          { name: 'file6', size: 5 },
-        ],
-      },
+  it('Should return error code 2 if file is too big', () => {
+    const newProps = {
+      ...props,
+      maxFileSize: 10,
     };
-    const state = {
-      acceptedFiles: [
-        { name: 'file1', size: 3, type: '.txt' },
-        { name: 'file2', size: 4, type: '.json' },
-        { name: 'file3', size: 6, type: '.png' },
-      ],
-      rejectedFiles: [
-        { name: 'file4', size: 6 },
-        { name: 'file5', size: 8 },
-        { name: 'file6', size: 5 },
-      ],
-    };
-    const file = {
-      name: 'file7', size: 3, type: '.json',
-    };
-    const lastDropped = 5;
-    const received = helpers.getErrorCode(props, state, file, lastDropped);
-    const expected = 1;
-    expect(received).toBe(expected);
+
+    expect(helpers.getErrorCode(newProps, state, testFile, lastDropped)).toBe(FileErrorCodes.FileIsTooBig);
   });
 
-  it('Should return error code 2 (file is too big) ', () => {
-    const props = {
-      maxFileSize: 4,
-      value: {
-        acceptedFiles: [
-          { name: 'file1', size: 3, type: '.txt' },
-          { name: 'file2', size: 4, type: '.json' },
-          { name: 'file3', size: 6, type: '.png' },
-        ],
-        rejectedFiles: [
-          { name: 'file4', size: 6 },
-          { name: 'file5', size: 8 },
-          { name: 'file6', size: 5 },
-        ],
-      },
-    };
-    const state = {
-      acceptedFiles: [
-        { name: 'file1', size: 3, type: '.txt' },
-        { name: 'file2', size: 4, type: '.json' },
-        { name: 'file3', size: 6, type: '.png' },
-      ],
-      rejectedFiles: [
-        { name: 'file4', size: 6 },
-        { name: 'file5', size: 8 },
-        { name: 'file6', size: 5 },
-      ],
-    };
-    const file = {
-      name: 'file7', size: 5, type: '.json',
-    };
-    const lastDropped = 5;
-    const received = helpers.getErrorCode(props, state, file, lastDropped);
-    const expected = 2;
-    expect(received).toBe(expected);
-  });
-
-  it('Should return error code 3 (wrong file format) ', () => {
-    const props = {
+  it('Should return error code 3 if file format is wrong', () => {
+    const newProps = {
+      ...props,
       allowedFiles: '.txt',
-      value: {
-        acceptedFiles: [
-          { name: 'file1', size: 3, type: '.txt' },
-          { name: 'file2', size: 4, type: '.json' },
-          { name: 'file3', size: 6, type: '.png' },
-        ],
-        rejectedFiles: [
-          { name: 'file4', size: 6 },
-          { name: 'file5', size: 8 },
-          { name: 'file6', size: 5 },
-        ],
-      },
     };
-    const state = {
-      acceptedFiles: [
-        { name: 'file1', size: 3, type: '.txt' },
-        { name: 'file2', size: 4, type: '.json' },
-        { name: 'file3', size: 6, type: '.png' },
-      ],
-      rejectedFiles: [
-        { name: 'file4', size: 6 },
-        { name: 'file5', size: 8 },
-        { name: 'file6', size: 5 },
-      ],
-    };
-    const file = {
-      name: 'file7', size: 4, type: '.json',
-    };
-    const lastDropped = 5;
-    const received = helpers.getErrorCode(props, state, file, lastDropped);
-    const expected = 3;
-    expect(received).toBe(expected);
+
+    expect(helpers.getErrorCode(newProps, state, testFile, lastDropped)).toBe(FileErrorCodes.WrongFileFormat);
   });
 
-  // it('Should return error code 4 (already loaded) ', () => { // правильно ли вообще, возвращает 0 независимо от пропсов
-  //   const props = {
-  //     forbiddenFiles: '.json',
-  //     value: {
-  //       acceptedFiles: [
-  //         { name: 'file1', size: 3, type: '.txt' },
-  //         { name: 'file2', size: 4, type: '.json' },
-  //         { name: 'file3', size: 6, type: '.png' },
-  //       ],
-  //       rejectedFiles: [
-  //         { name: 'file4', size: 6 },
-  //         { name: 'file5', size: 8 },
-  //         { name: 'file6', size: 5 },
-  //       ],
-  //     },
-  //   };
-  //   const state = {
-  //     acceptedFiles: [
-  //       { name: 'file1', size: 3, type: '.txt' },
-  //       { name: 'file2', size: 4, type: '.json' },
-  //       { name: 'file3', size: 6, type: '.png' },
-  //     ],
-  //     rejectedFiles: [
-  //       { name: 'file4', size: 6 },
-  //       { name: 'file5', size: 8 },
-  //       { name: 'file6', size: 5 },
-  //     ],
-  //   };
-  //   const file = {
-  //     name: 'file2', size: 4, type: '.json',
-  //   };
-  //   const lastDropped = 5;
-  //   const received = helpers.getErrorCode(props, state, file, lastDropped);
-  //   const expected = 4;
-  //   expect(received).toBe(expected);
-  // });
+  it('Should return error code 4 if file is already loaded', () => {
+    const newProps = {
+      ...props,
+      value: {
+        acceptedFiles: [testFile],
+        rejectedFiles: [],
+      },
+    };
 
-  it('Should return error code 5 (too many files) ', () => {
-    const props = {
+    expect(helpers.getErrorCode(newProps, state, testFile, lastDropped)).toBe(FileErrorCodes.AlreadyLoaded);
+  });
+
+  it('Should return error code 5 if too many files were uploaded', () => {
+    const newProps = {
+      ...props,
       maxFilesNumber: 1,
-      value: {
-        acceptedFiles: [
-          { name: 'file1', size: 3, type: '.txt' },
-          { name: 'file2', size: 4, type: '.json' },
-          { name: 'file3', size: 6, type: '.png' },
-        ],
-        rejectedFiles: [
-          { name: 'file4', size: 6 },
-          { name: 'file5', size: 8 },
-          { name: 'file6', size: 5 },
-        ],
-      },
     };
-    const state = {
-      acceptedFiles: [
-        { name: 'file1', size: 3, type: '.txt' },
-        { name: 'file2', size: 4, type: '.json' },
-        { name: 'file3', size: 6, type: '.png' },
-      ],
-      rejectedFiles: [
-        { name: 'file4', size: 6 },
-        { name: 'file5', size: 8 },
-        { name: 'file6', size: 5 },
-      ],
-    };
-    const file = {
-      name: 'file7', size: 4, type: '.json',
-    };
-    const lastDropped = 5;
-    const received = helpers.getErrorCode(props, state, file, lastDropped);
-    const expected = 5;
-    expect(received).toBe(expected);
+
+    expect(helpers.getErrorCode(newProps, state, testFile, lastDropped)).toBe(FileErrorCodes.TooManyFiles);
   });
 
-  it('Should return error code 6 (name is too long) ', () => {
-    const props = {
-      maxFileNameLength: 4,
-      value: {
-        acceptedFiles: [
-          { name: 'file1', size: 3, type: '.txt' },
-          { name: 'file2', size: 4, type: '.json' },
-          { name: 'file3', size: 6, type: '.png' },
-        ],
-        rejectedFiles: [
-          { name: 'file4', size: 6 },
-          { name: 'file5', size: 8 },
-          { name: 'file6', size: 5 },
-        ],
-      },
+  it('Should return error code 6 if filename is too long', () => {
+    const newProps = {
+      ...props,
+      maxFileNameLength: 2,
     };
-    const state = {
-      acceptedFiles: [
-        { name: 'file1', size: 3, type: '.txt' },
-        { name: 'file2', size: 4, type: '.json' },
-        { name: 'file3', size: 6, type: '.png' },
-      ],
-      rejectedFiles: [
-        { name: 'file4', size: 6 },
-        { name: 'file5', size: 8 },
-        { name: 'file6', size: 5 },
-      ],
-    };
-    const file = {
-      name: 'file7', size: 4, type: '.json',
-    };
-    const lastDropped = 5;
-    const received = helpers.getErrorCode(props, state, file, lastDropped);
-    const expected = 6;
-    expect(received).toBe(expected);
+
+    expect(helpers.getErrorCode(newProps, state, testFile, lastDropped)).toBe(FileErrorCodes.NameIsTooLong);
   });
 });
 
