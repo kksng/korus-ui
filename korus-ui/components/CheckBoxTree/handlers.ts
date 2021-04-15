@@ -19,14 +19,14 @@ export const createChangeHandler = ({
   onChange,
   setTreeState,
 }: ChangeHandlerData) => (id: number, value?: SelectedState): ChangeEventHandler => (ev: ChangeEvent): void => {
-  if (!isFunction(onChange)) return;
-
   const newValue = ev.component.value || value === SelectedState.Some ? SelectedState.All : SelectedState.Nothing;
 
   setTreeState((prevState: Map<number, ItemState>): Map<number, ItemState> => {
     const newTreeState = getUpdatedTreeState({ id, newValue, prevState });
 
-    onChange(getCustomEvent(newTreeState));
+    if (isFunction(onChange)) {
+      onChange(getCustomEvent(newTreeState));
+    }
 
     return newTreeState;
   });
