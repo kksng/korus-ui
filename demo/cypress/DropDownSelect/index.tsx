@@ -403,7 +403,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           data={longStringData}
           shouldFilterValues
           value={value8}
-          onChange={(ev): void => {
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<string>): void => {
             setValue8(ev.component.value);
           }}
           _width40
@@ -414,7 +414,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           id="noData"
           shouldFilterValues
           value="no data, lol"
-          onChange={(ev): void => {
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<string>): void => {
             setValue8(ev.component.value);
           }}
           _width40
