@@ -92,7 +92,7 @@ export const DropZone = (): React.ReactElement => {
         form="dropzoneCustom"
         name="dropzoneCustom"
         isRequired
-        dropZoneFilesNode={Element}
+        dropZoneFilesNode={Element || undefined}
         uploadButtonRender={(): React.ReactElement => <L.Button _customizedButton>Drop Me</L.Button>}
         infoRender={(): React.ReactElement => <L.Span _customizedDropzone>Drop here</L.Span>}
       />
