@@ -102,5 +102,21 @@ module.exports = {
         "1": "<div class=\"datepicker-wrapper\">\n  <div class=\"datepicker-input-wrapper danger required\"><input\n      class=\"datepicker-input\"\n      maxlength=\"11\"\n      placeholder=\"Type something...\"\n      form=\"111\"\n      aria-invalid=\"true\"\n      aria-required=\"true\"\n      name=\"secondDatePicker\"\n      value=\"\"><span class=\"datepicker-icons-wrapper\"><span\n        class=\"datepicker-calendar-icon\"></span></span></div><span\n    class=\"invalid-message-list\"><span class=\"invalid-message-item\">required\n      message</span></span>\n</div>"
       }
     }
-  }
+  },
+  "DropDownSelect": {
+    "Display": {
+      "Should render the component": {
+        "1": "<div class=\"dropdownselect-input-wrapper\"><input id=\"DDSBoundingContainerRef\"\n    aria-invalid=\"false\"\n    aria-required=\"false\"\n    autocomplete=\"off\"\n    class=\"dropdownselect-input\"\n    value=\"\"><span class=\"dropdownselect-select-icon closed\"></span></div>"
+      },
+      "Should render value": {
+        "1": "<input id=\"DDSCompareObjectsBy\"\n  aria-invalid=\"false\"\n  aria-required=\"false\"\n  autocomplete=\"off\"\n  class=\"dropdownselect-input\"\n  placeholder=\"\"\n  readonly=\"\"\n  value=\"London\">"
+      },
+      "Should render data": {
+        "1": "<div class=\"suggestion-wrapper visible\">\n  <ul class=\"suggestion-list\">\n    <li class=\"suggestion-item\">Moscow</li>\n    <li class=\"suggestion-item\">Minsk</li>\n    <li class=\"suggestion-item highlighted selected\">London</li>\n    <li class=\"suggestion-item\">Berlin</li>\n    <li class=\"suggestion-item\">Paris</li>\n    <li class=\"suggestion-item\">Stockholm</li>\n    <li class=\"suggestion-item\">Madrid</li>\n    <li class=\"suggestion-item\">Madrid</li>\n  </ul>\n</div>"
+      }
+    },
+    "Should render loader when isLoading": {
+      "1": "<div class=\"loader-container\"><span class=\"loader-element\"></span></div>"
+    }
+  }  
 }

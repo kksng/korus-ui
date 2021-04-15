@@ -94,6 +94,8 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         ref={containerRef}
       >
         <L.DropDownSelect
+          _attachedByUnderlining
+          className="attachedByClassNameProp"
           id="DDSBoundingContainerRef"
           boundingContainerRef={containerRef}
           data={[
@@ -126,6 +128,7 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
         <L.DropDownSelect<SomeObject>
           shouldFilterValues
           id="Opened"
+          onEnterPress={(ev): void => console.log('Enter', ev)}
           onFocus={testFunction}
           data={[
             { name: 'Paris', region: 'Europe' },
@@ -155,6 +158,32 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           value={value2}
           placeholder="Choose a city"
           compareObjectsBy="id"
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<SomeObject>): void => {
+            setValue2(ev.component.value);
+            testFunction(ev);
+          }}
+          _width40
+        />
+        <br />
+        <L.DropDownSelect
+          id="DDSCompareObjectsWithFuctionInId"
+          data={data}
+          textField="city"
+          placeholder="Choose a city"
+          compareObjectsBy={(item): string => item.city}
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<SomeObject>): void => {
+            setValue2(ev.component.value);
+            testFunction(ev);
+          }}
+          _width40
+        />
+        <br />
+        <L.DropDownSelect
+          id="notCompared"
+          data={data}
+          textField="city"
+          placeholder="Choose a city"
+          compareObjectsBy="invalid"
           onChange={(ev: L.DropDownSelectTypes.ChangeEvent<SomeObject>): void => {
             setValue2(ev.component.value);
             testFunction(ev);
@@ -374,13 +403,34 @@ export const DropDownSelect = (args: SomeObject): React.ReactElement => {
           data={longStringData}
           shouldFilterValues
           value={value8}
-          onChange={(ev): void => {
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<string>): void => {
             setValue8(ev.component.value);
           }}
           _width40
         />
-      </L.Div>
+        <br />
+        <L.DropDownSelect
+          _noData
+          id="noData"
+          shouldFilterValues
+          value="no data, lol"
+          onChange={(ev: L.DropDownSelectTypes.ChangeEvent<string>): void => {
+            setValue8(ev.component.value);
+          }}
+          _width40
+        />
 
+        <L.DropDownSelect
+          id="DDSRequired"
+          isRequired
+          data={data}
+          textField="city"
+          placeholder="Choose a city"
+          form="form"
+          name="name"
+          _width40
+        />
+      </L.Div>
     </>
   );
 };
