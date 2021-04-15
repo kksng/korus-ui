@@ -450,7 +450,7 @@ describe('DescriptionMessage tests', () => {
   });
 });
 
-// describe('getError tests', () => { // 
+// describe('getError tests', () => { // не проходит, видимо тоже ошибка в типах
 //   it('Should return error if file type is DropZoneFileType', () => {
 //     const file = {
 //       lastmodified: 2020,
