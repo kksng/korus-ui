@@ -33,7 +33,7 @@
     "check": "npm run lint && npm run test && npm run tsc:withDemo",
     "build": "npm run clean && npm run tsc && npm run sass",
     "lint": "eslint --color --ext .ts,.tsx korus-ui",
-    "test": "jest --color --silent dr.test.tsx",
+    "test": "jest --color --silent",
     "tsc": "tsc --project tsconfig.json",
     "tsc:withDemo": "tsc --noEmit --project tsconfig.demo.json",
     "jest": "jest",
