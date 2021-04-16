@@ -3,8 +3,8 @@ import * as L from '../../../../korus-ui';
 
 export const PredefinedValidators = () => {
   return (
-    <L.Div _inner _box>
-      <L.Div _inner id="predefinedValidators">
+    <L.Div _inner _box id="predefinedValidators">
+      <L.Div _inner>
         <L.H2>Predefined Validators</L.H2>
         <L.Div _inner>
           <L.Input
