@@ -44,16 +44,6 @@ export const PredefinedValidators = () => {
         <L.Div _inner>
           <L.Input
             form="form1"
-            name="kpp"
-            validator="kpp"
-            placeholder="kpp"
-          />
-          <br />
-          <L.Span _txtGray>770201001</L.Span>
-        </L.Div>
-        <L.Div _inner>
-          <L.Input
-            form="form1"
             name="ogrn"
             validator="ogrn"
             placeholder="ogrn"
@@ -90,28 +80,6 @@ export const PredefinedValidators = () => {
           />
           <br />
           <L.Span _txtGray>123-456-789 64</L.Span>
-        </L.Div>
-        <L.Div _inner>
-          <L.Input
-            form="form1"
-            name="url"
-            validator="url"
-            placeholder="url"
-          />
-          <br />
-          <L.Span _txtGray>https://www.esphere.ru/</L.Span>
-        </L.Div>
-      </L.Div>
-      <L.Div _inner _box>
-        <L.Div _inner id="passwordValidator">
-          <L.Input
-            form="form1"
-            name="password"
-            validator="password"
-            placeholder="password"
-          />
-          <br />
-          <L.Span _txtGray>1q2W3e4R!</L.Span>
         </L.Div>
       </L.Div>
     </L.Div>
