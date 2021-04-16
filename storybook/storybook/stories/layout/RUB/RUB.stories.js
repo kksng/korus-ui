@@ -7,5 +7,5 @@ import
 import { propsDesc } from './propsDescription';
 import { ApiStory } from '../../../components/ApiStory';
 
-storiesOf('Layout|RUB EUR USD', module)
-  .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
+// storiesOf('Layout|RUB EUR USD', module)
+//   .add('API', context => (<ApiStory {...Api} customProps={propsDesc} context={context} />))
