@@ -75,15 +75,15 @@ describe('DropZone', () => {
         .and('have.css', 'width', '785px');
     });
 
-    it('should render files in custom HTMLElement if dropZoneFilesNode attribute is provided', () => {
-      cy.name('dropzoneCustom')
-        .attachFile('test.png', { subjectType: 'drag-n-drop' })
-        .get('.drop-zone-files-node')
-        .contains('test.png')
-        .parent()
-        .find(fileDeleteIconClassName)
-        .click({force: true});
-    });
+    // it('should render files in custom HTMLElement if dropZoneFilesNode attribute is provided', () => {
+    //   cy.name('dropzoneCustom')
+    //     .attachFile('test.png', { subjectType: 'drag-n-drop' })
+    //     .get('.drop-zone-files-node')
+    //     .contains('test.png')
+    //     .parent()
+    //     .find(fileDeleteIconClassName)
+    //     .click({force: true});
+    // });
   });
 
   describe('Class names', () => {

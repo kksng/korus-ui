@@ -118,7 +118,7 @@ module.exports = {
     "Should render loader when isLoading": {
       "1": "<div class=\"loader-container\"><span class=\"loader-element\"></span></div>"
     }
-  }, 
+  },
   "DropZone": {
     "Display": {
       "DropZone should be displayed": {
