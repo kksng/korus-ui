@@ -37,7 +37,7 @@ describe('FileUpload', () => {
         .snapshot()
     });
 
-    ity('Should render conponent in custom wrapper', () => {
+    it('Should render conponent in custom wrapper', () => {
       cy.get('.partialcustom')
         .should('be.visible')
         .and('have.class', 'width-10')
