@@ -326,6 +326,15 @@ describe('Validation', () => {
           .clear();
       });
 
+      it('kpp validator', () => {
+        cy.get('#predefinedValidators')
+          .name('kpp')
+          .type('770201001')
+          .should('have.value', '770201001')
+          .and('not.have.class', 'danger')
+          .clear();
+      });
+
       it('ogrn validator', () => {
         cy.get('#predefinedValidators')
           .name('ogrn')
@@ -344,6 +353,48 @@ describe('Validation', () => {
           .clear();
       });
 
+      describe('password validator', () => {
+        it('Should show invalid message if a single character is entered', () => {
+          cy.get('#passwordValidator')
+          .name('password')
+          .type('1')
+          .blur()
+          .should('have.value', '1')
+          .parent()
+          .should('have.class', 'danger')
+          .next()
+          .should('have.text', 'Пароль должен содержать не менее 8-и символов, латинские строчные, прописные буквы и цифры')
+          .name('password')
+          .clear();
+        });
+        
+        it('Should show invalid message if invalid characters are entered', () => {
+          cy.get('#passwordValidator')
+          .name('password')
+          .type('Привет')
+          .blur()
+          .should('have.value', 'Привет')
+          .parent()
+          .should('have.class', 'danger')
+          .next()
+          .should('have.text', 'Пароль должен содержать не менее 8-и символов, латинские строчные, прописные буквы и цифры')
+          .name('password')
+          .clear();
+        });
+
+        it('Should accept valid values', () => {
+          cy.get('#passwordValidator')
+          .name('password')
+          .type('1q2W3e4R!')
+          .blur()
+          .should('have.value', '1q2W3e4R!')
+          .parent()
+          .should('not.have.class', 'danger')
+          .name('password')
+          .clear();
+        });
+      });
+
       it('snils validator', () => {
         cy.get('#predefinedValidators')
           .name('snils')
@@ -351,6 +402,18 @@ describe('Validation', () => {
           .should('have.value', '123-456-789 64')
           .and('contain.value', '-')
           .and('contain.value', ' ')
+          .and('not.have.class', 'danger')
+          .clear();
+      });
+
+      it('url validator', () => {
+        cy.get('#predefinedValidators')
+          .name('url')
+          .type('https://www.esphere.ru/')
+          .should('have.value', 'https://www.esphere.ru/')
+          .and('contain.value', ':')
+          .and('contain.value', '//')
+          .and('contain.value', '.')
           .and('not.have.class', 'danger')
           .clear();
       });
