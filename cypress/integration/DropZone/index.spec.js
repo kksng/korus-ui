@@ -77,9 +77,9 @@ describe('DropZone', () => {
 
     it('should render files in custom HTMLElement if dropZoneFilesNode attribute is provided', () => {
       cy.name('dropzoneCustom')
-        .attachFile('txtFile.txt', { subjectType: 'drag-n-drop' })
+        .attachFile('testPngFile.png', { subjectType: 'drag-n-drop' })
         .get('.drop-zone-files-node')
-        .contains('txtFile.txt')
+        .contains('testPngFile.png')
         .parent()
         .find(fileDeleteIconClassName)
         .click({force: true});
