@@ -1,9 +1,70 @@
 describe('FileUpload', () => {
   before(() => {
-    cy.visit('/cypress/fileupload', {
-      onBeforeLoad(win) {
-        cy.stub(win.console, 'log').as('consoleLog');
-      },
+    cy.visit('/cypress/fileupload');
+  });
+  
+  describe('Display', () => {
+    it('Should render component in controlled mode', () => {
+      cy.get('.controlled')
+        .should('be.visible')
+        .contains('Загрузить')
+        .should('be.visible')
+        .parents('.controlled')
+        .snapshot()
+    });
+
+    it('Should render description text', () => {
+      cy.get('.partialcustom')
+        .find('span')
+        .should('have.text', 'Я частично изменен!')
+        .and('be.visible');
+    });
+
+    it('Should render customizated component', () => {
+      cy.get('.custom')
+        .children()
+        .should('be.visible')
+        .parent()
+        .snapshot()
+    });
+
+    it('Should render loading when using isLoading prop', () => {
+      cy.get('.loaded')
+        .contains('загрузка')
+        .should('be.visible')
+        .parents('.loaded')
+        .should('be.visible')
+        .snapshot()
+    });
+
+    ity('Should render conponent in custom wrapper', () => {
+      cy.get('.partialcustom')
+        .should('be.visible')
+        .and('have.class', 'width-10')
+        .and('have.prop', 'style')
+    });
+
+    it('Shouud attach class names', () => {
+      cy.get('.loaded')
+        .should('have.class', 'underlining')
+        .and('have.class', 'className');
+    });
+  });
+
+  describe('Events', () => {
+    beforeEach(() => {
+      cy.visit('/cypress/fileupload', {
+        onBeforeLoad(win) {
+          cy.stub(win.console, 'log').as('consoleLog');
+        },
+      });
+    });
+
+    it('Should call onClick event and have correct event format', () => {
+      cy.get('.loaded')
+        .click()
+        .get('@consoleLog')
+        .should('be.calledWith', 'Clicked');
     });
   });
 
@@ -12,6 +73,7 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       const fileName = 'test.png';
+
       cy.get('.custom')
         .contains('Загрузить')
         .click();
@@ -31,6 +93,7 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       const fileName = 'test.png';
+
       cy.get('.controlled')
         .contains('Загрузить')
         .click();
@@ -49,6 +112,7 @@ describe('FileUpload', () => {
     it('Upload invalid files', () => {
       const stub = cy.stub();
       const invalidFile = 'txtFile.txt';
+
       cy.on('window:alert', stub);
       cy.get('.partialcustom')
         .contains('частично')
@@ -71,6 +135,7 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       const bigFile = 'bigFile.jpeg';
       cy.on('window:alert', stub);
+
       cy.get('.partialcustom')
         .contains('частично')
         .click();
@@ -92,6 +157,7 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       const smallFile = 'test.png';
       cy.on('window:alert', stub);
+
       cy.get('.partialcustom')
         .contains('частично')
         .click();
@@ -113,6 +179,7 @@ describe('FileUpload', () => {
       const stub = cy.stub();
       cy.on('window:alert', stub);
       const fileName = 'bigFile.jpeg';
+
       cy.get('.controlled')
         .contains('Загрузить')
         .click();
