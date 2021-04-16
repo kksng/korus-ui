@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as L from '../../../korus-ui';
 import { bigData } from '../../components/CheckBoxTree/data';
-
+import { ArrayElement } from '../../../korus-ui/commonTypes';
 
 export const CheckBoxTree = (): React.ReactElement => {
-  const defaultData : L.CheckBoxTreeTypes.CheckBoxTreeItemType[] = [
+  const defaultData: L.CheckBoxTreeTypes.CheckBoxTreeItemType[] = [
     {
       id: 1,
       label: 'Level one',
