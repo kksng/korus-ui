@@ -239,7 +239,6 @@ describe('DropZone', () => {
       cy.name('forOnChange')
         .parent()
         .attachFile('test.png', { subjectType: 'drag-n-drop' })
-        .name('forOnChange')
         .parents(wrapperClassName)
         .next()
         .next()

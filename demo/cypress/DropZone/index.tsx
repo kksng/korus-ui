@@ -97,6 +97,10 @@ export const DropZone = (): React.ReactElement => {
         infoRender={(): React.ReactElement => <L.Span _customizedDropzone>Drop here</L.Span>}
       />
       <br />
+      <br />
+      <br />
+      <br />
+      <L.Div _dropZoneFilesNode ref={ref} />
       <L.Span>Rendering file list</L.Span>
       <L.DropZone
         name="renderedFileList"
@@ -110,10 +114,6 @@ export const DropZone = (): React.ReactElement => {
         name="forOnChange"
         onChange={(): void => console.log('File removed')}
       />
-      <br />
-      <br />
-      <br />
-      <L.Div _dropZoneFilesNode ref={ref} />
     </L.Div>
   );
 };
