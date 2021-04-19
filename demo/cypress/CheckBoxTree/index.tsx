@@ -133,7 +133,6 @@ export const CheckBoxTree = (): React.ReactElement => {
         id="defaultTree"
         defaultValue={[3]}
         data={defaultData}
-        onChange={(ev) => console.log('Change', ev)}
 
       />
       <br />

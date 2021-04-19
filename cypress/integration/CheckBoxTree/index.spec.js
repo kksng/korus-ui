@@ -28,7 +28,7 @@ describe('CheckBoxTree', () => {
         .parent(item)
         .find(icon)
         .first()
-        .click()
+        .click();
     });
 
     it('Rendering with default value (defaultValue = [3])', () => {
@@ -60,8 +60,8 @@ describe('CheckBoxTree', () => {
         .get('#1')
         .parent()
         .next()
-        .click()
-    })
+        .click();
+    });
   });
 
   describe('Interaction', () => {
@@ -108,7 +108,7 @@ describe('CheckBoxTree', () => {
         .get('#1')
         .parent()
         .next()
-        .click()
+        .click();
     });
 
     it('Child branches should close when the parent branch is closed', () => {
@@ -131,7 +131,7 @@ describe('CheckBoxTree', () => {
         .next()
         .click()
         .next()
-        .should('not.be.visible')
+        .should('not.be.visible');
     });
 
     it('Should attach class "opened" to opened level and remove class when level closed', () => {
@@ -153,7 +153,7 @@ describe('CheckBoxTree', () => {
         .next()
         .click()
         .parent()
-        .should('not.have.class', `${theme.opened}`)
+        .should('not.have.class', `${theme.opened}`);
     });
 
     it('Should attach class "semi" to semi-state checkbox', () => {
@@ -206,15 +206,20 @@ describe('CheckBoxTree', () => {
         },
       });
     });
+    
+    const selectedCheckboxesIds = {
+      selected: [31, 41, 51, 61, 62, 63, 21, 11],
+      selectedGroups: [1, 2, 3, 4, 5, 6],
+    };
 
     it('onChange event', () => {
-      cy.get('#defaultTree')
+      cy.get('#checkBoxTree')
         .find('#1')
         .click({ force: true })
         .get('@consoleLog')
-        .should('be.calledWith', 'Change')
-    })
-  })
+        .should('be.calledWith', selectedCheckboxesIds);
+    });
+  });
 
   describe('Working with big data', () => {
     it('Should be displayed and basic work', () => {
@@ -233,7 +238,7 @@ describe('CheckBoxTree', () => {
           cy.wrap(bigDataInputs)
             .should('be.checked')
             .next()
-            .should('be.visible')
+            .should('be.visible');
         });
     });
 
@@ -299,7 +304,7 @@ describe('CheckBoxTree', () => {
         .next()
         .click()
         .prev()
-        .should('not.have.class', `${theme.opened}`)
-    })
+        .should('not.have.class', `${theme.opened}`);
+    });
   });
 });
