@@ -118,5 +118,18 @@ module.exports = {
     "Should render loader when isLoading": {
       "1": "<div class=\"loader-container\"><span class=\"loader-element\"></span></div>"
     }
-  }  
+  },
+  "Input": {
+    "Display": {
+      "Input should be displayed": {
+        "1": "<div class=\"input-wrapper\">\n  <div class=\"input-element-wrapper\"><input id=\"only-numbers\"\n      placeholder=\"only numbers\"\n      aria-invalid=\"false\"\n      class=\"input-element\"\n      value=\"\"></div>\n</div>"
+      },
+      "isDisabled must set the component to disabled (the component is visible on the form, but it is inactive, there is no way to enter text)": {
+        "1": "<div class=\"input-element-wrapper disabled\"><input id=\"isDisabled\"\n    placeholder=\"isDisabled\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    disabled=\"\"\n    value=\"\"></div>"
+      },
+      "Should render component in controlled mode": {
+        "1": "<div class=\"input-element-wrapper\"><input id=\"controlledMode\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    value=\"Controlled value\"></div>"
+      }
+    }
+  }
 }
