@@ -8,7 +8,7 @@ export const DropZone = (): React.ReactElement => {
     acceptedFiles: [{ link: 'external file link', name: 'external file' }],
     rejectedFiles: [],
   });
-  const [value1, setValue1] = React.useState<L.DropZoneTypes.DropZoneFiles | null>({
+  const [value1, setValue1] = React.useState<L.DropZoneTypes.DropZoneFiles>({
     acceptedFiles: [{ link: 'external file link', name: 'external file' }],
     rejectedFiles: [{ link: 'rejected file link', name: 'rejected file' }],
   });
