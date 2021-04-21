@@ -9,7 +9,7 @@ export const propsDesc = [
     name: 'children',
     type: 'number | string',
     required: false,
-    description: 'Значение в компонент можно передать как child-елемент или через атрибут value.',
+    description: 'Значение в компонент можно передать как child-элемент или через атрибут value.',
   },
   {
     name: 'currencyCode',
@@ -18,7 +18,14 @@ export const propsDesc = [
     description: 'Валюта в формате ISO 4217 - EUR, USD, RUB etc.',
   },
   {
-    name: 'currencySymbolRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout| Currency', 'Кастомизация')}
+        target="_self"
+      >
+        currencySymbolRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
@@ -81,10 +88,17 @@ interface CurrencyRefCurrent {
     name: 'value',
     type: 'number | string',
     required: false,
-    description: 'Значение в компонент можно передать через атрибут value или как child-елемент.',
+    description: 'Значение в компонент можно передать через атрибут value или как child-элемент.',
   },
   {
-    name: 'wrapperRender',
+    name: (
+      <L.A
+        onClick={linkTo('Layout| Currency', 'Кастомизация')}
+        target="_self"
+      >
+        wrapperRender
+      </L.A>
+    ),
     type: (
       <L.Span>
         <RenderEvent /> => React.ReactNode
