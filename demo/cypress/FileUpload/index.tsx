@@ -3,19 +3,26 @@ import * as L from '../../../korus-ui';
 import { StoryProps } from '../../types';
 import { RenderEvent } from '../../../korus-ui/commonTypes';
 
-export const FileUpload = (storyProps: StoryProps) => {
+export const FileUpload = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
-  const MyOwnWrapper = ({ someCustomPropHere, ...props }: any) => <L.Button _warning {...props} />;
-  const MyOwnInfo = (props: any) => <L.Span {...props} />;
+
+  // eslint-disable-next-line react/prop-types
+  const MyOwnWrapper: React.FC<{isLoading: boolean, someCustomPropHere: string}> = ({ someCustomPropHere, ...myOwnWrapperProps }) => (
+    <L.Button _warning {...myOwnWrapperProps} />
+  );
+
+  const MyOwnInfo: React.FC<{}> = (myOwnInfoProps) => <L.Span {...myOwnInfoProps} />;
+
   const infoRender = ({
     Element,
     elementProps,
     componentProps: { isLoading },
-  }: RenderEvent<{ isLoading?: boolean }>) => (
+  }: RenderEvent<{ isLoading?: boolean }>): React.ReactElement => (
     <Element {...elementProps} props={elementProps}>
       {isLoading ? 'Я загружаю!' : 'Я частично изменен!'}
     </Element>
   );
+
   return (
     <L.Div _box _inner>
       <L.Div _inner>
@@ -25,12 +32,17 @@ export const FileUpload = (storyProps: StoryProps) => {
           allowedFiles=".jpg, .gif, .png, .txt, .jpeg"
           maxFileNameLength={10}
           id="controlledFileUpload"
-          onChange={(ev) => {
+          onChange={(ev): void => {
             console.log('ev.component', ev.component);
             setProps({ isLoading: true });
             setTimeout(() => {
               setProps({ isLoading: false });
-              alert(ev.component.error == null ? 'Файл загружен!' : ev.component.error.errorMessage);
+              // eslint-disable-next-line no-alert
+              alert(
+                ev.component.error == null
+                  ? 'Файл загружен!'
+                  : ev.component.error.errorMessage,
+              );
             }, 2000);
           }}
           {...props}
@@ -42,17 +54,34 @@ export const FileUpload = (storyProps: StoryProps) => {
           _custom
           allowedFiles=".jpg, .gif, .png"
           id="customFileUpload"
-          wrapperRender={({ elementProps, componentProps: { isLoading } }: any) => <MyOwnWrapper {...elementProps} someCustomPropHere="blah-blah-blah" isLoading={isLoading} />}
-          infoRender={({ elementProps, componentProps: { isLoading } }: any) => <MyOwnInfo {...elementProps}>{isLoading ? 'Идёт загрузка...' : 'Загрузить?'}</MyOwnInfo>}
+          wrapperRender={({
+            elementProps,
+            componentProps: { isLoading },
+          }: RenderEvent<{ isLoading?: boolean }>): React.ReactElement => (
+            <MyOwnWrapper
+              {...elementProps}
+              someCustomPropHere="blah-blah-blah"
+              isLoading={isLoading}
+            />
+          )}
+          infoRender={({
+            elementProps,
+            componentProps: { isLoading },
+          }: RenderEvent<{ isLoading?: boolean }>): React.ReactElement => (
+            <MyOwnInfo {...elementProps}>
+              {isLoading ? 'Идёт загрузка...' : 'Загрузить?'}
+            </MyOwnInfo>
+          )}
           maxFileSize={1500}
-          onChange={(ev) => {
+          onChange={(ev): void => {
             setProps({ isLoading: true });
             setTimeout(() => {
               setProps({ isLoading: false });
+              // eslint-disable-next-line no-alert
               alert(
                 ev.component.error == null
                   ? 'Файл загружен!'
-                  : ev.component.error.errorMessage
+                  : ev.component.error.errorMessage,
               );
             }, 2000);
           }}
@@ -65,7 +94,7 @@ export const FileUpload = (storyProps: StoryProps) => {
           _partialcustom
           allowedFiles=".jpg, .gif, .png, .jpeg"
           id="partialCustomFileUpload"
-          wrapperRender={({ Element, elementProps }: any) => (
+          wrapperRender={({ Element, elementProps }: RenderEvent): React.ReactElement => (
             <>
               <Element
                 {...elementProps}
@@ -87,14 +116,15 @@ export const FileUpload = (storyProps: StoryProps) => {
           infoRender={infoRender}
           minFileSize={1500}
           maxFileSize={2000}
-          onChange={(ev) => {
+          onChange={(ev): void => {
             setProps({ isLoading: true });
             setTimeout(() => {
               setProps({ isLoading: false });
+              // eslint-disable-next-line no-alert
               alert(
                 ev.component.error == null
                   ? 'Файл загружен!'
-                  : ev.component.error.errorMessage
+                  : ev.component.error.errorMessage,
               );
             }, 2000);
           }}
@@ -108,8 +138,8 @@ export const FileUpload = (storyProps: StoryProps) => {
           _underlining
           className="className"
           isLoading
-          onClick={() => console.log('Clicked')}
-          infoRender={({ elementProps, componentProps: { isLoading } }: any) => <MyOwnInfo {...elementProps}>{isLoading ? 'Идёт загрузка...' : 'Загрузить?'}</MyOwnInfo>}
+          onClick={(): void => console.log('Clicked')}
+          infoRender={({ elementProps, componentProps: { isLoading } }: RenderEvent<{isLoading?: boolean}>): React.ReactElement => <MyOwnInfo {...elementProps}>{isLoading ? 'Идёт загрузка...' : 'Загрузить?'}</MyOwnInfo>}
         />
       </L.Div>
     </L.Div>
