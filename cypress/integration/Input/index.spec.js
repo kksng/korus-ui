@@ -203,7 +203,7 @@ describe('Input', () => {
         .should('have.class', `${theme.inputWrapperInvalid}`);
     });
 
-    it('Should show invalid message if the entered value doesn\'t pass validation', () => {
+    it('Should show invalid message if the entered value does not pass validation', () => {
       cy.name('eventInput')
         .type('a')
         .blur()
@@ -242,7 +242,7 @@ describe('Input', () => {
         .should('have.class', `${theme.inputWrapperInvalid}`);
     });
 
-    it('Must show a message if the validation isn\'t past + Validator function check', () => {
+    it('Must show a message if the validation is not past + Validator function check', () => {
       cy.get('#checkDangerClassValid')
         .type('12335')
         .blur()
