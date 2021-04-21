@@ -102,7 +102,7 @@ export const getErrorCode = (props: DropZoneProps, state: DropZoneState, file: F
     if (isAcceptedForbidden) return FileErrorCodes.WrongFileFormat;
   }
 
-  // Error og minimal size
+  // Error of minimal size
   if ((file as DropZoneFileType).size < minFileSize) return FileErrorCodes.FileIsTooSmall;
 
   // Error of maximum size
@@ -175,7 +175,7 @@ export const DescriptionMessage = (props: { children: string }): React.ReactElem
  *
  * @return {DropZoneError} - error message and code
  */
-const getError = (file: DropZoneFileType | ExternalFile): DropZoneError => (ERROR_MESSAGES.find(
+export const getError = (file: DropZoneFileType | ExternalFile): DropZoneError => (ERROR_MESSAGES.find(
   (error: DropZoneError): boolean => (file as DropZoneFileType).errorCode === error.errorCode,
 )) as DropZoneError;
 

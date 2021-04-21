@@ -1,21 +1,5 @@
 module.exports = {
   "__version": "5.2.0",
-  "DatePicker": {
-    "Display": {
-      "Should render datepicker": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
-      },
-      "Should render placeholder": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
-      }
-    },
-    "Interaction": {
-      "Should work with different date formats": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  aria-invalid=\"false\"\n  name=\"secondDatePicker\"\n  value=\"11.11.1111\">",
-        "2": "<input class=\"datepicker-input\"\n  maxlength=\"39\"\n  aria-invalid=\"false\"\n  name=\"openedCalendar\"\n  value=\"11-е число  11-го месяца  1111-го года\">"
-      }
-    }
-  },
   "AutoComplete": {
     "Display": {
       "Should render placeholder": {
@@ -76,6 +60,22 @@ module.exports = {
       }
     }
   },
+  "DatePicker": {
+    "Display": {
+      "Should render datepicker": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
+      },
+      "Should render placeholder": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
+      }
+    },
+    "Interaction": {
+      "Should work with different date formats": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  aria-invalid=\"false\"\n  name=\"secondDatePicker\"\n  value=\"11.11.1111\">",
+        "2": "<input class=\"datepicker-input\"\n  maxlength=\"39\"\n  aria-invalid=\"false\"\n  name=\"openedCalendar\"\n  value=\"11-е число  11-го месяца  1111-го года\">"
+      }
+    }
+  },
   "DateTimeRange": {
     "Display": {
       "Should render DateTimeRange": {
@@ -119,6 +119,23 @@ module.exports = {
       "1": "<div class=\"loader-container\"><span class=\"loader-element\"></span></div>"
     }
   },
+  "DropZone": {
+    "Display": {
+      "DropZone should be displayed": {
+        "1": "<div class=\"dropzone-wrapper required\">\n  <div tabindex=\"0\"\n    class=\"dropzone-content\"><input form=\"dropzone-form\"\n      name=\"uncontrolledWithValidation\"\n      multiple=\"\"\n      type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"><button type=\"button\"\n      class=\"button-wrapper dropzone-button\">Выбрать...</button> <span\n      class=\"dropzone-description\">\n      <div class=\"block-inline\">Перетащите сюда файлы для загрузки.</div>\n      <div class=\"block-inline\">Размер: до 104857600 байт.</div>\n    </span></div>\n</div>"
+      },
+      "Should render customize description text": {
+        "1": "<span class=\"customized-dropzone\">Drop here</span>"
+      },
+      "Should render customize upload button": {
+        "1": "<button type=\"button\"\n  class=\"button-wrapper customized-button\">Drop Me</button>"
+      },
+      "Should render file list": {
+        "1": "<ul class=\"rejected-list margin-none\">\n  <li><span class=\"dropzone-rejected-message txt-danger\">'rejected file': -\n      Неизвестная ошибка</span></li>\n</ul>",
+        "2": "<ul>\n  <li>\n    <div style=\"display: none;\"></div><a\n      class=\"pointer dropzone-delete-icon-wrapper\"><i\n        class=\"dropzone-delete-icon\"></i></a>\n    <div style=\"display: none;\"></div><a theme=\"dropzone-file-download internal\"\n      download=\"external file\"\n      href=\"external file link\">external file</a>\n  </li>\n</ul>"
+      }
+    }
+  },
   "Input": {
     "Display": {
       "Input should be displayed": {
@@ -129,7 +146,7 @@ module.exports = {
       },
       "Should render component in controlled mode": {
         "1": "<div class=\"input-element-wrapper\"><input id=\"controlledMode\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    value=\"Controlled value\"></div>"
-      }
+      },
     }
-  }
+  },
 }

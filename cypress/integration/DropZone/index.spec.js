@@ -1,6 +1,6 @@
-import { globalDefaultTheme } from '../../../korus-ui/components/LedaProvider';
+import { get } from 'lodash';
+import { defaultDropZoneTheme as theme } from '../../../korus-ui/components/DropZone/theme';
 
-const theme = globalDefaultTheme.dropZone;
 const wrapperClassName = `.${theme.wrapper}`;
 const contentClassName = `.${theme.content}`;
 const fileDeleteIconClassName = `.${theme.fileDeleteIcon}`;
@@ -18,10 +18,94 @@ describe('DropZone', () => {
   describe('Display', () => {
     it('DropZone should be displayed', () => {
       cy.get(wrapperClassName)
-        .should('have.length', 4)
+        .should('have.length', 7)
         .each((wrapper) => {
-          cy.wrap(wrapper).should('be.visible');
-        });
+          cy.wrap(wrapper)
+            .should('be.visible');
+        })
+        .name('uncontrolledWithValidation')
+        .parents(wrapperClassName)
+        .snapshot();
+    });
+
+    it('Should render file list', () => {
+      cy.name('renderedFileList')
+        .parents(wrapperClassName)
+        .next()
+        .should('be.visible')
+        .and('contain', 'rejected file')
+        .snapshot()
+        .next()
+        .should('be.visible')
+        .and('contain', 'external file')
+        .snapshot();
+    });
+
+    it('Should render description text', () => {
+      cy.name('uncontrolledWithValidation')
+        .parent()
+        .find(`.${theme.description}`)
+        .should('contain', 'Перетащите сюда файлы для загрузки')
+        .and('contain', 'Размер')
+        .and('be.visible')
+    });
+
+    it('Should render customize upload button', () => {
+      cy.name('dropzoneCustom')
+        .parent()
+        .find('.customized-button')
+        .should('have.text', 'Drop Me')
+        .and('be.visible')
+        .snapshot();
+    });
+
+    it('Should render customize description text', () => {
+      cy.name('dropzoneCustom')
+        .parent()
+        .find('.customized-dropzone')
+        .should('have.text', 'Drop here')
+        .and('be.visible')
+        .snapshot();
+    });
+
+    it('Should attach the class responsible for the width of the component', () => {
+      cy.name('dropzoneCustom')
+        .parents(wrapperClassName)
+        .should('have.class', 'width-50')
+        .and('have.css', 'width', '785px');
+    });
+
+    it('should render files in custom HTMLElement if dropZoneFilesNode attribute is provided', () => {
+      cy.name('dropzoneCustom')
+        .attachFile('testPngFile.png', { subjectType: 'drag-n-drop' })
+        .get('.drop-zone-files-node')
+        .contains('testPngFile.png')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click({force: true});
+    });
+  });
+
+  describe('Class names', () => {
+    it('Should attach class name through underlining', () => {
+      cy.get('#controlledDZ')
+        .parents(wrapperClassName)
+        .should('have.class', 'underlining-class-name');
+    });
+
+    it('Should attach class name throug className prop', () => {
+      cy.get('#controlledDZ')
+        .parents(wrapperClassName)
+        .should('have.class', 'controlledDZ');
+    });
+
+    it('Class names should not change each other', () => {
+      it('Should attach class name throug className prop', () => {
+        cy.get('#controlledDZ')
+          .parents(wrapperClassName)
+          .should('have.class', 'controlledDZ')
+          .and('have.class', 'underlining-class-name');
+      });
     });
   });
 
@@ -126,6 +210,55 @@ describe('DropZone', () => {
         .should('not.have.class', `${theme.disabled}`)
         .children()
         .should('not.have.class', `${theme.disabled}`)
+    });
+  });
+
+  describe('Events', () => {
+    beforeEach(() => {
+      cy.visit('/cypress/dropzone', {
+        onBeforeLoad(win) {
+          cy.stub(win.console, 'log').as('consoleLog');
+        },
+      });
+    });
+
+    it('onClick event', () => {
+      cy.name('dropzone')
+        .next()
+        .click()
+        .get('@consoleLog')
+        .should('be.calledWith', 'Clicked');
+    });
+
+    it('Should call onChange handler on drop files into the dropZone', () => {
+      cy.name('uncontrolledWithValidation')
+        .parent()
+        .attachFile('test.png', { subjectType: 'drag-n-drop' })
+        .get('@consoleLog')
+        .should('be.calledWith', 'File attached')
+        .name('uncontrolledWithValidation')
+        .parents(wrapperClassName)
+        .next()
+        .next()
+        .contains('test')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click({force: true});
+    });
+
+    it('Should call onChange handler on remove file', () => {
+      cy.name('forOnChange')
+        .parent()
+        .attachFile('test.png', { subjectType: 'drag-n-drop' })
+        .parents(wrapperClassName)
+        .next()
+        .next()
+        .contains('test')
+        .parent()
+        .find(fileDeleteIconClassName)
+        .click({force: true})
+        .get('@consoleLog')
+        .should('be.calledWith', 'File removed');
     });
   });
 
