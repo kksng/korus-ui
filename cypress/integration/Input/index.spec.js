@@ -203,7 +203,7 @@ describe('Input', () => {
         .should('have.class', `${theme.inputWrapperInvalid}`);
     });
 
-    it('Should be invalid if value passes validation and vice versa', () => {
+    it('Should show invalid message if the entered value doesn\'t pass validation', () => {
       cy.name('eventInput')
         .type('a')
         .blur()
