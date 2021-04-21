@@ -135,5 +135,18 @@ module.exports = {
         "2": "<ul>\n  <li>\n    <div style=\"display: none;\"></div><a\n      class=\"pointer dropzone-delete-icon-wrapper\"><i\n        class=\"dropzone-delete-icon\"></i></a>\n    <div style=\"display: none;\"></div><a theme=\"dropzone-file-download internal\"\n      download=\"external file\"\n      href=\"external file link\">external file</a>\n  </li>\n</ul>"
       }
     }
+  },
+  "Slider": {
+    "Display": {
+      "Should render the component": {
+        "1": "<div class=\"slider-container\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 385.5px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 385.5px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n</div>"
+      },
+      "Should render disabled state": {
+        "1": "<div class=\"slider-container disabled\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 385.5px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 385.5px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n</div>"
+      },
+      "Should render if set value": {
+        "1": "<div class=\"slider-container\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 693.9px;\"></div>\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 77.1px; right: 385.5px;\"></div>\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 385.5px; right: 192.75px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 578.25px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"2\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 77.1px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">2</div>\n    </div>\n  </div>\n  <div class=\"slider-handle slider-handle-1 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 2; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n  <div class=\"slider-handle slider-handle-2 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"15\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 3; left: 578.25px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">15</div>\n    </div>\n  </div>\n</div>"
+      }
+    }
   }
 }
