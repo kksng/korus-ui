@@ -7,7 +7,7 @@ export const FileUpload = (storyProps: StoryProps): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
   // eslint-disable-next-line react/prop-types
-  const MyOwnWrapper: React.FC<{isLoading: boolean, someCustomPropHere: string}> = ({ someCustomPropHere, ...myOwnWrapperProps }) => (
+  const MyOwnWrapper: React.FC<{isLoading?: boolean, someCustomPropHere: string}> = ({ someCustomPropHere, ...myOwnWrapperProps }) => (
     <L.Button _warning {...myOwnWrapperProps} />
   );
 
@@ -94,7 +94,7 @@ export const FileUpload = (storyProps: StoryProps): React.ReactElement => {
           _partialcustom
           allowedFiles=".jpg, .gif, .png, .jpeg"
           id="partialCustomFileUpload"
-          wrapperRender={({ Element, elementProps }: RenderEvent): React.ReactElement => (
+          wrapperRender={({ Element, elementProps }: RenderEvent<{}, {}, {children?: React.ReactElement}>): React.ReactElement => (
             <>
               <Element
                 {...elementProps}
