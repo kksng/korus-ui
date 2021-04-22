@@ -1,21 +1,5 @@
 module.exports = {
   "__version": "5.2.0",
-  "DatePicker": {
-    "Display": {
-      "Should render datepicker": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
-      },
-      "Should render placeholder": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
-      }
-    },
-    "Interaction": {
-      "Should work with different date formats": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  aria-invalid=\"false\"\n  name=\"secondDatePicker\"\n  value=\"11.11.1111\">",
-        "2": "<input class=\"datepicker-input\"\n  maxlength=\"39\"\n  aria-invalid=\"false\"\n  name=\"openedCalendar\"\n  value=\"11-е число  11-го месяца  1111-го года\">"
-      }
-    }
-  },
   "AutoComplete": {
     "Display": {
       "Should render placeholder": {
@@ -76,6 +60,22 @@ module.exports = {
       }
     }
   },
+  "DatePicker": {
+    "Display": {
+      "Should render datepicker": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
+      },
+      "Should render placeholder": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
+      }
+    },
+    "Interaction": {
+      "Should work with different date formats": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  aria-invalid=\"false\"\n  name=\"secondDatePicker\"\n  value=\"11.11.1111\">",
+        "2": "<input class=\"datepicker-input\"\n  maxlength=\"39\"\n  aria-invalid=\"false\"\n  name=\"openedCalendar\"\n  value=\"11-е число  11-го месяца  1111-го года\">"
+      }
+    }
+  },
   "DateTimeRange": {
     "Display": {
       "Should render DateTimeRange": {
@@ -133,6 +133,19 @@ module.exports = {
       "Should render file list": {
         "1": "<ul class=\"rejected-list margin-none\">\n  <li><span class=\"dropzone-rejected-message txt-danger\">'rejected file': -\n      Неизвестная ошибка</span></li>\n</ul>",
         "2": "<ul>\n  <li>\n    <div style=\"display: none;\"></div><a\n      class=\"pointer dropzone-delete-icon-wrapper\"><i\n        class=\"dropzone-delete-icon\"></i></a>\n    <div style=\"display: none;\"></div><a theme=\"dropzone-file-download internal\"\n      download=\"external file\"\n      href=\"external file link\">external file</a>\n  </li>\n</ul>"
+      }
+    }
+  },
+  "Input": {
+    "Display": {
+      "Input should be displayed": {
+        "1": "<div class=\"input-wrapper\">\n  <div class=\"input-element-wrapper\"><input id=\"only-numbers\"\n      placeholder=\"only numbers\"\n      aria-invalid=\"false\"\n      class=\"input-element\"\n      value=\"\"></div>\n</div>"
+      },
+      "isDisabled must set the component to disabled (the component is visible on the form, but it is inactive, there is no way to enter text)": {
+        "1": "<div class=\"input-element-wrapper disabled\"><input id=\"isDisabled\"\n    placeholder=\"isDisabled\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    disabled=\"\"\n    value=\"\"></div>"
+      },
+      "Should render component in controlled mode": {
+        "1": "<div class=\"input-element-wrapper\"><input id=\"controlledMode\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    value=\"Controlled value\"></div>"
       }
     }
   }
