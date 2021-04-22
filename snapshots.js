@@ -135,5 +135,18 @@ module.exports = {
         "2": "<ul>\n  <li>\n    <div style=\"display: none;\"></div><a\n      class=\"pointer dropzone-delete-icon-wrapper\"><i\n        class=\"dropzone-delete-icon\"></i></a>\n    <div style=\"display: none;\"></div><a theme=\"dropzone-file-download internal\"\n      download=\"external file\"\n      href=\"external file link\">external file</a>\n  </li>\n</ul>"
       }
     }
+  },
+  "Password": {
+    "Display": {
+      "Should render the component": {
+        "1": "<div class=\"password-element-wrapper required\"><input id=\"Password\"\n    data-test=\"password\"\n    placeholder=\"Enter your password...\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    class=\"password-input\"\n    form=\"AwesomePassword\"\n    name=\"Password\"\n    type=\"password\"\n    value=\"\"><i class=\"password-is-hidden\"></i></div>"
+      },
+      "Should render component with default value": {
+        "1": "<div class=\"password-element-wrapper\"><input id=\"withDefaultValue\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"Самый безопасный пароль\"><i class=\"password-is-hidden\"></i></div>"
+      },
+      "Should render clear button": {
+        "1": "<div class=\"password-element-wrapper focused\"><input id=\"lowercase\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"hello\"><i class=\"password-clear-icon\"></i><i\n    class=\"password-is-hidden\"></i></div>"
+      }
+    }
   }
 }
