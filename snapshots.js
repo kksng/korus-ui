@@ -146,7 +146,7 @@ module.exports = {
       },
       "Should render component in controlled mode": {
         "1": "<div class=\"input-element-wrapper\"><input id=\"controlledMode\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    value=\"Controlled value\"></div>"
-      },
+      }
     }
-  },
+  }
 }

@@ -20,10 +20,10 @@ export const Input = (): React.ReactElement => {
         placeholder="only Latin symbols"
         allowedSymbols={/([A-Za-z]|\s)/}
       />
-      <L.Span>Цифры и символы</L.Span>
+      <L.Span>Цифры, кириллица и спецсимволы</L.Span>
       <L.Input
         id="numbersAndSymbols"
-        placeholder="Numbers or symbols"
+        placeholder="Numbers, symbols or cyrillic symbols"
         forbiddenSymbols={/([A-Za-z]|\s)/}
       />
       <L.Span>Компонент неактивный</L.Span>
