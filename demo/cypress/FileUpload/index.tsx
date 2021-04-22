@@ -1,15 +1,17 @@
 import * as React from 'react';
+import { string } from 'prop-types';
 import * as L from '../../../korus-ui';
-import { StoryProps } from '../../types';
 import { RenderEvent } from '../../../korus-ui/commonTypes';
 
-export const FileUpload = (storyProps: StoryProps): React.ReactElement => {
+export const FileUpload = (): React.ReactElement => {
   const [props, setProps] = React.useState({});
 
-  // eslint-disable-next-line react/prop-types
   const MyOwnWrapper: React.FC<{isLoading?: boolean, someCustomPropHere: string}> = ({ someCustomPropHere, ...myOwnWrapperProps }) => (
     <L.Button _warning {...myOwnWrapperProps} />
   );
+  MyOwnWrapper.propTypes = {
+    someCustomPropHere: (string),
+  };
 
   const MyOwnInfo: React.FC<{}> = (myOwnInfoProps) => <L.Span {...myOwnInfoProps} />;
 
