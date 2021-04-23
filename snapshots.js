@@ -136,6 +136,19 @@ module.exports = {
       }
     }
   },
+  "FileUpload": {
+    "Display": {
+      "Should render component in controlled mode": {
+        "1": "<a class=\"controlled\"\n  aria-invalid=\"false\"><span>Загрузить</span>\n  <div tabindex=\"0\"><input id=\"controlledFileUpload\"\n      accept=\".jpg, .gif, .png, .txt, .jpeg\"\n      type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"></div>\n</a>"
+      },
+      "Should render customizated component": {
+        "1": "<button type=\"button\"\n  aria-invalid=\"false\"\n  class=\"button-wrapper warning custom\"><span>Загрузить?</span>\n  <div tabindex=\"0\"><input id=\"customFileUpload\"\n      accept=\".jpg, .gif, .png\"\n      type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"></div>\n</button>"
+      },
+      "Should render loading when using isLoading prop": {
+        "1": "<a class=\"loaded underlining className\"\n  aria-invalid=\"false\"><span>Идёт загрузка...</span>\n  <div tabindex=\"0\"><input type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"></div>\n</a>"
+      }
+    }
+  },
   "Input": {
     "Display": {
       "Input should be displayed": {
@@ -148,5 +161,5 @@ module.exports = {
         "1": "<div class=\"input-element-wrapper\"><input id=\"controlledMode\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    value=\"Controlled value\"></div>"
       }
     }
-  }
+  },
 }
