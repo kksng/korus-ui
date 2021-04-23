@@ -51,7 +51,7 @@ describe('strengthLevelToCssClass tests', () => {
     expect(helpers.strengthLevelToCssClass(props)).toBe(expected);
   });
 
-  it('Should return class password-message-mediun', () => {
+  it('Should return class password-message-medium', () => {
     const props = {
       strengthLevel: PasswordStrength.Medium,
       theme,
@@ -89,19 +89,19 @@ describe('getIsPasswordOk tests', () => {
     expect(helpers.getIsPasswordOk(value, evaluator)).toBeTruthy();
   });
 
-  it('Should return true if evaluator accept only latin symbols and value has latin symbols', () => {
+  it('Should return true if evaluator accepts only latin symbols and value has latin symbols', () => {
     const value = 'Hello';
     const evaluator = /([A-Za-z]|\s)/;
     expect(helpers.getIsPasswordOk(value, evaluator)).toBeTruthy();
   });
 
-  it('Should return false if evaluator accept only latin symbols and value has cyrillic symbols', () => {
+  it('Should return false if evaluator accepts only latin symbols and value has cyrillic symbols', () => {
     const value = 'Привет';
     const evaluator = /([A-Za-z]|\s)/;
     expect(helpers.getIsPasswordOk(value, evaluator)).toBeFalsy();
   });
 
-  it('Should return true if evaluator accept only cyrillic symbols and value has cyrillic symbols', () => {
+  it('Should return true if evaluator accepts only cyrillic symbols and value has cyrillic symbols', () => {
     const value = 'Привет';
     const evaluator = /([А-Яа-я]|\s)/;
     expect(helpers.getIsPasswordOk(value, evaluator)).toBeTruthy();
@@ -118,7 +118,7 @@ describe('getPasswordStrength tests', () => {
     expect(helpers.getPasswordStrength(value)).toEqual(expected);
   });
 
-  it('Should return weak password message if value undefined', () => {
+  it('Should return weak password message if value is undefined', () => {
     const value = undefined;
     const expected = {
       message: 'Слабый пароль',
