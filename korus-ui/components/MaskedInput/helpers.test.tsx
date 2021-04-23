@@ -1,7 +1,7 @@
 import * as helpers from './helpers';
 
 describe('getValue tests', () => {
-  it('Should return valueProp value if it\'s string', () => {
+  it('Should return valueProp value if it is string', () => {
     const valueProp = 'Hello';
     const valueState = 'State';
     const expected = valueProp;
