@@ -9,8 +9,30 @@ describe('Input', () => {
 
   describe('Display', () => {
     it('Input should be displayed', () => {
-      cy.get('#only-numbers')
+      cy.get('#only-numbers')       
+        .parents(`.${theme.wrapper}`)
+        .should('be.visible')
+        .snapshot()
+        .children()
         .should('be.visible');
+    });
+
+    it('isDisabled must set the component to disabled (the component is visible on the form, but it is inactive, there is no way to enter text)', () => {
+      cy.get('#isDisabled')
+        .parent()
+        .snapshot()
+        .should('have.class', `${theme.inputWrapperDisabled}`)
+        .children()
+        .should('be.visible')
+        .and('have.attr', `${theme.inputWrapperDisabled}`);
+    });
+
+    it('Should render component in controlled mode', () => {
+      cy.get('#controlledMode')
+        .should('have.value', 'Controlled value')
+        .parents(`.${theme.inputWrapper}`)
+        .should('be.visible')
+        .snapshot();
     });
 
     it('Placeholder should be displayed  ', () => {
@@ -18,13 +40,54 @@ describe('Input', () => {
         .should('have.attr', 'placeholder', 'only numbers');
     });
 
-    it('IsDisabled must set the component to disabled (the component is visible on the form, but it is inactive, there is no way to enter text)', () => {
-      cy.get('#isDisabled')
-        .parent()
-        .should('have.class', `${theme.inputWrapperDisabled}`)
-        .children()
-        .should('be.visible')
-        .and('have.attr', 'disabled');
+    it('Should attach class names by "_" and prop className', () => {
+      cy.get('#eventInput')
+        .parents(`.${theme.wrapper}`)
+        .should('have.class', 'underlining-class-name')
+        .and('have.class', 'propClassName');
+    });
+  });
+
+  describe('Events', () => {
+    beforeEach(() => {
+      cy.visit('/cypress/Input', {
+        onBeforeLoad(win) {
+          cy.stub(win.console, 'log').as('consoleLog');
+        },
+      });
+    });
+
+    it('onFocus event', () => {
+      cy.get('#eventInput')
+        .focus()
+        .get('@consoleLog')
+        .should('be.calledWith', 'Focused');
+    });
+
+    it('onBlur event', () => {
+      cy.get('#eventInput')
+        .focus()
+        .blur()
+        .get('@consoleLog')
+        .should('be.calledWith', 'Blured');
+    });
+
+    it('onChange event', () => {
+      cy.get('#eventInput')
+        .type('Hello')
+        .get('@consoleLog')
+        .should('be.calledWith', 'Changed')
+        .get('#eventInput')
+        .clear();
+    });
+
+    it('onEnterPress event', () => {
+      cy.get('#eventInput')
+        .type('Hello{enter}')
+        .get('@consoleLog')
+        .should('be.calledWith', 'The enter key was pressed')
+        .get('#eventInput')
+        .clear();
     });
   });
 
@@ -121,7 +184,7 @@ describe('Input', () => {
         .should('have.value', '888sssss8');
     });
 
-    it('IsRequired should check if the field is required (highlight the field in red if nothing is entered and press the submit button)', () => {
+    it('isRequired should check if the field is required (highlight the field in red if nothing is entered and press the submit button)', () => {
       cy.get('#checkDangerClass')
         .closest(`.${theme.inputWrapper}`)
         .should('not.have.class', `${theme.inputWrapperInvalid}`)
@@ -140,6 +203,37 @@ describe('Input', () => {
         .should('have.class', `${theme.inputWrapperInvalid}`);
     });
 
+    it('Should show invalid message if the entered value does not pass validation', () => {
+      cy.name('eventInput')
+        .type('a')
+        .blur()
+        .name('eventInput')
+        .parent()
+        .should('have.class', `${theme.inputWrapperInvalid}`)
+        .next()
+        .should('have.text', 'Value length must be more than 2')
+        .name('eventInput')
+        .clear()
+        .type('ab')
+        .blur()
+        .name('eventInput')
+        .parent()
+        .should('have.class', `${theme.inputWrapperInvalid}`)
+        .next()
+        .should('have.text', 'Value length must be more than 2')
+        .name('eventInput')
+        .clear()
+        .type('abc')
+        .blur()
+        .name('eventInput')
+        .parent()
+        .should('not.have.class', `${theme.inputWrapperInvalid}`)
+        .next()
+        .should('not.exist')
+        .name('eventInput')
+        .clear();
+    });
+
     it('It should work to access the element by form name', () => {
       cy.get('#submit')
         .click()
@@ -148,7 +242,7 @@ describe('Input', () => {
         .should('have.class', `${theme.inputWrapperInvalid}`);
     });
 
-    it('Must show a message if the validation isn\'t past + Validator function check', () => {
+    it('Must show a message if the validation is not past + Validator function check', () => {
       cy.get('#checkDangerClassValid')
         .type('12335')
         .blur()

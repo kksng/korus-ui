@@ -67,7 +67,7 @@ export const getValue = (valueProp: string | null | undefined, valueState: strin
  *
  * @returns {[boolean, boolean]} - array of flags that define if value was selected completely or partly
  */
-const getSelectionType = (selectedRange: number | null, oldValueLength: number): [boolean, boolean] => {
+export const getSelectionType = (selectedRange: number | null, oldValueLength: number): [boolean, boolean] => {
   const isAllSelected = selectedRange === oldValueLength;
   const isPartSelected = !isAllSelected && selectedRange !== 0;
 

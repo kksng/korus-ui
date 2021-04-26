@@ -3,6 +3,7 @@ export { AutoComplete } from './AutoComplete';
 export { Button } from './Button';
 export { ButtonGroup } from './ButtonGroup';
 export { CheckBox } from './CheckBox';
+export { CheckBoxTree } from './CheckBoxTree';
 export { Collapse } from './Collapse';
 export { Collapsible } from './Collapsible';
 export { CountDown } from './CountDown';

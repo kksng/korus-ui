@@ -10,8 +10,100 @@ describe('MaskedInput', () => {
     })         
   });
 
+  describe('Display', () => {
+    it('Should render component without placeholder', () => {
+      cy.get('#MICardNumberControlled')
+        .should('have.value', '')
+        .focus()
+        .should('have.value', '____-____-____-____')
+        .parent()
+        .should('have.class', `${theme.inputWrapperFocused}`)
+        .snapshot();
+    });
+
+    it('Should render placeholder', () => {
+      cy.get('#MIControlledInsurance')
+        .should('have.attr', 'placeholder', '___-___-___ __')
+        .parents(`.${theme.wrapper}`)
+        .should('be.visible')
+        .snapshot();
+    });
+
+    it('Should render disabled state', () => {
+      cy.contains('isDisabled')
+        .prev()
+        .click()
+        .name('MINotControlledPhone')
+        .parent()
+        .should('have.class', `${theme.inputWrapperDisabled}`)
+        .snapshot()
+        .children()
+        .should('have.attr', `${theme.inputWrapperDisabled}`)
+      cy.contains('isDisabled')
+        .prev()
+        .click();       
+    });
+  });
+
+  describe('Events', () => {
+    it('onFocus event', () => {
+      cy.get('#MIControlledInsurance')
+        .focus()
+        .get('@consoleLog')
+        .should('be.calledWith', 'Focused')
+    });
+
+    it('onBlur event', () => {
+      cy.get('#MIControlledInsurance')
+        .focus()
+        .blur()
+        .get('@consoleLog')
+        .should('be.calledWith', 'Blured')
+    });
+
+    it('onChange event', () => {
+      cy.get('#MIControlledPhone')
+        .clear()
+        .type('9')
+        .get('@consoleLog')
+        .should('be.calledWith', '+7 (9__)-___-__-__')
+        .get('#MIControlledPhone')
+        .type('99')
+        .get('@consoleLog')
+        .should('be.calledWith', '+7 (999)-___-__-__')
+        .get('#MIControlledPhone')
+        .clear();
+    });
+
+    it('onEnterPress event', () => {
+      cy.get('#MIControlledPhone')
+        .type('{enter}')
+        .get('@consoleLog')
+        .should('be.calledWith', '+7 (800)-200-06-00')
+        .get('#MIControlledPhone')
+        .clear();
+    });
+
+    it('Paste event', () => {
+      cy.get('#MICardNumberControlled')
+        .paste('6666-7777-8888-9999')
+        .should('have.value', '6666-7777-8888-9999')
+        .clear();
+    });
+  });
+
   describe('Interaction', () => {
     describe('Input', () => {
+      it('Should working with default value', () => {
+        cy.get('#MICreditCardNumber')
+          .should('have.value', '6666-7777-8888-9999')
+          .and('be.visible')
+          .clear()
+          .type('1234567834567899')
+          .should('have.value', '1234-5678-3456-7899')
+          .clear()
+      });
+
       it('Should clear one char per backspace press', () => {
         cy.name('MINotControlledPhone')
           .focusMasked()
@@ -163,6 +255,7 @@ describe('MaskedInput', () => {
           .get('#MIControlledPhone')
           .should('have.value', '+7 (981)-886-27-98');
       });
+
       it('Should clear mask value', () => {
         cy.get('#clearPhoneValue')
           .click()
@@ -181,6 +274,7 @@ describe('MaskedInput', () => {
           .get('@consoleLog')
           .should('be.calledWith', '+7 (___)-___-__-__')
       });
+
       it('Should remove mask when value is cleared', () => {
         cy.get('#MICardNumberControlled')
           .type('33')

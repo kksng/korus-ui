@@ -7,6 +7,7 @@ import {
   Button,
   ButtonGroup,
   CheckBox,
+  CheckBoxTree,
   Currency,
   Collapse,
   CountDown,
@@ -71,6 +72,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/checkbox">
           <CheckBox />
+        </Route>
+        <Route path="/cypress/checkbox-tree">
+          <CheckBoxTree />
         </Route>
         <Route path="/cypress/countdown">
           <CountDown />
