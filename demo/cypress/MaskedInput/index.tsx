@@ -20,7 +20,10 @@ export const MaskedInput = (): React.ReactElement => {
         name="MINotControlledPhone"
         form="my-form"
       />
-      <L.Switcher value={isDisabled} onChange={(event) => setIsDisabled(event.component.value)}>
+      <L.Switcher
+        value={isDisabled}
+        onChange={(event: L.SwitcherTypes.ChangeEvent): void => setIsDisabled(event.component.value)}
+      >
         Toggle isDisabled
       </L.Switcher>
       <br />
@@ -31,7 +34,9 @@ export const MaskedInput = (): React.ReactElement => {
         id="MIControlledInsurance"
         placeholder="___-___-___ __"
         value={cardValue}
-        onChange={(event) => setCardValue(event.component.value)}
+        onChange={(event: L.MaskedInputTypes.ChangeEvent): void => setCardValue(event.component.value)}
+        onFocus={(): void => console.log('Focused')}
+        onBlur={(): void => console.log('Blured')}
       />
       <L.Span>Phone number (controlled)</L.Span>
       <L.MaskedInput
@@ -39,17 +44,33 @@ export const MaskedInput = (): React.ReactElement => {
         mask="+7 (###)-###-##-##"
         placeholder="+7 (___)-___-__-__"
         value={phoneValue}
-        onChange={(event) => {
+        onChange={(event: L.MaskedInputTypes.ChangeEvent): void => {
           setPhoneValue(event.component.value);
           console.log(event.component.inputValue);
         }}
-        onEnterPress={(event) => {
+        onEnterPress={(event: L.MaskedInputTypes.EnterPressEvent): void => {
           console.log(event.component.inputValue);
         }}
       />
-      <L.Button _warning id="clearPhoneValue" onClick={() => {setPhoneValue(null)}}>Clear Value</L.Button>
+      <L.Button
+        _warning
+        id="clearPhoneValue"
+        onClick={(): void => {
+          setPhoneValue(null);
+        }}
+      >
+        Clear Value
+      </L.Button>
       {' '}
-      <L.Button _warning id="setPhoneValue" onClick={() => {setPhoneValue('9818862798')}}>Set Value</L.Button>
+      <L.Button
+        _warning
+        id="setPhoneValue"
+        onClick={(): void => {
+          setPhoneValue('9818862798');
+        }}
+      >
+        Set Value
+      </L.Button>
       <br />
       <br />
       <L.Span>Credit card number (controlled without placeholder)</L.Span>
@@ -57,12 +78,20 @@ export const MaskedInput = (): React.ReactElement => {
         mask="####-####-####-####"
         id="MICardNumberControlled"
         value={cardNumberValue}
-        onChange={(event) => {
+        onChange={(event: L.MaskedInputTypes.ChangeEvent): void => {
           setCardNumberValue(event.component.value);
           console.log(event.component.inputValue);
         }}
       />
-      <L.Button _warning id="clearCardValue" onClick={() => {setCardNumberValue(null)}}>Clear Value</L.Button>
+      <L.Button
+        _warning
+        id="clearCardValue"
+        onClick={(): void => {
+          setCardNumberValue(null);
+        }}
+      >
+        Clear Value
+      </L.Button>
       <br />
       <br />
       <L.Span>Car Number (uncontrolled)</L.Span>
