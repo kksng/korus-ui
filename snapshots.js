@@ -162,4 +162,17 @@ module.exports = {
       }
     }
   },
+  "MaskedInput": {
+    "Display": {
+      "Should render component without placeholder": {
+        "1": "<div class=\"masked-input-wrapper focused\"><input class=\"masked-input-element\"\n    maxlength=\"20\"\n    id=\"MICardNumberControlled\"\n    aria-invalid=\"false\"\n    value=\"____-____-____-____\"></div>"
+      },
+      "Should render placeholder": {
+        "1": "<div class=\"masked-wrapper\">\n  <div class=\"masked-input-wrapper\"><input class=\"masked-input-element\"\n      maxlength=\"15\"\n      placeholder=\"___-___-___ __\"\n      id=\"MIControlledInsurance\"\n      aria-invalid=\"false\"\n      value=\"\"></div>\n</div>"
+      },
+      "Should render disabled state": {
+        "1": "<div class=\"masked-input-wrapper disabled required\"><input\n    class=\"masked-input-element\"\n    maxlength=\"19\"\n    placeholder=\"+7 (___)-___-__-__\"\n    form=\"my-form\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    name=\"MINotControlledPhone\"\n    value=\"\"\n    disabled=\"\"></div>"
+      }
+    }
+  },
 }
