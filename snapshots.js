@@ -1,21 +1,5 @@
 module.exports = {
   "__version": "5.2.0",
-  "DatePicker": {
-    "Display": {
-      "Should render datepicker": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
-      },
-      "Should render placeholder": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
-      }
-    },
-    "Interaction": {
-      "Should work with different date formats": {
-        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  aria-invalid=\"false\"\n  name=\"secondDatePicker\"\n  value=\"11.11.1111\">",
-        "2": "<input class=\"datepicker-input\"\n  maxlength=\"39\"\n  aria-invalid=\"false\"\n  name=\"openedCalendar\"\n  value=\"11-е число  11-го месяца  1111-го года\">"
-      }
-    }
-  },
   "AutoComplete": {
     "Display": {
       "Should render placeholder": {
@@ -73,6 +57,22 @@ module.exports = {
       },
       "Should render disabled checkbox": {
         "1": "disabled"
+      }
+    }
+  },
+  "DatePicker": {
+    "Display": {
+      "Should render datepicker": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
+      },
+      "Should render placeholder": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  placeholder=\"Type your date...\"\n  aria-invalid=\"false\"\n  name=\"firstDatePicker\"\n  value=\"\">"
+      }
+    },
+    "Interaction": {
+      "Should work with different date formats": {
+        "1": "<input class=\"datepicker-input\"\n  maxlength=\"11\"\n  aria-invalid=\"false\"\n  name=\"secondDatePicker\"\n  value=\"11.11.1111\">",
+        "2": "<input class=\"datepicker-input\"\n  maxlength=\"39\"\n  aria-invalid=\"false\"\n  name=\"openedCalendar\"\n  value=\"11-е число  11-го месяца  1111-го года\">"
       }
     }
   },
@@ -148,5 +148,44 @@ module.exports = {
         "1": "<div class=\"slider-container\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 693.9px;\"></div>\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 77.1px; right: 385.5px;\"></div>\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 385.5px; right: 192.75px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 578.25px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"2\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 77.1px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">2</div>\n    </div>\n  </div>\n  <div class=\"slider-handle slider-handle-1 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 2; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n  <div class=\"slider-handle slider-handle-2 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"15\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 3; left: 578.25px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">15</div>\n    </div>\n  </div>\n</div>"
       }
     }
-  }
+  },
+  "FileUpload": {
+    "Display": {
+      "Should render component in controlled mode": {
+        "1": "<a class=\"controlled\"\n  aria-invalid=\"false\"><span>Загрузить</span>\n  <div tabindex=\"0\"><input id=\"controlledFileUpload\"\n      accept=\".jpg, .gif, .png, .txt, .jpeg\"\n      type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"></div>\n</a>"
+      },
+      "Should render customizated component": {
+        "1": "<button type=\"button\"\n  aria-invalid=\"false\"\n  class=\"button-wrapper warning custom\"><span>Загрузить?</span>\n  <div tabindex=\"0\"><input id=\"customFileUpload\"\n      accept=\".jpg, .gif, .png\"\n      type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"></div>\n</button>"
+      },
+      "Should render loading when using isLoading prop": {
+        "1": "<a class=\"loaded underlining className\"\n  aria-invalid=\"false\"><span>Идёт загрузка...</span>\n  <div tabindex=\"0\"><input type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"></div>\n</a>"
+      }
+    }
+  },
+  "Input": {
+    "Display": {
+      "Input should be displayed": {
+        "1": "<div class=\"input-wrapper\">\n  <div class=\"input-element-wrapper\"><input id=\"only-numbers\"\n      placeholder=\"only numbers\"\n      aria-invalid=\"false\"\n      class=\"input-element\"\n      value=\"\"></div>\n</div>"
+      },
+      "isDisabled must set the component to disabled (the component is visible on the form, but it is inactive, there is no way to enter text)": {
+        "1": "<div class=\"input-element-wrapper disabled\"><input id=\"isDisabled\"\n    placeholder=\"isDisabled\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    disabled=\"\"\n    value=\"\"></div>"
+      },
+      "Should render component in controlled mode": {
+        "1": "<div class=\"input-element-wrapper\"><input id=\"controlledMode\"\n    aria-invalid=\"false\"\n    class=\"input-element\"\n    value=\"Controlled value\"></div>"
+      }
+    }
+  },
+  "MaskedInput": {
+    "Display": {
+      "Should render component without placeholder": {
+        "1": "<div class=\"masked-input-wrapper focused\"><input class=\"masked-input-element\"\n    maxlength=\"20\"\n    id=\"MICardNumberControlled\"\n    aria-invalid=\"false\"\n    value=\"____-____-____-____\"></div>"
+      },
+      "Should render placeholder": {
+        "1": "<div class=\"masked-wrapper\">\n  <div class=\"masked-input-wrapper\"><input class=\"masked-input-element\"\n      maxlength=\"15\"\n      placeholder=\"___-___-___ __\"\n      id=\"MIControlledInsurance\"\n      aria-invalid=\"false\"\n      value=\"\"></div>\n</div>"
+      },
+      "Should render disabled state": {
+        "1": "<div class=\"masked-input-wrapper disabled required\"><input\n    class=\"masked-input-element\"\n    maxlength=\"19\"\n    placeholder=\"+7 (___)-___-__-__\"\n    form=\"my-form\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    name=\"MINotControlledPhone\"\n    value=\"\"\n    disabled=\"\"></div>"
+      }
+    }
+  },
 }
