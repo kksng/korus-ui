@@ -4,11 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.45.0] - 2021-04-26
+
+### Added
+- CheckBoxTree: Added new component
+
+
 ## [0.44.0] - 2021-04-12
 
 ### Added
 - DropDown: Added class disabled
-- CheckBoxTree: Added new component
 
 ### Fixed
 - NumericTextBox: Fixed rounding numbers on change event
