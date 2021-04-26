@@ -136,6 +136,19 @@ module.exports = {
       }
     }
   },
+  "Password": {
+    "Display": {
+      "Should render the component": {
+        "1": "<div class=\"password-element-wrapper required\"><input id=\"Password\"\n    data-test=\"password\"\n    placeholder=\"Enter your password...\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    class=\"password-input\"\n    form=\"AwesomePassword\"\n    name=\"Password\"\n    type=\"password\"\n    value=\"\"><i class=\"password-is-hidden\"></i></div>"
+      },
+      "Should render component with default value": {
+        "1": "<div class=\"password-element-wrapper\"><input id=\"withDefaultValue\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"Самый безопасный пароль\"><i class=\"password-is-hidden\"></i></div>"
+      },
+      "Should render clear button": {
+        "1": "<div class=\"password-element-wrapper focused\"><input id=\"lowercase\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"hello\"><i class=\"password-clear-icon\"></i><i\n    class=\"password-is-hidden\"></i></div>"
+      }
+    }
+  },
   "Slider": {
     "Display": {
       "Should render the component": {

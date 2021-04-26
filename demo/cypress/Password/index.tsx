@@ -1,47 +1,41 @@
 import * as React from 'react';
 import * as L from '../../../korus-ui';
-import { StateButtonGroup } from '../../components/StateButtonGroup';
-import { useEventSpy } from '../../useEventSpy';
 import { PasswordStrength } from '../../../korus-ui/components/Password/constants';
 
-export const Password = () => {
+export const Password = (): React.ReactElement => {
   const [props, setProps] = React.useState({});
   const [value, setValue] = React.useState<string | null>(null);
-
-  const { update, EventInfo } = useEventSpy();
 
   return (
     <L.Div _box _inner _demoBg>
       <L.Password
+        _inner
         minPasswordEvaluationLength={5}
+        maxLength={20}
         passwordRules="Задайте хороший пароль"
         passwordEvaluators={[
           {
-            strengthLevel: PasswordStrength.Low,
-            evaluator: () => true,
             evaluationMessage: 'Пароль слабоват',
+            evaluator: (): boolean => true,
+            strengthLevel: PasswordStrength.Low,
           },
           {
-            strengthLevel: PasswordStrength.Medium,
-            evaluator: (password) => {
+            evaluationMessage: 'Пароль норм',
+            evaluator: (password): boolean => {
               if (L.validate.password(password)) return true;
               return false;
             },
-            evaluationMessage: 'Пароль норм',
+            strengthLevel: PasswordStrength.Medium,
           },
           {
-            strengthLevel: PasswordStrength.Strong,
-            evaluator: (password) => {
-              if (
-                L.validate.password(password) &&
-                password.length > 12 &&
-                /[!@#$%*]/.test(password)
-              ) {
+            evaluationMessage: 'Пароль огонь',
+            evaluator: (password): boolean => {
+              if (L.validate.password(password) && password.length > 12 && /[!@#$%*]/.test(password)) {
                 return true;
               }
               return false;
             },
-            evaluationMessage: 'Пароль огонь',
+            strengthLevel: PasswordStrength.Strong,
           },
         ]}
         name="Password"
@@ -49,19 +43,19 @@ export const Password = () => {
         form="AwesomePassword"
         data-test="password"
         value={value}
-        onChange={(ev) => {
+        onChange={(ev: L.PasswordTypes.ChangeEvent): void => {
           setValue(ev.component.value);
-          update('Change', ev);
+          console.log('Change', ev);
         }}
         placeholder="Enter your password..."
-        onFocus={(ev) => {
-          update('Focus', ev);
+        onFocus={(ev: L.PasswordTypes.FocusEvent): void => {
+          console.log('Focus', ev.component.value);
         }}
-        onEnterPress={({ component }) => {
+        onEnterPress={({ component }): void => {
           console.log(component.name, component.value);
         }}
-        onBlur={(ev) => {
-          update('Blur', ev);
+        onBlur={(ev: L.PasswordTypes.BlurEvent): void => {
+          console.log('Blur', ev.component.value);
         }}
         isRequired
         requiredMessage="Пароль обязателен!"
@@ -70,11 +64,48 @@ export const Password = () => {
         {...props}
       />
       <br />
-      <L.Password id="lowercase" letterCase="lower" _width30></L.Password>
+      <L.Password
+        _inner
+        id="withDefaultValue"
+        defaultValue="Самый безопасный пароль"
+        _width30
+      />
       <br />
-      <L.Password id="uppercase" letterCase="upper" _width30></L.Password>
+      <L.Password
+        _inner
+        id="lowercase"
+        letterCase="lower"
+        hasClearButton
+        _width30
+      />
       <br />
-      <L.Password id="isDisabled" isDisabled={true} _width30></L.Password>
+      <L.Password
+        _inner
+        id="uppercase"
+        letterCase="upper"
+        _width30
+      />
+      <br />
+      <L.Password
+        _inner
+        id="withAllowedSymbols"
+        allowedSymbols={/([A-Za-z]|\s)/}
+        _width30
+      />
+      <br />
+      <L.Password
+        _inner
+        id="withForbiddenSymbols"
+        forbiddenSymbols={/([A-Za-z]|\s)/}
+        _width30
+      />
+      <br />
+      <L.Password
+        _inner
+        id="isDisabled"
+        isDisabled
+        _width30
+      />
     </L.Div>
   );
 };
