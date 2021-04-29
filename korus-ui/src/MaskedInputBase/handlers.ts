@@ -19,7 +19,7 @@ import { DEFAULT_PLACEHOLDER_CHAR, INPUT_METHODS } from './constants';
 export const createChangeHandler = (
   props: MaskedInputBaseProps,
   extraData: ChangeData,
-): React.ChangeEventHandler<HTMLInputElement> => (ev) => {
+): React.ChangeEventHandler<HTMLInputElement> => (ev): void => {
   ev.preventDefault();
 
   const {
@@ -30,13 +30,15 @@ export const createChangeHandler = (
 
   const input = ev.currentTarget;
 
-  const compareResult = compareText(inputValue, ev.target.value);
+  const compareResult = compareText(inputValue, ev.target.value, mask);
 
-  const inputMethod = (() => {
+  const inputMethod = ((): INPUT_METHODS => {
     if (compareResult[1] && compareResult[2]) {
       return INPUT_METHODS.replace;
     }
-
+    if (compareResult[1].length > 1) {
+      return INPUT_METHODS.autocomplete;
+    }
     if (compareResult[1]) {
       return INPUT_METHODS.add;
     }
@@ -53,9 +55,12 @@ export const createChangeHandler = (
   const selection = getSelection(input);
 
   const position = selection[0] <= 0 ? Number(compareResult[0]) : Number([selection[0] - 1]);
-  const setCursor = (newPosition: number) => adjustCursor(ev, newPosition);
+  const setCursor = (newPosition: number): void => adjustCursor(ev, newPosition);
 
-  const newValue = (() => {
+  const newValue = ((): string => {
+    if (inputMethod === INPUT_METHODS.autocomplete) {
+      return maskValue(compareResult[1], mask);
+    }
     if (inputMethod === INPUT_METHODS.replace) {
       const hurtValue = removeChar({
         input,
@@ -134,7 +139,7 @@ export const createChangeHandler = (
 export const createClearHandler = (
   props: MaskedInputBaseProps,
   extraData: ClearData,
-): ClearEventHandler => () => {
+): ClearEventHandler => (): void => {
   const {
     onChange, mask, placeholderChar = DEFAULT_PLACEHOLDER_CHAR,
   } = props;
@@ -158,7 +163,7 @@ export const createClearHandler = (
 
 export const createKeyDownHandler = (
   props: MaskedInputBaseProps, extraData: KeyDownData,
-): React.KeyboardEventHandler<HTMLInputElement> => (ev) => {
+): React.KeyboardEventHandler<HTMLInputElement> => (ev): void => {
   const {
     onChange, value, mask, onKeyDown, placeholderChar = '_',
   } = props;
@@ -201,13 +206,13 @@ export const createKeyDownHandler = (
 
 export const createPasteHandler = (
   props: MaskedInputBaseProps,
-): React.ClipboardEventHandler<HTMLInputElement> => (ev) => {
+): React.ClipboardEventHandler<HTMLInputElement> => (ev): void => {
   const {
     onChange, mask, placeholderChar = '_', isDisabled,
   } = props;
 
   ev.preventDefault();
-  // по неизвестным причинам onPaste работает даже на отключенных инпутах
+  // for unknown reasons, onPaste works even on disabled inputs
   if (isDisabled) return;
 
   const newValue = maskValue(ev.clipboardData.getData('Text'), mask, placeholderChar);
@@ -227,7 +232,7 @@ export const createPasteHandler = (
 
 export const createFocusHandler = (
   props: MaskedInputBaseProps, extraData: FocusData,
-): React.FocusEventHandler<HTMLInputElement> => (ev) => {
+): React.FocusEventHandler<HTMLInputElement> => (ev): void => {
   const {
     value: valueProp, onFocus, mask, placeholderChar = '_',
   } = props;
@@ -238,7 +243,7 @@ export const createFocusHandler = (
 
   setFocused(true);
 
-  const newInputValue = (() => {
+  const newInputValue = ((): string => {
     if (!valueProp && inputValue) { // the input is neither completely filled nor empty
       return inputValue;
     }
@@ -278,7 +283,7 @@ export const createFocusHandler = (
 
 export const createBlurHandler = (
   props: MaskedInputBaseProps, extraData: BlurData,
-): React.FocusEventHandler<HTMLInputElement> => (ev) => {
+): React.FocusEventHandler<HTMLInputElement> => (ev): void => {
   const {
     onBlur, value,
   } = props;

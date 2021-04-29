@@ -47,8 +47,23 @@ export const setSelection = (el: HTMLInputElement | null, selection: SelectionTy
   } catch (ev) { /* not focused or not visible */ }
 };
 
-export const compareText = (oldText: string, newText: string): [number, string, string] => {
+export const getEditableCharsIndex = (mask: string): number[] => {
+  const maskChars = Object.keys(baseMaskRules);
+
+  const editableCharsIndex: number[] = [];
+
+  mask.split('').forEach((item, index) => {
+    if (maskChars.includes(item)) editableCharsIndex.push(index);
+  });
+
+  return editableCharsIndex;
+};
+
+export const compareText = (oldText: string, newText: string, mask: string): [number, string, string] => {
+  const editableCharsIndex = getEditableCharsIndex(mask);
   const difStart = oldText.split('').findIndex((item, index) => item !== newText[index]);
+  // input was autocompleted
+  if (difStart < editableCharsIndex[0] && newText.slice(difStart).length === editableCharsIndex.length) return [oldText.length, newText.slice(difStart), ''];
   // added one char at the end
   if (difStart === -1) return [oldText.length, newText.slice(-1), ''];
 
@@ -71,18 +86,6 @@ export const compareText = (oldText: string, newText: string): [number, string, 
   const added = oldText.length < newText.length ? newText.substr(difStart, 1) : '';
 
   return [difStart, added, ''];
-};
-
-export const getEditableCharsIndex = (mask: string): number[] => {
-  const maskChars = Object.keys(baseMaskRules);
-
-  const editableCharsIndex: number[] = [];
-
-  mask.split('').forEach((item, index) => {
-    if (maskChars.includes(item)) editableCharsIndex.push(index);
-  });
-
-  return editableCharsIndex;
 };
 
 export const getRawValue = (value: string, mask: string): string => {
