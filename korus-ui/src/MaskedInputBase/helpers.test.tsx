@@ -19,6 +19,9 @@ describe('compareText tests', () => {
     const removed = '';
     const expected = [cursorPosition, added, removed];
     expect(helpers.compareText(oldText, newText, mask)).toEqual(expected);
+
+    const newFormattedText = '+7 900 999-00-00';
+    expect(helpers.compareText(oldText, newFormattedText, mask)).toEqual(expected);
   });
   it('Should correctly define that one char was added at the end', () => {
     const oldText = '+7 (000)-000-00-00';
