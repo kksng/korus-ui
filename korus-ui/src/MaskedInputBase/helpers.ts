@@ -63,7 +63,14 @@ export const compareText = (oldText: string, newText: string, mask: string): [nu
   const editableCharsIndex = getEditableCharsIndex(mask);
   const difStart = oldText.split('').findIndex((item, index) => item !== newText[index]);
   // input was autocompleted
-  if (difStart < editableCharsIndex[0] && newText.slice(difStart).length >= editableCharsIndex.length) return [oldText.length, newText.slice(difStart).replace(/[^0-9a-zA-Zа-яА-Я]/g, ''), ''];
+  if (difStart < editableCharsIndex[0]) {
+    // Remove country code (+7) from tel numbers, all special chars and white spaces
+    const normalizedInput = newText.slice(difStart).replace(/[^0-9a-zA-Zа-яА-Я]/g, '');
+
+    if (normalizedInput.length === editableCharsIndex.length) {
+      return [oldText.length, normalizedInput, ''];
+    }
+  }
   // added one char at the end
   if (difStart === -1) return [oldText.length, newText.slice(-1), ''];
 
