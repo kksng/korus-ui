@@ -200,5 +200,5 @@ module.exports = {
         "1": "<div class=\"masked-input-wrapper disabled required\"><input\n    class=\"masked-input-element\"\n    maxlength=\"19\"\n    placeholder=\"+7 (___)-___-__-__\"\n    form=\"my-form\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    name=\"MINotControlledPhone\"\n    value=\"\"\n    disabled=\"\"></div>"
       }
     }
-  },
+  }
 }
