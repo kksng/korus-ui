@@ -1,6 +1,11 @@
 import { baseMaskRules } from './constants';
 import { SelectionType } from './types';
 
+/**
+ * Helper returns the starting and ending index of the selected part of the text in the input
+ * @param {HTMLInputElement} el - input element
+ * @returns {SelectionType} - selection
+ */
 export const getSelection = (el: HTMLInputElement): SelectionType => {
   let start;
   let end;
@@ -28,6 +33,11 @@ export const getSelection = (el: HTMLInputElement): SelectionType => {
   return [start, end];
 };
 
+/**
+ * Set starting and ending index of the selected part of the text in the input
+ * @param {HTMLInputElement | null} el - input element
+ * @param {SelectionType} - selection
+ */
 export const setSelection = (
   el: HTMLInputElement | null,
   selection: SelectionType,
@@ -54,6 +64,11 @@ export const setSelection = (
   }
 };
 
+/**
+ * Helper returns array of editable chars indexes
+ * @param {string} mask - input's mask
+ * @returns {number[]} - array of editable chars indexes
+ */
 export const getEditableCharsIndex = (mask: string): number[] => {
   const maskChars = Object.keys(baseMaskRules);
 
@@ -66,6 +81,13 @@ export const getEditableCharsIndex = (mask: string): number[] => {
   return editableCharsIndex;
 };
 
+/**
+ * Helper checks if masked value is valid
+ * @param {string} value - inputs's value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @returns {boolean} - flag that defines if masked value is valid
+ */
 const isValidValue = (
   value: string,
   mask: string,
@@ -86,6 +108,12 @@ const isValidValue = (
   });
 };
 
+/**
+ * Helper calls validator on each char of provided value
+ * @param {string} value - input's value
+ * @param {(char: string) => boolean} testStr - validator
+ * @returns {string} - validated value
+ */
 const getValidValue = (
   value: string,
   testStr: (char: string) => boolean,
@@ -97,6 +125,13 @@ const getValidValue = (
   return getValidValue(value.slice(1), testStr);
 };
 
+/**
+ * Helper converts raw value to masked value
+ * @param {string} value - input's value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @returns {string} - masked value
+ */
 export const maskValue = (
   value: string,
   mask: string,
@@ -146,6 +181,12 @@ export const maskValue = (
     .join('');
 };
 
+/**
+ * Helper converts masked value to raw value
+ * @param {string} value - input's value
+ * @param {string} mask - input's mask'
+ * @returns {string} - raw value
+ */
 export const getRawValue = (value: string, mask: string): string => {
   const editableCharsIndex = getEditableCharsIndex(mask);
 
@@ -158,6 +199,14 @@ export const getRawValue = (value: string, mask: string): string => {
   return rawValueChars.join('');
 };
 
+/**
+ * Helper defines, what kind of event was performed on input (add, remove, replace, autocomplete, nothing)
+ * returns the following array: [new cursor position, added value, removed value]
+ * @param {string} oldText - previous input value
+ * @param {string} newText - new input value
+ * @param {string} mask - input's mask
+ * @returns {[number, string, string]} - [new cursor position, added value, removed value]
+ */
 export const compareText = (
   oldText: string,
   newText: string,
@@ -211,6 +260,12 @@ export const compareText = (
   return [difStart, added, ''];
 };
 
+/**
+ * Helper gets empty masked value
+ * @param {string} mask - input's mask
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @returns {string} - empty masked value
+ */
 export const getEmptyValue = (
   mask: string,
   placeholderChar = '_',
@@ -227,6 +282,13 @@ export const getEmptyValue = (
     .join('');
 };
 
+/**
+ * Helper returns index of next editable char
+ * @param {string} mask - input's mask
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @param {SelectionType} selection - selection range
+ * @returns {number} - index of next editable char
+ */
 const getNextEditableIndex = (
   mask: string,
   placeholderChar: string,
@@ -241,6 +303,17 @@ const getNextEditableIndex = (
   return slicedIndex === -1 ? -1 : selection[0] + slicedIndex;
 };
 
+/**
+ * Helper adds char to masked value and returns new value
+ * @param {string} value - current input value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @param {string} char - added char
+ * @param {SelectionType} selection - selection range
+ * @param {HTMLInputElement} input - input element
+ * @param {(newPosition: number) => void} setCursor - function to set cursor
+ * @returns {string} - new value
+ */
 export const addChar = ({
   value,
   mask,
@@ -302,6 +375,17 @@ export const addChar = ({
   return newValue;
 };
 
+/**
+ * Helper removes char from masked value and returns new value
+ * @param {string} value - current input value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @param {string} removed - removed char
+ * @param {SelectionType} selection - selection range
+ * @param {HTMLInputElement} input - input element
+ * @param {(newPosition: number) => void} setCursor - function to set cursor
+ * @returns {string} - new value
+ */
 export const removeChar = ({
   setCursor,
   value,
@@ -346,6 +430,15 @@ export const removeChar = ({
   return newValue;
 };
 
+/**
+ * Helper gets masked value from input
+ * @param {string} valueProp - value provided as prop to component
+ * @param {string} inputValue - input's actual value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @param {boolean} isFocused - flag defines if input is focused
+ * @returns {string} - masked value
+ */
 export const getValue = ({
   valueProp,
   inputValue,
