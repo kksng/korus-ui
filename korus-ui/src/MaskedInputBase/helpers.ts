@@ -1,6 +1,11 @@
 import { baseMaskRules } from './constants';
 import { SelectionType } from './types';
 
+/**
+ * Helper returns the starting and ending index of the selected part of the text in the input
+ * @param {HTMLInputElement} el - input element
+ * @returns {SelectionType} - selection
+ */
 export const getSelection = (el: HTMLInputElement): SelectionType => {
   let start;
   let end;
@@ -20,13 +25,23 @@ export const getSelection = (el: HTMLInputElement): SelectionType => {
 
       start = clone.text.length;
       end = start + rangeEl.text.length;
-    } catch (ev) { /* not focused or not visible */ }
+    } catch (ev) {
+      /* not focused or not visible */
+    }
   }
 
   return [start, end];
 };
 
-export const setSelection = (el: HTMLInputElement | null, selection: SelectionType): void => {
+/**
+ * Set starting and ending index of the selected part of the text in the input
+ * @param {HTMLInputElement | null} el - input element
+ * @param {SelectionType} - selection
+ */
+export const setSelection = (
+  el: HTMLInputElement | null,
+  selection: SelectionType,
+): void => {
   try {
     if (el && el.selectionStart !== undefined) {
       el.focus();
@@ -44,9 +59,16 @@ export const setSelection = (el: HTMLInputElement | null, selection: SelectionTy
         rangeEl.select();
       }, 0);
     }
-  } catch (ev) { /* not focused or not visible */ }
+  } catch (ev) {
+    /* not focused or not visible */
+  }
 };
 
+/**
+ * Helper returns array of editable chars indexes
+ * @param {string} mask - input's mask
+ * @returns {number[]} - array of editable chars indexes
+ */
 export const getEditableCharsIndex = (mask: string): number[] => {
   const maskChars = Object.keys(baseMaskRules);
 
@@ -59,56 +81,18 @@ export const getEditableCharsIndex = (mask: string): number[] => {
   return editableCharsIndex;
 };
 
-export const compareText = (oldText: string, newText: string, mask: string): [number, string, string] => {
-  const editableCharsIndex = getEditableCharsIndex(mask);
-  const difStart = oldText.split('').findIndex((item, index) => item !== newText[index]);
-  // input was autocompleted
-  if (difStart < editableCharsIndex[0] && newText.slice(difStart).length === editableCharsIndex.length) return [oldText.length, newText.slice(difStart), ''];
-  // added one char at the end
-  if (difStart === -1) return [oldText.length, newText.slice(-1), ''];
-
-  if (oldText.length >= newText.length) {
-    const removed = oldText.substr(difStart, oldText.length - newText.length);
-
-    const replaced = oldText.substr(difStart, oldText.length - newText.length + 1);
-
-    const oldWithoutRemoved = oldText.slice(0, difStart) + oldText.slice(difStart + removed.length);
-
-    const oldWithoutReplaced = oldText.slice(0, difStart) + oldText.slice(difStart + replaced.length);
-    // simple removed some chars
-    if (oldWithoutReplaced === newText || oldWithoutRemoved === newText) return [difStart, '', removed];
-
-    const replacedDifStart = oldWithoutRemoved.split('').findIndex((item, index) => item !== newText[index]);
-    // replace some char to one
-    return [replacedDifStart, newText.substr(difStart, 1), oldText.substr(difStart, oldText.length - newText.length + 1)];
-  }
-  // added one char
-  const added = oldText.length < newText.length ? newText.substr(difStart, 1) : '';
-
-  return [difStart, added, ''];
-};
-
-export const getRawValue = (value: string, mask: string): string => {
-  const editableCharsIndex = getEditableCharsIndex(mask);
-
-  const rawValueChars: string[] = [];
-
-  value.split('').forEach((item, index) => {
-    if (editableCharsIndex.includes(index)) rawValueChars.push(item);
-  });
-
-  return rawValueChars.join('');
-};
-
-const getValidValue = (value: string, testStr: (char: string) => boolean): string => {
-  if (value.length === 0) return '';
-
-  if (testStr(value[0])) return value;
-
-  return getValidValue(value.slice(1), testStr);
-};
-
-const isValidValue = (value: string, mask: string, placeholderChar = '_'): boolean => {
+/**
+ * Helper checks if masked value is valid
+ * @param {string} value - inputs's value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @returns {boolean} - flag that defines if masked value is valid
+ */
+const isValidValue = (
+  value: string,
+  mask: string,
+  placeholderChar = '_',
+): boolean => {
   if (value.length !== mask.length) return false;
 
   return mask.split('').every((item, index) => {
@@ -124,7 +108,35 @@ const isValidValue = (value: string, mask: string, placeholderChar = '_'): boole
   });
 };
 
-export const maskValue = (value: string, mask: string, placeholderChar = '_'): string => {
+/**
+ * Helper calls validator on each char of provided value
+ * @param {string} value - input's value
+ * @param {(char: string) => boolean} testStr - validator
+ * @returns {string} - validated value
+ */
+const getValidValue = (
+  value: string,
+  testStr: (char: string) => boolean,
+): string => {
+  if (value.length === 0) return '';
+
+  if (testStr(value[0])) return value;
+
+  return getValidValue(value.slice(1), testStr);
+};
+
+/**
+ * Helper converts raw value to masked value
+ * @param {string} value - input's value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @returns {string} - masked value
+ */
+export const maskValue = (
+  value: string,
+  mask: string,
+  placeholderChar = '_',
+): string => {
   const editableCharsIndex = getEditableCharsIndex(mask);
 
   const isAlreadyMasked = isValidValue(value, mask, placeholderChar);
@@ -133,48 +145,155 @@ export const maskValue = (value: string, mask: string, placeholderChar = '_'): s
 
   let currentValue = value;
 
-  return mask.split('').map((item, index) => {
-    if (editableCharsIndex.includes(index) && currentValue) {
-      if (currentValue[0] === placeholderChar) {
-        currentValue = currentValue.slice(1);
+  return mask
+    .split('')
+    .map((item, index) => {
+      if (editableCharsIndex.includes(index) && currentValue) {
+        if (currentValue[0] === placeholderChar) {
+          currentValue = currentValue.slice(1);
 
+          return placeholderChar;
+        }
+
+        const currentMaskChar = baseMaskRules[item];
+
+        if (!currentMaskChar) {
+          throw new Error(
+            'L.MaskedInput: unknown mask char! Mask only accepts: "#", "L", "l", "C", "c"',
+          );
+        }
+
+        const newValue = getValidValue(currentValue, (char) => currentMaskChar.validate(char));
+
+        currentValue = newValue.slice(1);
+
+        return newValue[0];
+      }
+
+      const maskChars = Object.keys(baseMaskRules);
+
+      if (maskChars.includes(item)) {
         return placeholderChar;
       }
 
-      const currentMaskChar = baseMaskRules[item];
-
-      if (!currentMaskChar) {
-        throw new Error('L.MaskedInput: unknown mask char! Mask only accepts: "#", "L", "l", "C", "c"');
-      }
-
-      const newValue = getValidValue(currentValue, (char) => currentMaskChar.validate(char));
-
-      currentValue = newValue.slice(1);
-
-      return newValue[0];
-    }
-
-    const maskChars = Object.keys(baseMaskRules);
-
-    if (maskChars.includes(item)) {
-      return placeholderChar;
-    }
-
-    return item;
-  }).join('');
+      return item;
+    })
+    .join('');
 };
 
-export const getEmptyValue = (mask: string, placeholderChar: string): string => {
+/**
+ * Helper converts masked value to raw value
+ * @param {string} value - input's value
+ * @param {string} mask - input's mask'
+ * @returns {string} - raw value
+ */
+export const getRawValue = (value: string, mask: string): string => {
+  const editableCharsIndex = getEditableCharsIndex(mask);
+
+  const rawValueChars: string[] = [];
+
+  value.split('').forEach((item, index) => {
+    if (editableCharsIndex.includes(index)) rawValueChars.push(item);
+  });
+
+  return rawValueChars.join('');
+};
+
+/**
+ * Helper defines, what kind of event was performed on input (add, remove, replace, autocomplete, nothing)
+ * returns the following array: [new cursor position, added value, removed value]
+ * @param {string} oldText - previous input value
+ * @param {string} newText - new input value
+ * @param {string} mask - input's mask
+ * @returns {[number, string, string]} - [new cursor position, added value, removed value]
+ */
+export const compareText = (
+  oldText: string,
+  newText: string,
+  mask: string,
+): [number, string, string] => {
+  const editableCharsIndex = getEditableCharsIndex(mask);
+
+  const difStart = oldText
+    .split('')
+    .findIndex((item, index) => item !== newText[index]);
+
+  const isValidMaskedValue = isValidValue(newText, mask);
+  const isValidRawValue = newText.length === editableCharsIndex.length && isValidValue(maskValue(newText, mask), mask);
+  const isAutoCompleted = difStart <= editableCharsIndex[0] && (isValidMaskedValue || isValidRawValue);
+
+  // Checks if browser autocomplete was triggered
+  if (isAutoCompleted) {
+    return [oldText.length, isValidMaskedValue ? getRawValue(newText, mask) : newText, ''];
+  }
+
+  // added one char at the end
+  if (difStart === -1) return [oldText.length, newText.slice(-1), ''];
+
+  if (oldText.length >= newText.length) {
+    const removed = oldText.substr(difStart, oldText.length - newText.length);
+
+    const replaced = oldText.substr(
+      difStart,
+      oldText.length - newText.length + 1,
+    );
+
+    const oldWithoutRemoved = oldText.slice(0, difStart) + oldText.slice(difStart + removed.length);
+
+    const oldWithoutReplaced = oldText.slice(0, difStart) + oldText.slice(difStart + replaced.length);
+    // simple removed some chars
+    if (oldWithoutReplaced === newText || oldWithoutRemoved === newText) { return [difStart, '', removed]; }
+
+    const replacedDifStart = oldWithoutRemoved
+      .split('')
+      .findIndex((item, index) => item !== newText[index]);
+    // replace some char to one
+    return [
+      replacedDifStart,
+      newText.substr(difStart, 1),
+      oldText.substr(difStart, oldText.length - newText.length + 1),
+    ];
+  }
+  // added one char
+  const added = oldText.length < newText.length ? newText.substr(difStart, 1) : '';
+
+  return [difStart, added, ''];
+};
+
+/**
+ * Helper gets empty masked value
+ * @param {string} mask - input's mask
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @returns {string} - empty masked value
+ */
+export const getEmptyValue = (
+  mask: string,
+  placeholderChar = '_',
+): string => {
   const maskChars = Object.keys(baseMaskRules);
 
-  return mask.split('').map((item) => {
-    if (maskChars.includes(item)) return placeholderChar;
+  return mask
+    .split('')
+    .map((item) => {
+      if (maskChars.includes(item)) return placeholderChar;
 
-    return item;
-  }).join('');
+      return item;
+    })
+    .join('');
 };
 
-const getNextEditableIndex = (mask: string, placeholderChar: string, selection: SelectionType): number => {
+/**
+ * Helper returns index of next editable char
+ * @param {string} mask - input's mask
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @param {SelectionType} selection - selection range
+ * @returns {number} - index of next editable char
+ */
+const getNextEditableIndex = (
+  mask: string,
+  placeholderChar: string,
+  selection: SelectionType,
+): number => {
   const emptyValue = maskValue('', mask, placeholderChar);
 
   const slicedEmptyValue = emptyValue.slice(selection[0]);
@@ -184,6 +303,17 @@ const getNextEditableIndex = (mask: string, placeholderChar: string, selection: 
   return slicedIndex === -1 ? -1 : selection[0] + slicedIndex;
 };
 
+/**
+ * Helper adds char to masked value and returns new value
+ * @param {string} value - current input value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @param {string} char - added char
+ * @param {SelectionType} selection - selection range
+ * @param {HTMLInputElement} input - input element
+ * @param {(newPosition: number) => void} setCursor - function to set cursor
+ * @returns {string} - new value
+ */
 export const addChar = ({
   value,
   mask,
@@ -202,7 +332,11 @@ export const addChar = ({
   value: string,
 }): string => {
   const editableCharsIndex = getEditableCharsIndex(mask);
-  const nextEditableIndex = getNextEditableIndex(mask, placeholderChar, selection);
+  const nextEditableIndex = getNextEditableIndex(
+    mask,
+    placeholderChar,
+    selection,
+  );
 
   if (nextEditableIndex === -1) return value.slice(0, mask.length);
 
@@ -223,7 +357,7 @@ export const addChar = ({
         && selectionDiff !== 0 // выделено более 1 символа
         && index > selection[0] // текущий символ является выделенным
         && index < selection[1]
-      ) return placeholderChar; // заменяем на placeholderChar
+      ) { return placeholderChar; } // заменяем на placeholderChar
 
       return item;
     })
@@ -231,7 +365,9 @@ export const addChar = ({
 
   input.value = newValue;
 
-  const newSelection: [number, number] = isValidChar ? [nextEditableIndex + 1, nextEditableIndex + 1] : selection;
+  const newSelection: [number, number] = isValidChar
+    ? [nextEditableIndex + 1, nextEditableIndex + 1]
+    : selection;
 
   setCursor(newSelection[1]);
   setSelection(input, newSelection);
@@ -239,6 +375,17 @@ export const addChar = ({
   return newValue;
 };
 
+/**
+ * Helper removes char from masked value and returns new value
+ * @param {string} value - current input value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @param {string} removed - removed char
+ * @param {SelectionType} selection - selection range
+ * @param {HTMLInputElement} input - input element
+ * @param {(newPosition: number) => void} setCursor - function to set cursor
+ * @returns {string} - new value
+ */
 export const removeChar = ({
   setCursor,
   value,
@@ -269,7 +416,7 @@ export const removeChar = ({
         editableCharsIndex.includes(index)
         && index >= position
         && index < position + removed.length
-      ) return emptyValue[index];
+      ) { return emptyValue[index]; }
 
       return item;
     })
@@ -283,6 +430,15 @@ export const removeChar = ({
   return newValue;
 };
 
+/**
+ * Helper gets masked value from input
+ * @param {string} valueProp - value provided as prop to component
+ * @param {string} inputValue - input's actual value
+ * @param {string} mask - input's mask'
+ * @param {string} placeholderChar - placeholder for editable chars  in the mask
+ * @param {boolean} isFocused - flag defines if input is focused
+ * @returns {string} - masked value
+ */
 export const getValue = ({
   valueProp,
   inputValue,
