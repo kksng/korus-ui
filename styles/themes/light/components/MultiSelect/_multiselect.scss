@@ -76,24 +76,42 @@
     }
   }
 
-  &-check-box-item {
-    .checkbox-label {
-      &::before {
-        top: 1px;
+  &-checkboxes {
+    .suggestion-wrapper {
+      padding: 0;
+      .loader-container {
+        border-radius: 8px;
       }
     }
   }
-
-  &-check-box-item.selected {
-    .checkbox-label {
-      &::after {
-        top: 0px;
-      }
+  &-header {
+    border-bottom: 1px solid $black-05;
+    padding: 16px 12px;
+  }
+  &-checkbox-list {
+    height: 196px;
+    padding: 6px 8px 8px;
+    overflow-y: auto;
+    &-wrapper {
+      padding: 4px;
     }
-    .checkbox-label.semi {
-      &::after {
-        top: 8px;
-      }
+    &.empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    > .checkboxtree-list {
+      padding-left: 0;
+    }
+    .checkboxtree-list .checkbox-wrapper {
+      margin-bottom: 5px;
+    }
+  }
+  &-footer {
+    border-top: 1px solid $black-05;
+    padding: 16px 12px;
+  }
+  &-input-wrapper.disabled {
+    background-color: $black-07 !important;
   }
 }

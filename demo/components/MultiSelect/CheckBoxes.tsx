@@ -25,39 +25,39 @@ export const CheckBoxes = (storyProps: StoryProps): React.ReactElement => {
         shouldKeepSuggestions
         shouldSelectedGoFirst
         canSelectAll
-        selectAllItemRender={() => <L.Span _txt-success>Select all</L.Span>}
+        selectAllItemRender={(): React.ReactElement => <L.Span>Все</L.Span>}
         _width-40
         hasClearButton
-        onChange={ev => {
+        onChange={(ev): void => {
           console.log('ev.component.selectedValue', ev.component.selectedValue);
           console.log('ev.component.deselectedValues', ev.component.deselectedValues);
           console.log('ev.component.value', ev.component.value);
           setValue(ev.component.value as string[]);
         }}
-        isOpen
         hasCheckBoxes
-        itemRender={({ componentProps, Element, elementProps }) => {
+        itemRender={({ componentProps, Element, elementProps }): React.ReactElement => {
           const { isSelected } = componentProps;
-          console.log('elementProps', elementProps)
-          console.log('componentProps', componentProps)
+          console.log('elementProps', elementProps);
+          console.log('componentProps', componentProps);
           return (
             <L.Span _txt-bold={isSelected}>
-              <Element {...elementProps} _width-100/>
+              <Element {...elementProps} _width-100 />
             </L.Span>
-          )
+          );
         }}
-        tagsUnionRender={({ elementProps, componentProps, Element }) => {
+        tagsUnionRender={({ elementProps, componentProps, Element }): React.ReactElement => {
           const { value } = componentProps;
-          const word = getWordEnding({ count: value?.length ?? 0, one: 'раз', two: 'раза', five: 'раз' });
+          const word = getWordEnding({
+            count: value?.length ?? 0, five: 'раз', one: 'раз', two: 'раза',
+          });
           return (
             <Element {...elementProps}>
               всем привет {value?.length} {word}
             </Element>
-          )
+          );
         }}
         value={value}
-      >
-      </L.MultiSelect>
+      />
     </L.Div>
   );
 };
