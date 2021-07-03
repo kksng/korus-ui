@@ -193,19 +193,6 @@ describe('checkFiles tests', () => {
   });
 });
 
-describe('DescriptionMessage tests', () => {
-  const message = 'test';
-
-  it('Should return new component with message', () => {
-    const expected = <Div _block-inline>{message}</Div>;
-    expect(helpers.DescriptionMessage({ children: message })).toEqual(expected);
-  });
-
-  it('Should return empty string if message is empty string', () => {
-    expect(helpers.DescriptionMessage({ children: '' })).toBe('');
-  });
-});
-
 describe('getError tests', () => {
   const testFile = {
     ...new Blob(),

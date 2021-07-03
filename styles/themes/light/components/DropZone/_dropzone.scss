@@ -2,17 +2,69 @@
   &-wrapper {
     background-color: transparent;
     border: 1px dashed $black-05;
-    padding: 10px 9px;
+    border-radius: 8px;
 
     &.danger {
       border-color: $brand-danger;
     }
+
+    .rejected-list {
+      padding-top: 8px;
+    }
+
+    &:hover {
+      border-color: $black-01;
+      cursor: pointer;
+    }
   }
 
   &-content {
-    display: flex;
     align-items: center;
+    border: 1px dashed $black-05;
+    border-radius: 8px;
+    display: flex;
     justify-content: space-between;
+    padding: 12px;
+  }
+
+  &-file-upload {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    &:hover {
+      border-color: $black-01;
+      cursor: pointer;
+    }
+  }
+  &-icon::before {
+    background-image: url(https://cdn.esphere.ru/images/nova/uploadzone-icon.svg);
+    content: "";
+    display: block;
+    height: 32px;
+    margin-bottom: 4px;
+    width: 32px;
+  }
+  &-hint {
+    color: $black-04;
+    font-family: "Font Awesome 5 Free";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    margin-left: 4px;
+    speak: none;
+    text-transform: none;
+    vertical-align: middle;
+    &::before {
+      content: "\f059";
+      color: $black-04;
+    }
+    &:hover {
+      font-weight: 900;
+      color: $black-03;
+    }
   }
 
   &-button {
@@ -30,7 +82,7 @@
     font-size: 12px;
     padding-left: 24px;
     padding-right: 48px;
-    color: $black-03;
+    color: $black-04;
     text-overflow: ellipsis;
     font-style: normal;
   }
@@ -47,22 +99,13 @@
     }
   }
 
-  &-delete-icon-wrapper {
-    &.disabled{
-      pointer-events: none;
-    }
-  }
-
   &-delete-icon {
     font-size: 13px;
     cursor: pointer;
+    font-family: "novicon", sans-serif;
     &::before {
-      content: "\00D7";
-      color: $black-03;
+      content: "\e94d";
       font-style: normal;
-    }
-    &.disabled{
-      pointer-events: none;
     }
   }
 }
