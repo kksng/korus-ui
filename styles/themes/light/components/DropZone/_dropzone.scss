@@ -1,8 +1,6 @@
 .dropzone {
   &-wrapper {
     background-color: transparent;
-    border: 1px dashed $black-05;
-    padding: 10px 9px;
 
     &.danger {
       border-color: $brand-danger;
@@ -10,29 +8,47 @@
   }
 
   &-content {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-  }
-
-  &-button {
-    min-width: 120px;
+    border: 1px dashed $black-05;
+    border-radius: 8px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: none;
+    flex-direction: column;
+    padding: 16px 0;
+    &:hover {
+      border-color: $black-01;
+      cursor: pointer;
+    }
   }
 
   &-description {
-    width: 100%;
-    display: inline-block;
-    text-align: start;
-    font-size: 12px;
-    padding-left: 24px;
-    padding-right: 48px;
-    color: $black-03;
-    text-overflow: ellipsis;
-    font-style: normal;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &-icon::before {
+    background-image: url(https://cdn.esphere.ru/images/nova/uploadzone-icon.svg);
+    content: "";
+    display: block;
+    height: 32px;
+    margin-bottom: 4px;
+    width: 32px;
+  }
+
+  &-hint {
+    font-size: 16px;
+    margin-left: 4px;
+    vertical-align: center;
+    &::before {
+      font-family: "Font Awesome 5 Free";
+      content: "\f059";
+      font-weight: 900;
+      color: $black-05;
+      font-style: normal;
+    }
+    &:hover:before {
+      color: $black-03;
+    }
   }
 
   &-status {

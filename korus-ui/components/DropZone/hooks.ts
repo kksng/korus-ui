@@ -6,8 +6,7 @@ import {
 import { useElement, useProps } from '../../utils';
 import { Div } from '../Div';
 import { Ul } from '../Ul';
-import { Span } from '../Span';
-import { Button } from '../Button';
+import { A } from '../A';
 import { LedaContext } from '../LedaProvider';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 
@@ -50,7 +49,7 @@ export const useCustomElements = (props: DropZoneProps, state: DropZoneState): C
 
   const Info = useElement(
     'Info',
-    Span,
+    Div,
     infoRender || context.renders[COMPONENTS_NAMESPACES.dropZone].infoRender,
     props,
     state,
@@ -58,7 +57,7 @@ export const useCustomElements = (props: DropZoneProps, state: DropZoneState): C
 
   const UploadButton = useElement<DropZoneProps, DropZoneState, UploadButtonProps>(
     'UploadButton',
-    Button,
+    A,
     uploadButtonRender || context.renders[COMPONENTS_NAMESPACES.dropZone].uploadButtonRender,
     props,
     state,

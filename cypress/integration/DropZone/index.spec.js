@@ -1,4 +1,3 @@
-import { get } from 'lodash';
 import { defaultDropZoneTheme as theme } from '../../../korus-ui/components/DropZone/theme';
 
 const wrapperClassName = `.${theme.wrapper}`;
@@ -45,9 +44,19 @@ describe('DropZone', () => {
       cy.name('uncontrolledWithValidation')
         .parent()
         .find(`.${theme.description}`)
-        .should('contain', 'Перетащите сюда файлы для загрузки')
-        .and('contain', 'Размер')
+        .should('contain', 'Перетащите файлы или')
         .and('be.visible')
+    });
+
+    it('Should render hint text', () => {
+      cy.name('uncontrolledWithValidation')
+        .parent()
+        .find(`.${theme.hint}`)
+        .click()
+        .get('.tooltip')
+        .eq(1)
+        .should('contain', 'Размер')
+        .and('be.visible');
     });
 
     it('Should render customize upload button', () => {
@@ -191,7 +200,6 @@ describe('DropZone', () => {
         .click()
         .get('#controlledDZ')
         .next()
-        .should('have.class', `${theme.disabled}`)
         .parent()
         .should('have.class', `${theme.disabled}`)
         .parent()
@@ -375,7 +383,7 @@ describe('DropZone', () => {
         .find('.progress-loader')
         .should('not.exist');
     });
-    
+
     it('Should display custom loader', () => {
       cy.get('#customLoader')
         .click()

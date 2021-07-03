@@ -156,20 +156,6 @@ export const checkFiles = (
 };
 
 /**
- * Helper creates component to display message
- * @param {{ children: string }} props - string passed as child to DescriptionMessage
- *
- * @returns {React.ReactElement} - component to display message
- */
-export const DescriptionMessage = (props: { children: string }): React.ReactElement => {
-  const { children: message } = props;
-
-  const shouldWrapMessage = isString(message) && message.length;
-
-  return (shouldWrapMessage ? <Div _block-inline>{message}</Div> : message) as React.ReactElement;
-};
-
-/**
  * Helper returns DropZone error
  * @param {DropZoneFileType | ExternalFile} file - rejected file
  *
