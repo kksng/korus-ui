@@ -41,6 +41,7 @@ export const COMPONENTS_NAMESPACES = {
   dropDownSelect: 'dropDownSelect',
   dropZone: 'dropZone',
   fileDrop: 'fileDrop',
+  fileList: 'fileList',
   fileUpload: 'fileUpload',
   input: 'input',
   linkTree: 'linkTree',
