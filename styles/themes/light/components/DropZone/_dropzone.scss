@@ -1,26 +1,52 @@
 .dropzone {
   &-wrapper {
     background-color: transparent;
-    border: 1px dashed $black-05;
-    padding: 10px 9px;
 
     &.danger {
       border-color: $brand-danger;
     }
+
+    .rejected-list {
+      padding-top: 8px;
+    }
   }
 
   &-content {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
+    border: 1px dashed $black-05;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    &:hover {
+      border-color: $black-01;
+      cursor: pointer;
+    }
   }
 
-  &-button {
-    min-width: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: none;
+  &-icon::before {
+    background-image: url(https://cdn.esphere.ru/images/nova/uploadzone-icon.svg);
+    content: "";
+    display: block;
+    height: 32px;
+    margin-bottom: 4px;
+    width: 32px;
+  }
+
+  &-hint {
+    font-size: 16px;
+    margin-left: 4px;
+    vertical-align: center;
+    &::before {
+      font-family: "Font Awesome 5 Free";
+      content: "\f059";
+      font-weight: 900;
+      color: $black-05;
+      font-style: normal;
+    }
+    &:hover:before {
+      color: $black-03;
+    }
   }
 
   &-description {

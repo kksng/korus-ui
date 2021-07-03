@@ -18,7 +18,9 @@ export const createClickHandler = (
   { onClick, isDisabled }: DropZoneProps,
   ref: React.MutableRefObject<DropzoneRef | null>,
 ): React.MouseEventHandler => (ev: React.MouseEvent<HTMLDivElement>): void => {
-  if (!isDisabled && ref.current && (ev.target as HTMLDivElement).tagName === 'BUTTON') ref.current.open();
+  if (!isDisabled && ref.current
+    && ((ev.target as HTMLDivElement).tagName === 'A' || (ev.target as HTMLDivElement).tagName === 'BUTTON')
+  ) ref.current.open();
 
   if (isFunction(onClick)) onClick(ev);
 };
