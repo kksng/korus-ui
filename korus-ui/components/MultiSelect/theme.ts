@@ -3,7 +3,12 @@ import { defaultSuggestionListTheme } from '../../src/SuggestionList/theme';
 
 export const defaultMultiSelectTheme = {
   checkBoxItem:              'multiselect-check-box-item',
+  checkBoxList:              'multiselect-checkbox-list',
+  checkBoxListFooter:        'multiselect-footer',
+  checkBoxListHeader:        'multiselect-header',
+  checkBoxListWrapper:       'multiselect-checkbox-list-wrapper',
   checkBoxSemi:              'semi',
+  checkBoxTreeList:          'checkboxtree-list',
   clearIcon:                 'multiselect-clear-icon',
   input:                     'multiselect-input',
   inputFocused:              'focused',
