@@ -16,7 +16,7 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
         className="dropzone-wrapper"
       >
         <Div
-          className="dropzone-content"
+          className="dropzone-file-upload"
           onBlur={[Function]}
           onClick={[Function]}
           onDragEnter={[Function]}
@@ -29,7 +29,7 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
           tabIndex={0}
         >
           <div
-            className="dropzone-content"
+            className="dropzone-file-upload"
             onBlur={[Function]}
             onClick={[Function]}
             onDragEnter={[Function]}
@@ -53,31 +53,222 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
               tabIndex={-1}
               type="file"
             />
-            <UploadButton
-              className="dropzone-button"
-            >
-              <Button
-                className="dropzone-button"
-              >
-                <button
-                  className="button-wrapper dropzone-button"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  Выбрать...
-                </button>
-              </Button>
-            </UploadButton>
-             
-            <Info
-              className="dropzone-description"
+            <Span
+              className="dropzone-icon"
             >
               <span
-                className="dropzone-description"
-              >
-                Drop here
-              </span>
-            </Info>
+                className="dropzone-icon"
+              />
+            </Span>
+            <Div>
+              <div>
+                <Info>
+                  <span
+                    className="dropzone-description"
+                  >
+                    Drop here
+                  </span>
+                </Info>
+                <UploadButton>
+                  <A>
+                    <a
+                      onClick={[Function]}
+                    >
+                       нажмите здесь
+                    </a>
+                  </A>
+                </UploadButton>
+                <Tooltip
+                  title="Размер: до 104857600 байт."
+                >
+                  <div
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  />
+                  <I
+                    className="dropzone-hint"
+                  >
+                    <i
+                      className="dropzone-hint"
+                    />
+                  </I>
+                  <TooltipBody
+                    onTransitionEnd={[Function]}
+                    style={
+                      Object {
+                        "opacity": 0,
+                        "top": 0,
+                        "visibility": "hidden",
+                      }
+                    }
+                    title="Размер: до 104857600 байт."
+                    tooltipClassNames="tooltip"
+                  >
+                    <Portal
+                      containerInfo={
+                        <body>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div>
+                            <ul>
+                              <li>
+                                <div
+                                  style="display: none;"
+                                />
+                                <a
+                                  class="pointer dropzone-delete-icon-wrapper"
+                                >
+                                  <i
+                                    class="dropzone-delete-icon"
+                                  />
+                                </a>
+                                <div
+                                  style="display: none;"
+                                />
+                                <a
+                                  download="file_1.txt"
+                                  href="blob://mockObjectURL"
+                                  theme="dropzone-file-download internal"
+                                >
+                                  file_1.txt
+                                </a>
+                              </li>
+                              <li>
+                                <div
+                                  style="display: none;"
+                                />
+                                <a
+                                  class="pointer dropzone-delete-icon-wrapper"
+                                >
+                                  <i
+                                    class="dropzone-delete-icon"
+                                  />
+                                </a>
+                                <div
+                                  style="display: none;"
+                                />
+                                <a
+                                  download="file_2.pdf"
+                                  href="blob://mockObjectURL"
+                                  theme="dropzone-file-download internal"
+                                >
+                                  file_2.pdf
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Удалить
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Скачать
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Удалить
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Скачать
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                        </body>
+                      }
+                    >
+                      <div
+                        className="tooltip"
+                        onTransitionEnd={[Function]}
+                        style={
+                          Object {
+                            "opacity": 0,
+                            "top": 0,
+                            "visibility": "hidden",
+                          }
+                        }
+                      >
+                        <div>
+                          Размер: до 104857600 байт.
+                        </div>
+                      </div>
+                    </Portal>
+                  </TooltipBody>
+                </Tooltip>
+              </div>
+            </Div>
           </div>
         </Div>
         <LoaderComponent />
@@ -107,19 +298,19 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
         <Component
           theme={
             Object {
-              "button": "dropzone-button",
-              "content": "dropzone-content",
-              "description": "dropzone-description",
+              "content": "dropzone-file-upload",
               "disabled": "disabled",
               "fileDeleteIcon": "dropzone-delete-icon",
               "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
+              "hint": "dropzone-hint",
               "invalid": "danger",
               "rejectedFilesWrapper": "rejected-list margin-none",
               "rejectedMessage": "dropzone-rejected-message txt-danger",
               "required": "required",
               "status": "dropzone-status",
+              "uploadIcon": "dropzone-icon",
               "wrapper": "dropzone-wrapper",
             }
           }
@@ -145,19 +336,19 @@ exports[`DropZone ATTRIBUTES should customize description text 1`] = `
         shouldRender={false}
         theme={
           Object {
-            "button": "dropzone-button",
-            "content": "dropzone-content",
-            "description": "dropzone-description",
+            "content": "dropzone-file-upload",
             "disabled": "disabled",
             "fileDeleteIcon": "dropzone-delete-icon",
             "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
+            "hint": "dropzone-hint",
             "invalid": "danger",
             "rejectedFilesWrapper": "rejected-list margin-none",
             "rejectedMessage": "dropzone-rejected-message txt-danger",
             "required": "required",
             "status": "dropzone-status",
+            "uploadIcon": "dropzone-icon",
             "wrapper": "dropzone-wrapper",
           }
         }
@@ -189,7 +380,7 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
         className="dropzone-wrapper"
       >
         <Div
-          className="dropzone-content"
+          className="dropzone-file-upload"
           onBlur={[Function]}
           onClick={[Function]}
           onDragEnter={[Function]}
@@ -202,7 +393,7 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
           tabIndex={0}
         >
           <div
-            className="dropzone-content"
+            className="dropzone-file-upload"
             onBlur={[Function]}
             onClick={[Function]}
             onDragEnter={[Function]}
@@ -226,57 +417,212 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
               tabIndex={-1}
               type="file"
             />
-            <UploadButton
-              className="dropzone-button"
+            <Span
+              className="dropzone-icon"
             >
               <span
-                className="test-class"
-              >
-                Drop me
-              </span>
-            </UploadButton>
-             
-            <Info
-              className="dropzone-description"
-            >
-              <Span
-                className="dropzone-description"
-              >
-                <span
-                  className="dropzone-description"
+                className="dropzone-icon"
+              />
+            </Span>
+            <Div>
+              <div>
+                <Info>
+                  <Span>
+                    <span>
+                      Перетащите файлы или
+                    </span>
+                  </Span>
+                </Info>
+                <UploadButton>
+                  <span
+                    className="test-class"
+                  >
+                    Drop me
+                  </span>
+                </UploadButton>
+                <Tooltip
+                  title="Размер: до 104857600 байт."
                 >
-                  <Component>
-                    <Div
-                      _block-inline={true}
+                  <div
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  />
+                  <I
+                    className="dropzone-hint"
+                  >
+                    <i
+                      className="dropzone-hint"
+                    />
+                  </I>
+                  <TooltipBody
+                    onTransitionEnd={[Function]}
+                    style={
+                      Object {
+                        "opacity": 0,
+                        "top": 0,
+                        "visibility": "hidden",
+                      }
+                    }
+                    title="Размер: до 104857600 байт."
+                    tooltipClassNames="tooltip"
+                  >
+                    <Portal
+                      containerInfo={
+                        <body>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div>
+                            <ul>
+                              <li>
+                                <div
+                                  style="display: none;"
+                                />
+                                <a
+                                  class="pointer dropzone-delete-icon-wrapper"
+                                >
+                                  <i
+                                    class="dropzone-delete-icon"
+                                  />
+                                </a>
+                                <div
+                                  style="display: none;"
+                                />
+                                <a
+                                  download="file_1.txt"
+                                  href="blob://mockObjectURL"
+                                  theme="dropzone-file-download internal"
+                                >
+                                  file_1.txt
+                                </a>
+                              </li>
+                              <li>
+                                <div
+                                  style="display: none;"
+                                />
+                                <a
+                                  class="pointer dropzone-delete-icon-wrapper"
+                                >
+                                  <i
+                                    class="dropzone-delete-icon"
+                                  />
+                                </a>
+                                <div
+                                  style="display: none;"
+                                />
+                                <a
+                                  download="file_2.pdf"
+                                  href="blob://mockObjectURL"
+                                  theme="dropzone-file-download internal"
+                                >
+                                  file_2.pdf
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Удалить
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Скачать
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Удалить
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Скачать
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                        </body>
+                      }
                     >
                       <div
-                        className="block-inline"
+                        className="tooltip"
+                        onTransitionEnd={[Function]}
+                        style={
+                          Object {
+                            "opacity": 0,
+                            "top": 0,
+                            "visibility": "hidden",
+                          }
+                        }
                       >
-                        Перетащите сюда файлы для загрузки.
+                        <div>
+                          Размер: до 104857600 байт.
+                        </div>
                       </div>
-                    </Div>
-                  </Component>
-                   
-                  <Component>
-                    <Div
-                      _block-inline={true}
-                    >
-                      <div
-                        className="block-inline"
-                      >
-                        Размер: до 104857600 байт.
-                      </div>
-                    </Div>
-                  </Component>
-                   
-                  <Component />
-                   
-                  <Component />
-                   
-                  <Component />
-                </span>
-              </Span>
-            </Info>
+                    </Portal>
+                  </TooltipBody>
+                </Tooltip>
+              </div>
+            </Div>
           </div>
         </Div>
         <LoaderComponent />
@@ -306,19 +652,19 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
         <Component
           theme={
             Object {
-              "button": "dropzone-button",
-              "content": "dropzone-content",
-              "description": "dropzone-description",
+              "content": "dropzone-file-upload",
               "disabled": "disabled",
               "fileDeleteIcon": "dropzone-delete-icon",
               "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
+              "hint": "dropzone-hint",
               "invalid": "danger",
               "rejectedFilesWrapper": "rejected-list margin-none",
               "rejectedMessage": "dropzone-rejected-message txt-danger",
               "required": "required",
               "status": "dropzone-status",
+              "uploadIcon": "dropzone-icon",
               "wrapper": "dropzone-wrapper",
             }
           }
@@ -344,19 +690,19 @@ exports[`DropZone ATTRIBUTES should customize upload button 1`] = `
         shouldRender={false}
         theme={
           Object {
-            "button": "dropzone-button",
-            "content": "dropzone-content",
-            "description": "dropzone-description",
+            "content": "dropzone-file-upload",
             "disabled": "disabled",
             "fileDeleteIcon": "dropzone-delete-icon",
             "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
+            "hint": "dropzone-hint",
             "invalid": "danger",
             "rejectedFilesWrapper": "rejected-list margin-none",
             "rejectedMessage": "dropzone-rejected-message txt-danger",
             "required": "required",
             "status": "dropzone-status",
+            "uploadIcon": "dropzone-icon",
             "wrapper": "dropzone-wrapper",
           }
         }
@@ -387,7 +733,7 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
         className="dropzone-wrapper"
       >
         <Div
-          className="dropzone-content"
+          className="dropzone-file-upload"
           onBlur={[Function]}
           onClick={[Function]}
           onDragEnter={[Function]}
@@ -400,7 +746,7 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
           tabIndex={0}
         >
           <div
-            className="dropzone-content"
+            className="dropzone-file-upload"
             onBlur={[Function]}
             onClick={[Function]}
             onDragEnter={[Function]}
@@ -424,63 +770,94 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
               tabIndex={-1}
               type="file"
             />
-            <UploadButton
-              className="dropzone-button"
+            <Span
+              className="dropzone-icon"
             >
-              <Button
-                className="dropzone-button"
-              >
-                <button
-                  className="button-wrapper dropzone-button"
-                  onClick={[Function]}
-                  type="button"
+              <span
+                className="dropzone-icon"
+              />
+            </Span>
+            <Div>
+              <div>
+                <Info>
+                  <Span>
+                    <span>
+                      Перетащите файлы или
+                    </span>
+                  </Span>
+                </Info>
+                <UploadButton>
+                  <A>
+                    <a
+                      onClick={[Function]}
+                    >
+                       нажмите здесь
+                    </a>
+                  </A>
+                </UploadButton>
+                <Tooltip
+                  title="Размер: до 104857600 байт."
                 >
-                  Выбрать...
-                </button>
-              </Button>
-            </UploadButton>
-             
-            <Info
-              className="dropzone-description"
-            >
-              <Span
-                className="dropzone-description"
-              >
-                <span
-                  className="dropzone-description"
-                >
-                  <Component>
-                    <Div
-                      _block-inline={true}
+                  <div
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  />
+                  <I
+                    className="dropzone-hint"
+                  >
+                    <i
+                      className="dropzone-hint"
+                    />
+                  </I>
+                  <TooltipBody
+                    onTransitionEnd={[Function]}
+                    style={
+                      Object {
+                        "opacity": 0,
+                        "top": 0,
+                        "visibility": "hidden",
+                      }
+                    }
+                    title="Размер: до 104857600 байт."
+                    tooltipClassNames="tooltip"
+                  >
+                    <Portal
+                      containerInfo={
+                        <body>
+                          <div
+                            class="tooltip"
+                            style="opacity: 0; top: 0px; visibility: hidden;"
+                          >
+                            <div>
+                              Размер: до 104857600 байт.
+                            </div>
+                          </div>
+                        </body>
+                      }
                     >
                       <div
-                        className="block-inline"
+                        className="tooltip"
+                        onTransitionEnd={[Function]}
+                        style={
+                          Object {
+                            "opacity": 0,
+                            "top": 0,
+                            "visibility": "hidden",
+                          }
+                        }
                       >
-                        Перетащите сюда файлы для загрузки.
+                        <div>
+                          Размер: до 104857600 байт.
+                        </div>
                       </div>
-                    </Div>
-                  </Component>
-                   
-                  <Component>
-                    <Div
-                      _block-inline={true}
-                    >
-                      <div
-                        className="block-inline"
-                      >
-                        Размер: до 104857600 байт.
-                      </div>
-                    </Div>
-                  </Component>
-                   
-                  <Component />
-                   
-                  <Component />
-                   
-                  <Component />
-                </span>
-              </Span>
-            </Info>
+                    </Portal>
+                  </TooltipBody>
+                </Tooltip>
+              </div>
+            </Div>
           </div>
         </Div>
         <LoaderComponent />
@@ -510,19 +887,19 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
         <Component
           theme={
             Object {
-              "button": "dropzone-button",
-              "content": "dropzone-content",
-              "description": "dropzone-description",
+              "content": "dropzone-file-upload",
               "disabled": "disabled",
               "fileDeleteIcon": "dropzone-delete-icon",
               "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
               "fileDeleteLink": "dropzone-file-delete internal",
               "fileDownloadLink": "dropzone-file-download internal",
+              "hint": "dropzone-hint",
               "invalid": "danger",
               "rejectedFilesWrapper": "rejected-list margin-none",
               "rejectedMessage": "dropzone-rejected-message txt-danger",
               "required": "required",
               "status": "dropzone-status",
+              "uploadIcon": "dropzone-icon",
               "wrapper": "dropzone-wrapper",
             }
           }
@@ -548,19 +925,19 @@ exports[`DropZone SNAPSHOTS should render 1`] = `
         shouldRender={false}
         theme={
           Object {
-            "button": "dropzone-button",
-            "content": "dropzone-content",
-            "description": "dropzone-description",
+            "content": "dropzone-file-upload",
             "disabled": "disabled",
             "fileDeleteIcon": "dropzone-delete-icon",
             "fileDeleteIconWrapper": "dropzone-delete-icon-wrapper",
             "fileDeleteLink": "dropzone-file-delete internal",
             "fileDownloadLink": "dropzone-file-download internal",
+            "hint": "dropzone-hint",
             "invalid": "danger",
             "rejectedFilesWrapper": "rejected-list margin-none",
             "rejectedMessage": "dropzone-rejected-message txt-danger",
             "required": "required",
             "status": "dropzone-status",
+            "uploadIcon": "dropzone-icon",
             "wrapper": "dropzone-wrapper",
           }
         }
@@ -582,7 +959,7 @@ exports[`DropZone SNAPSHOTS should render file list 1`] = `
     class="dropzone-wrapper"
   >
     <div
-      class="dropzone-content"
+      class="dropzone-file-upload"
       tabindex="0"
     >
       <input
@@ -592,34 +969,23 @@ exports[`DropZone SNAPSHOTS should render file list 1`] = `
         tabindex="-1"
         type="file"
       />
-      <button
-        class="button-wrapper dropzone-button"
-        type="button"
-      >
-        Выбрать...
-      </button>
-       
       <span
-        class="dropzone-description"
-      >
+        class="dropzone-icon"
+      />
+      <div>
+        <span>
+          Перетащите файлы или
+        </span>
+        <a>
+           нажмите здесь
+        </a>
         <div
-          class="block-inline"
-        >
-          Перетащите сюда файлы для загрузки.
-        </div>
-         
-        <div
-          class="block-inline"
-        >
-          Размер: до 104857600 байт.
-        </div>
-         
-        
-         
-        
-         
-        
-      </span>
+          style="display: none;"
+        />
+        <i
+          class="dropzone-hint"
+        />
+      </div>
     </div>
   </div>
   <ul

@@ -58,13 +58,13 @@ describe('Validation', () => {
         .click()
         .get('@consoleLog')
         .should('be.calledWith', 'Submit failed')
-        .get('.filedrop-content')
+        .name('fileDropScroll')
         .isAtTop()
         .name('fileDropScroll')
         .attachFile('example.json', { subjectType: 'drag-n-drop' })
         .name('SubmitScroll')
         .click()
-        .get('.dropzone-content')
+        .name('dropZoneScroll')
         .isAtTop()
     });
 
