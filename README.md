@@ -108,6 +108,7 @@ import * as L from 'korus-ui';
 │   │   ├── DropZone                    : demo examples of DropZone component
 │   │   ├── FileDrop                    : demo examples of FileDrop component
 │   │   ├── FileUpload                  : demo examples of FileUpload component
+│   │   ├── FileList                    : demo examples of FileList component
 │   │   ├── HTMLTags                    : demo examples of HTMLTags component
 │   │   ├── Input                       : demo examples of Input component
 │   │   ├── LedaProvider                : demo examples of LedaProvider component
@@ -161,6 +162,7 @@ import * as L from 'korus-ui';
 │   │   ├── DropDownSelect              : demo examples of DropDownSelect component for cypress tests
 │   │   ├── DropZone                    : demo examples of DropZone component for cypress tests
 │   │   ├── FileDrop                    : demo examples of FileDrop component for cypress tests
+│   │   ├── FileList                    : demo examples of FileList component for cypress tests
 │   │   ├── Input                       : demo examples of Input component for cypress tests
 │   │   ├── MaskedInput                 : demo examples of MaskedInput component for cypress tests
 │   │   ├── Modal                       : demo examples of Modal component for cypress tests
@@ -187,7 +189,7 @@ import * as L from 'korus-ui';
 │   │
 │   ├── CypressLayout.tsx            : layout for demo examples for cypress tests
 │   ├── Demo.tsx                     : demo page for cypress tests
-│   ├── index.tsx                    
+│   ├── index.tsx
 │   ├── types.ts                     : types
 │   └── useEventSpy.tsx              : hook helps to test events
 │
@@ -222,6 +224,7 @@ import * as L from 'korus-ui';
 │   │   ├── Figure                      : Figure component
 │   │   ├── FileDrop                    : FileDrop component
 │   │   ├── FileUpload                  : FileUpload component
+│   │   ├── FileList                    : FileList component
 │   │   ├── Footer                      : Footer component
 │   │   ├── Headers                     : Headers component
 │   │   ├── I                           : I component
@@ -427,7 +430,7 @@ Changes are considered ready for release if:
 3. The changes were verified by the testing specialist of the Korus-UI team.
 
 ### Versioning
-Korus-UI uses [Semantic Versioning 2.0.0][21]. Korus-UI version numbers have three parts: major.minor.patch. The version number is incremented based on the level of change included in the release and it’s impact on the library's backward compatibility. 
+Korus-UI uses [Semantic Versioning 2.0.0][21]. Korus-UI version numbers have three parts: major.minor.patch. The version number is incremented based on the level of change included in the release and it’s impact on the library's backward compatibility.
 
 1. The release of the major version contains significant new features, including backward incompatible API changes. The upgrade process to a new version may require refactoring of the code, writing additional tests, and studying the documentation for the new APIs.
 2. The release of the minor version contains new important features while maintaining the backward compatibility of the version.

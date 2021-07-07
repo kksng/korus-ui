@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - MultiSelect: Added header and footer in checkboxes list
 - MultiSelect: Refactoring
+- FileList: Added new component
 
 ## [0.45.1] - 2021-04-29
 

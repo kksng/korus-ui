@@ -28,6 +28,7 @@ import { Button } from './components/Button';
 import { ButtonGroup } from './components/ButtonGroup';
 import { CheckBox } from './components/CheckBox';
 import { CheckBoxTree } from './components/CheckBoxTree';
+import { FileList } from './components/FileList';
 import { Collapse } from './components/Collapse';
 import { Collapsible } from './components/Collapsible';
 import { CountDown } from './components/CountDown';
@@ -113,6 +114,7 @@ import * as ButtonTypes from './components/Button/types';
 import * as ButtonGroupTypes from './components/ButtonGroup/types';
 import * as CheckBoxTypes from './components/CheckBox/types';
 import * as CheckBoxTreeTypes from './components/CheckBoxTree/types';
+import * as FileListTypes from './components/FileList/types';
 import * as CollapseTypes from './components/Collapse/types';
 import * as CountDownTypes from './components/CountDown/types';
 import * as DateTimeInputTypes from './src/DateTimeInput/types';
@@ -186,6 +188,7 @@ export {
   DropDownSelectTypes,
   DropZoneTypes,
   FileDropTypes,
+  FileListTypes,
   DivTypes,
   FileUploadTypes,
   InputTypes,
@@ -222,6 +225,7 @@ export {
   ButtonGroup,
   CheckBox,
   CheckBoxTree,
+  FileList,
   Collapse,
   Collapsible,
   CountDown,

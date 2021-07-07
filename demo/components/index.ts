@@ -21,6 +21,7 @@ export { DropDownSelect } from './DropDownSelect';
 export { DropZone } from './DropZone';
 export { FileDrop } from './FileDrop';
 export { FileUpload } from './FileUpload';
+export { FileList } from './FileList';
 export { Input } from './Input';
 export { HTMLTags } from './HTMLTags';
 export { LedaProvider } from './LedaProvider';

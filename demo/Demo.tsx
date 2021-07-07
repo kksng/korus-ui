@@ -9,7 +9,7 @@ import {
   Pagination, RadioGroup, ProgressBar, Slider, StatusBar, StickyPanel, Svg, Switcher,
   Tabs, Tags, DropZone, Textarea, DateTimePicker, TimePicker,
   DateTimeRange, TimeRange, DropDownLink, Currency, Rating,
-  Div, Table, Dl, FileUpload, HTMLTags, Validation,
+  Div, Table, Dl, FileUpload, FileList, HTMLTags, Validation,
   Collapsible, Collapse, VStepper, Button, Tooltip, FileDrop, Tour, Wizard,
 } from './components';
 import { useElementRef } from '../korus-ui/utils';
@@ -47,6 +47,7 @@ export const Demo = hot(() => (
       <DropDownSelect />
       <DropZone />
       <FileDrop />
+      <FileList />
       <FileUpload />
       <Input />
       <LedaProvider />
