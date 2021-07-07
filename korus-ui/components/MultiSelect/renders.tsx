@@ -74,17 +74,18 @@ export const createCheckBoxesRender = ({ theme, itemRender }: CreateCheckBoxesRe
         // replace label with div so that when you click on the checkbox, the focus doesn't move from the multiselect and the list doesn't close
         labelRender={({ elementProps: labelElementProps }): React.ReactElement => <Div {...labelElementProps} />}
         isSemi={isSelectAllItem && selectAllState === SelectedState.Some}
-      />
-      {isSelectAllItem && (
-        <SelectAllItem>
-          {selectAllSuggestion.text}
-        </SelectAllItem>
-      )}
-      {!isSelectAllItem && (
-        <ItemContent>
-          {elementProps.children}
-        </ItemContent>
-      )}
+      >
+        {isSelectAllItem && (
+          <SelectAllItem>
+            {selectAllSuggestion.text}
+          </SelectAllItem>
+        )}
+        {!isSelectAllItem && (
+          <ItemContent>
+            {elementProps.children}
+          </ItemContent>
+        )}
+      </CheckBox>
     </Element>
   );
 };
