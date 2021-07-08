@@ -136,19 +136,6 @@ module.exports = {
       }
     }
   },
-  "Password": {
-    "Display": {
-      "Should render the component": {
-        "1": "<div class=\"password-element-wrapper required\"><input id=\"Password\"\n    data-test=\"password\"\n    placeholder=\"Enter your password...\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    class=\"password-input\"\n    form=\"AwesomePassword\"\n    name=\"Password\"\n    type=\"password\"\n    value=\"\"><i class=\"password-is-hidden\"></i></div>"
-      },
-      "Should render component with default value": {
-        "1": "<div class=\"password-element-wrapper\"><input id=\"withDefaultValue\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"Самый безопасный пароль\"><i class=\"password-is-hidden\"></i></div>"
-      },
-      "Should render clear button": {
-        "1": "<div class=\"password-element-wrapper focused\"><input id=\"lowercase\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"hello\"><i class=\"password-clear-icon\"></i><i\n    class=\"password-is-hidden\"></i></div>"
-      }
-    }
-  },
   "FileUpload": {
     "Display": {
       "Should render component in controlled mode": {
@@ -205,6 +192,19 @@ module.exports = {
     "Display": {
       "Should render component filelist": {
         "1": "<div class=\"file-list table\">\n  <table>\n    <colgroup>\n      <col style=\"width: 4.4rem;\">\n      <col style=\"width: 6.2rem;\">\n      <col>\n      <col style=\"width: 16rem;\">\n      <col style=\"width: 5rem;\">\n      <col style=\"width: 5rem;\">\n    </colgroup>\n    <tbody>\n      <tr>\n        <td>1</td>\n        <td><i class=\"file-list-icon-1-c\"></i></td>\n        <td>test.dt<div class=\"file-list-subtitle\">Размер файла 123 мб</div>\n        </td>\n        <td>\n          <div class=\"file-list-tag\">Успешно<div class=\"file-list-subtitle\">\n              Тестовое пояснение к статусу</div>\n          </div>\n        </td>\n        <td class=\"with-button\"><button type=\"button\"\n            class=\"button-wrapper blank more\"><i\n              class=\"file-list-download\"></i></button></td>\n        <td class=\"with-button\"><button type=\"button\"\n            class=\"button-wrapper blank more\"><i\n              class=\"file-list-delete\"></i></button></td>\n      </tr>\n      <tr>\n        <td>2</td>\n        <td><i class=\"file-list-icon\"></i></td>\n        <td>test.test<div class=\"file-list-subtitle\">Размер файла 444 мб</div>\n        </td>\n        <td>\n          <div class=\"file-list-tag\">Ошибка<div class=\"file-list-subtitle\">\n              Тестовое пояснение к статусу</div>\n          </div>\n        </td>\n        <td class=\"with-button\"></td>\n        <td class=\"with-button\"><button type=\"button\"\n            class=\"button-wrapper blank more\"><i\n              class=\"file-list-delete\"></i></button></td>\n      </tr>\n      <tr>\n        <td>3</td>\n        <td><i class=\"file-list-icon-csv\"></i></td>\n        <td>test.csv<div class=\"file-list-subtitle\">Размер файла 666 мб</div>\n        </td>\n        <td>\n          <div class=\"file-list-tag success\">Успешно<div\n              class=\"file-list-subtitle\">Тестовое пояснение к статусу</div>\n          </div>\n        </td>\n        <td class=\"with-button\"></td>\n        <td class=\"with-button\"><button type=\"button\"\n            class=\"button-wrapper blank more\"><i\n              class=\"file-list-delete\"></i></button></td>\n      </tr>\n    </tbody>\n  </table>\n</div>"
+      }
+    }
+  },
+  "Password": {
+    "Display": {
+      "Should render the component": {
+        "1": "<div class=\"password-element-wrapper required\"><input id=\"Password\"\n    data-test=\"password\"\n    placeholder=\"Enter your password...\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    class=\"password-input\"\n    form=\"AwesomePassword\"\n    name=\"Password\"\n    type=\"password\"\n    value=\"\"><i class=\"password-is-hidden\"></i></div>"
+      },
+      "Should render component with default value": {
+        "1": "<div class=\"password-element-wrapper\"><input id=\"withDefaultValue\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"Самый безопасный пароль\"><i class=\"password-is-hidden\"></i></div>"
+      },
+      "Should render clear button": {
+        "1": "<div class=\"password-element-wrapper focused\"><input id=\"lowercase\"\n    aria-invalid=\"false\"\n    class=\"password-input password-input-clearable\"\n    type=\"password\"\n    value=\"hello\"><i class=\"password-clear-icon\"></i><i\n    class=\"password-is-hidden\"></i></div>"
       }
     }
   }
