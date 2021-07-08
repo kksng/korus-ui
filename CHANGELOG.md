@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - MultiSelect: Added header and footer in checkboxes list
 - MultiSelect: Refactoring
 - FileList: Added new component
+- Storybook: Added documentation for FileList component
 - DropZone: Add new styles
 - DropDown: Add new styles
 - Password: Add new styles

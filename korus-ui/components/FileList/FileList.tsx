@@ -52,7 +52,7 @@ export const FileList = (props: FileListProps): React.ReactElement => {
                 fileSizeUnit,
               } = fileInList;
               return (
-                <Tr id={id}>
+                <Tr key={id}>
                   <Td>{index + 1}</Td>
                   <Td>
                     <I className={getFileIconClass(name)} />
