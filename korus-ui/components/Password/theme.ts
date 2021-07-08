@@ -5,6 +5,7 @@ export const defaultPasswordTheme = {
   iconLeft:                 'icon-left',
   iconRight:                'icon-right',
   input:                    'password-input',
+  inputClearable:           'password-input-clearable',
   inputWrapper:             'password-element-wrapper',
   inputWrapperDisabled:     'disabled',
   inputWrapperFocused:      'focused',

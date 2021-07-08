@@ -105,6 +105,11 @@ export const Password = React.forwardRef((props: PasswordProps, ref: React.Ref<P
 
   const shouldRenderClearButton = hasClearButton && !isDisabled && value.length > 0;
 
+  const inputElementClassNames = getClassNames(
+    theme.input,
+    { [theme.inputClearable]: shouldRenderClearButton },
+  );
+
   const state = {
     isFocused, isPasswordVisible, isValid, value,
   };
@@ -150,7 +155,7 @@ export const Password = React.forwardRef((props: PasswordProps, ref: React.Ref<P
           {...restProps}
           aria-invalid={!isValid}
           aria-required={isRequired}
-          className={theme.input}
+          className={inputElementClassNames}
           disabled={isDisabled}
           form={form}
           name={name}
