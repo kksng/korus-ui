@@ -1,3 +1,9 @@
+@mixin button-disabled($type) {
+  background-color: $type !important;
+  color: $text-reverse !important;
+  border-color: $type !important;
+}
+
 .dropdown-wrapper {
   display: inline-block;
   position: relative;
@@ -5,34 +11,40 @@
 
   & > ul {
     background-color: $white;
-    border-radius: $border-radius;
+    border-radius: $input-border-radius;
     min-width: 100%;
     display: none;
-    padding-left: 0;
+    padding: 0.3rem;
     position: absolute;
     top: 100%;
-    border: 1px solid $black-07;
-    box-shadow: 0 .6rem 1rem .2rem rgba($black-01, 0.09);
+    border: 1px solid $gray-light;
+    box-shadow: $shadow-level-5;
     overflow: hidden;
+    visibility: hidden;
 
-    &:not(.pos-right) {
-      left: 0;
+    &.visible {
+      visibility: visible;
     }
 
     &.pos-top {
       top: auto;
-      bottom: 100%;
+      bottom: calc(100% - 1rem);
+      box-shadow: $shadow-level-2-top;
     }
 
     &.pos-right {
       right: 0;
     }
 
+    &:not(.pos-right) {
+      left: 0;
+    }
+
     & > li {
       display: block;
       position: relative;
       padding: 0;
-      border-bottom: 1px solid $black-07;
+      border-radius: 0.8rem !important;
 
       &.level-2 {
         border-top: 0;
@@ -44,15 +56,38 @@
 
       & > a:not(.button), & > div, & > span {
         min-width: 160px;
-        padding: 7px 12px 9px;
+        padding: 0.4rem 0.8rem 0.4rem;
         color: $black-01;
         display: flex;
         justify-content: start;
+        border-radius: 0.8rem !important;
       }
 
-      &:hover > a, &:hover > div, &:hover > span {
+      &:hover > a:not(.count), &:hover > div:not(.count), &:hover > span:not(.count) {
         background-color: $black-07;
       }
+
+      &.active > a, &.active > div, &.active > span {
+        background-color: $black-05;
+      }
+
+      .count {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 0.8rem;
+        width: 0.8rem;
+        height: 0.8rem;
+        background-color: $accent-02;
+        border-radius: 50%;
+        padding: 0;
+      }
+
+      & > a:focus {
+        box-shadow: none;
+      }
+
     }
   }
 
@@ -61,7 +96,63 @@
 
     & > ul {
       display: block;
-      z-index: 10000;
+    }
+  }
+
+  &.disabled {
+    background-color: transparent !important;
+    .button-wrapper {
+      color: $black-05 !important;
+      background-color: $body-bg !important;
+      border-color: $black-05;
+
+      > * {
+        color: $black-05 !important;
+      }
+
+      &:not(.blank):focus {
+        padding: 7px 40px 7px 24px;
+        border-width: 1px;
+        border-color: $black-05;
+        &::after {
+          right: 17px;
+        }
+      }
+
+      &.small:not(.blank):focus {
+        padding: 5px 31px 5px 16px;
+        &::after {
+          right: 11px;
+        }
+      }
+
+      &.more {
+        &:not(.blank):focus {
+          padding: 5px;
+        }
+        &.small:not(.blank):focus {
+          padding: 3px;
+        }
+      }
+
+      &.success,
+      &.primary {
+        &:hover, & {
+          @include button-disabled($primary-04);
+        }
+      }
+
+      &.warning {
+        &:hover, & {
+          @include button-disabled($accent-04);
+        }
+      }
+
+      &.danger {
+        &:hover, & {
+          @include button-disabled($error-04);
+        }
+      }
     }
   }
 }

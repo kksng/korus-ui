@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - MultiSelect: Refactoring
 - FileList: Added new component
 - DropZone: Add new styles
+- DropDown: Add new styles
+- Password: Add new styles
+- Pagination: Add new styles
 
 ## [0.45.1] - 2021-04-29
 
