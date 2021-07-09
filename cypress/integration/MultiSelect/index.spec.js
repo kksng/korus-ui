@@ -5,16 +5,16 @@ describe('MultiSelect', () => {
 
   describe('Display', () => {
     it('Should open SuggestionList', () => {
-      cy.get('#MSCheckboxes')
+      cy.get('#MSDefaultWithDataArray')
         .focus()
         .parents('.multiselect-input-wrapper')
         .should('have.class', 'focused')
-        .get('#MSCheckboxes')
+        .get('#MSDefaultWithDataArray')
         .click()
         .parents('.multiselect-wrapper')
         .find('.suggestion-list')
         .should('be.visible')
-        .get('#MSCheckboxes')
+        .get('#MSDefaultWithDataArray')
         .blur();
     });
 
@@ -22,6 +22,22 @@ describe('MultiSelect', () => {
       cy.get('#MSCheckboxes')
         .parent()
         .find('.multiselect-clear-icon')
+        .should('be.visible');
+    });
+
+    it('Should render header in multiselect checkboxes', () => {
+      cy.get('#MSCheckboxes')
+        .focus()
+        .parents('.multiselect-wrapper')
+        .find('.multiselect-header')
+        .should('be.visible');
+    });
+
+    it('Should render footer in multiselect checkboxes', () => {
+      cy.get('#MSCheckboxes')
+        .focus()
+        .parents('.multiselect-wrapper')
+        .find('.multiselect-footer')
         .should('be.visible');
     });
 
@@ -39,9 +55,12 @@ describe('MultiSelect', () => {
 
     it('Should render selectAll checkbox unchecked', () => {
       cy.get('#MSCheckboxes')
+        .parent()
+        .find('.multiselect-clear-icon')
         .click()
+        .get('#MSCheckboxes')
         .parents('.multiselect-wrapper')
-        .find('.suggestion-item')
+        .find('.multiselect-check-box-item')
         .first()
         .should('not.have.class', 'selected')
         .get('#MSCheckboxes')
@@ -50,13 +69,13 @@ describe('MultiSelect', () => {
 
     it('Should render selectAll checkbox with class semi', () => {
       cy.get('#MSCheckboxes')
-        .click()
+        .focus()
         .parents('.multiselect-wrapper')
-        .find('.suggestion-item')
+        .find('.multiselect-check-box-item')
         .eq(1)
         .click()
         .parent()
-        .find('.suggestion-item')
+        .find('.multiselect-check-box-item')
         .first()
         .find('.checkbox-label')
         .should('have.class', 'semi')
@@ -89,33 +108,33 @@ describe('MultiSelect', () => {
 
   describe('Interaction', () => {
     it('Should clear input on clear button click', () => {
-      cy.get('#MSCheckboxes')
+      cy.get('#MSDefaultWithDataArray')
         .parent()
         .find('.multiselect-clear-icon')
         .click()
-        .get('#MSCheckboxes')
+        .get('#MSDefaultWithDataArray')
         .parent()
         .find('.multiselect-tags-container')
         .should('not.exist')
-        .get('#MSCheckboxes')
+        .get('#MSDefaultWithDataArray')
         .parents('.multiselect-wrapper')
         .find('.suggestion-item')
         .each(($item) => {
           cy.wrap($item).should('not.have.class', 'selected');
         })
-        .get('#MSCheckboxes')
+        .get('#MSDefaultWithDataArray')
         .blur();
     });
 
     it('Should not check selectAll checkbox if some values are checked', () => {
       cy.get('#MSCheckboxes')
-        .click()
+        .focus()
         .parents('.multiselect-wrapper')
-        .find('.suggestion-item')
+        .find('.multiselect-check-box-item')
         .eq(1)
         .click()
         .parent()
-        .find('.suggestion-item')
+        .find('.multiselect-check-box-item')
         .first()
         .should('not.have.class', 'selected')
         .get('#MSCheckboxes')
@@ -124,9 +143,9 @@ describe('MultiSelect', () => {
 
     it('Should select all values if selectAll checkbox is selected', () => {
       cy.get('#MSCheckboxes')
-        .click()
+        .focus()
         .parents('.multiselect-wrapper')
-        .find('.suggestion-item')
+        .find('.multiselect-check-box-item')
         .first()
         .click()
         .parent()
@@ -159,9 +178,9 @@ describe('MultiSelect', () => {
     describe('With object data', () => {
       it('Should add and delete correctly on item click', () => {
         cy.get('#MSCheckboxesWithDataObject')
-          .click()
+          .focus()
           .parents('.multiselect-wrapper')
-          .find('.suggestion-item')
+          .find('.multiselect-check-box-item')
           .eq(1)
           .click()
           .next()

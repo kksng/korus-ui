@@ -17,6 +17,7 @@ export { DateTimeRange } from './DateTimeRange';
 export { DropZone } from './DropZone';
 export { FileDrop } from './FileDrop';
 export { FileUpload } from './FileUpload';
+export { FileList } from './FileList';
 export { Input } from './Input';
 export { LinkTree } from './LinkTree';
 export { Loader } from './Loader';

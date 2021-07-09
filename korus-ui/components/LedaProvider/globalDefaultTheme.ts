@@ -41,6 +41,7 @@ import { defaultCountDownTheme } from '../CountDown/theme';
 import { defaultLinkTreeTheme } from '../LinkTree/theme';
 import { defaultDrawerTheme } from '../Drawer/theme';
 import { defaultCheckBoxTreeTheme } from '../CheckBoxTree/theme';
+import { defaultFileListTheme } from '../FileList/theme';
 
 export const globalDefaultTheme = {
   autoComplete: defaultAutoCompleteTheme,
@@ -58,6 +59,7 @@ export const globalDefaultTheme = {
   dropDownSelect: defaultDropDownSelectTheme,
   dropZone: defaultDropZoneTheme,
   fileDrop: defaultFileDropTheme,
+  fileList: defaultFileListTheme,
   input: defaultInputTheme,
   linkTree: defaultLinkTreeTheme,
   loader: defaultLoaderTheme,

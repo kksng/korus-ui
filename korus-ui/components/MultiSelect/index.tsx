@@ -8,7 +8,7 @@ import {
 } from '../../utils';
 import { COMPONENTS_NAMESPACES } from '../../constants';
 import { useValidation } from '../Validation';
-import { SuggestionList } from '../../src/SuggestionList';
+import { SuggestionList } from '../../src';
 import {
   createBlurHandler,
   createClearHandler,
@@ -25,7 +25,7 @@ import { Tag } from '../Tags';
 import {
   filterData, getShouldUniteTags, getSortedSuggestions, getValue,
 } from './helpers';
-import { createCheckBoxesRender } from './renders';
+import { createCheckBoxesRender, createCheckBoxesListRender } from './renders';
 import { Span } from '../Span';
 import { selectAllSuggestion, SelectedState } from './constants';
 
@@ -213,7 +213,28 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
 
   const shouldUniteTags = getShouldUniteTags({ maxTags, value });
 
+  /** Дефолтный рендер для элемента списка в режиме чекбоксов */
   const checkBoxesRender = createCheckBoxesRender({ itemRender, theme });
+
+  /** Обработчик нажатия на кнопку выбора в футере списка чекбоксов */
+  const handleOnClickSetValueButton = (): void => {
+    setFocused(!isFocused);
+    inputRef.current?.blur();
+  };
+
+  /** Дефолтный рендер для списка в режиме чекбоксов */
+  const checkBoxesListRender = createCheckBoxesListRender({
+    filterValue,
+    isOpen,
+    listRender,
+    onClearButtonClick: handleClear,
+    onClickSetValueButton: handleOnClickSetValueButton,
+    setFilterValue,
+    setFocused,
+    shouldHideInput,
+    shouldRenderClearButton,
+    theme,
+  });
 
   const selectAllState = (() => {
     if (canSelectAll == null) return undefined;
@@ -270,7 +291,7 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
             onMouseDown={handleMouseDown}
             onTagClick={handleSelect}
             placeholder={placeholder}
-            shouldHideInput={shouldHideInput}
+            shouldHideInput={shouldHideInput || hasCheckBoxes}
             textField={textField}
             theme={theme}
             value={value}
@@ -289,14 +310,14 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
           name={name}
           onBlur={handleBlur}
           onChange={(ev: React.ChangeEvent<HTMLInputElement>) => {
-            if (shouldHideInput) return;
+            if (shouldHideInput || hasCheckBoxes) return;
             setFilterValue(ev.target.value);
           }}
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           ref={inputRef}
-          style={(isMaxItemsSelected || shouldHideInput)
+          style={(isMaxItemsSelected || shouldHideInput || hasCheckBoxes)
             ? {
               height: 0,
               opacity: 0,
@@ -316,7 +337,7 @@ export const MultiSelect = React.forwardRef((props: MultiSelectProps, ref: React
           isLoading={isLoading}
           isOpen={isNil(isOpen) ? isFocused : isOpen}
           itemRender={hasCheckBoxes ? checkBoxesRender : itemRender}
-          listRender={listRender}
+          listRender={hasCheckBoxes ? checkBoxesListRender : listRender}
           noSuggestionsRender={noSuggestionsRender}
           onClick={handleSelect}
           selectAllItemRender={selectAllItemRender}

@@ -53,7 +53,7 @@ describe('DropZone HANDLERS', () => {
 
     const { getByText } = render(<DropZone onClick={handleClick} />);
 
-    fireEvent.click(getByText('Выбрать...'));
+    fireEvent.click(getByText('нажмите здесь'));
 
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
@@ -84,7 +84,7 @@ describe('DropZone HANDLERS', () => {
 
     const { rerender, container, queryByText } = render(component);
 
-    const dropZoneContent = container.querySelector('div.dropzone-content');
+    const dropZoneContent = container.querySelector('div.dropzone-file-upload');
 
     expect(dropZoneContent).toBeInTheDocument();
 
@@ -187,9 +187,9 @@ describe('DropZone ATTRIBUTES', () => {
   });
 
   it('should render descriptionText', () => {
-    const wrapper = mount(<DropZone infoRender={() => <div className="dropzone-description">LETS DESCRIBE! Размер: до 100 Мб.</div>} onDrop={jest.fn()} onRemove={jest.fn()} />);
+    const wrapper = mount(<DropZone infoRender={() => <div className="dropzone-description-test">LETS DESCRIBE! Размер: до 100 Мб.</div>} onDrop={jest.fn()} onRemove={jest.fn()} />);
 
-    expect(wrapper.find('div.dropzone-description').text()).toEqual('LETS DESCRIBE! Размер: до 100 Мб.');
+    expect(wrapper.find('div.dropzone-description-test').text()).toEqual('LETS DESCRIBE! Размер: до 100 Мб.');
   });
 
   it('should render width', () => {

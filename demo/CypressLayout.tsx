@@ -8,6 +8,7 @@ import {
   ButtonGroup,
   CheckBox,
   CheckBoxTree,
+  FileList,
   Currency,
   Collapse,
   CountDown,
@@ -117,6 +118,9 @@ export const CypressLayout = () => (
         </Route>
         <Route path="/cypress/fileupload">
           <FileUpload />
+        </Route>
+        <Route path="/cypress/filelist">
+          <FileList />
         </Route>
         <Route path="/cypress/input">
           <Input />

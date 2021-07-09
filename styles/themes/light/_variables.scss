@@ -7,6 +7,8 @@ $black-06: #e6e6e6;
 $black-07: #f3f5f7;
 $black-08: #fafafa;
 $white: #fff;
+$gray-dark: #949494;
+$gray-light: #f5f5f5;
 
 $accent-01: #d76e00;
 $accent-02: #ff890a;
@@ -34,4 +36,26 @@ $brand-primary: $primary-02;
 $brand-warning: $accent-02;
 $brand-danger: $error-02;
 
+$body-bg: $white;
+
+$text-reverse: $white;
+
 $border-radius: 4px;
+$input-border-radius: .8rem;
+
+$base-focus: rgba(78, 163, 30, 0.4);
+
+$shadow-level-5: 0 .2rem .7rem 0 rgba($black-01, 0.25);
+$shadow-level-2-top: 0 -.2rem .7rem 0 rgba($black-01, 0.09);
+
+//disabled для грида
+%tr-disabled {
+  opacity: .65;
+  color: inherit !important;
+  background-color: inherit !important;
+  border-color: inherit !important;
+}
+
+%input-large {
+  height: 40px;
+}

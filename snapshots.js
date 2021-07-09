@@ -122,43 +122,17 @@ module.exports = {
   "DropZone": {
     "Display": {
       "DropZone should be displayed": {
-        "1": "<div class=\"dropzone-wrapper required\">\n  <div tabindex=\"0\"\n    class=\"dropzone-content\"><input form=\"dropzone-form\"\n      name=\"uncontrolledWithValidation\"\n      multiple=\"\"\n      type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"><button type=\"button\"\n      class=\"button-wrapper dropzone-button\">Выбрать...</button> <span\n      class=\"dropzone-description\">\n      <div class=\"block-inline\">Перетащите сюда файлы для загрузки.</div>\n      <div class=\"block-inline\">Размер: до 104857600 байт.</div>\n    </span></div>\n</div>"
-      },
-      "Should render customize description text": {
-        "1": "<span class=\"customized-dropzone\">Drop here</span>"
-      },
-      "Should render customize upload button": {
-        "1": "<button type=\"button\"\n  class=\"button-wrapper customized-button\">Drop Me</button>"
+        "1": "<div class=\"dropzone-wrapper required\">\n  <div tabindex=\"0\"\n    class=\"dropzone-file-upload\"><input form=\"dropzone-form\"\n      name=\"uncontrolledWithValidation\"\n      multiple=\"\"\n      type=\"file\"\n      autocomplete=\"off\"\n      tabindex=\"-1\"\n      style=\"display: none;\"><span class=\"dropzone-icon\"></span>\n    <div><span>Перетащите файлы или</span><a>&nbsp;нажмите здесь</a>\n      <div style=\"display: none;\"></div><i class=\"dropzone-hint\"></i>\n    </div>\n  </div>\n</div>"
       },
       "Should render file list": {
         "1": "<ul class=\"rejected-list margin-none\">\n  <li><span class=\"dropzone-rejected-message txt-danger\">'rejected file': -\n      Неизвестная ошибка</span></li>\n</ul>",
         "2": "<ul>\n  <li>\n    <div style=\"display: none;\"></div><a\n      class=\"pointer dropzone-delete-icon-wrapper\"><i\n        class=\"dropzone-delete-icon\"></i></a>\n    <div style=\"display: none;\"></div><a theme=\"dropzone-file-download internal\"\n      download=\"external file\"\n      href=\"external file link\">external file</a>\n  </li>\n</ul>"
-      }
-    }
-  },
-  "Password": {
-    "Display": {
-      "Should render the component": {
-        "1": "<div class=\"password-element-wrapper required\"><input id=\"Password\"\n    data-test=\"password\"\n    placeholder=\"Enter your password...\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    class=\"password-input\"\n    form=\"AwesomePassword\"\n    name=\"Password\"\n    type=\"password\"\n    value=\"\"><i class=\"password-is-hidden\"></i></div>"
       },
-      "Should render component with default value": {
-        "1": "<div class=\"password-element-wrapper\"><input id=\"withDefaultValue\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"Самый безопасный пароль\"><i class=\"password-is-hidden\"></i></div>"
+      "Should render customize upload button": {
+        "1": "<button type=\"button\"\n  class=\"button-wrapper customized-button\">Drop Me</button>"
       },
-      "Should render clear button": {
-        "1": "<div class=\"password-element-wrapper focused\"><input id=\"lowercase\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"hello\"><i class=\"password-clear-icon\"></i><i\n    class=\"password-is-hidden\"></i></div>"
-      }
-    }
-  },
-  "Slider": {
-    "Display": {
-      "Should render the component": {
-        "1": "<div class=\"slider-container\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 385.5px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 385.5px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n</div>"
-      },
-      "Should render disabled state": {
-        "1": "<div class=\"slider-container disabled\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 385.5px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 385.5px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n</div>"
-      },
-      "Should render if set value": {
-        "1": "<div class=\"slider-container\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 693.9px;\"></div>\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 77.1px; right: 385.5px;\"></div>\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 385.5px; right: 192.75px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 578.25px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"2\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 77.1px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">2</div>\n    </div>\n  </div>\n  <div class=\"slider-handle slider-handle-1 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 2; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n  <div class=\"slider-handle slider-handle-2 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"15\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 3; left: 578.25px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">15</div>\n    </div>\n  </div>\n</div>"
+      "Should render customize description text": {
+        "1": "<span class=\"customized-dropzone\">Drop here</span>"
       }
     }
   },
@@ -198,6 +172,39 @@ module.exports = {
       },
       "Should render disabled state": {
         "1": "<div class=\"masked-input-wrapper disabled required\"><input\n    class=\"masked-input-element\"\n    maxlength=\"19\"\n    placeholder=\"+7 (___)-___-__-__\"\n    form=\"my-form\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    name=\"MINotControlledPhone\"\n    value=\"\"\n    disabled=\"\"></div>"
+      }
+    }
+  },
+  "Slider": {
+    "Display": {
+      "Should render the component": {
+        "1": "<div class=\"slider-container\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 385.5px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 385.5px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n</div>"
+      },
+      "Should render disabled state": {
+        "1": "<div class=\"slider-container disabled\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 385.5px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 385.5px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n</div>"
+      },
+      "Should render if set value": {
+        "1": "<div class=\"slider-container\"\n  style=\"position: relative;\">\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 0px; right: 693.9px;\"></div>\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 77.1px; right: 385.5px;\"></div>\n  <div class=\"slider-track active\"\n    style=\"position: absolute; left: 385.5px; right: 192.75px;\"></div>\n  <div class=\"slider-track\"\n    style=\"position: absolute; left: 578.25px; right: 0px;\"></div>\n  <div class=\"slider-handle slider-handle-0 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"2\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 1; left: 77.1px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">2</div>\n    </div>\n  </div>\n  <div class=\"slider-handle slider-handle-1 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"10\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 2; left: 385.5px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">10</div>\n    </div>\n  </div>\n  <div class=\"slider-handle slider-handle-2 \"\n    tabindex=\"0\"\n    role=\"slider\"\n    aria-orientation=\"horizontal\"\n    aria-valuenow=\"15\"\n    aria-valuemin=\"0\"\n    aria-valuemax=\"20\"\n    style=\"position: absolute; z-index: 3; left: 578.25px;\">\n    <div class=\"tooltip top\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">15</div>\n    </div>\n  </div>\n</div>"
+      }
+    }
+  },
+  "FileList": {
+    "Display": {
+      "Should render component filelist": {
+        "1": "<div class=\"file-list table\">\n  <table>\n    <colgroup>\n      <col style=\"width: 4.4rem;\">\n      <col style=\"width: 6.2rem;\">\n      <col>\n      <col style=\"width: 16rem;\">\n      <col style=\"width: 5rem;\">\n      <col style=\"width: 5rem;\">\n    </colgroup>\n    <tbody>\n      <tr>\n        <td>1</td>\n        <td><i class=\"file-list-icon-1-c\"></i></td>\n        <td>test.dt<div class=\"file-list-subtitle\">Размер файла 123 мб</div>\n        </td>\n        <td>\n          <div class=\"file-list-tag\">Успешно<div class=\"file-list-subtitle\">\n              Тестовое пояснение к статусу</div>\n          </div>\n        </td>\n        <td class=\"with-button\"><button type=\"button\"\n            class=\"button-wrapper blank more\"><i\n              class=\"file-list-download\"></i></button></td>\n        <td class=\"with-button\"><button type=\"button\"\n            class=\"button-wrapper blank more\"><i\n              class=\"file-list-delete\"></i></button></td>\n      </tr>\n      <tr>\n        <td>2</td>\n        <td><i class=\"file-list-icon\"></i></td>\n        <td>test.test<div class=\"file-list-subtitle\">Размер файла 444 мб</div>\n        </td>\n        <td>\n          <div class=\"file-list-tag\">Ошибка<div class=\"file-list-subtitle\">\n              Тестовое пояснение к статусу</div>\n          </div>\n        </td>\n        <td class=\"with-button\"></td>\n        <td class=\"with-button\"><button type=\"button\"\n            class=\"button-wrapper blank more\"><i\n              class=\"file-list-delete\"></i></button></td>\n      </tr>\n      <tr>\n        <td>3</td>\n        <td><i class=\"file-list-icon-csv\"></i></td>\n        <td>test.csv<div class=\"file-list-subtitle\">Размер файла 666 мб</div>\n        </td>\n        <td>\n          <div class=\"file-list-tag success\">Успешно<div\n              class=\"file-list-subtitle\">Тестовое пояснение к статусу</div>\n          </div>\n        </td>\n        <td class=\"with-button\"></td>\n        <td class=\"with-button\"><button type=\"button\"\n            class=\"button-wrapper blank more\"><i\n              class=\"file-list-delete\"></i></button></td>\n      </tr>\n    </tbody>\n  </table>\n</div>"
+      }
+    }
+  },
+  "Password": {
+    "Display": {
+      "Should render the component": {
+        "1": "<div class=\"password-element-wrapper required\"><input id=\"Password\"\n    data-test=\"password\"\n    placeholder=\"Enter your password...\"\n    aria-invalid=\"false\"\n    aria-required=\"true\"\n    class=\"password-input\"\n    form=\"AwesomePassword\"\n    name=\"Password\"\n    type=\"password\"\n    value=\"\"><i class=\"password-is-hidden\"></i></div>"
+      },
+      "Should render component with default value": {
+        "1": "<div class=\"password-element-wrapper\"><input id=\"withDefaultValue\"\n    aria-invalid=\"false\"\n    class=\"password-input\"\n    type=\"password\"\n    value=\"Самый безопасный пароль\"><i class=\"password-is-hidden\"></i></div>"
+      },
+      "Should render clear button": {
+        "1": "<div class=\"password-element-wrapper focused\"><input id=\"lowercase\"\n    aria-invalid=\"false\"\n    class=\"password-input password-input-clearable\"\n    type=\"password\"\n    value=\"hello\"><i class=\"password-clear-icon\"></i><i\n    class=\"password-is-hidden\"></i></div>"
       }
     }
   }

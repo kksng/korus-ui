@@ -5,7 +5,10 @@ import {
 } from '../../utils';
 import { MAX_FILE_SIZE, MIN_FILE_SIZE } from '../../constants';
 import { Div } from '../Div';
-import { DescriptionMessage, getValue } from './helpers';
+import { Span } from '../Span';
+import { Tooltip } from '../Tooltip';
+import { I } from '../I';
+import { getValue } from './helpers';
 import { createChangeHandler, createClickHandler } from './handlers';
 import { DropZoneFiles } from './DropZoneFiles';
 import { RejectedFilesList } from './RejectedFilesList';
@@ -65,7 +68,7 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
     },
   );
 
-  const combinedButtonClassNames = getClassNames(theme.button, { [theme.disabled]: isDisabled });
+  const combinedButtonClassNames = getClassNames({ [theme.disabled]: isDisabled });
 
   const combinedContentClassNames = getClassNames(theme.content, { [theme.disabled]: isDisabled });
 
@@ -94,6 +97,12 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
 
   const inputProps = { ...restProps, ...getInputProps() };
 
+  /** Tooltip text */
+  const hintText = `${messages.getFileSizeDescription(minFileSize, maxFileSize, 'byte')}
+  ${messages.getMaxFilesDescription(maxFilesNumber)}
+  ${messages.getFormatsDescription(allowedFiles)}
+  ${messages.getForbiddenFormatsDescription(forbiddenFiles)}`.trim();
+
   return (
     <>
       <Wrapper
@@ -113,33 +122,23 @@ export const DropZone = React.forwardRef((props: DropZoneProps, ref: React.Ref<D
           }}
         >
           <input {...inputProps} />
-          <UploadButton
-            className={combinedButtonClassNames}
-          >
-            Выбрать...
-          </UploadButton>
-          {' '}
-          <Info className={theme.description}>
-            <DescriptionMessage>
-              Перетащите сюда файлы для загрузки.
-            </DescriptionMessage>
-            {' '}
-            <DescriptionMessage>
-              {messages.getFileSizeDescription(minFileSize, maxFileSize, 'byte')}
-            </DescriptionMessage>
-            {' '}
-            <DescriptionMessage>
-              {messages.getMaxFilesDescription(maxFilesNumber)}
-            </DescriptionMessage>
-            {' '}
-            <DescriptionMessage>
-              {messages.getFormatsDescription(allowedFiles)}
-            </DescriptionMessage>
-            {' '}
-            <DescriptionMessage>
-              {messages.getForbiddenFormatsDescription(forbiddenFiles)}
-            </DescriptionMessage>
-          </Info>
+          <Span className={theme.uploadIcon} />
+
+          <Div>
+            <Info>
+              Перетащите файлы или
+            </Info>
+            <UploadButton
+              className={combinedButtonClassNames}
+            >
+              &nbsp;нажмите здесь
+            </UploadButton>
+            <Tooltip
+              title={hintText}
+            >
+              <I className={theme.hint} />
+            </Tooltip>
+          </Div>
         </Div>
         <LoaderComponent
           isLoading={isLoading}
